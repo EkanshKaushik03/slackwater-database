@@ -778,8 +778,12 @@ export function isoSubdivisionCode(
 }
 
 function sharesMeaningfulWord(left: string, right: string): boolean {
+  // Fold accents first, so a curated "Södertälje" matches a provider's ASCII
+  // "Sodertalje" instead of splitting at each accented letter.
   const words = (text: string) =>
     text
+      .normalize("NFD")
+      .replace(/\p{M}/gu, "")
       .toLowerCase()
       .split(/[^a-z0-9]+/)
       .filter((word) => word && !NAME_STOP_WORDS.has(word));
