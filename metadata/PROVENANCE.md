@@ -1,49 +1,10 @@
 # Provenance
 
-The stations this package owns — station files under `stations/` with a `provider` — are **our own factual registry** of tide and
-current stations. It is not a copy of any provider's station file. This document
-records where each registry field comes from, so the claim is auditable rather
-than asserted.
+The reference data the database builder derives station fields from, and where each comes from. The provenance of the stations this repo owns, field by field, is in [stations/README.md](../stations/README.md#provenance).
 
-## Operational boundary
+## Place names
 
-The registry is independently authored and reviewed, field by field. Contributors obtain
-and verify station facts from charts, gazetteers, fitting output, direct observation, or
-other documented sources, then write the station file.
-
-> **Never redistribute a provider station export or include a provider-minted identifier.**
-
-Provider records enter the tide database through their own documented ingestion
-pipelines. They do not enter this independently authored registry. Agreement with
-a provider coordinate does not replace independent authoring and human review.
-
-## Per-field provenance
-
-Each registry record is assembled field by field. It is not one document lifted from one
-source.
-
-| Field                                              | Origin                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`                                             | **Hand-written label.** Renaming and re-casing shouting provider names (`CHERRY POINT` → `Cherry Point`) is the whole point of this package — original editorial work, reviewed by a person.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `context`, `cities`, `aliases`, curated `location` | **Hand-written here.** Not present in provider data; original.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| `kind`                                             | **Our editorial classification** (`tide` / `current`), assigned by a person against the membership rules the registry writes down — not a field copied from any provider.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| `tide_reference` / `derived.reference`             | **Editorial pairing.** Which tide reference port's water to show beside a current gate: the _nearest_ `kind: tide` port in the gate's tidal regime, chosen from the positions in this file and, where one exists, confirmed against standard published secondary-reference practice (e.g. Seymour Narrows → Campbell River). A judgment about real water, expressed as an internal registry key on both sides — no provider handle.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `position`                                         | **Independently derived and human-verified.** Current-gate positions come from the `chs-constituents` fitting pipeline and `currents-vault` pass frontmatter, cross-checked against `chs-constituents/stations/salish-sea.json`. Tide reference-port positions come from CHS's public prediction-station list, matched by position and confirmed in water by the coastline audit. Both are audited against a coastline and reviewed by a person — a hand-picked set of factual coordinates that happen to agree with CHS, not a lifted copy of a CHS station export. This row is about **authoring** — how a person sourced a coordinate once. How a _consumer_ joins at runtime is the next row, and the two are easy to conflate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| provider id                                        | **Deliberately absent.** An owned record carries no provider-minted identifier at all — not even as a reference. A station file may also list provider records beside it (a TICON relay of the same gauge, say); those are records of an imported dataset, published under that dataset's own licence, not part of the owned record. The provider's own opaque handle is resolved at runtime by whoever holds a licence to that provider's API, and it never enters this repository. A consumer joins a record here to that live data by **name or by position** — `signalk-currents` folds the name (with this registry's `aliases` covering a provider rename); `slackwater-web` takes the position within a 3 km tolerance and lets a name mismatch warn but not gate. Both are safe for the same reason, and it is not the choice of key: **filter the provider's list to the series you want first.** CHS publishes a current station _and_ a tide gauge named "Porlier Pass", and another pair named "Seymour Narrows", so an unfiltered name is ambiguous; the tide station Duffus Point sits at coordinates identical to the Big Bras D'Or current station, so an unfiltered position is worse. Inside a series-filtered list both keys resolve every gate uniquely. |
-
-The honest summary: the _names, context, and positions_ are our work, and there is no
-provider handle in the published data at all — the one field that would point _into_ a
-provider's system is the one field we chose not to ship.
-
-## CHS tide stations
-
-`sources/chs/stations.json` is an ingestion pipeline, not part of this registry. It lists every live CHS tide station the registry does not curate, with a name, aliases and position for each. A station's name and position are facts about it, and the database publishes them for every provider. The provider-minted identifier stays out, as above: the file carries no IWLS station code, and a consumer resolves one at runtime by position.
-
-Ids are the ones Slackwater iOS ships, because devices key fitted models by them. They were seeded once from the app's `chs-stations.json` and are kept stable on every IWLS refresh by position and then by name (`sources/chs/README.md`). The file carries no constituents, datums or predictions.
-
-## Third-party place data
-
-Everything above is about _station_ identity. The database builder also uses
+The database builder uses
 **GeoNames cities500, CC BY 4.0** to derive locality, subdivision, country, and
 fallback context fields when curated and provider data do not supply them.
 
@@ -66,8 +27,8 @@ current station records:
 - The rule is _don't redistribute a **provider's** station file_ — CHS's or NOAA's list of the
   things we publish records about. GeoNames publishes no tide or current stations, so nothing
   here overlaps a provider's compilation.
-- A derived value is the lowest-precedence tier and is always beaten by registry,
-  correction, or provider data.
+- A derived value is the lowest-precedence tier and is always beaten by a station
+  file's curation or the provider's data.
 - A same-country check prevents a nearby place across a border from supplying
   locality or subdivision data.
 - Localities farther than 40 km remain empty rather than naming a misleading place.
@@ -75,13 +36,13 @@ current station records:
 If that trade ever stops being worth it, the exit is cheap: remove GeoNames from
 the build, and optional location fields remain absent.
 
-### Water bodies
+## Water bodies
 
 A station with no curated or provider context takes the name of the bay or strait it sits in from **OpenStreetMap, ODbL 1.0, © OpenStreetMap contributors**. GeoNames names the nearest place only when no water body contains the station or lies within 1 km of it.
 
 `water-bodies.geojson` is a reviewed snapshot of the named `natural=bay` and `natural=strait` ways and relations that contain a station in the catalogue or lie within 1 km of one. `packages/stations/fetch-water-bodies.ts` builds it from the Overpass API. The snapshot keeps each relation's outer rings only, simplifies them, and records the English name where OpenStreetMap has one, otherwise a Latin-script local name. Marine Regions' gazetteer was the other candidate, but it has no polygons for water bodies the size of Elliott Bay or Hood Canal.
 
-### Maritime zones
+## Maritime zones
 
 A new station takes its country from the **Marine Regions Maritime Boundaries Geodatabase, Exclusive Economic Zones, CC BY 4.0** (Flanders Marine Institute, marineregions.org) before it falls back to the nearest GeoNames place. The zone polygons end at a generalized coastline, so a station within 10 km of a zone takes that zone's country. A gauge up a harbor or inlet is the usual case. Across the Strait of Juan de Fuca the nearest place can be in the other country; the zone cannot. Once a station has a file, its directory holds the country.
 
@@ -89,28 +50,6 @@ A new station takes its country from the **Marine Regions Maritime Boundaries Ge
 
 Neither snapshot is included in the published database or npm package. Only the derived `context` and country fields reach the TCDB, and neither source publishes tide or current stations.
 
-### UHSLC relay metadata
+## UHSLC relay metadata
 
 `sources/ticon/uhslc-metadata.json` pins five fields (station name, position, data source, originator number, last update) from the per-station metadata the University of Hawaii Sea Level Center publishes with its research-quality records, the Joint Archive for Sea Level (Caldwell, Merrifield and Thompson, 2015, NOAA NCEI, https://doi.org/10.7289/V5V40S7W). It is used only to match a TICON relay to the gauge it copies. None of it reaches the published database or npm package. `sources/ticon/fetch-uhslc-metadata.ts` refreshes it; review the diff before committing.
-
-## Human review
-
-Every registry station's identity is reviewed by a person before it lands.
-Release validation audits positions against the coastline and records each
-position in its station file's `computed` block, so a moved position shows in
-the diff. This review is what converts overlapping facts into our own verified
-factual work — record per-station provenance that deviates from the defaults
-above in a comment in the station's file.
-
-## For contributors
-
-When you add or correct a station:
-
-- **Do not paste a row out of a provider's station export.** Obtain the name, context, and
-  position independently (chart, gazetteer, the fitting pipeline, direct observation) and
-  write them here yourself.
-- **Do not add a provider id field.** If your workflow needs the provider's opaque handle to
-  join data at runtime, resolve it there, under your own licence to that provider's API — it
-  does not belong in this repository.
-- If a station's facts came from somewhere other than the defaults in the table above,
-  record it in that station's `source` field so the trail stays auditable.

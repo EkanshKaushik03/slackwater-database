@@ -604,7 +604,7 @@ export function registryStations({
               : "US National Oceanic and Atmospheric Administration",
           id,
           published_harmonics: false,
-          url: "https://github.com/openwatersio/slackwater-database/blob/main/metadata/PROVENANCE.md",
+          url: "https://github.com/openwatersio/slackwater-database/blob/main/stations/README.md#provenance",
         },
         license: {
           type: "MIT",

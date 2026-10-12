@@ -1,7 +1,7 @@
 /**
  * Identity for CHS tide stations: name, aliases and position, and never the
  * IWLS station code. A consumer resolves the code at runtime by position, which
- * keeps provider-minted ids out of this repository (metadata/PROVENANCE.md).
+ * keeps provider-minted ids out of this repository (stations/README.md#provenance).
  *
  * Ids are Slackwater iOS's, which devices key fitted models by, so a record
  * keeps its id for as long as any IWLS station matches it.

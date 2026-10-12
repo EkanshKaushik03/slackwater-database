@@ -145,7 +145,7 @@ The sources and what each one asks for:
 - **Toitū Te Whenua Land Information New Zealand** — "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence." Credit required under CC BY 4.0, and [LINZ's copyright terms](https://www.linz.govt.nz/copyright) ask for that statement on adapted data, in writing, never by its logo or crest.
 - **TICON-4** — Hart-Davis, Michael; Dettmering, Denise; Seitz, Florian (2025). _TICON-4: TIdal CONstants based on GESLA-4 sea-level records._ SEANOE. https://doi.org/10.17882/109129. Credit required.
 - **NOAA CO-OPS** — a United States government work in the public domain. Attribution is not required, but is appreciated, so the project credit stands alone.
-- **Canadian Hydrographic Service** — names the agency operating a current station whose record was authored in this repository under MIT (see [metadata/PROVENANCE.md](./metadata/PROVENANCE.md)). No data is redistributed from CHS, so no credit is owed to it.
+- **Canadian Hydrographic Service** — names the agency operating a current station whose record was authored in this repository under MIT (see [stations/README.md](./stations/README.md#provenance)). No data is redistributed from CHS, so no credit is owed to it.
 
 The credit is written into the database file itself, so every reader gets it without keeping a table of sources. Each source declares its credit in its own `sources/<name>/metadata.yaml`, the one place the string lives; a station whose source has no `metadata.yaml` fails the build.
 

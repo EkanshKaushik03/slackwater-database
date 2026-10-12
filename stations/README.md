@@ -72,7 +72,7 @@ A redirect is for a path that named the _same place_: a rename qualifies, a misl
 
 A station with a `provider` holds a record this repo owns rather than corrects: the one source no provider supplies, such as `chs-victoria`. Its name is not a provider's name and its position is not a correction of a published one. CHS tidal-current gates are data like this: the fitting pipeline emits a hand-written label and no position at all. Owned ids match what chs-constituents emits ("chs-" plus the slug of the label), so a consumer can resolve straight from the id in its own output.
 
-These are this project's own facts, not a copy of a provider's station file. Names and contexts are hand-written; positions are independently derived from the chs-constituents fitting pipeline and currents-vault pass frontmatter, and agree with chs-constituents/stations/salish-sea.json. Owned stations ship no provider-minted identifiers; those live only in each operator's local, licence-covered pipeline (see [PROVENANCE.md](../metadata/PROVENANCE.md)). Every one is human-reviewed before it lands. A station whose facts came from somewhere else says where in a comment, as Boundary Pass does.
+These are this project's own facts, not a copy of a provider's station file; [Provenance](#provenance) below records where each field comes from.
 
 An owned station may also list provider records for the same water, as `victoria` lists the UHSLC relay: one page with the curated name and the provider's harmonics, rather than two pages a few hundred metres apart that neither holds the bare slug.
 
@@ -111,3 +111,30 @@ CHS publishes tidal currents at exactly 30 stations nationally, and twenty are h
 | Abegweit Passage      | 2.0 kn under the Confederation Bridge, across 5.5 miles of navigable width. ATL 108 gives no stream rate and no slack advice at all. The widely copied "4 knots" is Wikipedia, roughly double CHS.                                                                                                                                                                              |
 | Fairview Terminal     | A container berth on Kaien Island. A temporary station feeding Prince Rupert's pilotage instrumentation: berthing data, not a passage.                                                                                                                                                                                                                                          |
 | Porpoise Channel East | The near miss, and the one worth reading before re-adding it. There is a published HW-slack rule for Porpoise Harbour, and Pub 154 does say 6–7 kn, but that is an under-keel-clearance window for loaded ships at the Ridley-Lelu narrows, and this station sits east of that pinch, where CHS predicts 2.0 kn. A gate whose station is not on the gate is worse than no gate. |
+
+## Provenance
+
+The stations this repo owns are its own factual registry of tide and current stations, independently authored and reviewed field by field. Contributors obtain and verify each fact from charts, gazetteers, fitting output, direct observation or other documented sources, then write the station file. Provider records enter the database through their own documented import pipelines under `sources/`, not through this registry, and agreement with a provider coordinate does not replace independent authoring and review.
+
+**Never redistribute a provider station export or include a provider-minted identifier.**
+
+Where each field of an owned station comes from:
+
+- `name`: a hand-written label. Renaming and re-casing a shouting provider name (`CHERRY POINT` to `Cherry Point`) is original editorial work, reviewed by a person.
+- `context`, `cities`, `aliases`: written here; not present in provider data.
+- Kind (`stations/tide/` or `stations/current/`): this project's editorial classification against the membership rules above, not a field copied from a provider.
+- `tide_reference` and `derived.reference`: an editorial pairing. The nearest tide reference port in the gate's tidal regime, chosen from the positions in these files and, where one exists, confirmed against published secondary-reference practice. Both sides are this repo's own ids, never a provider handle.
+- `position`: independently derived and verified by a person. Current-gate positions come from the chs-constituents fitting pipeline and currents-vault pass frontmatter, cross-checked against chs-constituents/stations/salish-sea.json. Tide reference-port positions come from CHS's public prediction-station list, matched by position and confirmed in water by the coastline audit. Both are a hand-picked set of factual coordinates that agree with CHS, not a copy of a CHS station export. This is about authoring: how a person sourced a coordinate once.
+- Provider id: deliberately absent. An owned record carries no provider-minted identifier, not even as a reference. A station file may also list provider records beside it (a TICON relay of the same gauge, say); those belong to an imported dataset under its own licence, not to the owned record. Whoever holds a licence to a provider's API resolves its opaque handle at runtime, and the handle never enters this repository. A consumer joins an owned station to live data by name or by position: `signalk-currents` folds the name, with `aliases` covering a provider rename, and `slackwater-web` takes the position within 3 km and lets a name mismatch warn but not gate. Both are safe only after filtering the provider's list to the series wanted: CHS publishes a current station and a tide gauge both named "Porlier Pass", and another pair named "Seymour Narrows", and the tide station Duffus Point sits at the same coordinates as the Big Bras D'Or current station. Inside a series-filtered list both keys resolve every gate uniquely.
+
+The names, contexts and positions are this project's work, and the one field that would point into a provider's system is the one it does not ship.
+
+`sources/chs/stations.json` is an import pipeline, not part of this registry. It lists every live CHS tide station the registry does not own, with a name, aliases and position for each; it carries no IWLS station code, constituents, datums or predictions, and a consumer resolves the IWLS code at runtime by position. Its ids are the ones Slackwater iOS ships, because devices key fitted models by them, and they stay stable across IWLS refreshes by position and then by name (see [sources/chs/README.md](../sources/chs/README.md)).
+
+Every owned station is reviewed by a person before it lands. Release validation audits positions against the coastline and records each in the station's `computed` block, so a moved position shows in the diff. That review is what turns overlapping facts into this project's own verified work. When adding or correcting an owned station:
+
+- Do not paste a row from a provider's station export. Obtain the name, context and position independently and write them yourself.
+- Do not add a provider id. A workflow that needs the provider's handle resolves it at runtime under its own licence.
+- When a station's facts come from somewhere other than the sources above, say where in a comment in its file, as Boundary Pass does.
+
+Reference data the build derives fields from (GeoNames places, OpenStreetMap water bodies, Marine Regions maritime zones) and the pinned UHSLC relay metadata are described in [metadata/PROVENANCE.md](../metadata/PROVENANCE.md).
