@@ -214,9 +214,41 @@ export const MAX_DEDUP_DISTANCE = 0.5; // 500 meters
 /** Distance below which stations are always considered duplicates (in km) */
 export const MIN_DEDUP_DISTANCE = 0.05; // 50 meters
 
+/** How far apart two constituent amplitudes must be, in metres, before a
+ *  quality gate treats the difference as real.
+ *
+ *  Harmonic analysis judges a constituent by its error estimate, not by the
+ *  digits it is printed to (Pawlowicz, Beardsley & Lentz 2002, T_TIDE; Codiga
+ *  2011, UTide). For a year or more of hourly data that error is about 1 mm at
+ *  a quiet site and about 3 mm where wind and river flow add non-tidal noise,
+ *  and more for shorter records. Only TICON publishes per-constituent errors,
+ *  and they look like formal least-squares errors that run low, so every
+ *  source is held to the noisy-site figure. Stored digits follow the publisher
+ *  (see PUBLISHED_PRECISION) and say nothing about this. */
+export const AMPLITUDE_TOLERANCE = 0.003;
+
+/** Whether amplitude `a` exceeds `b` by more than AMPLITUDE_TOLERANCE. The
+ *  difference is rounded to the nanometre first, so float noise in a value
+ *  stored to whole millimetres cannot tip a difference of exactly 3 mm. */
+export function exceeds(a: number, b: number): boolean {
+  return Number((a - b).toFixed(9)) > AMPLITUDE_TOLERANCE;
+}
+
+/** Smallest P1 amplitude, in metres, at which P1 > K1 marks a bad fit.
+ *
+ *  In the gravitational tide P1/K1 is 0.331 (Cartwright & Tayler 1971), so P1
+ *  above K1 cannot come from it. Radiational forcing puts energy on both
+ *  frequencies, though, and where the diurnal tide is a few millimetres it can
+ *  bring P1 level with K1: Aladga in the Caspian, and S1 matching P1 across the
+ *  Baltic (Medvedev, Rabinovich & Kulikov 2016). That explains P1 near K1 at a
+ *  few millimetres, not a resolved P1 well above K1, so the gate applies once
+ *  P1 reaches 10 mm. Baltic K1 runs about 4 to 30 mm. */
+export const RESOLVED_P1 = 0.01;
+
 /** Minimum M2 amplitude ratio to consider two reference stations as duplicates.
  *  Pairs within MAX_DEDUP_DISTANCE but above MIN_DEDUP_DISTANCE are only
- *  deduplicated if their M2 amplitudes are similar (ratio >= this threshold). */
+ *  deduplicated if their M2 amplitudes are similar: at least this ratio, or
+ *  within AMPLITUDE_TOLERANCE of each other where M2 is measurable. */
 export const MIN_AMPLITUDE_RATIO = 0.9;
 
 /** Distance fallback for subordinate stations and reference stations where one has
@@ -260,8 +292,8 @@ export const SEASONAL_OUTLIER_RATIO = 5;
 // ── Seasonal dominance label ─────────────────────────────────────────────
 // A different question from the gate above, and the two are easy to confuse.
 // That gate asks whether a station's SA is anomalous *against its neighbours*,
-// which catches a bad harmonic fit. This asks whether SA is large against the
-// station's *own* tidal terms, which catches water that has no meaningful tide
+// which catches a bad harmonic fit. This asks whether the seasonal curve is
+// large against the station's *own* principal tide, which catches water that has no meaningful tide
 // to begin with: a Great Lakes gauge, a river reach, a Baltic bodden. The
 // contamination gate deliberately excludes these by comparing only within a
 // tidal regime, so nothing else in the pass sees them.
@@ -269,59 +301,78 @@ export const SEASONAL_OUTLIER_RATIO = 5;
 // It labels rather than rejects. The predictions are correct — the annual
 // cycle is really the dominant signal — so the record is not faulty and a
 // consumer that knows what the water is can say so. Cobourg on Lake Ontario
-// carries SA 0.289 m against a largest tidal constituent of 0.002 m and
+// carries SA 0.289 m against a principal tide of 0.004 m and
 // passes every other gate, including the 2 cm range floor, by 6 mm.
 
-/** The constituents that are the tide itself: diurnal and semidiurnal. The
- *  long-period terms (MM, MSF, MF) are excluded on both sides — they are
- *  neither the daily tide nor the seasonal signal being measured. */
-export const TIDAL_CONSTITUENTS = [
-  "M2",
-  "S2",
-  "N2",
-  "K2",
-  "L2",
-  "T2",
-  "NU2",
-  "MU2",
-  "2N2",
-  "LDA2",
-  "K1",
-  "O1",
-  "P1",
-  "Q1",
-  "J1",
-  "M1",
-  "OO1",
-  "RHO1",
-  "2Q1",
-  "SIGMA1",
-  "CHI1",
-  "PI1",
-  "PHI1",
-  "THETA1",
-  "S1",
-];
+/** The principal tidal constituents. Their amplitudes sum to the tide's
+ *  height above mean level when spring and tropic tides coincide, an upper
+ *  scale for its daily swing that leaves out the smaller constituents. The long-period terms (MM, MSF, MF) are left
+ *  out on both sides: they are neither the daily tide nor the seasonal signal. */
+export const PRINCIPAL_TIDAL_CONSTITUENTS = ["M2", "S2", "K1", "O1"];
 
-/** The seasonal band: the annual and semi-annual terms. */
-export const SEASONAL_CONSTITUENTS = ["SA", "SSA"];
+type Term = { name: string; amplitude: number; phase: number };
 
-/** How far the seasonal band must exceed the largest tidal constituent before a
- *  station is labelled seasonal.
+/** Longitude of perihelion p′ in degrees: 282.94° at J2000 (Meeus 1998),
+ *  advancing 1.72° a century, so 283.4° through the 2020s. */
+const PERIHELION_LONGITUDE = 283.4;
+
+/** A station's annual and semi-annual terms, under every name the sources
+ *  use: SA and SSA (NOAA, TICON), Sa and Ssa (LINZ), and Kartverket's SA_KV
+ *  with Ssa. SA_KV's argument is h − p′ rather than h, so its phase is moved
+ *  by p′ to read on the same clock as SA. */
+export function seasonalTerms(constituents: Term[]): {
+  annual: Term | undefined;
+  semiannual: Term | undefined;
+} {
+  const find = (...names: string[]) =>
+    constituents.find((c) => names.includes(c.name));
+  const kv = find("SA_KV");
+  return {
+    annual:
+      find("SA", "Sa") ??
+      (kv && { ...kv, phase: (kv.phase + PERIHELION_LONGITUDE) % 360 }),
+    semiannual: find("SSA", "Ssa"),
+  };
+}
+
+/** Largest departure from mean level of the seasonal curve
+ *  SA·cos(θ − g_SA) + SSA·cos(2θ − g_SSA) over a year, sampled every half
+ *  degree of θ. Phases matter: the two terms peak together only at some
+ *  stations, so the larger amplitude understates the curve and their sum
+ *  overstates it. */
+export function seasonalPeak(constituents: Term[]): number {
+  const { annual, semiannual } = seasonalTerms(constituents);
+  const rad = Math.PI / 180;
+  let peak = 0;
+  for (let step = 0; step < 720; step++) {
+    const theta = step / 2;
+    const level =
+      (annual ? annual.amplitude * Math.cos((theta - annual.phase) * rad) : 0) +
+      (semiannual
+        ? semiannual.amplitude * Math.cos((2 * theta - semiannual.phase) * rad)
+        : 0);
+    peak = Math.max(peak, Math.abs(level));
+  }
+  return peak;
+}
+
+/** How far the seasonal curve's peak (seasonalPeak) must exceed the principal
+ *  tide before a station is labelled seasonal.
  *
- *  1 is the physical line rather than a tuned one: above it the water's yearly
- *  swing is larger than its largest daily one, which is the statement the label
- *  makes and the reason a tide table is the wrong frame for the station. There
- *  is no gap in the distribution to discover — across the accepted corpus the
- *  count runs 603 at 1x, 423 at 1.5x, 321 at 2x, 230 at 3x, and 177 stations
- *  sit between 0.8x and 1x — so a higher figure would be an editorial choice
- *  about how loud to be, which belongs in the consumer.
+ *  Sa and Ssa are mostly meteorological, steric and river-driven rather than
+ *  astronomical (NOAA CO-OPS 2000, Tide and Current Glossary; Tsimplis &
+ *  Woodworth 1994). At 1 the yearly swing is larger than the largest daily
+ *  swing of the tide, which is the statement the label makes and the reason a
+ *  tide table is the wrong frame for the station. No published criterion sets
+ *  this line, so it is this project's definition, not a standard. Comparing
+ *  against one constituent instead understates a mixed tide and labelled tidal
+ *  stations such as Nome and Port Aransas.
  *
  *  A consumer that wants a stricter presentation threshold computes the ratio
  *  from the constituents it already ships. It is deliberately not a field here:
  *  the point of putting the verdict in the database is that two consumers
  *  describe the same water the same way, and a numeric ratio on the record is an
- *  invitation to pick a second threshold per consumer. `issues` states the
- *  numbers to one decimal for a human reading the record, which is not a machine
- *  interface — 1.02x prints as 1.0x. */
+ *  invitation to pick a second threshold per consumer. `issues` states both
+ *  heights in metres for a human reading the record, which is not a machine
+ *  interface. */
 export const SEASONAL_DOMINANCE_RATIO = 1;

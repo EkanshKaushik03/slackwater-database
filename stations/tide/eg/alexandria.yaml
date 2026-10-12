@@ -10,7 +10,6 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/alexandria-ale-egy-noc
-        seasonal_dominant: true
         score: 70
         factors:
           epoch: 0.325
@@ -19,5 +18,3 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.001
-        issues:
-          - "Seasonal band (0.088m) is 1.2x the largest tidal constituent M2 (0.074m): the yearly swing exceeds the daily one"

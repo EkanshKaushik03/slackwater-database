@@ -10,7 +10,6 @@ computed:
       quality:
         accepted: false
         reason: datum
-        seasonal_dominant: true
         score: 0
         factors:
           epoch: 1
@@ -23,4 +22,3 @@ computed:
           - MHHW (1.927) < MHW (1.97)
           - MHWS (1.816) < MHW (1.97)
           - MSL (1.593) <= MLW (1.609)
-          - "Seasonal band (0.272m) is 1.4x the largest tidal constituent M2 (0.193m): the yearly swing exceeds the daily one"

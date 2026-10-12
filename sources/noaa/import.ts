@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 
 import createFetch from "make-fetch-happen";
-import { normalize, save, DATA_DIR } from "@slackwater/stations";
+import {
+  normalize,
+  save,
+  withPublishedPrecision,
+  DATA_DIR,
+} from "@slackwater/stations";
 import type { StationData } from "@slackwater/database";
 import { loadGeocoder } from "@slackwater/stations";
 import { readFile } from "fs/promises";
@@ -47,7 +52,8 @@ async function main() {
     }
 
     const station = await buildStation(meta);
-    const newContent = JSON.stringify(station, null, 2) + "\n";
+    const newContent =
+      JSON.stringify(withPublishedPrecision("noaa", station), null, 2) + "\n";
     const existing = await readExisting(meta.id);
 
     await save("noaa", station);

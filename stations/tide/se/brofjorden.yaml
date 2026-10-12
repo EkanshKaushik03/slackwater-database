@@ -7,7 +7,9 @@ computed:
       position: [58.335999, 11.4046]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/brofjorden_sjov-35109-swe-smhi
         score: 52
         factors:
           epoch: 0.322

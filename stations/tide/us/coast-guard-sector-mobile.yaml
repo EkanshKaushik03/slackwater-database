@@ -9,13 +9,11 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 78
+        score: 83
         factors:
           epoch: 1
           recency: 0.75
           source: 1
           quality: 1
-          amplitude: 0.75
+          amplitude: 1
           coverage: 0.003
-        issues:
-          - K2 amplitude (0.0170) exceeds S2 (0.0150)

@@ -9,9 +9,10 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: constituents
+        reason: duplicate
+        redundant: ticon/carillon_aval-16032-can-meds
         seasonal_dominant: true
-        score: 0
+        score: 77
         factors:
           epoch: 0.86
           recency: 0.54
@@ -21,5 +22,4 @@ computed:
           coverage: 0
         issues:
           - MHWS (0.504) < MHW (0.532)
-          - "P1 amplitude (0.0231) exceeds K1 (0.0204): physically impossible"
-          - "Seasonal band (0.180m) is 6.1x the largest tidal constituent S1 (0.030m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.301m) exceeds the principal tide M2+S2+K1+O1 (0.039m): the yearly swing exceeds the daily one"

@@ -10,6 +10,8 @@ This database collects tidal harmonic constants and datums for several thousand 
 
 **One gauge, one published record.** The same gauge often reaches this database several times: from its operator, as a fast-delivery and a research-quality series, or from two agencies that both relay it. Publishing all of them would show readers two answers for the same water. Duplicates are found and only the best record is published. The others stay in the database, marked as duplicates of the record that was chosen.
 
+**Decide only on differences the data can resolve.** Harmonic constants carry an analysis error, and a comparison between two values inside that error is noise. The checks below compare amplitudes against that error, not against the digits a value is stored with. Stored constants keep each provider's published precision, which says nothing about their accuracy.
+
 **Label what a tide table cannot describe.** Some water has a real but tiny tide on top of a large seasonal swing in level: lakes, river reaches, Baltic lagoons. Those predictions are correct, but presenting them as a tide table misleads. Such stations are published with a label rather than rejected.
 
 ## Sources
@@ -24,6 +26,12 @@ This database collects tidal harmonic constants and datums for several thousand 
 
 TICON-4 (Hart-Davis et al., 2025) analyzes the records in GESLA-4, which collects sea-level data from national and regional agencies (Haigh et al., 2023, describes the GESLA-3 compilation that version 4 extends). Each TICON record names the agency that supplied the data, and that agency matters to several of the checks below.
 
+## Amplitude tolerance
+
+Two amplitudes count as different only when they differ by more than 3 mm. Harmonic analysis judges a constituent by its error estimate rather than by the digits it is printed to (Pawlowicz et al., 2002; Codiga, 2011). For a year or more of hourly data that error is about 1 mm at a quiet site and about 3 mm where wind, waves and river flow add non-tidal noise, and more for a shorter record. Only TICON publishes per-constituent errors, and they behave like formal least-squares errors, which run low when the residual is not white noise (Codiga, 2011). Every source is therefore held to the noisy-site figure. The tolerance applies wherever this document compares amplitudes.
+
+NOAA publishes an amplitude of 0 with a phase of 0 for a constituent it did not determine. That pair means missing. Any other small or zero amplitude is a measured value below detection, and it predicts correctly.
+
 A reference station has its own harmonic constants. A subordinate (secondary) station has none; it predicts from a reference station's constants plus time and height differences for high and low water (Parker, 2007). Where a check needs datums or constants, a subordinate is judged on its reference station's.
 
 ## Rejection checks
@@ -36,7 +44,7 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 | Datum consistency      | its datums contradict their definitions                      | NOAA and IHO definitions |
 | Tidal range            | its mean range is under 2 cm                                 | Engineering choice       |
 | Superseded relay       | it relays a gauge whose operator publishes its own constants | Editorial choice         |
-| Essential constituents | it lacks M2, S2, K1 or O1, or its P1 exceeds K1              | Equilibrium tide         |
+| Essential constituents | it lacks M2, S2, K1 or O1, or a resolved P1 exceeds K1       | Equilibrium tide         |
 | Seasonal contamination | its annual term is five times that of comparable neighbors   | Seasonal cycle physics   |
 
 ### Position
@@ -85,19 +93,19 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 
 ### Essential constituents
 
-**What it catches.** A harmonic model that cannot reproduce the shape of the tide. M2, S2, K1 and O1 are the four largest constituents of the equilibrium tide (Cartwright & Tayler, 1971) and dominate the real tide almost everywhere. They also define the form number, which classifies a tide as semidiurnal, mixed or diurnal (Defant, 1961; Pugh & Woodworth, 2014). A reference station is rejected if any of the four is missing or has an amplitude of exactly zero, which is a provider's placeholder, not a measurement.
+**What it catches.** A harmonic model that cannot reproduce the shape of the tide. M2, S2, K1 and O1 are the four largest constituents of the equilibrium tide (Cartwright & Tayler, 1971) and dominate the real tide almost everywhere. They also define the form number, which classifies a tide as semidiurnal, mixed or diurnal (Defant, 1961; Pugh & Woodworth, 2014). A reference station is rejected if any of the four is missing, including NOAA's 0/0 marker for a constituent it did not determine. A small or zero amplitude with a phase is a real value below detection and passes.
 
-It also rejects a model whose P1 amplitude exceeds K1. In the tide-generating potential, P1 is about 0.331 of K1 (Cartwright & Tayler, 1971). The ocean's response varies smoothly with frequency across a tidal band (Munk & Cartwright, 1966), and P1 and K1 are only 0.082°/h apart, so the observed ratio stays close to the equilibrium value; harmonic analysis routinely infers P1 from K1 on that basis (Foreman, 1977; Pawlowicz et al., 2002). Separating the two needs at least 182.6 days of data, the Rayleigh criterion for that pair (Foreman, 1977; Parker, 2007). P1 larger than K1 almost always means the analysis could not resolve them, and the diurnal band of the model cannot be trusted.
+It also rejects a model whose P1 amplitude exceeds K1. In the tide-generating potential, P1 is about 0.331 of K1 (Cartwright & Tayler, 1971). The ocean's response varies smoothly with frequency across a tidal band (Munk & Cartwright, 1966), and P1 and K1 are only 0.082°/h apart, so the observed ratio stays close to the equilibrium value; harmonic analysis routinely infers P1 from K1 on that basis (Foreman, 1977; Pawlowicz et al., 2002). Separating the two needs at least 182.6 days of data, the Rayleigh criterion for that pair (Foreman, 1977; Parker, 2007). P1 larger than K1 almost always means the analysis could not resolve them, and the diurnal band of the model cannot be trusted. The ratio holds for the gravitational tide only. Radiational forcing by the sun puts energy on both frequencies, and where the diurnal tide is a few millimeters it can bring P1 level with K1: at Aladga in the Caspian Sea K1 and P1 are nearly equal, and across the Baltic the radiational S1 is about the size of P1 (Medvedev, Rabinovich & Kulikov, 2016). That explains a P1 near a small K1, not a resolved P1 well above it. A record is rejected when P1 is at least 10 mm and exceeds K1 by more than the amplitude tolerance. The 10 mm floor is an engineering choice.
 
 **Exemptions.** Records from authoritative sources are not required to have K1 and are not tested for P1 against K1. Two Norwegian gauges publish no K1, and several have K1 and P1 of a few millimeters with P1 slightly larger. Along parts of the Norwegian coast the diurnal tide is close to an amphidrome, and at that level the ratio carries no information.
 
-**Limitations.** Subordinate stations are not tested; they use their reference station's constants. The P1 test catches only the gross case, so a P1/K1 ratio of 0.8 passes. Near a diurnal amphidrome the test can reject a sound analysis whose diurnal terms are simply at noise level, and a TICON record there is not exempt.
+**Limitations.** Subordinate stations are not tested; they use their reference station's constants. The P1 test catches only the gross case, so a P1/K1 ratio of 0.8 passes, and a P1 under 10 mm is never tested. A NOAA amplitude below 0.5 mm whose phase also rounds to 0.0° cannot be told apart from the 0/0 marker.
 
 ### Seasonal contamination
 
 **What it catches.** A harmonic fit that absorbed spurious energy into the annual constituent, SA. The seasonal cycle in sea level is driven by heating and cooling of the water column, wind, air pressure and river runoff. It varies smoothly along a coast, with typical amplitudes of a few centimeters to a few decimeters (Tsimplis & Woodworth, 1994; Pugh & Woodworth, 2014). SA cannot be resolved from less than a year of data, and a short, gappy or datum-shifted record pushes spurious low-frequency energy into it. An inflated SA inflates the predicted extremes, including LAT and HAT, and so the chart datum.
 
-**Threshold.** A TICON reference station is rejected when its SA amplitude is at least 0.5 m and at least five times the median SA of nearby reference stations in the same tidal regime. Nearby means within 25 km. The same regime means M2 amplitudes within 10% of each other, which keeps a river-influenced station, with a large real SA on a small tide, from being compared with the open coast. The 0.5 m floor, 25 km radius, 10% M2 match and factor of five are engineering choices of this project.
+**Threshold.** A TICON reference station is rejected when its SA amplitude is at least 0.5 m and at least five times the median SA of nearby reference stations in the same tidal regime. Nearby means within 25 km. The same regime means similar M2 amplitudes (see Duplicates), which keeps a river-influenced station, with a large real SA on a small tide, from being compared with the open coast. The annual term is read under each provider's name for it: SA, Sa, or Kartverket's SA_KV. The 0.5 m floor, 25 km radius and factor of five are engineering choices of this project.
 
 **Limitations.** The check is silent where no comparable neighbor exists within 25 km, which is true of most isolated gauges. Neighbors are not themselves vetted, and a single neighbor sets the median. Only the annual term is tested; a contaminated semiannual term (SSA) passes. Records from authoritative sources are never tested, though they serve as neighbors.
 
@@ -105,11 +113,11 @@ It also rejects a model whose P1 amplitude exceeds K1. In the tide-generating po
 
 **What it marks.** Water whose yearly swing in level is larger than its daily tide: a Great Lakes gauge, a river reach, a Baltic lagoon. The harmonic predictions are correct, but presenting them as a tide table misleads. A whole day's predicted highs and lows can sit below the annual mean, which produces a negative "high water" above chart datum. The contamination check does not catch this water, because it compares a station only with neighbors in the same tidal regime.
 
-**Rule.** A station is labeled when the larger of its annual (SA) and semiannual (SSA) amplitudes is at least as large as its largest diurnal or semidiurnal constituent. The long-period constituents (Mm, Msf, Mf) are left out of both sides, as they are neither the daily tide nor the seasonal cycle. A subordinate station is measured on its reference station's constants, which are the ones it predicts from; its height differences scale the tide and the seasonal terms together, so they do not change which dominates. The threshold of one is the point at which the label's statement becomes true, not a tuned value.
+**Rule.** A station is labeled when the peak of its seasonal curve exceeds its principal tide by more than the amplitude tolerance. The seasonal curve is SA·cos(θ − g_SA) + SSA·cos(2θ − g_SSA) over a year, with the phases, since the two terms peak together only at some stations. The principal tide is M2 + S2 + K1 + O1, the tide's height above mean level when spring and tropic tides coincide. Sa and Ssa are mostly meteorological, steric and river-driven rather than astronomical (NOAA CO-OPS, 2000; Tsimplis & Woodworth, 1994). Kartverket's SA_KV has the argument h − p′ rather than h, so its phase is moved by the longitude of perihelion p′, 283.4° in the 2020s (Meeus, 1998), before it is combined with Ssa. The long-period constituents (Mm, Msf, Mf) are left out of both sides. A subordinate station is measured on its reference station's constants, which are the ones it predicts from; its height differences scale the tide and the seasonal terms together, so they do not change which dominates. No published criterion sets this line. A ratio of one is the point at which the label's statement becomes true, and it is this project's definition.
 
-**Effect.** The station is published with the label and a note giving the two amplitudes. The label is set whether or not the station is accepted, since it describes the water rather than the record. It is a yes-or-no label, not a number, so every consumer describes the same water the same way. A consumer that wants a stricter threshold can compute the ratio from the constants it already has.
+**Effect.** The station is published with the label and a note giving the seasonal peak and the principal tide. The label is set whether or not the station is accepted, since it describes the water rather than the record. It is a yes-or-no label, not a number, so every consumer describes the same water the same way. A consumer that wants a stricter threshold can compute the ratio from the constants it already has.
 
-**Limitations.** It compares the single largest constituent on each side, not the total range. In a mixed tide where M2, K1 and O1 are similar, the daily range can be well above any one constituent, so a station can be labeled while its daily range still exceeds its seasonal swing. SA is a climatological average, and any one year's seasonal swing can differ from it.
+**Limitations.** The principal tide leaves out the smaller constituents, such as N2 and K2, so it understates the tide's peak where they are large. SA is a climatological average, and any one year's seasonal swing can differ from it.
 
 ## Scoring
 
@@ -173,13 +181,12 @@ A record scores 0 when its provider flagged it for possible datum and quality-co
 
 The score starts at 1 and loses 0.25 for each implausibility, down to 0:
 
-- N2 larger than M2.
-- K2 larger than S2.
-- Q1 larger than O1.
-- A form number, (K1 + O1) / (M2 + S2), above 25.
+- N2 larger than M2 by more than the amplitude tolerance.
+- K2 larger than S2 by more than the amplitude tolerance.
+- Q1 larger than O1 by more than the amplitude tolerance.
 - No diurnal or semidiurnal signal at all.
 
-**Why.** Each pair is a main constituent and a smaller neighbor in frequency. Their equilibrium ratios are about N2/M2 = 0.19, K2/S2 = 0.27 and Q1/O1 = 0.19 (Cartwright & Tayler, 1971), and the smooth ocean response across a band keeps observed ratios near those values (Munk & Cartwright, 1966). A smaller constituent exceeding its parent points to a poorly resolved analysis; S2 and K2, for example, need 182.6 days of data to separate (Foreman, 1977). The form number is below 0.25 for semidiurnal tides, up to 1.5 for mixed mainly semidiurnal, up to 3 for mixed mainly diurnal, and above 3 for diurnal tides (Defant, 1961; Pugh & Woodworth, 2014). A value above 25 means the semidiurnal terms are almost absent, which is more often an analysis error than real water. The limit of 25 and the 0.25 penalty are engineering choices. Subordinate stations score 1, since they predict from their reference station. The P1/K1 pair is a rejection check, not a score.
+**Why.** Each pair is a main constituent and a smaller neighbor in frequency. Their equilibrium ratios are about N2/M2 = 0.19, K2/S2 = 0.27 and Q1/O1 = 0.19 (Cartwright & Tayler, 1971), and the smooth ocean response across a band keeps observed ratios near those values (Munk & Cartwright, 1966). A smaller constituent exceeding its parent points to a poorly resolved analysis; S2 and K2, for example, need 182.6 days of data to separate (Foreman, 1977). A pair is not compared when either value is NOAA's not-determined marker. The form number is not scored: it is below 0.25 for semidiurnal tides, up to 1.5 for mixed mainly semidiurnal, up to 3 for mixed mainly diurnal, and above 3 for diurnal tides (Courtier, 1938; NOAA CO-OPS, 2000), with no upper bound, and NOAA's own Gulf of Mexico stations exceed 25. The 0.25 penalty is an engineering choice. Subordinate stations score 1, since they predict from their reference station. The P1/K1 pair is a rejection check, not a score.
 
 **Limitations.** These checks lower a score but never reject. They catch only the gross case where the smaller constituent exceeds its parent, and near an amphidrome for one species a pair at noise level can trip them without the analysis being wrong.
 
@@ -203,15 +210,15 @@ TICON names each record by place, the supplying agency's station code, and count
 
 Records from all sources are compared in pairs. Whether two count as one gauge depends on how far apart they are and what kind of station each is:
 
-| Pair                          | Within 50 m                         | 50–100 m                                                                          | 100–500 m                   | Beyond 500 m |
-| ----------------------------- | ----------------------------------- | --------------------------------------------------------------------------------- | --------------------------- | ------------ |
-| Two reference stations        | Same gauge                          | Same gauge if M2 amplitudes are within 10%, or if the better one has subordinates | Same gauge if M2 within 10% | Different    |
-| A reference and a subordinate | Same gauge                          | Same gauge                                                                        | Different                   | Different    |
-| Two subordinate stations      | Same gauge if they predict the same | Same gauge if they predict the same                                               | Different                   | Different    |
+| Pair                          | Within 50 m                         | 50–100 m                                                                       | 100–500 m                | Beyond 500 m |
+| ----------------------------- | ----------------------------------- | ------------------------------------------------------------------------------ | ------------------------ | ------------ |
+| Two reference stations        | Same gauge                          | Same gauge if M2 amplitudes are similar, or if the better one has subordinates | Same gauge if M2 similar | Different    |
+| A reference and a subordinate | Same gauge                          | Same gauge                                                                     | Different                | Different    |
+| Two subordinate stations      | Same gauge if they predict the same | Same gauge if they predict the same                                            | Different                | Different    |
 
 Two subordinates predict the same when they use the same reference station and their height differences agree within 0.1 (as a ratio, or 0.1 m for fixed differences) and their time differences within 10 minutes.
 
-**Why.** Records within 50 m are almost certainly the same gauge, or gauges too close for their tides to differ in a way that matters. Between 50 and 500 m, gauges can sit on opposite sides of a breakwater, at a harbor mouth and inside it, or at the two ends of a short channel, and their tides can differ. M2 dominates nearly every tide, so M2 amplitudes within 10% are a direct test that two reference stations describe the same tidal regime. A reference station that has subordinates may absorb a neighbor within 100 m even when the M2 test fails, since very small M2 amplitudes make the ratio noisy. Subordinates have no constants to compare, so they get the tighter 100 m limit, and two subordinates must also predict the same tide. Many subordinates share coarse or placeholder positions: Suwarrow Island is recorded at the exact position of Hao Island, but Suwarrow's time difference is +64 minutes and Hao's is −315. All of these distances and tolerances are engineering choices of this project.
+**Why.** Records within 50 m are almost certainly the same gauge, or gauges too close for their tides to differ in a way that matters. Between 50 and 500 m, gauges can sit on opposite sides of a breakwater, at a harbor mouth and inside it, or at the two ends of a short channel, and their tides can differ. M2 dominates nearly every tide, so similar M2 amplitudes are a direct test that two reference stations describe the same tidal regime. Similar means within 10% of each other, or within the amplitude tolerance where M2 is too small for a ratio to mean anything. Two M2 amplitudes that are both within the tolerance of zero carry no evidence either way, so they are not similar. A reference station that has subordinates may absorb a neighbor within 100 m even when the M2 test fails, since very small M2 amplitudes make the ratio noisy. Subordinates have no constants to compare, so they get the tighter 100 m limit, and two subordinates must also predict the same tide. Many subordinates share coarse or placeholder positions: Suwarrow Island is recorded at the exact position of Hao Island, but Suwarrow's time difference is +64 minutes and Hao's is −315. All of these distances and tolerances are engineering choices of this project.
 
 **Limitations.**
 
@@ -277,9 +284,10 @@ node packages/stations/evaluate-quality.ts
 | `SEASONAL_OUTLIER_MIN_SA`             | 0.5 m                                        | Seasonal contamination             |
 | `SEASONAL_OUTLIER_RADIUS`             | 25 km                                        | Seasonal contamination             |
 | `SEASONAL_OUTLIER_RATIO`              | 5                                            | Seasonal contamination             |
+| `AMPLITUDE_TOLERANCE`                 | 0.003 m                                      | Every amplitude comparison         |
+| `RESOLVED_P1`                         | 0.01 m                                       | Essential constituents             |
 | `MIN_AMPLITUDE_RATIO`                 | 0.9                                          | Seasonal contamination, duplicates |
-| `SEASONAL_CONSTITUENTS`               | SA, SSA                                      | Seasonal label                     |
-| `TIDAL_CONSTITUENTS`                  | 25 diurnal and semidiurnal constituents      | Seasonal label                     |
+| `PRINCIPAL_TIDAL_CONSTITUENTS`        | M2, S2, K1, O1                               | Seasonal label, amplitudes         |
 | `SEASONAL_DOMINANCE_RATIO`            | 1                                            | Seasonal label                     |
 | `WEIGHTS`                             | 20, 10, 20, 15, 20, 15                       | Score                              |
 | `SOURCE_PRIORITY`, `DEFAULT_PRIORITY` | 0–99 per TICON source suffix, 50 if unlisted | Source factor, as 1 − priority/99  |
@@ -302,6 +310,8 @@ The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`
 
 - Caldwell, P. C., Merrifield, M. A., & Thompson, P. R. (2015). _Sea level measured by tide gauges from global oceans: the Joint Archive for Sea Level holdings (NCEI Accession 0019568)_, Version 5.5. NOAA National Centers for Environmental Information. https://doi.org/10.7289/V5V40S7W
 - Cartwright, D. E., & Tayler, R. J. (1971). New computations of the tide-generating potential. _Geophysical Journal of the Royal Astronomical Society_, 23(1), 45–73. https://doi.org/10.1111/j.1365-246X.1971.tb01803.x
+- Codiga, D. L. (2011). _Unified Tidal Analysis and Prediction Using the UTide Matlab Functions_. Technical Report 2011-01. Graduate School of Oceanography, University of Rhode Island. https://www.po.gso.uri.edu/codiga/utide/2011Codiga-UTide-Report.pdf
+- Courtier, A. (1938). _Marées_. Service Hydrographique de la Marine, Paris.
 - Defant, A. (1961). _Physical Oceanography_, Volume 2. Pergamon Press.
 - Foreman, M. G. G. (1977, revised 2004). _Manual for Tidal Heights Analysis and Prediction_. Pacific Marine Science Report 77-10. Institute of Ocean Sciences, Sidney, B.C.
 - Gill, S. K., & Schultz, J. R. (Eds.) (2001). _Tidal Datums and Their Applications_. NOAA Special Publication NOS CO-OPS 1. https://tidesandcurrents.noaa.gov/publications/tidal_datums_and_their_applications.pdf
@@ -309,7 +319,10 @@ The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`
 - Hart-Davis, M., Dettmering, D., & Seitz, F. (2025). _TICON-4: TIdal CONstants based on GESLA-4 sea-level records_. SEANOE. https://doi.org/10.17882/109129
 - International Hydrographic Organization. _Hydrographic Dictionary_, Publication S-32: entries for Chart Datum, Lowest Astronomical Tide and Highest Astronomical Tide. https://iho.int
 - International Hydrographic Organization. _Resolutions of the International Hydrographic Organization_, Publication M-3, Resolution 3/1919, "Datums and Benchmarks". https://iho.int
+- Medvedev, I. P., Rabinovich, A. B., & Kulikov, E. A. (2016). Tides in three enclosed basins: the Baltic, Black, and Caspian Seas. _Frontiers in Marine Science_, 3, 46. https://doi.org/10.3389/fmars.2016.00046
+- Meeus, J. (1998). _Astronomical Algorithms_ (2nd ed.). Willmann-Bell.
 - Munk, W. H., & Cartwright, D. E. (1966). Tidal spectroscopy and prediction. _Philosophical Transactions of the Royal Society of London, Series A_, 259(1105), 533–581. https://doi.org/10.1098/rsta.1966.0024
+- NOAA CO-OPS (2000). _Tide and Current Glossary_. https://tidesandcurrents.noaa.gov/publications/glossary2.pdf
 - NOAA (2003). _Computational Techniques for Tidal Datums Handbook_. NOAA Special Publication NOS CO-OPS 2. https://tidesandcurrents.noaa.gov/publications/Computational_Techniques_for_Tidal_Datums_handbook.pdf
 - Parker, B. B. (2007). _Tidal Analysis and Prediction_. NOAA Special Publication NOS CO-OPS 3. https://tidesandcurrents.noaa.gov/publications/Tidal_Analysis_and_Predictions.pdf
 - Pawlowicz, R., Beardsley, B., & Lentz, S. (2002). Classical tidal harmonic analysis including error estimates in MATLAB using T_TIDE. _Computers & Geosciences_, 28(8), 929–937. https://doi.org/10.1016/S0098-3004(02)00013-4

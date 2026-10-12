@@ -19,4 +19,4 @@ computed:
           coverage: 1
         issues:
           - MHWS (1.868) < MHW (1.87)
-          - "Seasonal band (0.056m) is 4.3x the largest tidal constituent K1 (0.013m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.096m) exceeds the principal tide M2+S2+K1+O1 (0.039m): the yearly swing exceeds the daily one"

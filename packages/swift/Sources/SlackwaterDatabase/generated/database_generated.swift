@@ -58,8 +58,8 @@ public enum Slackwater_DatumsSource: UInt8, Enum, Verifiable {
 
 
 ///  12 bytes, contiguous per station. Amplitude in metres (tides) or knots
-///  (currents); phase in degrees. float32 keeps 7 significant digits, more
-///  than any publisher's millimetre / 0.1° precision.
+///  (currents); phase in degrees. float32 keeps 7 significant digits, which
+///  drops published digits only far below any analysis's uncertainty.
 public struct Slackwater_Constituent: NativeStruct, Verifiable, FlatbuffersInitializable {
 
   static func validateVersion() { FlatBuffersVersion_25_9_23() }
@@ -98,8 +98,8 @@ public struct Slackwater_Constituent: NativeStruct, Verifiable, FlatbuffersIniti
 }
 
 ///  12 bytes, contiguous per station. Amplitude in metres (tides) or knots
-///  (currents); phase in degrees. float32 keeps 7 significant digits, more
-///  than any publisher's millimetre / 0.1° precision.
+///  (currents); phase in degrees. float32 keeps 7 significant digits, which
+///  drops published digits only far below any analysis's uncertainty.
 public struct Slackwater_Constituent_Mutable: FlatBufferObject {
 
   static func validateVersion() { FlatBuffersVersion_25_9_23() }
@@ -931,12 +931,12 @@ public struct Slackwater_Quality: FlatBufferObject, Verifiable {
   ///  Station.id of the station that makes this one redundant, if any.
   public var redundant: String? { let o = _accessor.offset(VTOFFSET.redundant.v); return o == 0 ? nil : _accessor.string(at: o) }
   public var redundantSegmentArray: [UInt8]? { return _accessor.getVector(at: VTOFFSET.redundant.v) }
-  ///  The seasonal band (SA, SSA) is larger than this station's largest tidal
-  ///  constituent, so its yearly swing exceeds its daily one — a Great Lakes
-  ///  gauge, a river reach, a Baltic bodden. Accepted, not rejected: the
-  ///  predictions are right and only the framing is wrong, so a consumer quoting
-  ///  a high and a low reads this first and says what the water is. The ratio is
-  ///  in `issues`.
+  ///  The peak of the seasonal curve (SA and SSA with their phases) exceeds the
+  ///  principal tide M2+S2+K1+O1 by more than 3 mm, so the yearly swing exceeds
+  ///  the daily one — a Great Lakes gauge, a river reach, a Baltic bodden.
+  ///  Accepted, not rejected: the predictions are right and only the framing is
+  ///  wrong, so a consumer quoting a high and a low reads this first and says
+  ///  what the water is. `issues` gives both heights.
   public var seasonalDominant: Bool { let o = _accessor.offset(VTOFFSET.seasonalDominant.v); return o == 0 ? false : _accessor.readBuffer(of: Bool.self, at: o) }
   public static func startQuality(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 5) }
   public static func add(factors: Slackwater_QualityFactors?, _ fbb: inout FlatBufferBuilder) { guard let factors = factors else { return }; fbb.create(struct: factors, position: VTOFFSET.factors.p) }

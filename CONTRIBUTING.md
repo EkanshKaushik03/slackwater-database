@@ -4,6 +4,16 @@ The project layout, local setup, the checks CI runs, how a release is cut, and t
 
 See the org-wide [writing style](https://github.com/openwatersio/github/blob/main/docs/agents/writing-style.md) for prose in commits, pull requests, issues, and docs.
 
+## Scientific accuracy
+
+Scientific accuracy comes first. When the scientifically correct change and the convenient one differ, make the correct one, even when it is larger, touches more packages, or changes which stations ship. A smaller diff, a narrower review, or unchanged quality results are never reasons to keep something that is wrong.
+
+- Keep each source's values at the precision it publishes. Carry that precision through our conversions to metres and UTC, and remove the float noise those conversions add (`PUBLISHED_PRECISION` in [packages/stations/station.ts](packages/stations/station.ts)). Stored digits are the publisher's, not a statement of accuracy.
+- A quality gate must only decide on differences larger than the uncertainty of the analysis, never on stored digits. A comparison between two values inside their shared uncertainty is noise, and a gate that rejects or accepts on it is wrong. The tolerance and its sources are in [packages/stations/filtering.ts](packages/stations/filtering.ts).
+- Below detection is not missing. A small or zero amplitude is a measured value, and the code must treat it as one. Only a source's own marker for a constituent it did not determine, such as NOAA's amplitude 0 with phase 0, means missing.
+- When a change exposes a wrong result elsewhere (a gate, a label, a datum), fix the wrong result. Do not pick an option because it hides the problem.
+- Back each claim with a measurement on the real data or a cited source, and say plainly when an argument does not hold. A threshold with no published basis is documented as this project's definition.
+
 ## Layout
 
 - `packages/database` — the published `@slackwater/database` package and the FlatBuffers builder. Its format is documented in [docs/database-format.md](docs/database-format.md).

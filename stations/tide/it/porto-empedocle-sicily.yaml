@@ -10,7 +10,6 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/porto_empedocle-por-ita-ispra
-        seasonal_dominant: true
         score: 50
         factors:
           epoch: 1
@@ -19,5 +18,3 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0
-        issues:
-          - "Seasonal band (0.060m) is 1.3x the largest tidal constituent M2 (0.047m): the yearly swing exceeds the daily one"

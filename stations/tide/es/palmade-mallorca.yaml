@@ -18,4 +18,4 @@ computed:
           amplitude: 1
           coverage: 0.018
         issues:
-          - "Seasonal band (0.088m) is 2.4x the largest tidal constituent K1 (0.037m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.104m) exceeds the principal tide M2+S2+K1+O1 (0.097m): the yearly swing exceeds the daily one"

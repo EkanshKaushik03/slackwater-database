@@ -11,16 +11,15 @@ computed:
         reason: duplicate
         redundant: ticon/stromoren_sjov-35183-swe-smhi
         seasonal_dominant: true
-        score: 47
+        score: 52
         factors:
           epoch: 0.322
           recency: 0.99
           source: 0.02
           quality: 1
-          amplitude: 0.75
+          amplitude: 1
           coverage: 0
         issues:
           - MLWS (0.127) > MLW (0.11)
           - MHWS (0.133) < MHW (0.139)
-          - "Seasonal band (0.096m) is 7.8x the largest tidal constituent K1 (0.012m): the yearly swing exceeds the daily one"
-          - K2 amplitude (0.0008) exceeds S2 (0.0008)
+          - "Seasonal curve peak (0.162m) exceeds the principal tide M2+S2+K1+O1 (0.023m): the yearly swing exceeds the daily one"

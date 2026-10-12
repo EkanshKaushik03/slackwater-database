@@ -8,13 +8,11 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 80
+        score: 85
         factors:
           epoch: 1
           recency: 0.75
           source: 1
           quality: 1
-          amplitude: 0.75
+          amplitude: 1
           coverage: 0.152
-        issues:
-          - N2 amplitude (0.0090) exceeds M2 (0.0080)

@@ -16,10 +16,9 @@ computed:
           recency: 0.99
           source: 1
           quality: 1
-          amplitude: 0.75
+          amplitude: 1
           coverage: 0.001
         issues:
           - MLWS (9.886) > MLW (9.827)
           - MHWS (9.966) < MHW (10.053)
           - "Superseded source: noaa"
-          - K2 amplitude (0.0158) exceeds S2 (0.0157)

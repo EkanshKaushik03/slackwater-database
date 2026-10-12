@@ -10,7 +10,6 @@ computed:
       quality:
         accepted: false
         reason: superseded
-        seasonal_dominant: true
         score: 0
         factors:
           epoch: 0.542
@@ -23,4 +22,3 @@ computed:
           - MLWS (3.729) > MLW (3.717)
           - MHWS (3.773) < MHW (3.815)
           - "Superseded source: noaa"
-          - "Seasonal band (0.110m) is 1.4x the largest tidal constituent O1 (0.077m): the yearly swing exceeds the daily one"

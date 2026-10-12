@@ -20,4 +20,4 @@ computed:
           coverage: 0.888
         issues:
           - Tidal range 1.5cm < 2cm threshold
-          - "Seasonal band (0.071m) is 6.1x the largest tidal constituent M2 (0.012m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.101m) exceeds the principal tide M2+S2+K1+O1 (0.031m): the yearly swing exceeds the daily one"

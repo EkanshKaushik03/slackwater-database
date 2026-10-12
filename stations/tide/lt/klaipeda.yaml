@@ -19,4 +19,4 @@ computed:
           coverage: 1
         issues:
           - MLWS (0.128) > MLW (0.114)
-          - "Seasonal band (0.117m) is 14.4x the largest tidal constituent K1 (0.008m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.142m) exceeds the principal tide M2+S2+K1+O1 (0.026m): the yearly swing exceeds the daily one"

@@ -17,10 +17,9 @@ computed:
           recency: 0.97
           source: 0.586
           quality: 0
-          amplitude: 0.75
+          amplitude: 1
           coverage: 0.122
         issues:
           - MLWS (-0.044) > MLW (-0.054)
           - MHW (-0.048) <= MSL (-0.043)
-          - "Seasonal band (0.049m) is 18.7x the largest tidal constituent S1 (0.003m): the yearly swing exceeds the daily one"
-          - Q1 amplitude (0.0002) exceeds O1 (0.0002)
+          - "Seasonal curve peak (0.070m) exceeds the principal tide M2+S2+K1+O1 (0.003m): the yearly swing exceeds the daily one"

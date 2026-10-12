@@ -215,14 +215,15 @@ public struct Station: Identifiable {
   /// Quality score, 0–100.
   public var score: Int { Int(raw.score) }
   public var qualityReason: String? { raw.quality?.reason }
-  /// Whether the seasonal band (SA, SSA) is larger than this station's largest
-  /// tidal constituent, so its yearly swing exceeds its daily one — a Great
-  /// Lakes gauge, a river reach, a Baltic bodden.
+  /// Whether the peak of the seasonal curve (SA and SSA with their phases)
+  /// exceeds the principal tide M2+S2+K1+O1 by more than 3 mm, so the yearly
+  /// swing exceeds the daily one — a Great Lakes gauge, a river reach, a
+  /// Baltic bodden.
   ///
   /// Accepted rather than rejected: the predictions are correct and only the
   /// frame is wrong. A view quoting a high and a low should read this and say
   /// what the water is, because an entire day can sit below the annual mean and
-  /// read as a broken tide table. `quality.issues` carries the ratio.
+  /// read as a broken tide table. `quality.issues` gives both heights.
   public var seasonalDominant: Bool { raw.quality?.seasonalDominant ?? false }
 
   // MARK: Typed metadata

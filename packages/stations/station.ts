@@ -159,7 +159,69 @@ export function normalize(station: PartialStationData): StationData {
   );
 }
 
+/** Decimal places each source publishes its constituents to, carried through
+ *  our conversions to metres and UTC: amplitude in metres, phase in degrees.
+ *  Stored values keep the publisher's precision, and rounding to it only
+ *  removes the float noise those conversions add. The digits are not a claim
+ *  of accuracy: quality gates judge significance by AMPLITUDE_TOLERANCE.
+ */
+export const PUBLISHED_PRECISION: Record<
+  string,
+  { amplitude: number; phase: number }
+> = {
+  // Metres to 3 decimals, phase to 0.1°.
+  noaa: { amplitude: 3, phase: 1 },
+  // Centimetres to 6 decimals, phase to 6 decimals.
+  ticon: { amplitude: 8, phase: 6 },
+  // Centimetres to 2 decimals. Phase to 0.01° in UTC+1, shifted to UTC by
+  // the constituent's speed, which is published to 8 decimals: the shift is
+  // exact, so its digits are kept.
+  kartverket: { amplitude: 4, phase: 8 },
+  // Centimetres to 4 decimals. Phase to 4 decimals after the shift from NZST,
+  // as the LINZ importer writes it: the shift's further digits fall below
+  // 0.00005° and are dropped.
+  linz: { amplitude: 6, phase: 4 },
+};
+
+/** Round constituents to the source's published precision, keeping phases in
+ *  [0, 360). Throws for a source with no declared precision. */
+export function roundConstituents(
+  source: string,
+  constituents: StationData["harmonic_constituents"],
+): StationData["harmonic_constituents"] {
+  const precision = PUBLISHED_PRECISION[source];
+  if (!precision) {
+    throw new Error(`No published precision declared for source: ${source}`);
+  }
+  const round = (value: number, digits: number) =>
+    Number(value.toFixed(digits));
+  return constituents.map((c) => ({
+    ...c,
+    amplitude: round(c.amplitude, precision.amplitude),
+    // Wrap before rounding: adding 360 to a rounded value brings back float
+    // noise. A phase that rounds up to 360 is 0.
+    phase: round(((c.phase % 360) + 360) % 360, precision.phase) % 360,
+  }));
+}
+
+/** A station as it is stored: constituents at the source's published
+ *  precision. Importers compare against this, not their raw values. */
+export function withPublishedPrecision(
+  source: string,
+  data: StationData,
+): StationData {
+  if (!data.harmonic_constituents?.length) return data;
+  return {
+    ...data,
+    harmonic_constituents: roundConstituents(
+      source,
+      data.harmonic_constituents,
+    ),
+  };
+}
+
 export async function save(source: string, data: StationData) {
+  data = withPublishedPrecision(source, data);
   const filePath = join(DATA_DIR, source, `${data.source.id}.json`);
   const directory = dirname(filePath);
 

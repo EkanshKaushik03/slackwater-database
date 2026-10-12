@@ -7,7 +7,9 @@ computed:
       position: [56.041199, 12.6845]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/helsingborg_sjov-35110-swe-smhi
         score: 52
         factors:
           epoch: 0.322

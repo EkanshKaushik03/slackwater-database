@@ -10,7 +10,6 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/kappeln-9610035-deu-wsv
-        seasonal_dominant: true
         score: 50
         factors:
           epoch: 0.244
@@ -22,4 +21,3 @@ computed:
         issues:
           - MLWS (0.061) > MLW (0.031)
           - MHWS (0.133) < MHW (0.16)
-          - "Seasonal band (0.037m) is 1.2x the largest tidal constituent M2 (0.031m): the yearly swing exceeds the daily one"
