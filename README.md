@@ -6,17 +6,17 @@ This database includes station identity, structured location, stable web routes,
 
 ## Sources
 
-Tide stations, with the number that ship after [quality checks](./quality.json):
+Tide stations:
 
-- [**NOAA**](sources/noaa/README.md): US National Oceanic and Atmospheric Administration. 3,487 stations, mostly in the United States and its territories, updated monthly from [NOAA's API](https://api.tidesandcurrents.noaa.gov/mdapi/prod/).
-- [**TICON-4**](sources/ticon/README.md): tidal constants from the GESLA-4 sea-level records. 2,650 stations worldwide.
-- [**LINZ**](sources/linz/README.md): Toitū Te Whenua Land Information New Zealand. 56 New Zealand ports from LINZ's yearly tide-constituent release.
-- [**Kartverket**](sources/kartverket/README.md): the Norwegian Mapping Authority. All 33 of its public harmonic stations in Norway and Svalbard.
-- [**CHS**](sources/chs/README.md): the Canadian Hydrographic Service. Identity and position for 1,047 Canadian tide stations, with no constituents; consumers fetch predictions from CHS at runtime.
+- [**NOAA**](sources/noaa/README.md): US National Oceanic and Atmospheric Administration. Stations in the United States and its territories, updated monthly from [NOAA's API](https://api.tidesandcurrents.noaa.gov/mdapi/prod/).
+- [**TICON-4**](sources/ticon/README.md): tidal constants from the GESLA-4 sea-level records, worldwide.
+- [**LINZ**](sources/linz/README.md): Toitū Te Whenua Land Information New Zealand. New Zealand ports from LINZ's yearly tide-constituent release.
+- [**Kartverket**](sources/kartverket/README.md): the Norwegian Mapping Authority. Its public harmonic stations in Norway and Svalbard.
+- [**CHS**](sources/chs/README.md): the Canadian Hydrographic Service. Identity and position for Canadian tide stations, with no constituents; consumers fetch predictions from CHS at runtime.
 
 Tidal currents:
 
-- [**NOAA currents**](sources/noaa-current/README.md): 856 harmonic and 1,705 subordinate current stations in US waters.
+- [**NOAA currents**](sources/noaa-current/README.md): harmonic and subordinate current stations in US waters.
 
 [Rijkswaterstaat](sources/rws/README.md) data is used only to validate the re-fitted phases of Dutch TICON gauges; no stations come from it.
 
