@@ -1,0 +1,198 @@
+{
+  "name": "Omokoroa",
+  "country": "New Zealand",
+  "continent": "Oceania",
+  "latitude": -37.666667,
+  "longitude": 176.05,
+  "timezone": "Pacific/Auckland",
+  "source": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "id": "261",
+    "published_harmonics": true,
+    "url": "https://www.linz.govt.nz/products-services/data/types-linz-data/sea-level-data/tide-constituents"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "LINZ asks that attribution be in writing and not use its logo: https://www.linz.govt.nz/copyright"
+  },
+  "disclaimers": "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.",
+  "datums": {
+    "HAT": 2.225,
+    "MHHW": 1.909,
+    "MHW": 1.909,
+    "MSL": 1.16,
+    "MTL": 1.136,
+    "MLW": 0.363,
+    "MLLW": 0.359,
+    "LAT": 0.006,
+    "MHWS": 1.973,
+    "MLWS": 0.347,
+    "CD": 0
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "CD",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "O1",
+      "amplitude": 0.012521,
+      "phase": 331.8436
+    },
+    {
+      "name": "P1",
+      "amplitude": 0.016712,
+      "phase": 7.1028
+    },
+    {
+      "name": "S1",
+      "amplitude": 0.005912,
+      "phase": 91
+    },
+    {
+      "name": "K1",
+      "amplitude": 0.052218,
+      "phase": 12.8372
+    },
+    {
+      "name": "J1",
+      "amplitude": 0.00367,
+      "phase": 52.1447
+    },
+    {
+      "name": "eps2",
+      "amplitude": 0.005537,
+      "phase": 234.244
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0.016671,
+      "phase": 196.4157
+    },
+    {
+      "name": "mu2",
+      "amplitude": 0.021184,
+      "phase": 239.5715
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.140837,
+      "phase": 210.6632
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.028208,
+      "phase": 205.029
+    },
+    {
+      "name": "alpha2",
+      "amplitude": 0.004817,
+      "phase": 157.6535
+    },
+    {
+      "name": "M2",
+      "amplitude": 0.72714,
+      "phase": 232.5108
+    },
+    {
+      "name": "lambda2",
+      "amplitude": 0.013029,
+      "phase": 233.1325
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.037445,
+      "phase": 233.7083
+    },
+    {
+      "name": "T2",
+      "amplitude": 0.007023,
+      "phase": 342.3328
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.08606,
+      "phase": 306.57
+    },
+    {
+      "name": "K2",
+      "amplitude": 0.020202,
+      "phase": 293.3244
+    },
+    {
+      "name": "MO3",
+      "amplitude": 0.004689,
+      "phase": 269.0541
+    },
+    {
+      "name": "M3",
+      "amplitude": 0.004107,
+      "phase": 73.4561
+    },
+    {
+      "name": "SO3",
+      "amplitude": 0.0019,
+      "phase": 23.4335
+    },
+    {
+      "name": "MK3",
+      "amplitude": 0.003575,
+      "phase": 14.6581
+    },
+    {
+      "name": "SK3",
+      "amplitude": 0.003524,
+      "phase": 176.7371
+    },
+    {
+      "name": "MN4",
+      "amplitude": 0.010545,
+      "phase": 248.4142
+    },
+    {
+      "name": "M4",
+      "amplitude": 0.02583,
+      "phase": 262.7515
+    },
+    {
+      "name": "MS4",
+      "amplitude": 0.005779,
+      "phase": 350.8909
+    },
+    {
+      "name": "2MK5",
+      "amplitude": 0.004774,
+      "phase": 123.2184
+    },
+    {
+      "name": "2MN6",
+      "amplitude": 0.016837,
+      "phase": 331.175
+    },
+    {
+      "name": "M6",
+      "amplitude": 0.032066,
+      "phase": 357.9123
+    },
+    {
+      "name": "2MS6",
+      "amplitude": 0.009319,
+      "phase": 65.7116
+    },
+    {
+      "name": "3MK7",
+      "amplitude": 0.001289,
+      "phase": 126.0896
+    },
+    {
+      "name": "M8",
+      "amplitude": 0.004351,
+      "phase": 8.153
+    }
+  ],
+  "epoch": {
+    "start": "2015-01-01",
+    "end": "2023-12-31"
+  }
+}

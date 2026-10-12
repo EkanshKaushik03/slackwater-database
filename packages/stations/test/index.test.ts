@@ -296,7 +296,52 @@ describe("gauge deduplication", () => {
         "ticon/tromso-123-nor-nhs",
       ),
     ).toBe("kartverket/TOS");
+    expect(
+      authoritativeDuplicateWinner(
+        "ticon/wellington-071-nzl-uhslc_fd",
+        "linz/071",
+      ),
+    ).toBe("linz/071");
     expect(authoritativeDuplicateWinner("ticon/a", "ticon/b")).toBeUndefined();
+  });
+
+  test("accepts every LINZ port over the TICON relay of the same gauge", () => {
+    const linz = quality.filter((r) => r.id.startsWith("linz/"));
+    expect(linz).toHaveLength(56);
+    expect(linz.every((r) => r.accepted && r.factors.source === 1)).toBe(true);
+    expect(
+      quality.find((r) => r.id === "ticon/wellington-071-nzl-uhslc_fd"),
+    ).toMatchObject({ accepted: false, redundant: "linz/071" });
+  });
+
+  // A reviewed sameGauge link names one gauge, so only one side can ship, even
+  // when coarse positions put the two beyond the proximity radius.
+  test("never accepts both sides of a sameGauge link", async () => {
+    const { loadCorrections } = await import("../metadata.ts");
+    const corrections = loadCorrections(
+      await readFile(join(ROOT, "metadata/corrections.yaml"), "utf8"),
+    );
+    const accepted = new Set(
+      quality.filter((r) => r.accepted).map((r) => r.id),
+    );
+    const links = [...corrections].filter(([, c]) => c.sameGauge);
+    expect(links.length).toBeGreaterThan(0);
+    for (const [id, { sameGauge }] of links)
+      expect(accepted.has(id) && accepted.has(sameGauge!), id).toBe(false);
+  });
+
+  // A superseded relay keeps its published route, so unless it shares the LINZ
+  // record's route, that address would show a rejected station.
+  test("every UHSLC relay a LINZ port supersedes shares its route", async () => {
+    const slugs = JSON.parse(
+      await readFile(join(ROOT, "metadata/slugs.json"), "utf8"),
+    ).tide as Record<string, string>;
+    const relays = quality.filter(
+      (r) => r.redundant?.startsWith("linz/") && r.id.includes("-uhslc_"),
+    );
+    expect(relays.length).toBeGreaterThan(0);
+    for (const relay of relays)
+      expect(slugs[relay.id], relay.id).toBe(slugs[relay.redundant!]);
   });
 
   test("accepts all Kartverket gauges over co-located TICON records", () => {

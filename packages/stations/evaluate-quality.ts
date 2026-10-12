@@ -22,6 +22,7 @@ import { readdir, readFile, writeFile } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { DATA_DIR } from "./station.ts";
+import { loadCorrections } from "./metadata.ts";
 import { NODAL_CYCLE_DAYS } from "@slackwater/datums";
 import {
   distance,
@@ -818,6 +819,40 @@ function deduplicateByGauge(
   }
 }
 
+/** Reject a relay a reviewed `sameGauge` link ties to its canonical record,
+ *  with every other TICON segment of that relay's gauge. The link is documented
+ *  gauge identity, so it holds at any distance; the proximity pass cannot see
+ *  it when one source rounds positions coarsely. */
+function deduplicateBySameGauge(
+  stationIds: string[],
+  stationMap: Map<string, Station>,
+  sameGauge: Map<string, string>,
+  resultsMap: Map<string, QualityResult>,
+): void {
+  const gaugeOf = (id: string) =>
+    id.startsWith("ticon/") ? gaugeKey(stationMap.get(id)!.source.id) : id;
+  const byGauge = new Map<string, string>();
+  for (const [id, target] of sameGauge) {
+    if (!stationMap.has(id)) continue;
+    const gauge = gaugeOf(id);
+    if (gauge === gaugeOf(target))
+      throw new Error(`${id}: sameGauge target ${target} is the same gauge`);
+    if (byGauge.has(gauge) && byGauge.get(gauge) !== target)
+      throw new Error(
+        `${id}: its gauge already links to ${byGauge.get(gauge)}`,
+      );
+    byGauge.set(gauge, target);
+  }
+  for (const id of stationIds) {
+    const target = byGauge.get(gaugeOf(id));
+    if (!target || !resultsMap.get(target)?.accepted) continue;
+    const result = resultsMap.get(id)!;
+    result.accepted = false;
+    result.reason = "duplicate";
+    result.redundant = target;
+  }
+}
+
 // ── Main ────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -930,7 +965,30 @@ async function main() {
   const acceptedIds = stations
     .filter((s) => resultsMap.get(s.id)!.accepted)
     .map((s) => s.id);
-  deduplicateByGauge(acceptedIds, stationMap, resultsMap, subordinateCounts);
+  // A reviewed sameGauge link outranks the code and proximity passes, so its
+  // relays point at the canonical record rather than at each other.
+  const corrections = loadCorrections(
+    await readFile(
+      join(DATA_DIR, "..", "metadata", "corrections.yaml"),
+      "utf8",
+    ),
+  );
+  deduplicateBySameGauge(
+    acceptedIds,
+    stationMap,
+    new Map(
+      [...corrections].flatMap(([id, { sameGauge }]) =>
+        sameGauge ? [[id, sameGauge]] : [],
+      ),
+    ),
+    resultsMap,
+  );
+  deduplicateByGauge(
+    acceptedIds.filter((id) => resultsMap.get(id)!.accepted),
+    stationMap,
+    resultsMap,
+    subordinateCounts,
+  );
 
   // 4b: Deduplicate the survivors by proximity and harmonic similarity.
   const survivingIds = acceptedIds.filter((id) => resultsMap.get(id)!.accepted);

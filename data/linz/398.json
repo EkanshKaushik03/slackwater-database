@@ -1,0 +1,158 @@
+{
+  "name": "Rangitaiki River",
+  "country": "New Zealand",
+  "continent": "Oceania",
+  "latitude": -37.916667,
+  "longitude": 176.866667,
+  "timezone": "Pacific/Auckland",
+  "source": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "id": "398",
+    "published_harmonics": true,
+    "url": "https://www.linz.govt.nz/products-services/data/types-linz-data/sea-level-data/tide-constituents"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "LINZ asks that attribution be in writing and not use its logo: https://www.linz.govt.nz/copyright"
+  },
+  "disclaimers": "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.",
+  "datums": {
+    "HAT": 1.741,
+    "MHHW": 1.415,
+    "MHW": 1.415,
+    "MSL": 0.819,
+    "MTL": 0.863,
+    "MLW": 0.311,
+    "MLLW": 0.31,
+    "LAT": 0.1,
+    "MHWS": 1.421,
+    "MLWS": 0.217,
+    "CD": 0
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "CD",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "Sa",
+      "amplitude": 0.040235,
+      "phase": 124.8272
+    },
+    {
+      "name": "Mm",
+      "amplitude": 0.035413,
+      "phase": 12.6475
+    },
+    {
+      "name": "O1",
+      "amplitude": 0.017877,
+      "phase": 265.4736
+    },
+    {
+      "name": "P1",
+      "amplitude": 0.015474,
+      "phase": 337.8028
+    },
+    {
+      "name": "S1",
+      "amplitude": 0.026592,
+      "phase": 154.85
+    },
+    {
+      "name": "K1",
+      "amplitude": 0.046328,
+      "phase": 355.9772
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0.012736,
+      "phase": 167.5657
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.105174,
+      "phase": 180.6532
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.021498,
+      "phase": 179.729
+    },
+    {
+      "name": "M2",
+      "amplitude": 0.543574,
+      "phase": 211.5108
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.022273,
+      "phase": 228.9783
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.058586,
+      "phase": 278.56
+    },
+    {
+      "name": "K2",
+      "amplitude": 0.015916,
+      "phase": 269.7544
+    },
+    {
+      "name": "MK3",
+      "amplitude": 0.00851,
+      "phase": 167.2981
+    },
+    {
+      "name": "MN4",
+      "amplitude": 0.025158,
+      "phase": 358.1142
+    },
+    {
+      "name": "M4",
+      "amplitude": 0.063694,
+      "phase": 19.5915
+    },
+    {
+      "name": "MS4",
+      "amplitude": 0.018921,
+      "phase": 91.3709
+    },
+    {
+      "name": "2MK5",
+      "amplitude": 0.002877,
+      "phase": 198.4384
+    },
+    {
+      "name": "2MN6",
+      "amplitude": 0.007274,
+      "phase": 39.255
+    },
+    {
+      "name": "M6",
+      "amplitude": 0.013846,
+      "phase": 65.9223
+    },
+    {
+      "name": "2MS6",
+      "amplitude": 0.005473,
+      "phase": 148.2716
+    },
+    {
+      "name": "3MK7",
+      "amplitude": 0.001012,
+      "phase": 290.9596
+    },
+    {
+      "name": "M8",
+      "amplitude": 0.004126,
+      "phase": 150.203
+    }
+  ],
+  "epoch": {
+    "start": "2005-01-01",
+    "end": "2023-12-31"
+  }
+}

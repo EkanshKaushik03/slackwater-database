@@ -462,6 +462,834 @@
     "issues": []
   },
   {
+    "id": "linz/022",
+    "accepted": true,
+    "score": 89,
+    "factors": {
+      "epoch": 0.645,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.742
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/027",
+    "accepted": true,
+    "score": 87,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.153
+    },
+    "issues": [
+      "MHHW (3.82) < MHW (3.823)"
+    ]
+  },
+  {
+    "id": "linz/028",
+    "accepted": true,
+    "score": 88,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.234
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/030",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.98,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/031",
+    "accepted": true,
+    "score": 88,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.19
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/032",
+    "accepted": true,
+    "score": 87,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.98,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.127
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/034",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/043",
+    "accepted": true,
+    "score": 90,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.315
+    },
+    "issues": [
+      "MHHW (1.373) < MHW (1.374)"
+    ]
+  },
+  {
+    "id": "linz/044",
+    "accepted": true,
+    "score": 89,
+    "factors": {
+      "epoch": 0.806,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.556
+    },
+    "issues": [
+      "MHHW (3.346) < MHW (3.347)"
+    ]
+  },
+  {
+    "id": "linz/058",
+    "accepted": true,
+    "score": 75,
+    "factors": {
+      "epoch": 0.149,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.498
+    },
+    "issues": [
+      "MHHW (2.742) < MHW (2.744)"
+    ]
+  },
+  {
+    "id": "linz/070",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/071",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/072",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/073",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/074",
+    "accepted": true,
+    "score": 77,
+    "factors": {
+      "epoch": 0.591,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.038
+    },
+    "issues": [
+      "MHHW (3.198) < MHW (3.199)"
+    ]
+  },
+  {
+    "id": "linz/076",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": [
+      "MHHW (3.198) < MHW (3.199)"
+    ]
+  },
+  {
+    "id": "linz/077",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/078",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.027
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/079",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/081",
+    "accepted": true,
+    "score": 97,
+    "factors": {
+      "epoch": 0.967,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.82
+    },
+    "issues": [
+      "MHHW (3.102) < MHW (3.104)"
+    ]
+  },
+  {
+    "id": "linz/085",
+    "accepted": true,
+    "score": 94,
+    "factors": {
+      "epoch": 0.806,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.892
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/097",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/102",
+    "accepted": true,
+    "score": 88,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.19
+    },
+    "issues": [
+      "MLWS (0.325) > MLW (0.32)"
+    ]
+  },
+  {
+    "id": "linz/104",
+    "accepted": true,
+    "score": 89,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.259
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/107",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.001
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/141",
+    "accepted": true,
+    "score": 91,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.408
+    },
+    "issues": [
+      "MHHW (2.358) < MHW (2.359)"
+    ]
+  },
+  {
+    "id": "linz/142",
+    "accepted": true,
+    "score": 77,
+    "factors": {
+      "epoch": 0.591,
+      "recency": 0.98,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.026
+    },
+    "issues": [
+      "MHHW (2.25) < MHW (2.251)"
+    ]
+  },
+  {
+    "id": "linz/148",
+    "accepted": true,
+    "score": 94,
+    "factors": {
+      "epoch": 0.752,
+      "recency": 0.93,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.945
+    },
+    "issues": [
+      "MHHW (2.085) < MHW (2.089)"
+    ]
+  },
+  {
+    "id": "linz/158",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.016
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/171",
+    "accepted": true,
+    "score": 86,
+    "factors": {
+      "epoch": 0.322,
+      "recency": 0.98,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 1
+    },
+    "issues": [
+      "MHHW (2.612) < MHW (2.614)"
+    ]
+  },
+  {
+    "id": "linz/180",
+    "accepted": true,
+    "score": 83,
+    "factors": {
+      "epoch": 0.806,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.123
+    },
+    "issues": [
+      "MHHW (3.005) < MHW (3.006)"
+    ]
+  },
+  {
+    "id": "linz/189",
+    "accepted": true,
+    "score": 93,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.555
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/210",
+    "accepted": true,
+    "score": 96,
+    "factors": {
+      "epoch": 0.806,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 1
+    },
+    "issues": [
+      "MHHW (3.967) < MHW (3.97)"
+    ]
+  },
+  {
+    "id": "linz/233",
+    "accepted": true,
+    "score": 96,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.96,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.742
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/239",
+    "accepted": true,
+    "score": 76,
+    "factors": {
+      "epoch": 0.161,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.507
+    },
+    "issues": [
+      "MHHW (3.678) < MHW (3.681)"
+    ]
+  },
+  {
+    "id": "linz/258",
+    "accepted": true,
+    "score": 70,
+    "factors": {
+      "epoch": 0.107,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.238
+    },
+    "issues": [
+      "MLW (0.313) < MLLW (0.317)"
+    ]
+  },
+  {
+    "id": "linz/261",
+    "accepted": true,
+    "score": 78,
+    "factors": {
+      "epoch": 0.483,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.237
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/291",
+    "accepted": true,
+    "score": 79,
+    "factors": {
+      "epoch": 0.376,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.414
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/323",
+    "accepted": true,
+    "score": 89,
+    "factors": {
+      "epoch": 0.907,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.43
+    },
+    "issues": [
+      "MHHW (1.582) < MHW (1.583)"
+    ]
+  },
+  {
+    "id": "linz/330",
+    "accepted": true,
+    "score": 92,
+    "factors": {
+      "epoch": 0.591,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 1
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/349",
+    "accepted": true,
+    "score": 93,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.555
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/351",
+    "accepted": true,
+    "score": 82,
+    "factors": {
+      "epoch": 0.482,
+      "recency": 0.8,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.609
+    },
+    "issues": [
+      "MHHW (1.636) < MHW (1.638)"
+    ]
+  },
+  {
+    "id": "linz/353",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 0.913,
+      "recency": 0.96,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.151
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/354",
+    "accepted": true,
+    "score": 88,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.98,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.234
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/370",
+    "accepted": true,
+    "score": 85,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.012
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/373",
+    "accepted": true,
+    "score": 89,
+    "factors": {
+      "epoch": 0.913,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.397
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/376",
+    "accepted": true,
+    "score": 98,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.98,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.887
+    },
+    "issues": [
+      "MHHW (2.246) < MHW (2.247)"
+    ]
+  },
+  {
+    "id": "linz/396",
+    "accepted": true,
+    "score": 73,
+    "factors": {
+      "epoch": 0.322,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.123
+    },
+    "issues": [
+      "MHHW (3.143) < MHW (3.145)"
+    ]
+  },
+  {
+    "id": "linz/397",
+    "accepted": true,
+    "score": 92,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.96,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.467
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/398",
+    "accepted": true,
+    "score": 88,
+    "factors": {
+      "epoch": 1,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.245
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/401",
+    "accepted": true,
+    "score": 96,
+    "factors": {
+      "epoch": 0.913,
+      "recency": 0.99,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.887
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/460",
+    "accepted": true,
+    "score": 70,
+    "factors": {
+      "epoch": 0.215,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.088
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/462",
+    "accepted": true,
+    "score": 79,
+    "factors": {
+      "epoch": 0.161,
+      "recency": 0.98,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.707
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/463",
+    "accepted": true,
+    "score": 70,
+    "factors": {
+      "epoch": 0.161,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.153
+    },
+    "issues": []
+  },
+  {
+    "id": "linz/472",
+    "accepted": true,
+    "score": 70,
+    "factors": {
+      "epoch": 0.107,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.238
+    },
+    "issues": [
+      "MHHW (1.512) < MHW (1.514)"
+    ]
+  },
+  {
+    "id": "linz/473",
+    "accepted": true,
+    "score": 71,
+    "factors": {
+      "epoch": 0.107,
+      "recency": 0.97,
+      "source": 1,
+      "quality": 1,
+      "amplitude": 1,
+      "coverage": 0.249
+    },
+    "issues": [
+      "MHHW (1.248) < MHW (1.251)"
+    ]
+  },
+  {
     "id": "noaa/1610367",
     "accepted": true,
     "score": 98,
@@ -53121,17 +53949,19 @@
   },
   {
     "id": "ticon/auckland-070a-nzl-uhslc_rq",
-    "accepted": true,
-    "score": 51,
+    "accepted": false,
+    "score": 50,
     "factors": {
       "epoch": 0.251,
       "recency": 0.62,
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.054
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/070"
   },
   {
     "id": "ticon/auckland-auct-nzl-ttw",
@@ -53574,8 +54404,8 @@
       "MHWS (5.12) < MHW (6.396)",
       "MLW (3.601) < LAT (4.556)",
       "HAT (5.606) < MHHW (6.495)",
-      "Seasonal band (0.253m) is 6.8x the largest tidal constituent K2 (0.037m): the yearly swing exceeds the daily one",
-      "K2 amplitude (0.0370) exceeds S2 (0.0300)"
+      "Seasonal band (0.253m) is 7.0x the largest tidal constituent K2 (0.036m): the yearly swing exceeds the daily one",
+      "K2 amplitude (0.0360) exceeds S2 (0.0300)"
     ],
     "reason": "datum",
     "seasonal_dominant": true
@@ -56121,7 +56951,7 @@
   },
   {
     "id": "ticon/bluff-072-nzl-uhslc_fd",
-    "accepted": true,
+    "accepted": false,
     "score": 85,
     "factors": {
       "epoch": 1,
@@ -56131,7 +56961,9 @@
       "amplitude": 1,
       "coverage": 0.026
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/072"
   },
   {
     "id": "ticon/bluff-072a-nzl-uhslc_rq",
@@ -56143,11 +56975,11 @@
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.026
+      "coverage": 0
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "ticon/bluff-072-nzl-uhslc_fd"
+    "redundant": "linz/072"
   },
   {
     "id": "ticon/boat_cove-rbct-nzl-ttw",
@@ -60283,14 +61115,14 @@
   {
     "id": "ticon/charleston-chst-nzl-ttw",
     "accepted": true,
-    "score": 49,
+    "score": 48,
     "factors": {
       "epoch": 0.509,
       "recency": 0.98,
       "source": 0.091,
       "quality": 0,
       "amplitude": 1,
-      "coverage": 0.468
+      "coverage": 0.438
     },
     "issues": []
   },
@@ -71561,7 +72393,7 @@
   },
   {
     "id": "ticon/duck_pier_nc-260-usa-uhslc_fd",
-    "accepted": true,
+    "accepted": false,
     "score": 85,
     "factors": {
       "epoch": 1,
@@ -71571,7 +72403,9 @@
       "amplitude": 1,
       "coverage": 0.012
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "noaa/8651370"
   },
   {
     "id": "ticon/duck_pier_nc-260a-usa-uhslc_rq",
@@ -71587,7 +72421,7 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "ticon/duck_pier_nc-260-usa-uhslc_fd"
+    "redundant": "noaa/8651370"
   },
   {
     "id": "ticon/duck-8651370-usa-noaa",
@@ -76735,11 +77569,11 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "ticon/gisborne-078b-nzl-uhslc_rq"
+    "redundant": "linz/078"
   },
   {
     "id": "ticon/gisborne-078b-nzl-uhslc_rq",
-    "accepted": true,
+    "accepted": false,
     "score": 65,
     "factors": {
       "epoch": 0.806,
@@ -76749,7 +77583,9 @@
       "amplitude": 1,
       "coverage": 0
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/078"
   },
   {
     "id": "ticon/gisborne-gist-nzl-ttw",
@@ -84617,7 +85453,7 @@
   },
   {
     "id": "ticon/kahului-059-usa-uhslc_fd",
-    "accepted": true,
+    "accepted": false,
     "score": 85,
     "factors": {
       "epoch": 1,
@@ -84627,7 +85463,9 @@
       "amplitude": 1,
       "coverage": 0
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "noaa/1615680"
   },
   {
     "id": "ticon/kahului-059a-usa-uhslc_rq",
@@ -84643,7 +85481,7 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "ticon/kahului-059-usa-uhslc_fd"
+    "redundant": "noaa/1615680"
   },
   {
     "id": "ticon/kahului-1615680-usa-noaa",
@@ -92015,17 +92853,19 @@
   },
   {
     "id": "ticon/lyttelton-667a-nzl-uhslc_rq",
-    "accepted": true,
-    "score": 70,
+    "accepted": false,
+    "score": 69,
     "factors": {
       "epoch": 1,
       "recency": 0.98,
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.11
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/107"
   },
   {
     "id": "ticon/ma58-ma58-jpn-jodc_jma",
@@ -93198,14 +94038,14 @@
   {
     "id": "ticon/manukau-mnkt-nzl-ttw",
     "accepted": true,
-    "score": 72,
+    "score": 70,
     "factors": {
       "epoch": 0.775,
       "recency": 0.98,
       "source": 0.091,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.63
+      "coverage": 0.544
     },
     "issues": []
   },
@@ -93627,17 +94467,19 @@
   },
   {
     "id": "ticon/marsden_point-398a-nzl-uhslc_rq",
-    "accepted": true,
-    "score": 84,
+    "accepted": false,
+    "score": 69,
     "factors": {
       "epoch": 1,
       "recency": 0.98,
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 1
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/079"
   },
   {
     "id": "ticon/marseille-524-fra-refmar",
@@ -93886,7 +94728,7 @@
   },
   {
     "id": "ticon/massacre_bay_ak-550a-usa-uhslc_rq",
-    "accepted": true,
+    "accepted": false,
     "score": 63,
     "factors": {
       "epoch": 1,
@@ -93898,7 +94740,9 @@
     },
     "issues": [
       "MHWS (1.89) < MHW (1.945)"
-    ]
+    ],
+    "reason": "duplicate",
+    "redundant": "noaa/9460150"
   },
   {
     "id": "ticon/masset_bc-9910-can-meds",
@@ -97916,7 +98760,7 @@
   },
   {
     "id": "ticon/napier-668a-nzl-uhslc_rq",
-    "accepted": true,
+    "accepted": false,
     "score": 69,
     "factors": {
       "epoch": 1,
@@ -97924,9 +98768,11 @@
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.017
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/097"
   },
   {
     "id": "ticon/napier-napt-nzl-ttw",
@@ -98414,17 +99260,19 @@
   },
   {
     "id": "ticon/nelson-077a-nzl-uhslc_rq",
-    "accepted": true,
-    "score": 84,
+    "accepted": false,
+    "score": 69,
     "factors": {
       "epoch": 1,
       "recency": 0.98,
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 1
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/077"
   },
   {
     "id": "ticon/nemuroko-0133-jpn-jodc_pahb",
@@ -98555,14 +99403,14 @@
   {
     "id": "ticon/new_brighton_pier-nbrt-nzl-ttw",
     "accepted": true,
-    "score": 52,
+    "score": 51,
     "factors": {
       "epoch": 0.14,
       "recency": 0.97,
       "source": 0.091,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.156
+      "coverage": 0.145
     },
     "issues": []
   },
@@ -105592,7 +106440,7 @@
   },
   {
     "id": "ticon/port_allen-553a-usa-uhslc_rq",
-    "accepted": true,
+    "accepted": false,
     "score": 55,
     "factors": {
       "epoch": 0.425,
@@ -105602,7 +106450,9 @@
       "amplitude": 1,
       "coverage": 0.018
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "noaa/1611347"
   },
   {
     "id": "ticon/port_alma-59690-aus-bom",
@@ -105814,7 +106664,7 @@
   },
   {
     "id": "ticon/port_chalmers-669a-nzl-uhslc_rq",
-    "accepted": true,
+    "accepted": false,
     "score": 69,
     "factors": {
       "epoch": 1,
@@ -105822,9 +106672,11 @@
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.033
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/030"
   },
   {
     "id": "ticon/port_chalmers-otat-nzl-ttw",
@@ -114714,7 +115566,7 @@
   },
   {
     "id": "ticon/santa_barbara_ca-577a-usa-uhslc_rq",
-    "accepted": true,
+    "accepted": false,
     "score": 66,
     "factors": {
       "epoch": 0.895,
@@ -114724,7 +115576,9 @@
       "amplitude": 1,
       "coverage": 0.016
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "noaa/9411340"
   },
   {
     "id": "ticon/santa_barbara-9411340-usa-noaa",
@@ -119896,14 +120750,14 @@
   {
     "id": "ticon/sumner-sumt-nzl-ttw",
     "accepted": true,
-    "score": 39,
+    "score": 37,
     "factors": {
       "epoch": 0.32,
       "recency": 0.9,
       "source": 0.091,
       "quality": 0,
       "amplitude": 1,
-      "coverage": 0.11
+      "coverage": 0.012
     },
     "issues": []
   },
@@ -120880,17 +121734,19 @@
   },
   {
     "id": "ticon/taranaki-076a-nzl-uhslc_rq",
-    "accepted": true,
-    "score": 84,
+    "accepted": false,
+    "score": 69,
     "factors": {
       "epoch": 1,
       "recency": 0.98,
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 1
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/076"
   },
   {
     "id": "ticon/taranto-tar-ita-ispra",
@@ -121098,7 +121954,7 @@
   },
   {
     "id": "ticon/tauranga-073a-nzl-uhslc_rq",
-    "accepted": true,
+    "accepted": false,
     "score": 69,
     "factors": {
       "epoch": 1,
@@ -121106,9 +121962,11 @@
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.021
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/073"
   },
   {
     "id": "ticon/tauranga-taut-nzl-ttw",
@@ -121120,7 +121978,7 @@
       "source": 0.091,
       "quality": 0,
       "amplitude": 1,
-      "coverage": 0.021
+      "coverage": 0.016
     },
     "issues": []
   },
@@ -122050,17 +122908,19 @@
   },
   {
     "id": "ticon/timaru-665a-nzl-uhslc_rq",
-    "accepted": true,
-    "score": 84,
+    "accepted": false,
+    "score": 69,
     "factors": {
       "epoch": 1,
       "recency": 0.98,
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 1
+      "coverage": 0.001
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/034"
   },
   {
     "id": "ticon/timmendorfpoel-9630007-deu-wsv",
@@ -126877,7 +127737,7 @@
   },
   {
     "id": "ticon/wellington-071-nzl-uhslc_fd",
-    "accepted": true,
+    "accepted": false,
     "score": 85,
     "factors": {
       "epoch": 1,
@@ -126887,7 +127747,9 @@
       "amplitude": 1,
       "coverage": 0
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/071"
   },
   {
     "id": "ticon/wellington-071a-nzl-uhslc_rq",
@@ -126903,7 +127765,7 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "ticon/wellington-071-nzl-uhslc_fd"
+    "redundant": "linz/071"
   },
   {
     "id": "ticon/wellington-wlgt-nzl-ttw",
@@ -126919,7 +127781,7 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "ticon/wellington-071-nzl-uhslc_fd"
+    "redundant": "linz/071"
   },
   {
     "id": "ticon/wells-8419317-usa-noaa",
@@ -127283,17 +128145,19 @@
   },
   {
     "id": "ticon/west_port-074a-nzl-uhslc_rq",
-    "accepted": true,
-    "score": 53,
+    "accepted": false,
+    "score": 47,
     "factors": {
       "epoch": 0.076,
       "recency": 0.59,
       "source": 0.192,
       "quality": 1,
       "amplitude": 1,
-      "coverage": 0.468
+      "coverage": 0.038
     },
-    "issues": []
+    "issues": [],
+    "reason": "duplicate",
+    "redundant": "linz/074"
   },
   {
     "id": "ticon/west_ste_modeste-2595-can-meds",

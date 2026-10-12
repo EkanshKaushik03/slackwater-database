@@ -1,0 +1,123 @@
+{
+  "name": "Green Island",
+  "country": "New Zealand",
+  "continent": "Oceania",
+  "latitude": -45.95,
+  "longitude": 170.383333,
+  "timezone": "Pacific/Auckland",
+  "source": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "id": "354",
+    "published_harmonics": true,
+    "url": "https://www.linz.govt.nz/products-services/data/types-linz-data/sea-level-data/tide-constituents"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "LINZ asks that attribution be in writing and not use its logo: https://www.linz.govt.nz/copyright"
+  },
+  "disclaimers": "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.",
+  "datums": {
+    "HAT": 2.284,
+    "MHHW": 1.878,
+    "MHW": 1.878,
+    "MSL": 1.13,
+    "MTL": 1.13,
+    "MLW": 0.383,
+    "MLLW": 0.381,
+    "LAT": -0.028,
+    "MHWS": 1.965,
+    "MLWS": 0.295,
+    "CD": 0
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "CD",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "Q1",
+      "amplitude": 0.01039,
+      "phase": 219.8561
+    },
+    {
+      "name": "O1",
+      "amplitude": 0.034837,
+      "phase": 235.0536
+    },
+    {
+      "name": "P1",
+      "amplitude": 0.008349,
+      "phase": 272.5028
+    },
+    {
+      "name": "K1",
+      "amplitude": 0.026872,
+      "phase": 272.0472
+    },
+    {
+      "name": "eps2",
+      "amplitude": 0.005974,
+      "phase": 24.124
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0.02408,
+      "phase": 42.8657
+    },
+    {
+      "name": "mu2",
+      "amplitude": 0.027466,
+      "phase": 43.6215
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.172962,
+      "phase": 66.3932
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.032763,
+      "phase": 69.599
+    },
+    {
+      "name": "alpha2",
+      "amplitude": 0.006081,
+      "phase": 352.7835
+    },
+    {
+      "name": "M2",
+      "amplitude": 0.731701,
+      "phase": 91.9308
+    },
+    {
+      "name": "lambda2",
+      "amplitude": 0.005161,
+      "phase": 84.3625
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.015359,
+      "phase": 103.7583
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.103578,
+      "phase": 88.8
+    },
+    {
+      "name": "K2",
+      "amplitude": 0.033244,
+      "phase": 74.5544
+    },
+    {
+      "name": "SK3",
+      "amplitude": 0.00559,
+      "phase": 84.8571
+    }
+  ],
+  "epoch": {
+    "start": "2005-01-01",
+    "end": "2024-12-31"
+  }
+}

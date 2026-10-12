@@ -1,0 +1,173 @@
+{
+  "name": "Tarakohe",
+  "country": "New Zealand",
+  "continent": "Oceania",
+  "latitude": -40.816667,
+  "longitude": 172.9,
+  "timezone": "Pacific/Auckland",
+  "source": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "id": "189",
+    "published_harmonics": true,
+    "url": "https://www.linz.govt.nz/products-services/data/types-linz-data/sea-level-data/tide-constituents"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "LINZ asks that attribution be in writing and not use its logo: https://www.linz.govt.nz/copyright"
+  },
+  "disclaimers": "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.",
+  "datums": {
+    "HAT": 4.483,
+    "MHHW": 3.64,
+    "MHW": 3.64,
+    "MSL": 2.23,
+    "MTL": 2.234,
+    "MLW": 0.828,
+    "MLLW": 0.828,
+    "LAT": 0.01,
+    "MHWS": 3.982,
+    "MLWS": 0.478,
+    "CD": 0
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "CD",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "Q1",
+      "amplitude": 0.006648,
+      "phase": 212.0961
+    },
+    {
+      "name": "O1",
+      "amplitude": 0.017162,
+      "phase": 266.1136
+    },
+    {
+      "name": "P1",
+      "amplitude": 0.016377,
+      "phase": 1.6128
+    },
+    {
+      "name": "S1",
+      "amplitude": 0.00766,
+      "phase": 95.74
+    },
+    {
+      "name": "K1",
+      "amplitude": 0.055423,
+      "phase": 5.7872
+    },
+    {
+      "name": "eps2",
+      "amplitude": 0.009025,
+      "phase": 272.364
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0.035989,
+      "phase": 265.6057
+    },
+    {
+      "name": "mu2",
+      "amplitude": 0.035957,
+      "phase": 278.3715
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.242417,
+      "phase": 275.8632
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.046996,
+      "phase": 275.289
+    },
+    {
+      "name": "alpha2",
+      "amplitude": 0.013529,
+      "phase": 186.5635
+    },
+    {
+      "name": "M2",
+      "amplitude": 1.341407,
+      "phase": 289.6608
+    },
+    {
+      "name": "M(KS)2",
+      "amplitude": 0.007296,
+      "phase": 154.668
+    },
+    {
+      "name": "lambda2",
+      "amplitude": 0.016216,
+      "phase": 287.8225
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.043666,
+      "phase": 298.5083
+    },
+    {
+      "name": "T2",
+      "amplitude": 0.028306,
+      "phase": 347.2428
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.410348,
+      "phase": 329.5
+    },
+    {
+      "name": "K2",
+      "amplitude": 0.112253,
+      "phase": 321.3044
+    },
+    {
+      "name": "M3",
+      "amplitude": 0.026041,
+      "phase": 27.7061
+    },
+    {
+      "name": "SO3",
+      "amplitude": 0.012752,
+      "phase": 284.9035
+    },
+    {
+      "name": "MK3",
+      "amplitude": 0.012227,
+      "phase": 336.2781
+    },
+    {
+      "name": "SK3",
+      "amplitude": 0.032776,
+      "phase": 319.8871
+    },
+    {
+      "name": "M4",
+      "amplitude": 0.007001,
+      "phase": 307.6515
+    },
+    {
+      "name": "MS4",
+      "amplitude": 0.009084,
+      "phase": 337.9909
+    },
+    {
+      "name": "2MN6",
+      "amplitude": 0.005417,
+      "phase": 293.105
+    },
+    {
+      "name": "M6",
+      "amplitude": 0.007932,
+      "phase": 313.5423
+    }
+  ],
+  "epoch": {
+    "start": "2005-01-12",
+    "end": "2023-12-31"
+  }
+}

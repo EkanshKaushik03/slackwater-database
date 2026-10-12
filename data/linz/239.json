@@ -1,0 +1,198 @@
+{
+  "name": "Helensville",
+  "country": "New Zealand",
+  "continent": "Oceania",
+  "latitude": -36.666667,
+  "longitude": 174.45,
+  "timezone": "Pacific/Auckland",
+  "source": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "id": "239",
+    "published_harmonics": true,
+    "url": "https://www.linz.govt.nz/products-services/data/types-linz-data/sea-level-data/tide-constituents"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "LINZ asks that attribution be in writing and not use its logo: https://www.linz.govt.nz/copyright"
+  },
+  "disclaimers": "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.",
+  "datums": {
+    "HAT": 4.276,
+    "MHHW": 3.678,
+    "MHW": 3.681,
+    "MSL": 2.261,
+    "MTL": 2.232,
+    "MLW": 0.784,
+    "MLLW": 0.784,
+    "LAT": 0.123,
+    "MHWS": 3.901,
+    "MLWS": 0.621,
+    "CD": 0
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "CD",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "Q1",
+      "amplitude": 0.009206,
+      "phase": 265.0561
+    },
+    {
+      "name": "O1",
+      "amplitude": 0.020603,
+      "phase": 321.9636
+    },
+    {
+      "name": "P1",
+      "amplitude": 0.019747,
+      "phase": 26.9028
+    },
+    {
+      "name": "S1",
+      "amplitude": 0.014763,
+      "phase": 206.35
+    },
+    {
+      "name": "K1",
+      "amplitude": 0.057914,
+      "phase": 39.4072
+    },
+    {
+      "name": "eps2",
+      "amplitude": 0.020384,
+      "phase": 47.364
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0.040687,
+      "phase": 306.0157
+    },
+    {
+      "name": "mu2",
+      "amplitude": 0.094258,
+      "phase": 55.7015
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.215879,
+      "phase": 329.2032
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.052307,
+      "phase": 307.439
+    },
+    {
+      "name": "alpha2",
+      "amplitude": 0.02303,
+      "phase": 190.7535
+    },
+    {
+      "name": "M2",
+      "amplitude": 1.32769,
+      "phase": 336.1208
+    },
+    {
+      "name": "lambda2",
+      "amplitude": 0.043563,
+      "phase": 328.7225
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.081363,
+      "phase": 337.6483
+    },
+    {
+      "name": "T2",
+      "amplitude": 0.024285,
+      "phase": 32.2328
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.31224,
+      "phase": 23.28
+    },
+    {
+      "name": "K2",
+      "amplitude": 0.086138,
+      "phase": 14.4444
+    },
+    {
+      "name": "MSN2",
+      "amplitude": 0.018605,
+      "phase": 182.3075
+    },
+    {
+      "name": "MO3",
+      "amplitude": 0.00642,
+      "phase": 92.4941
+    },
+    {
+      "name": "M3",
+      "amplitude": 0.006391,
+      "phase": 110.4261
+    },
+    {
+      "name": "SK3",
+      "amplitude": 0.007981,
+      "phase": 7.4171
+    },
+    {
+      "name": "MN4",
+      "amplitude": 0.033376,
+      "phase": 208.5342
+    },
+    {
+      "name": "M4",
+      "amplitude": 0.112197,
+      "phase": 214.4015
+    },
+    {
+      "name": "MS4",
+      "amplitude": 0.058477,
+      "phase": 266.4609
+    },
+    {
+      "name": "MK4",
+      "amplitude": 0.016622,
+      "phase": 261.5151
+    },
+    {
+      "name": "2MK5",
+      "amplitude": 0.00475,
+      "phase": 0.9284
+    },
+    {
+      "name": "2MN6",
+      "amplitude": 0.021779,
+      "phase": 308.065
+    },
+    {
+      "name": "M6",
+      "amplitude": 0.046064,
+      "phase": 317.8323
+    },
+    {
+      "name": "2MS6",
+      "amplitude": 0.029409,
+      "phase": 6.1916
+    },
+    {
+      "name": "3MK7",
+      "amplitude": 0.002687,
+      "phase": 137.8596
+    },
+    {
+      "name": "M8",
+      "amplitude": 0.01423,
+      "phase": 131.973
+    }
+  ],
+  "epoch": {
+    "start": "2021-01-01",
+    "end": "2023-12-31"
+  }
+}

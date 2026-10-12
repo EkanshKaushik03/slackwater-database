@@ -12,7 +12,7 @@ See the org-wide [writing style](https://github.com/openwatersio/github/blob/mai
 - `packages/harmonic-analysis` — constituent fitting.
 - `packages/tcd` — the XTide-compatible TCD writer.
 - `packages/swift` — the generated Swift reader. The generated sources are committed, because SwiftPM consumers cannot run `flatc`.
-- `sources/*` — one directory per upstream provider: `chs`, `kartverket`, `noaa`, `noaa-current`, `rws`, `ticon`.
+- `sources/*` — one directory per upstream provider: `chs`, `kartverket`, `linz`, `noaa`, `noaa-current`, `rws`, `ticon`.
 - `data/`, `metadata/`, `schemas/` — downloaded source data, the committed metadata locks, and the FlatBuffers schemas.
 
 ## Getting started

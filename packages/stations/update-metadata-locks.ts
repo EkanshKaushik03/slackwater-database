@@ -50,6 +50,7 @@ const routeProblems = routeHistoryProblems(
   routeLock,
   catalogue.previousSlugTable,
   catalogue.gone,
+  { slugs: catalogue.slugTable, sameGauge: catalogue.sameGauge },
 );
 if (routeProblems.length)
   throw new Error(`route history would be lost\n${routeProblems.join("\n")}`);

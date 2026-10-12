@@ -1,0 +1,198 @@
+{
+  "name": "Marsden Point",
+  "country": "New Zealand",
+  "continent": "Oceania",
+  "latitude": -35.833333,
+  "longitude": 174.5,
+  "timezone": "Pacific/Auckland",
+  "source": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "id": "079",
+    "published_harmonics": true,
+    "url": "https://www.linz.govt.nz/products-services/data/types-linz-data/sea-level-data/tide-constituents"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "LINZ asks that attribution be in writing and not use its logo: https://www.linz.govt.nz/copyright"
+  },
+  "disclaimers": "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.",
+  "datums": {
+    "HAT": 3.065,
+    "MHHW": 2.559,
+    "MHW": 2.559,
+    "MSL": 1.639,
+    "MTL": 1.644,
+    "MLW": 0.729,
+    "MLLW": 0.727,
+    "LAT": 0.216,
+    "MHWS": 2.662,
+    "MLWS": 0.616,
+    "CD": 0
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "CD",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "Sa",
+      "amplitude": 0.049475,
+      "phase": 101.4372
+    },
+    {
+      "name": "O1",
+      "amplitude": 0.01913,
+      "phase": 330.1636
+    },
+    {
+      "name": "P1",
+      "amplitude": 0.022499,
+      "phase": 355.7628
+    },
+    {
+      "name": "S1",
+      "amplitude": 0.006476,
+      "phase": 78.27
+    },
+    {
+      "name": "K1",
+      "amplitude": 0.072325,
+      "phase": 0.1872
+    },
+    {
+      "name": "J1",
+      "amplitude": 0.005108,
+      "phase": 20.2547
+    },
+    {
+      "name": "OO1",
+      "amplitude": 0.003539,
+      "phase": 50.2308
+    },
+    {
+      "name": "eps2",
+      "amplitude": 0.005949,
+      "phase": 185.924
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0.023205,
+      "phase": 182.4557
+    },
+    {
+      "name": "mu2",
+      "amplitude": 0.024261,
+      "phase": 191.3015
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.182081,
+      "phase": 196.7732
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.034891,
+      "phase": 199.189
+    },
+    {
+      "name": "alpha2",
+      "amplitude": 0.005076,
+      "phase": 141.3635
+    },
+    {
+      "name": "M2",
+      "amplitude": 0.886141,
+      "phase": 222.4908
+    },
+    {
+      "name": "M(KS)2",
+      "amplitude": 0.004326,
+      "phase": 97.358
+    },
+    {
+      "name": "lambda2",
+      "amplitude": 0.008729,
+      "phase": 228.4425
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.02641,
+      "phase": 230.6883
+    },
+    {
+      "name": "T2",
+      "amplitude": 0.010878,
+      "phase": 313.3128
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.136749,
+      "phase": 279.71
+    },
+    {
+      "name": "K2",
+      "amplitude": 0.033872,
+      "phase": 268.3444
+    },
+    {
+      "name": "MO3",
+      "amplitude": 0.002519,
+      "phase": 236.0841
+    },
+    {
+      "name": "M3",
+      "amplitude": 0.006172,
+      "phase": 44.7961
+    },
+    {
+      "name": "SK3",
+      "amplitude": 0.005686,
+      "phase": 167.2271
+    },
+    {
+      "name": "MN4",
+      "amplitude": 0.003735,
+      "phase": 158.5742
+    },
+    {
+      "name": "M4",
+      "amplitude": 0.008882,
+      "phase": 157.2615
+    },
+    {
+      "name": "MS4",
+      "amplitude": 0.003266,
+      "phase": 227.2209
+    },
+    {
+      "name": "2MK5",
+      "amplitude": 0.001981,
+      "phase": 101.7484
+    },
+    {
+      "name": "2MN6",
+      "amplitude": 0.007159,
+      "phase": 314.015
+    },
+    {
+      "name": "M6",
+      "amplitude": 0.012814,
+      "phase": 346.5623
+    },
+    {
+      "name": "2MS6",
+      "amplitude": 0.003546,
+      "phase": 35.0416
+    },
+    {
+      "name": "M8",
+      "amplitude": 0.002438,
+      "phase": 23.963
+    }
+  ],
+  "epoch": {
+    "start": "2006-01-01",
+    "end": "2025-12-31"
+  }
+}

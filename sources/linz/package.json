@@ -1,0 +1,18 @@
+{
+  "name": "@slackwater/linz",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import": "node import.ts",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@slackwater/datums": "*",
+    "@slackwater/stations": "*",
+    "@slackwater/engine": "^1.0.0-beta.0"
+  },
+  "devDependencies": {
+    "@slackwater/database": "*",
+    "vitest": "^5.0.3"
+  }
+}

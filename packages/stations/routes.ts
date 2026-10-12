@@ -527,13 +527,30 @@ export function routeHistoryProblems(
   current: RouteLock,
   previousSlugs: SlugTable,
   gone: Iterable<string>,
+  reclaim: { slugs: SlugTable; sameGauge: Map<string, string> } = {
+    slugs: { catalogue: {}, tide: {}, current: {} },
+    sameGauge: new Map(),
+  },
 ): string[] {
   const problems: string[] = [];
   const departedIds = new Set(gone);
+  const gaugeOwner = (id: string) => reclaim.sameGauge.get(id) ?? id;
   for (const kind of ["tide", "current"] as const) {
     const redirects = new Set(
       Object.values(current[kind]).flatMap(({ former_paths }) => former_paths),
     );
+    // A published path may also be live again, but only where a reviewed
+    // sameGauge link ties its new holder to the station that published it.
+    const liveGauges = new Map<string, Set<string>>();
+    for (const [slug, { path }] of Object.entries(current[kind]))
+      liveGauges.set(
+        path,
+        new Set(
+          Object.entries(reclaim.slugs[kind])
+            .filter(([, allocated]) => allocated === slug)
+            .map(([id]) => gaugeOwner(id)),
+        ),
+      );
     for (const [slug, route] of Object.entries(previous[kind])) {
       if (current[kind][slug]) continue;
       const previousOwners = Object.entries(previousSlugs[kind])
@@ -543,8 +560,10 @@ export function routeHistoryProblems(
         previousOwners.length > 0 &&
         previousOwners.every((id) => departedIds.has(id));
       if (departed) continue;
+      const reclaimed = (path: string) =>
+        previousOwners.some((id) => liveGauges.get(path)?.has(gaugeOwner(id)));
       for (const path of [route.path, ...route.former_paths]) {
-        if (!redirects.has(path))
+        if (!redirects.has(path) && !reclaimed(path))
           problems.push(
             `${kind}/${slug}: published path ${path} disappeared without a tombstone or redirect`,
           );

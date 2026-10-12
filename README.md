@@ -12,6 +12,9 @@ This database includes station identity, structured location, stable web routes,
 - ✅ [**TICON-4**](sources/ticon/README.md): TIdal CONstants based on GESLA-4 sea-level records
   ~4200+ global stations - ([#16](https://github.com/openwatersio/slackwater-database/pull/16))
 
+- ✅ [**LINZ**](sources/linz/README.md): Toitū Te Whenua Land Information New Zealand
+  56 New Zealand ports from LINZ's published tide constituents. LINZ releases a new set each year, refreshed here by hand.
+
 If you know of other public sources of harmonic constituents, please [open an issue](https://github.com/openwatersio/slackwater-database/issues/new) to discuss adding them.
 
 ## Usage
@@ -134,6 +137,7 @@ Under a CC licence that string carries all three things [CC BY 4.0 section 3(a)(
 The sources and what each one asks for:
 
 - **Kartverket / Norwegian Mapping Authority, Hydrographic Service** — © Kartverket / Norwegian Mapping Authority, Hydrographic Service, https://www.kartverket.no. Credit required under CC BY 4.0, and [Kartverket's terms](https://www.kartverket.no/en/api-and-data/terms-of-use) ask for it as "©Kartverket" with a link to kartverket.no.
+- **Toitū Te Whenua Land Information New Zealand** — "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence." Credit required under CC BY 4.0, and [LINZ's copyright terms](https://www.linz.govt.nz/copyright) ask for that statement on adapted data, in writing, never by its logo or crest.
 - **TICON-4** — Hart-Davis, Michael; Dettmering, Denise; Seitz, Florian (2025). _TICON-4: TIdal CONstants based on GESLA-4 sea-level records._ SEANOE. https://doi.org/10.17882/109129. Credit required.
 - **NOAA CO-OPS** — a United States government work in the public domain. Attribution is not required, but is appreciated, so the project credit stands alone.
 - **Canadian Hydrographic Service** — names the agency operating a current station whose record was authored in this repository under MIT (see [metadata/PROVENANCE.md](./metadata/PROVENANCE.md)). No data is redistributed from CHS, so no credit is owed to it.
@@ -150,3 +154,5 @@ For TICON-4 stations:
 - Datums are computed here from GESLA-4 water levels, since TICON does not publish them. See [sources/ticon/README.md](./sources/ticon/README.md) for the method and its uncertainties.
 
 For Kartverket stations, published harmonic phases are converted from UTC+1 to UTC and centimetres are converted to metres. The original responses and comparison results are pinned under [sources/kartverket](./sources/kartverket/README.md).
+
+For LINZ stations, published harmonic phases are converted from NZST (UTC+12) to UTC, centimetres are converted to metres, five constituent names are mapped to the catalogue's spelling (such as `LDA2` to `lambda2`), and Nelson's misprinted latitude is corrected. Datums other than MSL are derived from the constituents, since LINZ publishes only the mean level. See [sources/linz](./sources/linz/README.md) for the method.

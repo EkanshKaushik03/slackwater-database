@@ -1,0 +1,168 @@
+{
+  "name": "Port Chalmers",
+  "country": "New Zealand",
+  "continent": "Oceania",
+  "latitude": -45.816667,
+  "longitude": 170.65,
+  "timezone": "Pacific/Auckland",
+  "source": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "id": "030",
+    "published_harmonics": true,
+    "url": "https://www.linz.govt.nz/products-services/data/types-linz-data/sea-level-data/tide-constituents"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "LINZ asks that attribution be in writing and not use its logo: https://www.linz.govt.nz/copyright"
+  },
+  "disclaimers": "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.",
+  "datums": {
+    "HAT": 2.411,
+    "MHHW": 1.982,
+    "MHW": 1.982,
+    "MSL": 1.158,
+    "MTL": 1.171,
+    "MLW": 0.361,
+    "MLLW": 0.36,
+    "LAT": -0.035,
+    "MHWS": 2.035,
+    "MLWS": 0.281,
+    "CD": 0
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "CD",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "Q1",
+      "amplitude": 0.00966,
+      "phase": 236.5161
+    },
+    {
+      "name": "O1",
+      "amplitude": 0.029375,
+      "phase": 244.5536
+    },
+    {
+      "name": "P1",
+      "amplitude": 0.009337,
+      "phase": 267.8628
+    },
+    {
+      "name": "K1",
+      "amplitude": 0.026889,
+      "phase": 268.7572
+    },
+    {
+      "name": "eps2",
+      "amplitude": 0.00435,
+      "phase": 58.054
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0.023805,
+      "phase": 66.1257
+    },
+    {
+      "name": "mu2",
+      "amplitude": 0.02133,
+      "phase": 71.0215
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.179537,
+      "phase": 87.3932
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.035514,
+      "phase": 89.669
+    },
+    {
+      "name": "alpha2",
+      "amplitude": 0.007982,
+      "phase": 29.9935
+    },
+    {
+      "name": "M2",
+      "amplitude": 0.778063,
+      "phase": 110.3108
+    },
+    {
+      "name": "M(KS)2",
+      "amplitude": 0.00416,
+      "phase": 351.228
+    },
+    {
+      "name": "lambda2",
+      "amplitude": 0.008334,
+      "phase": 84.0425
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.027331,
+      "phase": 101.8583
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.099362,
+      "phase": 109.04
+    },
+    {
+      "name": "K2",
+      "amplitude": 0.033116,
+      "phase": 95.0344
+    },
+    {
+      "name": "SK3",
+      "amplitude": 0.006229,
+      "phase": 115.0971
+    },
+    {
+      "name": "MN4",
+      "amplitude": 0.007346,
+      "phase": 213.8142
+    },
+    {
+      "name": "M4",
+      "amplitude": 0.010743,
+      "phase": 203.2615
+    },
+    {
+      "name": "MS4",
+      "amplitude": 0.00457,
+      "phase": 197.8209
+    },
+    {
+      "name": "S4",
+      "amplitude": 0.004025,
+      "phase": 288.5999
+    },
+    {
+      "name": "2MN6",
+      "amplitude": 0.008404,
+      "phase": 301.485
+    },
+    {
+      "name": "M6",
+      "amplitude": 0.014194,
+      "phase": 330.7623
+    },
+    {
+      "name": "2MS6",
+      "amplitude": 0.004536,
+      "phase": 330.1216
+    },
+    {
+      "name": "M8",
+      "amplitude": 0.002311,
+      "phase": 119.583
+    }
+  ],
+  "epoch": {
+    "start": "2006-01-01",
+    "end": "2024-12-31"
+  }
+}

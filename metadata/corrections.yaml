@@ -27,6 +27,8 @@
 # `slug:` in corrections.yaml; the lock allows the pair and refuses a second
 # registry owner. Provider relays share their owner's route only through an
 # explicit `sameGauge: provider/id` link backed by station documentation.
+# The relay then ships as a duplicate of its owner, which may take back a
+# slug the relay published with its own curated `slug:`.
 
 ticon/kahului-059-usa-uhslc_fd:
   sameGauge: noaa/1615680
@@ -47,6 +49,117 @@ ticon/duck_pier_nc-260-usa-uhslc_fd:
 ticon/massacre_bay_ak-550a-usa-uhslc_rq:
   sameGauge: noaa/9460150
   reason: PSMSL 491 identifies the 1943-1966 Massacre Bay record as NOAA/NOS data from UHSLC 550 (https://psmsl.org/data/obtaining/stations/491.php). UHSLC 550A describes the historic NOAA-operated Attu gauge (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/550Ameta.yaml); NOAA 9460150 identifies Massacre Bay at Attu, established in 1943 (https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9460150.json?expand=details).
+
+# UHSLC relays of LINZ port gauges. LINZ's own record is the owner, so the
+# relay shares its route and its old slug redirects there.
+
+ticon/auckland-070a-nzl-uhslc_rq:
+  sameGauge: linz/070
+  reason: UHSLC 070A is a 1984–1988 record of the Auckland port gauge from the Royal New Zealand Navy Hydrographic Office, New Zealand's hydrographic authority before LINZ, at 36°51'S 174°46'E (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/070Ameta.yaml). That is LINZ site 070's position, and UHSLC numbers New Zealand's port gauges by LINZ site (073A, 076A, 077A and 078A list LINZ sites 073, 076, 077 and 078 as originator).
+
+ticon/west_port-074a-nzl-uhslc_rq:
+  sameGauge: linz/074
+  reason: UHSLC 074A is a 1984–1985 record of the Westport port gauge from the Royal New Zealand Navy Hydrographic Office, New Zealand's hydrographic authority before LINZ, at 41°44'S 171°36'E (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/074Ameta.yaml). That is LINZ site 074's position, and UHSLC numbers New Zealand's port gauges by LINZ site (073A, 076A, 077A and 078A list LINZ sites 073, 076, 077 and 078 as originator).
+
+ticon/wellington-071-nzl-uhslc_fd:
+  sameGauge: linz/071
+  reason: UHSLC 071A names Land Information New Zealand as the data source for Wellington, the record this fast-delivery series continues (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/071Ameta.yaml).
+
+ticon/wellington-071a-nzl-uhslc_rq:
+  sameGauge: linz/071
+  reason: UHSLC 071A names Land Information New Zealand as the data source for Wellington (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/071Ameta.yaml).
+
+ticon/bluff-072-nzl-uhslc_fd:
+  sameGauge: linz/072
+  reason: UHSLC 072A names Land Information New Zealand as the data source from 1997 and LINZ site 072 as the originator; this fast-delivery series continues it (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/072Ameta.yaml).
+
+ticon/bluff-072a-nzl-uhslc_rq:
+  sameGauge: linz/072
+  reason: UHSLC 072A names Land Information New Zealand as the data source from 1997 and LINZ site 072 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/072Ameta.yaml).
+
+ticon/tauranga-073a-nzl-uhslc_rq:
+  sameGauge: linz/073
+  reason: UHSLC 073A names Land Information New Zealand as the data source and LINZ site 073 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/073Ameta.yaml).
+
+ticon/taranaki-076a-nzl-uhslc_rq:
+  sameGauge: linz/076
+  reason: UHSLC 076A names Land Information New Zealand as the data source and LINZ site 076 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/076Ameta.yaml).
+
+ticon/nelson-077a-nzl-uhslc_rq:
+  sameGauge: linz/077
+  reason: UHSLC 077A names Land Information New Zealand as the data source and LINZ site 077 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/077Ameta.yaml).
+
+ticon/gisborne-078a-nzl-uhslc_rq:
+  sameGauge: linz/078
+  reason: UHSLC 078A names Land Information New Zealand as the data source and LINZ site 078 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/078Ameta.yaml).
+
+ticon/gisborne-078b-nzl-uhslc_rq:
+  sameGauge: linz/078
+  reason: UHSLC 078B names Land Information New Zealand as the data source and LINZ site 078 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/078Bmeta.yaml).
+
+ticon/marsden_point-398a-nzl-uhslc_rq:
+  sameGauge: linz/079
+  reason: UHSLC 398A names Land Information New Zealand as the data source and LINZ site 079 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/398Ameta.yaml).
+
+ticon/timaru-665a-nzl-uhslc_rq:
+  sameGauge: linz/034
+  reason: UHSLC 665A names Land Information New Zealand as the data source and LINZ site 034 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/665Ameta.yaml).
+
+ticon/lyttelton-667a-nzl-uhslc_rq:
+  sameGauge: linz/107
+  reason: UHSLC 667A names Land Information New Zealand as the data source and LINZ site 107 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/667Ameta.yaml).
+
+ticon/napier-668a-nzl-uhslc_rq:
+  sameGauge: linz/097
+  reason: UHSLC 668A names Land Information New Zealand as the data source and LINZ site 097 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/668Ameta.yaml).
+
+ticon/port_chalmers-669a-nzl-uhslc_rq:
+  sameGauge: linz/030
+  reason: UHSLC 669A names Land Information New Zealand as the data source and LINZ site 030 as the originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/669Ameta.yaml).
+
+linz/070:
+  slug: auckland
+  reason: The UHSLC relay of this LINZ gauge published /auckland/; the gauge's own record takes it.
+
+linz/071:
+  slug: wellington
+  reason: The UHSLC relay of this LINZ gauge published /wellington/; the gauge's own record takes it.
+
+linz/072:
+  slug: bluff
+  reason: The UHSLC relay of this LINZ gauge published /bluff/; the gauge's own record takes it.
+
+linz/034:
+  slug: timaru
+  reason: The UHSLC relay of this LINZ gauge published /timaru/; the gauge's own record takes it.
+
+linz/077:
+  slug: nelson
+  reason: The UHSLC relay of this LINZ gauge published /nelson/; the gauge's own record takes it.
+
+linz/078:
+  slug: gisborne
+  reason: The UHSLC relay of this LINZ gauge published /gisborne/; the gauge's own record takes it.
+
+linz/079:
+  slug: marsden-point
+  reason: The UHSLC relay of this LINZ gauge published /marsden-point/; the gauge's own record takes it.
+
+linz/107:
+  slug: lyttelton
+  reason: The UHSLC relay of this LINZ gauge published /lyttelton/; the gauge's own record takes it.
+
+linz/030:
+  slug: port-chalmers-otago
+  reason: The UHSLC relay of this LINZ gauge published /port-chalmers-otago/; the gauge's own record takes it.
+
+linz/073:
+  slug: tauranga
+  reason: The UHSLC relay of this LINZ gauge published /tauranga/; the gauge's own record takes it.
+
+linz/097:
+  slug: napier
+  reason: The UHSLC relay of this LINZ gauge published /napier/; the gauge's own record takes it.
 
 noaa/9447659:
   name: Everett

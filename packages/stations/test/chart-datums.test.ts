@@ -213,6 +213,10 @@ const LAT_ABOVE_CHART_DATUM = new Set([
   "kartverket/SVG",
   "kartverket/TRG",
   "kartverket/VIK",
+  // LINZ's own secondary-port table puts MLWS 0.8–0.9 m above CD at these two
+  // estuaries, so LAT sits above it too.
+  "linz/058", // Riverton
+  "linz/141", // Waihopai River Entrance
   "noaa/1778000", // APIA (Observatory), Upolu Island — 0.93 m
   "ticon/cote_ste_catherine-15450-can-meds",
   "ticon/pointe_claire-15330-can-meds",
@@ -227,6 +231,11 @@ const LAT_ABOVE_CHART_DATUM = new Set([
 
 /** Anything below this is datum rounding between two agencies, not a defect. */
 const DATUM_ROUNDING_M = 0.06;
+
+// LINZ fixes each port's chart datum to a benchmark, and its own standard port
+// table puts LAT up to 0.45 m above it (Wellington). Allow that much, so a
+// gross error at a LINZ port still fails.
+const LINZ_LAT_ABOVE_CD_M = 0.5;
 
 describe("astronomical extremes across the database", () => {
   const references = tideStations.filter(
@@ -274,7 +283,10 @@ describe("astronomical extremes across the database", () => {
         over: s.datums["LAT"]! - s.datums[s.chart_datum]!,
       }))
       .filter((s) => s.over > DATUM_ROUNDING_M)
-      .filter((s) => !LAT_ABOVE_CHART_DATUM.has(s.id));
+      .filter((s) => !LAT_ABOVE_CHART_DATUM.has(s.id))
+      .filter(
+        (s) => !(s.id.startsWith("linz/") && s.over <= LINZ_LAT_ABOVE_CD_M),
+      );
 
     expect(offenders).toEqual([]);
   });

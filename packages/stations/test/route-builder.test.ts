@@ -578,6 +578,61 @@ describe("geographic routes", () => {
     ).toEqual(["/tides/ca/ab/victoria/"]);
   });
 
+  test("keeps a published path live again only for the same gauge", () => {
+    // A relay published /napier/, moved to a longer slug, and the gauge's own
+    // record now takes /napier/ back.
+    const previous: RouteLock = {
+      tide: {
+        "napier-long": {
+          path: "/tides/nz/napier-long/",
+          former_paths: ["/tides/nz/napier/"],
+        },
+      },
+      current: {},
+    };
+    const reclaimed: RouteLock = {
+      tide: {
+        napier: {
+          path: "/tides/nz/napier/",
+          former_paths: ["/tides/nz/napier-long/"],
+        },
+      },
+      current: {},
+    };
+    const slugs = { ...emptySlugs(), tide: { relay: "napier-long" } };
+    const now = { ...emptySlugs(), tide: { relay: "napier", gauge: "napier" } };
+    expect(
+      routeHistoryProblems(previous, reclaimed, slugs, [], {
+        slugs: now,
+        sameGauge: new Map([["relay", "gauge"]]),
+      }),
+    ).toEqual([]);
+    // An unrelated station taking /napier/ would show different water there.
+    expect(
+      routeHistoryProblems(previous, reclaimed, slugs, [], {
+        slugs: {
+          ...emptySlugs(),
+          tide: { relay: "napier-long", other: "napier" },
+        },
+        sameGauge: new Map(),
+      }),
+    ).toEqual([expect.stringMatching(/published path \/tides\/nz\/napier\//)]);
+    expect(
+      routeHistoryProblems(
+        previous,
+        {
+          tide: { napier: { path: "/tides/nz/napier/", former_paths: [] } },
+          current: {},
+        },
+        slugs,
+        [],
+      ),
+    ).toEqual([
+      expect.stringMatching(/\/tides\/nz\/napier-long\//),
+      expect.stringMatching(/published path \/tides\/nz\/napier\//),
+    ]);
+  });
+
   test("rejects a slug move that loses published route history", () => {
     const previous: RouteLock = {
       tide: {
