@@ -30,6 +30,7 @@ import {
   getSourceSuffix,
   getSourcePriority,
   gaugeKey,
+  sameGaugeRelays,
   coordinatePrecision,
   isDirectAuthoritativeProvider,
   hasQualityIssues,
@@ -819,40 +820,6 @@ function deduplicateByGauge(
   }
 }
 
-/** Reject a relay a reviewed `sameGauge` link ties to its canonical record,
- *  with every other TICON segment of that relay's gauge. The link is documented
- *  gauge identity, so it holds at any distance; the proximity pass cannot see
- *  it when one source rounds positions coarsely. */
-function deduplicateBySameGauge(
-  stationIds: string[],
-  stationMap: Map<string, Station>,
-  sameGauge: Map<string, string>,
-  resultsMap: Map<string, QualityResult>,
-): void {
-  const gaugeOf = (id: string) =>
-    id.startsWith("ticon/") ? gaugeKey(stationMap.get(id)!.source.id) : id;
-  const byGauge = new Map<string, string>();
-  for (const [id, target] of sameGauge) {
-    if (!stationMap.has(id)) continue;
-    const gauge = gaugeOf(id);
-    if (gauge === gaugeOf(target))
-      throw new Error(`${id}: sameGauge target ${target} is the same gauge`);
-    if (byGauge.has(gauge) && byGauge.get(gauge) !== target)
-      throw new Error(
-        `${id}: its gauge already links to ${byGauge.get(gauge)}`,
-      );
-    byGauge.set(gauge, target);
-  }
-  for (const id of stationIds) {
-    const target = byGauge.get(gaugeOf(id));
-    if (!target || !resultsMap.get(target)?.accepted) continue;
-    const result = resultsMap.get(id)!;
-    result.accepted = false;
-    result.reason = "duplicate";
-    result.redundant = target;
-  }
-}
-
 // ── Main ────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -973,16 +940,22 @@ async function main() {
       "utf8",
     ),
   );
-  deduplicateBySameGauge(
+  const relays = sameGaugeRelays(
     acceptedIds,
-    stationMap,
+    new Map([...stationMap].map(([id, { source }]) => [id, source.id])),
     new Map(
       [...corrections].flatMap(([id, { sameGauge }]) =>
         sameGauge ? [[id, sameGauge]] : [],
       ),
     ),
-    resultsMap,
   );
+  for (const [id, target] of relays) {
+    if (!resultsMap.get(target)?.accepted) continue;
+    const result = resultsMap.get(id)!;
+    result.accepted = false;
+    result.reason = "duplicate";
+    result.redundant = target;
+  }
   deduplicateByGauge(
     acceptedIds.filter((id) => resultsMap.get(id)!.accepted),
     stationMap,

@@ -141,6 +141,40 @@ export function gaugeKey(sourceId: string): string {
   return parts.join("-");
 }
 
+/**
+ * Map each station a reviewed `sameGauge` link ties to its canonical record,
+ * with every other TICON segment of that relay's gauge. The link is documented
+ * gauge identity, so it holds at any distance; the proximity pass cannot see it
+ * when one source rounds positions coarsely. A link whose relay or target is
+ * not loaded is skipped here; the route lock reports it as invalid.
+ */
+export function sameGaugeRelays(
+  stationIds: string[],
+  sourceIds: Map<string, string>,
+  sameGauge: Map<string, string>,
+): Map<string, string> {
+  const gaugeOf = (id: string) =>
+    id.startsWith("ticon/") ? gaugeKey(sourceIds.get(id)!) : id;
+  const byGauge = new Map<string, string>();
+  for (const [id, target] of sameGauge) {
+    if (!sourceIds.has(id) || !sourceIds.has(target)) continue;
+    const gauge = gaugeOf(id);
+    if (gauge === gaugeOf(target))
+      throw new Error(`${id}: sameGauge target ${target} is the same gauge`);
+    if (byGauge.has(gauge) && byGauge.get(gauge) !== target)
+      throw new Error(
+        `${id}: its gauge already links to ${byGauge.get(gauge)}`,
+      );
+    byGauge.set(gauge, target);
+  }
+  return new Map(
+    stationIds.flatMap((id) => {
+      const target = byGauge.get(gaugeOf(id));
+      return target ? [[id, target] as const] : [];
+    }),
+  );
+}
+
 /** Radius around Null Island (0°, 0°) within which a station's coordinates are
  *  treated as a missing/placeholder fix rather than a real position (in degrees).
  *  Records that fail to geolocate frequently default to (0, 0), which lands in

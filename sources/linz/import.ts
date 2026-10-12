@@ -59,6 +59,8 @@ async function fetchRelease(url: string) {
 /** Parse every analysis in `dir`, write its stations, and remove the rest. */
 export async function importDirectory(dir: string, dataDir = DATA_DIR) {
   const names = (await readdir(dir)).filter((name) => name.endsWith(".txt"));
+  // Checked before anything is removed, so a bad archive cannot empty data/linz.
+  if (names.length === 0) throw new Error(`No LINZ analysis files in ${dir}`);
   const stations = await Promise.all(
     names.map(async (name) =>
       parseHarmonics(await readFile(join(dir, name), "utf8"), siteId(name)),

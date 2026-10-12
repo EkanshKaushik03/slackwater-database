@@ -124,6 +124,21 @@ describe("LINZ import", () => {
     await expect(releaseUrl("<p>no link</p>")).rejects.toThrow(/one/);
   });
 
+  it("refuses an empty release without touching existing stations", async () => {
+    const root = await mkdtemp(join(tmpdir(), "linz-test-"));
+    try {
+      await mkdir(join(root, "release"));
+      await mkdir(join(root, "data", "linz"), { recursive: true });
+      await writeFile(join(root, "data", "linz", "043.json"), "{}");
+      await expect(
+        importDirectory(join(root, "release"), join(root, "data")),
+      ).rejects.toThrow(/No LINZ analysis files/);
+      expect(await readdir(join(root, "data", "linz"))).toEqual(["043.json"]);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
   it("writes each site and removes stations LINZ no longer publishes", async () => {
     const root = await mkdtemp(join(tmpdir(), "linz-test-"));
     try {
