@@ -84,5 +84,5 @@ Tests read a fixture written through the TypeScript `buildDatabase` — the same
 
 ```sh
 npm install
-npm run test -w swift
+npm run test:swift -w swift
 ```

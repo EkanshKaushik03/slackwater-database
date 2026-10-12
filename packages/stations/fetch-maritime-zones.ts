@@ -11,7 +11,7 @@
  * are left out, so a station there keeps the gazetteer fallback.
  *
  * Run manually when an owned station lands outside the coverage:
- *   npm run fetch-maritime-zones -w packages/stations
+ *   npm run refresh:maritime-zones -w packages/stations
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";

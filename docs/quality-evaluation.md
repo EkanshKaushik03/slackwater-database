@@ -244,10 +244,10 @@ The order of these rules is an engineering choice. With three or more records of
 
 The evaluation is [packages/stations/evaluate-quality.ts](../packages/stations/evaluate-quality.ts). Its thresholds and helper functions are in [packages/stations/filtering.ts](../packages/stations/filtering.ts), the nodal-cycle length (`NODAL_CYCLE_DAYS` = 6798.383 days) and datum epoch (`DATUM_EPOCH`, 2007-01-01 to 2026-01-01) are in [packages/datums/datum.ts](../packages/datums/datum.ts), and each source's `authoritative` flag is in `sources/<name>/metadata.yaml`, read by [packages/stations/sources.ts](../packages/stations/sources.ts).
 
-`npm run stations` runs the evaluation and writes each result into the station file that lists the record, under `computed.sources.<id>.quality` (see [stations/README.md](../stations/README.md)). A record whose `accepted` is false is still published at its route and in the database, with its evaluation, but a route lists accepted records first and the database's `stations` export leaves rejected ones out. `npm run merge-report -w packages/stations` reads `redundant` to propose folding duplicate stations together. To print a summary without writing anything:
+`npm run stations` runs the evaluation and writes each result into the station file that lists the record, under `computed.sources.<id>.quality` (see [stations/README.md](../stations/README.md)). A record whose `accepted` is false is still published at its route and in the database, with its evaluation, but a route lists accepted records first and the database's `stations` export leaves rejected ones out. `npm run report:merges -w packages/stations` reads `redundant` to propose folding duplicate stations together. To print a summary without writing anything:
 
 ```shell
-node packages/stations/evaluate-quality.ts
+npm run report:quality -w packages/stations
 ```
 
 ### Stored result

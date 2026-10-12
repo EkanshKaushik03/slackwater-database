@@ -5,7 +5,7 @@ import XCTest
 
 /// Reads the fixture that scripts/generate-fixture.ts writes through the
 /// TypeScript buildDatabase — the same builder that produces the shipped
-/// file. Regenerate it with `npm run test -w swift` (pretest) if missing.
+/// file. Regenerate it with `npm run test:swift -w swift` (pretest) if missing.
 final class StationDatabaseTests: XCTestCase {
   static let url = URL(fileURLWithPath: #filePath)
     .deletingLastPathComponent()

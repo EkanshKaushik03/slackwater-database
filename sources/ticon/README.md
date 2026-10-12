@@ -50,10 +50,10 @@ Many TICON records relay a gauge this repo also imports directly. [provenance.ts
 The UHSLC metadata is pinned in [uhslc-metadata.json](uhslc-metadata.json), because UHSLC edits it in place. It holds only what matching needs (station name, position, data source, originator number, last update) from UHSLC's public research-quality metadata, and nothing from it reaches the published database. Refresh it deliberately and review the diff:
 
 ```shell
-npm run fetch-uhslc-metadata -w sources/ticon
+npm run refresh:uhslc -w sources/ticon
 ```
 
-`npm run merge-report -w packages/stations` lists every station merge this provenance and quality's duplicate links would make, and `-- --apply` makes them in the station files.
+`npm run report:merges -w packages/stations` lists every station merge this provenance and quality's duplicate links would make, and `npm run merge -w packages/stations` makes them in the station files.
 
 ## Constituent names
 
@@ -77,7 +77,7 @@ A re-fit reads each station's whole GESLA-4 record, so it takes a while: about 9
 To check which line a published constituent describes, score it against the raw record with [`score-line.ts`](../../packages/harmonic-analysis/score-line.ts). It reads the GESLA-4 archive the importer downloads:
 
 ```sh
-npm run score-line -w packages/harmonic-analysis -- cardwell-h035012a-aus-bom 3N2 245.555 --sweep --nodal=N2
+npm run report:score-line -w packages/harmonic-analysis -- cardwell-h035012a-aus-bom 3N2 245.555 --sweep --nodal=N2
 ```
 
 The engine doc explains the method and how to read the scores. Open differences between TICON's phases and the engine's are tracked in [#239](https://github.com/openwatersio/slackwater-database/issues/239). [#76](https://github.com/openwatersio/slackwater-database/issues/76) collects the discrepancies between the manual's constituent definitions and the engine's.

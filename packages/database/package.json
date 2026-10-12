@@ -45,7 +45,7 @@
     "smoke": "node scripts/smoke.mjs",
     "prepare": "npm run build",
     "pretest": "npm run generate",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "files": [
     "dist",

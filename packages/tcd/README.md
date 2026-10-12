@@ -67,7 +67,7 @@ tide -l "BOSTON, MA, United States" -b "2026-01-01 00:00" -e "2026-01-08 00:00" 
 ## Contributing
 
 - Build the TCD file with: `npm run build`
-- Run tests with: `npm test`
+- Run tests with: `npm run test:docker` (needs Docker)
 
 ## References
 

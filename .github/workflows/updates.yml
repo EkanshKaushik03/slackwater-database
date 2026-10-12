@@ -49,7 +49,7 @@ jobs:
         # backfill before quality is evaluated, so the gates see the same datums
         # the package will ship. Idempotent, and self-healing if NOAA starts
         # publishing LAT for a station we had been filling.
-        run: npm run backfill-lat-hat -w packages/stations
+        run: npm run refresh:lat-hat -w packages/stations
 
       - name: Update station files
         # New or moved NOAA records shift proximity and can supersede TICON

@@ -245,7 +245,7 @@ export async function validate(fixtures = FIXTURES_DIR) {
       const xml = contents.get(request.path);
       if (!xml)
         throw new Error(
-          `Missing validation fixture: ${request.path}; run refresh-validation`,
+          `Missing validation fixture: ${request.path}; run npm run refresh:tide-tables -w sources/kartverket`,
         );
       const provider = parsePredictions(
         xml,

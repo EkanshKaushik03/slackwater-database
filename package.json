@@ -8,9 +8,10 @@
   ],
   "scripts": {
     "build": "npm run build -w packages/database",
-    "test": "npm run build -w packages/database && tsc -p tsconfig.node.json && npm run test -w packages/database -w packages/datums -w packages/harmonic-analysis -w packages/stations -w sources/noaa-current -w sources/rws -w sources/chs -w sources/linz -w sources/ticon -w sources/kartverket",
+    "test": "npm run build -w packages/database && tsc -p tsconfig.node.json && npm test --workspaces --if-present",
+    "check": "npm run lint && npm test && npm run validate",
     "stations": "npm run stations -w packages/stations",
-    "validate:database": "npm run validate-database -w packages/stations",
+    "validate": "npm run validate -w packages/stations",
     "lint": "prettier --check .",
     "format": "prettier --write ."
   },

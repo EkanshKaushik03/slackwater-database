@@ -56,7 +56,7 @@ jobs:
             git fetch --depth=1 origin "$BASE_REF"
             export PUBLISHED_REF=FETCH_HEAD
           fi
-          npm run validate:database
+          npm run validate
 
   tcd:
     runs-on: ubuntu-latest
@@ -82,7 +82,7 @@ jobs:
         run: npm run build -w packages/tcd
 
       - name: Run TCD validation tests
-        run: npm run test -w packages/tcd
+        run: npm run test:docker -w packages/tcd
 
       - name: Upload TCD artifacts
         uses: actions/upload-artifact@v7
@@ -117,7 +117,7 @@ jobs:
           git diff --exit-code -- packages/swift/Sources
 
       - name: Run Swift tests
-        run: npm run test -w swift
+        run: npm run test:swift -w swift
         env:
           SLACKWATER_TCDB: ${{ github.workspace }}/packages/database/src/generated/slackwater.tcdb
 
