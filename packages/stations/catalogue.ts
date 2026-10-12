@@ -42,8 +42,6 @@ export function buildCatalogue(inputs: CatalogueInputs): {
   members: RouteMember[];
   routes: DatabaseRoutes;
   slugTable: SlugTable;
-  /** Reviewed relay -> canonical record links from corrections. */
-  sameGauge: Map<string, string>;
   slugTombstones: SlugTombstones;
   formerSlugs: FormerSlugs;
   gone: string[];
@@ -92,11 +90,6 @@ export function buildCatalogue(inputs: CatalogueInputs): {
 
   validateStationReferences(stations);
   const routedStations = stations.filter(({ routed }) => routed !== false);
-  const sameGauge = new Map(
-    [...inputs.corrections].flatMap(([id, correction]) =>
-      correction.sameGauge ? [[id, correction.sameGauge] as const] : [],
-    ),
-  );
   const {
     table: slugs,
     tombstones: slugTombstones,
@@ -110,7 +103,11 @@ export function buildCatalogue(inputs: CatalogueInputs): {
     {
       ...(inputs.reallocate ? { reallocate: inputs.reallocate } : {}),
       registryIds: new Set(inputs.registry.keys()),
-      sameGauge,
+      sameGauge: new Map(
+        [...inputs.corrections].flatMap(([id, correction]) =>
+          correction.sameGauge ? [[id, correction.sameGauge]] : [],
+        ),
+      ),
     },
   );
   const members: RouteMember[] = routedStations.map((station) => {
@@ -143,7 +140,6 @@ export function buildCatalogue(inputs: CatalogueInputs): {
       registryIds: new Set(inputs.registry.keys()),
     }),
     slugTable: slugs,
-    sameGauge,
     slugTombstones,
     formerSlugs,
     gone,

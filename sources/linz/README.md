@@ -29,7 +29,8 @@ LINZ's CDN refuses requests without a browser-like User-Agent, which the import 
 
 ## Known issues upstream
 
-- Positions are printed to the whole arcminute, so a station can sit a kilometre or two from its gauge, beyond the 500 m radius that catches duplicates. TICON relays of LINZ port gauges are therefore tied to their LINZ record by documented `sameGauge` links in `metadata/corrections.yaml`: they share one route, ship as duplicates of the LINZ record, and the LINZ record takes back the slug the relay first published. LINZ's separate tsunami-network gauges (TICON `ttw` records) are different instruments and are judged on their own; most ship, while Wellington's is a duplicate of `linz/071`. At Jackson Bay, UHSLC 403A credits a Bureau of Meteorology gauge for 1999–2012 and LINZ's analysis starts in 2014; nothing documents them as one gauge, so both ship. - Nelson's header prints latitude `1416` for 41°16′S. The importer repairs it; any other position outside New Zealand fails the import.
+- Positions are printed to the whole arcminute, so a station can sit a kilometre or two from its gauge. TICON's UHSLC copies of LINZ port gauges are dropped as duplicates where they fall within 500 m of the LINZ record, which covers most ports; at Bluff, Gisborne and Westport the two positions are rounded differently and both records ship. LINZ's tsunami-network gauges (TICON `ttw` records) and the Bureau of Meteorology gauge at Jackson Bay are separate instruments and are judged on their own.
+- Nelson's header prints latitude `1416` for 41°16′S. The importer repairs it; any other position outside New Zealand fails the import.
 - The `NUMBER OF VALID DATA`, `AVERAGE` and `NO.OBS.` header fields repeat the same values in every file, so the importer ignores them. The station number in the header sometimes disagrees with the file name (Green Island prints 254 in file 354); the file name is used.
 
 ## Validation

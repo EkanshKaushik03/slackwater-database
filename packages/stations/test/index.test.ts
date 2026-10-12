@@ -16,7 +16,6 @@ import {
   coordinatePrecision,
   distance,
   authoritativeDuplicateWinner,
-  sameGaugeRelays,
   SEASONAL_DOMINANCE_RATIO,
   SEASONAL_CONSTITUENTS,
   TIDAL_CONSTITUENTS,
@@ -313,67 +312,6 @@ describe("gauge deduplication", () => {
     expect(
       quality.find((r) => r.id === "ticon/wellington-071-nzl-uhslc_fd"),
     ).toMatchObject({ accepted: false, redundant: "linz/071" });
-  });
-
-  test("ties every segment of a linked gauge to its target", () => {
-    const sources = new Map([
-      ["ticon/bluff-072-nzl-uhslc_fd", "bluff-072-nzl-uhslc_fd"],
-      ["ticon/bluff-072a-nzl-uhslc_rq", "bluff-072a-nzl-uhslc_rq"],
-      ["linz/072", "072"],
-    ]);
-    const relays = sameGaugeRelays(
-      [...sources.keys()],
-      sources,
-      new Map([["ticon/bluff-072-nzl-uhslc_fd", "linz/072"]]),
-    );
-    expect(Object.fromEntries(relays)).toEqual({
-      "ticon/bluff-072-nzl-uhslc_fd": "linz/072",
-      "ticon/bluff-072a-nzl-uhslc_rq": "linz/072",
-    });
-  });
-
-  // A release can drop the target; the route lock reports the stale link.
-  test("skips a sameGauge link whose target is not loaded", () => {
-    const sources = new Map([
-      ["ticon/bluff-072-nzl-uhslc_fd", "bluff-072-nzl-uhslc_fd"],
-    ]);
-    expect(
-      sameGaugeRelays(
-        [...sources.keys()],
-        sources,
-        new Map([["ticon/bluff-072-nzl-uhslc_fd", "linz/072"]]),
-      ).size,
-    ).toBe(0);
-  });
-
-  // A reviewed sameGauge link names one gauge, so only one side can ship, even
-  // when coarse positions put the two beyond the proximity radius.
-  test("never accepts both sides of a sameGauge link", async () => {
-    const { loadCorrections } = await import("../metadata.ts");
-    const corrections = loadCorrections(
-      await readFile(join(ROOT, "metadata/corrections.yaml"), "utf8"),
-    );
-    const accepted = new Set(
-      quality.filter((r) => r.accepted).map((r) => r.id),
-    );
-    const links = [...corrections].filter(([, c]) => c.sameGauge);
-    expect(links.length).toBeGreaterThan(0);
-    for (const [id, { sameGauge }] of links)
-      expect(accepted.has(id) && accepted.has(sameGauge!), id).toBe(false);
-  });
-
-  // A superseded relay keeps its published route, so unless it shares the LINZ
-  // record's route, that address would show a rejected station.
-  test("every UHSLC relay a LINZ port supersedes shares its route", async () => {
-    const slugs = JSON.parse(
-      await readFile(join(ROOT, "metadata/slugs.json"), "utf8"),
-    ).tide as Record<string, string>;
-    const relays = quality.filter(
-      (r) => r.redundant?.startsWith("linz/") && r.id.includes("-uhslc_"),
-    );
-    expect(relays.length).toBeGreaterThan(0);
-    for (const relay of relays)
-      expect(slugs[relay.id], relay.id).toBe(slugs[relay.redundant!]);
   });
 
   test("accepts all Kartverket gauges over co-located TICON records", () => {

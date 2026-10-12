@@ -1618,6 +1618,10 @@
       "path": "/tides/nz/auckland/",
       "former_paths": []
     },
+    "auckland-admiralty-basin": {
+      "path": "/tides/nz/auckland-admiralty-basin/",
+      "former_paths": []
+    },
     "auckland-ticon-auckland-auct-nzl-ttw": {
       "path": "/tides/nz/auckland-ticon-auckland-auct-nzl-ttw/",
       "former_paths": [
@@ -3538,12 +3542,14 @@
     },
     "bluff": {
       "path": "/tides/nz/bluff/",
-      "former_paths": [
-        "/tides/nz/bluff-southland/"
-      ]
+      "former_paths": []
     },
     "bluff-islands": {
       "path": "/tides/us/sc/bluff-islands/",
+      "former_paths": []
+    },
+    "bluff-linz-072": {
+      "path": "/tides/nz/bluff-linz-072/",
       "former_paths": []
     },
     "bluff-plantation": {
@@ -3552,6 +3558,10 @@
     },
     "bluff-point": {
       "path": "/tides/us/sc/bluff-point/",
+      "former_paths": []
+    },
+    "bluff-southland": {
+      "path": "/tides/nz/bluff-southland/",
       "former_paths": []
     },
     "bluffton": {
@@ -11980,9 +11990,16 @@
     },
     "gisborne": {
       "path": "/tides/nz/gisborne/",
+      "former_paths": []
+    },
+    "gisborne-linz-078": {
+      "path": "/tides/nz/gisborne-linz-078/",
+      "former_paths": []
+    },
+    "gisborne-ticon-gisborne-078b-nzl-uhslc-rq": {
+      "path": "/tides/nz/gisborne-ticon-gisborne-078b-nzl-uhslc-rq/",
       "former_paths": [
-        "/tides/nz/gisborne-gisborne/",
-        "/tides/nz/gisborne-ticon-gisborne-078b-nzl-uhslc-rq/"
+        "/tides/nz/gisborne-gisborne/"
       ]
     },
     "gisborne-ticon-gisborne-gist-nzl-ttw": {
@@ -19746,6 +19763,10 @@
       "path": "/tides/nz/lyttelton/",
       "former_paths": []
     },
+    "lyttelton-linz-107": {
+      "path": "/tides/nz/lyttelton-linz-107/",
+      "former_paths": []
+    },
     "maasmond-stroommeetpaal": {
       "path": "/tides/nl/maasmond-stroommeetpaal/",
       "former_paths": []
@@ -20478,6 +20499,10 @@
     },
     "marsden-point": {
       "path": "/tides/nz/marsden-point/",
+      "former_paths": []
+    },
+    "marsden-point-linz-079": {
+      "path": "/tides/nz/marsden-point-linz-079/",
       "former_paths": []
     },
     "marseille": {
@@ -22563,16 +22588,20 @@
       "path": "/tides/us/ca/napa-river-at-lincoln-avenue/",
       "former_paths": []
     },
-    "napier": {
-      "path": "/tides/nz/napier/",
-      "former_paths": [
-        "/tides/nz/napier-ruawharo-harbour-te-whanga-o-ruawharo/"
-      ]
-    },
     "napier-hawke-bay": {
       "path": "/tides/nz/napier-hawke-bay/",
       "former_paths": [
         "/tides/nz/napier-hawke-s-bay-region/"
+      ]
+    },
+    "napier-linz-097": {
+      "path": "/tides/nz/napier-linz-097/",
+      "former_paths": []
+    },
+    "napier-ruawharo-harbour-te-whanga-o-ruawharo": {
+      "path": "/tides/nz/napier-ruawharo-harbour-te-whanga-o-ruawharo/",
+      "former_paths": [
+        "/tides/nz/napier/"
       ]
     },
     "naples": {
@@ -22839,6 +22868,10 @@
     },
     "nelson-island": {
       "path": "/tides/us/ak/nelson-island/",
+      "former_paths": []
+    },
+    "nelson-linz-077": {
+      "path": "/tides/nz/nelson-linz-077/",
       "former_paths": []
     },
     "nemuroko": {
@@ -27021,10 +27054,14 @@
       "path": "/tides/us/ak/port-chalmers/",
       "former_paths": []
     },
-    "port-chalmers-otago": {
-      "path": "/tides/nz/port-chalmers-otago/",
+    "port-chalmers-linz-030": {
+      "path": "/tides/nz/port-chalmers-linz-030/",
+      "former_paths": []
+    },
+    "port-chalmers-ticon-port-chalmers-669a-nzl-uhslc-rq": {
+      "path": "/tides/nz/port-chalmers-ticon-port-chalmers-669a-nzl-uhslc-rq/",
       "former_paths": [
-        "/tides/nz/port-chalmers-ticon-port-chalmers-669a-nzl-uhslc-rq/"
+        "/tides/nz/port-chalmers-otago/"
       ]
     },
     "port-chalmers-ticon-port-chalmers-otat-nzl-ttw": {
@@ -27750,9 +27787,7 @@
     },
     "port-taranaki": {
       "path": "/tides/nz/port-taranaki/",
-      "former_paths": [
-        "/tides/nz/taranaki/"
-      ]
+      "former_paths": []
     },
     "port-townsend": {
       "path": "/tides/us/wa/port-townsend/",
@@ -34717,6 +34752,10 @@
       "path": "/tides/nz/tarakohe/",
       "former_paths": []
     },
+    "taranaki": {
+      "path": "/tides/nz/taranaki/",
+      "former_paths": []
+    },
     "taranto": {
       "path": "/tides/it/taranto/",
       "former_paths": []
@@ -34821,15 +34860,19 @@
       "path": "/tides/as/tau-island/",
       "former_paths": []
     },
-    "tauranga": {
-      "path": "/tides/nz/tauranga/",
-      "former_paths": [
-        "/tides/nz/tauranga-mount-maunganui-bay-of-plenty/"
-      ]
-    },
     "tauranga-bay-of-plenty": {
       "path": "/tides/nz/tauranga-bay-of-plenty/",
       "former_paths": []
+    },
+    "tauranga-linz-073": {
+      "path": "/tides/nz/tauranga-linz-073/",
+      "former_paths": []
+    },
+    "tauranga-mount-maunganui-bay-of-plenty": {
+      "path": "/tides/nz/tauranga-mount-maunganui-bay-of-plenty/",
+      "former_paths": [
+        "/tides/nz/tauranga/"
+      ]
     },
     "tavernier-creek": {
       "path": "/tides/us/fl/tavernier-creek/",
@@ -35343,6 +35386,10 @@
     },
     "timaru": {
       "path": "/tides/nz/timaru/",
+      "former_paths": []
+    },
+    "timaru-linz-034": {
+      "path": "/tides/nz/timaru-linz-034/",
       "former_paths": []
     },
     "timbalier-island": {
@@ -37617,12 +37664,18 @@
     },
     "wellington": {
       "path": "/tides/nz/wellington/",
-      "former_paths": [
-        "/tides/nz/wellington-wellington-region/"
-      ]
+      "former_paths": []
+    },
+    "wellington-linz-071": {
+      "path": "/tides/nz/wellington-linz-071/",
+      "former_paths": []
     },
     "wellington-ticon-wellington-wlgt-nzl-ttw": {
       "path": "/tides/nz/wellington-ticon-wellington-wlgt-nzl-ttw/",
+      "former_paths": []
+    },
+    "wellington-wellington-region": {
+      "path": "/tides/nz/wellington-wellington-region/",
       "former_paths": []
     },
     "wells": {
@@ -37823,6 +37876,10 @@
       "path": "/tides/us/ny/west-pond-at-glen-cove-ny/",
       "former_paths": []
     },
+    "west-port": {
+      "path": "/tides/nz/west-port/",
+      "former_paths": []
+    },
     "west-raspberry-island": {
       "path": "/tides/us/ak/west-raspberry-island/",
       "former_paths": []
@@ -37915,9 +37972,7 @@
     },
     "westport-west-coast": {
       "path": "/tides/nz/westport-west-coast/",
-      "former_paths": [
-        "/tides/nz/west-port/"
-      ]
+      "former_paths": []
     },
     "westville": {
       "path": "/tides/us/nj/westville/",

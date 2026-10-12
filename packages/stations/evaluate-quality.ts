@@ -22,7 +22,6 @@ import { readdir, readFile, writeFile } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { DATA_DIR } from "./station.ts";
-import { loadCorrections } from "./metadata.ts";
 import { NODAL_CYCLE_DAYS } from "@slackwater/datums";
 import {
   distance,
@@ -30,7 +29,6 @@ import {
   getSourceSuffix,
   getSourcePriority,
   gaugeKey,
-  sameGaugeRelays,
   coordinatePrecision,
   isDirectAuthoritativeProvider,
   hasQualityIssues,
@@ -932,36 +930,7 @@ async function main() {
   const acceptedIds = stations
     .filter((s) => resultsMap.get(s.id)!.accepted)
     .map((s) => s.id);
-  // A reviewed sameGauge link outranks the code and proximity passes, so its
-  // relays point at the canonical record rather than at each other.
-  const corrections = loadCorrections(
-    await readFile(
-      join(DATA_DIR, "..", "metadata", "corrections.yaml"),
-      "utf8",
-    ),
-  );
-  const relays = sameGaugeRelays(
-    acceptedIds,
-    new Map([...stationMap].map(([id, { source }]) => [id, source.id])),
-    new Map(
-      [...corrections].flatMap(([id, { sameGauge }]) =>
-        sameGauge ? [[id, sameGauge]] : [],
-      ),
-    ),
-  );
-  for (const [id, target] of relays) {
-    if (!resultsMap.get(target)?.accepted) continue;
-    const result = resultsMap.get(id)!;
-    result.accepted = false;
-    result.reason = "duplicate";
-    result.redundant = target;
-  }
-  deduplicateByGauge(
-    acceptedIds.filter((id) => resultsMap.get(id)!.accepted),
-    stationMap,
-    resultsMap,
-    subordinateCounts,
-  );
+  deduplicateByGauge(acceptedIds, stationMap, resultsMap, subordinateCounts);
 
   // 4b: Deduplicate the survivors by proximity and harmonic similarity.
   const survivingIds = acceptedIds.filter((id) => resultsMap.get(id)!.accepted);

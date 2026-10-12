@@ -6,14 +6,19 @@ This database includes station identity, structured location, stable web routes,
 
 ## Sources
 
-- ✅ [**NOAA**](sources/noaa/README.md): National Oceanic and Atmospheric Administration
-  ~3400 stations, mostly in the United States and its territories. Updated monthly via [NOAA's API](https://api.tidesandcurrents.noaa.gov/mdapi/prod/).
+Tide stations, with the number that ship after [quality checks](./quality.json):
 
-- ✅ [**TICON-4**](sources/ticon/README.md): TIdal CONstants based on GESLA-4 sea-level records
-  ~4200+ global stations - ([#16](https://github.com/openwatersio/slackwater-database/pull/16))
+- [**NOAA**](sources/noaa/README.md): US National Oceanic and Atmospheric Administration. 3,487 stations, mostly in the United States and its territories, updated monthly from [NOAA's API](https://api.tidesandcurrents.noaa.gov/mdapi/prod/).
+- [**TICON-4**](sources/ticon/README.md): tidal constants from the GESLA-4 sea-level records. 2,650 stations worldwide.
+- [**LINZ**](sources/linz/README.md): Toitū Te Whenua Land Information New Zealand. 56 New Zealand ports from LINZ's yearly tide-constituent release.
+- [**Kartverket**](sources/kartverket/README.md): the Norwegian Mapping Authority. All 33 of its public harmonic stations in Norway and Svalbard.
+- [**CHS**](sources/chs/README.md): the Canadian Hydrographic Service. Identity and position for 1,047 Canadian tide stations, with no constituents; consumers fetch predictions from CHS at runtime.
 
-- ✅ [**LINZ**](sources/linz/README.md): Toitū Te Whenua Land Information New Zealand
-  56 New Zealand ports from LINZ's published tide constituents. LINZ releases a new set each year, refreshed here by hand.
+Tidal currents:
+
+- [**NOAA currents**](sources/noaa-current/README.md): 856 harmonic and 1,705 subordinate current stations in US waters.
+
+[Rijkswaterstaat](sources/rws/README.md) data is used only to validate the re-fitted phases of Dutch TICON gauges; no stations come from it.
 
 If you know of other public sources of harmonic constituents, please [open an issue](https://github.com/openwatersio/slackwater-database/issues/new) to discuss adding them.
 
@@ -73,7 +78,7 @@ This repo is an npm workspace. Station data lives in [`data/`](./data), and ever
 - [`packages/datums`](./packages/datums) — tidal datum computation and sea-region classification
 - [`packages/harmonic-analysis`](./packages/harmonic-analysis) — GESLA parsing and database policies around `@slackwater/engine` QR fitting; broad minimum-norm SVD fits remain local
 - [`packages/stations`](./packages/stations) — station file I/O, quality filtering, geocoding, the unified catalogue (curated inputs in [`metadata/`](./metadata)), and maintenance scripts (including `evaluate-quality`, which writes [`quality.json`](./quality.json))
-- [`sources/*`](./sources) — one package per data source (NOAA, TICON), each with an `npm run import`
+- [`sources/*`](./sources) — one package per data source, most with an `npm run import`
 
 ## Maintenance
 

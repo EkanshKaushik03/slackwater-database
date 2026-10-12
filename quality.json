@@ -56951,7 +56951,7 @@
   },
   {
     "id": "ticon/bluff-072-nzl-uhslc_fd",
-    "accepted": false,
+    "accepted": true,
     "score": 85,
     "factors": {
       "epoch": 1,
@@ -56961,9 +56961,7 @@
       "amplitude": 1,
       "coverage": 0.026
     },
-    "issues": [],
-    "reason": "duplicate",
-    "redundant": "linz/072"
+    "issues": []
   },
   {
     "id": "ticon/bluff-072a-nzl-uhslc_rq",
@@ -56979,7 +56977,7 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "linz/072"
+    "redundant": "ticon/bluff-072-nzl-uhslc_fd"
   },
   {
     "id": "ticon/boat_cove-rbct-nzl-ttw",
@@ -72393,7 +72391,7 @@
   },
   {
     "id": "ticon/duck_pier_nc-260-usa-uhslc_fd",
-    "accepted": false,
+    "accepted": true,
     "score": 85,
     "factors": {
       "epoch": 1,
@@ -72403,9 +72401,7 @@
       "amplitude": 1,
       "coverage": 0.012
     },
-    "issues": [],
-    "reason": "duplicate",
-    "redundant": "noaa/8651370"
+    "issues": []
   },
   {
     "id": "ticon/duck_pier_nc-260a-usa-uhslc_rq",
@@ -72421,7 +72417,7 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "noaa/8651370"
+    "redundant": "ticon/duck_pier_nc-260-usa-uhslc_fd"
   },
   {
     "id": "ticon/duck-8651370-usa-noaa",
@@ -77569,11 +77565,11 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "linz/078"
+    "redundant": "ticon/gisborne-078b-nzl-uhslc_rq"
   },
   {
     "id": "ticon/gisborne-078b-nzl-uhslc_rq",
-    "accepted": false,
+    "accepted": true,
     "score": 65,
     "factors": {
       "epoch": 0.806,
@@ -77583,9 +77579,7 @@
       "amplitude": 1,
       "coverage": 0
     },
-    "issues": [],
-    "reason": "duplicate",
-    "redundant": "linz/078"
+    "issues": []
   },
   {
     "id": "ticon/gisborne-gist-nzl-ttw",
@@ -85453,7 +85447,7 @@
   },
   {
     "id": "ticon/kahului-059-usa-uhslc_fd",
-    "accepted": false,
+    "accepted": true,
     "score": 85,
     "factors": {
       "epoch": 1,
@@ -85463,9 +85457,7 @@
       "amplitude": 1,
       "coverage": 0
     },
-    "issues": [],
-    "reason": "duplicate",
-    "redundant": "noaa/1615680"
+    "issues": []
   },
   {
     "id": "ticon/kahului-059a-usa-uhslc_rq",
@@ -85481,7 +85473,7 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "noaa/1615680"
+    "redundant": "ticon/kahului-059-usa-uhslc_fd"
   },
   {
     "id": "ticon/kahului-1615680-usa-noaa",
@@ -94728,7 +94720,7 @@
   },
   {
     "id": "ticon/massacre_bay_ak-550a-usa-uhslc_rq",
-    "accepted": false,
+    "accepted": true,
     "score": 63,
     "factors": {
       "epoch": 1,
@@ -94740,9 +94732,7 @@
     },
     "issues": [
       "MHWS (1.89) < MHW (1.945)"
-    ],
-    "reason": "duplicate",
-    "redundant": "noaa/9460150"
+    ]
   },
   {
     "id": "ticon/masset_bc-9910-can-meds",
@@ -106440,7 +106430,7 @@
   },
   {
     "id": "ticon/port_allen-553a-usa-uhslc_rq",
-    "accepted": false,
+    "accepted": true,
     "score": 55,
     "factors": {
       "epoch": 0.425,
@@ -106450,9 +106440,7 @@
       "amplitude": 1,
       "coverage": 0.018
     },
-    "issues": [],
-    "reason": "duplicate",
-    "redundant": "noaa/1611347"
+    "issues": []
   },
   {
     "id": "ticon/port_alma-59690-aus-bom",
@@ -115566,7 +115554,7 @@
   },
   {
     "id": "ticon/santa_barbara_ca-577a-usa-uhslc_rq",
-    "accepted": false,
+    "accepted": true,
     "score": 66,
     "factors": {
       "epoch": 0.895,
@@ -115576,9 +115564,7 @@
       "amplitude": 1,
       "coverage": 0.016
     },
-    "issues": [],
-    "reason": "duplicate",
-    "redundant": "noaa/9411340"
+    "issues": []
   },
   {
     "id": "ticon/santa_barbara-9411340-usa-noaa",
@@ -127765,7 +127751,7 @@
     },
     "issues": [],
     "reason": "duplicate",
-    "redundant": "linz/071"
+    "redundant": "ticon/wellington-071-nzl-uhslc_fd"
   },
   {
     "id": "ticon/wellington-wlgt-nzl-ttw",
@@ -128145,7 +128131,7 @@
   },
   {
     "id": "ticon/west_port-074a-nzl-uhslc_rq",
-    "accepted": false,
+    "accepted": true,
     "score": 47,
     "factors": {
       "epoch": 0.076,
@@ -128155,9 +128141,7 @@
       "amplitude": 1,
       "coverage": 0.038
     },
-    "issues": [],
-    "reason": "duplicate",
-    "redundant": "linz/074"
+    "issues": []
   },
   {
     "id": "ticon/west_ste_modeste-2595-can-meds",
