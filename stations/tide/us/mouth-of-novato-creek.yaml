@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/mouth_of_novato_creek-mou-usa-cm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mouth_of_novato_creek-mou-usa-cm:
+      position: [38.0984, -122.4873]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 47
+        factors:
+          epoch: 0.321
+          recency: 0.98
+          source: 0.525
+          quality: 0
+          amplitude: 1
+          coverage: 0.049

@@ -1,0 +1,24 @@
+# LINZ's analysis files squash place names (`PORTCHALMERS`); these are the
+# names its tide tables print.
+
+name: Ben Gunn Wharf
+sources:
+  - linz/376
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/376:
+      position: [-35, 173.266667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.887
+        issues:
+          - MHHW (2.246) < MHW (2.247)

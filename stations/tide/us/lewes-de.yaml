@@ -1,0 +1,21 @@
+region: US-DE
+sources:
+  - ticon/lewes_de-747a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lewes_de-747a-usa-uhslc_rq:
+      position: [38.782, -75.12]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8557380
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

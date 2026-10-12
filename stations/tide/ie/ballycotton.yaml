@@ -1,0 +1,20 @@
+sources:
+  - ticon/ballycotton-bal-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ballycotton-bal-irl-cmems:
+      position: [51.827801, -8.0007]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ballycotton_harbour-bal-irl-mi_c
+        score: 46
+        factors:
+          epoch: 0.791
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

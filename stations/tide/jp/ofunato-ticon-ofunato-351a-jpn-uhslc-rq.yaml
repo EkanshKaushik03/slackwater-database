@@ -1,0 +1,20 @@
+sources:
+  - ticon/ofunato-351a-jpn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ofunato-351a-jpn-uhslc_rq:
+      position: [39.017, 141.75]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ofunato-351-jpn-uhslc_fd
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.008

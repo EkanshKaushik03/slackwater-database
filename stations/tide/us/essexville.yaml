@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/essexville_mi-9075034-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/essexville_mi-9075034-usa-noaa:
+      position: [43.6417, -83.8467]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 78
+        factors:
+          epoch: 0.909
+          recency: 0.52
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (176.486) > MLW (176.485)
+          - MHWS (176.518) < MHW (176.535)
+          - "Seasonal band (0.129m) is 12.2x the largest tidal constituent M2 (0.011m): the yearly swing exceeds the daily one"

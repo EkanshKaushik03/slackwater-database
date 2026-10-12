@@ -1,0 +1,20 @@
+sources:
+  - ticon/holyhead-hol-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/holyhead-hol-gbr-cmems:
+      position: [53.3167, -4.61667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/holyhead-hol-gbr-bodc
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.008

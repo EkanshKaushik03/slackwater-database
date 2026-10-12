@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1718
+redirect_from:
+  - /currents/us/haro-strait/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1718:
+      position: [48.58871841430664, -123.225830078125]
+      coastline: clear

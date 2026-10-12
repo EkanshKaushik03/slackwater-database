@@ -1,0 +1,18 @@
+sources:
+  - ticon/port_eri_isle_of_man-iom-gbr-bodc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_eri_isle_of_man-iom-gbr-bodc:
+      position: [54.085222, -4.768056]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.98
+          quality: 1
+          amplitude: 1
+          coverage: 0

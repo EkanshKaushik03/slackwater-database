@@ -1,7 +1,23 @@
 import { describe, expect, test } from "vitest";
 import { buildCatalogue, type CatalogueInputs } from "../catalogue.ts";
+import type { StationFile } from "../station-files.ts";
 
 const geocoder = { nearest: () => null, near: () => [] };
+
+const station = (
+  kind: "tide" | "current",
+  country: string,
+  slug: string,
+  sources: string[],
+  extra: Partial<StationFile> = {},
+): StationFile => ({
+  kind,
+  country,
+  slug,
+  file: `stations/${kind}/${country.toLowerCase()}/${slug}.yaml`,
+  sources,
+  ...extra,
+});
 
 function fixtures(): CatalogueInputs {
   return {
@@ -75,38 +91,22 @@ function fixtures(): CatalogueInputs {
         },
       ],
     ]),
-    slugTable: {
-      catalogue: {},
-      tide: {
-        "noaa/9447130": "seattle",
-        "chs-point-atkinson": "point-atkinson",
-      },
-      current: {
-        "noaa/PUG1701": "deception-pass",
-        "chs-malibu-rapids": "malibu-rapids",
-      },
-    },
-    slugTombstones: { tide: {}, current: {} },
-    routeLock: { tide: {}, current: {} },
+    stationFiles: [
+      station("tide", "US", "seattle", ["noaa/9447130"]),
+      station("tide", "CA", "point-atkinson", ["chs-point-atkinson"], {
+        region: "CA-BC",
+      }),
+      station("current", "US", "deception-pass", ["noaa/PUG1701"]),
+      station("current", "CA", "malibu-rapids", ["chs-malibu-rapids"], {
+        region: "CA-BC",
+      }),
+    ],
     geocoder,
   };
 }
 
 describe("buildCatalogue", () => {
-  test.each([undefined, "", "   "])(
-    "rejects a same-gauge merge with reason %j",
-    (reason) => {
-      const input = fixtures();
-      input.tides.push({ ...input.tides[0]!, id: "ticon/seattle" });
-      input.corrections.set("ticon/seattle", {
-        sameGauge: "noaa/9447130",
-        ...(reason !== undefined ? { reason } : {}),
-      });
-      expect(() => buildCatalogue(input)).toThrow(/reason/);
-    },
-  );
-
-  test("a reviewed same-gauge link shares a route and redirects the relay's old URL", () => {
+  test("records in one station share its route and keep its redirects", () => {
     const input = fixtures();
     input.tides[0]!.harmonic_constituents = [
       { name: "M2", amplitude: 1, phase: 10 },
@@ -116,76 +116,39 @@ describe("buildCatalogue", () => {
       id: "ticon/seattle",
       harmonic_constituents: [{ name: "M2", amplitude: 2, phase: 20 }],
     });
-    input.slugTable.tide["ticon/seattle"] = "seattle-relay";
-    input.routeLock.tide["seattle-relay"] = {
-      path: "/tides/us/seattle-relay/",
-      former_paths: ["/tides/us/old-seattle-relay/"],
-    };
-    input.corrections.set("ticon/seattle", {
-      sameGauge: "noaa/9447130",
-      reason: "The relay documents NOAA 9447130 as its originator.",
-    });
+    input.stationFiles[0] = station("tide", "US", "seattle", [
+      "noaa/9447130",
+      "ticon/seattle",
+    ]);
+    input.stationFiles[0].redirect_from = ["/tides/us/seattle-relay/"];
 
     const catalogue = buildCatalogue(input);
     expect(catalogue.routes.tide.find((r) => r.slug === "seattle")).toEqual({
       slug: "seattle",
       station_ids: ["noaa/9447130", "ticon/seattle"],
-      former_paths: [
-        "/tides/us/old-seattle-relay/",
-        "/tides/us/seattle-relay/",
-      ],
+      former_paths: ["/tides/us/seattle-relay/"],
     });
-    expect(catalogue.routes.tide.some((r) => r.slug === "seattle-relay")).toBe(
-      false,
-    );
-    expect(catalogue.stations.map((s) => s.id)).toContain("ticon/seattle");
-    expect(catalogue.stations.map((s) => s.id)).toContain("noaa/9447130");
-    for (const station of input.tides)
+    for (const record of input.tides)
       expect(
-        catalogue.stations.find((s) => s.id === station.id)
+        catalogue.stations.find((s) => s.id === record.id)
           ?.harmonic_constituents,
-      ).toEqual(station.harmonic_constituents);
-    expect(catalogue.formerSlugs.tide["ticon/seattle"]).toEqual([
-      "seattle-relay",
-    ]);
-
-    const rebuilt = buildCatalogue({
-      ...input,
-      slugTable: catalogue.slugTable,
-      formerSlugs: catalogue.formerSlugs,
-    });
-    expect(rebuilt.routes).toEqual(catalogue.routes);
+      ).toEqual(record.harmonic_constituents);
   });
 
-  test.each([
-    ["missing", "noaa/missing"],
-    ["wrong kind", "noaa/PUG1701"],
-    ["self", "ticon/seattle"],
-  ])("rejects a %s same-gauge target", (_label, sameGauge) => {
+  test("a record no station lists gets a slug no station or redirect holds", () => {
     const input = fixtures();
     input.tides.push({ ...input.tides[0]!, id: "ticon/seattle" });
-    input.corrections.set("ticon/seattle", {
-      sameGauge,
-      reason: "Reviewed identity.",
-    });
-    expect(() => buildCatalogue(input)).toThrow(/sameGauge/);
-  });
-
-  test("same-gauge links point directly to the owner, not through another relay", () => {
-    const input = fixtures();
-    input.tides.push(
-      { ...input.tides[0]!, id: "ticon/relay" },
-      { ...input.tides[0]!, id: "ticon/seattle" },
+    input.stationFiles.push(
+      station("tide", "US", "elliott-bay", [], {
+        redirect_from: ["/tides/us/seattle-noaa-9447130/"],
+      }),
     );
-    input.corrections.set("ticon/relay", {
-      sameGauge: "noaa/9447130",
-      reason: "Reviewed identity.",
-    });
-    input.corrections.set("ticon/seattle", {
-      sameGauge: "ticon/relay",
-      reason: "Reviewed identity.",
-    });
-    expect(() => buildCatalogue(input)).toThrow(/sameGauge/);
+    const catalogue = buildCatalogue(input);
+    const slugOf = (id: string) =>
+      catalogue.routes.tide.find(({ station_ids }) => station_ids.includes(id))
+        ?.slug;
+    expect(slugOf("noaa/9447130")).toBe("seattle");
+    expect(slugOf("ticon/seattle")).toBe("seattle-ticon-seattle");
   });
 
   test("combines provider and registry stations with stable routes", () => {
@@ -223,8 +186,6 @@ describe("buildCatalogue", () => {
       id: "chs-point-atkinson",
       published_harmonics: false,
     });
-    expect(catalogue.slugTable.tide["noaa/9447130"]).toBe("seattle");
-    expect(catalogue.slugTombstones).toEqual({ tide: {}, current: {} });
   });
 
   test("rejects a missing station reference with both ids", () => {
@@ -250,30 +211,16 @@ describe("buildCatalogue", () => {
     ]);
   });
 
-  test("an identity-only CHS tide station revives the slug tombstoned for its id", () => {
-    const inputs = fixtures();
-    inputs.slugTombstones = {
-      tide: { "chs-abbotts-harbour": "abbotts-harbour" },
-      current: {},
-    };
-    inputs.tides.push({
-      id: "chs-abbotts-harbour",
-      kind: "tide",
-      name: "Abbotts Harbour",
-      latitude: 43.663818,
-      longitude: -65.824022,
-      timezone: "America/Halifax",
-      country: "Canada",
-      country_code: "CA",
-      type: "reference",
-      harmonic_constituents: [],
+  test("a retired record the provider publishes again rejoins its station", () => {
+    const input = fixtures();
+    input.stationFiles[0] = station("tide", "US", "seattle", [], {
+      retired_sources: ["noaa/9447130"],
     });
-
-    const catalogue = buildCatalogue(inputs);
-    expect(catalogue.slugTable.tide["chs-abbotts-harbour"]).toBe(
-      "abbotts-harbour",
-    );
-    expect(catalogue.slugTombstones.tide).toEqual({});
-    expect(catalogue.formerSlugs.tide["chs-abbotts-harbour"]).toBeUndefined();
+    const catalogue = buildCatalogue(input);
+    expect(
+      catalogue.routes.tide.find(({ station_ids }) =>
+        station_ids.includes("noaa/9447130"),
+      )?.slug,
+    ).toBe("seattle");
   });
 });

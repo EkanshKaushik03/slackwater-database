@@ -1,0 +1,25 @@
+region: US-AK
+sources:
+  - ticon/unalakleet-9468333-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/unalakleet-9468333-usa-noaa:
+      position: [63.871361, -160.7843]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.753
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.009
+        issues:
+          - MLWS (0.995) > MLW (0.843)
+          - MHWS (1.313) < MHW (1.437)
+          - "Superseded source: noaa"
+          - K2 amplitude (0.0213) exceeds S2 (0.0186)

@@ -1,0 +1,18 @@
+sources:
+  - ticon/morlaixvigicruestg_06minute-mor-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/morlaixvigicruestg_06minute-mor-fra-cmems:
+      position: [48.588699, -3.83826]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 55
+        factors:
+          epoch: 0.971
+          recency: 0.97
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.344

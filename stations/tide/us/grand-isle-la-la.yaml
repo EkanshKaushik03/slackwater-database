@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/grand_isle_la-765a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/grand_isle_la-765a-usa-uhslc_rq:
+      position: [29.263, -89.957]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8761724
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (2.052) > MLW (2.017)
+          - MHWS (2.094) < MHW (2.16)

@@ -1,0 +1,18 @@
+sources:
+  - ticon/galetstg_60minute-gal-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/galetstg_60minute-gal-fra-cmems:
+      position: [-20.92, 55.299999]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.94
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.016

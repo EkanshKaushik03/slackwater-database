@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/cocohatchee_river_coco1_t-coco1-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cocohatchee_river_coco1_t-coco1-usa-sfwmd:
+      position: [26.2725, -81.78]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.012
+        issues:
+          - "Seasonal band (0.165m) is 1.0x the largest tidal constituent M2 (0.162m): the yearly swing exceeds the daily one"

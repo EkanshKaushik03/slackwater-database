@@ -1,0 +1,22 @@
+sources:
+  - ticon/norvik-35220-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/norvik-35220-swe-smhi:
+      position: [58.9377, 17.98]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 66
+        factors:
+          epoch: 0.082
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0.088
+        issues:
+          - MLWS (0.125) > MLW (0.12)
+          - "Seasonal band (0.116m) is 13.3x the largest tidal constituent M2 (0.009m): the yearly swing exceeds the daily one"

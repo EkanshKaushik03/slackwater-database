@@ -1,0 +1,9 @@
+region: CA-NU
+sources:
+  - chs-lewis-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-lewis-bay:
+      position: [63.6, -68.075]
+      coastline: unverifiable

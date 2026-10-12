@@ -1,0 +1,20 @@
+sources:
+  - ticon/rmn_gaeta-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_gaeta-rmn-ita-cmems:
+      position: [41.209999, 13.5897]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/gaeta-gae-ita-ispra
+        score: 61
+        factors:
+          epoch: 0.798
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI0303
+redirect_from:
+  - /currents/us/ak/port-mackenzie/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI0303:
+      position: [61.25225, -149.92067]
+      coastline: unverifiable

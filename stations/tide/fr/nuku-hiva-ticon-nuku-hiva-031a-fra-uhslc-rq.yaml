@@ -1,0 +1,20 @@
+sources:
+  - ticon/nuku_hiva-031a-fra-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nuku_hiva-031a-fra-uhslc_rq:
+      position: [-8.93, -140.082]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/nuku_hiva-031-fra-uhslc_fd
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

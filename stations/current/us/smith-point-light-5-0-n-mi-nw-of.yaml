@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/CHB0303
+redirect_from:
+  - /currents/us/va/smith-point-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CHB0303:
+      position: [37.93652, -76.26135]
+      coastline: unverifiable

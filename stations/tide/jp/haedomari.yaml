@@ -1,0 +1,18 @@
+sources:
+  - ticon/haedomari-9008-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/haedomari-9008-jpn-jodc_pahb:
+      position: [33.948267, 130.877067]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.685
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.087

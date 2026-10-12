@@ -1,0 +1,23 @@
+sources:
+  - ticon/alicantetg-ali-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/alicantetg-ali-esp-cmems:
+      position: [38.338291, -0.47786]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/alicante2tg-ali-esp-cmems
+        seasonal_dominant: true
+        score: 51
+        factors:
+          epoch: 0.304
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.076m) is 2.1x the largest tidal constituent K1 (0.036m): the yearly swing exceeds the daily one"

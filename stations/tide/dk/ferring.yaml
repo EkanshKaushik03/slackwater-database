@@ -1,0 +1,18 @@
+sources:
+  - ticon/ferringtg-fer-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ferringtg-fer-dnk-cmems:
+      position: [56.524601, 8.1152]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 47
+        factors:
+          epoch: 0.562
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.344

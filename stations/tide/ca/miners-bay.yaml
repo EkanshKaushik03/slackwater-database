@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-miners-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-miners-bay:
+      position: [48.85, -123.3]
+      coastline: clear

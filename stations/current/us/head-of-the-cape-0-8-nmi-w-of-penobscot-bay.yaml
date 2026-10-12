@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/ACT0546
+redirect_from:
+  - /currents/us/me/head-of-the-cape/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0546:
+      position: [44.32083, -68.84667]
+      coastline: unverifiable

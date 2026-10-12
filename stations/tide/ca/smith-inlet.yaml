@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-smith-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-smith-inlet:
+      position: [51.336, -127.188]
+      coastline: clear

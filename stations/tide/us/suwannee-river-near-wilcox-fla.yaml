@@ -1,0 +1,26 @@
+region: US-FL
+sources:
+  - ticon/suwannee_river_near_wilcox_fla-2323500-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/suwannee_river_near_wilcox_fla-2323500-usa-usgs:
+      position: [29.58968, -82.936513]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.569
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.24
+        issues:
+          - MHHW (1.306) < MHW (1.627)
+          - MHWS (1.295) < MHW (1.627)
+          - MSL (1.251) <= MLW (1.522)
+          - "Seasonal band (0.276m) is 8.0x the largest tidal constituent M2 (0.035m): the yearly swing exceeds the daily one"

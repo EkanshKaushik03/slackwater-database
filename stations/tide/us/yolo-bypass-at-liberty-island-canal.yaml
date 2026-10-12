@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/yolo_bypass_at_liberty_island_canal-b91511-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/yolo_bypass_at_liberty_island_canal-b91511-usa-cdwr:
+      position: [38.326111, -121.693889]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.007
+        issues:
+          - MHHW (1.605) < MHW (1.62)
+          - MHWS (1.553) < MHW (1.62)
+          - MSL (1.492) <= MLW (1.524)
+          - "Seasonal band (0.378m) is 7.2x the largest tidal constituent M2 (0.053m): the yearly swing exceeds the daily one"

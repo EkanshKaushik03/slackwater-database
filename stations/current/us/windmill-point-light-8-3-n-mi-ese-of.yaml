@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4726
+redirect_from:
+  - /currents/us/va/windmill-point-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4726:
+      position: [37.57667, -76.06333]
+      coastline: unverifiable

@@ -1,0 +1,20 @@
+sources:
+  - ticon/ajacciotg_60minute-aja-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ajacciotg_60minute-aja-fra-cmems:
+      position: [41.922699, 8.7629]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ajaccio_aspretto-300-fra-refmar
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,21 @@
+region: CA-NL
+sources:
+  - ticon/holyrood_bay-925-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/holyrood_bay-925-can-meds:
+      position: [47.4, -53.14]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 94
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.736
+        issues:
+          - MHHW (0.335) < MHW (0.339)

@@ -1,0 +1,18 @@
+sources:
+  - ticon/ishinomaki-2003-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ishinomaki-2003-jpn-jodc_pahb:
+      position: [38.40805, 141.26695]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.631
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.484

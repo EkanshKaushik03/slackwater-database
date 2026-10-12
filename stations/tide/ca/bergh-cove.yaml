@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-bergh-cove
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-bergh-cove:
+      position: [50.537, -127.624]
+      coastline: clear

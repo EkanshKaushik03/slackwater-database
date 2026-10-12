@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1742
+redirect_from:
+  - /currents/us/wa/cattle-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1742:
+      position: [48.43436813354492, -122.94660949707031]
+      coastline: clear

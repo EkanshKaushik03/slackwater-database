@@ -1,0 +1,22 @@
+region: US-WA
+sources:
+  - ticon/westport-9441102-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/westport-9441102-usa-noaa:
+      position: [46.90431, -124.105083]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

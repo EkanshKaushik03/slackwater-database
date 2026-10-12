@@ -1,0 +1,20 @@
+sources:
+  - ticon/teignbridgepiertg-tei-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/teignbridgepiertg-tei-gbr-cmems:
+      position: [50.54388, -3.49213]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/teignmouth_pier-tnp-gbr-cco
+        score: 50
+        factors:
+          epoch: 0.3
+          recency: 0.88
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

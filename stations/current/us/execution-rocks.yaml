@@ -1,0 +1,9 @@
+region: US-NY
+sources:
+  - noaa/LIS1036
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1036:
+      position: [40.87325, -73.7334]
+      coastline: unverifiable

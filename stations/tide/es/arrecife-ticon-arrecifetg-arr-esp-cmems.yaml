@@ -1,0 +1,18 @@
+sources:
+  - ticon/arrecifetg-arr-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/arrecifetg-arr-esp-cmems:
+      position: [28.966999, -13.53]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.93
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.011

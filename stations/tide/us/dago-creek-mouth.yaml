@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9464512
+redirect_from:
+  - /tides/us/dago-creek-mouth/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9464512:
+      position: [57.61479949951172, -157.60069274902344]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1

@@ -1,0 +1,25 @@
+sources:
+  - ticon/hamina-ham-fin-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hamina-ham-fin-cmems:
+      position: [60.562801, 27.179199]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hamina_pitajansaari-134254-fin-fmi
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.006
+        issues:
+          - MLWS (0.026) > MLW (0.012)
+          - MHWS (0.056) < MHW (0.059)
+          - "Seasonal band (0.124m) is 4.9x the largest tidal constituent K1 (0.025m): the yearly swing exceeds the daily one"

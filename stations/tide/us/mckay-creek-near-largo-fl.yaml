@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/mckay_creek_near_largo_fl-2309110-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mckay_creek_near_largo_fl-2309110-usa-usgs:
+      position: [27.907522, -82.81677]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.082
+        issues:
+          - "Seasonal band (0.060m) is 1.2x the largest tidal constituent M2 (0.051m): the yearly swing exceeds the daily one"

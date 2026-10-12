@@ -1,0 +1,21 @@
+region: US-NY
+sources:
+  - ticon/fort_hamilton_new_york_2-8517942-usa-da_sat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fort_hamilton_new_york_2-8517942-usa-da_sat:
+      position: [40.606667, -74.035]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/fort_hamilton_new_york_1-8517942-usa-da_sat
+        score: 39
+        factors:
+          epoch: 0.059
+          recency: 0.27
+          source: 0
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-glendale-cove
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-glendale-cove:
+      position: [50.674293, -125.736856]
+      coastline: clear

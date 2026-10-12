@@ -1,0 +1,20 @@
+sources:
+  - ticon/thevenard-62000-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/thevenard-62000-aus-bom:
+      position: [-32.1489, 133.6413]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/thevenard-128-aus-uhslc_fd
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

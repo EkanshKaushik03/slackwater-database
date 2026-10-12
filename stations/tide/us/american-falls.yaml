@@ -1,0 +1,22 @@
+region: US-NY
+sources:
+  - ticon/american_falls_ny-9063009-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/american_falls_ny-9063009-usa-noaa:
+      position: [43.08106, -79.061361]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (170.409) > MLW (170.384)
+          - MHWS (170.435) < MHW (170.439)

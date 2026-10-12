@@ -1,0 +1,22 @@
+name: Foulweather Bluff
+context: Hood Canal Entrance
+region: US-WA
+cities: [Port Ludlow]
+sources:
+  - noaa/9445016
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9445016:
+      position: [47.9267, -122.617]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.094

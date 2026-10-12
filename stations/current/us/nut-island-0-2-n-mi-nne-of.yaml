@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1421
+redirect_from:
+  - /currents/us/ma/nut-island-0-2-nm-nne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1421:
+      position: [42.283, -70.95533]
+      coastline: unverifiable

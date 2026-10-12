@@ -1,0 +1,9 @@
+region: US-WA
+sources:
+  - noaa/PCT2286
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2286:
+      position: [48.75783157348633, -122.98033142089844]
+      coastline: clear

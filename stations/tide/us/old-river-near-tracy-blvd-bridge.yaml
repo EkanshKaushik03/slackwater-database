@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/old_river_near_tracy_blvd_bridge-b95380-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_near_tracy_blvd_bridge-b95380-usa-cdwr:
+      position: [37.805, -121.449444]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.033
+        issues:
+          - MLWS (1.108) > MLW (1.104)
+          - MHWS (1.542) < MHW (1.554)

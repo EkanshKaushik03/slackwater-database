@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5766
+redirect_from:
+  - /currents/us/va/point-lookout-1-0-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5766:
+      position: [38.02083, -76.32417]
+      coastline: unverifiable

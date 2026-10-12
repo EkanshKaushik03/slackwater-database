@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3016
+redirect_from:
+  - /currents/us/ny/old-field-point-0-9-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3016:
+      position: [40.9745, -73.09667]
+      coastline: unverifiable

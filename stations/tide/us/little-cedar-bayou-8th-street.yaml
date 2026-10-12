@@ -1,0 +1,22 @@
+region: US-TX
+sources:
+  - ticon/littlecedarbayou_8thstreet-lit-usa-hct
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/littlecedarbayou_8thstreet-lit-usa-hct:
+      position: [29.65, -95.0272]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 48
+        factors:
+          epoch: 0.591
+          recency: 0.98
+          source: 0.535
+          quality: 0
+          amplitude: 0.75
+          coverage: 0.068
+        issues:
+          - MHWS (0.411) < MHW (0.479)
+          - K2 amplitude (0.0106) exceeds S2 (0.0083)

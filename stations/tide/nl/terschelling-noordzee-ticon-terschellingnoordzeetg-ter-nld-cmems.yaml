@@ -1,0 +1,20 @@
+sources:
+  - ticon/terschellingnoordzeetg-ter-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/terschellingnoordzeetg-ter-nld-cmems:
+      position: [53.4436, 5.3334]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/terschelling_noordzee-terslnze-nld-rws
+        score: 42
+        factors:
+          epoch: 0.586
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.003

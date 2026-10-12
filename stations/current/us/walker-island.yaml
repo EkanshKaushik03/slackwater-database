@@ -1,0 +1,9 @@
+region: US-WA
+sources:
+  - noaa/PCT1251
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1251:
+      position: [46.14117, -123.04583]
+      coastline: unverifiable

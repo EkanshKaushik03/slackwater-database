@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-sooke-basin
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sooke-basin:
+      position: [48.3742, -123.6818]
+      coastline: clear

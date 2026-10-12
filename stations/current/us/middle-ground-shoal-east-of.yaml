@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI1210
+redirect_from:
+  - /currents/us/ak/middle-ground-shoal/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI1210:
+      position: [60.88697, -151.23268]
+      coastline: unverifiable

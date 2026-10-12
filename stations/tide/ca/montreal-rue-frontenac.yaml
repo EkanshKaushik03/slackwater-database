@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-montreal-rue-frontenac
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-montreal-rue-frontenac:
+      position: [45.528667, -73.5425]
+      coastline: unverifiable

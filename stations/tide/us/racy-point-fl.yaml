@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/racy_point-8720625-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/racy_point-8720625-usa-noaa:
+      position: [29.8017, -81.5483]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.874
+          recency: 0.93
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

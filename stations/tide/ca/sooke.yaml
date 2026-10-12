@@ -1,0 +1,30 @@
+name: Sooke
+context: Strait of Juan de Fuca
+region: CA-BC
+aliases: [sooke basin, sooke harbour]
+position: [48.37, -123.726]
+provider: chs
+sources:
+  - chs-sooke
+  - ticon/sooke_bc-7020-can-meds
+redirect_from:
+  - /tides/ca/bc/sooke-bc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sooke:
+      position: [48.37, -123.726]
+      coastline: clear
+    ticon/sooke_bc-7020-can-meds:
+      position: [48.37, -123.73]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.85
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.074

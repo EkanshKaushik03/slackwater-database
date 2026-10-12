@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/LIS1021
+redirect_from:
+  - /currents/us/ct/branford-reef/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1021:
+      position: [41.14443, -72.82798]
+      coastline: unverifiable

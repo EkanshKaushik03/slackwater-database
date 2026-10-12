@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/venice_island-vne-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/venice_island-vne-usa-cdwr:
+      position: [38.05, -121.496]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9415105
+        score: 58
+        factors:
+          epoch: 0.934
+          recency: 0.76
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (0.177) > MLW (0.156)

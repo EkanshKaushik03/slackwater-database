@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1204
+redirect_from:
+  - /currents/us/ca/alcatraz-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1204:
+      position: [37.81425, -122.432]
+      coastline: unverifiable

@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/san_joaquin_r_at_prisoners_pt_near_termino-pri-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_joaquin_r_at_prisoners_pt_near_termino-pri-usa-cdwr:
+      position: [38.0594, -121.5572]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/san_joaquin_r_a_prisoners_pt_nr_terminous_ca-11313460-usa-usgs
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (6.293) > MLW (6.281)
+          - MHWS (6.977) < MHW (6.991)

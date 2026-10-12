@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-hickmans-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-hickmans-harbour:
+      position: [48.103238, -53.743636]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0402
+redirect_from:
+  - /currents/us/ak/snow-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0402:
+      position: [56.25633, -132.9405]
+      coastline: unverifiable

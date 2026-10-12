@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0691
+redirect_from:
+  - /currents/us/ca/point-san-quentin-1-7-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0691:
+      position: [37.95, -122.44]
+      coastline: unverifiable

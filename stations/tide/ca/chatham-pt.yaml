@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-chatham-pt
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-chatham-pt:
+      position: [50.331, -125.442]
+      coastline: clear

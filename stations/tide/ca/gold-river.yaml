@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-gold-river
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-gold-river:
+      position: [49.679, -126.126]
+      coastline: clear

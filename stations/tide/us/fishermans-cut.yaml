@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/fishermans_cut-b95050q-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fishermans_cut-b95050q-usa-cdwr:
+      position: [38.0656, -121.6479]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.518
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.028
+        issues:
+          - MLWS (0.992) > MLW (0.952)
+          - MHWS (1.632) < MHW (1.633)

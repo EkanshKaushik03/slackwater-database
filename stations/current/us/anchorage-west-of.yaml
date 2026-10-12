@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5141
+redirect_from:
+  - /currents/us/ak/anchorage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5141:
+      position: [61.22783, -149.94833]
+      coastline: unverifiable

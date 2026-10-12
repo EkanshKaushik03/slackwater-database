@@ -1,0 +1,18 @@
+sources:
+  - ticon/port_alma-59690-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_alma-59690-aus-bom:
+      position: [-23.585, 150.8667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 95
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.755

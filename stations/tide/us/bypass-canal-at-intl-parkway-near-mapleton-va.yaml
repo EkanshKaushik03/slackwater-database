@@ -1,0 +1,19 @@
+region: US-VA
+sources:
+  - ticon/bypass_canal_at_intl_parkway_near_mapleton_va-2042928-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bypass_canal_at_intl_parkway_near_mapleton_va-2042928-usa-usgs:
+      position: [36.815778, -76.060917]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.385
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.057

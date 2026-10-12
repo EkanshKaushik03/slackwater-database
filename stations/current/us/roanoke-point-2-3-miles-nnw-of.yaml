@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2886
+redirect_from:
+  - /currents/us/ny/roanoke-point-2-0-nm-nnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2886:
+      position: [41.01533, -72.71617]
+      coastline: unverifiable

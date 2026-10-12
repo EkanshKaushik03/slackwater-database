@@ -1,0 +1,21 @@
+sources:
+  - ticon/ioc_sile-ioc-tur-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ioc_sile-ioc-tur-cmems:
+      position: [41.179832, 29.603949]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 47
+        factors:
+          epoch: 0.156
+          recency: 0.97
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.888
+        issues:
+          - "Seasonal band (0.045m) is 2.4x the largest tidal constituent M2 (0.019m): the yearly swing exceeds the daily one"

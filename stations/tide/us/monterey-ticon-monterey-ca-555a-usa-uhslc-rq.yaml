@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/monterey_ca-555a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/ca/monterey-ca/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/monterey_ca-555a-usa-uhslc_rq:
+      position: [36.605, -121.888]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

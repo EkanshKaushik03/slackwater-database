@@ -1,0 +1,26 @@
+region: US-MI
+sources:
+  - ticon/fort_gratiot_mi-9014098-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fort_gratiot_mi-9014098-usa-noaa:
+      position: [43.0069, -82.4225]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - MLWS (176.407) > MLW (176.398)
+          - MHWS (176.429) < MHW (176.45)
+          - "P1 amplitude (0.0025) exceeds K1 (0.0022): physically impossible"
+          - "Seasonal band (0.150m) is 21.6x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

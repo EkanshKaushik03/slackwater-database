@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1426
+redirect_from:
+  - /currents/us/ma/peddocks-island-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1426:
+      position: [42.28717, -70.96533]
+      coastline: unverifiable

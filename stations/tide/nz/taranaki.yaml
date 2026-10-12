@@ -1,0 +1,20 @@
+sources:
+  - ticon/taranaki-076a-nzl-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/taranaki-076a-nzl-uhslc_rq:
+      position: [-39.05, 174.033]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: linz/076
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

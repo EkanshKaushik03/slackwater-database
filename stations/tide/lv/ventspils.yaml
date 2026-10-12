@@ -1,0 +1,23 @@
+sources:
+  - ticon/ventspils-ven-lva-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ventspils-ven-lva-cmems:
+      position: [57.400002, 21.549999]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 50
+        factors:
+          epoch: 0.247
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (0.195) > MLW (0.181)
+          - MHWS (0.209) < MHW (0.214)
+          - "Seasonal band (0.080m) is 12.2x the largest tidal constituent K1 (0.007m): the yearly swing exceeds the daily one"

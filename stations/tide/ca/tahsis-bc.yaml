@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/tahsis_bc-8658-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tahsis_bc-8658-can-meds:
+      position: [49.91, -126.66]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.313

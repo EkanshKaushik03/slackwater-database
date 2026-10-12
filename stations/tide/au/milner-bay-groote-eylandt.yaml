@@ -1,0 +1,21 @@
+sources:
+  - ticon/milner_bay_groote_eylandt-63511-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/milner_bay_groote_eylandt-63511-aus-bom:
+      position: [-13.8601, 136.4156]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (1.126) > MLW (0.935)
+          - MHWS (1.312) < MHW (1.485)

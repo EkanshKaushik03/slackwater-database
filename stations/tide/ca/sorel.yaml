@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-sorel
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sorel:
+      position: [46.047167, -73.115667]
+      coastline: unverifiable

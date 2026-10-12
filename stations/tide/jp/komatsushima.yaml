@@ -1,0 +1,18 @@
+sources:
+  - ticon/komatsushima-ma36-jpn-jodc_jma
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/komatsushima-ma36-jpn-jodc_jma:
+      position: [34.009167, 134.587783]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 91
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.929
+          quality: 1
+          amplitude: 1
+          coverage: 0.529

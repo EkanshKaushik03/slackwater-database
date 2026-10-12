@@ -1,0 +1,11 @@
+region: US-RI
+sources:
+  - noaa/ACT2136
+redirect_from:
+  - /currents/us/ri/gould-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2136:
+      position: [41.525, -71.33667]
+      coastline: unverifiable

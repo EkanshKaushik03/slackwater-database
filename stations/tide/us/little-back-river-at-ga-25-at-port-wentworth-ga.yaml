@@ -1,0 +1,23 @@
+region: US-GA
+sources:
+  - ticon/little_back_river_at_ga_25_at_port_wentworth_ga-21989792-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/little_back_river_at_ga_25_at_port_wentworth_ga-21989792-usa-usgs:
+      position: [32.165833, -81.13]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8669415
+        score: 74
+        factors:
+          epoch: 0.858
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (-0.718) > MLW (-0.795)

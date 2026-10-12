@@ -1,0 +1,22 @@
+region: US-MS
+sources:
+  - ticon/biloxi_bay_at_point_cadet_harbor_at_biloxi_ms-302318088512600-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/biloxi_bay_at_point_cadet_harbor_at_biloxi_ms-302318088512600-usa-usgs:
+      position: [30.388333, -88.857222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - MLWS (0.126) > MLW (0.078)
+          - MHWS (0.248) < MHW (0.312)

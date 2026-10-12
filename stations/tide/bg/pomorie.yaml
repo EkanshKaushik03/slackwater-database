@@ -1,0 +1,22 @@
+sources:
+  - ticon/pomorie-pom-bgr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pomorie-pom-bgr-cmems:
+      position: [42.550999, 27.639]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 42
+        factors:
+          epoch: 0.396
+          recency: 0.92
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.275
+        issues:
+          - MLWS (0.088) > MLW (0.084)
+          - "Seasonal band (0.102m) is 6.5x the largest tidal constituent K1 (0.016m): the yearly swing exceeds the daily one"

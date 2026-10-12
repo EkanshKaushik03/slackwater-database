@@ -1,0 +1,18 @@
+sources:
+  - ticon/port_douglas-59040-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_douglas-59040-aus-bom:
+      position: [-16.4833, 145.4667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 97
+        factors:
+          epoch: 1
+          recency: 0.87
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 1

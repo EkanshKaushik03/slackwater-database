@@ -1,0 +1,20 @@
+sources:
+  - ticon/belize-781a-blz-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/belize-781a-blz-uhslc_rq:
+      position: [17.5, -88.183]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/TEC5647
+        score: 47
+        factors:
+          epoch: 0.202
+          recency: 0.41
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1108
+redirect_from:
+  - /currents/us/ma/lovell-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1108:
+      position: [42.35498, -70.9319]
+      coastline: unverifiable

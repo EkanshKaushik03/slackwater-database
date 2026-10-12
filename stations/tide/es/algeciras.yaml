@@ -1,0 +1,18 @@
+sources:
+  - ticon/algeciras-alge-esp-ieo
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/algeciras-alge-esp-ieo:
+      position: [36.117, -5.4333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.899
+          quality: 1
+          amplitude: 1
+          coverage: 0.147

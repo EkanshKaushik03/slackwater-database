@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0816
+redirect_from:
+  - /currents/us/ca/entrance-benicia-ca/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0816:
+      position: [38.12117, -122.0675]
+      coastline: unverifiable

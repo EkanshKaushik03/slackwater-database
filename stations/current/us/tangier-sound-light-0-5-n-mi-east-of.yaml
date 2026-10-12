@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5641
+redirect_from:
+  - /currents/us/va/tangier-sound-light-0-5-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5641:
+      position: [37.7875, -75.96383]
+      coastline: unverifiable

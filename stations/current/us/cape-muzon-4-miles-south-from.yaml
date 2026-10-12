@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT2621
+redirect_from:
+  - /currents/us/ak/cape-muzon/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2621:
+      position: [54.6, -132.68333]
+      coastline: unverifiable

@@ -1,0 +1,18 @@
+sources:
+  - ticon/fishermans_landing-h052003b-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fishermans_landing-h052003b-aus-bom:
+      position: [-23.78, 151.17]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 0.983
+          recency: 0.97
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.201

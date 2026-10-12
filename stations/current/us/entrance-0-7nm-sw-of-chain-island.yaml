@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1330
+redirect_from:
+  - /currents/us/ca/entrance/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1330:
+      position: [38.05847, -121.8712]
+      coastline: unverifiable

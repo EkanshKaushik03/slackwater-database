@@ -1,0 +1,22 @@
+# LINZ's analysis files squash place names (`PORTCHALMERS`); these are the
+# names its tide tables print.
+
+name: Dog Island
+sources:
+  - linz/353
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/353:
+      position: [-46.65, 168.416667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 0.913
+          recency: 0.96
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.151

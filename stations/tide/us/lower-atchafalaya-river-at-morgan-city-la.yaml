@@ -1,0 +1,26 @@
+region: US-LA
+sources:
+  - ticon/lower_atchafalaya_river_at_morgan_city_la-7381600-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lower_atchafalaya_river_at_morgan_city_la-7381600-usa-usgs:
+      position: [29.692848, -91.211951]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.075
+        issues:
+          - MHHW (1.267) < MHW (1.391)
+          - MHWS (1.223) < MHW (1.391)
+          - MSL (1.188) <= MLW (1.334)
+          - "Seasonal band (0.416m) is 10.1x the largest tidal constituent K1 (0.041m): the yearly swing exceeds the daily one"

@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9450192
+redirect_from:
+  - /tides/ca/bc/hidden-inter-entrance/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9450192:
+      position: [54.94369888305664, -130.33580017089844]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.48

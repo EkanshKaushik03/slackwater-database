@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0712
+redirect_from:
+  - /currents/us/ak/pennock-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0712:
+      position: [55.31227, -131.59635]
+      coastline: unverifiable

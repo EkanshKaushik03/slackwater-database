@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/FEB1108
+redirect_from:
+  - /currents/us/fl/south-jetty/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/FEB1108:
+      position: [30.70693, -81.39861]
+      coastline: unverifiable

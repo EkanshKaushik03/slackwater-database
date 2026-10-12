@@ -1,0 +1,20 @@
+sources:
+  - ticon/darwin-63230-aus-bom
+redirect_from:
+  - /tides/au/darwin-northern-territory/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/darwin-63230-aus-bom:
+      position: [-12.4718, 130.8459]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

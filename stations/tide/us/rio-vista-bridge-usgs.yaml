@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/rio_vista_bridge_usgs-srv-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rio_vista_bridge_usgs-srv-usa-cdwr:
+      position: [38.16, -121.686]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sacramento_river_at_rio_vista_bridge-b91212-usa-cdwr
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.022) > MLW (1.021)

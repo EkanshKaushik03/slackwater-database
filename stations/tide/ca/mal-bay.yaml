@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-mal-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-mal-bay:
+      position: [48.620111, -64.199972]
+      coastline: unverifiable

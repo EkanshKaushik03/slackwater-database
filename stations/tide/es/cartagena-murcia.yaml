@@ -1,0 +1,21 @@
+sources:
+  - ticon/cartagenatg-car-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cartagenatg-car-esp-cmems:
+      position: [37.59668, -0.97383]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 51
+        factors:
+          epoch: 0.304
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.076m) is 1.7x the largest tidal constituent M2 (0.044m): the yearly swing exceeds the daily one"

@@ -1,0 +1,20 @@
+sources:
+  - linz/210
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/210:
+      position: [-36.933333, 173.866667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 96
+        factors:
+          epoch: 0.806
+          recency: 0.97
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHHW (3.967) < MHW (3.97)

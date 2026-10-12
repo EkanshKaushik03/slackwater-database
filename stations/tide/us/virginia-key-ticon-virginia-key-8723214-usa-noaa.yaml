@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/virginia_key-8723214-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/virginia_key-8723214-usa-noaa:
+      position: [25.731667, -80.161667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - "Superseded source: noaa"

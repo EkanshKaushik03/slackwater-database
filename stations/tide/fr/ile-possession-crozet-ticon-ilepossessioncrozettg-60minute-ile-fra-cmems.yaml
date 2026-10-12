@@ -1,0 +1,20 @@
+sources:
+  - ticon/ilepossessioncrozettg_60minute-ile-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ilepossessioncrozettg_60minute-ile-fra-cmems:
+      position: [-46.425678, 51.862862]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ile_possession_crozet-173-fra-refmar
+        score: 48
+        factors:
+          epoch: 0.937
+          recency: 0.87
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

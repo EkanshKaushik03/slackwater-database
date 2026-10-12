@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4921
+redirect_from:
+  - /currents/us/md/plum-point-2-1-nm-nne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4921:
+      position: [38.645, -76.48717]
+      coastline: unverifiable

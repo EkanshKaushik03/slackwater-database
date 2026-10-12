@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-ladysmith
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-ladysmith:
+      position: [48.99895, -123.815316]
+      coastline: clear

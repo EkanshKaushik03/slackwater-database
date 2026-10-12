@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-becancour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-becancour:
+      position: [46.400333, -72.3795]
+      coastline: unverifiable

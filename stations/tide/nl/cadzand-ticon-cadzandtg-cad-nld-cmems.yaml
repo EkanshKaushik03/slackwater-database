@@ -1,0 +1,20 @@
+sources:
+  - ticon/cadzandtg-cad-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cadzandtg-cad-nld-cmems:
+      position: [51.380001, 3.376]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cadzand-cadzd-nld-rws
+        score: 42
+        factors:
+          epoch: 0.587
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.002

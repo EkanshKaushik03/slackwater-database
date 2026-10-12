@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/COD0910
+redirect_from:
+  - /currents/us/ma/north-end/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COD0910:
+      position: [41.52297, -70.693]
+      coastline: unverifiable

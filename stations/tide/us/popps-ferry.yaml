@@ -1,0 +1,24 @@
+region: US-MS
+sources:
+  - ticon/popps_ferry-8744671-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/popps_ferry-8744671-usa-noaa:
+      position: [30.4133, -88.975]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/back_bay_of_biloxi_near_biloxi_miss-2481270-usa-usgs
+        score: 65
+        factors:
+          epoch: 0.189
+          recency: 0.57
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.006
+        issues:
+          - MLWS (0.79) > MLW (0.699)
+          - MHWS (0.948) < MHW (1.041)

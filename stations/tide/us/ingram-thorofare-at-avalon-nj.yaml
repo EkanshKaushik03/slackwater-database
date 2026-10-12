@@ -1,0 +1,19 @@
+region: US-NJ
+sources:
+  - ticon/ingram_thorofare_at_avalon_nj-1411355-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ingram_thorofare_at_avalon_nj-1411355-usa-usgs:
+      position: [39.108611, -74.741944]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.007

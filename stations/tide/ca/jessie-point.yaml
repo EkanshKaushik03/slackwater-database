@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-jessie-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-jessie-point:
+      position: [50.951, -126.812]
+      coastline: clear

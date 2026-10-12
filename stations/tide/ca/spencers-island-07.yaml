@@ -1,0 +1,19 @@
+region: CA-NS
+sources:
+  - ticon/spencers_island-242-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/spencers_island-242-can-meds:
+      position: [45.33, -64.7]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.82
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.142

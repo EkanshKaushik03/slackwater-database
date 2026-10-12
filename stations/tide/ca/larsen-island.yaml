@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-larsen-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-larsen-island:
+      position: [53.619, -130.574]
+      coastline: unverifiable

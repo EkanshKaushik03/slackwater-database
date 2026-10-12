@@ -1,0 +1,22 @@
+region: US-NC
+sources:
+  - ticon/roanoke_river_at_nc_45_nr_westover_nc-208114150-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/roanoke_river_at_nc_45_nr_westover_nc-208114150-usa-usgs:
+      position: [35.915, -76.722778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 88
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.849
+        issues:
+          - "Seasonal band (0.088m) is 4.8x the largest tidal constituent M2 (0.018m): the yearly swing exceeds the daily one"

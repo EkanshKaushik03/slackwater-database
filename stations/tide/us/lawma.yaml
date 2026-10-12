@@ -1,0 +1,22 @@
+# A station's own acronym, which a shouting name would recase.
+
+name: LAWMA
+region: US-LA
+sources:
+  - noaa/8764227
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8764227:
+      position: [29.449600219726562, -91.33809661865234]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

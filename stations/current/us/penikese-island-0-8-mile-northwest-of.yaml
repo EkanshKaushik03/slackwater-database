@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1936
+redirect_from:
+  - /currents/us/ma/penikese-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1936:
+      position: [41.465, -70.93667]
+      coastline: unverifiable

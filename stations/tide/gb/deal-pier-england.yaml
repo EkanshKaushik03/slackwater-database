@@ -1,0 +1,20 @@
+sources:
+  - ticon/dealpiertg-dea-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dealpiertg-dea-gbr-cmems:
+      position: [51.223793, 1.409259]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/deal_pier-dlp-gbr-cco
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

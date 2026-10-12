@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/kb0201
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/kb0201:
+      position: [30.71049, -81.45926]
+      coastline: unverifiable

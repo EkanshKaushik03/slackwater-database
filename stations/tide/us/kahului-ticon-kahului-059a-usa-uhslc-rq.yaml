@@ -1,0 +1,21 @@
+region: US-HI
+sources:
+  - ticon/kahului-059a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kahului-059a-usa-uhslc_rq:
+      position: [20.9, -156.467]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/kahului-059-usa-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

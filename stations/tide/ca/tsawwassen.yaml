@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-tsawwassen
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-tsawwassen:
+      position: [49.00677, -123.12933]
+      coastline: clear

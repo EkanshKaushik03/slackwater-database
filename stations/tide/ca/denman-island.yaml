@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-denman-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-denman-island:
+      position: [49.53448, -124.8209]
+      coastline: clear

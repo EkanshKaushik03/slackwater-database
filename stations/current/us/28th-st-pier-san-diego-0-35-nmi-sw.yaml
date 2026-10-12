@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0101
+redirect_from:
+  - /currents/us/ca/28th-st-pier-san-diego-0-35-nm-sw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0101:
+      position: [32.68283, -117.14283]
+      coastline: unverifiable

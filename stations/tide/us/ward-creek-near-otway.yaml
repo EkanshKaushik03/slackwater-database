@@ -1,0 +1,19 @@
+region: US-NC
+sources:
+  - ticon/wardcreek_nearotway-war-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wardcreek_nearotway-war-usa-ncdem:
+      position: [34.78085, -76.574081]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.148
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.067

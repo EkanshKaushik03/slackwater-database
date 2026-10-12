@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-price-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-price-island:
+      position: [52.278, -128.675]
+      coastline: unverifiable

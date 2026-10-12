@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/liberty_island_at_approx_cntr_s_end-lib-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/liberty_island_at_approx_cntr_s_end-lib-usa-cdwr:
+      position: [38.2421, -121.6849]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cache_slough_a_s_liberty_island_nr_rio_vista_ca-11455315-usa-usgs
+        score: 57
+        factors:
+          epoch: 0.775
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLW (3.382) < MLLW (3.412)
+          - MLWS (3.451) > MLW (3.382)

@@ -1,0 +1,22 @@
+region: US-NY
+sources:
+  - ticon/haverstraw_bay-8518924-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/haverstraw_bay-8518924-usa-noaa:
+      position: [41.2183, -73.9633]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.164
+          recency: 0.58
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

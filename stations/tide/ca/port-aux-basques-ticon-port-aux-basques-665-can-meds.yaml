@@ -1,0 +1,21 @@
+region: CA-NL
+sources:
+  - ticon/port_aux_basques-665-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_aux_basques-665-can-meds:
+      position: [47.57, -59.13]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_aux_basques-273-can-uhslc_fd
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.008

@@ -1,0 +1,18 @@
+sources:
+  - ticon/point_richards_corio_bay-60757-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/point_richards_corio_bay-60757-aus-bom:
+      position: [-38.1, 144.65]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.279

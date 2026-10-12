@@ -1,0 +1,7 @@
+# Must match `source.name` on every record this source writes.
+name: Toitū Te Whenua Land Information New Zealand
+# A national hydrographic office: its records win duplicates against relays.
+authoritative: true
+# LINZ asks for this statement on adapted data, in writing, never its logo.
+# Keep in step with the README's Attribution section.
+credit: This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence

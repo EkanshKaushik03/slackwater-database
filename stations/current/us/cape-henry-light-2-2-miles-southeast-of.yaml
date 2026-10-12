@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4501
+redirect_from:
+  - /currents/us/va/cape-henry-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4501:
+      position: [36.89833, -75.97833]
+      coastline: unverifiable

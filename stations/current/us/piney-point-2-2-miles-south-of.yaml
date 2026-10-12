@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5806
+redirect_from:
+  - /currents/us/md/piney-point-1-9-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5806:
+      position: [38.098331451416016, -76.55166625976562]
+      coastline: unverifiable

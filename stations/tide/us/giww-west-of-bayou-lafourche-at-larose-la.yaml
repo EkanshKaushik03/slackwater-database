@@ -1,0 +1,26 @@
+region: US-LA
+sources:
+  - ticon/giww_west_of_bayou_lafourche_at_larose_la-7381235-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/giww_west_of_bayou_lafourche_at_larose_la-7381235-usa-usgs:
+      position: [29.577222, -90.380833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 0.648
+          recency: 0.93
+          source: 0.596
+          quality: 1
+          amplitude: 0.5
+          coverage: 0.184
+        issues:
+          - MLWS (0.478) > MLW (0.47)
+          - MHWS (0.48) < MHW (0.492)
+          - "Seasonal band (0.094m) is 5.4x the largest tidal constituent K1 (0.017m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0008) exceeds S2 (0.0006)
+          - Form number 40.88 exceeds 25

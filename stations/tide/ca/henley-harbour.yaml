@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-henley-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-henley-harbour:
+      position: [51.9925867, -55.8553451]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3006
+redirect_from:
+  - /currents/us/ny/old-field-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3006:
+      position: [41.022, -73.1395]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/LIS1037
+redirect_from:
+  - /currents/us/ny/hart-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1037:
+      position: [40.8432, -73.76225]
+      coastline: unverifiable

@@ -1,0 +1,25 @@
+region: US-MI
+sources:
+  - ticon/mouth_of_the_black_river_mi-9014091-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mouth_of_the_black_river_mi-9014091-usa-noaa:
+      position: [42.9747, -82.418806]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 60
+        factors:
+          epoch: 0.062
+          recency: 0.83
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0
+        issues:
+          - MLWS (175.975) > MLW (175.97)
+          - MHWS (175.995) < MHW (176.009)
+          - "Seasonal band (0.158m) is 24.0x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"
+          - Q1 amplitude (0.0013) exceeds O1 (0.0005)

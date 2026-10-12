@@ -1,0 +1,26 @@
+region: US-TX
+sources:
+  - ticon/aransas_wildlife_refuge-8774230-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/aransas_wildlife_refuge-8774230-usa-noaa:
+      position: [28.2283, -96.794998]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.68
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (9.006) > MLW (8.994)
+          - MHWS (9.016) < MHW (9.022)
+          - "Superseded source: noaa"
+          - "Seasonal band (0.112m) is 5.5x the largest tidal constituent K1 (0.020m): the yearly swing exceeds the daily one"

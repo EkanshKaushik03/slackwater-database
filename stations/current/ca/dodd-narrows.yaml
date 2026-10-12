@@ -1,0 +1,16 @@
+# GSC West Coast Topo-Bathymetric DEM v2 hydraulic control section
+
+name: Dodd Narrows
+context: Northumberland Channel
+region: CA-BC
+cities: [Nanaimo]
+position: [49.13546639419797, -123.81735084108287]
+provider: chs
+sources:
+  - chs-dodd-narrows
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-dodd-narrows:
+      position: [49.13546639419797, -123.81735084108287]
+      coastline: clear

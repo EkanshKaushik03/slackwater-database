@@ -9,7 +9,7 @@ interface AuditStation {
   id: string;
   latitude: number;
   longitude: number;
-  positionVerified?: string;
+  positionVerified?: true;
 }
 
 export type AuditVerdict =
@@ -17,13 +17,6 @@ export type AuditVerdict =
   | { verdict: "unverifiable" }
   | { verdict: "clear" }
   | { verdict: "ashore"; metresInland: number };
-
-export interface AuditLock {
-  note: string;
-  coastline: string;
-  thresholdM: number;
-  stations: Record<string, { position: [number, number] } & AuditVerdict>;
-}
 
 const coastline = JSON.parse(
   readFileSync(
@@ -76,97 +69,6 @@ export function nearestWater(
         metres: found.metres,
       }
     : null;
-}
-
-export function buildAuditLock(
-  stations: AuditStation[],
-  coastlineFingerprint: string,
-): AuditLock {
-  return {
-    note: "Audit results pinned per routed station. Regenerate with `npm run metadata:lock`.",
-    coastline: coastlineFingerprint,
-    thresholdM: REPORT_THRESHOLD_M,
-    stations: Object.fromEntries(
-      [...stations]
-        .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
-        .map((station) => [
-          station.id,
-          {
-            position: [station.latitude, station.longitude],
-            ...classifyPosition(station),
-          },
-        ]),
-    ),
-  };
-}
-
-export function diffAuditLock(
-  lock: AuditLock,
-  stations: AuditStation[],
-): {
-  moved: { id: string; was: [number, number]; now: [number, number] }[];
-  added: string[];
-  removed: string[];
-  unchanged: string[];
-} {
-  const seen = new Set<string>();
-  const moved: { id: string; was: [number, number]; now: [number, number] }[] =
-    [];
-  const added: string[] = [];
-  const unchanged: string[] = [];
-  for (const station of stations) {
-    seen.add(station.id);
-    const pinned = lock.stations[station.id];
-    if (!pinned) added.push(station.id);
-    else if (
-      pinned.position[0] === station.latitude &&
-      pinned.position[1] === station.longitude
-    )
-      unchanged.push(station.id);
-    else
-      moved.push({
-        id: station.id,
-        was: pinned.position,
-        now: [station.latitude, station.longitude],
-      });
-  }
-  return {
-    moved,
-    added: added.sort(),
-    removed: Object.keys(lock.stations)
-      .filter((id) => !seen.has(id))
-      .sort(),
-    unchanged: unchanged.sort(),
-  };
-}
-
-export function auditProblems(
-  lock: AuditLock,
-  stations: AuditStation[],
-): string[] {
-  if (lock.thresholdM !== REPORT_THRESHOLD_M)
-    return [
-      `position audit threshold changed from ${lock.thresholdM} to ${REPORT_THRESHOLD_M} metres`,
-    ];
-  const diff = diffAuditLock(lock, stations);
-  const problems = [
-    ...diff.added.map((id) => `${id}: not in position audit lock`),
-    ...diff.moved.map(({ id }) => `${id}: position moved`),
-    ...diff.removed.map((id) => `${id}: removed from catalogue`),
-  ];
-  for (const station of stations) {
-    const entry = lock.stations[station.id];
-    if (!entry) continue;
-    const { position: _, ...pinned } = entry;
-    const current = classifyPosition(station);
-    if (JSON.stringify(current) === JSON.stringify(pinned)) continue;
-    problems.push(
-      current.verdict === "ashore"
-        ? `${station.id}: ${current.metresInland} metres inland; audit changed`
-        : `${station.id}: position audit changed to ${current.verdict}`,
-    );
-  }
-  return problems;
 }
 
 function bboxOf(

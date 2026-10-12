@@ -1,0 +1,20 @@
+sources:
+  - ticon/puerto_deseado-286a-arg-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/puerto_deseado-286a-arg-uhslc_rq:
+      position: [-47.75, -65.917]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/puerto_deseado-286-arg-uhslc_fd
+        score: 47
+        factors:
+          epoch: 0.107
+          recency: 0.63
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

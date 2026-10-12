@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-atli-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-atli-inlet:
+      position: [52.714, -131.577]
+      coastline: unverifiable

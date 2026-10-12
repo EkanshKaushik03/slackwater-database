@@ -1,0 +1,24 @@
+sources:
+  - ticon/spikarna-spi-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/spikarna-spi-swe-cmems:
+      position: [62.3633, 17.531099]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/spikarna-2061-swe-smhi
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.084) > MLW (0.072)
+          - "Seasonal band (0.111m) is 19.3x the largest tidal constituent K1 (0.006m): the yearly swing exceeds the daily one"

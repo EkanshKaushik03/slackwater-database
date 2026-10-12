@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1391
+redirect_from:
+  - /currents/us/ma/west-head/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1391:
+      position: [42.29083, -70.95367]
+      coastline: unverifiable

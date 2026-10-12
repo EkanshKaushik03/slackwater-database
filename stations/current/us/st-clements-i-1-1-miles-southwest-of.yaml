@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5836
+redirect_from:
+  - /currents/us/md/st-clements-island-1-0-nm-southwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5836:
+      position: [38.19283, -76.76117]
+      coastline: unverifiable

@@ -1,0 +1,20 @@
+sources:
+  - ticon/suva-018b-fji-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/suva-018b-fji-uhslc_rq:
+      position: [-18.133, 178.428]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/suva-018-fji-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

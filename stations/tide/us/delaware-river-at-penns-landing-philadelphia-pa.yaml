@@ -1,0 +1,21 @@
+region: US-PA
+sources:
+  - ticon/delaware_river_at_penns_landing_philadelphia_pa-1467200-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/delaware_river_at_penns_landing_philadelphia_pa-1467200-usa-usgs:
+      position: [39.946402, -75.13936]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 47
+        factors:
+          epoch: 0.253
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.015
+        issues:
+          - MLWS (-0.55) > MLW (-0.664)

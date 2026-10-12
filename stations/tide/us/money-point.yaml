@@ -1,0 +1,19 @@
+region: US-VA
+sources:
+  - noaa/8639348
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8639348:
+      position: [36.77819444444445, -76.30186111111111]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

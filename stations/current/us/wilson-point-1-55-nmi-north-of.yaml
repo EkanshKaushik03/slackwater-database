@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0741
+redirect_from:
+  - /currents/us/ca/wilson-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0741:
+      position: [38.0375, -122.1505]
+      coastline: unverifiable

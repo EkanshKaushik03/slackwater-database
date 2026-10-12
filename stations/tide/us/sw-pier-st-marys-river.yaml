@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/sw_pier_st_marys_river_mi-9076070-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sw_pier_st_marys_river_mi-9076070-usa-noaa:
+      position: [46.501111, -84.372611]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.02
+        issues:
+          - MLWS (183.209) > MLW (183.184)
+          - MHWS (183.253) < MHW (183.287)
+          - "Seasonal band (0.159m) is 9.7x the largest tidal constituent M2 (0.016m): the yearly swing exceeds the daily one"

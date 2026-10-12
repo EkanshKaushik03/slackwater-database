@@ -1,0 +1,26 @@
+region: CA-QC
+sources:
+  - ticon/lac_saint_pierre-15975-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lac_saint_pierre-15975-can-meds:
+      position: [46.19, -72.9]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.073
+        issues:
+          - MHHW (1.14) < MHW (1.144)
+          - MHWS (1.118) < MHW (1.144)
+          - MSL (1.086) <= MLW (1.135)
+          - "Seasonal band (0.525m) is 21.7x the largest tidal constituent M2 (0.024m): the yearly swing exceeds the daily one"

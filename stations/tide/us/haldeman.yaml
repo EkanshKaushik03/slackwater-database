@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/haldeman_navd88-halde-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/haldeman_navd88-halde-usa-sfwmd:
+      position: [26.123056, -81.762778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.059

@@ -1,0 +1,18 @@
+sources:
+  - ticon/exmouthtg-exm-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/exmouthtg-exm-gbr-cmems:
+      position: [50.617378, -3.423593]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 56
+        factors:
+          epoch: 0.521
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

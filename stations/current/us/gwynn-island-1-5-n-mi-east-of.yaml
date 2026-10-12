@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4706
+redirect_from:
+  - /currents/us/va/gwynn-island-1-5-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4706:
+      position: [37.5005, -76.245]
+      coastline: unverifiable

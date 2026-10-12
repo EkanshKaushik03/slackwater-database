@@ -11,27 +11,20 @@ import {
   type ResolvedStation,
 } from "./metadata.ts";
 import {
+  assignSlugs,
   buildRoutes,
-  buildSlugTable,
-  emptyFormerSlugs,
-  type FormerSlugs,
   type RouteLock,
   type RouteMember,
-  type SlugTable,
-  type SlugTombstones,
 } from "./routes.ts";
+import { filePath, type StationFile } from "./station-files.ts";
 
 export interface CatalogueInputs {
   tides: StationInput[];
   currents: (StationInput & { routed?: boolean })[];
   corrections: Corrections;
   registry: Registry;
-  slugTable: SlugTable;
-  slugTombstones: SlugTombstones;
-  formerSlugs?: FormerSlugs;
-  /** Ids to re-ladder, recording the slug each leaves behind. */
-  reallocate?: Set<string>;
-  routeLock: RouteLock;
+  /** Published stations; a record no file lists gets a new slug. */
+  stationFiles: StationFile[];
   geocoder: Geocoder;
   waterBodies?: WaterBodies;
   maritimeZones?: MaritimeZones;
@@ -41,17 +34,19 @@ export function buildCatalogue(inputs: CatalogueInputs): {
   stations: ResolvedStation[];
   members: RouteMember[];
   routes: DatabaseRoutes;
-  slugTable: SlugTable;
-  slugTombstones: SlugTombstones;
-  formerSlugs: FormerSlugs;
-  gone: string[];
   redundantNames: string[];
 } {
   const sourceStations = [...inputs.tides, ...inputs.currents];
+  const siblings = new Map(
+    inputs.stationFiles.flatMap(({ sources }) =>
+      sources.map((id) => [id, sources] as const),
+    ),
+  );
   const errors = validateMetadata(
     inputs.corrections,
     inputs.registry,
     sourceStations,
+    siblings,
   );
   if (errors.length) throw new Error(errors.join("\n"));
 
@@ -78,57 +73,58 @@ export function buildCatalogue(inputs: CatalogueInputs): {
     ),
   ].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 
-  // A `name:` correction the cleanup already produces is one to prune, or a
-  // pin waiting for a regeneration to need it. Reported, not refused.
-  const redundantNames = sourceStations.flatMap((station) => {
-    const correction = inputs.corrections.get(station.id);
-    if (!correction?.name || inputs.registry.has(station.id)) return [];
+  // A station's curated name the cleanup already produces for every one of its
+  // records is one to prune, or a pin waiting for a regeneration to need it.
+  // Reported, not refused.
+  const byId = new Map(sourceStations.map((station) => [station.id, station]));
+  const producesName = (id: string) => {
+    const station = byId.get(id);
+    const correction = inputs.corrections.get(id);
+    if (!station || !correction?.name || inputs.registry.has(id)) return false;
     const { name, ...rest } = correction;
-    const without = resolveMetadata(station, { correction: rest, ...places });
-    return without.name === name ? [`${station.id}: ${name}`] : [];
-  });
+    return (
+      resolveMetadata(station, { correction: rest, ...places }).name === name
+    );
+  };
+  const redundantNames = inputs.stationFiles.flatMap(
+    ({ file, name, sources }) =>
+      name && sources.length && sources.every(producesName)
+        ? [`${file}: ${name}`]
+        : [],
+  );
 
   validateStationReferences(stations);
   const routedStations = stations.filter(({ routed }) => routed !== false);
-  const {
-    table: slugs,
-    tombstones: slugTombstones,
-    formerSlugs,
-    gone,
-  } = buildSlugTable(
-    routedStations,
-    inputs.slugTable,
-    inputs.slugTombstones,
-    inputs.formerSlugs ?? emptyFormerSlugs(),
-    {
-      ...(inputs.reallocate ? { reallocate: inputs.reallocate } : {}),
-      registryIds: new Set(inputs.registry.keys()),
-      sameGauge: new Map(
-        [...inputs.corrections].flatMap(([id, correction]) =>
-          correction.sameGauge ? [[id, correction.sameGauge]] : [],
-        ),
-      ),
-    },
-  );
+  const held = {
+    tide: new Map<string, string>(),
+    current: new Map<string, string>(),
+  };
+  const reserved = { tide: new Set<string>(), current: new Set<string>() };
+  const routeLock: RouteLock = { tide: {}, current: {} };
+  for (const file of inputs.stationFiles) {
+    // A retired record the provider publishes again returns to its station.
+    for (const id of [...file.sources, ...(file.retired_sources ?? [])])
+      held[file.kind].set(id, file.slug);
+    reserved[file.kind].add(file.slug);
+    for (const path of file.redirect_from ?? [])
+      reserved[file.kind].add(path.split("/").filter(Boolean).at(-1)!);
+    routeLock[file.kind][file.slug] = {
+      path: filePath(file),
+      former_paths: file.redirect_from ?? [],
+    };
+  }
+  const slugs = assignSlugs(routedStations, held, reserved);
   const members: RouteMember[] = routedStations.map((station) => {
     const kind = station.kind ?? "tide";
-    const slug = slugs[kind][station.id];
+    const slug = slugs[kind].get(station.id);
     if (!slug) throw new Error(`${station.id}: no ${kind} slug`);
-    // A curated former slug and a recorded one are the same fact from two
-    // sources; the route redirects both.
-    const former = [
-      ...new Set([
-        ...(station.former_slugs ?? []),
-        ...(formerSlugs[kind][station.id] ?? []),
-      ]),
-    ].filter((old) => old !== slug);
     return {
       id: station.id,
       kind,
       slug,
       country_code: station.country_code,
       ...(station.region_code ? { region_code: station.region_code } : {}),
-      ...(former.length ? { former_slugs: former } : {}),
+      ...(station.quality?.accepted === false ? { rejected: true } : {}),
     };
   });
 
@@ -136,13 +132,9 @@ export function buildCatalogue(inputs: CatalogueInputs): {
     stations,
     members,
     routes: buildRoutes(members, {
-      routeLock: inputs.routeLock,
+      routeLock,
       registryIds: new Set(inputs.registry.keys()),
     }),
-    slugTable: slugs,
-    slugTombstones,
-    formerSlugs,
-    gone,
     redundantNames,
   };
 }

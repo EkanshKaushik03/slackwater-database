@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0201
+redirect_from:
+  - /currents/us/ca/point-lobos-1-3-nm-sw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0201:
+      position: [37.77167, -122.5355]
+      coastline: unverifiable

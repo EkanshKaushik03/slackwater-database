@@ -1,0 +1,23 @@
+sources:
+  - ticon/anklam-9660001-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/anklam-9660001-deu-wsv:
+      position: [53.862754, 13.704277]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0.207
+        issues:
+          - MLWS (5.201) > MLW (5.191)
+          - MHWS (5.207) < MHW (5.217)
+          - "Seasonal band (0.034m) is 8.5x the largest tidal constituent S1 (0.004m): the yearly swing exceeds the daily one"

@@ -1,0 +1,24 @@
+region: US-MS
+sources:
+  - ticon/pass_christian_yacht_club-8746819-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pass_christian_yacht_club-8746819-usa-noaa:
+      position: [30.31, -89.245]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8746819
+        score: 62
+        factors:
+          epoch: 0.079
+          recency: 0.54
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.765) > MLW (0.718)
+          - MHWS (0.881) < MHW (0.968)

@@ -1,0 +1,18 @@
+sources:
+  - ticon/oostendetg-oos-bel-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oostendetg-oos-bel-cmems:
+      position: [51.234001, 2.927]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 45
+        factors:
+          epoch: 0.528
+          recency: 0.98
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.314

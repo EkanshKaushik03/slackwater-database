@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5426
+redirect_from:
+  - /currents/us/ak/amak-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5426:
+      position: [55.5, -163.1667022705078]
+      coastline: unverifiable

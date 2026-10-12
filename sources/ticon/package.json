@@ -4,12 +4,14 @@
   "type": "module",
   "scripts": {
     "import": "./import",
+    "fetch-uhslc-metadata": "node fetch-uhslc-metadata.ts",
     "test": "vitest"
   },
   "dependencies": {
     "@slackwater/datums": "*",
     "@slackwater/harmonic-analysis": "*",
-    "@slackwater/stations": "*"
+    "@slackwater/stations": "*",
+    "yaml": "^2.9.0"
   },
   "devDependencies": {
     "vitest": "^5.0.2"

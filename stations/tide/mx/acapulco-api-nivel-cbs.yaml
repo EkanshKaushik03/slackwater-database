@@ -1,0 +1,20 @@
+sources:
+  - ticon/acapulcoapi_nivelcbs-41-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/acapulcoapi_nivelcbs-41-mex-unam:
+      position: [16.838333, -99.903333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/acapulco-316-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0

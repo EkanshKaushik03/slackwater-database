@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1236
+redirect_from:
+  - /currents/us/ma/mystic-river-bridge/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1236:
+      position: [42.38583, -71.05033]
+      coastline: unverifiable

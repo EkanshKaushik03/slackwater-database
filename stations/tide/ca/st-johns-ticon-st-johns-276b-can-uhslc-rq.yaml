@@ -1,0 +1,21 @@
+region: CA-NL
+sources:
+  - ticon/st_johns-276b-can-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/st_johns-276b-can-uhslc_rq:
+      position: [47.567, -52.7]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/st_johns-276-can-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

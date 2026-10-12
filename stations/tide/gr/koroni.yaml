@@ -1,0 +1,21 @@
+sources:
+  - ticon/koroni-kor-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/koroni-kor-grc-cmems:
+      position: [36.797508, 21.956436]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 55
+        factors:
+          epoch: 0.478
+          recency: 0.96
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.071m) is 2.3x the largest tidal constituent M2 (0.031m): the yearly swing exceeds the daily one"

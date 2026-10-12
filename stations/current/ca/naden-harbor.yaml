@@ -1,0 +1,11 @@
+region: CA-BC
+sources:
+  - noaa/PCT2611
+redirect_from:
+  - /currents/us/naden-harbor/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2611:
+      position: [54.0365, -132.574]
+      coastline: unverifiable

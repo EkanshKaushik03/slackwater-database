@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-boswell-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-boswell-inlet:
+      position: [51.372, -127.469]
+      coastline: unverifiable

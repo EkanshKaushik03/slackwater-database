@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT7096
+redirect_from:
+  - /currents/us/sc/ashepoo-coosaw-cutoff/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7096:
+      position: [32.525001525878906, -80.45330047607422]
+      coastline: unverifiable

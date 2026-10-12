@@ -1,0 +1,22 @@
+sources:
+  - ticon/monddervechttg-mon-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/monddervechttg-mon-nld-cmems:
+      position: [52.564999, 6.102]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 58
+        factors:
+          epoch: 0.538
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.136
+        issues:
+          - MLWS (-0.16) > MLW (-0.186)
+          - "Seasonal band (0.082m) is 5.1x the largest tidal constituent S1 (0.016m): the yearly swing exceeds the daily one"

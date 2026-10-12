@@ -1,0 +1,9 @@
+region: US-NJ
+sources:
+  - noaa/CAM0001
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CAM0001:
+      position: [38.9475, -74.87267]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-HI
+sources:
+  - ticon/hilo_hawaii-060a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hilo_hawaii-060a-usa-uhslc_rq:
+      position: [19.733, -155.067]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hilo_hawaii-060-usa-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

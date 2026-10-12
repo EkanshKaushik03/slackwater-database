@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-pointe-aux-orignaux
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pointe-aux-orignaux:
+      position: [47.487, -70.025833]
+      coastline: unverifiable

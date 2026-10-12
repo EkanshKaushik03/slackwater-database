@@ -1,0 +1,26 @@
+# These six arrive with their own qualifier already in the raw name (e.g.
+# "Blaine, Semiahmoo Bay"), which becomes the context. Bremerton and Tacoma
+# carry a second qualifier ("Sinclair Inlet, Port Orchard"), so their context
+# is curated to the first.
+
+name: Blaine
+region: US-WA
+cities: [Blaine]
+sources:
+  - noaa/9449679
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9449679:
+      position: [48.9917, -122.765]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.286

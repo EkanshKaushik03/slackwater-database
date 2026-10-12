@@ -1,0 +1,21 @@
+sources:
+  - ticon/kavieng-068a-png-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kavieng-068a-png-uhslc_rq:
+      position: [-2.585, 150.795]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.554
+          recency: 0.68
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (0.709) > MLW (0.685)
+          - MHWS (1.109) < MHW (1.137)

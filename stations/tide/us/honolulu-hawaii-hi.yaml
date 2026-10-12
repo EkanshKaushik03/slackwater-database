@@ -1,0 +1,21 @@
+region: US-HI
+sources:
+  - ticon/honolulu_hawaii-057a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/honolulu_hawaii-057a-usa-uhslc_rq:
+      position: [21.305, -157.863]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/honolulu_hawaii-057-usa-uhslc_fd
+        score: 55
+        factors:
+          epoch: 0.809
+          recency: 0
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.005

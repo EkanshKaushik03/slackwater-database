@@ -1,0 +1,25 @@
+sources:
+  - ticon/houtribsluizennoordtg-hou-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/houtribsluizennoordtg-hou-nld-cmems:
+      position: [52.529629, 5.434654]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.582
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - MLWS (-0.229) > MLW (-0.233)
+          - MHWS (-0.207) < MHW (-0.202)
+          - "P1 amplitude (0.0027) exceeds K1 (0.0023): physically impossible"
+          - "Seasonal band (0.070m) is 9.6x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

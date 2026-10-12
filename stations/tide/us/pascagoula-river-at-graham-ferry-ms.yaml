@@ -1,0 +1,27 @@
+region: US-MS
+sources:
+  - ticon/pascagoula_river_at_graham_ferry_ms-2479310-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pascagoula_river_at_graham_ferry_ms-2479310-usa-usgs:
+      position: [30.610556, -88.641389]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.497
+        issues:
+          - MHHW (2.365) < MHW (2.911)
+          - MHWS (2.432) < MHW (2.911)
+          - MSL (2.43) <= MLW (2.86)
+          - "Seasonal band (1.100m) is 57.5x the largest tidal constituent K1 (0.019m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0009) exceeds S2 (0.0005)

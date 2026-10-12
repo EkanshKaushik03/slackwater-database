@@ -1,0 +1,18 @@
+sources:
+  - ticon/nantes_usine_brulee-399-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nantes_usine_brulee-399-fra-refmar:
+      position: [47.19345, -1.633667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,24 @@
+region: CA-ON
+sources:
+  - ticon/la_salle_ontario-11985-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/la_salle_ontario-11985-can-meds:
+      position: [42.24, -83.11]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.68
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.104
+        issues:
+          - MLWS (1.007) > MLW (0.996)
+          - MHWS (1.021) < MHW (1.027)
+          - "Seasonal band (0.156m) is 26.2x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

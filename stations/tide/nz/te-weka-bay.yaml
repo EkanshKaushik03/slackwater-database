@@ -1,0 +1,24 @@
+# LINZ's analysis files squash place names (`PORTCHALMERS`); these are the
+# names its tide tables print.
+
+name: Te Weka Bay
+sources:
+  - linz/473
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/473:
+      position: [-41.25, 174.183333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 71
+        factors:
+          epoch: 0.107
+          recency: 0.97
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.249
+        issues:
+          - MHHW (1.248) < MHW (1.251)

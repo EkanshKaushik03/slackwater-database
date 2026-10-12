@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5761
+redirect_from:
+  - /currents/us/va/point-lookout-1-8-nm-sw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5761:
+      position: [38.01333, -76.34367]
+      coastline: unverifiable

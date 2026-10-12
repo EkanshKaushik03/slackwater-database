@@ -1,0 +1,17 @@
+# The mile-and-a-half narrows east of Drake Island joining Quatsino Sound to Holberg and Rupert Inlets, on northwest Vancouver Island. The Pacific Pilotage Authority gates even piloted ships through it on daylight slack. The transit outlasts the slack, so a consumer states the turn, not a window. Position from CHS's public current-station list - the tide reference ports' method, see stations/README.md#provenance - held at the published latitude and moved ~170 m west to mid-channel: the published longitude (-127.5550) lands on the islet between the two threads of the narrows, and the on-land audit caught it. Same treatment as chs-malibu-rapids, and the reason the audit is a failure rather than a note.
+
+name: Quatsino Narrows
+context: Holberg & Rupert Inlets
+region: CA-BC
+aliases: [drake island, coal harbour]
+cities: [Coal Harbour]
+position: [50.555, -127.5574]
+provider: chs
+sources:
+  - chs-quatsino-narrows
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-quatsino-narrows:
+      position: [50.555, -127.5574]
+      coastline: clear

@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5011
+redirect_from:
+  - /currents/us/md/love-point-2-2-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5011:
+      position: [39.07967, -76.31217]
+      coastline: unverifiable

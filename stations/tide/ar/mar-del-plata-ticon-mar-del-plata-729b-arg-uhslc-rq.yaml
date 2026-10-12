@@ -1,0 +1,20 @@
+sources:
+  - ticon/mar_del_plata-729b-arg-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mar_del_plata-729b-arg-uhslc_rq:
+      position: [-38.035, -57.53]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/mar_del_plata-729-arg-uhslc_fd
+        score: 65
+        factors:
+          epoch: 0.794
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.014

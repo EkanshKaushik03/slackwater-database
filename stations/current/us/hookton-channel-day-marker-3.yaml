@@ -1,0 +1,9 @@
+region: US-CA
+sources:
+  - noaa/hb0302
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/hb0302:
+      position: [40.74399948120117, -124.22450256347656]
+      coastline: unverifiable

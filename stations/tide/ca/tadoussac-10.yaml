@@ -1,0 +1,19 @@
+region: CA-QC
+sources:
+  - ticon/tadoussac-3425-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tadoussac-3425-can-meds:
+      position: [48.14, -69.71]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.69
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.554

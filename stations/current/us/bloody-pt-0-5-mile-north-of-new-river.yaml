@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7316
+redirect_from:
+  - /currents/us/ga/bloody-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7316:
+      position: [32.08833, -80.88]
+      coastline: unverifiable

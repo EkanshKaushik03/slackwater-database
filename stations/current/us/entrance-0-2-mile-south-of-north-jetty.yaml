@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1276
+redirect_from:
+  - /currents/us/wa/entrance-0-2-nm-south-of-north-jetty/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1276:
+      position: [46.92633, -124.16133]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-kitsilano
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-kitsilano:
+      position: [49.276583, -123.13936]
+      coastline: clear

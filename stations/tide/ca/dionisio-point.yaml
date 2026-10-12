@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-dionisio-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-dionisio-point:
+      position: [49.0139, -123.5739]
+      coastline: clear

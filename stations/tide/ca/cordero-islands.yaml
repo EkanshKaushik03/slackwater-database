@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-cordero-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-cordero-islands:
+      position: [50.442, -125.492]
+      coastline: clear

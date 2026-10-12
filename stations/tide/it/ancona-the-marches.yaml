@@ -1,0 +1,22 @@
+sources:
+  - ticon/rmn_ancona-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_ancona-rmn-ita-cmems:
+      position: [43.624802, 13.5065]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ancona-anx-ita-ispra
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.113) < MHW (0.119)

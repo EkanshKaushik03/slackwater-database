@@ -1,0 +1,24 @@
+sources:
+  - ticon/arko-ark-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/arko-ark-swe-cmems:
+      position: [58.484299, 16.960699]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/arko-2545-swe-smhi
+        seasonal_dominant: true
+        score: 57
+        factors:
+          epoch: 0.604
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.115) > MLW (0.11)
+          - "Seasonal band (0.069m) is 8.0x the largest tidal constituent K1 (0.009m): the yearly swing exceeds the daily one"

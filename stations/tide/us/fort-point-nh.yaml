@@ -1,0 +1,22 @@
+region: US-NH
+sources:
+  - ticon/fort_point-8423898-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fort_point-8423898-usa-noaa:
+      position: [43.071388, -70.710556]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.877
+          recency: 0.93
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - "Superseded source: noaa"

@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5536
+redirect_from:
+  - /currents/us/va/windmill-point-1-0-nm-ssw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5536:
+      position: [37.6, -76.29167]
+      coastline: unverifiable

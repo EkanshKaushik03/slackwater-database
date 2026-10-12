@@ -1,0 +1,25 @@
+region: US-PR
+sources:
+  - ticon/mona_is_pr-267a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/mona-is-pr/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mona_is_pr-267a-usa-uhslc_rq:
+      position: [18.09, -67.938]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9759938
+        score: 66
+        factors:
+          epoch: 0.875
+          recency: 0.96
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHWS (1.954) < MHW (1.967)

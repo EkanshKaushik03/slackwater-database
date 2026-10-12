@@ -1,0 +1,22 @@
+sources:
+  - ticon/stockholm-2069-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/stockholm-2069-swe-smhi:
+      position: [59.3242, 18.0817]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.138) > MLW (0.127)
+          - "Seasonal band (0.089m) is 10.0x the largest tidal constituent M2 (0.009m): the yearly swing exceeds the daily one"

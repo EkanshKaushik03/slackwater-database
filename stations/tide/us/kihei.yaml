@@ -1,0 +1,19 @@
+region: US-HI
+sources:
+  - noaa/TPT2797
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TPT2797:
+      position: [20.78333333333299, -156.46666666667008]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.248

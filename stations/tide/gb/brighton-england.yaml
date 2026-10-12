@@ -1,0 +1,20 @@
+sources:
+  - ticon/brightontg-bri-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/brightontg-bri-gbr-cmems:
+      position: [50.811798, -0.101295]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/brighton-btn-gbr-cco
+        score: 38
+        factors:
+          epoch: 0.366
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/s49_t_st_lucie_northfork-s49_t-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/s49_t_st_lucie_northfork-s49_t-usa-sfwmd:
+      position: [27.261111, -80.358333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 78
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.097
+        issues:
+          - MLWS (0.097) > MLW (0.093)
+          - MHWS (0.467) < MHW (0.474)

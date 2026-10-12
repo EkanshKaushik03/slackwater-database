@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1306
+redirect_from:
+  - /currents/us/wa/channel-1-8-nm-nne-of-westport/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1306:
+      position: [46.93333, -124.08333]
+      coastline: unverifiable

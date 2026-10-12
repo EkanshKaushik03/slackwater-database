@@ -1,0 +1,21 @@
+sources:
+  - ticon/colonia_sant_pere-col-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/colonia_sant_pere-col-esp-cmems:
+      position: [39.737301, 3.27335]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 39
+        factors:
+          epoch: 0.233
+          recency: 0.94
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.315
+        issues:
+          - "Seasonal band (0.101m) is 2.2x the largest tidal constituent M2 (0.046m): the yearly swing exceeds the daily one"

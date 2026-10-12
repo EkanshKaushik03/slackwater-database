@@ -52,7 +52,7 @@ The module exports every tide and current station in the database, along with st
 
 ## Data Format
 
-Tide harmonics come from the JSON files in [`data/`](./data), NOAA current data is imported during generation, and curated identity and routing inputs live in [`metadata/`](./metadata). The generated FlatBuffers file is the release source consumed by every runtime. Each tide station file includes basic station information, like location and name, and harmonics or subordinate station offsets. The format is defined by the schema in [schemas/station.schema.json](schemas/station.schema.json), which includes more detailed descriptions of each field. All data is validated against this schema automatically on each change.
+Tide harmonics come from the JSON files in [`data/`](./data), NOAA current data is imported during generation, each published station's identity, URL and curation is a file in [`stations/`](./stations/README.md), and reviewed reference snapshots live in [`metadata/`](./metadata). The generated FlatBuffers file is the release source consumed by every runtime. Each tide station file includes basic station information, like location and name, and harmonics or subordinate station offsets. The format is defined by the schema in [schemas/station.schema.json](schemas/station.schema.json), which includes more detailed descriptions of each field. All data is validated against this schema automatically on each change.
 
 ## Station Types
 
@@ -77,7 +77,7 @@ This repo is an npm workspace. Station data lives in [`data/`](./data), and ever
 - [`packages/tcd`](./packages/tcd) — TCD harmonics files for XTide-compatible software
 - [`packages/datums`](./packages/datums) — tidal datum computation and sea-region classification
 - [`packages/harmonic-analysis`](./packages/harmonic-analysis) — GESLA parsing and database policies around `@slackwater/engine` QR fitting; broad minimum-norm SVD fits remain local
-- [`packages/stations`](./packages/stations) — station file I/O, quality filtering, geocoding, the unified catalogue (curated inputs in [`metadata/`](./metadata)), and maintenance scripts (including `evaluate-quality`, which writes [`quality.json`](./quality.json))
+- [`packages/stations`](./packages/stations) — station file I/O, quality filtering, geocoding, the unified catalogue, and maintenance scripts (including `npm run stations`, which writes the [station files](./stations/README.md))
 - [`sources/*`](./sources) — one package per data source, most with an `npm run import`
 
 ## Maintenance
@@ -145,9 +145,9 @@ The sources and what each one asks for:
 - **Toitū Te Whenua Land Information New Zealand** — "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence." Credit required under CC BY 4.0, and [LINZ's copyright terms](https://www.linz.govt.nz/copyright) ask for that statement on adapted data, in writing, never by its logo or crest.
 - **TICON-4** — Hart-Davis, Michael; Dettmering, Denise; Seitz, Florian (2025). _TICON-4: TIdal CONstants based on GESLA-4 sea-level records._ SEANOE. https://doi.org/10.17882/109129. Credit required.
 - **NOAA CO-OPS** — a United States government work in the public domain. Attribution is not required, but is appreciated, so the project credit stands alone.
-- **Canadian Hydrographic Service** — names the agency operating a current station whose record was authored in this repository under MIT (see [metadata/PROVENANCE.md](./metadata/PROVENANCE.md)). No data is redistributed from CHS, so no credit is owed to it.
+- **Canadian Hydrographic Service** — names the agency operating a current station whose record was authored in this repository under MIT (see [stations/README.md](./stations/README.md#provenance)). No data is redistributed from CHS, so no credit is owed to it.
 
-The credit is written into the database file itself, so every reader gets it without keeping a table of sources. Adding a source means adding it to `packages/database/src/attribution.ts`, the one place the strings live; a source in the database with no entry there fails the build.
+The credit is written into the database file itself, so every reader gets it without keeping a table of sources. Each source declares its credit in its own `sources/<name>/metadata.yaml`, the one place the string lives; a station whose source has no `metadata.yaml` fails the build.
 
 ### Modifications to source data
 

@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-saltery-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-saltery-bay:
+      position: [49.783333, -124.183333]
+      coastline: ashore
+      metres_inland: 333

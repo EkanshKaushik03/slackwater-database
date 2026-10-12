@@ -1,0 +1,18 @@
+sources:
+  - ticon/aasiaat-aas-grl-gloss
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/aasiaat-aas-grl-gloss:
+      position: [68.71, -52.8833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.108
+          recency: 0.73
+          source: 0.03
+          quality: 1
+          amplitude: 1
+          coverage: 1

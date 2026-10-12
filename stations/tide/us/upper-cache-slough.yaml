@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/upper_cache_slough-ucs-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/upper_cache_slough-ucs-usa-cdwr:
+      position: [38.275556, -121.70917]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cache_slough_nr_hastings_tract_nr_rio_vista_ca-11455280-usa-usgs
+        score: 58
+        factors:
+          epoch: 0.086
+          recency: 0.97
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.776) > MLW (0.766)

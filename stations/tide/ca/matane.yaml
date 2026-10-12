@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-matane
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-matane:
+      position: [48.853333, -67.533167]
+      coastline: unverifiable

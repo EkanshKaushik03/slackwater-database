@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import currentBundle from "../../sources/noaa-current/currents.json" with { type: "json" };
 import chsStations from "../../sources/chs/stations.json" with { type: "json" };
@@ -9,31 +9,28 @@ import { chsInputs } from "./chs-input.ts";
 import { currentInputs } from "./current-input.ts";
 import { loadGeocoder } from "./geocode.ts";
 import { loadMaritimeZones } from "./maritime-zones.ts";
-import { loadCorrections, loadRegistry } from "./metadata.ts";
+import { sourceMetadata } from "./sources.ts";
 import {
-  emptyFormerSlugs,
-  type FormerSlugs,
-  type RouteLock,
-  type SlugTable,
-  type SlugTombstones,
-} from "./routes.ts";
+  curatedRecords,
+  readStationFiles,
+  storedQuality,
+  type StationFile,
+} from "./station-files.ts";
 import { loadWaterBodies } from "./water-bodies.ts";
 
 export async function loadProductionCatalogue(
   root: string,
-  { reallocate }: { reallocate?: Set<string> } = {},
+  stationFiles: StationFile[] = readStationFiles(join(root, "stations")),
+  /** Each record's quality; by default what the station files record. */
+  quality: Map<string, StationQuality> = storedQuality(stationFiles),
 ) {
-  const quality = new Map<string, StationQuality>(
-    JSON.parse(readFileSync(join(root, "quality.json"), "utf8")).map(
-      (entry: StationQuality) => [entry.id, entry],
-    ),
-  );
   const dataDir = join(root, "data");
   const tides: StationInput[] = walk(dataDir).map((file) => {
     const id = file.slice(dataDir.length + 1).replace(/\.json$/, "");
     const source = JSON.parse(readFileSync(file, "utf8"));
     const stationQuality = quality.get(id);
-    if (!stationQuality) throw new Error(`${id}: no quality record`);
+    if (!stationQuality)
+      throw new Error(`${id}: no quality evaluation; run npm run stations`);
     const countryCode = countryLookup.byCountry(source.country)?.iso2;
     if (!countryCode)
       throw new Error(`${id}: no ISO country code for ${source.country}`);
@@ -45,61 +42,46 @@ export async function loadProductionCatalogue(
     };
   });
   const currents = currentInputs(currentBundle);
-  const metadataDir = join(root, "metadata");
-  const slugTable = JSON.parse(
-    readFileSync(join(metadataDir, "slugs.json"), "utf8"),
-  ) as SlugTable;
-  const slugTombstones = JSON.parse(
-    readFileSync(join(metadataDir, "slug-tombstones.json"), "utf8"),
-  ) as SlugTombstones;
-  const routeLock = JSON.parse(
-    readFileSync(join(metadataDir, "routes.lock.json"), "utf8"),
-  ) as RouteLock;
-  const formerSlugsPath = join(metadataDir, "former-slugs.json");
-  const formerSlugs = existsSync(formerSlugsPath)
-    ? (JSON.parse(readFileSync(formerSlugsPath, "utf8")) as FormerSlugs)
-    : emptyFormerSlugs();
+  const chs = chsInputs(chsStations);
+  const { corrections, registry } = curatedRecords(
+    stationFiles,
+    new Set([...tides, ...chs, ...currents].map(({ id }) => id)),
+  );
+  const catalogue = buildCatalogue({
+    // CHS stations stay out of providerTideIds below: they are identity-only.
+    tides: [...tides, ...chs],
+    currents,
+    corrections,
+    registry,
+    stationFiles,
+    geocoder: await loadGeocoder(),
+    waterBodies: await loadWaterBodies(),
+    maritimeZones: await loadMaritimeZones(),
+  });
+  // Every station's source must have a metadata.yaml, so its credit is a
+  // decision rather than an omission.
+  const credits = new Map(
+    catalogue.stations.flatMap(({ source }) =>
+      source
+        ? [[source.name, sourceMetadata(source.name).credit] as const]
+        : [],
+    ),
+  );
   return {
-    ...buildCatalogue({
-      // CHS stations stay out of providerTideIds below: they are identity-only.
-      tides: [...tides, ...chsInputs(chsStations)],
-      currents,
-      corrections: loadCorrections(
-        readFileSync(join(metadataDir, "corrections.yaml"), "utf8"),
-      ),
-      registry: loadRegistry(
-        readFileSync(join(metadataDir, "registry.yaml"), "utf8"),
-      ),
-      slugTable,
-      slugTombstones,
-      formerSlugs,
-      ...(reallocate ? { reallocate } : {}),
-      routeLock,
-      geocoder: await loadGeocoder(),
-      waterBodies: await loadWaterBodies(),
-      maritimeZones: await loadMaritimeZones(),
-    }),
+    ...catalogue,
+    credits,
+    stationFiles,
     providerTideIds: new Set(tides.map(({ id }) => id)),
     providerCurrentIds: new Set(currents.map(({ id }) => id)),
-    previousSlugTable: slugTable,
-    previousSlugTombstones: slugTombstones,
-    previousFormerSlugs: formerSlugs,
-    previousRouteLock: routeLock,
   };
 }
 
 /** Every published station position, before metadata resolution. */
 export function stationPositions(root: string): [number, number][] {
   const dataDir = join(root, "data");
-  const metadataDir = join(root, "metadata");
-  const records = [
-    ...loadRegistry(
-      readFileSync(join(metadataDir, "registry.yaml"), "utf8"),
-    ).values(),
-    ...loadCorrections(
-      readFileSync(join(metadataDir, "corrections.yaml"), "utf8"),
-    ).values(),
-  ];
+  const curated = readStationFiles(join(root, "stations")).flatMap(
+    ({ position }) => (position ? [position] : []),
+  );
   const positions: [number, number][] = [
     ...walk(dataDir).map((file): [number, number] => {
       const { latitude, longitude } = JSON.parse(readFileSync(file, "utf8"));
@@ -111,7 +93,7 @@ export function stationPositions(root: string): [number, number][] {
           ? []
           : [[latitude, longitude]],
     ),
-    ...records.flatMap(({ position }) => (position ? [position] : [])),
+    ...curated,
     ...chsStations.map(({ latitude, longitude }): [number, number] => [
       latitude,
       longitude,

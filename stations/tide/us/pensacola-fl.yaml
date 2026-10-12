@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/pensacola-8729840-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pensacola-8729840-usa-noaa:
+      position: [30.404389, -87.211194]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (2.85) > MLW (2.769)
+          - MHWS (2.9) < MHW (3.003)
+          - "Superseded source: noaa"

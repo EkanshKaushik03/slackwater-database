@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1281
+redirect_from:
+  - /currents/us/ma/georges-island-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1281:
+      position: [42.32367, -70.92783]
+      coastline: unverifiable

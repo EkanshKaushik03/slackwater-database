@@ -1,0 +1,20 @@
+sources:
+  - ticon/pohnpei-001c-fsm-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pohnpei-001c-fsm-uhslc_rq:
+      position: [6.978, 158.197]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/pohnpei-001-fsm-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

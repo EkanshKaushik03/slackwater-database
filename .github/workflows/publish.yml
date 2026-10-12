@@ -44,7 +44,17 @@ jobs:
           npm version "$RELEASE_VERSION" --no-git-tag-version -w packages/database
 
       - name: Validate station metadata
-        run: npm run validate:database
+        # Every path the last release published must still belong to its
+        # station, as its path or one of its redirects; a retired station's
+        # paths stay reserved but answer 404.
+        run: |
+          # versionsort.suffix sorts a prerelease below its release.
+          LAST=$(git -c versionsort.suffix=- ls-remote --tags --sort=-v:refname origin 'v*' | head -1 | cut -f2)
+          if [ -n "$LAST" ]; then
+            git fetch --depth=1 origin "$LAST"
+            export PUBLISHED_REF=FETCH_HEAD
+          fi
+          npm run validate:database
 
       - name: Build and check npm package
         run: |

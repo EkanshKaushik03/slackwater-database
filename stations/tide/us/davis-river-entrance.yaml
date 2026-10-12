@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9450729
+redirect_from:
+  - /tides/ca/bc/davis-river-entrance/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9450729:
+      position: [55.76, -130.177]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.383

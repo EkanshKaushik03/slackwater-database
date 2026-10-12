@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/victoria_canal_near_byron-vcu-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/victoria_canal_near_byron-vcu-usa-cdwr:
+      position: [37.8717, -121.5283]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/victoria_canal_nr_byron_ca-11312672-usa-usgs
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - MHWS (4.085) < MHW (4.101)

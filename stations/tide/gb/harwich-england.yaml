@@ -1,0 +1,23 @@
+sources:
+  - ticon/harwich-har-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/harwich-har-gbr-cmems:
+      position: [51.948002, 1.292]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/harwich-har-gbr-bodc
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHHW (4.037) < MHW (4.094)
+          - MHWS (4.038) < MHW (4.094)

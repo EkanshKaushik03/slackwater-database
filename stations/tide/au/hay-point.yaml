@@ -1,0 +1,18 @@
+sources:
+  - ticon/hay_point-59511-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hay_point-59511-aus-bom:
+      position: [-21.2683, 149.3033]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.027

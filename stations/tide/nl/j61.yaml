@@ -1,0 +1,18 @@
+sources:
+  - ticon/j61tg-j61-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/j61tg-j61-nld-cmems:
+      position: [53.823246, 2.943804]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.564
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.017

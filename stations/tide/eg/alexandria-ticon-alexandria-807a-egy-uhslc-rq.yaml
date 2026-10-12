@@ -1,0 +1,23 @@
+sources:
+  - ticon/alexandria-807a-egy-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/alexandria-807a-egy-uhslc_rq:
+      position: [31.212, 29.923]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/alexandria-807-egy-uhslc_fd
+        seasonal_dominant: true
+        score: 55
+        factors:
+          epoch: 0.333
+          recency: 0.9
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.016
+        issues:
+          - "Seasonal band (0.089m) is 1.2x the largest tidal constituent M2 (0.074m): the yearly swing exceeds the daily one"

@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_sacramento_i_street-a02100-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_sacramento_i_street-a02100-usa-cdwr:
+      position: [38.588611, -121.505]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.019
+        issues:
+          - MHHW (2.688) < MHW (2.999)
+          - MHWS (2.67) < MHW (2.999)
+          - MSL (2.575) <= MLW (2.87)
+          - "Seasonal band (0.843m) is 10.2x the largest tidal constituent M2 (0.083m): the yearly swing exceeds the daily one"

@@ -5,16 +5,15 @@
  *   npm run import -w sources/chs [-- --prune]
  *
  * A station IWLS no longer lists or serves is kept and reported. Removing one
- * tombstones its slug and retires its id for good, so it takes --prune.
+ * retires it in its station file for good, so it takes --prune.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { loadRegistry } from "@slackwater/stations";
+import { readStationFiles } from "@slackwater/stations";
 import { reconcile, type ChsStation, type IwlsStation } from "./chs.ts";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const metadata = join(here, "..", "..", "metadata");
 const IWLS = "https://api-iwls.dfo-mpo.gc.ca/api/v1/stations";
 // IWLS rate-limits well inside a second; Slackwater's generator settled on this.
 const PROBE_SPACING_MS = 1200;
@@ -58,26 +57,17 @@ for (const [n, station] of advertised.entries()) {
   await sleep(PROBE_SPACING_MS);
 }
 
-const registry = loadRegistry(
-  readFileSync(join(metadata, "registry.yaml"), "utf8"),
-);
-const ports = [...registry.values()].flatMap(({ provider, kind, position }) =>
+const stationFiles = readStationFiles();
+const ports = stationFiles.flatMap(({ provider, kind, position }) =>
   provider === "chs" && kind === "tide" && position
     ? [{ latitude: position[0], longitude: position[1] }]
     : [],
 );
-const slugs = JSON.parse(readFileSync(join(metadata, "slugs.json"), "utf8"));
-const tombstones = JSON.parse(
-  readFileSync(join(metadata, "slug-tombstones.json"), "utf8"),
-);
 // Every id that ever held a slug, so a new station never takes one.
-const taken = [
-  ...registry.keys(),
-  ...Object.keys(slugs.tide),
-  ...Object.keys(slugs.current),
-  ...Object.keys(tombstones.tide),
-  ...Object.keys(tombstones.current),
-];
+const taken = stationFiles.flatMap(({ sources, retired_sources = [] }) => [
+  ...sources,
+  ...retired_sources,
+]);
 
 const file = join(here, "stations.json");
 const previous = JSON.parse(readFileSync(file, "utf8")) as ChsStation[];

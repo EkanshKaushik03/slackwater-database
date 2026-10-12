@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/jx0201
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/jx0201:
+      position: [30.39889, -81.39469]
+      coastline: unverifiable

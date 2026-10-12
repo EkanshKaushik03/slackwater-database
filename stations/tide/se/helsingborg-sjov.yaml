@@ -1,0 +1,21 @@
+sources:
+  - ticon/helsingborg_sjov-35110-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/helsingborg_sjov-35110-swe-smhi:
+      position: [56.0446, 12.6874]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 0.869
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - "P1 amplitude (0.0022) exceeds K1 (0.0009): physically impossible"

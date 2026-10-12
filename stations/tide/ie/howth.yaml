@@ -1,0 +1,18 @@
+sources:
+  - ticon/howth-how-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/howth-how-irl-cmems:
+      position: [53.391499, -6.0683]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 59
+        factors:
+          epoch: 0.703
+          recency: 0.93
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

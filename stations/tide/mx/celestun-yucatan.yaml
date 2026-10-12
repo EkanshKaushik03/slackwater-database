@@ -1,0 +1,20 @@
+sources:
+  - ticon/celestun-861a-mex-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/celestun-861a-mex-uhslc_rq:
+      position: [20.858, -90.403]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 49
+        factors:
+          epoch: 0.081
+          recency: 0.85
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHWS (2.079) < MHW (2.125)

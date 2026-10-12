@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/CHB0301
+redirect_from:
+  - /currents/us/md/cedar-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CHB0301:
+      position: [38.2985, -76.273]
+      coastline: unverifiable

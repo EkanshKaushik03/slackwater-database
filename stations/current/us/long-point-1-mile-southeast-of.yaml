@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT6056
+redirect_from:
+  - /currents/us/md/long-point-0-9-nm-southeast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6056:
+      position: [38.84333, -76.32667]
+      coastline: unverifiable

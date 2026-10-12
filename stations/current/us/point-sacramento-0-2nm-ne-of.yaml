@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1331
+redirect_from:
+  - /currents/us/ca/point-sacramento/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1331:
+      position: [38.0643, -121.83372]
+      coastline: unverifiable

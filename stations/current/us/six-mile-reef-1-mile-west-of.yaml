@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/LIS1019
+redirect_from:
+  - /currents/us/ct/six-mile-reef-0-9-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1019:
+      position: [41.17973, -72.55177]
+      coastline: unverifiable

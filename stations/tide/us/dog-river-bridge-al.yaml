@@ -1,0 +1,25 @@
+region: US-AL
+sources:
+  - ticon/dog_river_bridge-8735391-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dog_river_bridge-8735391-usa-noaa:
+      position: [30.565167, -88.088]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.752
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0
+        issues:
+          - MLWS (9.169) > MLW (9.082)
+          - MHWS (9.247) < MHW (9.331)
+          - "Superseded source: noaa"
+          - K2 amplitude (0.0137) exceeds S2 (0.0116)

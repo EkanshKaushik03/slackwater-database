@@ -1,0 +1,19 @@
+region: CA-NS
+sources:
+  - ticon/digby-325-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/digby-325-can-meds:
+      position: [44.63, -65.75]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.8
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.514

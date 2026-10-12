@@ -1,0 +1,20 @@
+sources:
+  - ticon/cayenne-227a-fra-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cayenne-227a-fra-uhslc_rq:
+      position: [4.85, -52.283]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cayenne-227-fra-uhslc_fd
+        score: 49
+        factors:
+          epoch: 0.107
+          recency: 0.81
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

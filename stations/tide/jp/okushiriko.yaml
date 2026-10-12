@@ -1,0 +1,21 @@
+sources:
+  - ticon/okushiriko-1621-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/okushiriko-1621-jpn-jodc_pahb:
+      position: [42.1742, 139.5181]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 64
+        factors:
+          epoch: 0.698
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.218
+        issues:
+          - "Seasonal band (0.098m) is 1.9x the largest tidal constituent M2 (0.051m): the yearly swing exceeds the daily one"

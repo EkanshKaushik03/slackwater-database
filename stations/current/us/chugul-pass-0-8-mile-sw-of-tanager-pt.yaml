@@ -1,0 +1,10 @@
+sources:
+  - noaa/PCT5621
+redirect_from:
+  - /currents/us/chugul-pass/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5621:
+      position: [51.93333, -175.88333]
+      coastline: unverifiable

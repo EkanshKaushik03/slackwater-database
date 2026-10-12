@@ -1,0 +1,19 @@
+region: US-SC
+sources:
+  - noaa/TEC3023
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TEC3023:
+      position: [32.93333333333299, -79.58333333333299]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.077

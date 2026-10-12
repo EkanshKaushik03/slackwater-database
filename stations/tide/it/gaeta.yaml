@@ -1,0 +1,18 @@
+sources:
+  - ticon/gaeta-gae-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gaeta-gae-ita-ispra:
+      position: [41.209992, 13.589736]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.808
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0

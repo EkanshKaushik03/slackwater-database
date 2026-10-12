@@ -1,0 +1,23 @@
+sources:
+  - ticon/alvarado_radar-22-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/alvarado_radar-22-mex-unam:
+      position: [18.766167, -95.756]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/alvarado-400-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (5.515) > MLW (5.501)
+          - MHWS (5.681) < MHW (5.727)

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Evaluates station quality and produces quality.json
+ * Evaluates the quality of every provider tide record. `npm run stations`
+ * writes the results into each station file's `computed` block.
  *
  * Pipeline:
  *   1. Load all stations (NOAA + TICON)
@@ -11,18 +12,14 @@
  *   4. Deduplicate TICON stations by proximity
  *   5. Compute composite score and write results
  *
- * Output:
- *   quality.json — all stations with factors, score, and accept/reject status
- *
- * Usage:
- *   npm run evaluate-quality -w packages/stations
+ * Run directly to print a summary:
+ *   node packages/stations/evaluate-quality.ts
  */
 
-import { readdir, readFile, writeFile } from "fs/promises";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { readdir, readFile } from "fs/promises";
+import { join } from "path";
 import { DATA_DIR } from "./station.ts";
-import { NODAL_CYCLE_DAYS } from "@slackwater/datums";
+import { DATUM_EPOCH, NODAL_CYCLE_DAYS } from "@slackwater/datums";
 import {
   distance,
   authoritativeDuplicateWinner,
@@ -30,7 +27,7 @@ import {
   getSourcePriority,
   gaugeKey,
   coordinatePrecision,
-  isDirectAuthoritativeProvider,
+  isAuthoritative,
   hasQualityIssues,
   epochYears,
   NULL_ISLAND_RADIUS,
@@ -65,7 +62,7 @@ interface Factors {
   coverage: number;
 }
 
-interface QualityResult {
+export interface QualityResult {
   id: string;
   accepted: boolean;
   score: number;
@@ -255,7 +252,7 @@ const ESSENTIAL_CONSTITUENTS = ["M2", "S2", "K1", "O1"];
 function checkConstituents(station: Station): string | null {
   if (station.type === "subordinate") return null;
 
-  const essential = isDirectAuthoritativeProvider(station.id)
+  const essential = isAuthoritative(station)
     ? ESSENTIAL_CONSTITUENTS.filter((name) => name !== "K1")
     : ESSENTIAL_CONSTITUENTS;
   const names = new Set(station.harmonic_constituents.map((c) => c.name));
@@ -278,11 +275,7 @@ function checkConstituents(station: Station): string | null {
     station.harmonic_constituents.find((c) => c.name === "K1")?.amplitude ?? 0;
   const p1Amp =
     station.harmonic_constituents.find((c) => c.name === "P1")?.amplitude ?? 0;
-  if (
-    !isDirectAuthoritativeProvider(station.id) &&
-    k1Amp > 0 &&
-    p1Amp > k1Amp
-  ) {
+  if (!isAuthoritative(station) && k1Amp > 0 && p1Amp > k1Amp) {
     return `P1 amplitude (${p1Amp.toFixed(4)}) exceeds K1 (${k1Amp.toFixed(4)}): physically impossible`;
   }
 
@@ -453,12 +446,17 @@ function scoreEpoch(
   return toFixed(Math.min(1, years / (NODAL_CYCLE_DAYS / 365.2425)));
 }
 
+/** Recency is measured against the pinned datum epoch, not today's date, so
+ *  a re-run gives the same scores in any year. It moves when DATUM_EPOCH is
+ *  bumped, which regenerates everything anyway. */
+export const RECENCY_YEAR = DATUM_EPOCH.end.getUTCFullYear();
+
 /** Recency: how recent is the epoch end date? Stations with data from the
  *  current era score higher. Uses a sigmoid-like curve where data from
  *  ~2000+ scores well, and very old data (pre-1950) scores poorly.
  *  Subordinates inherit from reference.
  *  Stations with placeholder dates (year 0000) get benefit of the doubt. */
-function scoreRecency(
+export function scoreRecency(
   station: Station,
   stationMap: Map<string, Station>,
 ): number {
@@ -471,8 +469,7 @@ function scoreRecency(
   // getFullYear() reads "2025-01-01" as 2024 west of Greenwich, so the score
   // would differ between a laptop and CI.
   const endYear = new Date(epoch.end).getUTCFullYear();
-  const currentYear = new Date().getUTCFullYear();
-  const age = currentYear - endYear;
+  const age = RECENCY_YEAR - endYear;
 
   // Linear decay: 0 years old = 1.0, 100+ years old = 0.0
   return toFixed(Math.max(0, Math.min(1, 1 - age / 100)));
@@ -480,7 +477,7 @@ function scoreRecency(
 
 /** Source confidence: mapped from SOURCE_PRIORITY. */
 function scoreSource(station: Station): number {
-  const priority = isDirectAuthoritativeProvider(station.id)
+  const priority = isAuthoritative(station)
     ? 0
     : getSourcePriority(station.source.id);
   return toFixed(Math.max(0, 1 - priority / 99));
@@ -581,15 +578,18 @@ function computeCompositeScore(factors: Factors): number {
 
 // ── I/O ─────────────────────────────────────────────────────────────────
 
-async function loadAllStations(): Promise<Station[]> {
+/** Every provider tide record, in id order: dedup is greedy, so the order in
+ *  which records are weighed decides ties, and readdir order varies by
+ *  filesystem. */
+export async function loadAllStations(): Promise<Station[]> {
   const stations: Station[] = [];
-  const sources = await readdir(DATA_DIR);
+  const sources = (await readdir(DATA_DIR)).sort();
 
   for (const source of sources) {
     const sourceDir = join(DATA_DIR, source);
     let files: string[];
     try {
-      files = await readdir(sourceDir);
+      files = (await readdir(sourceDir)).sort();
     } catch {
       continue;
     }
@@ -757,7 +757,10 @@ function pickWinner(
   resultsMap: Map<string, QualityResult>,
   subordinateCounts: Map<string, number>,
 ): [winner: string, loser: string] {
-  const directWinner = authoritativeDuplicateWinner(idA, idB);
+  const directWinner = authoritativeDuplicateWinner(
+    stationMap.get(idA)!,
+    stationMap.get(idB)!,
+  );
   if (directWinner) return [directWinner, directWinner === idA ? idB : idA];
   const subsA = subordinateCounts.get(idA) ?? 0;
   const subsB = subordinateCounts.get(idB) ?? 0;
@@ -820,19 +823,12 @@ function deduplicateByGauge(
 
 // ── Main ────────────────────────────────────────────────────────────────
 
-async function main() {
-  console.log("Loading stations...");
+/** Every provider tide record's quality, sorted by id. */
+export async function evaluateQuality(): Promise<QualityResult[]> {
   const stations = await loadAllStations();
   const stationMap = new Map(stations.map((s) => [s.id, s]));
 
-  const noaaCount = stations.filter((s) => s.id.startsWith("noaa/")).length;
-  const ticonCount = stations.filter((s) => s.id.startsWith("ticon/")).length;
-  console.log(
-    `Loaded ${stations.length} stations (NOAA: ${noaaCount}, TICON: ${ticonCount})\n`,
-  );
-
   // Step 1: Compute factors and apply gates
-  console.log("Computing quality factors...");
   const resultsMap = new Map<string, QualityResult>();
 
   for (const station of stations) {
@@ -908,7 +904,6 @@ async function main() {
   }
 
   // Step 2: Compute coverage (needs all stations)
-  console.log("Computing coverage...");
   for (const station of stations) {
     const result = resultsMap.get(station.id)!;
     result.factors.coverage = scoreCoverage(station, stations);
@@ -923,7 +918,6 @@ async function main() {
   }
 
   // Step 4: Deduplicate
-  console.log("Deduplicating...");
   const subordinateCounts = countSubordinates(stations, resultsMap);
 
   // 4a: Collapse same-gauge records (shared station code) regardless of distance.
@@ -936,15 +930,15 @@ async function main() {
   const survivingIds = acceptedIds.filter((id) => resultsMap.get(id)!.accepted);
   deduplicate(survivingIds, stationMap, resultsMap, subordinateCounts);
 
-  // Collect and sort results
-  const results = [...resultsMap.values()].sort((a, b) =>
-    a.id.localeCompare(b.id),
+  // Codepoint order, not localeCompare: the output must not depend on the
+  // machine's ICU locale.
+  return [...resultsMap.values()].sort((a, b) =>
+    a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
   );
+}
 
-  // Write output
-  const __dirname = dirname(fileURLToPath(import.meta.url));
-  const outPath = join(__dirname, "..", "..", "quality.json");
-  await writeFile(outPath, JSON.stringify(results, null, 2) + "\n");
+async function main() {
+  const results = await evaluateQuality();
 
   // Summary
   const accepted = results.filter((r) => r.accepted);
@@ -982,8 +976,6 @@ async function main() {
     (r) => r.accepted && r.issues.length > 0,
   );
   console.log(`\nAccepted stations with issues: ${stationsWithIssues.length}`);
-
-  console.log(`\nWrote quality.json (${results.length} entries)`);
 }
 
-main();
+if (import.meta.main) await main();

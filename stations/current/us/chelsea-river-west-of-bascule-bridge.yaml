@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1226
+redirect_from:
+  - /currents/us/ma/chelsea-river/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1226:
+      position: [42.3845, -71.04217]
+      coastline: unverifiable

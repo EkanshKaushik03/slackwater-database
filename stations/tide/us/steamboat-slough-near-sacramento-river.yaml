@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/steamboat_slough_near_sacramento_river-b91450q-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/steamboat_slough_near_sacramento_river-b91450q-usa-cdwr:
+      position: [38.191267, -121.637881]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.518
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.035
+        issues:
+          - MLWS (0.991) > MLW (0.966)

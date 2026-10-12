@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-chemainus
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-chemainus:
+      position: [48.9256, -123.7144]
+      coastline: clear

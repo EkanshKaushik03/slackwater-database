@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/ACT0166
+redirect_from:
+  - /currents/us/me/mark-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0166:
+      position: [44.13667, -68.70283]
+      coastline: unverifiable

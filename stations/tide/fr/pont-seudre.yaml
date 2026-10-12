@@ -1,0 +1,18 @@
+sources:
+  - ticon/pontseudretg_05minute-pon-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pontseudretg_05minute-pon-fra-cmems:
+      position: [45.799171, -1.13874]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 53
+        factors:
+          epoch: 0.298
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.135

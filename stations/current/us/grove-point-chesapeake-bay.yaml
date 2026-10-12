@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT6201
+redirect_from:
+  - /currents/us/md/grove-point-aberdeen-proving-ground-md/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6201:
+      position: [39.37833, -76.04333]
+      coastline: unverifiable

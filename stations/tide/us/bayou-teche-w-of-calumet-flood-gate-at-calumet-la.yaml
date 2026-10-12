@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/bayou_teche_w_of_calumet_flood_gate_at_calumet_la-7385820-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bayou_teche_w_of_calumet_flood_gate_at_calumet_la-7385820-usa-usgs:
+      position: [29.704097, -91.372885]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 75
+        factors:
+          epoch: 0.887
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.014
+        issues:
+          - MLWS (0.767) > MLW (0.754)
+          - MHWS (0.793) < MHW (0.811)
+          - "Seasonal band (0.063m) is 1.9x the largest tidal constituent K1 (0.033m): the yearly swing exceeds the daily one"

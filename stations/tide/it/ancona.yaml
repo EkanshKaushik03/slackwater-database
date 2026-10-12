@@ -1,0 +1,20 @@
+sources:
+  - ticon/ancona-anx-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ancona-anx-ita-ispra:
+      position: [43.624767, 13.506517]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.113) < MHW (0.121)

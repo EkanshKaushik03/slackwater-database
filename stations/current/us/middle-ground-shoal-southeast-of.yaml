@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5066
+redirect_from:
+  - /currents/us/ak/middle-ground-shoal-southeast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5066:
+      position: [60.84583, -151.33667]
+      coastline: unverifiable

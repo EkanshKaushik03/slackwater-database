@@ -1,0 +1,20 @@
+sources:
+  - ticon/salalah-114a-omn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/salalah-114a-omn-uhslc_rq:
+      position: [16.935, 54.007]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/salalah-114-omn-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,22 @@
+sources:
+  - ticon/rio_grande-714a-bra-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rio_grande-714a-bra-uhslc_rq:
+      position: [-32.138, -52.103]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.77
+          source: 0.192
+          quality: 1
+          amplitude: 0.75
+          coverage: 1
+        issues:
+          - MLWS (1.014) > MLW (1.001)
+          - MHWS (1.158) < MHW (1.165)
+          - N2 amplitude (0.0433) exceeds M2 (0.0297)

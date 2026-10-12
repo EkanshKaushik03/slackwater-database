@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-alert-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-alert-bay:
+      position: [50.587, -126.931]
+      coastline: clear

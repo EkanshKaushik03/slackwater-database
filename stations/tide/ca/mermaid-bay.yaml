@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-mermaid-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-mermaid-bay:
+      position: [50.404, -125.1854]
+      coastline: clear

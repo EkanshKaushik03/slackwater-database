@@ -1,0 +1,21 @@
+sources:
+  - ticon/mentes-men-tur-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mentes-men-tur-cmems:
+      position: [38.427689, 26.716642]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 47
+        factors:
+          epoch: 0.108
+          recency: 0.96
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.097m) is 1.7x the largest tidal constituent M2 (0.057m): the yearly swing exceeds the daily one"

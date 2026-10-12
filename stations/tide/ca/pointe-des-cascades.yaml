@@ -1,0 +1,29 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Pointe-des-Cascades
+region: CA-QC
+sources:
+  - ticon/pointe_des_cascades-15220-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointe_des_cascades-15220-can-meds:
+      position: [45.33, -73.96]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.066
+        issues:
+          - MLWS (0.926) > MLW (0.92)
+          - MHWS (0.928) < MHW (0.932)
+          - Tidal range 1.2cm < 2cm threshold
+          - "Seasonal band (0.208m) is 69.5x the largest tidal constituent S1 (0.003m): the yearly swing exceeds the daily one"

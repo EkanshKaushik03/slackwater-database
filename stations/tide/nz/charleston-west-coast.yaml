@@ -1,0 +1,18 @@
+sources:
+  - ticon/charleston-chst-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/charleston-chst-nzl-ttw:
+      position: [-41.903333, 171.433889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 48
+        factors:
+          epoch: 0.509
+          recency: 0.98
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 0.438

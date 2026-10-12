@@ -1,0 +1,20 @@
+sources:
+  - ticon/davao-372b-phl-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/davao-372b-phl-uhslc_rq:
+      position: [7.153, 125.663]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/davao-372-phl-uhslc_fd
+        score: 56
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.192
+          quality: 0
+          amplitude: 1
+          coverage: 0.169

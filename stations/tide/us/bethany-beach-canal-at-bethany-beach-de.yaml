@@ -1,0 +1,23 @@
+region: US-DE
+sources:
+  - ticon/bethany_beach_canal_at_bethany_beach_de-1484689-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bethany_beach_canal_at_bethany_beach_de-1484689-usa-usgs:
+      position: [38.541222, -75.059833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 44
+        factors:
+          epoch: 0.086
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.032
+        issues:
+          - MLWS (0.102) > MLW (0.093)
+          - "Seasonal band (0.086m) is 1.9x the largest tidal constituent M2 (0.045m): the yearly swing exceeds the daily one"

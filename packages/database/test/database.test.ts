@@ -6,6 +6,18 @@ import { openDatabase } from "../src/database/reader.ts";
 import { Root, Kind } from "../src/generated/fbs/slackwater.ts";
 import type { Station, StationInput } from "../src/types.ts";
 
+// The fixtures' sources carry no credit of their own.
+const build = (
+  stations: Parameters<typeof buildDatabase>[0],
+  options: Omit<Parameters<typeof buildDatabase>[1], "credits"> = {},
+) =>
+  buildDatabase(stations, {
+    credits: new Map(
+      stations.flatMap(({ source }) => (source ? [[source.name, null]] : [])),
+    ),
+    ...options,
+  });
+
 expectTypeOf<Station["chart_datum"]>().toEqualTypeOf<string | undefined>();
 
 const shipped = openDatabase(
@@ -167,7 +179,7 @@ describe("buildDatabase", () => {
       },
     },
   ];
-  const db = openDatabase(buildDatabase(inputs, { version: "1.2.3" }));
+  const db = openDatabase(build(inputs, { version: "1.2.3" }));
 
   const routeInputs = [
     ...inputs,
@@ -198,9 +210,7 @@ describe("buildDatabase", () => {
   });
 
   test("round-trips sorted, deduplicated route indexes", () => {
-    const root = openDatabase(
-      buildDatabase(routeInputs, { version: "1.2.3", routes }),
-    );
+    const root = openDatabase(build(routeInputs, { version: "1.2.3", routes }));
     expect(root.tideRoutesLength()).toBe(2);
     expect(root.tideRoutes(0)!.slug()).toBe("alpha");
     const victoria = root.tideRoutes(1)!;
@@ -213,7 +223,7 @@ describe("buildDatabase", () => {
 
   test("rejects routes that point at the other station kind", () => {
     expect(() =>
-      buildDatabase(inputs, {
+      build(inputs, {
         routes: {
           tide: [{ slug: "wrong", station_ids: ["test/3"] }],
           current: [],
@@ -222,22 +232,30 @@ describe("buildDatabase", () => {
     ).toThrow(/tide\/wrong.*current.*test\/3/);
   });
 
+  // A source missing from the map would ship every notice without its credit.
+  test("rejects a station whose source has no credit decision", () => {
+    expect(() =>
+      buildDatabase(inputs, { version: "1.2.3", credits: new Map() }),
+    ).toThrow(/no credit decision for source/);
+    expect(() => (buildDatabase as Function)(inputs)).toThrow(/needs credits/);
+  });
+
   test("rejects contradictory station kinds", () => {
-    expect(() => buildDatabase([{ ...inputs[2]!, kind: "tide" }])).toThrow(
+    expect(() => build([{ ...inputs[2]!, kind: "tide" }])).toThrow(
       /test\/3.*tide.*current/,
     );
   });
 
   test("rejects empty and duplicate station ids", () => {
-    expect(() => buildDatabase([{ ...inputs[0]!, id: "" }])).toThrow(/no id/);
-    expect(() => buildDatabase([inputs[0]!, { ...inputs[0]! }])).toThrow(
+    expect(() => build([{ ...inputs[0]!, id: "" }])).toThrow(/no id/);
+    expect(() => build([inputs[0]!, { ...inputs[0]! }])).toThrow(
       /duplicate station id test\/2/,
     );
   });
 
   test("rejects malformed route indexes", () => {
     expect(() =>
-      buildDatabase(inputs, {
+      build(inputs, {
         routes: {
           tide: [
             { slug: "same", station_ids: ["test/1"] },
@@ -248,7 +266,7 @@ describe("buildDatabase", () => {
       }),
     ).toThrow(/tide.*duplicate.*same/);
     expect(() =>
-      buildDatabase(inputs, {
+      build(inputs, {
         routes: {
           tide: [{ slug: "empty", station_ids: [] }],
           current: [],
@@ -256,7 +274,7 @@ describe("buildDatabase", () => {
       }),
     ).toThrow(/tide\/empty.*no station ids/);
     expect(() =>
-      buildDatabase(inputs, {
+      build(inputs, {
         routes: {
           tide: [{ slug: "missing", station_ids: ["test/404"] }],
           current: [],
@@ -333,7 +351,7 @@ describe("buildDatabase", () => {
 
   test("rejects a station without a name, by id", () => {
     expect(() =>
-      buildDatabase([
+      build([
         {
           id: "test/nameless",
           country: "United States",
@@ -346,19 +364,15 @@ describe("buildDatabase", () => {
   test("rejects missing, unknown, and mismatched country codes by station id", () => {
     const missing = { ...inputs[0]!, id: "test/missing" };
     delete missing.country_code;
-    expect(() => buildDatabase([missing])).toThrow(
-      /test\/missing.*country_code/,
-    );
+    expect(() => build([missing])).toThrow(/test\/missing.*country_code/);
     expect(() =>
-      buildDatabase([{ ...inputs[0]!, id: "test/bad", country_code: "CAN" }]),
+      build([{ ...inputs[0]!, id: "test/bad", country_code: "CAN" }]),
     ).toThrow(/test\/bad.*country_code/);
     expect(() =>
-      buildDatabase([
-        { ...inputs[0]!, id: "test/unknown", country_code: "ZZ" },
-      ]),
+      build([{ ...inputs[0]!, id: "test/unknown", country_code: "ZZ" }]),
     ).toThrow(/test\/unknown.*ZZ/);
     expect(() =>
-      buildDatabase([
+      build([
         {
           ...inputs[0]!,
           id: "test/mismatch",
@@ -368,7 +382,7 @@ describe("buildDatabase", () => {
       ]),
     ).toThrow(/test\/mismatch.*Canada.*US/);
     expect(() =>
-      buildDatabase([
+      build([
         {
           ...inputs[0]!,
           id: "test/region",
@@ -380,7 +394,7 @@ describe("buildDatabase", () => {
 
   test("rejects incomplete public station identity", () => {
     expect(() =>
-      buildDatabase([{ ...inputs[0]!, id: "test/incomplete", timezone: "" }]),
+      build([{ ...inputs[0]!, id: "test/incomplete", timezone: "" }]),
     ).toThrow(/test\/incomplete.*timezone/);
   });
 
@@ -404,7 +418,7 @@ describe("buildDatabase", () => {
   });
 
   test("exposes kind eagerly and current data lazily", async () => {
-    const bytes = buildDatabase(inputs, { version: "1.2.3" });
+    const bytes = build(inputs, { version: "1.2.3" });
     vi.doMock("#slackwater.tcdb", () => ({ default: bytes }));
     vi.resetModules();
     const { Station: FlatBufferStation } =
@@ -448,7 +462,7 @@ describe("buildDatabase", () => {
       ebb_direction: 0,
       offsets: { reference: "test/2", flood_time: 0 },
     };
-    const bytes = buildDatabase(sparse);
+    const bytes = build(sparse);
     vi.doMock("#slackwater.tcdb", () => ({ default: bytes }));
     vi.resetModules();
 

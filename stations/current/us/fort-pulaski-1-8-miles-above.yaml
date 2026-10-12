@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7361
+redirect_from:
+  - /currents/us/ga/fort-pulaski-1-6-nm-above/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7361:
+      position: [32.045, -80.93167]
+      coastline: unverifiable

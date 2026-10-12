@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0361
+redirect_from:
+  - /currents/us/ca/yerba-buena-island-0-3-nm-se/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0361:
+      position: [37.80417, -122.35717]
+      coastline: unverifiable

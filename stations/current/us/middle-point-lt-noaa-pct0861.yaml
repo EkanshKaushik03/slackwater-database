@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0861
+redirect_from:
+  - /currents/us/ca/middle-point-lt-0-18-nm-nnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0861:
+      position: [38.0575, -121.99283]
+      coastline: unverifiable

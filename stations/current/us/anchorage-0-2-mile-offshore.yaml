@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5146
+redirect_from:
+  - /currents/us/ak/anchorage-0-2-nm-offshore/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5146:
+      position: [61.225, -149.90633]
+      coastline: unverifiable

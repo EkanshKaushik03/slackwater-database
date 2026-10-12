@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0281
+redirect_from:
+  - /currents/us/ca/golden-gate-bridge-0-7-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0281:
+      position: [37.82167, -122.46167]
+      coastline: unverifiable

@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/miami_s25b_t-s25b-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/miami_s25b_t-s25b-usa-sfwmd:
+      position: [25.793889, -80.261944]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

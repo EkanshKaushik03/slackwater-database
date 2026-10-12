@@ -1,0 +1,23 @@
+region: US-SC
+sources:
+  - ticon/cainhoy-8664545-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cainhoy-8664545-usa-noaa:
+      position: [32.9267, -79.83]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.063
+          recency: 0.72
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.441) > MLW (0.372)
+          - "Superseded source: noaa"

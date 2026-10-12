@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1112
+redirect_from:
+  - /currents/us/ma/spectacle-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1112:
+      position: [42.33422, -70.98598]
+      coastline: unverifiable

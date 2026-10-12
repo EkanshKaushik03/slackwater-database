@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-sunday-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sunday-harbour:
+      position: [50.72, -126.7]
+      coastline: clear

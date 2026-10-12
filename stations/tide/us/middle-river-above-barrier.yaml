@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/middle_river_above_barrier-mab-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/middle_river_above_barrier-mab-usa-cdwr:
+      position: [37.88518, -121.47276]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.413
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.03
+        issues:
+          - MLWS (1.075) > MLW (1.04)
+          - MHWS (1.559) < MHW (1.596)

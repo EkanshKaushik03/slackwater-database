@@ -1,0 +1,23 @@
+sources:
+  - ticon/kalix_storon-2157-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kalix_storon-2157-swe-smhi:
+      position: [65.6969, 23.0961]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.154) > MLW (0.127)
+          - MHWS (0.158) < MHW (0.165)
+          - "Seasonal band (0.131m) is 12.8x the largest tidal constituent K1 (0.010m): the yearly swing exceeds the daily one"

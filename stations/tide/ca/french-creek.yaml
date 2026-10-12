@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-french-creek
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-french-creek:
+      position: [49.349604, -124.358817]
+      coastline: clear

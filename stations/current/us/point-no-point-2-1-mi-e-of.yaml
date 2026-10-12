@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1607
+redirect_from:
+  - /currents/us/wa/point-no-point-1-8-nm-e/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1607:
+      position: [47.918880462646484, -122.484130859375]
+      coastline: clear

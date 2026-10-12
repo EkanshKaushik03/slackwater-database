@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9452081
+redirect_from:
+  - /tides/us/ak/port-snettisham/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9452081:
+      position: [58.116695404052734, -133.69000244140625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 71
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.076

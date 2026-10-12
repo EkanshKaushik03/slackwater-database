@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3426
+redirect_from:
+  - /currents/us/ny/roosevelt-island-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3426:
+      position: [40.758201599121094, -73.95130157470703]
+      coastline: unverifiable

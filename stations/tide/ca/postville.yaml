@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-postville
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-postville:
+      position: [54.907125, -59.766688]
+      coastline: unverifiable

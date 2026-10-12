@@ -1,0 +1,9 @@
+context: Aleutian Islands
+sources:
+  - noaa/PCT5726
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5726:
+      position: [51.9, 177.9]
+      coastline: unverifiable

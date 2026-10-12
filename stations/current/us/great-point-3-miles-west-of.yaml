@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1671
+redirect_from:
+  - /currents/us/ma/great-point-2-6-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1671:
+      position: [41.39, -70.11333]
+      coastline: unverifiable

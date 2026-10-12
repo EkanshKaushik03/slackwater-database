@@ -1,0 +1,20 @@
+sources:
+  - ticon/ny_alesundtg-ny_-nor-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ny_alesundtg-ny_-nor-cmems:
+      position: [78.928543, 11.938015]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/NYA
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

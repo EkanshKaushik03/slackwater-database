@@ -1,0 +1,28 @@
+region: US-NH
+sources:
+  - ticon/oyster_river_near_durham_nh-1073000-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oyster_river_near_durham_nh-1073000-usa-usgs:
+      position: [43.148696, -70.96506]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 0.25
+          coverage: 0.192
+        issues:
+          - MLWS (0.461) > MLW (0.432)
+          - MHW (0.443) <= MSL (0.461)
+          - "Seasonal band (0.158m) is 66.9x the largest tidal constituent S1 (0.002m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0001) exceeds M2 (0.0001)
+          - K2 amplitude (0.0005) exceeds S2 (0.0003)
+          - Q1 amplitude (0.0003) exceeds O1 (0.0003)

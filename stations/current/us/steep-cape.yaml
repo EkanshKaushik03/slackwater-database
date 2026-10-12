@@ -1,0 +1,9 @@
+region: US-AK
+sources:
+  - noaa/KOD0926
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/KOD0926:
+      position: [58.21452, -153.22028]
+      coastline: unverifiable

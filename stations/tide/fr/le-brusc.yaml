@@ -1,0 +1,18 @@
+sources:
+  - ticon/lebrusctg_10minute-leb-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lebrusctg_10minute-leb-fra-cmems:
+      position: [43.077499, 5.8035]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 35
+        factors:
+          epoch: 0.148
+          recency: 0.93
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.147

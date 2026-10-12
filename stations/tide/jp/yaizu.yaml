@@ -1,0 +1,18 @@
+sources:
+  - ticon/yaizu-gs23-jpn-jodc_giaj
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/yaizu-gs23-jpn-jodc_giaj:
+      position: [34.87055, 138.3275]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.101
+          quality: 1
+          amplitude: 1
+          coverage: 0.467

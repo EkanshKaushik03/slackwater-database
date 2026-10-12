@@ -1,0 +1,11 @@
+region: US-NJ
+sources:
+  - noaa/ACT4061
+redirect_from:
+  - /currents/us/nj/cape-may-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4061:
+      position: [38.90617, -74.978]
+      coastline: unverifiable

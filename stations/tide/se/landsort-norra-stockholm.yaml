@@ -1,0 +1,24 @@
+sources:
+  - ticon/landsortnorra-lan-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/landsortnorra-lan-swe-cmems:
+      position: [58.768902, 17.8589]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/landsort_norra-2507-swe-smhi
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.124) > MLW (0.122)
+          - "Seasonal band (0.085m) is 10.0x the largest tidal constituent M2 (0.008m): the yearly swing exceeds the daily one"

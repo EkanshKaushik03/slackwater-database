@@ -1,0 +1,23 @@
+sources:
+  - ticon/timmendorfpoeltg-tim-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/timmendorfpoeltg-tim-deu-cmems:
+      position: [53.990002, 11.38]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/timmendorfpoel-9630007-deu-wsv
+        score: 43
+        factors:
+          epoch: 0.615
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.007
+        issues:
+          - MLWS (-0.046) > MLW (-0.051)
+          - MHWS (0.094) < MHW (0.099)

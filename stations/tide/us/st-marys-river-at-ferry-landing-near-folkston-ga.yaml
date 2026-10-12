@@ -1,0 +1,26 @@
+region: US-GA
+sources:
+  - ticon/st_marys_river_at_ferry_landing_near_folkston_ga-2231175-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/st_marys_river_at_ferry_landing_near_folkston_ga-2231175-usa-usgs:
+      position: [30.783056, -82.024167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.488
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.352
+        issues:
+          - MHHW (0.894) < MHW (1.066)
+          - MHWS (0.895) < MHW (1.066)
+          - MSL (0.767) <= MLW (0.843)
+          - "Seasonal band (0.253m) is 2.2x the largest tidal constituent M2 (0.117m): the yearly swing exceeds the daily one"

@@ -1,0 +1,19 @@
+region: US-CT
+sources:
+  - noaa/8464445
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8464445:
+      position: [41.2717, -72.6667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

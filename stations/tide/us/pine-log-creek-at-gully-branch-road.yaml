@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/pine_log_creek_at_gully_branch_road-11345-usa-nwfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pine_log_creek_at_gully_branch_road-11345-usa-nwfwmd:
+      position: [29.936944, -84.633611]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.517
+          recency: 0.9
+          source: 0.556
+          quality: 1
+          amplitude: 1
+          coverage: 0.028
+        issues:
+          - MLWS (0.068) > MLW (0.04)

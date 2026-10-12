@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT4506
+redirect_from:
+  - /currents/us/ak/montague-strait-nw-of-point-woodcock/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT4506:
+      position: [59.94783, -147.86117]
+      coastline: unverifiable

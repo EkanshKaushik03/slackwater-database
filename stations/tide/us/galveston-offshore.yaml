@@ -1,0 +1,19 @@
+region: US-TX
+sources:
+  - ticon/galveston_offshore-8771904-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/galveston_offshore-8771904-usa-noaa:
+      position: [29.1233, -94.5083]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.14
+          recency: 0.72
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.578

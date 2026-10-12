@@ -1,0 +1,26 @@
+region: CA-QC
+sources:
+  - ticon/gatineau-16105-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gatineau-16105-can-meds:
+      position: [45.43, -75.71]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.958
+          recency: 0.56
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.221
+        issues:
+          - MLWS (0.97) > MLW (0.958)
+          - MHWS (0.988) < MHW (0.992)
+          - "P1 amplitude (0.0067) exceeds K1 (0.0053): physically impossible"
+          - "Seasonal band (0.390m) is 23.4x the largest tidal constituent S1 (0.017m): the yearly swing exceeds the daily one"

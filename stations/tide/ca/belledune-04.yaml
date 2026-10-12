@@ -1,0 +1,19 @@
+region: CA-NB
+sources:
+  - ticon/belledune-2145-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/belledune-2145-can-meds:
+      position: [47.9, -65.85]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 97
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.875

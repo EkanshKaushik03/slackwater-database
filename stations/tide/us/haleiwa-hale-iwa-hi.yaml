@@ -1,0 +1,24 @@
+region: US-HI
+sources:
+  - ticon/haleiwa-422-usa-uhslc_fd
+redirect_from:
+  - /tides/us/hi/haleiwa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/haleiwa-422-usa-uhslc_fd:
+      position: [21.593, -158.105]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.123
+          recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.013
+        issues:
+          - MLWS (1.29) > MLW (1.255)
+          - MHWS (1.592) < MHW (1.629)

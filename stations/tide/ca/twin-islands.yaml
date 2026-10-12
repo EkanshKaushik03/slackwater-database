@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-twin-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-twin-islands:
+      position: [50.03, -124.93]
+      coastline: ashore
+      metres_inland: 256

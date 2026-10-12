@@ -1,0 +1,22 @@
+region: US-AK
+sources:
+  - ticon/port_alexander-9451054-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_alexander-9451054-usa-noaa:
+      position: [56.24661, -134.64772]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.962
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - "Superseded source: noaa"

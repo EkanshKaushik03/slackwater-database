@@ -1,0 +1,22 @@
+sources:
+  - ticon/eisma-eis-est-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/eisma-eis-est-cmems:
+      position: [59.568001, 26.305]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 69
+        factors:
+          epoch: 0.451
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (-0.001) > MLW (-0.027)
+          - "Seasonal band (0.086m) is 3.5x the largest tidal constituent O1 (0.024m): the yearly swing exceeds the daily one"

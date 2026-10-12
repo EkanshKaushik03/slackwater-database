@@ -1,0 +1,20 @@
+sources:
+  - ticon/marienleuchte-9610075-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/marienleuchte-9610075-deu-wsv:
+      position: [54.496622, 11.23886]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (5.008) > MLW (5.007)

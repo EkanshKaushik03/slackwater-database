@@ -1,0 +1,18 @@
+sources:
+  - kartverket/LEH
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    kartverket/LEH:
+      position: [59.766394, 5.50367]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.12
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

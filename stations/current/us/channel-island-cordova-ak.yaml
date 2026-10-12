@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PWS0732
+redirect_from:
+  - /currents/us/ak/channel-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PWS0732:
+      position: [60.60438, -145.84024]
+      coastline: unverifiable

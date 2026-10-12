@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5481
+redirect_from:
+  - /currents/us/ak/unimak-pass-2-1-nm-n-of-tanginak-i/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5481:
+      position: [54.23333, -165.3]
+      coastline: unverifiable

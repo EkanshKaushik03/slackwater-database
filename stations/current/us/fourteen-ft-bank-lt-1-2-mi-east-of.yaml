@@ -1,0 +1,11 @@
+region: US-NJ
+sources:
+  - noaa/ACT4156
+redirect_from:
+  - /currents/us/nj/fourteen-ft-bank-lt-1-0-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4156:
+      position: [39.055, -75.15833]
+      coastline: unverifiable

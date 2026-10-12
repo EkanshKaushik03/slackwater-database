@@ -1,0 +1,18 @@
+sources:
+  - ticon/ballyglass-bal-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ballyglass-bal-irl-cmems:
+      position: [54.252998, -9.89]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.903
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.004

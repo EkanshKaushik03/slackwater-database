@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2806
+redirect_from:
+  - /currents/us/ct/kelsey-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2806:
+      position: [41.235, -72.4655]
+      coastline: unverifiable

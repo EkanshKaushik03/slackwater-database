@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/east_side_creek_near_lake_ingraham_fl-250802081035500-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/east_side_creek_near_lake_ingraham_fl-250802081035500-usa-usgs:
+      position: [25.136969, -81.064381]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.872
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.059

@@ -1,0 +1,22 @@
+region: US-AL
+sources:
+  - noaa/8730849
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8730849:
+      position: [30.354999542236328, -87.5999984741211]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.184
+        issues:
+          - "Seasonal band (0.087m) is 1.1x the largest tidal constituent K1 (0.079m): the yearly swing exceeds the daily one"

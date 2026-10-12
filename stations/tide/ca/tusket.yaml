@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-tusket
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-tusket:
+      position: [43.852062, -65.975042]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-NC
+sources:
+  - ticon/jacksonville_nc-jac-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/jacksonville_nc-jac-usa-ncdem:
+      position: [34.7512, -77.43425]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.385
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.132
+        issues:
+          - MLWS (-0.036) > MLW (-0.039)

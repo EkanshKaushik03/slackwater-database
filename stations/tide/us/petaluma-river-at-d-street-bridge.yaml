@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/petaluma_river_at_d_street_bridge-ptb-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/petaluma_river_at_d_street_bridge-ptb-usa-cdwr:
+      position: [38.233, -122.635]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.504
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.04
+        issues:
+          - MLWS (0.847) > MLW (0.749)

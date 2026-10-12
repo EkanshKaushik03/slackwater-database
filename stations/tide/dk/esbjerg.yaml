@@ -1,0 +1,18 @@
+sources:
+  - ticon/esbjerg-esb-dnk-dmi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/esbjerg-esb-dnk-dmi:
+      position: [55.4667, 8.4333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.758
+          quality: 1
+          amplitude: 1
+          coverage: 0

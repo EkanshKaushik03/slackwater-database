@@ -1,0 +1,19 @@
+region: US-MS
+sources:
+  - noaa/8741533
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8741533:
+      position: [30.36777777777778, -88.56305555555555]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

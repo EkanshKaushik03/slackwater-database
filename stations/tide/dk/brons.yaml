@@ -1,0 +1,20 @@
+sources:
+  - ticon/bronstg-bro-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bronstg-bro-dnk-cmems:
+      position: [55.1833, 8.6833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 43
+        factors:
+          epoch: 0.558
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.117
+        issues:
+          - MLW (0.382) < MLLW (0.384)

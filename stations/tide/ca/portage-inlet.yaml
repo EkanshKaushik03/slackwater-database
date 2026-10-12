@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-portage-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-portage-inlet:
+      position: [48.4571, -123.4166]
+      coastline: clear

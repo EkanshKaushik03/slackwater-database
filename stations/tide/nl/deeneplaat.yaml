@@ -1,0 +1,21 @@
+sources:
+  - ticon/deeneplaat-deenpt-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/deeneplaat-deenpt-nld-rws_hist:
+      position: [51.739616, 4.716721]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.7
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.122
+        issues:
+          - "Superseded source: rws_hist"

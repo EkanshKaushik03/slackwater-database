@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9461138
+redirect_from:
+  - /tides/us/tanaga-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9461138:
+      position: [51.7183, -177.997]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.123

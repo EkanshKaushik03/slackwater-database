@@ -1,0 +1,9 @@
+region: US-CT
+sources:
+  - noaa/LIS1006
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1006:
+      position: [41.35728, -72.08673]
+      coastline: unverifiable

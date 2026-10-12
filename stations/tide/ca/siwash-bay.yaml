@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-siwash-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-siwash-bay:
+      position: [50.687166, -125.76065]
+      coastline: clear

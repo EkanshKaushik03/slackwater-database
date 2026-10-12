@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-egmont
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-egmont:
+      position: [49.749, -123.93]
+      coastline: clear

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-cedar-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-cedar-island:
+      position: [50.656667, -126.675]
+      coastline: clear

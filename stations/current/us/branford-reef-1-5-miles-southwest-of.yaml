@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2891
+redirect_from:
+  - /currents/us/ct/branford-reef-1-3-nm-southwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2891:
+      position: [41.2095, -72.8305]
+      coastline: unverifiable

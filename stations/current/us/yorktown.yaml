@@ -1,0 +1,9 @@
+region: US-VA
+sources:
+  - noaa/ACT5436
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5436:
+      position: [37.24167, -76.50833]
+      coastline: unverifiable

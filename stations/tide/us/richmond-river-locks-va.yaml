@@ -1,0 +1,23 @@
+region: US-VA
+sources:
+  - ticon/richmond_river_locks-8638495-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/richmond_river_locks-8638495-usa-noaa:
+      position: [37.525, -77.42]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.154
+          recency: 0.84
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.008) > MLW (-0.023)
+          - "Superseded source: noaa"

@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/biscaynebay_s20f_t-s20f-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/biscaynebay_s20f_t-s20f-usa-sfwmd:
+      position: [25.47, -80.346111]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.043

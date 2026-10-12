@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/port_fourchon-8762075-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_fourchon-8762075-usa-noaa:
+      position: [29.11425, -90.19925]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (9.3) > MLW (9.234)
+          - MHWS (9.352) < MHW (9.419)
+          - "Superseded source: noaa"

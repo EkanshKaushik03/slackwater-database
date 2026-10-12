@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5941
+redirect_from:
+  - /currents/us/md/sandy-point-0-4-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5941:
+      position: [38.30833, -76.455]
+      coastline: unverifiable

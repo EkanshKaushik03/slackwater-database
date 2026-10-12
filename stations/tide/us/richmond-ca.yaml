@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/richmond-9414863-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/richmond-9414863-usa-noaa:
+      position: [37.923, -122.409583]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.021
+        issues:
+          - "Superseded source: noaa"

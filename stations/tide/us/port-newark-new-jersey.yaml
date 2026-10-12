@@ -1,0 +1,21 @@
+region: US-NJ
+sources:
+  - ticon/port_newark_new_jersey-8530884-usa-da_sat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_newark_new_jersey-8530884-usa-da_sat:
+      position: [40.69, -74.133333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8530884
+        score: 39
+        factors:
+          epoch: 0.056
+          recency: 0.27
+          source: 0
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,18 @@
+sources:
+  - noaa/TEC4651
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TEC4651:
+      position: [21.233333333332993, -76.55]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 97
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.934

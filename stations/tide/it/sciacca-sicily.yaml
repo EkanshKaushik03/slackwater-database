@@ -1,0 +1,21 @@
+sources:
+  - ticon/rmn_sciacca-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_sciacca-rmn-ita-cmems:
+      position: [37.504501, 13.0765]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 69
+        factors:
+          epoch: 0.691
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.63
+        issues:
+          - "Seasonal band (0.056m) is 1.3x the largest tidal constituent M2 (0.044m): the yearly swing exceeds the daily one"

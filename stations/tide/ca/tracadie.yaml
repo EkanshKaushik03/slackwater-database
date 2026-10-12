@@ -1,0 +1,9 @@
+region: CA-NB
+sources:
+  - chs-tracadie
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-tracadie:
+      position: [47.52295, -64.90893]
+      coastline: unverifiable

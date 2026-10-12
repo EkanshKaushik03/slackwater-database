@@ -1,0 +1,9 @@
+region: US-TX
+sources:
+  - noaa/STX1802
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/STX1802:
+      position: [27.89929962158203, -97.05139923095703]
+      coastline: unverifiable

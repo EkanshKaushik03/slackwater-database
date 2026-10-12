@@ -1,0 +1,20 @@
+sources:
+  - ticon/jackson-403b-nzl-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/jackson-403b-nzl-uhslc_rq:
+      position: [-43.983, 168.617]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/jackson-403-nzl-uhslc_fd
+        score: 57
+        factors:
+          epoch: 0.433
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

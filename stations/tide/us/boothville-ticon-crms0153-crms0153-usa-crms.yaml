@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/crms0153-crms0153-usa-crms
+redirect_from:
+  - /tides/us/la/boothville-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0153-crms0153-usa-crms:
+      position: [29.11315, -89.13546]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.956
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.113
+        issues:
+          - MLWS (0.022) > MLW (-0.048)
+          - MHWS (0.052) < MHW (0.132)

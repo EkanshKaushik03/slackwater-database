@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-port-aux-basques
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-port-aux-basques:
+      position: [47.580155, -59.139055]
+      coastline: unverifiable

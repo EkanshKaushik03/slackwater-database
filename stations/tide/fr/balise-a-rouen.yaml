@@ -1,0 +1,18 @@
+sources:
+  - ticon/balisearouentg_05minute-bal-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/balisearouentg_05minute-bal-fra-cmems:
+      position: [49.431831, 0.11067]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.111

@@ -1,0 +1,22 @@
+name: Port Angeles
+context: Strait of Juan de Fuca
+region: US-WA
+cities: [Port Angeles]
+sources:
+  - noaa/9444090
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9444090:
+      position: [48.125, -123.44000244140625]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,23 @@
+region: CA-ON
+sources:
+  - ticon/brockville_ontario-14400-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/brockville_ontario-14400-can-meds:
+      position: [44.59, -75.68]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.368
+        issues:
+          - MHWS (0.602) < MHW (0.609)
+          - "Seasonal band (0.275m) is 34.2x the largest tidal constituent M2 (0.008m): the yearly swing exceeds the daily one"

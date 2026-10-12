@@ -1,0 +1,20 @@
+sources:
+  - ticon/akyab_sittwe-907a-mmr-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/akyab_sittwe-907a-mmr-uhslc_rq:
+      position: [20.14, 92.903]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/akyab_sittwe-907-mmr-uhslc_fd
+        score: 69
+        factors:
+          epoch: 0.984
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.023

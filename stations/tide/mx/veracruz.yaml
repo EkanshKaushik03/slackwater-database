@@ -1,0 +1,20 @@
+sources:
+  - ticon/veracruz-250-mex-unam_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/veracruz-250-mex-unam_hist:
+      position: [19.191667, -96.123333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 1
+          recency: 0.89
+          source: 0.131
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.663) < MHW (1.677)

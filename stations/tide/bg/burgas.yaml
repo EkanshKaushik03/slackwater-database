@@ -1,0 +1,21 @@
+sources:
+  - ticon/burgas-bur-bgr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/burgas-bur-bgr-cmems:
+      position: [42.487999, 27.479]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 52
+        factors:
+          epoch: 0.279
+          recency: 0.92
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.119
+        issues:
+          - "Seasonal band (0.094m) is 3.8x the largest tidal constituent M2 (0.025m): the yearly swing exceeds the daily one"

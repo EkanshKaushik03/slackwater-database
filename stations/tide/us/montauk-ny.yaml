@@ -1,0 +1,22 @@
+region: US-NY
+sources:
+  - ticon/montauk-8510560-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/montauk-8510560-usa-noaa:
+      position: [41.048333, -71.959444]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

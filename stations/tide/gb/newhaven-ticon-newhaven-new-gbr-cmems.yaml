@@ -1,0 +1,20 @@
+sources:
+  - ticon/newhaven-new-gbr-cmems
+redirect_from:
+  - /tides/gb/newhaven-england/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/newhaven-new-gbr-cmems:
+      position: [50.783298, 0.06667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.014

@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/langara_point-9964-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/langara_point-9964-can-meds:
+      position: [54.26, -133.05]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 73
+        factors:
+          epoch: 0.399
+          recency: 0.81
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.169

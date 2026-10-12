@@ -1,0 +1,26 @@
+region: CA-ON
+sources:
+  - ticon/lower_iroquois_ontario-14602-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lower_iroquois_ontario-14602-can-meds:
+      position: [44.83, -75.31]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.027
+        issues:
+          - MLWS (0.528) > MLW (0.526)
+          - MHWS (0.542) < MHW (0.547)
+          - "P1 amplitude (0.0032) exceeds K1 (0.0013): physically impossible"
+          - "Seasonal band (0.299m) is 16.3x the largest tidal constituent S1 (0.018m): the yearly swing exceeds the daily one"

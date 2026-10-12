@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1627
+redirect_from:
+  - /currents/us/wa/skagit-bay-0-9-nm-south-of-goat-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1627:
+      position: [48.34477996826172, -122.54505157470703]
+      coastline: clear

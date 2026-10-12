@@ -1,0 +1,23 @@
+sources:
+  - ticon/goteborgagnesberg-got-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/goteborgagnesberg-got-swe-cmems:
+      position: [57.7897, 12.01]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/goteborg_agnesberg-33095-swe-smhi
+        seasonal_dominant: true
+        score: 59
+        factors:
+          epoch: 0.671
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - "Seasonal band (0.086m) is 1.3x the largest tidal constituent M2 (0.067m): the yearly swing exceeds the daily one"

@@ -1,0 +1,28 @@
+region: US-LA
+sources:
+  - ticon/crms3913-crms3913-usa-crms
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms3913-crms3913-usa-crms:
+      position: [30.16557, -90.47925]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 0.5
+          coverage: 0.107
+        issues:
+          - MHHW (0.25) < MHW (0.301)
+          - MHWS (0.22) < MHW (0.301)
+          - MSL (0.219) <= MLW (0.266)
+          - "Seasonal band (0.097m) is 5.2x the largest tidal constituent K1 (0.018m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0006) exceeds S2 (0.0004)
+          - Form number 33.34 exceeds 25

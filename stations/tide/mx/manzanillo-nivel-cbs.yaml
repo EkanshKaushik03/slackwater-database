@@ -1,0 +1,18 @@
+sources:
+  - ticon/manzanillo_nivelcbs-31-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/manzanillo_nivelcbs-31-mex-unam:
+      position: [19.056667, -104.318333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 36
+        factors:
+          epoch: 0.169
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0

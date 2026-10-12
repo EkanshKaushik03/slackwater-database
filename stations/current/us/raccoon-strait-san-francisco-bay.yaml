@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1212
+redirect_from:
+  - /currents/us/ca/raccoon-strait/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1212:
+      position: [37.87192, -122.44197]
+      coastline: unverifiable

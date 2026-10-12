@@ -1,0 +1,21 @@
+region: US-MD
+sources:
+  - noaa/8578693
+redirect_from:
+  - /tides/us/va/lower-cedar-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8578693:
+      position: [38.3417, -76.9767]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.115

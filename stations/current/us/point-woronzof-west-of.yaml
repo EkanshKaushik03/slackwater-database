@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5131
+redirect_from:
+  - /currents/us/ak/point-woronzof-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5131:
+      position: [61.207, -150.06117]
+      coastline: unverifiable

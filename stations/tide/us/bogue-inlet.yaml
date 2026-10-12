@@ -1,0 +1,19 @@
+region: US-NC
+sources:
+  - noaa/TEC2837
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TEC2837:
+      position: [34.650001525878906, -77.0999984741211]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.078

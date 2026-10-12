@@ -1,0 +1,21 @@
+sources:
+  - noaa/9751388
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9751388:
+      position: [18.31920051574707, -64.76180267333984]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 0
+          coverage: 0.074
+        issues:
+          - "Missing constituents for prediction: M2, S2, O1"

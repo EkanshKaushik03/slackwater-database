@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/houston_ship_channel_juan_seguin_park-hou-usa-hct
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/houston_ship_channel_juan_seguin_park-hou-usa-hct:
+      position: [29.7619, -95.0818]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8770733
+        score: 58
+        factors:
+          epoch: 0.095
+          recency: 0.98
+          source: 0.535
+          quality: 1
+          amplitude: 1
+          coverage: 0.009
+        issues:
+          - MHWS (0.567) < MHW (0.599)

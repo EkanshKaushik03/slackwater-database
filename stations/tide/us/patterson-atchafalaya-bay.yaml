@@ -1,0 +1,25 @@
+region: US-LA
+sources:
+  - ticon/crms0464-crms0464-usa-crms
+redirect_from:
+  - /tides/us/la/patterson-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0464-crms0464-usa-crms:
+      position: [29.5196, -91.38552]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 76
+        factors:
+          epoch: 0.918
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.048
+        issues:
+          - MHWS (0.475) < MHW (0.493)
+          - "Seasonal band (0.114m) is 1.2x the largest tidal constituent K1 (0.093m): the yearly swing exceeds the daily one"

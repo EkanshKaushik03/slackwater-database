@@ -1,0 +1,23 @@
+region: US-ME
+sources:
+  - ticon/kennebec_river_at_calumet_bridge_at_augusta_maine-1049320-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kennebec_river_at_calumet_bridge_at_augusta_maine-1049320-usa-usgs:
+      position: [44.318611, -69.771667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 78
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.075
+        issues:
+          - MHWS (1.517) < MHW (1.556)
+          - "Seasonal band (0.601m) is 1.4x the largest tidal constituent M2 (0.426m): the yearly swing exceeds the daily one"

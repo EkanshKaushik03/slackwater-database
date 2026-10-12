@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_collinsville-b91110-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_collinsville-b91110-usa-cdwr:
+      position: [38.073611, -121.855]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.86
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.012

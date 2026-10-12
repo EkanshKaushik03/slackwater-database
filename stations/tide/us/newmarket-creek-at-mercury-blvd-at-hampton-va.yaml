@@ -1,0 +1,19 @@
+region: US-VA
+sources:
+  - ticon/newmarket_creek_at_mercury_blvd_at_hampton_va-167892964-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/newmarket_creek_at_mercury_blvd_at_hampton_va-167892964-usa-usgs:
+      position: [37.044972, -76.367778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 0.515
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.062

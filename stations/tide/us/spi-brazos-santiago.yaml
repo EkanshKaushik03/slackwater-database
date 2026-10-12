@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/spi_brazos_santiago-8779749-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/spi_brazos_santiago-8779749-usa-noaa:
+      position: [26.0675, -97.154722]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.459
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (7.909) < MHW (7.939)
+          - "Superseded source: noaa"

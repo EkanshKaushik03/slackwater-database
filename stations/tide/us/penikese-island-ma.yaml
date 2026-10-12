@@ -1,0 +1,22 @@
+region: US-MA
+sources:
+  - ticon/penikese_island-8448248-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/penikese_island-8448248-usa-noaa:
+      position: [41.45, -70.9217]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.083
+          recency: 0.68
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

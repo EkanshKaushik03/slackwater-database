@@ -1,0 +1,24 @@
+name: La Push
+context: Quillayute River
+region: US-WA
+cities: [Forks]
+# Sited up the Quillayute River. OSM land-polygons maps the ocean coastline only, so a riverine gauge reads inland by construction - the published position is correct.
+position_verified: true
+sources:
+  - noaa/9442396
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9442396:
+      position: [47.91283611111111, -124.6357388888889]
+      coastline: verified
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

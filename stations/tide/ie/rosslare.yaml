@@ -1,0 +1,20 @@
+sources:
+  - ticon/rosslare-ros-irl-mi_c
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rosslare-ros-irl-mi_c:
+      position: [52.2546, -6.334861]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/rosslare-ros-irl-cmems
+        score: 42
+        factors:
+          epoch: 0.356
+          recency: 0.99
+          source: 0.081
+          quality: 0
+          amplitude: 1
+          coverage: 0.252

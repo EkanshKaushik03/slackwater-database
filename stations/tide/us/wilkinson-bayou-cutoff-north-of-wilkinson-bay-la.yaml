@@ -1,0 +1,22 @@
+region: US-LA
+sources:
+  - ticon/wilkinson_bayou_cutoff_north_of_wilkinson_bay_la-292939089544400-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wilkinson_bayou_cutoff_north_of_wilkinson_bay_la-292939089544400-usa-usgs:
+      position: [29.494139, -89.912306]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 47
+        factors:
+          epoch: 0.266
+          recency: 0.98
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.012
+        issues:
+          - MLWS (1.401) > MLW (1.323)
+          - MHWS (1.429) < MHW (1.505)

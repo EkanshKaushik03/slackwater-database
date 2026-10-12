@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-meteghan
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-meteghan:
+      position: [44.193113, -66.166268]
+      coastline: unverifiable

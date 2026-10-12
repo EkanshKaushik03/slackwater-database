@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-port-cartier
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-port-cartier:
+      position: [50.0325, -66.7875]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PWS0731
+redirect_from:
+  - /currents/us/ak/middle-ground-shoal-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PWS0731:
+      position: [60.55797, -146.36622]
+      coastline: unverifiable

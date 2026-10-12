@@ -1,0 +1,11 @@
+region: US-NJ
+sources:
+  - noaa/ACT4221
+redirect_from:
+  - /currents/us/nj/ben-davis-point-0-7-nm-southwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4221:
+      position: [39.28167, -75.30333]
+      coastline: unverifiable

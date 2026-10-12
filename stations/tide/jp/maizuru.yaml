@@ -1,0 +1,21 @@
+sources:
+  - ticon/maizuru-hd24-jpn-jodc_jcg
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/maizuru-hd24-jpn-jodc_jcg:
+      position: [35.451383, 135.317783]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 67
+        factors:
+          epoch: 1
+          recency: 0.82
+          source: 0.111
+          quality: 1
+          amplitude: 1
+          coverage: 0.137
+        issues:
+          - "Seasonal band (0.174m) is 2.7x the largest tidal constituent M2 (0.065m): the yearly swing exceeds the daily one"

@@ -7,13 +7,14 @@ See the org-wide [writing style](https://github.com/openwatersio/github/blob/mai
 ## Layout
 
 - `packages/database` — the published `@slackwater/database` package and the FlatBuffers builder. Its format is documented in [docs/database-format.md](docs/database-format.md).
-- `packages/stations` — station identity, quality evaluation, and the metadata locks.
+- `packages/stations` — station identity, quality evaluation, and the station-file writer.
 - `packages/datums` — datum derivation and the ordering gate.
 - `packages/harmonic-analysis` — constituent fitting.
 - `packages/tcd` — the XTide-compatible TCD writer.
 - `packages/swift` — the generated Swift reader. The generated sources are committed, because SwiftPM consumers cannot run `flatc`.
 - `sources/*` — one directory per upstream provider: `chs`, `kartverket`, `linz`, `noaa`, `noaa-current`, `rws`, `ticon`.
-- `data/`, `metadata/`, `schemas/` — downloaded source data, the committed metadata locks, and the FlatBuffers schemas.
+- `stations/` — one file per published station: its records, URL, redirects and curated fields. See [stations/README.md](stations/README.md).
+- `data/`, `metadata/`, `schemas/` — downloaded source data, reviewed reference snapshots, and the FlatBuffers schemas.
 
 ## Getting started
 
@@ -37,7 +38,7 @@ npm run lint          # prettier --check .
 
 `npm test` **does** include the type gate: it is `npm run build -w packages/database && tsc -p tsconfig.node.json && …`. There is no root `tsconfig.json`, so `npx tsc -p tsconfig.json --noEmit` fails with TS5058 — name `tsconfig.node.json` explicitly. It inherits `exactOptionalPropertyTypes` from `tsconfig.base.json`, so assigning a possibly-undefined value into an optional field is an error; spread it conditionally instead.
 
-If `validate:database` reports that the locks are stale, run `npm run metadata:lock` and commit the result.
+If `validate:database` reports that station files are stale, run `npm run stations`, review the station-file diff, and commit it.
 
 The Swift job additionally regenerates the committed Swift and fails on drift:
 
@@ -73,4 +74,4 @@ A release is not finished until both consumers pin it. Bump [slackwater-ios](htt
 
 **Build-time lookups are not an indexing problem.** Every boundary lookup runs while the database builds — the iOS app does none — and over ~11k stations they were measured at 187 ms for water bodies, 268 ms for maritime zones, and ~135 ms to load the GeoJSON. There is nothing there for a spatial index to save, so don't reach for FlatGeobuf or an R-tree. When one of these is slow it is algorithmic: the Baltic chart-datum check took 2–6 s because it had no bounding-box test, and adding one (#214) took it to ~20 ms with a byte-identical `.tcdb`. Look for a missing bbox prefilter first.
 
-The coastline audit (`position-audit.ts`, ~3 s) is dominated by 98 onshore stations running ~1,150 spiral probes each. A nearest-segment distance would fix it, but it shifts `metresInland` and the lock would need regenerating, so it is left alone deliberately.
+The coastline audit (`position-audit.ts`, ~3 s) is dominated by 98 onshore stations running ~1,150 spiral probes each. A nearest-segment distance would fix it, but it shifts `metresInland` and every station file's `computed` block would change, so it is left alone deliberately.

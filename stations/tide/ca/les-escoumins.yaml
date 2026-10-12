@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-les-escoumins
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-les-escoumins:
+      position: [48.346167, -69.388833]
+      coastline: unverifiable

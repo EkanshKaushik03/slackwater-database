@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/LIS1017
+redirect_from:
+  - /currents/us/ny/six-mile-reef/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1017:
+      position: [41.1345, -72.48927]
+      coastline: unverifiable

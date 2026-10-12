@@ -1,0 +1,21 @@
+region: US-TX
+sources:
+  - noaa/TEC4513
+redirect_from:
+  - /tides/us/tx/texas-city-tx/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TEC4513:
+      position: [29.383333333332992, -94.883333333333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.016

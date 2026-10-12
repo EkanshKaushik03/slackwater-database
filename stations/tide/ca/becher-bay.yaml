@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-becher-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-becher-bay:
+      position: [48.3349, -123.6038]
+      coastline: clear

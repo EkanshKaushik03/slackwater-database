@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/miner_slough_at_five_points-b91475-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/miner_slough_at_five_points-b91475-usa-cdwr:
+      position: [38.29, -121.644722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 58
+        factors:
+          epoch: 0.798
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.025

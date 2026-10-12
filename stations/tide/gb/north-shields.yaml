@@ -1,0 +1,18 @@
+sources:
+  - ticon/north_shields-nsh-gbr-bodc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/north_shields-nsh-gbr-bodc:
+      position: [55.007444, -1.439778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.98
+          quality: 1
+          amplitude: 1
+          coverage: 0.018

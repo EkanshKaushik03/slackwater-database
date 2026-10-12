@@ -1,0 +1,20 @@
+sources:
+  - ticon/dingle-din-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dingle-din-irl-cmems:
+      position: [52.139198, -10.2773]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/dingle_harbour-din-irl-mi_c
+        score: 37
+        factors:
+          epoch: 0.348
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

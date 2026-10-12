@@ -1,0 +1,20 @@
+sources:
+  - ticon/howth_water_level_2-how-irl-mi_c
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/howth_water_level_2-how-irl-mi_c:
+      position: [53.391335, -6.06809]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/howth-how-irl-cmems
+        score: 52
+        factors:
+          epoch: 0.251
+          recency: 0.99
+          source: 0.081
+          quality: 1
+          amplitude: 1
+          coverage: 0

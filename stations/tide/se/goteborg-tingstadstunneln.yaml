@@ -1,0 +1,21 @@
+sources:
+  - ticon/goteborg_tingstadstunneln-33093-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/goteborg_tingstadstunneln-33093-swe-smhi:
+      position: [57.7231, 11.987]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 0.671
+          recency: 0.99
+          source: 0.919
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.082m) is 1.2x the largest tidal constituent M2 (0.069m): the yearly swing exceeds the daily one"

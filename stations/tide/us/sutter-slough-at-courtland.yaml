@@ -1,0 +1,25 @@
+region: US-CA
+sources:
+  - ticon/sutter_slough_at_courtland-sut-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sutter_slough_at_courtland-sut-usa-cdwr:
+      position: [38.3286, -121.5772]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sutter_slough_a_courtland_ca-11447830-usa-usgs
+        seasonal_dominant: true
+        score: 61
+        factors:
+          epoch: 0.991
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - MHWS (2.176) < MHW (2.236)
+          - "Seasonal band (0.319m) is 1.8x the largest tidal constituent M2 (0.174m): the yearly swing exceeds the daily one"

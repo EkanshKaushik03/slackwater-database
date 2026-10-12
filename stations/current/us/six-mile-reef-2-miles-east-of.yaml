@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2821
+redirect_from:
+  - /currents/us/ny/six-mile-reef-1-7-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2821:
+      position: [41.1805, -72.44833]
+      coastline: unverifiable

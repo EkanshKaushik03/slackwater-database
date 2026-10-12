@@ -1,0 +1,9 @@
+region: US-NJ
+sources:
+  - noaa/COR0301
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COR0301:
+      position: [39.20863, -74.6519]
+      coastline: unverifiable

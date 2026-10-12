@@ -1,0 +1,21 @@
+region: US-SC
+sources:
+  - noaa/8667982
+redirect_from:
+  - /tides/us/sc/jenkins-creek/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8667982:
+      position: [32.44, -80.5533]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.04

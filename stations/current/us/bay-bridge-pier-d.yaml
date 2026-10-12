@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1207
+redirect_from:
+  - /currents/us/ca/bay-bridge/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1207:
+      position: [37.80093, -122.37387]
+      coastline: unverifiable

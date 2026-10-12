@@ -1,0 +1,24 @@
+region: US-MS
+sources:
+  - ticon/pascagoula_river_at_mi_1_at_pascagoula_ms-2480212-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pascagoula_river_at_mi_1_at_pascagoula_ms-2480212-usa-usgs:
+      position: [30.367778, -88.563056]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8741533
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.157) > MLW (0.098)
+          - MHWS (0.251) < MHW (0.319)

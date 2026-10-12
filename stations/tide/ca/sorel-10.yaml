@@ -1,0 +1,24 @@
+region: CA-QC
+sources:
+  - ticon/sorel-15930-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sorel-15930-can-meds:
+      position: [46.05, -73.12]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.244
+        issues:
+          - Tidal range 1.8cm < 2cm threshold
+          - "Seasonal band (0.476m) is 41.2x the largest tidal constituent M2 (0.012m): the yearly swing exceeds the daily one"

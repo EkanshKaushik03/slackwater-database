@@ -1,0 +1,21 @@
+sources:
+  - ticon/rabaul-010a-png-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rabaul-010a-png-uhslc_rq:
+      position: [-4.2, 152.175]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 1
+          recency: 0.71
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (0.643) > MLW (0.558)
+          - MHWS (0.887) < MHW (0.989)

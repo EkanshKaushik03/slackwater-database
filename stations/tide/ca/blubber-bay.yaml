@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-blubber-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-blubber-bay:
+      position: [49.8, -124.616667]
+      coastline: clear

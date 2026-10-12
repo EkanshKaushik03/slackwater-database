@@ -1,0 +1,26 @@
+region: US-FL
+sources:
+  - ticon/northbay_causeway-12697-usa-nwfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/northbay_causeway-12697-usa-nwfwmd:
+      position: [30.269444, -85.607778]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.616
+          recency: 0.99
+          source: 0.556
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHHW (5.259) < MHW (5.453)
+          - MHWS (5.042) < MHW (5.453)
+          - MSL (4.979) <= MLW (5.059)
+          - "Seasonal band (1.684m) is 13.0x the largest tidal constituent K1 (0.129m): the yearly swing exceeds the daily one"

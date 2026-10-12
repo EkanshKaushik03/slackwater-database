@@ -1,0 +1,22 @@
+sources:
+  - ticon/tarifatg-tar-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tarifatg-tar-esp-cmems:
+      position: [36.006401, -5.60361]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/tarifa-tari-esp-ieo
+        score: 58
+        factors:
+          epoch: 0.857
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.005
+        issues:
+          - Q1 amplitude (0.0048) exceeds O1 (0.0046)

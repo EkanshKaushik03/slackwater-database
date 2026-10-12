@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-grande-riviere
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-grande-riviere:
+      position: [48.392651, -64.492455]
+      coastline: unverifiable

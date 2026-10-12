@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-whaletown
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-whaletown:
+      position: [50.108, -125.052]
+      coastline: clear

@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1546
+redirect_from:
+  - /currents/us/wa/pickering-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1546:
+      position: [47.21928024291992, -122.93451690673828]
+      coastline: clear

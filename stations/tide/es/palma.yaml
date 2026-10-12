@@ -1,0 +1,21 @@
+sources:
+  - ticon/palma-palm-esp-ieo
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/palma-palm-esp-ieo:
+      position: [39.5524, 2.6389]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.899
+          quality: 1
+          amplitude: 1
+          coverage: 0.018
+        issues:
+          - "Seasonal band (0.077m) is 2.1x the largest tidal constituent K1 (0.036m): the yearly swing exceeds the daily one"

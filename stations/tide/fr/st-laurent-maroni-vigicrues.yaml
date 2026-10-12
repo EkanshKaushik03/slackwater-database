@@ -1,0 +1,18 @@
+sources:
+  - ticon/stlaurentmaronivigicruestg_60minute-stl-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/stlaurentmaronivigicruestg_60minute-stl-fra-cmems:
+      position: [5.49433, -54.036121]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 49
+        factors:
+          epoch: 0.206
+          recency: 0.96
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1

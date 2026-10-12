@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5576
+redirect_from:
+  - /currents/us/va/jones-point-1-2-nm-nnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5576:
+      position: [37.8005, -76.693]
+      coastline: unverifiable

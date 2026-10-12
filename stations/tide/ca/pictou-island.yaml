@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-pictou-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pictou-island:
+      position: [45.802557, -62.585592]
+      coastline: unverifiable

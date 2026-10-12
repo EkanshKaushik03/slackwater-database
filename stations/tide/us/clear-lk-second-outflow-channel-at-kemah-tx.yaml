@@ -1,0 +1,22 @@
+region: US-TX
+sources:
+  - ticon/clear_lk_second_outflow_channel_at_kemah_tx-8077637-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/clear_lk_second_outflow_channel_at_kemah_tx-8077637-usa-usgs:
+      position: [29.554396, -95.025762]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.059
+        issues:
+          - MLWS (0.266) > MLW (0.232)
+          - MHWS (0.364) < MHW (0.448)

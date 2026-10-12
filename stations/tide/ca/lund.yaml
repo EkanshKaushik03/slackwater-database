@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-lund
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-lund:
+      position: [49.983333, -124.766667]
+      coastline: clear

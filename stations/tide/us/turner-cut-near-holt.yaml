@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/turner_cut_near_holt-trn-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/turner_cut_near_holt-trn-usa-cdwr:
+      position: [37.9928, -121.4542]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/turner_cut_nr_holt_ca-11311300-usa-usgs
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (2.336) > MLW (2.293)

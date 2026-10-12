@@ -1,0 +1,18 @@
+sources:
+  - ticon/pointe_a_pitre-125-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointe_a_pitre-125-fra-refmar:
+      position: [16.224397, -61.531454]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.949
+          quality: 0
+          amplitude: 1
+          coverage: 0.002

@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3556
+redirect_from:
+  - /currents/us/ak/point-st-albans-3-5-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3556:
+      position: [56.08333, -133.85]
+      coastline: unverifiable

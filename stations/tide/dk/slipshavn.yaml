@@ -1,0 +1,18 @@
+sources:
+  - ticon/slipshavn-sli-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/slipshavn-sli-dnk-cmems:
+      position: [55.283298, 10.8333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 71
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.396

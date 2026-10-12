@@ -1,0 +1,20 @@
+sources:
+  - ticon/stadersand-5970013-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/stadersand-5970013-deu-wsv:
+      position: [53.629727, 9.526587]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0.089
+        issues:
+          - MLWS (3.788) > MLW (3.732)

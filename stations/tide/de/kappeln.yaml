@@ -1,0 +1,23 @@
+sources:
+  - ticon/kappeln-9610035-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kappeln-9610035-deu-wsv:
+      position: [54.66438, 9.937932]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 81
+        factors:
+          epoch: 0.996
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (5.033) > MLW (5.013)
+          - MHWS (5.103) < MHW (5.124)
+          - "Seasonal band (0.033m) is 1.2x the largest tidal constituent M2 (0.028m): the yearly swing exceeds the daily one"

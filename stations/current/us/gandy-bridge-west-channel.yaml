@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/ACT8566
+redirect_from:
+  - /currents/us/fl/gandy-bridge/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8566:
+      position: [27.87917, -82.5805]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-le-bic
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-le-bic:
+      position: [48.377167, -68.7265]
+      coastline: unverifiable

@@ -1,0 +1,12 @@
+# A station's own acronym, which a shouting name would recase.
+
+name: UTSMI Research Pier (Midchannel)
+region: US-TX
+sources:
+  - noaa/cc0302
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/cc0302:
+      position: [27.83810043334961, -97.052001953125]
+      coastline: unverifiable

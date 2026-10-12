@@ -1,0 +1,22 @@
+region: US-MS
+sources:
+  - ticon/mississippi_sound_at_usgs_round_island_light_ms-301849088350000-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mississippi_sound_at_usgs_round_island_light_ms-301849088350000-usa-usgs:
+      position: [30.308056, -88.583889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.874
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.12
+        issues:
+          - MLWS (0.583) > MLW (0.555)
+          - MHWS (0.681) < MHW (0.726)

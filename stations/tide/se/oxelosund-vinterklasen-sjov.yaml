@@ -1,0 +1,22 @@
+sources:
+  - ticon/oxelosund_vinterklasen_sjov-35118-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oxelosund_vinterklasen_sjov-35118-swe-smhi:
+      position: [58.6617, 17.1247]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 81
+        factors:
+          epoch: 0.869
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.098) > MLW (0.096)
+          - "Seasonal band (0.053m) is 6.2x the largest tidal constituent K1 (0.009m): the yearly swing exceeds the daily one"

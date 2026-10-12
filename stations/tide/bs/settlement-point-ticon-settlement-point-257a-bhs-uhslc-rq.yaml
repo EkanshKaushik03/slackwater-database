@@ -1,0 +1,20 @@
+sources:
+  - ticon/settlement_point-257a-bhs-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/settlement_point-257a-bhs-uhslc_rq:
+      position: [26.71, -78.997]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/settlement_point-257-bhs-uhslc_fd
+        score: 64
+        factors:
+          epoch: 0.893
+          recency: 0.76
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

@@ -1,0 +1,19 @@
+region: CA-PE
+sources:
+  - ticon/rustico-1915-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rustico-1915-can-meds:
+      position: [46.47, -63.28]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.7
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.588

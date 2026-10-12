@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-hopedale
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-hopedale:
+      position: [55.4541256, -60.2228018]
+      coastline: unverifiable

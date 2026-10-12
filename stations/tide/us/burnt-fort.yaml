@@ -1,0 +1,19 @@
+region: US-GA
+sources:
+  - noaa/TEC3541
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TEC3541:
+      position: [30.95, -81.9]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.335

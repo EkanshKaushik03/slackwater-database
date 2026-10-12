@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/guadalupe_river_at_gold_st-gua-usa-cm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/guadalupe_river_at_gold_st-gua-usa-cm:
+      position: [37.4223, -121.9757]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 59
+        factors:
+          epoch: 0.182
+          recency: 0.98
+          source: 0.525
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

@@ -1,0 +1,22 @@
+name: Waldron Island
+context: San Juan Islands
+region: US-WA
+cities: [Friday Harbor]
+sources:
+  - noaa/9449746
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9449746:
+      position: [48.686798095703125, -123.03759765625]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.23

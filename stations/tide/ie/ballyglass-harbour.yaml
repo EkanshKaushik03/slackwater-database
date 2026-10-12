@@ -1,0 +1,20 @@
+sources:
+  - ticon/ballyglass_harbour-bal-irl-mi_c
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ballyglass_harbour-bal-irl-mi_c:
+      position: [54.2536, -9.8928]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ballyglass-bal-irl-cmems
+        score: 50
+        factors:
+          epoch: 0.921
+          recency: 0.99
+          source: 0.081
+          quality: 0
+          amplitude: 1
+          coverage: 0.004

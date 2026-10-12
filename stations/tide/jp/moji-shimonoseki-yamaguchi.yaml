@@ -1,0 +1,20 @@
+sources:
+  - ticon/moji-9010-jpn-jodc_pahb
+redirect_from:
+  - /tides/jp/moji/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/moji-9010-jpn-jodc_pahb:
+      position: [33.945183, 130.957617]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.685
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.027

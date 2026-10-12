@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/mokelumne_r_at_san_joaquin_river-mok-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mokelumne_r_at_san_joaquin_river-mok-usa-cdwr:
+      position: [38.1061, -121.5711]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.982
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.012
+        issues:
+          - MLWS (4.367) > MLW (4.355)
+          - MHWS (5.025) < MHW (5.04)

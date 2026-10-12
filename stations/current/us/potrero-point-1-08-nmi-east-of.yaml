@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0426
+redirect_from:
+  - /currents/us/ca/potrero-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0426:
+      position: [37.7575, -122.35783]
+      coastline: unverifiable

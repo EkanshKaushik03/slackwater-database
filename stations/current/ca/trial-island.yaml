@@ -1,0 +1,11 @@
+region: CA-BC
+sources:
+  - noaa/PCT1391
+redirect_from:
+  - /currents/us/trial-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1391:
+      position: [48.31666946411133, -123.36666870117188]
+      coastline: clear

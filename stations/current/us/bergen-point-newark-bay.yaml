@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/n01010
+redirect_from:
+  - /currents/us/ny/bergen-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/n01010:
+      position: [40.6422004699707, -74.15129852294922]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-LA
+sources:
+  - noaa/8760742
+redirect_from:
+  - /tides/us/ms/comfort-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8760742:
+      position: [29.8233, -89.27]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 73
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.239

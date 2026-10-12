@@ -1,0 +1,22 @@
+sources:
+  - ticon/roskilde-ros-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/roskilde-ros-dnk-cmems:
+      position: [55.650002, 12.0833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 67
+        factors:
+          epoch: 0.727
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.468
+        issues:
+          - MLWS (0.068) > MLW (0.038)
+          - "Seasonal band (0.055m) is 1.9x the largest tidal constituent M2 (0.029m): the yearly swing exceeds the daily one"

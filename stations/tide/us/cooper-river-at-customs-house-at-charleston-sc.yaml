@@ -1,0 +1,21 @@
+region: US-SC
+sources:
+  - ticon/cooper_river_at_customs_house_at_charleston_sc-21720711-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cooper_river_at_customs_house_at_charleston_sc-21720711-usa-usgs:
+      position: [32.780722, -79.92375]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8665530
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0

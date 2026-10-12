@@ -1,0 +1,20 @@
+sources:
+  - ticon/arica-083a-chl-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/arica-083a-chl-uhslc_rq:
+      position: [-18.467, -70.333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/arica-083-chl-uhslc_fd
+        score: 64
+        factors:
+          epoch: 0.873
+          recency: 0.72
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

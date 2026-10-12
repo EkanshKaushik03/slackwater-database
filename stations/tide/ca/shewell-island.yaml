@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-shewell-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-shewell-island:
+      position: [50.65833, -126.239167]
+      coastline: clear

@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/roaring_river-ror-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/roaring_river-ror-usa-cdwr:
+      position: [38.0931, -121.8875]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 1
+          recency: 0.85
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.006

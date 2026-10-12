@@ -1,0 +1,9 @@
+region: US-WA
+sources:
+  - noaa/PUG1701
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1701:
+      position: [48.40618896484375, -122.64311981201172]
+      coastline: clear

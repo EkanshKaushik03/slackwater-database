@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-namu
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-namu:
+      position: [51.86153, -127.8657]
+      coastline: unverifiable

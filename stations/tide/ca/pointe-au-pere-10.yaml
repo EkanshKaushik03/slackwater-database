@@ -1,0 +1,19 @@
+region: CA-QC
+sources:
+  - ticon/pointe_au_pere-2980-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointe_au_pere-2980-can-meds:
+      position: [48.52, -68.47]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.58
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.107

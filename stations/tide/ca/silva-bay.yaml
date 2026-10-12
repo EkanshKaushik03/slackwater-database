@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-silva-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-silva-bay:
+      position: [49.15, -123.7]
+      coastline: clear

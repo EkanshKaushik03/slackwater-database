@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1156
+redirect_from:
+  - /currents/us/ma/deer-island-light-1-0-nm-wsw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1156:
+      position: [42.33283, -70.97383]
+      coastline: unverifiable

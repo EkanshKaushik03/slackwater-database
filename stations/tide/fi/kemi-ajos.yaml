@@ -1,0 +1,23 @@
+sources:
+  - ticon/kemi_ajos-100539-fin-fmi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kemi_ajos-100539-fin-fmi:
+      position: [65.67, 24.52]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.768
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - MLWS (0.027) > MLW (0.008)
+          - MHWS (0.035) < MHW (0.047)
+          - "Seasonal band (0.140m) is 11.0x the largest tidal constituent K1 (0.013m): the yearly swing exceeds the daily one"

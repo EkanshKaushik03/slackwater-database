@@ -1,0 +1,19 @@
+region: US-CT
+sources:
+  - ticon/connecticut_river_at_old_lyme_ct-1194796-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/connecticut_river_at_old_lyme_ct-1194796-usa-usgs:
+      position: [41.312487, -72.3459]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.022

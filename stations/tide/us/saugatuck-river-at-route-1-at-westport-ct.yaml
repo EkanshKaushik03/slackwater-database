@@ -1,0 +1,19 @@
+region: US-CT
+sources:
+  - ticon/saugatuck_river_at_route_1_at_westport_ct-1209510-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/saugatuck_river_at_route_1_at_westport_ct-1209510-usa-usgs:
+      position: [41.140894, -73.363033]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 55
+        factors:
+          epoch: 0.608
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.047

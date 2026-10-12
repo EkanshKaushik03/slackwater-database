@@ -1,0 +1,14 @@
+name: Gillard Passage
+context: Yuculta Rapids
+region: CA-BC
+aliases: [yucultas]
+position: [50.3933, -125.1567]
+provider: chs
+sources:
+  - chs-gillard-passage
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-gillard-passage:
+      position: [50.3933, -125.1567]
+      coastline: clear

@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_verona-von-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_verona-von-usa-cdwr:
+      position: [38.774155, -121.59807]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHHW (4.454) < MHW (4.575)
+          - MLWS (4.591) > MLW (4.521)
+          - MHW (4.575) <= MSL (4.6)
+          - "Seasonal band (1.056m) is 106.7x the largest tidal constituent K1 (0.010m): the yearly swing exceeds the daily one"

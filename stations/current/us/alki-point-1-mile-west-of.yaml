@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1502
+redirect_from:
+  - /currents/us/wa/alki-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1502:
+      position: [47.58367919921875, -122.45175170898438]
+      coastline: clear

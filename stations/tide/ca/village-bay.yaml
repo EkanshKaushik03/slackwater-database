@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-village-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-village-bay:
+      position: [48.8445, -123.3241]
+      coastline: clear

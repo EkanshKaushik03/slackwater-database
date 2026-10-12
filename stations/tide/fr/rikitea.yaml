@@ -1,0 +1,18 @@
+sources:
+  - ticon/rikitea-016-fra-uhslc_fd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rikitea-016-fra-uhslc_fd:
+      position: [-23.125, -134.953]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.99
+          quality: 0
+          amplitude: 1
+          coverage: 0

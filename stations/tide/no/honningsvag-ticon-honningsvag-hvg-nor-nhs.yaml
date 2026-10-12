@@ -1,0 +1,20 @@
+sources:
+  - ticon/honningsvag-hvg-nor-nhs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/honningsvag-hvg-nor-nhs:
+      position: [70.980318, 25.972697]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/HVG
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.909
+          quality: 1
+          amplitude: 1
+          coverage: 0

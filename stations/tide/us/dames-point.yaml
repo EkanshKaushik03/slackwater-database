@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/dames_point-8720219-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dames_point-8720219-usa-noaa:
+      position: [30.387222, -81.559166]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.621
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - "Superseded source: noaa"

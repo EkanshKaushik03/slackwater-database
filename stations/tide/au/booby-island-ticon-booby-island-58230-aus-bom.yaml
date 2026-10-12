@@ -1,0 +1,22 @@
+sources:
+  - ticon/booby_island-58230-aus-bom
+redirect_from:
+  - /tides/au/booby-island-queensland/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/booby_island-58230-aus-bom:
+      position: [-10.6026, 141.9101]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHWS (3.344) < MHW (3.355)

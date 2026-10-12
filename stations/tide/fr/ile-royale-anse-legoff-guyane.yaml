@@ -1,0 +1,20 @@
+sources:
+  - ticon/ileroyaleanselegofftg_60minute-ile-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ileroyaleanselegofftg_60minute-ile-fra-cmems:
+      position: [5.28833, -52.586658]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/i_royal_anselegoff-851a-fra-uhslc_rq
+        score: 63
+        factors:
+          epoch: 0.997
+          recency: 0.81
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

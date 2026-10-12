@@ -1,0 +1,23 @@
+sources:
+  - ticon/formenteratg-for-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/formenteratg-for-esp-cmems:
+      position: [38.734699, 1.41889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.847
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.396
+        issues:
+          - MLWS (0.377) > MLW (0.376)
+          - MHWS (0.415) < MHW (0.424)
+          - "Seasonal band (0.087m) is 2.3x the largest tidal constituent K1 (0.038m): the yearly swing exceeds the daily one"

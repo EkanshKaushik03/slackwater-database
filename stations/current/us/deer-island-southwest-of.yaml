@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1131
+redirect_from:
+  - /currents/us/ma/deer-island-southwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1131:
+      position: [42.34383, -70.963]
+      coastline: unverifiable

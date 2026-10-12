@@ -1,0 +1,23 @@
+sources:
+  - ticon/veracruz_radar-1-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/veracruz_radar-1-mex-unam:
+      position: [19.191667, -96.123333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/veracruz-250-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.526) > MLW (1.495)
+          - MHWS (1.746) < MHW (1.806)

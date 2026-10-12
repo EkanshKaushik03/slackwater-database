@@ -1,0 +1,26 @@
+region: US-LA
+sources:
+  - ticon/crms0513-crms0513-usa-crms
+redirect_from:
+  - /tides/us/la/baldwin-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0513-crms0513-usa-crms:
+      position: [29.79541, -91.60407]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 77
+        factors:
+          epoch: 0.966
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.063
+        issues:
+          - MLWS (0.04) > MLW (0.029)
+          - MHWS (0.148) < MHW (0.196)
+          - "Seasonal band (0.096m) is 1.1x the largest tidal constituent K1 (0.087m): the yearly swing exceeds the daily one"

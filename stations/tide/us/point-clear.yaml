@@ -1,0 +1,21 @@
+region: US-AL
+sources:
+  - noaa/8733821
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8733821:
+      position: [30.48663888888889, -87.93452777777777]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.14
+        issues:
+          - MHHW (9.04) < MHW (9.046)

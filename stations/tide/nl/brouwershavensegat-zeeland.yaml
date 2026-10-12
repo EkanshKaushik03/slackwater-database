@@ -1,0 +1,20 @@
+sources:
+  - ticon/brouwershavensegattg-bro-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/brouwershavensegattg-bro-nld-cmems:
+      position: [51.767467, 3.621925]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/brouwershavensche_gat_punt_02-brouwhvsgt02-nld-rws
+        score: 34
+        factors:
+          epoch: 0.204
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.007

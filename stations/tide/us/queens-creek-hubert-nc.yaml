@@ -1,0 +1,21 @@
+region: US-NC
+sources:
+  - ticon/queenscreek_hubert_nc-que-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/queenscreek_hubert_nc-que-usa-ncdem:
+      position: [34.7129, -77.22242]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 0.336
+          recency: 0.99
+          source: 0.545
+          quality: 0
+          amplitude: 1
+          coverage: 0.199
+        issues:
+          - MHWS (0.287) < MHW (0.293)

@@ -1,0 +1,19 @@
+region: CA-QC
+sources:
+  - ticon/lile_aux_grues-3180-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lile_aux_grues-3180-can-meds:
+      position: [47.06, -70.53]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.49
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.253

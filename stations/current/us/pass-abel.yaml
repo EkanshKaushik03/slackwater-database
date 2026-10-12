@@ -1,0 +1,9 @@
+region: US-LA
+sources:
+  - noaa/ACT8776
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8776:
+      position: [29.295, -89.90333]
+      coastline: unverifiable

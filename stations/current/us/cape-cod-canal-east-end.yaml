@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/COD0901
+redirect_from:
+  - /currents/us/ma/cape-cod-canal/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COD0901:
+      position: [41.77553, -70.49932]
+      coastline: unverifiable

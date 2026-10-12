@@ -1,0 +1,18 @@
+sources:
+  - ticon/petten_zuid-pettzd-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/petten_zuid-pettzd-nld-rws:
+      position: [52.77266, 4.649702]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.596
+          recency: 0.91
+          source: 0.788
+          quality: 1
+          amplitude: 1
+          coverage: 0

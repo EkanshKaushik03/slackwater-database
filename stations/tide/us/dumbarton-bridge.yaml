@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/dumbarton_bridge-9414509-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dumbarton_bridge-9414509-usa-noaa:
+      position: [37.5067, -122.115]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.835
+          recency: 0.85
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

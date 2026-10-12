@@ -1,0 +1,18 @@
+sources:
+  - ticon/larochelletg_60minute-lar-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/larochelletg_60minute-lar-fra-cmems:
+      position: [46.148701, -1.2259]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.023

@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/old_river_as_quimbly_is_near_bethel_is-orq-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_as_quimbly_is_near_bethel_is-orq-usa-cdwr:
+      position: [38.0272, -121.5645]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/old_r_a_quimby_island_nr_bethel_island_ca-11313434-usa-usgs
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.313) > MLW (1.3)

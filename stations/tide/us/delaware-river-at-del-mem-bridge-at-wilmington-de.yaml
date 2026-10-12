@@ -1,0 +1,21 @@
+region: US-DE
+sources:
+  - ticon/delaware_river_at_del_mem_bridge_at_wilmington_de-1482100-usa-usgs
+redirect_from:
+  - /tides/us/nj/delaware-river-at-del-mem-bridge-at-wilmington-de/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/delaware_river_at_del_mem_bridge_at_wilmington_de-1482100-usa-usgs:
+      position: [39.68928, -75.521588]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.26
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.024

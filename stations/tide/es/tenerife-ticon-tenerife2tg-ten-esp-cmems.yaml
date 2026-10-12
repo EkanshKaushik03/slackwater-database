@@ -1,0 +1,20 @@
+sources:
+  - ticon/tenerife2tg-ten-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tenerife2tg-ten-esp-cmems:
+      position: [28.477209, -16.241131]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/tenerife-228a-esp-uhslc_rq
+        score: 36
+        factors:
+          epoch: 0.304
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.003

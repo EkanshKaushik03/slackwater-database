@@ -1,0 +1,22 @@
+sources:
+  - ticon/ringhals-2105-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ringhals-2105-swe-smhi:
+      position: [57.2497, 12.1125]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.129) < MHW (0.131)
+          - "Seasonal band (0.088m) is 2.2x the largest tidal constituent M2 (0.041m): the yearly swing exceeds the daily one"

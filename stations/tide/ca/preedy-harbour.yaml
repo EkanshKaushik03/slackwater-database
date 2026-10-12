@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-preedy-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-preedy-harbour:
+      position: [48.9802, -123.6777]
+      coastline: clear

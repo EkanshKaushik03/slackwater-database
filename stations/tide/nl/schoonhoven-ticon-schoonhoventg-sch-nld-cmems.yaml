@@ -1,0 +1,20 @@
+sources:
+  - ticon/schoonhoventg-sch-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/schoonhoventg-sch-nld-cmems:
+      position: [51.944, 4.852]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/schoonhoven-schoonhvn-nld-rws
+        score: 56
+        factors:
+          epoch: 0.538
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/hillsborough_river_at_platt_street_at_tampa_fl-2306028-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hillsborough_river_at_platt_street_at_tampa_fl-2306028-usa-usgs:
+      position: [27.941966, -82.458706]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.012

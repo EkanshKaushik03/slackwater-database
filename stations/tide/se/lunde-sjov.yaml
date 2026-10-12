@@ -1,0 +1,22 @@
+sources:
+  - ticon/lunde_sjov-35209-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lunde_sjov-35209-swe-smhi:
+      position: [62.8865, 17.8764]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 70
+        factors:
+          epoch: 0.337
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0.013
+        issues:
+          - MLWS (0.074) > MLW (0.061)
+          - "Seasonal band (0.084m) is 12.8x the largest tidal constituent K1 (0.007m): the yearly swing exceeds the daily one"

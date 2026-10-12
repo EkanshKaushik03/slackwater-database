@@ -1,0 +1,25 @@
+region: US-NY
+sources:
+  - ticon/olcott_ny-9052076-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/olcott_ny-9052076-usa-noaa:
+      position: [43.33839, -78.7273]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.756
+        issues:
+          - MHWS (74.858) < MHW (74.868)
+          - Tidal range 1.8cm < 2cm threshold
+          - "Seasonal band (0.293m) is 68.0x the largest tidal constituent M2 (0.004m): the yearly swing exceeds the daily one"

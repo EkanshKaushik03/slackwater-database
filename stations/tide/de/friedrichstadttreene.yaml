@@ -1,0 +1,24 @@
+sources:
+  - ticon/friedrichstadttreene-9520061-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/friedrichstadttreene-9520061-deu-wsv:
+      position: [54.375299, 9.084908]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.798
+          quality: 0
+          amplitude: 1
+          coverage: 0.018
+        issues:
+          - MLWS (4.423) > MLW (4.41)
+          - MHW (4.452) <= MSL (4.472)
+          - "Seasonal band (0.132m) is 3.4x the largest tidal constituent M2 (0.039m): the yearly swing exceeds the daily one"

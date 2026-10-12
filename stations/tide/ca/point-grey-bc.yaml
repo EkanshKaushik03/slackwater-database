@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/point_grey_bc-7635-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/point_grey_bc-7635-can-meds:
+      position: [49.25, -123.27]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.081
+          recency: 0.52
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.2

@@ -1,0 +1,18 @@
+sources:
+  - ticon/melbourne_williamstown-60780-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/melbourne_williamstown-60780-aus-bom:
+      position: [-37.8657, 144.9165]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 94
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.7

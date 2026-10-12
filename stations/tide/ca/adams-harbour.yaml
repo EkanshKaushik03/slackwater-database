@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-adams-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-adams-harbour:
+      position: [51.683333, -128.1]
+      coastline: unverifiable

@@ -1,0 +1,19 @@
+region: US-NJ
+sources:
+  - ticon/ludlum_thorofare_at_sea_isle_city_nj-1411350-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ludlum_thorofare_at_sea_isle_city_nj-1411350-usa-usgs:
+      position: [39.157778, -74.697778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.047

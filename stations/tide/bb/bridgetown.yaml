@@ -1,0 +1,20 @@
+sources:
+  - ticon/bridgetown-249a-brb-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bridgetown-249a-brb-uhslc_rq:
+      position: [13.1, -59.617]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/bridgetown-249d-brb-uhslc_rq
+        score: 45
+        factors:
+          epoch: 0.068
+          recency: 0.44
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

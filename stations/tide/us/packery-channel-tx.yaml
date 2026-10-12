@@ -1,0 +1,26 @@
+region: US-TX
+sources:
+  - ticon/packery_channel-8775792-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/packery_channel-8775792-usa-noaa:
+      position: [27.633306, -97.236694]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.685
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.074) > MLW (1.053)
+          - MHWS (1.088) < MHW (1.099)
+          - "Superseded source: noaa"
+          - "Seasonal band (0.105m) is 2.8x the largest tidal constituent O1 (0.038m): the yearly swing exceeds the daily one"

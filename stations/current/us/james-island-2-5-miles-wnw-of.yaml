@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4896
+redirect_from:
+  - /currents/us/md/james-island-2-2-nm-wnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4896:
+      position: [38.53333, -76.39333]
+      coastline: unverifiable

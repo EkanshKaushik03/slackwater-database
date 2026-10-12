@@ -1,0 +1,23 @@
+sources:
+  - ticon/kampentg-kam-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kampentg-kam-nld-cmems:
+      position: [52.552502, 5.924]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 57
+        factors:
+          epoch: 0.538
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.093
+        issues:
+          - MLWS (-0.122) > MLW (-0.133)
+          - MHWS (-0.098) < MHW (-0.093)
+          - "Seasonal band (0.103m) is 9.9x the largest tidal constituent S1 (0.010m): the yearly swing exceeds the daily one"

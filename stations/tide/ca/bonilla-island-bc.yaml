@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/bonilla_island_bc-9227-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bonilla_island_bc-9227-can-meds:
+      position: [53.49, -130.64]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 0.391
+          recency: 0.94
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

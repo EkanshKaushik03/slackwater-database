@@ -1,0 +1,20 @@
+sources:
+  - ticon/lautoka-402a-fji-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lautoka-402a-fji-uhslc_rq:
+      position: [-17.605, 177.438]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/lautoka-402-fji-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

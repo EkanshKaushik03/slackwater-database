@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/calahootchieriver_s79_t-s79_t-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/calahootchieriver_s79_t-s79_t-usa-sfwmd:
+      position: [26.723056, -81.694722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.58
+          recency: 0.98
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - MLWS (0.35) > MLW (0.294)
+          - MHWS (0.504) < MHW (0.565)
+          - "Seasonal band (0.098m) is 1.4x the largest tidal constituent K1 (0.070m): the yearly swing exceeds the daily one"

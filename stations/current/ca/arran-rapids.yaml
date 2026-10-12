@@ -1,0 +1,13 @@
+name: Arran Rapids
+context: Stuart Island
+region: CA-BC
+position: [50.42, -125.14]
+provider: chs
+sources:
+  - chs-arran-rapids
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-arran-rapids:
+      position: [50.42, -125.14]
+      coastline: clear

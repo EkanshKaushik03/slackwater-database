@@ -1,0 +1,18 @@
+sources:
+  - ticon/stellendam_buiten-stelldbtn-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/stellendam_buiten-stelldbtn-nld-rws:
+      position: [51.827028, 4.033444]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 48
+        factors:
+          epoch: 0.107
+          recency: 0.97
+          source: 0.788
+          quality: 0
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/grant_line_canal_near_clifton_court_forebay-b95295-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/grant_line_canal_near_clifton_court_forebay-b95295-usa-cdwr:
+      position: [37.820222, -121.520083]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 0.565
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.043
+        issues:
+          - MLWS (0.947) > MLW (0.935)

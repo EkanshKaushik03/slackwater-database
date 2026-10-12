@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/key_west_fl-242a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/key_west_fl-242a-usa-uhslc_rq:
+      position: [24.553, -81.808]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/key_west_fl-242-usa-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,19 @@
+region: CA-QC
+sources:
+  - ticon/pointe_au_pic-3045-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointe_au_pic-3045-can-meds:
+      position: [47.62, -70.14]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.81
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.512

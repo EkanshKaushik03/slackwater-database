@@ -1,0 +1,20 @@
+sources:
+  - ticon/penrhyn-024a-cok-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/penrhyn-024a-cok-uhslc_rq:
+      position: [-8.977, -158.053]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/penrhyn-024-cok-uhslc_fd
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

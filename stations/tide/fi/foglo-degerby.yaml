@@ -1,0 +1,22 @@
+sources:
+  - ticon/foglo_degerby-134252-fin-fmi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/foglo_degerby-134252-fin-fmi:
+      position: [60.03, 20.38]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.768
+          quality: 1
+          amplitude: 1
+          coverage: 0.007
+        issues:
+          - MLWS (0.003) > MLW (-0.002)
+          - "Seasonal band (0.111m) is 12.6x the largest tidal constituent M2 (0.009m): the yearly swing exceeds the daily one"

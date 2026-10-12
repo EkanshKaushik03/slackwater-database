@@ -1,0 +1,9 @@
+region: CA-NU
+sources:
+  - chs-arviat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-arviat:
+      position: [61.110005, -94.063663]
+      coastline: unverifiable

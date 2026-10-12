@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0641
+redirect_from:
+  - /currents/us/ca/point-chauncey-0-75-nm-nw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0641:
+      position: [37.903, -122.45883]
+      coastline: unverifiable

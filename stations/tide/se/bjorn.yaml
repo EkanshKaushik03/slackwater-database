@@ -1,0 +1,24 @@
+sources:
+  - ticon/bjorn-2067-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bjorn-2067-swe-smhi:
+      position: [60.6333, 17.9667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.52
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.281) > MLW (0.265)
+          - MHW (0.288) <= MSL (0.289)
+          - "Seasonal band (0.104m) is 19.8x the largest tidal constituent M2 (0.005m): the yearly swing exceeds the daily one"

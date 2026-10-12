@@ -1,0 +1,25 @@
+region: US-AL
+sources:
+  - ticon/lower_bryant_landing-8737373-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lower_bryant_landing-8737373-usa-noaa:
+      position: [30.9783, -87.8733]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.169
+          recency: 0.81
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0
+        issues:
+          - MLWS (6.455) > MLW (6.306)
+          - MHWS (6.519) < MHW (6.678)
+          - "Superseded source: noaa"
+          - K2 amplitude (0.0149) exceeds S2 (0.0131)

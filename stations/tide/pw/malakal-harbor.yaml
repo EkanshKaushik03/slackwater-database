@@ -1,0 +1,18 @@
+sources:
+  - noaa/1841367
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/1841367:
+      position: [7.3333001136779785, 134.46670532226562]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 55
+        factors:
+          epoch: 0
+          recency: 0
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.011

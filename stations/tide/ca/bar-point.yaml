@@ -1,0 +1,24 @@
+region: CA-ON
+sources:
+  - ticon/bar_point_ontario-12005-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bar_point_ontario-12005-can-meds:
+      position: [42.06, -83.11]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.145
+        issues:
+          - MLWS (0.847) > MLW (0.832)
+          - MHWS (0.895) < MHW (0.913)
+          - "Seasonal band (0.205m) is 10.0x the largest tidal constituent M2 (0.020m): the yearly swing exceeds the daily one"

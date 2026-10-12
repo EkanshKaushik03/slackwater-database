@@ -1,0 +1,20 @@
+sources:
+  - ticon/whitby_harbour-wtb-gbr-cco
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/whitby_harbour-wtb-gbr-cco:
+      position: [54.48862, -0.61462]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/whitby-whi-gbr-bodc
+        score: 43
+        factors:
+          epoch: 0.611
+          recency: 0.99
+          source: 0.061
+          quality: 0
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,25 @@
+region: US-TX
+sources:
+  - ticon/port_mansfield-8778490-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_mansfield-8778490-usa-noaa:
+      position: [26.557639, -97.425722]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.685
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.297
+        issues:
+          - MHWS (0.909) < MHW (0.918)
+          - Tidal range 1.8cm < 2cm threshold
+          - "Seasonal band (0.114m) is 11.2x the largest tidal constituent K1 (0.010m): the yearly swing exceeds the daily one"

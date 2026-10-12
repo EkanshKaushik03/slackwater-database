@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT2946
+redirect_from:
+  - /currents/us/ak/guard-islands/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2946:
+      position: [55.46667, -131.9]
+      coastline: unverifiable

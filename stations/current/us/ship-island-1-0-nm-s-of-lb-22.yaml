@@ -1,0 +1,11 @@
+region: US-MS
+sources:
+  - noaa/gp0101
+redirect_from:
+  - /currents/us/ms/ship-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/gp0101:
+      position: [30.19406, -88.98917]
+      coastline: unverifiable

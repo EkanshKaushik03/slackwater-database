@@ -1,0 +1,26 @@
+region: US-TX
+sources:
+  - ticon/sims_bayou_at_hiram_clarke_st_houston_tx-8075400-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sims_bayou_at_hiram_clarke_st_houston_tx-8075400-usa-usgs:
+      position: [29.618844, -95.446052]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 0.75
+          coverage: 0.186
+        issues:
+          - MLWS (8.923) > MLW (8.872)
+          - MHW (8.922) <= MSL (8.927)
+          - "Seasonal band (0.033m) is 2.3x the largest tidal constituent S1 (0.015m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0014) exceeds M2 (0.0004)

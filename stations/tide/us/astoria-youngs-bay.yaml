@@ -1,0 +1,19 @@
+region: US-OR
+sources:
+  - ticon/astoria_youngs_bay-9439026-usa-da_sat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/astoria_youngs_bay-9439026-usa-da_sat:
+      position: [46.171667, -123.834722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 50
+        factors:
+          epoch: 0.645
+          recency: 0.17
+          source: 0
+          quality: 1
+          amplitude: 1
+          coverage: 0.011

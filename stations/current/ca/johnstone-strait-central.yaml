@@ -1,0 +1,13 @@
+name: Johnstone Strait - Central
+context: Port Neville
+region: CA-BC
+position: [50.4717, -126.1367]
+provider: chs
+sources:
+  - chs-johnstone-strait-central
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-johnstone-strait-central:
+      position: [50.4717, -126.1367]
+      coastline: clear

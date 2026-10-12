@@ -1,0 +1,21 @@
+region: US-PA
+sources:
+  - noaa/8543024
+redirect_from:
+  - /tides/us/pa/tinicum-national-wildlife-refuge-pa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8543024:
+      position: [39.8867, -75.265]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.027

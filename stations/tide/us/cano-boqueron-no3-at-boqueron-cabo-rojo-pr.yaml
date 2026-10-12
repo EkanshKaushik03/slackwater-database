@@ -1,0 +1,21 @@
+region: US-PR
+sources:
+  - ticon/cano_boqueron_no3_at_boqueron_cabo_rojo_pr-50129935-usa-usgs
+redirect_from:
+  - /tides/us/cano-boqueron-no3-at-boqueron-cabo-rojo-pr/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cano_boqueron_no3_at_boqueron_cabo_rojo_pr-50129935-usa-usgs:
+      position: [18.013213, -67.169568]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 58
+        factors:
+          epoch: 0.063
+          recency: 0.9
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.025

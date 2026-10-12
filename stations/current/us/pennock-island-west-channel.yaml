@@ -1,0 +1,9 @@
+region: US-AK
+sources:
+  - noaa/SEA0714
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0714:
+      position: [55.30143, -131.61598]
+      coastline: unverifiable

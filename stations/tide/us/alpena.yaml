@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/alpena_mi-9075065-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/alpena_mi-9075065-usa-noaa:
+      position: [45.063, -83.4286]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.925
+        issues:
+          - MLWS (176.434) > MLW (176.415)
+          - MHWS (176.44) < MHW (176.46)
+          - "Seasonal band (0.162m) is 49.0x the largest tidal constituent K1 (0.003m): the yearly swing exceeds the daily one"

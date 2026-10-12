@@ -1,0 +1,20 @@
+sources:
+  - ticon/lazarocardenas_nivelcbs-15-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lazarocardenas_nivelcbs-15-mex-unam:
+      position: [17.94, -102.178333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/lazaro_cardenas-407-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.157
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0

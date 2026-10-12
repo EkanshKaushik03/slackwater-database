@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0456
+redirect_from:
+  - /currents/us/ca/point-avisadero-0-6-nm-ese/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0456:
+      position: [37.723, -122.32383]
+      coastline: unverifiable

@@ -1,0 +1,25 @@
+region: US-CA
+sources:
+  - ticon/georgiana_slough_at_sacramento_river-gss-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/georgiana_slough_at_sacramento_river-gss-usa-cdwr:
+      position: [38.237, -121.518]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sacramento_river_at_walnut_grove_stage-b91651-usa-cdwr
+        seasonal_dominant: true
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHWS (1.894) < MHW (1.91)
+          - "Seasonal band (0.221m) is 1.1x the largest tidal constituent M2 (0.207m): the yearly swing exceeds the daily one"

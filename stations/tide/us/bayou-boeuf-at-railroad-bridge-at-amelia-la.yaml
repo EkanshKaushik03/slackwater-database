@@ -1,0 +1,25 @@
+region: US-LA
+sources:
+  - ticon/bayou_boeuf_at_railroad_bridge_at_amelia_la-73814675-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bayou_boeuf_at_railroad_bridge_at_amelia_la-73814675-usa-usgs:
+      position: [29.668333, -91.099722]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.893
+          recency: 0.98
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.156
+        issues:
+          - MHWS (0.72) < MHW (0.739)
+          - MSL (0.708) <= MLW (0.716)
+          - "Seasonal band (0.158m) is 9.2x the largest tidal constituent K1 (0.017m): the yearly swing exceeds the daily one"

@@ -1,0 +1,11 @@
+region: CA-BC
+sources:
+  - noaa/PCT1411
+redirect_from:
+  - /currents/us/discovery-island-2-6-nm-sse/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1411:
+      position: [48.383331298828125, -123.19999694824219]
+      coastline: clear

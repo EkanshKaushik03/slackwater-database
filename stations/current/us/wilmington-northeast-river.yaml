@@ -1,0 +1,11 @@
+region: US-NC
+sources:
+  - noaa/CFR1603
+redirect_from:
+  - /currents/us/nc/wilmington/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CFR1603:
+      position: [34.241939544677734, -77.95394134521484]
+      coastline: unverifiable

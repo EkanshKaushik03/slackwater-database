@@ -1,0 +1,7 @@
+# Must match `source.name` on every record this source writes.
+name: Canadian Hydrographic Service
+# CHS records carry identity only, no harmonics, so quality never weighs them.
+authoritative: false
+# Names the operating agency of a record authored here under MIT, not a
+# licensor of redistributed data. See stations/README.md#provenance.
+credit: null

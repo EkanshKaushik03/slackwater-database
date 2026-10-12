@@ -1,0 +1,23 @@
+sources:
+  - ticon/rmn_portoempedocle-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_portoempedocle-rmn-ita-cmems:
+      position: [37.285801, 13.5268]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/porto_empedocle-por-ita-ispra
+        seasonal_dominant: true
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.060m) is 1.3x the largest tidal constituent M2 (0.047m): the yearly swing exceeds the daily one"

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-squamish-inner
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-squamish-inner:
+      position: [49.695, -123.155]
+      coastline: clear

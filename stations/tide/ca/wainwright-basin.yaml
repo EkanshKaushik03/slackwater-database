@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-wainwright-basin
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-wainwright-basin:
+      position: [54.256216, -130.265239]
+      coastline: unverifiable

@@ -1,0 +1,24 @@
+region: US-NY
+sources:
+  - ticon/sturgeon_point_ny-9063028-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sturgeon_point_ny-9063028-usa-noaa:
+      position: [42.691306, -79.0473]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 92
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.487
+        issues:
+          - MLWS (174.357) > MLW (174.338)
+          - MHWS (174.393) < MHW (174.416)
+          - "Seasonal band (0.145m) is 10.7x the largest tidal constituent M2 (0.014m): the yearly swing exceeds the daily one"

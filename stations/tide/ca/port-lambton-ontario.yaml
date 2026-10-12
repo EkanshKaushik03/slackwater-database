@@ -1,0 +1,26 @@
+region: CA-ON
+sources:
+  - ticon/port_lambton_ontario-11950-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_lambton_ontario-11950-can-meds:
+      position: [42.66, -82.51]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.091
+        issues:
+          - MLWS (0.794) > MLW (0.791)
+          - MHWS (0.8) < MHW (0.81)
+          - Tidal range 1.9cm < 2cm threshold
+          - "Seasonal band (0.098m) is 61.8x the largest tidal constituent M2 (0.002m): the yearly swing exceeds the daily one"

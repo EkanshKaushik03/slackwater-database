@@ -1,0 +1,22 @@
+# A station's own acronym, which a shouting name would recase.
+
+name: COX WC-53 Platform
+region: US-TX
+sources:
+  - noaa/8770752
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8770752:
+      position: [29.62400054931641, -93.75]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.229

@@ -1,0 +1,23 @@
+sources:
+  - ticon/goteborgorsh-819a-swe-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/goteborgorsh-819a-swe-uhslc_rq:
+      position: [57.685, 11.79]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/goteborgorsh-819-swe-uhslc_fd
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - "Seasonal band (0.098m) is 1.5x the largest tidal constituent M2 (0.064m): the yearly swing exceeds the daily one"

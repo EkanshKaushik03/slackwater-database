@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1217
+redirect_from:
+  - /currents/us/ca/rincon-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1217:
+      position: [37.79027, -122.3734]
+      coastline: unverifiable

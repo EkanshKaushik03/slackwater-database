@@ -1,0 +1,25 @@
+region: US-NY
+sources:
+  - ticon/american_falls_ny-9063010-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/american_falls_ny-9063010-usa-noaa:
+      position: [43.08194, -79.0625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 73
+        factors:
+          epoch: 0.878
+          recency: 0.5
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.003
+        issues:
+          - MLWS (169.472) > MLW (169.455)
+          - MHWS (169.486) < MHW (169.491)
+          - "Seasonal band (0.075m) is 2.8x the largest tidal constituent S1 (0.027m): the yearly swing exceeds the daily one"
+          - Q1 amplitude (0.0009) exceeds O1 (0.0007)

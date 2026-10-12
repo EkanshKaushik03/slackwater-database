@@ -1,0 +1,19 @@
+region: US-OR
+sources:
+  - noaa/TWC0881
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TWC0881:
+      position: [46.2, -123.95]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.009

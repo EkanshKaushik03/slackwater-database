@@ -1,0 +1,28 @@
+sources:
+  - ticon/newport_mill_race-nmi-irl-mi_r
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/newport_mill_race-nmi-irl-mi_r:
+      position: [53.9243, -9.5718]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.358
+          recency: 0.99
+          source: 0.071
+          quality: 1
+          amplitude: 0.5
+          coverage: 0.003
+        issues:
+          - MLW (0.557) < MLLW (0.572)
+          - MLWS (0.585) > MLW (0.557)
+          - MHW (0.565) <= MSL (0.586)
+          - MHW (0.565) < MLLW (0.572)
+          - "Seasonal band (0.094m) is 68.9x the largest tidal constituent S1 (0.001m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0004) exceeds M2 (0.0003)
+          - Q1 amplitude (0.0009) exceeds O1 (0.0003)

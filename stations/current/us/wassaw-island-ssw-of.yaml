@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7571
+redirect_from:
+  - /currents/us/ga/wassaw-island-ssw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7571:
+      position: [31.85667, -81.00833]
+      coastline: unverifiable

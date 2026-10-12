@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-port-mcneill
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-port-mcneill:
+      position: [50.593, -127.094]
+      coastline: clear

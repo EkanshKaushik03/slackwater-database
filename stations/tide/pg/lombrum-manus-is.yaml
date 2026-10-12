@@ -1,0 +1,23 @@
+sources:
+  - ticon/lombrum_manus_is-400a-png-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lombrum_manus_is-400a-png-uhslc_rq:
+      position: [-2.037, 147.375]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/lombrum-56130-png-bom
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (0.639) > MLW (0.624)
+          - MHWS (0.931) < MHW (0.974)

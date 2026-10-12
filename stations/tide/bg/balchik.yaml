@@ -1,0 +1,22 @@
+sources:
+  - ticon/balchik-bal-bgr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/balchik-bal-bgr-cmems:
+      position: [43.403999, 28.165001]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 61
+        factors:
+          epoch: 0.354
+          recency: 0.95
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.617
+        issues:
+          - MLWS (0.099) > MLW (0.097)
+          - "Seasonal band (0.082m) is 4.1x the largest tidal constituent M2 (0.020m): the yearly swing exceeds the daily one"

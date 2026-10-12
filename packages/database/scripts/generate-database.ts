@@ -45,11 +45,12 @@ const { buildDatabase } = await import("../src/database/builder.ts");
 const { version } = JSON.parse(
   readFileSync(join(root, "package.json"), "utf8"),
 );
-// The catalogue reads data/, quality.json, and metadata/ from the repo root.
+// The catalogue reads data/, stations/, and metadata/ from the repo root.
 const catalogue = await loadProductionCatalogue(join(root, "..", ".."));
 const database = buildDatabase(catalogue.stations, {
   version,
   routes: catalogue.routes,
+  credits: catalogue.credits,
 });
 
 writeFileSync(join(outDir, "slackwater.tcdb"), database);

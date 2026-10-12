@@ -1,0 +1,38 @@
+# ticon/port_allen-553a-usa-uhslc_rq relays noaa/1611347: UHSLC 553A identifies NOAA 1611347 as its originator (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/553Ameta.yaml).
+
+region: US-HI
+sources:
+  - noaa/1611347
+  - ticon/port_allen-553a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/hi/port-allen-hi/
+  - /tides/us/hi/port-allen-ticon-port-allen-553a-usa-uhslc-rq/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/1611347:
+      position: [21.9033, -159.592]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/port_allen-553a-usa-uhslc_rq:
+      position: [21.9, -159.6]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 55
+        factors:
+          epoch: 0.425
+          recency: 0.71
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.018

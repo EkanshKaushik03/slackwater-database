@@ -1,0 +1,20 @@
+sources:
+  - ticon/puertochiapas_flotador-18-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/puertochiapas_flotador-18-mex-unam:
+      position: [14.711667, -92.401667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/puerto_chiapas-318-mex-unam_hist
+        score: 35
+        factors:
+          epoch: 0.129
+          recency: 0.97
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0

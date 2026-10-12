@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/rock_cut_mi-9076024-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rock_cut_mi-9076024-usa-noaa:
+      position: [46.264806, -84.191194]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.046
+        issues:
+          - MLWS (176.424) > MLW (176.422)
+          - MHWS (176.472) < MHW (176.474)
+          - "Seasonal band (0.144m) is 7.6x the largest tidal constituent M2 (0.019m): the yearly swing exceeds the daily one"

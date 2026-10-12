@@ -1,0 +1,26 @@
+region: US-AL
+sources:
+  - ticon/blue_angels_park-8729941-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/blue_angels_park-8729941-usa-noaa:
+      position: [30.38694, -87.428806]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.129
+          recency: 0.85
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (8.611) > MLW (8.55)
+          - MHWS (8.635) < MHW (8.716)
+          - "Superseded source: noaa"
+          - "Seasonal band (0.126m) is 1.7x the largest tidal constituent O1 (0.076m): the yearly swing exceeds the daily one"

@@ -127,6 +127,7 @@ const stations: StationInput[] = [
 ];
 
 const bytes = buildDatabase(stations, {
+  credits: new Map([["Test Source", null]]),
   version: "0.0.0-fixture",
   routes: {
     tide: [

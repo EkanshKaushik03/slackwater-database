@@ -1,0 +1,21 @@
+region: US-PA
+sources:
+  - noaa/8548989
+redirect_from:
+  - /tides/us/nj/newbold/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8548989:
+      position: [40.13733333333333, -74.75183333333334]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

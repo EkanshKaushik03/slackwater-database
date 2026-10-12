@@ -1,0 +1,19 @@
+region: CA-MB
+sources:
+  - ticon/fort_churchill-5008-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fort_churchill-5008-can-meds:
+      position: [58.77, -94.12]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.148
+          recency: 0.48
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.069

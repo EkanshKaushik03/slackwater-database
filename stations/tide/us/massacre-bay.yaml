@@ -1,0 +1,42 @@
+# ticon/massacre_bay_ak-550a-usa-uhslc_rq relays noaa/9460150: PSMSL 491 identifies the 1943-1966 Massacre Bay record as NOAA/NOS data from UHSLC 550 (https://psmsl.org/data/obtaining/stations/491.php). UHSLC 550A describes the historic NOAA-operated Attu gauge (https://uhslc.soest.hawaii.edu/rqds/metadata_yaml/550Ameta.yaml); NOAA 9460150 identifies Massacre Bay at Attu, established in 1943 (https://api.tidesandcurrents.noaa.gov/mdapi/prod/webapi/stations/9460150.json?expand=details).
+
+region: US-AK
+sources:
+  - noaa/9460150
+  - ticon/massacre_bay_ak-550a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/ak/massacre-bay-ak/
+  - /tides/us/ak/massacre-bay-ticon-massacre-bay-ak-550a-usa-uhslc-rq/
+  - /tides/us/massacre-bay-ak/
+  - /tides/us/massacre-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9460150:
+      position: [52.84000015258789, 173.19500732421875]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 55
+        factors:
+          epoch: 0
+          recency: 0
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.017
+    ticon/massacre_bay_ak-550a-usa-uhslc_rq:
+      position: [52.833, 173.2]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 1
+          recency: 0.4
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.017
+        issues:
+          - MHWS (1.89) < MHW (1.945)

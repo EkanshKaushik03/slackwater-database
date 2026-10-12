@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/LIS1035
+redirect_from:
+  - /currents/us/ny/matinecock-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1035:
+      position: [40.92455, -73.65585]
+      coastline: unverifiable

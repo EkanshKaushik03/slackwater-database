@@ -1,0 +1,21 @@
+region: US-NJ
+sources:
+  - ticon/long_branch-8531991-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/long_branch-8531991-usa-noaa:
+      position: [40.3033, -73.9767]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8531991
+        score: 70
+        factors:
+          epoch: 0.452
+          recency: 0.61
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

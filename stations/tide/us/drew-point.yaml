@@ -1,0 +1,24 @@
+region: US-AK
+sources:
+  - noaa/9495832
+redirect_from:
+  - /tides/us/drew-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9495832:
+      position: [70.86630249023438, -153.94000244140625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.117m) is 1.9x the largest tidal constituent M2 (0.061m): the yearly swing exceeds the daily one"

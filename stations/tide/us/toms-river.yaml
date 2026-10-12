@@ -1,0 +1,24 @@
+region: US-NJ
+sources:
+  - ticon/toms_river-8533051-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/toms_river-8533051-usa-noaa:
+      position: [39.95, -74.1983]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"
+          - "Seasonal band (0.086m) is 1.4x the largest tidal constituent M2 (0.060m): the yearly swing exceeds the daily one"

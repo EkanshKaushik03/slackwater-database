@@ -1,0 +1,20 @@
+sources:
+  - ticon/naze-hd22-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/naze-kagoshima/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/naze-hd22-jpn-jodc_jcg:
+      position: [28.399167, 129.497783]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.111
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

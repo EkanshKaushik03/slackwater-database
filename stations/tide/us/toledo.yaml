@@ -1,0 +1,24 @@
+region: US-OH
+sources:
+  - ticon/toledo_oh-9063085-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/toledo_oh-9063085-usa-noaa:
+      position: [41.69356, -83.47228]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 92
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.491
+        issues:
+          - MLWS (174.344) > MLW (174.332)
+          - MHWS (174.408) < MHW (174.443)
+          - "Seasonal band (0.224m) is 8.4x the largest tidal constituent M2 (0.027m): the yearly swing exceeds the daily one"

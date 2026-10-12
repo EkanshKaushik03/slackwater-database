@@ -1,0 +1,20 @@
+sources:
+  - ticon/carnarvon-167a-aus-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/carnarvon-167a-aus-uhslc_rq:
+      position: [-24.898, 113.652]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/carnarvon-167-aus-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

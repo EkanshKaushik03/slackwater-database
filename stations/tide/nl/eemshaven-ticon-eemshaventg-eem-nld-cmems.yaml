@@ -1,0 +1,20 @@
+sources:
+  - ticon/eemshaventg-eem-nld-cmems
+redirect_from:
+  - /tides/nl/eemshaven-groningen/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/eemshaventg-eem-nld-cmems:
+      position: [53.463242, 6.83895]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.544
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.032

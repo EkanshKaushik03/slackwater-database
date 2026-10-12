@@ -1,0 +1,22 @@
+region: US-TX
+sources:
+  - noaa/8773896
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8773896:
+      position: [28.364500045776367, -96.5802993774414]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.213
+        issues:
+          - "Essential constituents with zero amplitude: S2"

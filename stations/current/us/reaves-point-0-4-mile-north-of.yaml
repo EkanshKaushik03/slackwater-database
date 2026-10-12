@@ -1,0 +1,11 @@
+region: US-NC
+sources:
+  - noaa/ACT6461
+redirect_from:
+  - /currents/us/nc/reaves-point-0-3-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6461:
+      position: [34.006168365478516, -77.95249938964844]
+      coastline: unverifiable

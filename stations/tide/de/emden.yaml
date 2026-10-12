@@ -1,0 +1,22 @@
+sources:
+  - ticon/emdentg-emd-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/emdentg-emd-deu-cmems:
+      position: [53.3367, 7.1864]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/emdenneueseeschleuse-3970010-deu-wsv
+        score: 43
+        factors:
+          epoch: 0.617
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - MLWS (-1.65) > MLW (-1.69)

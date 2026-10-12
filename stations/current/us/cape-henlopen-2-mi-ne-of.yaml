@@ -1,0 +1,11 @@
+region: US-DE
+sources:
+  - noaa/DEB2102
+redirect_from:
+  - /currents/us/de/cape-henlopen/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/DEB2102:
+      position: [38.81990051269531, -75.05280303955078]
+      coastline: unverifiable

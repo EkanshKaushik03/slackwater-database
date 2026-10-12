@@ -1,0 +1,25 @@
+region: CA-ON
+sources:
+  - ticon/point_edward_ontario-11940-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/point_edward_ontario-11940-can-meds:
+      position: [42.99, -82.42]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.03
+        issues:
+          - MHWS (0.595) < MHW (0.608)
+          - "P1 amplitude (0.0021) exceeds K1 (0.0018): physically impossible"
+          - "Seasonal band (0.124m) is 21.1x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

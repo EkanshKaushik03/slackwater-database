@@ -1,0 +1,20 @@
+sources:
+  - ticon/tarifa-tari-esp-ieo
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tarifa-tari-esp-ieo:
+      position: [36.0086, -5.6026]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.899
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.005
+        issues:
+          - Q1 amplitude (0.0044) exceeds O1 (0.0043)

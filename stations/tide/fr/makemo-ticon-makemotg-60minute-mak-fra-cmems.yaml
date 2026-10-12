@@ -1,0 +1,20 @@
+sources:
+  - ticon/makemotg_60minute-mak-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/makemotg_60minute-mak-fra-cmems:
+      position: [-16.627001, -143.56921]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/makemo-586-fra-refmar
+        score: 53
+        factors:
+          epoch: 0.402
+          recency: 0.95
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

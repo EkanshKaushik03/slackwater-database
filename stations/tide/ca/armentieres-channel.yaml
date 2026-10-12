@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-armentieres-channel
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-armentieres-channel:
+      position: [53.115, -132.389]
+      coastline: unverifiable

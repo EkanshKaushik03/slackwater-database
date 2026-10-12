@@ -1,0 +1,19 @@
+region: US-SC
+sources:
+  - ticon/ashley_river_at_cooke_crossroads_sc-2172081-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ashley_river_at_cooke_crossroads_sc-2172081-usa-usgs:
+      position: [32.958783, -80.200928]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.306
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.005

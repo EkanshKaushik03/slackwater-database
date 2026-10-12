@@ -1,0 +1,18 @@
+sources:
+  - noaa/1619910
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/1619910:
+      position: [28.2116667, -177.36]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

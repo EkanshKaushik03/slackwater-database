@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/pilottown-8760721-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pilottown-8760721-usa-noaa:
+      position: [29.178306, -89.258306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.748
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (1.858) > MLW (1.843)
+          - MHWS (1.892) < MHW (1.949)
+          - "Superseded source: noaa"

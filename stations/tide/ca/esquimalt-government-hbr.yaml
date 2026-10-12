@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-esquimalt-government-hbr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-esquimalt-government-hbr:
+      position: [48.432166, -123.438533]
+      coastline: clear

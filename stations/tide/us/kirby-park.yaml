@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - noaa/9413651
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9413651:
+      position: [36.84130096435547, -121.74530029296875]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.018

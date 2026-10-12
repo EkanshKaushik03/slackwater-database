@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9458907
+redirect_from:
+  - /tides/us/castle-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9458907:
+      position: [56.2317, -158.347]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.159

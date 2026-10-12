@@ -1,0 +1,20 @@
+sources:
+  - ticon/mataututg_60minute-mat-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mataututg_60minute-mat-fra-cmems:
+      position: [-13.28466, -176.1685]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/mata_utu-276-fra-refmar
+        score: 65
+        factors:
+          epoch: 0.982
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

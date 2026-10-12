@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-table-head
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-table-head:
+      position: [46.323534, -60.360073]
+      coastline: clear

@@ -1,0 +1,11 @@
+region: US-RI
+sources:
+  - noaa/ACT2296
+redirect_from:
+  - /currents/us/ri/sandy-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2296:
+      position: [41.26417, -71.56667]
+      coastline: unverifiable

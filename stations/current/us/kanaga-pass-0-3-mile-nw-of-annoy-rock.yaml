@@ -1,0 +1,10 @@
+sources:
+  - noaa/PCT5666
+redirect_from:
+  - /currents/us/kanaga-pass/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5666:
+      position: [51.71667, -177.8]
+      coastline: unverifiable

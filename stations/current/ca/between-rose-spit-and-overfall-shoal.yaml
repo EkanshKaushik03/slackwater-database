@@ -1,0 +1,11 @@
+region: CA-BC
+sources:
+  - noaa/PCT2606
+redirect_from:
+  - /currents/us/ak/between-rose-spit-and-overfall-shoal/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2606:
+      position: [54.23333, -131.58333]
+      coastline: unverifiable

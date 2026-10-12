@@ -1,0 +1,11 @@
+region: US-TX
+sources:
+  - noaa/STX1818
+redirect_from:
+  - /currents/us/tx/laguna-madre-channel/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/STX1818:
+      position: [26.046600341796875, -97.1980972290039]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1711
+redirect_from:
+  - /currents/us/wa/matia-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1711:
+      position: [48.774879455566406, -122.84097290039062]
+      coastline: clear

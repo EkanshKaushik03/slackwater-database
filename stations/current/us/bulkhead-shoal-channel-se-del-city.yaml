@@ -1,0 +1,11 @@
+region: US-DE
+sources:
+  - noaa/ACT4301
+redirect_from:
+  - /currents/us/de/bulkhead-shoal-channel/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4301:
+      position: [39.57630157470703, -75.57530212402344]
+      coastline: unverifiable

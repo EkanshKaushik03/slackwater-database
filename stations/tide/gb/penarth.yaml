@@ -1,0 +1,20 @@
+sources:
+  - ticon/penarth-pen-gbr-cco
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/penarth-pen-gbr-cco:
+      position: [51.43482, -3.16482]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 41
+        factors:
+          epoch: 0.237
+          recency: 0.99
+          source: 0.061
+          quality: 0
+          amplitude: 1
+          coverage: 0.355
+        issues:
+          - MLW (3.47) < MLLW (3.522)

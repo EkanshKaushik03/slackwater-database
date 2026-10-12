@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-irvines-landing
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-irvines-landing:
+      position: [49.633, -124.058]
+      coastline: clear

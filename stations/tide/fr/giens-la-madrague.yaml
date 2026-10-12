@@ -1,0 +1,21 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Giens-la-Madrague
+sources:
+  - ticon/gienslamadraguetg_10minute-gie-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gienslamadraguetg_10minute-gie-fra-cmems:
+      position: [43.040001, 6.11005]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 35
+        factors:
+          epoch: 0.185
+          recency: 0.93
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.087

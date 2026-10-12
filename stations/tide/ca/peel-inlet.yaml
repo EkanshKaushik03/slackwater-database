@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-peel-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-peel-inlet:
+      position: [52.98039, -132.10108]
+      coastline: unverifiable

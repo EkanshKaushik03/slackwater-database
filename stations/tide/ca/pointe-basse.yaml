@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-pointe-basse
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pointe-basse:
+      position: [47.389806, -61.789035]
+      coastline: unverifiable

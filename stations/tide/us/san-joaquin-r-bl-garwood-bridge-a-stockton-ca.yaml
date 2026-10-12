@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/san_joaquin_r_bl_garwood_bridge_a_stockton_ca-11304810-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_joaquin_r_bl_garwood_bridge_a_stockton_ca-11304810-usa-usgs:
+      position: [37.93548, -121.330224]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (1.036) > MLW (1.002)

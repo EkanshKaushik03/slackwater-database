@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-shelburne
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-shelburne:
+      position: [43.753636, -65.320292]
+      coastline: unverifiable

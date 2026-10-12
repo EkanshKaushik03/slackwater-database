@@ -1,0 +1,20 @@
+sources:
+  - ticon/halmstad-hal-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/halmstad-hal-swe-cmems:
+      position: [56.6488, 12.8358]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/halmstad_sjov-35115-swe-smhi
+        score: 52
+        factors:
+          epoch: 0.322
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

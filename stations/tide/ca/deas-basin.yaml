@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-deas-basin
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-deas-basin:
+      position: [49.1239, -123.083419]
+      coastline: ashore
+      metres_inland: 10080

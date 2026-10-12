@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/dunn_creek_at_dunn_creek_rd_nr_eastport_fl-2246804-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dunn_creek_at_dunn_creek_rd_nr_eastport_fl-2246804-usa-usgs:
+      position: [30.454942, -81.596889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 0.5
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.095
+        issues:
+          - MLWS (-0.468) > MLW (-0.471)

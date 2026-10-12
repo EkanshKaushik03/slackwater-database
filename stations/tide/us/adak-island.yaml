@@ -1,0 +1,23 @@
+sources:
+  - ticon/adak_island-9461380-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/adak_island-9461380-usa-noaa:
+      position: [51.863306, -176.632]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.284) > MLW (1.172)
+          - MHWS (1.708) < MHW (1.857)
+          - "Superseded source: noaa"

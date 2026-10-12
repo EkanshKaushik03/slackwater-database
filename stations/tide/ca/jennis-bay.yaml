@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-jennis-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-jennis-bay:
+      position: [50.913, -127.026]
+      coastline: clear

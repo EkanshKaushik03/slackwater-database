@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/sunrise_club-snc-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sunrise_club-snc-usa-cdwr:
+      position: [38.185, -122.083]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.065

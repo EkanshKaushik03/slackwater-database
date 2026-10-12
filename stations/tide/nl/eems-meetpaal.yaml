@@ -1,0 +1,18 @@
+sources:
+  - ticon/eemsmeetpaaltg-eem-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/eemsmeetpaaltg-eem-nld-cmems:
+      position: [53.475536, 6.82237]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 50
+        factors:
+          epoch: 0.204
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.035

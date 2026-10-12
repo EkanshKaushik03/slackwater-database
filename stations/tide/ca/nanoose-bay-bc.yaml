@@ -1,0 +1,20 @@
+region: CA-BC
+sources:
+  - ticon/nanoose_bay_bc-7930-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nanoose_bay_bc-7930-can-meds:
+      position: [49.25, -124.17]
+      coastline: ashore
+      metres_inland: 433
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.935
+          recency: 0.67
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.119

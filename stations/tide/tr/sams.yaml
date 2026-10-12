@@ -1,0 +1,23 @@
+sources:
+  - ticon/ioc_sams-ioc-tur-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ioc_sams-ioc-tur-cmems:
+      position: [41.294998, 36.337002]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.187
+          recency: 0.97
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - Tidal range 1.7cm < 2cm threshold
+          - "Seasonal band (0.070m) is 5.5x the largest tidal constituent M2 (0.013m): the yearly swing exceeds the daily one"

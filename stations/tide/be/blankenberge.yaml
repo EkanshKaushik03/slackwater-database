@@ -1,0 +1,18 @@
+sources:
+  - ticon/blankenbergetg-bla-bel-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/blankenbergetg-bla-bel-cmems:
+      position: [51.310501, 3.11638]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 0.184
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.131

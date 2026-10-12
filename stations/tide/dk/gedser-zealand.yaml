@@ -1,0 +1,21 @@
+sources:
+  - ticon/gedser-ged-dnk-dmi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gedser-ged-dnk-dmi:
+      position: [54.566666, 11.933333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.758
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.042m) is 1.1x the largest tidal constituent M2 (0.040m): the yearly swing exceeds the daily one"

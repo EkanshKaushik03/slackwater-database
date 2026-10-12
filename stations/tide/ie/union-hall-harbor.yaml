@@ -1,0 +1,20 @@
+sources:
+  - ticon/union_hall_harbor-uni-irl-mi_c
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/union_hall_harbor-uni-irl-mi_c:
+      position: [51.558964, -9.13349]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/unionhallharbor-uni-irl-cmems
+        score: 37
+        factors:
+          epoch: 0.251
+          recency: 0.99
+          source: 0.081
+          quality: 0
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,23 @@
+sources:
+  - ticon/rmn_reggiocalabria-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_reggiocalabria-rmn-ita-cmems:
+      position: [38.1217, 15.6489]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/reggio_calabria-reg-ita-ispra
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.066m) is 1.0x the largest tidal constituent M2 (0.063m): the yearly swing exceeds the daily one"

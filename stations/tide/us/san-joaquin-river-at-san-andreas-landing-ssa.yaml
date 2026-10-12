@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/san_joaquin_river_at_san_andreas_landing_ssa-b95100-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_joaquin_river_at_san_andreas_landing_ssa-b95100-usa-cdwr:
+      position: [38.103333, -121.591389]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.021
+        issues:
+          - MLWS (0.776) > MLW (0.773)

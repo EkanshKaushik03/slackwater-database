@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/grant_line_canal_above_barrier-b95310-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/grant_line_canal_above_barrier-b95310-usa-cdwr:
+      position: [37.82, -121.44722]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9414785
+        score: 56
+        factors:
+          epoch: 0.739
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.186) > MLW (1.152)

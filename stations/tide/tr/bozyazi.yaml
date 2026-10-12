@@ -1,0 +1,18 @@
+sources:
+  - ticon/bozyazi-boz-tur-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bozyazi-boz-tur-cmems:
+      position: [36.09742, 32.941311]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.106
+          recency: 0.96
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 1

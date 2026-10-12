@@ -1,0 +1,20 @@
+sources:
+  - ticon/auckland-070a-nzl-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/auckland-070a-nzl-uhslc_rq:
+      position: [-36.85, 174.767]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: linz/070
+        score: 50
+        factors:
+          epoch: 0.251
+          recency: 0.62
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

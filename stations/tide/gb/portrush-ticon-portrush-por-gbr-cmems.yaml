@@ -1,0 +1,20 @@
+sources:
+  - ticon/portrush-por-gbr-cmems
+redirect_from:
+  - /tides/gb/portrush-northern-ireland/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/portrush-por-gbr-cmems:
+      position: [55.200001, -6.6667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.02

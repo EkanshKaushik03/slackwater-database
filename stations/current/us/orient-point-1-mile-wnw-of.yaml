@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2721
+redirect_from:
+  - /currents/us/ny/orient-point-0-9-nm-wnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2721:
+      position: [41.16667, -72.25167]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/COD0913
+redirect_from:
+  - /currents/us/ma/robinsons-hole/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COD0913:
+      position: [41.44972, -70.8067]
+      coastline: unverifiable

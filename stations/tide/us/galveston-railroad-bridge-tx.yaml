@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/galveston_railroad_bridge-8771486-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/galveston_railroad_bridge-8771486-usa-noaa:
+      position: [29.302583, -94.897083]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.656
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (6.436) < MHW (6.454)
+          - "Superseded source: noaa"

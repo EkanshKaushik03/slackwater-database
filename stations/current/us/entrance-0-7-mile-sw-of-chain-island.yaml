@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0896
+redirect_from:
+  - /currents/us/ca/entrance-0-6-nm-sw-of-chain-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0896:
+      position: [38.05833, -121.8705]
+      coastline: unverifiable

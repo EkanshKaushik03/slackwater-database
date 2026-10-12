@@ -1,0 +1,25 @@
+region: CA-ON
+sources:
+  - ticon/port_weller_ontario-13030-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_weller_ontario-13030-can-meds:
+      position: [43.24, -79.22]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.405
+        issues:
+          - MHWS (0.678) < MHW (0.684)
+          - Tidal range 1.8cm < 2cm threshold
+          - "Seasonal band (0.291m) is 45.7x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

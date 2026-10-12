@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/LIS1026
+redirect_from:
+  - /currents/us/ct/stratford-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1026:
+      position: [41.08998, -73.10452]
+      coastline: unverifiable

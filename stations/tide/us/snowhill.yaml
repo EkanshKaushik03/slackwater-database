@@ -1,0 +1,23 @@
+region: US-MD
+sources:
+  - noaa/8571359
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8571359:
+      position: [38.17833, -75.39666666666666]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLW (3.827) < LAT (3.831)
+          - HAT (4.3450003) < MHHW (4.359)

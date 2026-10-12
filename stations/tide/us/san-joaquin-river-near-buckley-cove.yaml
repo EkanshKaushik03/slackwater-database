@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/san_joaquin_river_near_buckley_cove-b95640q-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_joaquin_river_near_buckley_cove-b95640q-usa-cdwr:
+      position: [37.980266, -121.385717]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.373
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.053

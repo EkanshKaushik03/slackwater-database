@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-brown-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-brown-bay:
+      position: [50.162, -125.375]
+      coastline: clear

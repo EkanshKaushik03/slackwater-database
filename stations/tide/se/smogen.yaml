@@ -1,0 +1,22 @@
+sources:
+  - ticon/smogen-2111-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/smogen-2111-swe-smhi:
+      position: [58.3536, 11.2178]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.134) < MHW (0.143)
+          - "P1 amplitude (0.0023) exceeds K1 (0.0018): physically impossible"

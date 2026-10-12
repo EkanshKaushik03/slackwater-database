@@ -1,0 +1,19 @@
+region: US-NC
+sources:
+  - ticon/sunsetbridge_intracoastalwaterway-sun-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sunsetbridge_intracoastalwaterway-sun-usa-ncdem:
+      position: [33.87733, -78.509824]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 47
+        factors:
+          epoch: 0.316
+          recency: 0.99
+          source: 0.545
+          quality: 0
+          amplitude: 1
+          coverage: 0.01

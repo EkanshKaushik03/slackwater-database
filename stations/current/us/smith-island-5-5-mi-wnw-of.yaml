@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1632
+redirect_from:
+  - /currents/us/wa/smith-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1632:
+      position: [48.32455062866211, -122.96475219726562]
+      coastline: clear

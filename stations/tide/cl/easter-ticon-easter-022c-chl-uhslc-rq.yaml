@@ -1,0 +1,20 @@
+sources:
+  - ticon/easter-022c-chl-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/easter-022c-chl-uhslc_rq:
+      position: [-27.155, -109.473]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/easter-022-chl-uhslc_fd
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.051

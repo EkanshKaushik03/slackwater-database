@@ -1,0 +1,9 @@
+region: US-NH
+sources:
+  - noaa/ACT0806
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0806:
+      position: [43.10783, -70.85833]
+      coastline: unverifiable

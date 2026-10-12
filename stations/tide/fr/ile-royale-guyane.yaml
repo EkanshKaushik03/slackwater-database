@@ -1,0 +1,20 @@
+sources:
+  - ticon/ile_royale-850a-fra-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ile_royale-850a-fra-uhslc_rq:
+      position: [5.285, -52.585]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/i_royal_anselegoff-851a-fra-uhslc_rq
+        score: 61
+        factors:
+          epoch: 0.653
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.004

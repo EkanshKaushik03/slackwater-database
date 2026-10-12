@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - ticon/seward_ak-560b-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/seward_ak-560b-usa-uhslc_rq:
+      position: [60.12, -149.427]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/seward_ak-560-usa-uhslc_fd
+        score: 47
+        factors:
+          epoch: 0.284
+          recency: 0.23
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

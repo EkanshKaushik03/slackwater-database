@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1821
+redirect_from:
+  - /currents/us/ma/nobska-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1821:
+      position: [41.51833, -70.61833]
+      coastline: unverifiable

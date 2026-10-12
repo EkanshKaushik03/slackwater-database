@@ -1,0 +1,23 @@
+region: US-FL
+sources:
+  - ticon/white_beach-8728694-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/white_beach-8728694-usa-noaa:
+      position: [29.785, -84.8983]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.302
+          recency: 0.58
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.167) < MHW (1.19)
+          - "Superseded source: noaa"

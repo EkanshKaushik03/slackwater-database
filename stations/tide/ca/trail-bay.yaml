@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-trail-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-trail-bay:
+      position: [54.583, -130.357]
+      coastline: unverifiable

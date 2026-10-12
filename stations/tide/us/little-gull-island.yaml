@@ -1,0 +1,21 @@
+region: US-NY
+sources:
+  - noaa/8510884
+redirect_from:
+  - /tides/us/ct/little-gull-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8510884:
+      position: [41.2067, -72.1017]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.164

@@ -1,0 +1,25 @@
+sources:
+  - ticon/barth-9650030-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/barth-9650030-deu-wsv:
+      position: [54.371219, 12.723212]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0.394
+        issues:
+          - MLWS (5.121) > MLW (5.113)
+          - MHWS (5.125) < MHW (5.129)
+          - Tidal range 1.6cm < 2cm threshold
+          - "Seasonal band (0.046m) is 23.0x the largest tidal constituent O1 (0.002m): the yearly swing exceeds the daily one"

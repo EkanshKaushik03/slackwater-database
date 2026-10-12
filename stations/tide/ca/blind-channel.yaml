@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-blind-channel
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-blind-channel:
+      position: [50.414, -125.502]
+      coastline: clear

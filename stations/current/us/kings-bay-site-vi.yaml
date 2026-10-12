@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/kb0501
+redirect_from:
+  - /currents/us/ga/kings-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/kb0501:
+      position: [30.7883, -81.4967]
+      coastline: unverifiable

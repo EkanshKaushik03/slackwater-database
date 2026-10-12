@@ -1,0 +1,20 @@
+sources:
+  - ticon/sligo-sli-irl-mi_c
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sligo-sli-irl-mi_c:
+      position: [54.3099, -8.582]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sligo-sli-irl-cmems
+        score: 50
+        factors:
+          epoch: 0.912
+          recency: 0.99
+          source: 0.081
+          quality: 0
+          amplitude: 1
+          coverage: 0.021

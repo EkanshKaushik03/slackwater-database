@@ -1,0 +1,22 @@
+region: US-NY
+sources:
+  - ticon/fire_island-8515186-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fire_island-8515186-usa-noaa:
+      position: [40.6267, -73.26]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

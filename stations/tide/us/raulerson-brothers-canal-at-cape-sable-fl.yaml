@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/raulerson_brothers_canal_at_cape_sable_fl-251115081075800-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/raulerson_brothers_canal_at_cape_sable_fl-251115081075800-usa-usgs:
+      position: [25.187653, -81.132778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 73
+        factors:
+          epoch: 0.701
+          recency: 0.98
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.178
+        issues:
+          - MLWS (-0.311) > MLW (-0.314)

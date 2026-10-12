@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-crofton
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-crofton:
+      position: [48.874583, -123.643516]
+      coastline: clear

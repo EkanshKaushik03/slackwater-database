@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4656
+redirect_from:
+  - /currents/us/va/new-point-comfort/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4656:
+      position: [37.29, -76.19083]
+      coastline: unverifiable

@@ -1,0 +1,18 @@
+sources:
+  - ticon/kagoshima-ma42-jpn-jodc_jma
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kagoshima-ma42-jpn-jodc_jma:
+      position: [31.5925, 130.564717]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 97
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.929
+          quality: 1
+          amplitude: 1
+          coverage: 0.887

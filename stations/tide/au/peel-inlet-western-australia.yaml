@@ -1,0 +1,23 @@
+sources:
+  - ticon/peel_inlet-plpee01-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/peel_inlet-plpee01-aus-bom:
+      position: [-32.592222, 115.713889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.138
+        issues:
+          - MLWS (0.59) > MLW (0.52)
+          - MHWS (0.634) < MHW (0.705)
+          - "Seasonal band (0.099m) is 1.3x the largest tidal constituent K1 (0.076m): the yearly swing exceeds the daily one"

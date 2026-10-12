@@ -1,0 +1,14 @@
+name: Race Passage
+context: Race Rocks
+region: CA-BC
+cities: [Victoria]
+position: [48.3067, -123.5367]
+provider: chs
+sources:
+  - chs-race-passage
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-race-passage:
+      position: [48.3067, -123.5367]
+      coastline: clear

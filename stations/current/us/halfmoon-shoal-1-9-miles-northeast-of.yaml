@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1656
+redirect_from:
+  - /currents/us/ma/halfmoon-shoal/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1656:
+      position: [41.48417, -70.1925]
+      coastline: unverifiable

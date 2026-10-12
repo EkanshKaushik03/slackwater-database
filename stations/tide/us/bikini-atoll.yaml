@@ -1,0 +1,18 @@
+sources:
+  - noaa/TPT2687
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TPT2687:
+      position: [11.6, 165.55]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.522

@@ -1,0 +1,26 @@
+region: US-NJ
+sources:
+  - ticon/beaver_dam_creek-8532715-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/beaver_dam_creek-8532715-usa-noaa:
+      position: [40.0617, -74.0617]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8532715
+        seasonal_dominant: true
+        score: 57
+        factors:
+          epoch: 0.076
+          recency: 0.51
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0
+        issues:
+          - MHWS (2.854) < MHW (2.862)
+          - "Seasonal band (0.128m) is 5.9x the largest tidal constituent M2 (0.022m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0021) exceeds S2 (0.0017)

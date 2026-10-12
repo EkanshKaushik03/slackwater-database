@@ -1,0 +1,23 @@
+sources:
+  - ticon/spooldersluistg-spo-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/spooldersluistg-spo-nld-cmems:
+      position: [52.510899, 6.0557]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 57
+        factors:
+          epoch: 0.586
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.025
+        issues:
+          - MLWS (-0.164) > MLW (-0.203)
+          - MHWS (-0.156) < MHW (-0.149)
+          - "Seasonal band (0.087m) is 6.6x the largest tidal constituent S1 (0.013m): the yearly swing exceeds the daily one"

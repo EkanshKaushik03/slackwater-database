@@ -1,0 +1,18 @@
+sources:
+  - ticon/leixoestg-lei-prt-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/leixoestg-lei-prt-cmems:
+      position: [41.186699, -8.7045]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 59
+        factors:
+          epoch: 0.686
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1

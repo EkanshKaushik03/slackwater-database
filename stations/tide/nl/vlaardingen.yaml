@@ -1,0 +1,21 @@
+sources:
+  - ticon/vlaardingen-vlaardgn-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/vlaardingen-vlaardgn-nld-rws_hist:
+      position: [51.899637, 4.349048]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.054
+        issues:
+          - "Superseded source: rws_hist"

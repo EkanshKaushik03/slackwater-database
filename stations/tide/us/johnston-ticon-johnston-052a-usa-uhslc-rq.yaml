@@ -1,0 +1,20 @@
+sources:
+  - ticon/johnston-052a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/johnston-052a-usa-uhslc_rq:
+      position: [16.738, -169.53]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/johnston-052-usa-uhslc_fd
+        score: 67
+        factors:
+          epoch: 0.909
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

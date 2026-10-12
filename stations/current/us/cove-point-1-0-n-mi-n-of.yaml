@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/cb1001
+redirect_from:
+  - /currents/us/md/cove-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/cb1001:
+      position: [38.4026985168457, -76.38390350341797]
+      coastline: unverifiable

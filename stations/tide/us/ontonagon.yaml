@@ -1,0 +1,23 @@
+region: US-MI
+sources:
+  - ticon/ontonagon_mi-9099044-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ontonagon_mi-9099044-usa-noaa:
+      position: [46.874443, -89.324165]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 100
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (183.444) < MHW (183.456)
+          - "Seasonal band (0.140m) is 20.2x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

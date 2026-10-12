@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1061
+redirect_from:
+  - /currents/us/ma/point-allerton-0-4-nm-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1061:
+      position: [42.31467, -70.88717]
+      coastline: unverifiable

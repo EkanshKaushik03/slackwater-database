@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3406
+redirect_from:
+  - /currents/us/ny/roosevelt-islands/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3406:
+      position: [40.766700744628906, -73.94999694824219]
+      coastline: unverifiable

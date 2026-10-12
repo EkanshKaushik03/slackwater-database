@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-surge-narrows
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-surge-narrows:
+      position: [50.22719, -125.112]
+      coastline: clear

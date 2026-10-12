@@ -1,0 +1,20 @@
+sources:
+  - noaa/9501251
+redirect_from:
+  - /tides/mx/tuxpan-veracruz/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9501251:
+      position: [21, -97.33329772949219]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.084

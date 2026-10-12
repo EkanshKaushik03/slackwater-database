@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-port-moody
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-port-moody:
+      position: [49.2877, -122.86583]
+      coastline: clear

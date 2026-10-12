@@ -1,0 +1,20 @@
+sources:
+  - ticon/malinhead-mal-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/malinhead-mal-irl-cmems:
+      position: [55.3717, -7.33432]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/malin_head_portmore_pier-mal-irl-mi_c
+        score: 48
+        factors:
+          epoch: 0.893
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

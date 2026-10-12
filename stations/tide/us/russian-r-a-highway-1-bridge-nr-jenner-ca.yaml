@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/russian_r_a_highway_1_bridge_nr_jenner_ca-11467270-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/russian_r_a_highway_1_bridge_nr_jenner_ca-11467270-usa-usgs:
+      position: [38.434022, -123.101108]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 69
+        factors:
+          epoch: 0.377
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.291
+        issues:
+          - MHWS (1.88) < MHW (1.931)
+          - "Seasonal band (0.281m) is 1.2x the largest tidal constituent M2 (0.226m): the yearly swing exceeds the daily one"

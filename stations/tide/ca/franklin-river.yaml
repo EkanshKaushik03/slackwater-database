@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-franklin-river
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-franklin-river:
+      position: [49.108, -124.812]
+      coastline: clear

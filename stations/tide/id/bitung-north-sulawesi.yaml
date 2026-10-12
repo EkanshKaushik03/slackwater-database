@@ -1,0 +1,20 @@
+sources:
+  - ticon/bitung-033a-idn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bitung-033a-idn-uhslc_rq:
+      position: [1.438, 125.19]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/bitung-033-idn-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

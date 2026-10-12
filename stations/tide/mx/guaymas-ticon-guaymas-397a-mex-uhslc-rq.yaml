@@ -1,0 +1,22 @@
+sources:
+  - ticon/guaymas-397a-mex-uhslc_rq
+redirect_from:
+  - /tides/mx/guaymas-sonora/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/guaymas-397a-mex-uhslc_rq:
+      position: [27.933, -110.9]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.977
+          recency: 0.6
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.03
+        issues:
+          - MHWS (2.745) < MHW (2.769)

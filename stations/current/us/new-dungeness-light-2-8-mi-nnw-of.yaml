@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1635
+redirect_from:
+  - /currents/us/wa/new-dungeness-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1635:
+      position: [48.23347854614258, -123.13343048095703]
+      coastline: clear

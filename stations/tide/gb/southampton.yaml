@@ -1,0 +1,18 @@
+sources:
+  - ticon/southampton-sou-gbr-da_idh
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/southampton-sou-gbr-da_idh:
+      position: [50.8839, -1.3931]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.64
+          source: 0.051
+          quality: 1
+          amplitude: 1
+          coverage: 0.357

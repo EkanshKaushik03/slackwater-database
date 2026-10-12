@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-harmac
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-harmac:
+      position: [49.14, -123.846]
+      coastline: clear

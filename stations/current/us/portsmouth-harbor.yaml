@@ -1,0 +1,9 @@
+region: US-NH
+sources:
+  - noaa/pm0101
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/pm0101:
+      position: [43.0784, -70.7467]
+      coastline: unverifiable

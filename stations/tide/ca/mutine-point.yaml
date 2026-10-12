@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-mutine-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-mutine-point:
+      position: [48.942, -125.019]
+      coastline: clear

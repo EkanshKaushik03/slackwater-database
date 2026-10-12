@@ -1,0 +1,20 @@
+sources:
+  - ticon/pointe_noire-234a-cog-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointe_noire-234a-cog-uhslc_rq:
+      position: [-4.8, 11.85]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/pointe_noire-234-cog-uhslc_fd
+        score: 54
+        factors:
+          epoch: 0.47
+          recency: 0.62
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

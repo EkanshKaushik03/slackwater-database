@@ -1,0 +1,21 @@
+region: US-GA
+sources:
+  - ticon/cumberland_sound_at_sea_camp_dock_nr_st_marys_ga-2228295-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cumberland_sound_at_sea_camp_dock_nr_st_marys_ga-2228295-usa-usgs:
+      position: [30.764333, -81.471361]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8679758
+        score: 73
+        factors:
+          epoch: 0.787
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

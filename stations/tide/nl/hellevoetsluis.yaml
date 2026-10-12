@@ -1,0 +1,22 @@
+sources:
+  - ticon/hellevoetsluis-hellvss-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hellevoetsluis-hellvss-nld-rws_hist:
+      position: [51.819721, 4.128239]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.495
+          quality: 0
+          amplitude: 1
+          coverage: 0.107
+        issues:
+          - MHWS (0.633) < MHW (0.635)
+          - "Superseded source: rws_hist"

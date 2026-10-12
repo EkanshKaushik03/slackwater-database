@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7556
+redirect_from:
+  - /currents/us/ga/little-ogeechee-river-entrance/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7556:
+      position: [31.88833, -81.09833]
+      coastline: unverifiable

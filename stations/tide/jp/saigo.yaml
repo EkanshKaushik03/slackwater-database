@@ -1,0 +1,21 @@
+sources:
+  - ticon/saigo-ma54-jpn-jodc_jma
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/saigo-ma54-jpn-jodc_jma:
+      position: [36.201383, 133.331117]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.929
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.165m) is 2.8x the largest tidal constituent M2 (0.060m): the yearly swing exceeds the daily one"

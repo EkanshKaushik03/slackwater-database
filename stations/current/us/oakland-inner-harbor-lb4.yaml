@@ -1,0 +1,9 @@
+region: US-CA
+sources:
+  - noaa/s10010
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/s10010:
+      position: [37.80097, -122.34775]
+      coastline: unverifiable

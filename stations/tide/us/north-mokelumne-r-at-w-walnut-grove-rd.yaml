@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/north_mokelumne_r_at_w_walnut_grove_rd-nmr-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/north_mokelumne_r_at_w_walnut_grove_rd-nmr-usa-cdwr:
+      position: [38.2232, -121.5071]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/n_mokelumne_nr_walnut_grove_ca-11336685-usa-usgs
+        score: 57
+        factors:
+          epoch: 0.776
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (5.699) > MLW (5.671)
+          - MHWS (6.301) < MHW (6.31)

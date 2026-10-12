@@ -1,0 +1,21 @@
+region: US-VA
+sources:
+  - noaa/8635671
+redirect_from:
+  - /tides/us/md/kinsale/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8635671:
+      position: [38.0317, -76.5767]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.208

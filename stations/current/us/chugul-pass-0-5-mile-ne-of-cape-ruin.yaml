@@ -1,0 +1,10 @@
+sources:
+  - noaa/PCT5631
+redirect_from:
+  - /currents/us/chugul-pass-0-4-nm-ne-of-cape-ruin/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5631:
+      position: [51.91667, -175.96667]
+      coastline: unverifiable

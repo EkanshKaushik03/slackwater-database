@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3721
+redirect_from:
+  - /currents/us/ak/high-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3721:
+      position: [56.70233, -133.733]
+      coastline: unverifiable

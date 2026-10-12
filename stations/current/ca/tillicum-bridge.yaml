@@ -1,0 +1,15 @@
+name: Tillicum Bridge
+context: Gorge Waterway
+region: CA-BC
+cities: [Victoria]
+position: [48.4464, -123.4002]
+provider: chs
+tide_reference: chs-victoria
+sources:
+  - chs-tillicum-bridge
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-tillicum-bridge:
+      position: [48.4464, -123.4002]
+      coastline: clear

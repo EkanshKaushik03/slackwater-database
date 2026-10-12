@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0621
+redirect_from:
+  - /currents/us/ca/bluff-point-0-1-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0621:
+      position: [37.88333, -122.435]
+      coastline: unverifiable

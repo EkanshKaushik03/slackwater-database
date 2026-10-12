@@ -1,0 +1,24 @@
+region: US-AK
+sources:
+  - ticon/red_dog_dock-9491094-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/red_dog_dock-9491094-usa-noaa:
+      position: [67.575806, -164.064389]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"
+          - "Seasonal band (0.154m) is 2.0x the largest tidal constituent M2 (0.079m): the yearly swing exceeds the daily one"

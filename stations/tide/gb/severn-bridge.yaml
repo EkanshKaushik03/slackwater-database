@@ -1,0 +1,18 @@
+sources:
+  - ticon/scarborough-sca-gbr-cco
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/scarborough-sca-gbr-cco:
+      position: [54.28248, -0.39027]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.721
+          recency: 0.99
+          source: 0.061
+          quality: 1
+          amplitude: 1
+          coverage: 0

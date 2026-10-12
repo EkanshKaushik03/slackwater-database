@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/MIH0808
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/MIH0808:
+      position: [25.77335, -80.156921]
+      coastline: unverifiable

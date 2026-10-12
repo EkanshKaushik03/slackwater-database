@@ -1,0 +1,19 @@
+region: US-VA
+sources:
+  - ticon/eb_elizabeth_river_at_rt_165_at_virginia_beach_va-204288721-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/eb_elizabeth_river_at_rt_165_at_virginia_beach_va-204288721-usa-usgs:
+      position: [36.82737, -76.165214]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 0.485
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.081

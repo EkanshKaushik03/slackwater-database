@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1286
+redirect_from:
+  - /currents/us/wa/entrance-0-5-nm-wnw-of-westport/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1286:
+      position: [46.91467, -124.125]
+      coastline: unverifiable

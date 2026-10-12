@@ -1,0 +1,20 @@
+sources:
+  - ticon/santana-716a-bra-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/santana-716a-bra-uhslc_rq:
+      position: [-0.057, -51.18]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/santana-716e-bra-uhslc_rq
+        score: 31
+        factors:
+          epoch: 0.116
+          recency: 0.46
+          source: 0.192
+          quality: 0
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,11 @@
+region: US-RI
+sources:
+  - noaa/ACT2131
+redirect_from:
+  - /currents/us/ri/rose-island-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2131:
+      position: [41.49667, -71.35]
+      coastline: unverifiable

@@ -105,7 +105,7 @@ const ensureGesla = () => (geslaReady ??= ensureGeslaData());
  * Imports all TICON-4 stations as clean source data.
  *
  * Converts CSV rows to station objects, computes datums, and saves all
- * stations. Quality evaluation happens separately via evaluate-quality.ts.
+ * stations. Quality evaluation happens separately, in `npm run stations`.
  */
 async function main() {
   if (shard === 0)

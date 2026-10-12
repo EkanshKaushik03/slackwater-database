@@ -1,0 +1,18 @@
+sources:
+  - ticon/half_tide_tug_harbour-h060010a-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/half_tide_tug_harbour-h060010a-aus-bom:
+      position: [-21.28, 149.3]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.43
+          recency: 0.97
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.027

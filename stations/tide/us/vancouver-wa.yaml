@@ -1,0 +1,21 @@
+region: US-WA
+sources:
+  - noaa/9440083
+redirect_from:
+  - /tides/us/or/vancouver-wa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9440083:
+      position: [45.63117222222222, -122.6957722222222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

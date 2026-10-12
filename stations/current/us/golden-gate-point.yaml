@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/ACT8386
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8386:
+      position: [27.32833, -82.55667]
+      coastline: unverifiable

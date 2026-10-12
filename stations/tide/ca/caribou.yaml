@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-caribou
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-caribou:
+      position: [45.73928, -62.688116]
+      coastline: unverifiable

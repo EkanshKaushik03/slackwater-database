@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/point_iroquois_mi-9099004-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/point_iroquois_mi-9099004-usa-noaa:
+      position: [46.4845, -84.630889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.119
+        issues:
+          - MLWS (183.364) > MLW (183.36)
+          - MHWS (183.404) < MHW (183.414)
+          - "Seasonal band (0.142m) is 9.8x the largest tidal constituent M2 (0.014m): the yearly swing exceeds the daily one"

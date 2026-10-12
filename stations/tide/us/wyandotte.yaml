@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/wyandotte_mi-9044030-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wyandotte_mi-9044030-usa-noaa:
+      position: [42.202306, -83.1475]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.104
+        issues:
+          - MLWS (174.807) > MLW (174.805)
+          - MHWS (174.831) < MHW (174.848)
+          - "Seasonal band (0.180m) is 18.2x the largest tidal constituent M2 (0.010m): the yearly swing exceeds the daily one"

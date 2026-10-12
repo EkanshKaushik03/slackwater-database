@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-carleton
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-carleton:
+      position: [48.100181, -66.130929]
+      coastline: unverifiable

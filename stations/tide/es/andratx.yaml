@@ -1,0 +1,27 @@
+sources:
+  - ticon/andratx-and-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/andratx-and-esp-cmems:
+      position: [39.544201, 2.37846]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.466
+          recency: 0.94
+          source: 0.02
+          quality: 0
+          amplitude: 0.5
+          coverage: 0.446
+        issues:
+          - MLWS (-0.104) > MLW (-0.113)
+          - MHWS (-0.102) < MHW (-0.089)
+          - "P1 amplitude (0.0012) exceeds K1 (0.0002): physically impossible"
+          - "Seasonal band (0.032m) is 4.9x the largest tidal constituent M1 (0.007m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0002) exceeds S2 (0.0002)
+          - Q1 amplitude (0.0007) exceeds O1 (0.0002)

@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/hill_slough-hsl-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hill_slough-hsl-usa-cdwr:
+      position: [38.2222, -122.024]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.25
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.034
+        issues:
+          - MLWS (0.644) > MLW (0.639)

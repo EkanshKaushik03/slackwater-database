@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4961
+redirect_from:
+  - /currents/us/md/thomas-point-shoal-lt/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4961:
+      position: [38.875, -76.46167]
+      coastline: unverifiable

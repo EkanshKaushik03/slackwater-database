@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-champlain
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-champlain:
+      position: [46.440167, -72.339667]
+      coastline: unverifiable

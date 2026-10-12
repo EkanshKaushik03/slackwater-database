@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-tumbo-channel
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-tumbo-channel:
+      position: [48.7932, -123.1088]
+      coastline: clear

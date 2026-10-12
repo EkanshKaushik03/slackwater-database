@@ -20,7 +20,7 @@ import {
 } from "../generated/fbs/slackwater.ts";
 import * as flatbuffers from "flatbuffers";
 import countryLookup from "country-code-lookup";
-import { attributionFor } from "../attribution.ts";
+import { attributionWithCredit } from "../attribution.ts";
 import type {
   DatabaseRoutes,
   StationInput,
@@ -42,11 +42,29 @@ import type {
  */
 export function buildDatabase(
   stations: StationInput[],
-  {
-    version,
-    routes = { tide: [], current: [] },
-  }: { version?: string; routes?: DatabaseRoutes } = {},
+  options: {
+    version?: string;
+    routes?: DatabaseRoutes;
+    /**
+     * Each source's own credit line by `source.name`, null when it needs
+     * none. Required, so a caller cannot leave a licensor's credit out of
+     * every notice by omission.
+     */
+    credits: ReadonlyMap<string, string | null>;
+  },
 ): Uint8Array {
+  if (!options?.credits)
+    throw new Error(
+      "buildDatabase needs credits: each source's credit line by source.name, null when it needs none",
+    );
+  const { version, routes = { tide: [], current: [] }, credits } = options;
+  const creditFor = ({ id, source }: StationInput) => {
+    if (!source) return null;
+    const credit = credits.get(source.name);
+    if (credit === undefined)
+      throw new Error(`${id}: no credit decision for source ${source.name}`);
+    return credit;
+  };
   // Ids are ASCII, so JS string order matches the strcmp order FlatBuffers key
   // lookup expects.
   const sorted = [...stations].sort((a, b) =>
@@ -207,7 +225,7 @@ export function buildDatabase(
 
     // Assembled here, not in each reader: a reader would otherwise need its own
     // table of sources and its own reading of what each licence requires.
-    const attribution = str(attributionFor(s.source?.name, s.license));
+    const attribution = str(attributionWithCredit(creditFor(s), s.license));
 
     let license = 0;
     if (s.license) {

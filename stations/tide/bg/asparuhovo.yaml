@@ -1,0 +1,21 @@
+sources:
+  - ticon/ptm3066-ptm-bgr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ptm3066-ptm-bgr-cmems:
+      position: [43.191002, 27.9212]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 48
+        factors:
+          epoch: 0.156
+          recency: 0.97
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.017
+        issues:
+          - "Seasonal band (0.102m) is 4.6x the largest tidal constituent M2 (0.022m): the yearly swing exceeds the daily one"

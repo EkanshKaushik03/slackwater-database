@@ -1,0 +1,19 @@
+region: US-AK
+sources:
+  - noaa/9454511
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9454511:
+      position: [60.241798400878906, -147.24899291992188]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.218

@@ -1,0 +1,24 @@
+region: US-OH
+sources:
+  - ticon/cleveland_oh-9063063-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cleveland_oh-9063063-usa-noaa:
+      position: [41.54086, -81.635472]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 96
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.764
+        issues:
+          - MLWS (174.368) > MLW (174.359)
+          - MHWS (174.384) < MHW (174.398)
+          - "Seasonal band (0.191m) is 34.5x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

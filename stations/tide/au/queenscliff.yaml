@@ -1,0 +1,18 @@
+sources:
+  - ticon/queenscliff-60732-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/queenscliff-60732-aus-bom:
+      position: [-38.2728, 144.6626]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.095

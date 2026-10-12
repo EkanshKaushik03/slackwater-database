@@ -46,7 +46,17 @@ jobs:
         run: npm run test
 
       - name: Validate station metadata
-        run: npm run validate:database
+        # On a pull request, every path the base branch publishes must still
+        # belong to its station, as its path or one of its redirects; a
+        # retired station's paths stay reserved but answer 404.
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            git fetch --depth=1 origin "$BASE_REF"
+            export PUBLISHED_REF=FETCH_HEAD
+          fi
+          npm run validate:database
 
   tcd:
     runs-on: ubuntu-latest

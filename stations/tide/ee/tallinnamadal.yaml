@@ -1,0 +1,23 @@
+sources:
+  - ticon/tallinnamadal-tal-est-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tallinnamadal-tal-est-cmems:
+      position: [59.711899, 24.7314]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 50
+        factors:
+          epoch: 0.724
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.358
+        issues:
+          - MLWS (-0.015) > MLW (-0.035)
+          - MHWS (-0.001) < MHW (0.009)
+          - "Seasonal band (0.092m) is 5.4x the largest tidal constituent O1 (0.017m): the yearly swing exceeds the daily one"

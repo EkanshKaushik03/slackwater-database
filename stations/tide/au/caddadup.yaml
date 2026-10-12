@@ -1,0 +1,21 @@
+sources:
+  - ticon/caddadup-dvcad01-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/caddadup-dvcad01-aus-bom:
+      position: [-32.609444, 115.643056]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.93
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.03
+        issues:
+          - MLWS (0.59) > MLW (0.566)
+          - MHWS (0.696) < MHW (0.725)

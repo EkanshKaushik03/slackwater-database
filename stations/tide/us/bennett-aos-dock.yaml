@@ -1,0 +1,23 @@
+region: US-SC
+sources:
+  - ticon/bennett_aos_dock-8661989-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bennett_aos_dock-8661989-usa-noaa:
+      position: [33.435, -79.1267]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.083
+          recency: 0.51
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.746) > MLW (0.707)
+          - "Superseded source: noaa"

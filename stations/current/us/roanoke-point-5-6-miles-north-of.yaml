@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2876
+redirect_from:
+  - /currents/us/ny/roanoke-point-4-9-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2876:
+      position: [41.07283, -72.70883]
+      coastline: unverifiable

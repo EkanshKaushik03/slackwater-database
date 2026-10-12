@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-flat-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-flat-island:
+      position: [43.509749, -66.002756]
+      coastline: unverifiable

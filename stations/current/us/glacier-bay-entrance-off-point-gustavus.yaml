@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA1002
+redirect_from:
+  - /currents/us/ak/glacier-bay-entrance/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA1002:
+      position: [58.38242, -135.94617]
+      coastline: unverifiable

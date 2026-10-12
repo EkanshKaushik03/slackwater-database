@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-redonda-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-redonda-bay:
+      position: [50.2604833, -124.95532]
+      coastline: clear

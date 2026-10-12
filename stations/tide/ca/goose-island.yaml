@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-goose-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-goose-island:
+      position: [51.992, -128.413]
+      coastline: unverifiable

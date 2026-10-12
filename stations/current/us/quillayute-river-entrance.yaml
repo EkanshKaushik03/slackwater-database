@@ -1,0 +1,10 @@
+region: US-WA
+sources:
+  - noaa/PCT1321
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1321:
+      position: [47.91667, -124.63333]
+      coastline: ashore
+      metres_inland: 433

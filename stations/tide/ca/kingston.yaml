@@ -1,0 +1,24 @@
+region: CA-ON
+sources:
+  - ticon/kingston_ontario-13988-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kingston_ontario-13988-can-meds:
+      position: [44.22, -76.52]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.36
+        issues:
+          - MLWS (0.615) > MLW (0.612)
+          - MHWS (0.631) < MHW (0.635)
+          - "Seasonal band (0.286m) is 45.6x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

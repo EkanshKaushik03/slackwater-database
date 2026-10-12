@@ -1,0 +1,18 @@
+sources:
+  - ticon/kerkyra-ker-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kerkyra-ker-grc-cmems:
+      position: [39.790001, 19.91]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 0.356
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1

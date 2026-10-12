@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/san_joaquin_river_at_rindge_pump-b95620-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_joaquin_river_at_rindge_pump-b95620-usa-cdwr:
+      position: [37.997222, -121.419444]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9415021
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - MLWS (1.003) > MLW (0.997)
+          - MHWS (1.801) < MHW (1.808)

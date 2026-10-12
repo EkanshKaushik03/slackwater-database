@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3256
+redirect_from:
+  - /currents/us/ny/huckleberry-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3256:
+      position: [40.8905, -73.75717]
+      coastline: unverifiable

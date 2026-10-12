@@ -1,0 +1,19 @@
+region: US-NC
+sources:
+  - ticon/bogue_sound_nc-bog-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bogue_sound_nc-bog-usa-ncdem:
+      position: [34.6682, -77.06348]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.329
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.078

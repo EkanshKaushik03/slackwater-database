@@ -1,0 +1,21 @@
+sources:
+  - ticon/cape_roberts-robt-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cape_roberts-robt-nzl-ttw:
+      position: [-77.033333, 163.183333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.709
+          recency: 0.95
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (6.234) > MLW (6.221)
+          - MHWS (6.436) < MHW (6.526)

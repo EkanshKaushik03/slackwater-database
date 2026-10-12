@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1541
+redirect_from:
+  - /currents/us/wa/peale-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1541:
+      position: [47.174949645996094, -122.88697052001953]
+      coastline: clear

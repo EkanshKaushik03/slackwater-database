@@ -19,6 +19,10 @@ on:
         description: Run the full extraction even if the station list is unchanged
         type: boolean
         default: true
+      retire:
+        description: Allow more than ten records to retire in this run, once the bundle is checked
+        type: boolean
+        default: false
 permissions:
   contents: write
   # The workflow pushes a branch and files an issue carrying the review material plus
@@ -68,6 +72,16 @@ jobs:
         if: steps.decide.outputs.run == 'true'
         run: npm run -s validate -w sources/noaa-current
 
+      # A new current station needs a station file and URL, and a moved one a
+      # new position in its file, or validation fails on the PR.
+      - name: Update station files
+        if: steps.decide.outputs.run == 'true'
+        env:
+          STATIONS_RETIRE: ${{ inputs.retire && '1' || '' }}
+        run: |
+          npm ci --ignore-scripts
+          npm run -s stations
+
       - name: Push the branch and file a review issue if anything changed
         if: steps.decide.outputs.run == 'true'
         env:
@@ -88,7 +102,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
-          git add sources/noaa-current/currents.json sources/noaa-current/stations.lock.json
+          git add sources/noaa-current/currents.json sources/noaa-current/stations.lock.json stations/
           git commit -m "data: refresh NOAA current-station bundle"
           git push -q origin "$BRANCH"
 

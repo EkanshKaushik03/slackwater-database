@@ -1,0 +1,19 @@
+region: US-AK
+sources:
+  - noaa/TWC1743
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TWC1743:
+      position: [57.85, -135.0166666666701]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.277

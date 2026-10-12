@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1451
+redirect_from:
+  - /currents/us/wa/smith-island-1-2-nm-ssw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1451:
+      position: [48.29999923706055, -122.8499984741211]
+      coastline: clear

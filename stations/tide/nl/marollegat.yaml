@@ -1,0 +1,18 @@
+sources:
+  - ticon/marollegat-marlgt-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/marollegat-marlgt-nld-rws:
+      position: [51.479747, 4.191958]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 53
+        factors:
+          epoch: 0.483
+          recency: 0.65
+          source: 0.788
+          quality: 0
+          amplitude: 1
+          coverage: 0.063

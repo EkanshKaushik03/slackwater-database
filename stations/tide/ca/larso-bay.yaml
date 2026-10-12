@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-larso-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-larso-bay:
+      position: [52.179, -126.862]
+      coastline: unverifiable

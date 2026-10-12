@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1527
+redirect_from:
+  - /currents/us/wa/the-narrows-0-3-nm-north-of-bridge/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1527:
+      position: [47.27431869506836, -122.54531860351562]
+      coastline: clear

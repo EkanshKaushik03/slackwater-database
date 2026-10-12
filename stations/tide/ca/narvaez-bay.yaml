@@ -1,0 +1,11 @@
+# The generalized maritime boundary puts these border gauges in the neighboring country.
+
+region: CA-BC
+sources:
+  - chs-narvaez-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-narvaez-bay:
+      position: [48.7743, -123.0981]
+      coastline: clear

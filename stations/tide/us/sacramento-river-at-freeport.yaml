@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_freeport-fpt-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_freeport-fpt-usa-cdwr:
+      position: [38.45, -121.5]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.013
+        issues:
+          - MHHW (32.204) < MHW (32.321)
+          - MHWS (32.098) < MHW (32.321)
+          - MSL (31.94) <= MLW (32.101)
+          - "Seasonal band (0.617m) is 4.5x the largest tidal constituent M2 (0.136m): the yearly swing exceeds the daily one"

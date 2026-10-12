@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/SJR9806
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SJR9806:
+      position: [30.38358, -81.62785]
+      coastline: unverifiable

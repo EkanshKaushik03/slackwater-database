@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/blackwater_river-8729753-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/blackwater_river-8729753-usa-noaa:
+      position: [30.6367, -87.0283]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.948
+          recency: 0.67
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.211) > MLW (1.157)
+          - MHWS (1.329) < MHW (1.382)
+          - "Superseded source: noaa"

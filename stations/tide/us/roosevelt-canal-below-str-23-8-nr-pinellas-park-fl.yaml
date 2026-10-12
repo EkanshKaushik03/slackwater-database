@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/roosevelt_canal_below_str_23_8_nr_pinellas_park_fl-2308866-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/roosevelt_canal_below_str_23_8_nr_pinellas_park_fl-2308866-usa-usgs:
+      position: [27.9078, -82.675933]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 73
+        factors:
+          epoch: 0.73
+          recency: 0.95
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.115

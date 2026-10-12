@@ -1,0 +1,22 @@
+name: Spee-Bi-Dah
+context: Possession Sound
+region: US-WA
+cities: [Marysville]
+sources:
+  - noaa/9448009
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9448009:
+      position: [48.08825, -122.3223333333333]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.055

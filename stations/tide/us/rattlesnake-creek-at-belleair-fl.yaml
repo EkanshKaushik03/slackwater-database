@@ -1,0 +1,27 @@
+region: US-FL
+sources:
+  - ticon/rattlesnake_creek_at_belleair_fl-2309200-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rattlesnake_creek_at_belleair_fl-2309200-usa-usgs:
+      position: [27.942408, -82.804]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.454
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 0.5
+          coverage: 0.029
+        issues:
+          - MLWS (3.34) > MLW (3.333)
+          - Tidal range 1.3cm < 2cm threshold
+          - "Seasonal band (0.019m) is 6.9x the largest tidal constituent S2 (0.003m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0005) exceeds M2 (0.0001)
+          - Q1 amplitude (0.0006) exceeds O1 (0.0002)

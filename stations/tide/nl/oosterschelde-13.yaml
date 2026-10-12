@@ -1,0 +1,18 @@
+sources:
+  - ticon/oosterschelde_13-oostsde13-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oosterschelde_13-oostsde13-nld-rws:
+      position: [51.733324, 3.554848]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 54
+        factors:
+          epoch: 0.484
+          recency: 0.65
+          source: 0.788
+          quality: 0
+          amplitude: 1
+          coverage: 0.115

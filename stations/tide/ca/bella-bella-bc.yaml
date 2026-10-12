@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/bella_bella_bc-8976-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bella_bella_bc-8976-can-meds:
+      position: [52.16, -128.14]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

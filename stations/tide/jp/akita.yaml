@@ -1,0 +1,21 @@
+sources:
+  - ticon/akita-2002-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/akita-2002-jpn-jodc_pahb:
+      position: [39.746117, 140.065833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 57
+        factors:
+          epoch: 0.698
+          recency: 0.97
+          source: 0.121
+          quality: 0
+          amplitude: 1
+          coverage: 0.757
+        issues:
+          - "Seasonal band (0.123m) is 2.3x the largest tidal constituent O1 (0.054m): the yearly swing exceeds the daily one"

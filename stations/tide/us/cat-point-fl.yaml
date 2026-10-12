@@ -1,0 +1,26 @@
+region: US-FL
+sources:
+  - ticon/cat_point-8728619-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cat_point-8728619-usa-noaa:
+      position: [29.7233, -84.8867]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 1
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (-0.063) > MLW (-0.089)
+          - MHWS (0.063) < MHW (0.097)
+          - "Superseded source: noaa"
+          - "Seasonal band (0.168m) is 1.6x the largest tidal constituent O1 (0.105m): the yearly swing exceeds the daily one"

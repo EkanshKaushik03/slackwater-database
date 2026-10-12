@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0356
+redirect_from:
+  - /currents/us/ca/treasure-island-0-3-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0356:
+      position: [37.82667, -122.355]
+      coastline: unverifiable

@@ -1,0 +1,19 @@
+region: US-NY
+sources:
+  - ticon/peconic_river_at_county_hwy_105_at_riverhead_ny-1304562-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/peconic_river_at_county_hwy_105_at_riverhead_ny-1304562-usa-usgs:
+      position: [40.917778, -72.638667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.683
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.103

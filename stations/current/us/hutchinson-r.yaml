@@ -1,0 +1,9 @@
+region: US-NY
+sources:
+  - noaa/ACT3306
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3306:
+      position: [40.86167, -73.81667]
+      coastline: unverifiable

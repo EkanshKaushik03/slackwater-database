@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0676
+redirect_from:
+  - /currents/us/ca/red-rock-0-60-nm-nne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0676:
+      position: [37.94, -122.42667]
+      coastline: unverifiable

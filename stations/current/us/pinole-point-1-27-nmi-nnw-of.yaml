@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1314
+redirect_from:
+  - /currents/us/ca/pinole-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1314:
+      position: [38.03083, -122.37715]
+      coastline: unverifiable

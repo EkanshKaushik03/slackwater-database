@@ -1,0 +1,20 @@
+region: CA-BC
+sources:
+  - ticon/gibsons_bc-7820-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gibsons_bc-7820-can-meds:
+      position: [49.4, -123.51]
+      coastline: ashore
+      metres_inland: 256
+      quality:
+        accepted: true
+        score: 71
+        factors:
+          epoch: 0.329
+          recency: 0.47
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.399

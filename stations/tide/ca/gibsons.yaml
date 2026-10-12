@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-gibsons
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-gibsons:
+      position: [49.402, -123.505]
+      coastline: clear

@@ -1,0 +1,18 @@
+sources:
+  - ticon/malmohamn-mal-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/malmohamn-mal-swe-cmems:
+      position: [55.625702, 12.9845]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 37
+        factors:
+          epoch: 0.322
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.028

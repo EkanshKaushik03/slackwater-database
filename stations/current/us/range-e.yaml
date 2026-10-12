@@ -1,0 +1,9 @@
+region: US-GA
+sources:
+  - noaa/kb0401
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/kb0401:
+      position: [30.77505, -81.48902]
+      coastline: unverifiable

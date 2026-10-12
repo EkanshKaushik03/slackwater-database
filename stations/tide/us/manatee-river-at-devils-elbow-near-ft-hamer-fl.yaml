@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/manatee_river_at_devils_elbow_near_ft_hamer_fl-2300009-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/manatee_river_at_devils_elbow_near_ft_hamer_fl-2300009-usa-usgs:
+      position: [27.520872, -82.40176]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.326
+          recency: 0.87
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.052
+        issues:
+          - MLWS (0.102) > MLW (0.092)
+          - MHWS (0.484) < MHW (0.498)

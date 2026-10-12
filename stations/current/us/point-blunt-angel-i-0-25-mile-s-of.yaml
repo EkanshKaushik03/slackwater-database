@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0566
+redirect_from:
+  - /currents/us/ca/point-blunt-angel-island-0-2-nm-s/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0566:
+      position: [37.84667, -122.41667]
+      coastline: unverifiable

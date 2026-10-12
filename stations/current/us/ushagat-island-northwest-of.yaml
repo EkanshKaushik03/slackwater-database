@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT4841
+redirect_from:
+  - /currents/us/ak/ushagat-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT4841:
+      position: [59.00617, -152.56333]
+      coastline: unverifiable

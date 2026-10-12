@@ -1,0 +1,22 @@
+sources:
+  - ticon/santa_marta-738a-col-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/santa_marta-738a-col-uhslc_rq:
+      position: [11.235, -74.222]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/santa_marta-738-col-uhslc_fd
+        score: 62
+        factors:
+          epoch: 0.658
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.307) > MLW (1.305)

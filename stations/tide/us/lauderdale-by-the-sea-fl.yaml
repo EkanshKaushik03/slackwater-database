@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/lauderdale_by_the_sea-8722899-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lauderdale_by_the_sea-8722899-usa-noaa:
+      position: [26.1883, -80.0933]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.104
+          recency: 0.49
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

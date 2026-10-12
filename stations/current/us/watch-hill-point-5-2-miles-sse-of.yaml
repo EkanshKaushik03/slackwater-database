@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2386
+redirect_from:
+  - /currents/us/ct/watch-hill-point-4-5-nm-sse/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2386:
+      position: [41.22, -71.81667]
+      coastline: unverifiable

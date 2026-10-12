@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-gorge-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-gorge-harbour:
+      position: [50.092, -124.989]
+      coastline: clear

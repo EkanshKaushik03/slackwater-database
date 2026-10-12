@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0901
+redirect_from:
+  - /currents/us/ca/point-sacramento-0-3-nm-ne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0901:
+      position: [38.06667, -121.83333]
+      coastline: unverifiable

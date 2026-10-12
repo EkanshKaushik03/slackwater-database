@@ -1,0 +1,18 @@
+sources:
+  - ticon/cagliari-cag-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cagliari-cag-ita-ispra:
+      position: [39.210192, 9.114272]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0

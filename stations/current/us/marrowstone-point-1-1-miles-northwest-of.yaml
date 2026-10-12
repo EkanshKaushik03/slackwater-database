@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1511
+redirect_from:
+  - /currents/us/wa/marrowstone-point-1-0-nm-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1511:
+      position: [48.116668701171875, -122.69999694824219]
+      coastline: clear

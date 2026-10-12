@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/los_angeles_ca-567a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/los_angeles_ca-567a-usa-uhslc_rq:
+      position: [33.72, -118.272]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9410660
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

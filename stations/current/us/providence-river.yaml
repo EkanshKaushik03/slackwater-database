@@ -1,0 +1,9 @@
+region: US-RI
+sources:
+  - noaa/nb0101
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/nb0101:
+      position: [41.8087, -71.39747]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/catalina-313a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/catalina-313a-usa-uhslc_rq:
+      position: [33.45, -118.483]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/catalina-313b-usa-uhslc_rq
+        score: 46
+        factors:
+          epoch: 0.068
+          recency: 0.53
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

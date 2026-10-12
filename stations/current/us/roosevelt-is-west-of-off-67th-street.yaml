@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3416
+redirect_from:
+  - /currents/us/ny/roosevelt-islands-west-of-off-67th-street/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3416:
+      position: [40.762298583984375, -73.9540023803711]
+      coastline: unverifiable

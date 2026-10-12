@@ -1,0 +1,13 @@
+name: Dent Rapids
+context: Cordero Channel
+region: CA-BC
+position: [50.41, -125.2117]
+provider: chs
+sources:
+  - chs-dent-rapids
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-dent-rapids:
+      position: [50.41, -125.2117]
+      coastline: clear

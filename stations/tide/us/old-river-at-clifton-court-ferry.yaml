@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/old_river_at_clifton_court_ferry-b95340-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_at_clifton_court_ferry-b95340-usa-cdwr:
+      position: [37.828611, -121.553056]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (0.906) > MLW (0.896)
+          - MHWS (1.52) < MHW (1.524)

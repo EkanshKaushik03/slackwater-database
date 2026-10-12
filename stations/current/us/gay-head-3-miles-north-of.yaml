@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1861
+redirect_from:
+  - /currents/us/ma/gay-head-2-6-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1861:
+      position: [41.40167, -70.85333]
+      coastline: unverifiable

@@ -1,0 +1,23 @@
+sources:
+  - ticon/oulu_toppila-134248-fin-fmi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oulu_toppila-134248-fin-fmi:
+      position: [65.04, 25.42]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.768
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (0.027) > MLW (0.002)
+          - MHWS (0.037) < MHW (0.049)
+          - "Seasonal band (0.134m) is 8.8x the largest tidal constituent K1 (0.015m): the yearly swing exceeds the daily one"

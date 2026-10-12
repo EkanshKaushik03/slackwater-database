@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0635
+redirect_from:
+  - /currents/us/ak/saint-nicholas-channel/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0635:
+      position: [55.52955, -133.56271]
+      coastline: unverifiable

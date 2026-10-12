@@ -1,6 +1,8 @@
-import { readFileSync } from "node:fs";
 import { describe, expect, test } from "vitest";
 import { stationRouteBySlug, stationRoutes } from "../src/index.js";
+// From source: station files are the stations package's, and this test checks
+// the shipped database against them.
+import { filePath, readStationFiles } from "../../stations/station-files.ts";
 
 describe("station routes", () => {
   test.each([
@@ -9,9 +11,10 @@ describe("station routes", () => {
     ["port-allen", "1611347", "port_allen-553a-usa-uhslc_rq"],
     ["duck-pier", "8651370", "duck_pier_nc-260-usa-uhslc_fd"],
     ["massacre-bay", "9460150", "massacre_bay_ak-550a-usa-uhslc_rq"],
-  ])("%s keeps both gauge records on the NOAA route", (slug, noaa, relay) => {
+  ])("%s keeps the gauge's relays on the NOAA route", (slug, noaa, relay) => {
     const route = stationRouteBySlug("tide", slug)!;
-    expect(route.stationIds).toEqual([`noaa/${noaa}`, `ticon/${relay}`]);
+    expect(route.stationIds[0]).toBe(`noaa/${noaa}`);
+    expect(route.stationIds).toContain(`ticon/${relay}`);
     const retiredSlug = `${slug}-ticon-${relay.replaceAll("_", "-")}`;
     expect(stationRouteBySlug("tide", retiredSlug)).toBeUndefined();
     expect(route.formerPaths).toContain(
@@ -44,23 +47,20 @@ describe("station routes", () => {
     expect(stationRouteBySlug("tide", "missing")).toBeUndefined();
   });
 
-  // Paths are worked out at read time; the lock records the paths the route
-  // builder minted. Any disagreement is a published URL that moved.
-  test("reads every route at the path the route lock records", () => {
-    const lock = JSON.parse(
-      readFileSync(
-        new URL("../../../metadata/routes.lock.json", import.meta.url),
-        "utf8",
-      ),
-    ) as Record<"tide" | "current", Record<string, { path: string }>>;
+  // Paths are worked out at read time; a station file records the path it
+  // publishes. Any disagreement is a published URL that moved.
+  test("reads every route at the path its station file records", () => {
+    const files = readStationFiles().filter(({ sources }) => sources.length);
     for (const kind of ["tide", "current"] as const) {
       const read = Object.fromEntries(
         stationRoutes(kind).map(({ slug, path }) => [slug, path]),
       );
-      const locked = Object.fromEntries(
-        Object.entries(lock[kind]).map(([slug, { path }]) => [slug, path]),
+      const recorded = Object.fromEntries(
+        files
+          .filter((file) => file.kind === kind)
+          .map((file) => [file.slug, filePath(file)]),
       );
-      expect(read).toEqual(locked);
+      expect(read).toEqual(recorded);
     }
   });
 });

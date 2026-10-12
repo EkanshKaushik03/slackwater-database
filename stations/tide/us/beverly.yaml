@@ -1,0 +1,19 @@
+region: US-MA
+sources:
+  - noaa/8442417
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8442417:
+      position: [42.540000915527344, -70.88670349121094]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.041

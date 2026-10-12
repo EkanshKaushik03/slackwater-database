@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/middle_river_at_union_point-b95500-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/middle_river_at_union_point-b95500-usa-cdwr:
+      position: [37.890833, -121.488333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (0.961) > MLW (0.947)
+          - MHWS (1.611) < MHW (1.637)

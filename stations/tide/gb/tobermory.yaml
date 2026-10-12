@@ -1,0 +1,18 @@
+sources:
+  - ticon/tobermory-tob-gbr-bodc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tobermory-tob-gbr-bodc:
+      position: [56.623111, -6.064222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.98
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

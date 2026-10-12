@@ -1,0 +1,18 @@
+sources:
+  - ticon/rotterdamtg-rot-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rotterdamtg-rot-nld-cmems:
+      position: [51.919998, 4.5]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 41
+        factors:
+          epoch: 0.533
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

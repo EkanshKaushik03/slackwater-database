@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/old_river_at_delta_mendota_canal-odm-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_at_delta_mendota_canal-odm-usa-cdwr:
+      position: [37.810295, -121.54215]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/old_r_nr_delta_mendota_canal_ca-11312968-usa-usgs
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (0.921) > MLW (0.918)

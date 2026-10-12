@@ -1,0 +1,18 @@
+sources:
+  - ticon/marina_di_campo-mar-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/marina_di_campo-mar-ita-ispra:
+      position: [42.742633, 10.238333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.75
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0

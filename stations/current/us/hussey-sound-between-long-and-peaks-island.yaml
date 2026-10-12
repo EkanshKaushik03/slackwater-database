@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/CAB1410
+redirect_from:
+  - /currents/us/me/hussey-sound/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CAB1410:
+      position: [43.670799255371094, -70.17632293701172]
+      coastline: unverifiable

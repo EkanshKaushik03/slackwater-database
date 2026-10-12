@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1637
+redirect_from:
+  - /currents/us/wa/ediz-hook-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1637:
+      position: [48.18227005004883, -123.28150177001953]
+      coastline: clear

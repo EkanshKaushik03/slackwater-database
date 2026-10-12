@@ -1,0 +1,21 @@
+region: US-WA
+sources:
+  - ticon/neah_bay_wa-558a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/neah_bay_wa-558a-usa-uhslc_rq:
+      position: [48.368, -124.617]
+      coastline: clear
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/neah_bay_wa-558-usa-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

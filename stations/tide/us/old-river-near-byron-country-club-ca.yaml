@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/old_river_near_byron-b95270-usa-cdwr
+redirect_from:
+  - /tides/us/ca/old-river-near-byron/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_near_byron-b95270-usa-cdwr:
+      position: [37.891111, -121.4025]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.045
+        issues:
+          - MHWS (1.646) < MHW (1.662)

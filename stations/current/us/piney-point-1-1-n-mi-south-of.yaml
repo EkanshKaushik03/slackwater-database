@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/cb0901
+redirect_from:
+  - /currents/us/md/piney-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/cb0901:
+      position: [38.09098, -76.52975]
+      coastline: unverifiable

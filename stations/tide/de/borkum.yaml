@@ -1,0 +1,20 @@
+sources:
+  - ticon/borkumtg-bor-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/borkumtg-bor-deu-cmems:
+      position: [53.556999, 6.748]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/borkum_fischerbalje-bor-deu-bfg
+        score: 58
+        factors:
+          epoch: 0.617
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

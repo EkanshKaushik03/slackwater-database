@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5081
+redirect_from:
+  - /currents/us/ak/moose-point-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5081:
+      position: [61.0775, -150.75]
+      coastline: unverifiable

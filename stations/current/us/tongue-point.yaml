@@ -1,0 +1,9 @@
+region: US-OR
+sources:
+  - noaa/PCT1176
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1176:
+      position: [46.21917, -123.76667]
+      coastline: unverifiable

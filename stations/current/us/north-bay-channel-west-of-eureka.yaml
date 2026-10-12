@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/HUB0203
+redirect_from:
+  - /currents/us/ca/north-bay-channel/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/HUB0203:
+      position: [40.78715, -124.19268]
+      coastline: unverifiable

@@ -1,0 +1,18 @@
+sources:
+  - ticon/vallarta-393a-mex-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/vallarta-393a-mex-uhslc_rq:
+      position: [20.615, -105.245]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.942
+          recency: 0.65
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.011

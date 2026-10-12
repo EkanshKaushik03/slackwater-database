@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1191
+redirect_from:
+  - /currents/us/ma/fort-independence-0-3-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1191:
+      position: [42.33883, -71.00367]
+      coastline: unverifiable

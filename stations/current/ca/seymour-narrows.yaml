@@ -1,0 +1,15 @@
+name: Seymour Narrows
+context: Discovery Passage
+region: CA-BC
+cities: [Campbell River]
+position: [50.1333, -125.35]
+provider: chs
+tide_reference: chs-campbell-river
+sources:
+  - chs-seymour-narrows
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-seymour-narrows:
+      position: [50.1333, -125.35]
+      coastline: clear

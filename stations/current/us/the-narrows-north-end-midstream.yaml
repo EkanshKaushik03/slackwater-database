@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1524
+redirect_from:
+  - /currents/us/wa/the-narrows/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1524:
+      position: [47.305999755859375, -122.55003356933594]
+      coastline: clear

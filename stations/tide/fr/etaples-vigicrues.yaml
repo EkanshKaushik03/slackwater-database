@@ -1,0 +1,20 @@
+sources:
+  - ticon/etaplesvigicruestg_06minute-eta-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/etaplesvigicruestg_06minute-eta-fra-cmems:
+      position: [50.512348, 1.63552]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 44
+        factors:
+          epoch: 0.36
+          recency: 0.95
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.485
+        issues:
+          - MHWS (3.479) < MHW (3.611)

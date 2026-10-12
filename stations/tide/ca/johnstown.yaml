@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-johnstown
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-johnstown:
+      position: [45.79297, -60.739103]
+      coastline: unverifiable

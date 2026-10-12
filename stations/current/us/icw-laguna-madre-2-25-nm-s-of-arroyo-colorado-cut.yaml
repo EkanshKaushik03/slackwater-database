@@ -1,0 +1,11 @@
+region: US-TX
+sources:
+  - noaa/STX1812
+redirect_from:
+  - /currents/us/tx/icw-laguna-madre/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/STX1812:
+      position: [26.327899932861328, -97.30970001220703]
+      coastline: unverifiable

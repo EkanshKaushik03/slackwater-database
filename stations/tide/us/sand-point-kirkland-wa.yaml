@@ -1,0 +1,28 @@
+region: US-WA
+sources:
+  - ticon/sand_point-9447239-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sand_point-9447239-usa-noaa:
+      position: [47.6883, -122.258]
+      coastline: ashore
+      metres_inland: 10075
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.256
+          recency: 0.82
+          source: 1
+          quality: 0
+          amplitude: 0.75
+          coverage: 0.217
+        issues:
+          - MSL (0.378) <= MLW (0.381)
+          - MHW (0.379) < MTL (0.38)
+          - MTL (0.38) < MLW (0.381)
+          - "Seasonal band (0.257m) is 75.7x the largest tidal constituent S2 (0.003m): the yearly swing exceeds the daily one"
+          - Q1 amplitude (0.0005) exceeds O1 (0.0005)

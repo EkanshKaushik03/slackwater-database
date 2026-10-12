@@ -1,0 +1,9 @@
+region: US-TX
+sources:
+  - noaa/sn0501
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/sn0501:
+      position: [29.98111, -93.87111]
+      coastline: unverifiable

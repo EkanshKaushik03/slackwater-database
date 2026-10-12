@@ -1,0 +1,20 @@
+sources:
+  - ticon/tubuaitg_60minute-tub-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tubuaitg_60minute-tub-fra-cmems:
+      position: [-23.34177, -149.47554]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/tubuai-456-fra-uhslc_fd
+        score: 61
+        factors:
+          epoch: 0.797
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

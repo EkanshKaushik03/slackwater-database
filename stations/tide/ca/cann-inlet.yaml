@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-cann-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-cann-inlet:
+      position: [52.547181, -128.695281]
+      coastline: unverifiable

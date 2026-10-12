@@ -1,0 +1,21 @@
+region: US-DE
+sources:
+  - ticon/st_jones_river_at_lebanon_de-1483740-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/st_jones_river_at_lebanon_de-1483740-usa-usgs:
+      position: [39.114333, -75.499389]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.087
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.094
+        issues:
+          - MLWS (-0.05) > MLW (-0.138)

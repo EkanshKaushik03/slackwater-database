@@ -1,0 +1,9 @@
+region: US-WA
+sources:
+  - noaa/ks0201
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ks0201:
+      position: [47.75782, -122.73057]
+      coastline: clear

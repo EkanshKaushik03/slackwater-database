@@ -1,0 +1,20 @@
+sources:
+  - ticon/secondseverncrossingtg-sec-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/secondseverncrossingtg-sec-gbr-cmems:
+      position: [51.570122, -2.700022]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/severn_bridge-ssc-gbr-cco
+        score: 45
+        factors:
+          epoch: 0.725
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

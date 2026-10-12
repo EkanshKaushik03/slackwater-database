@@ -1,0 +1,21 @@
+region: US-MS
+sources:
+  - noaa/8749704
+redirect_from:
+  - /tides/us/ms/pearlington/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8749704:
+      position: [30.24, -89.615]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 71
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.113

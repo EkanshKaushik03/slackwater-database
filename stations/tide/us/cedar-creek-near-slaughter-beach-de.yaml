@@ -1,0 +1,19 @@
+region: US-DE
+sources:
+  - ticon/cedar_creek_near_slaughter_beach_de-1484235-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cedar_creek_near_slaughter_beach_de-1484235-usa-usgs:
+      position: [38.935028, -75.323694]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.422
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.029

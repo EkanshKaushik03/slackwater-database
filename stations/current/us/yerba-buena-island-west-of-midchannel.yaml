@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1209
+redirect_from:
+  - /currents/us/ca/yerba-buena-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1209:
+      position: [37.81003, -122.38307]
+      coastline: unverifiable

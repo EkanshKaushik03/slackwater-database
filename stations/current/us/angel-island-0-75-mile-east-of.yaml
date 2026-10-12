@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0586
+redirect_from:
+  - /currents/us/ca/angel-island-0-7-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0586:
+      position: [37.86333, -122.40167]
+      coastline: unverifiable

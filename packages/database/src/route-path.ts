@@ -1,5 +1,5 @@
 // No imports: packages/stations loads this file from source to mint the paths
-// it records in metadata/routes.lock.json, so both sides share one copy.
+// station files record, so both sides share one copy.
 
 /**
  * A route's canonical web path, e.g. `/tides/ca/bc/victoria/`: the kind, the

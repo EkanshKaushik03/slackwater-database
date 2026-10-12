@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-effingham-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-effingham-bay:
+      position: [48.878, -125.313]
+      coastline: clear

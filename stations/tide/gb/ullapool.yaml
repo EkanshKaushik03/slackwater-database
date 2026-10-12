@@ -1,0 +1,18 @@
+sources:
+  - ticon/ullapool-ull-gbr-bodc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ullapool-ull-gbr-bodc:
+      position: [57.89525, -5.158056]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.98
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

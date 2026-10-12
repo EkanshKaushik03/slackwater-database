@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-grand-bruit
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-grand-bruit:
+      position: [47.671685, -58.224724]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1301
+redirect_from:
+  - /currents/us/wa/channel-1-3-nm-north-of-westport/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1301:
+      position: [46.93333, -124.1]
+      coastline: unverifiable

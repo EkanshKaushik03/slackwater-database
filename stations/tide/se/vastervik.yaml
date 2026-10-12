@@ -1,0 +1,24 @@
+sources:
+  - ticon/vastervik-vas-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/vastervik-vas-swe-cmems:
+      position: [57.748199, 16.6747]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/vastervik_sjov-35151-swe-smhi
+        seasonal_dominant: true
+        score: 52
+        factors:
+          epoch: 0.322
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.143) > MLW (0.135)
+          - "Seasonal band (0.065m) is 7.1x the largest tidal constituent K1 (0.009m): the yearly swing exceeds the daily one"

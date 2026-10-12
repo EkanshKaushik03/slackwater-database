@@ -1,0 +1,23 @@
+sources:
+  - ticon/lauterbach-9670063-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lauterbach-9670063-deu-wsv:
+      position: [54.3416, 13.499693]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0.304
+        issues:
+          - MLWS (5.09) > MLW (5.079)
+          - MHWS (5.128) < MHW (5.14)
+          - "Seasonal band (0.042m) is 2.8x the largest tidal constituent M2 (0.015m): the yearly swing exceeds the daily one"

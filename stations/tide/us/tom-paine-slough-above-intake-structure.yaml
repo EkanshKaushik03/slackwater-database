@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/tom_paine_slough_above_intake_structure-b95421-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tom_paine_slough_above_intake_structure-b95421-usa-cdwr:
+      position: [37.790111, -121.418528]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 56
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 0.75
+          coverage: 0.001
+        issues:
+          - MHWS (1.368) < MHW (1.413)
+          - "Seasonal band (0.063m) is 1.2x the largest tidal constituent K1 (0.052m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0064) exceeds S2 (0.0060)

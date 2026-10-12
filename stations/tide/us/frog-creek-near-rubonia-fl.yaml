@@ -1,0 +1,26 @@
+region: US-FL
+sources:
+  - ticon/frog_creek_near_rubonia_fl-2300082-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/frog_creek_near_rubonia_fl-2300082-usa-usgs:
+      position: [27.588056, -82.539722]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.12
+        issues:
+          - MLW (0.108) < MLLW (0.13)
+          - MLWS (0.168) > MLW (0.108)
+          - MHW (0.169) <= MSL (0.189)
+          - "Seasonal band (0.143m) is 5.8x the largest tidal constituent O1 (0.025m): the yearly swing exceeds the daily one"

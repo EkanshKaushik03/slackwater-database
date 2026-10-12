@@ -1,0 +1,9 @@
+region: US-NJ
+sources:
+  - noaa/db0502
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/db0502:
+      position: [38.94013, -75.10486]
+      coastline: unverifiable

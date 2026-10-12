@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9453431
+redirect_from:
+  - /tides/us/tyndall-glacier/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9453431:
+      position: [60.07830047607422, -141.27499389648438]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.344

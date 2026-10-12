@@ -1,0 +1,11 @@
+region: US-RI
+sources:
+  - noaa/ACT2141
+redirect_from:
+  - /currents/us/ri/gould-island-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2141:
+      position: [41.53167, -71.35833]
+      coastline: unverifiable

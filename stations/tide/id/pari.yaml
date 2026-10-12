@@ -1,0 +1,21 @@
+sources:
+  - ticon/pari-159a-idn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pari-159a-idn-uhslc_rq:
+      position: [-5.85, 106.617]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.142
+          recency: 0.64
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.786
+        issues:
+          - MLWS (0.835) > MLW (0.647)
+          - MHWS (0.937) < MHW (1.095)

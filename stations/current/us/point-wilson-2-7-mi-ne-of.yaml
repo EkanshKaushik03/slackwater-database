@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1625
+redirect_from:
+  - /currents/us/wa/point-wilson-2-3-nm-ne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1625:
+      position: [48.16706848144531, -122.70738983154297]
+      coastline: clear

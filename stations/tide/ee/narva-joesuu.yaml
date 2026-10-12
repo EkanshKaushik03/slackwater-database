@@ -1,0 +1,23 @@
+sources:
+  - ticon/narvajoesuu-nar-est-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/narvajoesuu-nar-est-cmems:
+      position: [59.466702, 28.049999]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 56
+        factors:
+          epoch: 0.268
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.364
+        issues:
+          - MLWS (0.089) > MLW (0.069)
+          - MHWS (0.121) < MHW (0.122)
+          - "Seasonal band (0.067m) is 2.3x the largest tidal constituent O1 (0.028m): the yearly swing exceeds the daily one"

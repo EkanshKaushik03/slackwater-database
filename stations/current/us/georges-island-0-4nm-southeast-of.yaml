@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1122
+redirect_from:
+  - /currents/us/ma/georges-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1122:
+      position: [42.31293, -70.91995]
+      coastline: unverifiable

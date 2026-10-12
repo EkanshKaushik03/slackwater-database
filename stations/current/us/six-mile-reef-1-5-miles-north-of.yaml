@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2816
+redirect_from:
+  - /currents/us/ct/six-mile-reef-1-3-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2816:
+      position: [41.21117, -72.48117]
+      coastline: unverifiable

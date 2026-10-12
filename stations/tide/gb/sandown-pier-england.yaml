@@ -1,0 +1,20 @@
+sources:
+  - ticon/sandownpiertg-san-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sandownpiertg-san-gbr-cmems:
+      position: [50.651108, -1.153158]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sandown_pier-sdp-gbr-cco
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

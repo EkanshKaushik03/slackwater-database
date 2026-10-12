@@ -1,0 +1,24 @@
+sources:
+  - ticon/visby-vis-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/visby-vis-swe-cmems:
+      position: [57.639198, 18.284401]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/visby-2080-swe-smhi
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.122) > MLW (0.116)
+          - "Seasonal band (0.086m) is 16.9x the largest tidal constituent M2 (0.005m): the yearly swing exceeds the daily one"

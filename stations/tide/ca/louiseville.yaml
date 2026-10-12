@@ -1,0 +1,22 @@
+region: CA-QC
+sources:
+  - ticon/louiseville-15972-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/louiseville-15972-can-meds:
+      position: [46.22, -72.92]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 75
+        factors:
+          epoch: 0.731
+          recency: 0.49
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.073
+        issues:
+          - "Seasonal band (0.449m) is 20.7x the largest tidal constituent M2 (0.022m): the yearly swing exceeds the daily one"

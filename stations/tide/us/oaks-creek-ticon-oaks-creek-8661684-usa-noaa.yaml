@@ -1,0 +1,23 @@
+region: US-SC
+sources:
+  - ticon/oaks_creek-8661684-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oaks_creek-8661684-usa-noaa:
+      position: [33.5117, -79.0683]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.076
+          recency: 0.5
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1) > MLW (0.959)
+          - "Superseded source: noaa"

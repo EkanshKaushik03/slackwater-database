@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9458716
+redirect_from:
+  - /tides/us/aniakchak-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9458716:
+      position: [56.756099700927734, -157.4929962158203]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 79
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.661

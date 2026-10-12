@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5416
+redirect_from:
+  - /currents/us/va/tue-marshes-light-0-9-nm-wnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5416:
+      position: [37.238, -76.40217]
+      coastline: unverifiable

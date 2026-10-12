@@ -1,0 +1,22 @@
+region: US-TX
+sources:
+  - noaa/8770520
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8770520:
+      position: [29.979999542236328, -93.88169860839844]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.104m) is 1.2x the largest tidal constituent K1 (0.087m): the yearly swing exceeds the daily one"

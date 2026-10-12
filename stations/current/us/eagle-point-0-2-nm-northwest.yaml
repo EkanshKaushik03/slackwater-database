@@ -1,0 +1,9 @@
+region: US-NJ
+sources:
+  - noaa/ACT4406
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4406:
+      position: [39.88029861450195, -75.1729965209961]
+      coastline: unverifiable

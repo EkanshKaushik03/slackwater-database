@@ -1,0 +1,11 @@
+region: US-NC
+sources:
+  - noaa/CFR1619
+redirect_from:
+  - /currents/us/nc/reaves-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CFR1619:
+      position: [34.005950927734375, -77.94020080566406]
+      coastline: unverifiable

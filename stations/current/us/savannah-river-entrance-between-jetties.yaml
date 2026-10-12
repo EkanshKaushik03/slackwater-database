@@ -1,0 +1,9 @@
+region: US-GA
+sources:
+  - noaa/ACT7351
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7351:
+      position: [32.035701751708984, -80.89029693603516]
+      coastline: unverifiable

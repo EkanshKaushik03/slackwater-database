@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/crms0139-crms0139-usa-crms
+redirect_from:
+  - /tides/us/la/buras-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0139-crms0139-usa-crms:
+      position: [29.3817, -89.47922]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.962
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.102
+        issues:
+          - MLWS (0.146) > MLW (0.079)
+          - MHWS (0.202) < MHW (0.279)

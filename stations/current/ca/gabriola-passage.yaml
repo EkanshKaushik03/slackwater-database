@@ -1,0 +1,13 @@
+name: Gabriola Passage
+context: Gulf Islands
+region: CA-BC
+position: [49.1291, -123.7043]
+provider: chs
+sources:
+  - chs-gabriola-passage
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-gabriola-passage:
+      position: [49.1291, -123.7043]
+      coastline: clear

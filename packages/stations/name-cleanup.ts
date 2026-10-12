@@ -190,8 +190,8 @@ function toNauticalMiles(name: string): string {
  * spaces, a name written in capitals, a region code joined onto the end, the
  * abbreviations and distance units NOAA writes. A spelling that needs knowing
  * the place — a hyphen in a French name, a station's own acronym — is a
- * `name:` correction in `metadata/corrections.yaml`, where one station's fix
- * cannot change another station's name.
+ * curated `name` in the station's file under stations/, where one station's
+ * fix cannot change another station's name.
  *
  * `country` decides which region codes are valid. It is a country name, or an
  * ISO code that resolves to one. `existingRegionCode` guards removal of a

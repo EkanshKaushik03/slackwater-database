@@ -1,0 +1,9 @@
+region: US-SC
+sources:
+  - noaa/ACT6641
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6641:
+      position: [32.740501403808594, -79.84449768066406]
+      coastline: unverifiable

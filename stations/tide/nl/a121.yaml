@@ -1,0 +1,18 @@
+sources:
+  - ticon/a121tg-a12-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/a121tg-a12-nld-cmems:
+      position: [55.400002, 3.81]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 42
+        factors:
+          epoch: 0.538
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.039

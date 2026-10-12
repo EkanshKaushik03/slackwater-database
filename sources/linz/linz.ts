@@ -143,7 +143,7 @@ export function parseHarmonics(text: string, id: string): LinzHarmonics {
   if (!constituents.some(({ name }) => name === "M2"))
     throw new Error(`${id}: missing M2`);
 
-  // LINZ squashes many names (`PORTCHALMERS`); corrections.yaml curates them.
+  // LINZ squashes many names (`PORTCHALMERS`); station files curate them.
   const name = (lines[0] ?? "")
     .replace(/\s*Units in CM\s*$/, "")
     .trim()

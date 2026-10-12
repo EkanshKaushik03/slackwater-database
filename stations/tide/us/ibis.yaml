@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/ibis-ibs-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ibis-ibs-usa-cdwr:
+      position: [38.157, -122.113]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.04

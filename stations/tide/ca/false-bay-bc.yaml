@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/false_bay_bc-7982-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/false_bay_bc-7982-can-meds:
+      position: [49.48, -124.35]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.07
+          recency: 0.9
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.289

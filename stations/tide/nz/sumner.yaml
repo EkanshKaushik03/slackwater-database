@@ -1,0 +1,18 @@
+sources:
+  - ticon/sumner-sumt-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sumner-sumt-nzl-ttw:
+      position: [-43.570556, 172.772222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 37
+        factors:
+          epoch: 0.32
+          recency: 0.9
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 0.012

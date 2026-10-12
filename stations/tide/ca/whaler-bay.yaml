@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-whaler-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-whaler-bay:
+      position: [48.883333, -123.316667]
+      coastline: clear

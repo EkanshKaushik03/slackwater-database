@@ -1,0 +1,18 @@
+sources:
+  - noaa/TWC0279
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TWC0279:
+      position: [1.25, 78.83300018310547]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0
+          recency: 0
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1

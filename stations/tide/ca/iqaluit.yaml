@@ -1,0 +1,9 @@
+region: CA-NU
+sources:
+  - chs-iqaluit
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-iqaluit:
+      position: [63.712667, -68.5025]
+      coastline: unverifiable

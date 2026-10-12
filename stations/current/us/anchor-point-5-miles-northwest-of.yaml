@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT4941
+redirect_from:
+  - /currents/us/ak/anchor-point-4-3-nm-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT4941:
+      position: [59.85167, -152.00833]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-dinan-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-dinan-bay:
+      position: [53.694094, -132.606175]
+      coastline: unverifiable

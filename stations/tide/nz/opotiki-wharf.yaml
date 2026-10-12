@@ -1,0 +1,22 @@
+# LINZ's analysis files squash place names (`PORTCHALMERS`); these are the
+# names its tide tables print.
+
+name: Opotiki Wharf
+sources:
+  - linz/104
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/104:
+      position: [-38.033333, 177.233333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.259

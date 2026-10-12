@@ -1,0 +1,21 @@
+sources:
+  - ticon/juelsminde-jue-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/juelsminde-jue-dnk-cmems:
+      position: [55.716702, 10.0167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.344
+        issues:
+          - "P1 amplitude (0.0049) exceeds K1 (0.0022): physically impossible"

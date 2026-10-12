@@ -1,0 +1,18 @@
+sources:
+  - ticon/liverpool_gladstone_dock-liv-gbr-bodc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/liverpool_gladstone_dock-liv-gbr-bodc:
+      position: [53.449694, -3.018139]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.98
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

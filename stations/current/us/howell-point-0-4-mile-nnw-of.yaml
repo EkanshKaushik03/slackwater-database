@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5126
+redirect_from:
+  - /currents/us/md/howell-point-0-3-nm-nnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5126:
+      position: [39.37667, -76.115]
+      coastline: unverifiable

@@ -1,0 +1,20 @@
+sources:
+  - ticon/puertovallarta_radar-19-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/puertovallarta_radar-19-mex-unam:
+      position: [20.658333, -105.243333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/puerto_vallarta-393-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0

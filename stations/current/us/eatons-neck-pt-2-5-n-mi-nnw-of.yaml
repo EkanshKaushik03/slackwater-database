@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3091
+redirect_from:
+  - /currents/us/ny/eatons-neck-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3091:
+      position: [40.9955, -73.41]
+      coastline: unverifiable

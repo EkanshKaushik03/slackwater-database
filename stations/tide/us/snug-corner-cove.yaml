@@ -1,0 +1,19 @@
+region: US-AK
+sources:
+  - noaa/TWC1909
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TWC1909:
+      position: [60.73333333333299, -146.65]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.295

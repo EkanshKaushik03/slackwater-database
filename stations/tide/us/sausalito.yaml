@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/sausalito-9414806-usa-da_sat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sausalito-9414806-usa-da_sat:
+      position: [37.849, -122.4802]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sausalito-9414806-usa-noaa
+        score: 55
+        factors:
+          epoch: 1
+          recency: 0
+          source: 0
+          quality: 1
+          amplitude: 1
+          coverage: 0.008

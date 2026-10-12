@@ -1,0 +1,18 @@
+sources:
+  - ticon/deal_pier-dlp-gbr-cco
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/deal_pier-dlp-gbr-cco:
+      position: [51.22378, 1.40923]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.061
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,22 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Rivière-du-Loup
+region: CA-QC
+sources:
+  - ticon/rivi_a475re_du_loup-3130-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rivi_a475re_du_loup-3130-can-meds:
+      position: [47.85, -69.57]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.932
+          recency: 0.54
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.199

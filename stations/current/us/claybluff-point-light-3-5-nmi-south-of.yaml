@@ -1,0 +1,10 @@
+sources:
+  - noaa/PCT4406
+redirect_from:
+  - /currents/us/claybluff-point-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT4406:
+      position: [59.91, -141.595]
+      coastline: unverifiable

@@ -1,0 +1,18 @@
+sources:
+  - ticon/low_head-60948-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/low_head-60948-aus-bom:
+      position: [-41.0651, 146.7947]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 0
+          amplitude: 1
+          coverage: 0.108

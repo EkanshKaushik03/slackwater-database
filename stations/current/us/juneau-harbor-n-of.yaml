@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0801
+redirect_from:
+  - /currents/us/ak/juneau-harbor/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0801:
+      position: [58.29641, -134.42468]
+      coastline: unverifiable

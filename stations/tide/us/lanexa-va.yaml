@@ -1,0 +1,22 @@
+region: US-VA
+sources:
+  - ticon/lanexa-8638445-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lanexa-8638445-usa-noaa:
+      position: [37.4033, -76.9117]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.097
+          recency: 0.83
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

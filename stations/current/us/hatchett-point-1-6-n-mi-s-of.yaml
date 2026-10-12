@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2711
+redirect_from:
+  - /currents/us/ct/hatchett-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2711:
+      position: [41.25667, -72.25617]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: US-AL
+sources:
+  - noaa/ACT8746
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8746:
+      position: [30.68167, -88.01167]
+      coastline: unverifiable

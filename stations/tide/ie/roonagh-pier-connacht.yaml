@@ -1,0 +1,20 @@
+sources:
+  - ticon/roonaghpier-roo-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/roonaghpier-roo-irl-cmems:
+      position: [53.762348, -9.90442]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/roonagh_pier-roo-irl-mi_c
+        score: 54
+        factors:
+          epoch: 0.423
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

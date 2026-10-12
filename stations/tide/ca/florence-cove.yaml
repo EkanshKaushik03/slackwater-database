@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-florence-cove
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-florence-cove:
+      position: [50.313, -125.165]
+      coastline: clear

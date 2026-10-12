@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/old_river_at_highway_4-oh4-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_at_highway_4-oh4-usa-cdwr:
+      position: [37.89111, -121.56917]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/old_river_near_byron_ca-11313315-usa-usgs
+        score: 66
+        factors:
+          epoch: 0.464
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (1.013) > MLW (0.98)
+          - MHWS (1.705) < MHW (1.711)

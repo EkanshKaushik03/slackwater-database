@@ -1,0 +1,24 @@
+sources:
+  - ticon/ystad-yst-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ystad-yst-swe-cmems:
+      position: [55.416698, 13.8167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ystad-2093-swe-smhi
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.61
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.094) > MLW (0.081)
+          - "Seasonal band (0.076m) is 4.9x the largest tidal constituent K1 (0.015m): the yearly swing exceeds the daily one"

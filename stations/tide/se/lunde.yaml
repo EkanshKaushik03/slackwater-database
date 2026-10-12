@@ -1,0 +1,22 @@
+sources:
+  - ticon/lunde-lun-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lunde-lun-swe-cmems:
+      position: [62.8806, 17.8764]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 52
+        factors:
+          epoch: 0.322
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.013
+        issues:
+          - MLWS (0.073) > MLW (0.059)
+          - "Seasonal band (0.081m) is 12.7x the largest tidal constituent K1 (0.006m): the yearly swing exceeds the daily one"

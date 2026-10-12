@@ -1,0 +1,18 @@
+sources:
+  - ticon/portoriel-por-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/portoriel-por-irl-cmems:
+      position: [53.798901, -6.2217]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.978
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.499

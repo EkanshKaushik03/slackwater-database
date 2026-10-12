@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-dingwall
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-dingwall:
+      position: [46.902499, -60.457949]
+      coastline: unverifiable

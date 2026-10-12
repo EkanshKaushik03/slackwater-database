@@ -1,0 +1,21 @@
+region: US-HI
+sources:
+  - noaa/1614465
+redirect_from:
+  - /tides/us/hi/kaumalapau-hi/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/1614465:
+      position: [20.79, -156.995]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

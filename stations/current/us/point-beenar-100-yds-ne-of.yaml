@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0921
+redirect_from:
+  - /currents/us/ca/point-beenar-100-yds-ne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0921:
+      position: [38.0325, -121.8355]
+      coastline: unverifiable

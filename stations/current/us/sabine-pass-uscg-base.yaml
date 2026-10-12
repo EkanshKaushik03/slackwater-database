@@ -1,0 +1,11 @@
+region: US-TX
+sources:
+  - noaa/sn0201
+redirect_from:
+  - /currents/us/tx/sabine-pass/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/sn0201:
+      position: [29.7286, -93.87]
+      coastline: unverifiable

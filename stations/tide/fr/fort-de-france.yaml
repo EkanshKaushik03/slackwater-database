@@ -1,0 +1,26 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Fort-de-France
+sources:
+  - ticon/fort_de_france-126-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fort_de_france-126-fra-refmar:
+      position: [14.601867, -61.063609]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/fort_de_france-271-fra-uhslc_fd
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (0.625) > MLW (0.623)
+          - MHWS (0.771) < MHW (0.781)

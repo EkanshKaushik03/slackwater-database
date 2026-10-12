@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7321
+redirect_from:
+  - /currents/us/ga/bloody-point-0-4-nm-west-of-new-river/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7321:
+      position: [32.08167, -80.88333]
+      coastline: unverifiable

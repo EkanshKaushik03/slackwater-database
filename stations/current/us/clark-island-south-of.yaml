@@ -1,0 +1,11 @@
+region: US-NH
+sources:
+  - noaa/ACT0731
+redirect_from:
+  - /currents/us/nh/clark-island-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0731:
+      position: [43.07383, -70.72467]
+      coastline: unverifiable

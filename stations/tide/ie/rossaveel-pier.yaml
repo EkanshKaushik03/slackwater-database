@@ -1,0 +1,18 @@
+sources:
+  - ticon/rossaveelpier-ros-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rossaveelpier-ros-irl-cmems:
+      position: [53.266899, -9.562]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 0.796
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.339

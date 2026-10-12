@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-degnen-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-degnen-bay:
+      position: [49.133333, -123.716667]
+      coastline: clear

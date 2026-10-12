@@ -1,0 +1,18 @@
+sources:
+  - ticon/dundalk-dun-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dundalk-dun-irl-cmems:
+      position: [54.007999, -6.385]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.257
+          recency: 0.87
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.512

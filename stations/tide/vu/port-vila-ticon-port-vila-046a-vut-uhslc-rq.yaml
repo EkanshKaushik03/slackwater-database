@@ -1,0 +1,20 @@
+sources:
+  - ticon/port_vila-046a-vut-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_vila-046a-vut-uhslc_rq:
+      position: [-17.733, 168.317]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_vila-046-vut-uhslc_fd
+        score: 52
+        factors:
+          epoch: 0.322
+          recency: 0.56
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.081

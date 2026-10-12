@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/ACT0561
+redirect_from:
+  - /currents/us/me/temple-heights/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0561:
+      position: [44.35633, -68.92217]
+      coastline: unverifiable

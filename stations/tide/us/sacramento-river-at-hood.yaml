@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_hood-b91780-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_hood-b91780-usa-cdwr:
+      position: [38.0072, -121.5205]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.224
+          recency: 0.6
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.013
+        issues:
+          - MHHW (1.807) < MHW (1.886)
+          - MHWS (1.71) < MHW (1.886)
+          - MSL (1.544) <= MLW (1.646)
+          - "Seasonal band (0.646m) is 4.5x the largest tidal constituent M2 (0.144m): the yearly swing exceeds the daily one"

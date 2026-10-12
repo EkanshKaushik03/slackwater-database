@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-okeover-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-okeover-inlet:
+      position: [49.98, -124.7]
+      coastline: clear

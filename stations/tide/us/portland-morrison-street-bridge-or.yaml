@@ -1,0 +1,25 @@
+region: US-OR
+sources:
+  - ticon/portland_morrison_street_bridge-9439221-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/portland_morrison_street_bridge-9439221-usa-noaa:
+      position: [45.51, -122.673]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.368
+          recency: 0.83
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.787) < MHW (1.816)
+          - "Superseded source: noaa"
+          - "Seasonal band (0.550m) is 2.4x the largest tidal constituent M2 (0.230m): the yearly swing exceeds the daily one"

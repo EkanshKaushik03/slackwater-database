@@ -1,0 +1,11 @@
+region: US-NJ
+sources:
+  - noaa/DEB2109
+redirect_from:
+  - /currents/us/nj/ben-davis-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/DEB2109:
+      position: [39.2681999206543, -75.34539794921875]
+      coastline: unverifiable

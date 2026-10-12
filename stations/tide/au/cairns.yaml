@@ -1,0 +1,18 @@
+sources:
+  - ticon/cairns-59060-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cairns-59060-aus-bom:
+      position: [-16.9267, 145.78]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 1

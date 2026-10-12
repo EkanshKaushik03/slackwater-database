@@ -1,0 +1,21 @@
+sources:
+  - ticon/marmaris-mar-tur-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/marmaris-mar-tur-cmems:
+      position: [36.848675, 28.282265]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 46
+        factors:
+          epoch: 0.106
+          recency: 0.96
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.908
+        issues:
+          - "Seasonal band (0.105m) is 1.7x the largest tidal constituent M2 (0.063m): the yearly swing exceeds the daily one"

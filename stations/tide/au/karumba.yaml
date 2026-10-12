@@ -1,0 +1,21 @@
+sources:
+  - ticon/karumba-63580-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/karumba-63580-aus-bom:
+      position: [-17.4917, 140.8333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (1.937) > MLW (1.301)
+          - MHWS (2.379) < MHW (3.146)

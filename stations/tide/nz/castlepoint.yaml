@@ -1,0 +1,22 @@
+sources:
+  - ticon/castlepoint-cpit-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/castlepoint-cpit-nzl-ttw:
+      position: [-40.916667, 176.216667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        score: 0
+        factors:
+          epoch: 0.818
+          recency: 0.98
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (3.458) > MLW (3.161)
+          - MLW (3.161) < LAT (3.183)

@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/SAB0803
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SAB0803:
+      position: [30.121771, -85.729721]
+      coastline: unverifiable

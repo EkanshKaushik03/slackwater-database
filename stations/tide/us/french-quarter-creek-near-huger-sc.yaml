@@ -1,0 +1,21 @@
+region: US-SC
+sources:
+  - ticon/french_quarter_creek_near_huger_sc-21720368-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/french_quarter_creek_near_huger_sc-21720368-usa-usgs:
+      position: [33.0285, -79.854111]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.361
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.076
+        issues:
+          - MLWS (1.891) > MLW (1.751)

@@ -1,0 +1,18 @@
+sources:
+  - ticon/lagos-7641400-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lagos-7641400-usa-noaa:
+      position: [6.42333, 3.41167]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.089
+          recency: 0.69
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

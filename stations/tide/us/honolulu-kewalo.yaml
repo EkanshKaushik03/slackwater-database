@@ -1,0 +1,19 @@
+region: US-HI
+sources:
+  - ticon/honolulu_kewalo-026a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/honolulu_kewalo-026a-usa-uhslc_rq:
+      position: [21.295, -157.862]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 54
+        factors:
+          epoch: 0.433
+          recency: 0.6
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.019

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-knox-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-knox-bay:
+      position: [50.387, -125.619]
+      coastline: clear

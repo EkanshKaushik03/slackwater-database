@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6611
+redirect_from:
+  - /currents/us/sc/fort-sumter-range/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6611:
+      position: [32.68299865722656, -79.72599792480469]
+      coastline: unverifiable

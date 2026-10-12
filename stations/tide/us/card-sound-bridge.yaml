@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/card_sound_bridge-8723534-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/card_sound_bridge-8723534-usa-noaa:
+      position: [25.2883, -80.37]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.054
+          recency: 0.45
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"
+          - "Seasonal band (0.101m) is 1.3x the largest tidal constituent M2 (0.076m): the yearly swing exceeds the daily one"

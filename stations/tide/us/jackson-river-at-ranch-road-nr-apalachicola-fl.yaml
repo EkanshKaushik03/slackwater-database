@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/jackson_river_at_ranch_road_nr_apalachicola_fl-2359223-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/jackson_river_at_ranch_road_nr_apalachicola_fl-2359223-usa-usgs:
+      position: [29.769511, -85.084281]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.248
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MHWS (0.375) < MHW (0.422)

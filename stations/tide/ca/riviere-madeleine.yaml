@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-riviere-madeleine
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-riviere-madeleine:
+      position: [49.240435, -65.294012]
+      coastline: unverifiable

@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/gold_river_bc-8650-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gold_river_bc-8650-can-meds:
+      position: [49.68, -126.13]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 0.722
+          recency: 0.68
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.917

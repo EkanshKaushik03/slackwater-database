@@ -1,0 +1,27 @@
+region: CA-QC
+sources:
+  - ticon/cote_ste_catherine-15450-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cote_ste_catherine-15450-can-meds:
+      position: [45.41, -73.57]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.71
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.162
+        issues:
+          - MLWS (1.128) > MLW (1.109)
+          - MHWS (1.132) < MHW (1.16)
+          - LLWLT (0.403) < LAT (0.937) - 0.5
+          - "P1 amplitude (0.0021) exceeds K1 (0.0002): physically impossible"
+          - "Seasonal band (0.179m) is 84.4x the largest tidal constituent P1 (0.002m): the yearly swing exceeds the daily one"

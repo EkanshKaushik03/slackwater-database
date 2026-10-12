@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-pointe-du-sud-ouest
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pointe-du-sud-ouest:
+      position: [49.395, -63.59]
+      coastline: unverifiable

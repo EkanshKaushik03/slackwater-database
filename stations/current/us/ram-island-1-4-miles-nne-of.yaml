@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2506
+redirect_from:
+  - /currents/us/ny/ram-island-1-2-nm-nne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2506:
+      position: [41.09667, -72.26333]
+      coastline: unverifiable

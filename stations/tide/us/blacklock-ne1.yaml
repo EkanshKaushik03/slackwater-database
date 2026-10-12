@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/blacklock_ne1-bll-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/blacklock_ne1-bll-usa-cdwr:
+      position: [38.1801, -121.9069]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.96
+          recency: 0.93
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.029

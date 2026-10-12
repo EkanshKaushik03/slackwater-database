@@ -1,0 +1,20 @@
+sources:
+  - ticon/wierumergrondentg-wie-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wierumergrondentg-wie-nld-cmems:
+      position: [53.516998, 5.9588]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/wierumergronden-wiermgdn-nld-rws
+        score: 57
+        factors:
+          epoch: 0.586
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

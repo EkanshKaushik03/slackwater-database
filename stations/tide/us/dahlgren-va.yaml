@@ -1,0 +1,22 @@
+region: US-VA
+sources:
+  - ticon/dahlgren-8635027-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dahlgren-8635027-usa-noaa:
+      position: [38.31975, -77.036611]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.525
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

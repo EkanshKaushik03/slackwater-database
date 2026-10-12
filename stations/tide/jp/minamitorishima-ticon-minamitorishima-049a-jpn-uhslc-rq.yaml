@@ -1,0 +1,23 @@
+sources:
+  - ticon/minamitorishima-049a-jpn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/minamitorishima-049a-jpn-uhslc_rq:
+      position: [24.3, 153.967]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/minamitorishima-049-jpn-uhslc_fd
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.94
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.162m) is 1.6x the largest tidal constituent K1 (0.099m): the yearly swing exceeds the daily one"

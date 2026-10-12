@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - noaa/8722971
+redirect_from:
+  - /tides/us/fl/whiskey-creek/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8722971:
+      position: [26.055, -80.1133]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.034

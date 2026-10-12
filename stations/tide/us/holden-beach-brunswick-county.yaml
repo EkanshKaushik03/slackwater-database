@@ -1,0 +1,19 @@
+region: US-NC
+sources:
+  - ticon/holdenbeach_brunswickcounty-hol-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/holdenbeach_brunswickcounty-hol-usa-ncdem:
+      position: [33.9159, -78.2694]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 58
+        factors:
+          epoch: 0.063
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.067

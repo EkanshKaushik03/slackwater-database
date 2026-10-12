@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-masset
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-masset:
+      position: [54.01, -132.149]
+      coastline: clear

@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/fermi_power_plant_mi-9063090-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fermi_power_plant_mi-9063090-usa-noaa:
+      position: [41.96, -83.257]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.221
+        issues:
+          - MLWS (174.336) > MLW (174.326)
+          - MHWS (174.394) < MHW (174.427)
+          - "Seasonal band (0.215m) is 8.7x the largest tidal constituent M2 (0.025m): the yearly swing exceeds the daily one"

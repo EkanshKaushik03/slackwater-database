@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0830
+redirect_from:
+  - /currents/us/ak/south-inian-pass/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0830:
+      position: [58.227909, -136.35449]
+      coastline: unverifiable

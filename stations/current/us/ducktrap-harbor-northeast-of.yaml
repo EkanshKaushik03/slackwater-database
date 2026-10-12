@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/ACT0526
+redirect_from:
+  - /currents/us/me/ducktrap-harbor/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0526:
+      position: [44.3, -68.93967]
+      coastline: unverifiable

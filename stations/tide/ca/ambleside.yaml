@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-ambleside
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-ambleside:
+      position: [49.32577, -123.15458]
+      coastline: clear

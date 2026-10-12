@@ -1,0 +1,21 @@
+sources:
+  - ticon/iwasaki-ma61-jpn-jodc_jma
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/iwasaki-ma61-jpn-jodc_jma:
+      position: [40.583333, 139.916667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 0.269
+          recency: 0.43
+          source: 0.929
+          quality: 1
+          amplitude: 1
+          coverage: 0.143
+        issues:
+          - "Seasonal band (0.136m) is 2.6x the largest tidal constituent M2 (0.052m): the yearly swing exceeds the daily one"

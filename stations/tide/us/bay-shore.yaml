@@ -1,0 +1,19 @@
+region: US-NY
+sources:
+  - noaa/8515102
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8515102:
+      position: [40.7167, -73.24]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.145

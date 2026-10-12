@@ -1,0 +1,20 @@
+sources:
+  - ticon/setetg_60minute-set-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/setetg_60minute-set-fra-cmems:
+      position: [43.400002, 3.7017]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sete-250-fra-refmar
+        score: 49
+        factors:
+          epoch: 0.937
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.007

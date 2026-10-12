@@ -1,0 +1,21 @@
+region: US-HI
+sources:
+  - ticon/kaumalapau_hi-548a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kaumalapau_hi-548a-usa-uhslc_rq:
+      position: [20.78, -156.9]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/kaumalapau_hi-548-usa-uhslc_fd
+        score: 57
+        factors:
+          epoch: 0.413
+          recency: 0.89
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.088

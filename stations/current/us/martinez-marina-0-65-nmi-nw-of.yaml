@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0781
+redirect_from:
+  - /currents/us/ca/martinez-marina/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0781:
+      position: [38.033, -122.14967]
+      coastline: unverifiable

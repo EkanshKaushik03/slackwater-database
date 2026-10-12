@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-moffatt-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-moffatt-islands:
+      position: [54.446, -130.726]
+      coastline: unverifiable

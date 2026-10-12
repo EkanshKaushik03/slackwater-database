@@ -1,0 +1,18 @@
+sources:
+  - ticon/northcormoranttg-nor-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/northcormoranttg-nor-gbr-cmems:
+      position: [61.34, 1.16]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 54
+        factors:
+          epoch: 0.289
+          recency: 0.93
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.224

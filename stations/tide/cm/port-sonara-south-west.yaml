@@ -1,0 +1,20 @@
+sources:
+  - ticon/port_sonara-816a-cmr-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_sonara-816a-cmr-uhslc_rq:
+      position: [4.007, 9.127]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_sonara-816-cmr-uhslc_fd
+        score: 58
+        factors:
+          epoch: 0.161
+          recency: 0.85
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.467

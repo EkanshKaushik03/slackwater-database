@@ -1,0 +1,18 @@
+sources:
+  - ticon/san_quintin-308a-mex-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_quintin-308a-mex-uhslc_rq:
+      position: [30.483, -115.983]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.73
+          recency: 0.64
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.012

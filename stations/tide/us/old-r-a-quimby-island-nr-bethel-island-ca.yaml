@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/old_r_a_quimby_island_nr_bethel_island_ca-11313434-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_r_a_quimby_island_nr_bethel_island_ca-11313434-usa-usgs:
+      position: [38.027222, -121.564444]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.326) > MLW (1.309)
+          - MHWS (2.008) < MHW (2.009)

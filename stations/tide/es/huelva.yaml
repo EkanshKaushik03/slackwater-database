@@ -1,0 +1,18 @@
+sources:
+  - ticon/huelvatg-hue-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/huelvatg-hue-esp-cmems:
+      position: [37.132, -6.834]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 1

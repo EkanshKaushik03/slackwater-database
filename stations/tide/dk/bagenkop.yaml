@@ -1,0 +1,21 @@
+sources:
+  - ticon/bagenkop-bag-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bagenkop-bag-dnk-cmems:
+      position: [54.7528, 10.6778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.999
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.448
+        issues:
+          - MLWS (0.054) > MLW (0.027)
+          - MHWS (0.158) < MHW (0.162)

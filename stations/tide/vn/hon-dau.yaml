@@ -1,0 +1,21 @@
+sources:
+  - ticon/hon_dau-650a-vnm-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hon_dau-650a-vnm-uhslc_rq:
+      position: [20.667, 106.817]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 58
+        factors:
+          epoch: 0.054
+          recency: 0.34
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (1.611) > MLW (1.027)
+          - MHWS (1.817) < MHW (2.39)

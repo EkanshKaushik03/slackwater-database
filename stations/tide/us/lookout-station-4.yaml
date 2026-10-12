@@ -1,0 +1,25 @@
+region: US-MI
+sources:
+  - ticon/lookout_station_4_mi-9076028-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lookout_station_4_mi-9076028-usa-noaa:
+      position: [46.284361, -84.212306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.335
+          recency: 0.83
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.011
+        issues:
+          - MHWS (176.12) < MHW (176.128)
+          - "P1 amplitude (0.0023) exceeds K1 (0.0005): physically impossible"
+          - "Seasonal band (0.122m) is 9.9x the largest tidal constituent M2 (0.012m): the yearly swing exceeds the daily one"

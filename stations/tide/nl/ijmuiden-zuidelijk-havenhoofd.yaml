@@ -1,0 +1,21 @@
+sources:
+  - ticon/ijmuiden_zuidelijk_havenhoofd-ijmdzdlhvhd-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ijmuiden_zuidelijk_havenhoofd-ijmdzdlhvhd-nld-rws_hist:
+      position: [52.463691, 4.532283]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.601
+          recency: 0.61
+          source: 0.495
+          quality: 0
+          amplitude: 1
+          coverage: 0.019
+        issues:
+          - "Superseded source: rws_hist"

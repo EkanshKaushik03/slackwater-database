@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-doctor-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-doctor-island:
+      position: [61.680556, -71.568333]
+      coastline: unverifiable

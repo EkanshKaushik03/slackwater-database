@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/holland_cut_near_bethel_island-hol-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/holland_cut_near_bethel_island-hol-usa-cdwr:
+      position: [38.0164, -121.5819]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/holland_cut_nr_bethel_island_ca-11313431-usa-usgs
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (3.681) > MLW (3.669)

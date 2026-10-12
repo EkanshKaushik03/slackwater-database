@@ -1,0 +1,9 @@
+region: US-AK
+sources:
+  - noaa/SEA0302
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0302:
+      position: [57.5105, -135.56167]
+      coastline: unverifiable

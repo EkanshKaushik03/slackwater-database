@@ -1,0 +1,22 @@
+sources:
+  - ticon/inhambane-900a-moz-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/inhambane-900a-moz-uhslc_rq:
+      position: [-23.868, 35.377]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/inhambane-900-moz-uhslc_fd
+        score: 60
+        factors:
+          epoch: 0.394
+          recency: 0.88
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.273
+        issues:
+          - MLW (5.039) < MLLW (5.074)

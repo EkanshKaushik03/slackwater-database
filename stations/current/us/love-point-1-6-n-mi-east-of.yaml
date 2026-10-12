@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT6126
+redirect_from:
+  - /currents/us/md/love-point-1-6-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6126:
+      position: [39.03417, -76.26783]
+      coastline: unverifiable

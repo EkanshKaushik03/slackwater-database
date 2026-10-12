@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/bolinas-9414958-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bolinas-9414958-usa-noaa:
+      position: [37.90778, -122.678612]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.501
+          recency: 0.92
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - "Superseded source: noaa"

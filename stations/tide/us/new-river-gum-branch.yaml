@@ -1,0 +1,25 @@
+region: US-NC
+sources:
+  - ticon/newriver_gumbranch-new-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/newriver_gumbranch-new-usa-ncdem:
+      position: [34.84, -77.51]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.546
+          recency: 0.99
+          source: 0.545
+          quality: 0
+          amplitude: 1
+          coverage: 0.027
+        issues:
+          - MLWS (1.549) > MLW (1.383)
+          - MHW (1.452) <= MSL (1.566)
+          - "Seasonal band (0.112m) is 7.3x the largest tidal constituent M2 (0.015m): the yearly swing exceeds the daily one"

@@ -1,0 +1,18 @@
+sources:
+  - ticon/f3platformtg-f3p-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/f3platformtg-f3p-nld-cmems:
+      position: [54.849998, 4.72]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.586
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 1

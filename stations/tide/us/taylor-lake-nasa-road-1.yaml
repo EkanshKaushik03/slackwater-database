@@ -1,0 +1,22 @@
+region: US-TX
+sources:
+  - ticon/taylor_lake_nasa_road_1-tay-usa-hct
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/taylor_lake_nasa_road_1-tay-usa-hct:
+      position: [29.5653, -95.0538]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.801
+          recency: 0.98
+          source: 0.535
+          quality: 0
+          amplitude: 1
+          coverage: 0.025
+        issues:
+          - MLWS (0.295) > MLW (0.204)
+          - MHWS (0.377) < MHW (0.486)

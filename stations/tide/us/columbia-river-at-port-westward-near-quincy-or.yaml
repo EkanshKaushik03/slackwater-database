@@ -1,0 +1,21 @@
+region: US-OR
+sources:
+  - ticon/columbia_river_at_port_westward_near_quincy_or-14246900-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/columbia_river_at_port_westward_near_quincy_or-14246900-usa-usgs:
+      position: [46.181221, -123.183454]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.177
+        issues:
+          - MHWS (2.12) < MHW (2.148)

@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/old_river_near_tracy-olr-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_near_tracy-olr-usa-cdwr:
+      position: [38.805, -121.449]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.934
+          recency: 0.76
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.267
+        issues:
+          - MLWS (0.198) > MLW (0.151)

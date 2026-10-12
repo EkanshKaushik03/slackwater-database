@@ -1,0 +1,24 @@
+region: CA-NB
+sources:
+  - ticon/hatfield_point-97-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hatfield_point-97-can-meds:
+      position: [45.62, -65.92]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 0.199
+          recency: 0.43
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.177
+        issues:
+          - MHHW (1.639) < MHW (1.688)
+          - MHWS (1.608) < MHW (1.688)
+          - "Seasonal band (0.617m) is 4.5x the largest tidal constituent M2 (0.138m): the yearly swing exceeds the daily one"

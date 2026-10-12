@@ -1,0 +1,26 @@
+region: US-FL
+sources:
+  - ticon/suwannee_river_at_manatee_springs_nr_old_town_fl-2323567-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/suwannee_river_at_manatee_springs_nr_old_town_fl-2323567-usa-usgs:
+      position: [29.488611, -82.980556]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.376
+          recency: 0.9
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.224
+        issues:
+          - MHHW (1.017) < MHW (1.146)
+          - MHWS (0.998) < MHW (1.146)
+          - MSL (0.88) <= MLW (0.9)
+          - "Seasonal band (0.195m) is 2.2x the largest tidal constituent M2 (0.090m): the yearly swing exceeds the daily one"

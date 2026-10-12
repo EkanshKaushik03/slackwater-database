@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-montagu-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-montagu-point:
+      position: [50.63908, -126.21283]
+      coastline: clear

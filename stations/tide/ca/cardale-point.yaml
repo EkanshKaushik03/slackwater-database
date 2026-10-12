@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-cardale-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-cardale-point:
+      position: [49.016667, -123.616667]
+      coastline: clear

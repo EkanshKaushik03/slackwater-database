@@ -1,0 +1,20 @@
+sources:
+  - ticon/arcachoneyractg_60minute-arc-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/arcachoneyractg_60minute-arc-fra-cmems:
+      position: [44.665001, -1.1635]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/arcachon_eyrac-190-fra-refmar
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

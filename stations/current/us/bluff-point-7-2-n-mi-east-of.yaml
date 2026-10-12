@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/cb0801
+redirect_from:
+  - /currents/us/va/bluff-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/cb0801:
+      position: [37.67442, -76.15462]
+      coastline: unverifiable

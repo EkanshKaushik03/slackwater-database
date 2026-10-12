@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9450997
+redirect_from:
+  - /tides/us/ak/el-capitan-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9450997:
+      position: [56.1633, -133.33]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.103

@@ -1,0 +1,24 @@
+region: US-TX
+sources:
+  - ticon/arroyo_colorado_at_fm_106_rio_hondo_tx-8470500-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/arroyo_colorado_at_fm_106_rio_hondo_tx-8470500-usa-usgs:
+      position: [26.235278, -97.584722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 0.576
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.6
+        issues:
+          - MLWS (3.218) > MLW (3.204)
+          - MHWS (3.252) < MHW (3.261)
+          - "Seasonal band (0.087m) is 2.8x the largest tidal constituent K1 (0.031m): the yearly swing exceeds the daily one"

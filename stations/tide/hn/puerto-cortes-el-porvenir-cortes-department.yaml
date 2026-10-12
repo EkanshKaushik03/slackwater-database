@@ -1,0 +1,23 @@
+sources:
+  - ticon/puerto_cortes-780a-hnd-uhslc_rq
+redirect_from:
+  - /tides/hn/puerto-cortes/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/puerto_cortes-780a-hnd-uhslc_rq:
+      position: [15.833, -87.95]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 66
+        factors:
+          epoch: 1
+          recency: 0.42
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.171
+        issues:
+          - "Seasonal band (0.070m) is 1.1x the largest tidal constituent M2 (0.061m): the yearly swing exceeds the daily one"

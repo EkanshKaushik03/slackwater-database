@@ -1,0 +1,20 @@
+sources:
+  - ticon/salina_cruz-394a-mex-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/salina_cruz-394a-mex-uhslc_rq:
+      position: [16.16, -95.203]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/salina_cruz-394-mex-unam_hist
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.65
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

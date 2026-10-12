@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/LIS1022
+redirect_from:
+  - /currents/us/ct/new-haven-harbor/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1022:
+      position: [41.29507, -72.909]
+      coastline: unverifiable

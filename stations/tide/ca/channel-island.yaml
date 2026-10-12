@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-channel-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-channel-island:
+      position: [50.316667, -124.75]
+      coastline: clear

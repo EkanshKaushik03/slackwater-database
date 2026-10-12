@@ -1,0 +1,26 @@
+sources:
+  - ticon/islamujeres_flotador-7-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/islamujeres_flotador-7-mex-unam:
+      position: [21.241875, -86.731661]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.114
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLW (1.319) < MLLW (1.324)
+          - MLWS (1.356) > MLW (1.319)
+          - MHW (1.319) <= MSL (1.453)
+          - MHW (1.319) < MLLW (1.324)
+          - "Seasonal band (0.978m) is 13.3x the largest tidal constituent M2 (0.073m): the yearly swing exceeds the daily one"

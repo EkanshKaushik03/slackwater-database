@@ -1,0 +1,25 @@
+region: US-CA
+sources:
+  - ticon/steamboat_slough_btw_sac_r_and_sutter_sl-sss-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/steamboat_slough_btw_sac_r_and_sutter_sl-sss-usa-cdwr:
+      position: [38.285, -121.587]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/steamboat_slough_nr_walnut_grove_ca-11447850-usa-usgs
+        seasonal_dominant: true
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHWS (1.905) < MHW (1.936)
+          - "Seasonal band (0.238m) is 1.2x the largest tidal constituent M2 (0.197m): the yearly swing exceeds the daily one"

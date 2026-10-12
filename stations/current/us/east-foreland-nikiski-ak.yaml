@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI0503
+redirect_from:
+  - /currents/us/ak/east-foreland/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI0503:
+      position: [60.71727, -151.43297]
+      coastline: unverifiable

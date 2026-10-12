@@ -1,0 +1,18 @@
+sources:
+  - ticon/ile_saint_paul-194-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ile_saint_paul-194-fra-refmar:
+      position: [-38.714296, 77.530603]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.654
+          recency: 0.8
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,21 @@
+sources:
+  - ticon/nanaoko-0106-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nanaoko-0106-jpn-jodc_pahb:
+      position: [37.04945, 136.968333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.594
+        issues:
+          - "Seasonal band (0.166m) is 2.7x the largest tidal constituent M2 (0.062m): the yearly swing exceeds the daily one"

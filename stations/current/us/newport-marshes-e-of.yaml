@@ -1,0 +1,11 @@
+region: US-NC
+sources:
+  - noaa/ACT6376
+redirect_from:
+  - /currents/us/nc/newport-marshes-e/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6376:
+      position: [34.73783, -76.6805]
+      coastline: unverifiable

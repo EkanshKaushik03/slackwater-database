@@ -1,0 +1,24 @@
+sources:
+  - ticon/ljusnelotsstation-lju-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ljusnelotsstation-lju-swe-cmems:
+      position: [61.206699, 17.145201]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ljusne_sjov-35127-swe-smhi
+        seasonal_dominant: true
+        score: 52
+        factors:
+          epoch: 0.322
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.093) > MLW (0.088)
+          - "Seasonal band (0.084m) is 11.6x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

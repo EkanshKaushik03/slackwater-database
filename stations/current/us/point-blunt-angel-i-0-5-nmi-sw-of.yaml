@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0561
+redirect_from:
+  - /currents/us/ca/point-blunt/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0561:
+      position: [37.8455, -122.423]
+      coastline: unverifiable

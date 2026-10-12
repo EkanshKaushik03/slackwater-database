@@ -1,0 +1,22 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Banc-du-Cap Brule
+region: CA-QC
+sources:
+  - ticon/banc_du_cap_brule-3075-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/banc_du_cap_brule-3075-can-meds:
+      position: [47.09, -70.71]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 0.922
+          recency: 0.97
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.217

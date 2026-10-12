@@ -1,0 +1,18 @@
+sources:
+  - linz/401
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/401:
+      position: [-35.05, 173.75]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 96
+        factors:
+          epoch: 0.913
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.887

@@ -1,0 +1,23 @@
+region: US-NJ
+sources:
+  - ticon/cooper_river_at_east_state_street_at_camden_nj-1467194-usa-usgs
+redirect_from:
+  - /tides/us/pa/cooper-river-at-east-state-street-at-camden-nj/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cooper_river_at_east_state_street_at_camden_nj-1467194-usa-usgs:
+      position: [39.951389, -75.110556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.193
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.014
+        issues:
+          - MLWS (-0.749) > MLW (-0.778)

@@ -1,0 +1,23 @@
+region: CA-NB
+sources:
+  - ticon/indiantown-75-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/indiantown-75-can-meds:
+      position: [45.27, -66.08]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 63
+        factors:
+          epoch: 0.196
+          recency: 0.44
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.054
+        issues:
+          - MHWS (1.551) < MHW (1.559)
+          - "Seasonal band (0.579m) is 3.2x the largest tidal constituent M2 (0.179m): the yearly swing exceeds the daily one"

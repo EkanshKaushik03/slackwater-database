@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-penny-lane
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-penny-lane:
+      position: [46.29864, -60.399749]
+      coastline: clear

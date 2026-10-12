@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-pushthrough
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pushthrough:
+      position: [47.635589, -56.16505]
+      coastline: unverifiable

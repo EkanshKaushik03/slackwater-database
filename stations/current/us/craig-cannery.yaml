@@ -1,0 +1,9 @@
+region: US-AK
+sources:
+  - noaa/PCT3356
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3356:
+      position: [55.48333, -133.15]
+      coastline: unverifiable

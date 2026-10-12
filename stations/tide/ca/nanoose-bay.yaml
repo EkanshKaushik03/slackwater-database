@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-nanoose-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-nanoose-bay:
+      position: [49.25, -124.17]
+      coastline: ashore
+      metres_inland: 433

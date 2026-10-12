@@ -1,0 +1,14 @@
+name: Hole in the Wall
+context: Okisollo Channel
+region: CA-BC
+position: [50.3001, -125.2083]
+provider: chs
+tide_reference: chs-owen-bay
+sources:
+  - chs-hole-in-the-wall
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-hole-in-the-wall:
+      position: [50.3001, -125.2083]
+      coastline: clear

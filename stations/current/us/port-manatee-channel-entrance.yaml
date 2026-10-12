@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/t03010
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/t03010:
+      position: [27.66395, -82.59877]
+      coastline: unverifiable

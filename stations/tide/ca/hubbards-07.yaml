@@ -1,0 +1,19 @@
+region: CA-NS
+sources:
+  - ticon/hubbards-480-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hubbards-480-can-meds:
+      position: [44.63, -64.07]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.079
+          recency: 0.42
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.116

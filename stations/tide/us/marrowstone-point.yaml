@@ -1,0 +1,19 @@
+region: US-WA
+sources:
+  - noaa/9444972
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9444972:
+      position: [48.0917, -122.69]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.074

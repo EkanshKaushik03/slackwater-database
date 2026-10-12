@@ -1,0 +1,23 @@
+region: US-MI
+sources:
+  - ticon/detour_on_lake_huron_mi-9075098-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/detour_on_lake_huron_mi-9075098-usa-noaa:
+      position: [46.0167, -83.92]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.376
+          recency: 0.5
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.063
+        issues:
+          - MHWS (176.971) < MHW (176.979)
+          - "Seasonal band (0.174m) is 12.8x the largest tidal constituent M2 (0.014m): the yearly swing exceeds the daily one"

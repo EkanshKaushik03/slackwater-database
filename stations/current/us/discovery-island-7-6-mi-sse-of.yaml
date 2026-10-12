@@ -1,0 +1,12 @@
+region: US-WA
+sources:
+  - noaa/PUG1636
+redirect_from:
+  - /currents/us/discovery-island/
+  - /currents/us/wa/discovery-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1636:
+      position: [48.30015182495117, -123.16716003417969]
+      coastline: clear

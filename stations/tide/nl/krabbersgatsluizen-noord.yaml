@@ -1,0 +1,24 @@
+sources:
+  - ticon/krabbersgatsluizennoordtg-kra-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/krabbersgatsluizennoordtg-kra-nld-cmems:
+      position: [52.694435, 5.284232]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.587
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.007
+        issues:
+          - MLWS (-0.209) > MLW (-0.214)
+          - Tidal range 1.7cm < 2cm threshold
+          - "Seasonal band (0.060m) is 11.3x the largest tidal constituent M2 (0.005m): the yearly swing exceeds the daily one"

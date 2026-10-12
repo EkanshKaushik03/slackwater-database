@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/n_mokelumne_nr_walnut_grove_ca-11336685-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/n_mokelumne_nr_walnut_grove_ca-11336685-usa-usgs:
+      position: [38.223333, -121.507222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.772
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (5.619) > MLW (5.567)

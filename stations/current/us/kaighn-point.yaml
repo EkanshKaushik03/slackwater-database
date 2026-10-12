@@ -1,0 +1,9 @@
+region: US-PA
+sources:
+  - noaa/DEB2129
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/DEB2129:
+      position: [39.928199768066406, -75.13529968261719]
+      coastline: unverifiable

@@ -1,0 +1,30 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Coteau-du-Lac
+region: CA-QC
+sources:
+  - ticon/coteau_du_lac-15140-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/coteau_du_lac-15140-can-meds:
+      position: [45.3, -74.17]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.71
+          source: 0.96
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.128
+        issues:
+          - MLWS (0.375) > MLW (0.369)
+          - MHWS (0.383) < MHW (0.397)
+          - "P1 amplitude (0.0065) exceeds K1 (0.0029): physically impossible"
+          - "Seasonal band (0.033m) is 3.7x the largest tidal constituent S1 (0.009m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0003) exceeds M2 (0.0002)

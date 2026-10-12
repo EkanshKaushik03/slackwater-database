@@ -1,0 +1,25 @@
+region: US-WI
+sources:
+  - ticon/green_bay_wi-9087078-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/green_bay_wi-9087078-usa-noaa:
+      position: [44.54, -88.0083]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/green_bay_wi-9087079-usa-noaa
+        seasonal_dominant: true
+        score: 73
+        factors:
+          epoch: 0.634
+          recency: 0.55
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MHWS (176.874) < MHW (176.884)
+          - "Seasonal band (0.181m) is 4.7x the largest tidal constituent M2 (0.038m): the yearly swing exceeds the daily one"

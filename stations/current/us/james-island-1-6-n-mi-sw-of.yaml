@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/CHB0304
+redirect_from:
+  - /currents/us/md/james-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CHB0304:
+      position: [38.48573, -76.36457]
+      coastline: unverifiable

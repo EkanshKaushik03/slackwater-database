@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/fenholloway_river_near_hampton_springs_fl-2325543-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fenholloway_river_near_hampton_springs_fl-2325543-usa-usgs:
+      position: [30.011323, -83.777653]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.222
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.146

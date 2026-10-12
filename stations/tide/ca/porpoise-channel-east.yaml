@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-porpoise-channel-east
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-porpoise-channel-east:
+      position: [54.21515, -130.28906]
+      coastline: unverifiable

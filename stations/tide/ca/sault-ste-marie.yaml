@@ -1,0 +1,24 @@
+region: CA-ON
+sources:
+  - ticon/sault_ste_marie_ontario-10980-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sault_ste_marie_ontario-10980-can-meds:
+      position: [46.51, -84.37]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.02
+        issues:
+          - MLWS (0.182) > MLW (0.158)
+          - MHWS (0.226) < MHW (0.255)
+          - "Seasonal band (0.152m) is 9.2x the largest tidal constituent M2 (0.016m): the yearly swing exceeds the daily one"

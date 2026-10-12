@@ -1,0 +1,21 @@
+region: US-SC
+sources:
+  - noaa/8663101
+redirect_from:
+  - /tides/us/sc/cape-romain/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8663101:
+      position: [33.025, -79.3483]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.172

@@ -1,0 +1,19 @@
+region: US-NJ
+sources:
+  - ticon/manahawkin_bay_at_rt_72_bridge_near_ship_bottom_nj-140914550-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/manahawkin_bay_at_rt_72_bridge_near_ship_bottom_nj-140914550-usa-usgs:
+      position: [39.663333, -74.206944]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 59
+        factors:
+          epoch: 0.134
+          recency: 0.88
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.016
