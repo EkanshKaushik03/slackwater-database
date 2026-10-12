@@ -4,7 +4,8 @@
  * then the groups it refused. With --apply, fold each group into its surviving
  * station file; run `npm run stations` afterwards.
  *
- * Usage: npm run report:merges -w packages/stations [-- --apply] > merges.md
+ * Usage: npm run report:merges -w packages/stations > merges.md
+ *        npm run merge -w packages/stations
  */
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";

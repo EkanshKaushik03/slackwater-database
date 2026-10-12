@@ -7,8 +7,7 @@
   },
   "scripts": {
     "test": "vitest",
-    "refresh:sea-regions": "node fetch-sea-regions.ts",
-    "refresh:gesla": "node download-gesla.ts"
+    "refresh:sea-regions": "node fetch-sea-regions.ts"
   },
   "dependencies": {
     "@slackwater/engine": "^1.0.0-beta.0",

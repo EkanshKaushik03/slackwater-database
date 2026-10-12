@@ -13,7 +13,7 @@ mkdir -p tmp
 
 # A forced station costs about a second of datum synthesis, so run one shard per
 # core. Fetch GESLA once up front, or every shard downloads its own copy.
-[[ -z "${FORCE_DATUMS:-}${FORCE_HARMONICS:-}" ]] || npm run refresh:gesla -w packages/datums
+[[ -z "${FORCE_DATUMS:-}${FORCE_HARMONICS:-}" ]] || node packages/datums/download-gesla.ts
 
 shards=${SHARDS:-$(node -p 'os.availableParallelism()')}
 [[ $shards =~ ^[1-9][0-9]*$ ]] || { echo "SHARDS must be a positive integer, not '$shards'" >&2; exit 1; }

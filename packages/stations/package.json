@@ -15,7 +15,9 @@
     "refresh:maritime-zones": "node fetch-maritime-zones.ts",
     "refresh:places": "node fetch-places.ts",
     "report:merges": "node merge-report.ts",
-    "report:quality": "node evaluate-quality.ts"
+    "report:quality": "node evaluate-quality.ts",
+    "refresh:lat-hat": "node backfill-lat-hat.ts",
+    "merge": "node merge-report.ts --apply"
   },
   "dependencies": {
     "@slackwater/datums": "*",
