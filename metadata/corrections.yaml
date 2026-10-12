@@ -142,6 +142,7 @@ linz/078:
   reason: The UHSLC relay of this LINZ gauge published /gisborne/; the gauge's own record takes it.
 
 linz/079:
+  name: Marsden Point
   slug: marsden-point
   reason: The UHSLC relay of this LINZ gauge published /marsden-point/; the gauge's own record takes it.
 
@@ -150,6 +151,7 @@ linz/107:
   reason: The UHSLC relay of this LINZ gauge published /lyttelton/; the gauge's own record takes it.
 
 linz/030:
+  name: Port Chalmers
   slug: port-chalmers-otago
   reason: The UHSLC relay of this LINZ gauge published /port-chalmers-otago/; the gauge's own record takes it.
 
@@ -610,3 +612,66 @@ ticon/sainte_anne_des_monts-2935-can-meds:
 
 ticon/st_louis_du_sud-406-hti-uhslc_fd:
   name: Saint-Louis-du-Sud
+
+# LINZ's analysis files squash place names (`PORTCHALMERS`); these are the
+# names its tide tables print.
+
+linz/032:
+  name: Spit Wharf
+
+linz/076:
+  name: Port Taranaki
+
+linz/081:
+  name: Pouto Point
+
+linz/102:
+  name: Port Ohope Wharf
+
+linz/104:
+  name: Opotiki Wharf
+
+linz/141:
+  name: Waihopai River Entrance
+
+linz/142:
+  name: Jackson Bay
+
+linz/158:
+  name: Moturiki Island
+
+linz/258:
+  name: Okukari Bay
+
+linz/291:
+  name: Weiti River Entrance
+
+linz/330:
+  name: Freshwater Basin
+
+linz/353:
+  name: Dog Island
+
+linz/370:
+  name: Sumner Head
+
+linz/373:
+  name: Town Basin
+
+linz/376:
+  name: Ben Gunn Wharf
+
+linz/396:
+  name: Manu Bay
+
+linz/398:
+  name: Rangitaiki River
+
+linz/463:
+  name: Tamaki River
+
+linz/472:
+  name: Motuara Island
+
+linz/473:
+  name: Te Weka Bay

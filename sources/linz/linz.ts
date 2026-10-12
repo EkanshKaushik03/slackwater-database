@@ -21,68 +21,6 @@ const LINZ_CREDIT =
   "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.";
 const SPEED_TOLERANCE = 0.0001;
 
-// LINZ's file names squash the place name; these are the names its tide
-// tables print. An id missing here fails the import, so a new site is named
-// by a person rather than guessed.
-const NAMES: Record<string, string> = {
-  "022": "Whitianga",
-  "027": "Onehunga",
-  "028": "Dunedin",
-  "030": "Port Chalmers",
-  "031": "Whakatane",
-  "032": "Spit Wharf",
-  "034": "Timaru",
-  "043": "Picton",
-  "044": "Kawhia",
-  "058": "Riverton",
-  "070": "Auckland",
-  "071": "Wellington",
-  "072": "Bluff",
-  "073": "Tauranga",
-  "074": "Westport",
-  "076": "Port Taranaki",
-  "077": "Nelson",
-  "078": "Gisborne",
-  "079": "Marsden Point",
-  "081": "Pouto Point",
-  "085": "Opua",
-  "097": "Napier",
-  "102": "Port Ohope Wharf",
-  "104": "Opotiki Wharf",
-  "107": "Lyttelton",
-  "141": "Waihopai River Entrance",
-  "142": "Jackson Bay",
-  "148": "Manawatu River",
-  "158": "Moturiki Island",
-  "171": "Opononi",
-  "180": "Raglan",
-  "189": "Tarakohe",
-  "210": "Dargaville",
-  "233": "Thames",
-  "239": "Helensville",
-  "258": "Okukari Bay",
-  "261": "Omokoroa",
-  "291": "Weiti River Entrance",
-  "323": "Mana",
-  "330": "Freshwater Basin",
-  "349": "Kaiteriteri",
-  "351": "Rangatira Point",
-  "353": "Dog Island",
-  "354": "Green Island",
-  "370": "Sumner Head",
-  "373": "Town Basin",
-  "376": "Ben Gunn Wharf",
-  "396": "Manu Bay",
-  "397": "Kaituna",
-  "398": "Rangitaiki River",
-  "401": "Whangaroa",
-  "460": "Purau Lead",
-  "462": "Omaha",
-  "463": "Tamaki River",
-  "472": "Motuara Island",
-  "473": "Te Weka Bay",
-};
-
 // Header positions LINZ prints wrongly, as DDMM. Nelson's 1416 drops the 4
 // of 41°16′S; its tide tables and TICON's Nelson gauge both put it at 41°16′.
 const LATITUDE_FIXES: Record<string, string> = { "077": "4116" };
@@ -205,8 +143,13 @@ export function parseHarmonics(text: string, id: string): LinzHarmonics {
   if (!constituents.some(({ name }) => name === "M2"))
     throw new Error(`${id}: missing M2`);
 
-  const name = NAMES[id];
-  if (!name) throw new Error(`${id}: no display name for this LINZ site`);
+  // LINZ squashes many names (`PORTCHALMERS`); corrections.yaml curates them.
+  const name = (lines[0] ?? "")
+    .replace(/\s*Units in CM\s*$/, "")
+    .trim()
+    .toLowerCase()
+    .replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
+  if (!name) throw new Error(`${id}: missing site name`);
 
   return {
     id,

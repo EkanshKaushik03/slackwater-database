@@ -73,10 +73,12 @@ describe("LINZ harmonic files", () => {
     );
   });
 
-  it("fails on an unnamed site, a missing Z0, or an unknown constituent", () => {
-    expect(() => parseHarmonics(header() + rows, "999")).toThrow(
-      /no display name/,
-    );
+  it("title-cases the site name LINZ prints", () => {
+    const squashed = header().replace("PICTON    ", "PORTCHALMERS");
+    expect(parseHarmonics(squashed + rows, "030").name).toBe("Portchalmers");
+  });
+
+  it("fails on a missing Z0 or an unknown constituent", () => {
     expect(() =>
       parseHarmonics(header() + rows.split("\n").slice(1).join("\n"), "043"),
     ).toThrow(/missing Z0/);

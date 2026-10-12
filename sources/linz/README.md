@@ -18,7 +18,7 @@ npm run evaluate-quality -w packages/stations
 npm run metadata:lock
 ```
 
-LINZ's CDN refuses requests without a browser-like User-Agent, which the import sends. A new site fails the import until it is given a display name in `linz.ts`, because LINZ's file names squash the place name (`WAIHOPAIRIVERENTRANCE`).
+LINZ's CDN refuses requests without a browser-like User-Agent, which the import sends. LINZ squashes many place names (`WAIHOPAIRIVERENTRANCE`). The importer title-cases what LINZ prints, and `metadata/corrections.yaml` gives each squashed site the name LINZ's tide tables use, so a new site needs an entry there.
 
 ## Conversion
 
