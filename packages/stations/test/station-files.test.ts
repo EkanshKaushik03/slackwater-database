@@ -490,4 +490,25 @@ computed:
       /needs provider/,
     );
   });
+
+  // A CHS identity record CHS later prunes has no slash and no source either.
+  test("an owned station tolerates a vanished CHS record beside it", () => {
+    const { registry } = curatedRecords(
+      [
+        {
+          kind: "tide",
+          country: "CA",
+          region: "CA-BC",
+          slug: "victoria",
+          file: "stations/tide/ca/victoria.yaml",
+          name: "Victoria",
+          position: [48.424, -123.371],
+          provider: "chs",
+          sources: ["chs-victoria", "chs-victoria-harbour"],
+        },
+      ],
+      new Set(),
+    );
+    expect([...registry.keys()]).toEqual(["chs-victoria"]);
+  });
 });

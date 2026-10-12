@@ -236,18 +236,16 @@ export function curatedRecords(
       ...(file.position_verified ? { positionVerified: true as const } : {}),
       location,
     };
-    // An owned id has no source prefix; a provider id no source supplies is a
-    // record that vanished, which `npm run stations` retires.
     // A retired record takes the curation too, so it rejoins its station
     // unchanged if the provider publishes it again.
     const members = [...file.sources, ...(file.retired_sources ?? [])];
-    const owned = file.sources.filter(
-      (id) => !providerIds.has(id) && !id.includes("/"),
-    );
+    // A route lists the owned record first, so it stays identifiable when a
+    // provider record beside it vanishes and awaits retirement.
+    const owned = file.sources.slice(0, 1);
     if (file.provider) {
-      if (owned.length !== 1)
+      if (!owned[0] || providerIds.has(owned[0]))
         throw new Error(
-          `${file.file}: a station with a provider owns exactly one record not supplied by any source, found ${owned.length}`,
+          `${file.file}: a station with a provider lists the record it owns first, one no source supplies`,
         );
       const record: RegistryRecord = {
         ...curated,
