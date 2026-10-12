@@ -80,11 +80,13 @@ export const DEFAULT_PRIORITY = 50;
 export const NON_COMMERCIAL_SOURCES = ["cmems", "cv", "uz"];
 
 /** A record a source's metadata.yaml marks authoritative, as against a relay. */
-export function isAuthoritative(record: { source: { name: string } }): boolean {
-  return sourceMetadata(record.source.name).authoritative;
+export function isAuthoritative(record: {
+  source?: { name: string };
+}): boolean {
+  return !!record.source && sourceMetadata(record.source.name).authoritative;
 }
 
-type SourcedRecord = { id: string; source: { name: string } };
+type SourcedRecord = { id: string; source?: { name: string } };
 
 /** Prefer the authoritative record when exactly one duplicate is authoritative. */
 export function authoritativeDuplicateWinner(

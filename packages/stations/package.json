@@ -15,7 +15,8 @@
     "fetch-water-bodies": "node fetch-water-bodies.ts",
     "fetch-maritime-zones": "node fetch-maritime-zones.ts",
     "fetch-places": "node fetch-places.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "merge-report": "node merge-report.ts"
   },
   "dependencies": {
     "@slackwater/datums": "*",
