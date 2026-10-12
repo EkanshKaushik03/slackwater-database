@@ -2,6 +2,8 @@
  * Shared utilities for station filtering and deduplication
  */
 
+import { sourceMetadata } from "./sources.ts";
+
 /**
  * Source quality priority for TICON stations (lower = better quality)
  *
@@ -77,23 +79,21 @@ export const DEFAULT_PRIORITY = 50;
 /** GESLA sources that restrict commercial/consultancy use */
 export const NON_COMMERCIAL_SOURCES = ["cmems", "cv", "uz"];
 
-/** Direct records from authoritative tide-gauge providers. */
-export function isDirectAuthoritativeProvider(id: string): boolean {
-  return (
-    id.startsWith("noaa/") ||
-    id.startsWith("kartverket/") ||
-    id.startsWith("linz/")
-  );
+/** A record a source's metadata.yaml marks authoritative, as against a relay. */
+export function isAuthoritative(record: { source: { name: string } }): boolean {
+  return sourceMetadata(record.source.name).authoritative;
 }
 
-/** Prefer the direct authoritative record when exactly one duplicate is direct. */
+type SourcedRecord = { id: string; source: { name: string } };
+
+/** Prefer the authoritative record when exactly one duplicate is authoritative. */
 export function authoritativeDuplicateWinner(
-  idA: string,
-  idB: string,
+  a: SourcedRecord,
+  b: SourcedRecord,
 ): string | undefined {
-  const directA = isDirectAuthoritativeProvider(idA);
-  const directB = isDirectAuthoritativeProvider(idB);
-  return directA === directB ? undefined : directA ? idA : idB;
+  const directA = isAuthoritative(a);
+  const directB = isAuthoritative(b);
+  return directA === directB ? undefined : directA ? a.id : b.id;
 }
 
 /**

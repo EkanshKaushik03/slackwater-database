@@ -30,7 +30,7 @@ import {
   getSourcePriority,
   gaugeKey,
   coordinatePrecision,
-  isDirectAuthoritativeProvider,
+  isAuthoritative,
   hasQualityIssues,
   epochYears,
   NULL_ISLAND_RADIUS,
@@ -255,7 +255,7 @@ const ESSENTIAL_CONSTITUENTS = ["M2", "S2", "K1", "O1"];
 function checkConstituents(station: Station): string | null {
   if (station.type === "subordinate") return null;
 
-  const essential = isDirectAuthoritativeProvider(station.id)
+  const essential = isAuthoritative(station)
     ? ESSENTIAL_CONSTITUENTS.filter((name) => name !== "K1")
     : ESSENTIAL_CONSTITUENTS;
   const names = new Set(station.harmonic_constituents.map((c) => c.name));
@@ -278,11 +278,7 @@ function checkConstituents(station: Station): string | null {
     station.harmonic_constituents.find((c) => c.name === "K1")?.amplitude ?? 0;
   const p1Amp =
     station.harmonic_constituents.find((c) => c.name === "P1")?.amplitude ?? 0;
-  if (
-    !isDirectAuthoritativeProvider(station.id) &&
-    k1Amp > 0 &&
-    p1Amp > k1Amp
-  ) {
+  if (!isAuthoritative(station) && k1Amp > 0 && p1Amp > k1Amp) {
     return `P1 amplitude (${p1Amp.toFixed(4)}) exceeds K1 (${k1Amp.toFixed(4)}): physically impossible`;
   }
 
@@ -484,7 +480,7 @@ export function scoreRecency(
 
 /** Source confidence: mapped from SOURCE_PRIORITY. */
 function scoreSource(station: Station): number {
-  const priority = isDirectAuthoritativeProvider(station.id)
+  const priority = isAuthoritative(station)
     ? 0
     : getSourcePriority(station.source.id);
   return toFixed(Math.max(0, 1 - priority / 99));
@@ -761,7 +757,10 @@ function pickWinner(
   resultsMap: Map<string, QualityResult>,
   subordinateCounts: Map<string, number>,
 ): [winner: string, loser: string] {
-  const directWinner = authoritativeDuplicateWinner(idA, idB);
+  const directWinner = authoritativeDuplicateWinner(
+    stationMap.get(idA)!,
+    stationMap.get(idB)!,
+  );
   if (directWinner) return [directWinner, directWinner === idA ? idB : idA];
   const subsA = subordinateCounts.get(idA) ?? 0;
   const subsB = subordinateCounts.get(idB) ?? 0;

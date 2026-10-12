@@ -45,7 +45,13 @@ export function buildDatabase(
   {
     version,
     routes = { tide: [], current: [] },
-  }: { version?: string; routes?: DatabaseRoutes } = {},
+    credits = new Map(),
+  }: {
+    version?: string;
+    routes?: DatabaseRoutes;
+    /** Each source's credit line by `source.name`; null when it needs none. */
+    credits?: ReadonlyMap<string, string | null>;
+  } = {},
 ): Uint8Array {
   // Ids are ASCII, so JS string order matches the strcmp order FlatBuffers key
   // lookup expects.
@@ -207,7 +213,9 @@ export function buildDatabase(
 
     // Assembled here, not in each reader: a reader would otherwise need its own
     // table of sources and its own reading of what each licence requires.
-    const attribution = str(attributionFor(s.source?.name, s.license));
+    const attribution = str(
+      attributionFor(credits.get(s.source?.name ?? ""), s.license),
+    );
 
     let license = 0;
     if (s.license) {

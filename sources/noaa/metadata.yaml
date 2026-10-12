@@ -1,0 +1,7 @@
+# Must match `source.name` on every record this source writes, including the
+# current stations from sources/noaa-current.
+name: US National Oceanic and Atmospheric Administration
+# A national hydrographic office: its records win duplicates against relays.
+authoritative: true
+# Public domain: credit is welcome, so not imposed on consumers.
+credit: null

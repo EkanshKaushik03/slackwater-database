@@ -50,6 +50,7 @@ const catalogue = await loadProductionCatalogue(join(root, "..", ".."));
 const database = buildDatabase(catalogue.stations, {
   version,
   routes: catalogue.routes,
+  credits: catalogue.credits,
 });
 
 writeFileSync(join(outDir, "slackwater.tcdb"), database);

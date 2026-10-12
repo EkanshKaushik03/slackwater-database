@@ -10,6 +10,7 @@ import { currentInputs } from "./current-input.ts";
 import { loadGeocoder } from "./geocode.ts";
 import { loadMaritimeZones } from "./maritime-zones.ts";
 import { loadCorrections, loadRegistry } from "./metadata.ts";
+import { sourceMetadata } from "./sources.ts";
 import {
   emptyFormerSlugs,
   type FormerSlugs,
@@ -59,26 +60,37 @@ export async function loadProductionCatalogue(
   const formerSlugs = existsSync(formerSlugsPath)
     ? (JSON.parse(readFileSync(formerSlugsPath, "utf8")) as FormerSlugs)
     : emptyFormerSlugs();
+  const catalogue = buildCatalogue({
+    // CHS stations stay out of providerTideIds below: they are identity-only.
+    tides: [...tides, ...chsInputs(chsStations)],
+    currents,
+    corrections: loadCorrections(
+      readFileSync(join(metadataDir, "corrections.yaml"), "utf8"),
+    ),
+    registry: loadRegistry(
+      readFileSync(join(metadataDir, "registry.yaml"), "utf8"),
+    ),
+    slugTable,
+    slugTombstones,
+    formerSlugs,
+    ...(reallocate ? { reallocate } : {}),
+    routeLock,
+    geocoder: await loadGeocoder(),
+    waterBodies: await loadWaterBodies(),
+    maritimeZones: await loadMaritimeZones(),
+  });
+  // Every station's source must have a metadata.yaml, so its credit is a
+  // decision rather than an omission.
+  const credits = new Map(
+    catalogue.stations.flatMap(({ source }) =>
+      source
+        ? [[source.name, sourceMetadata(source.name).credit] as const]
+        : [],
+    ),
+  );
   return {
-    ...buildCatalogue({
-      // CHS stations stay out of providerTideIds below: they are identity-only.
-      tides: [...tides, ...chsInputs(chsStations)],
-      currents,
-      corrections: loadCorrections(
-        readFileSync(join(metadataDir, "corrections.yaml"), "utf8"),
-      ),
-      registry: loadRegistry(
-        readFileSync(join(metadataDir, "registry.yaml"), "utf8"),
-      ),
-      slugTable,
-      slugTombstones,
-      formerSlugs,
-      ...(reallocate ? { reallocate } : {}),
-      routeLock,
-      geocoder: await loadGeocoder(),
-      waterBodies: await loadWaterBodies(),
-      maritimeZones: await loadMaritimeZones(),
-    }),
+    ...catalogue,
+    credits,
     providerTideIds: new Set(tides.map(({ id }) => id)),
     providerCurrentIds: new Set(currents.map(({ id }) => id)),
     previousSlugTable: slugTable,

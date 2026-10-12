@@ -5,8 +5,13 @@ import {
   MODIFICATIONS_URL,
   PROJECT_CREDIT,
   attributionFor,
-  isKnownSource,
 } from "../src/attribution.ts";
+// From source: the stations package loads data, and this test checks the
+// database against the same per-source metadata the build used.
+import { loadSources } from "../../stations/sources.ts";
+
+const sources = loadSources();
+const creditOf = (name: string) => sources.get(name)?.credit;
 
 const shipped = openDatabase(
   readFileSync(new URL("../src/generated/slackwater.tcdb", import.meta.url)),
@@ -26,14 +31,14 @@ const publicDomain = {
 };
 
 describe("attribution", () => {
-  // The guard that keeps the credit table honest: a source added to the
-  // database without a credit decision fails here rather than shipping
-  // stations that quietly credit no one.
+  // The guard that keeps credit honest: a source added to the database without
+  // a metadata.yaml fails here rather than shipping stations that quietly
+  // credit no one. The catalogue load also refuses one.
   test("every source in the shipped database has a credit decision", () => {
     const unknown = new Set<string>();
     for (let i = 0; i < shipped.stationsLength(); i++) {
       const name = shipped.stations(i)?.source()?.name();
-      if (name && !isKnownSource(name)) unknown.add(name);
+      if (name && !sources.has(name)) unknown.add(name);
     }
     expect([...unknown]).toEqual([]);
   });
@@ -64,7 +69,7 @@ describe("attribution", () => {
       const t = shipped.stations(i)!;
       const license = t.license();
       expect(t.attribution()).toBe(
-        attributionFor(t.source()?.name()!, {
+        attributionFor(creditOf(t.source()?.name()!), {
           type: license!.type()!,
           url: license!.url()!,
         }),
@@ -75,7 +80,7 @@ describe("attribution", () => {
   // What a CC BY redistributor has to pass on (section 3(a)(1)): who made it,
   // the licence and its URI, and that it was modified.
   test("a CC BY station gets a complete notice", () => {
-    const notice = attributionFor("TICON-4", ccBy);
+    const notice = attributionFor(creditOf("TICON-4"), ccBy);
     expect(notice.startsWith(`${PROJECT_CREDIT}. `)).toBe(true);
     expect(notice).toContain("Hart-Davis");
     expect(notice).toContain("https://doi.org/10.17882/109129");
@@ -86,7 +91,7 @@ describe("attribution", () => {
   });
 
   test("a CC BY-NC station names its own licence", () => {
-    const notice = attributionFor("TICON-4", ccByNc);
+    const notice = attributionFor(creditOf("TICON-4"), ccByNc);
     expect(notice).toContain(
       "Licensed CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)",
     );
@@ -97,16 +102,14 @@ describe("attribution", () => {
   test("a source and licence requiring no notice give the project line alone", () => {
     expect(
       attributionFor(
-        "US National Oceanic and Atmospheric Administration",
+        creditOf("US National Oceanic and Atmospheric Administration"),
         publicDomain,
       ),
     ).toBe(PROJECT_CREDIT);
   });
 
-  test("falls back to the project line for an unrecognized source", () => {
-    expect(attributionFor("Some Future Source", undefined)).toBe(
-      PROJECT_CREDIT,
-    );
+  test("gives the project line alone without a source credit", () => {
+    expect(attributionFor(null, undefined)).toBe(PROJECT_CREDIT);
     expect(attributionFor(undefined, undefined)).toBe(PROJECT_CREDIT);
   });
 });

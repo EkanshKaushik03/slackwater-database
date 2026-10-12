@@ -1,0 +1,7 @@
+# Must match `source.name` on every record this source writes.
+name: Kartverket / Norwegian Mapping Authority, Hydrographic Service
+# A national hydrographic office: its records win duplicates against relays.
+authoritative: true
+# Kartverket's terms ask for "©Kartverket" with a link to kartverket.no. Keep in
+# step with the README's Attribution section.
+credit: "Source: © Kartverket / Norwegian Mapping Authority, Hydrographic Service, https://www.kartverket.no"

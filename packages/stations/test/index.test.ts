@@ -290,19 +290,26 @@ describe("gauge deduplication", () => {
   });
 
   test("prefers a direct authoritative gauge over a duplicate TICON record", () => {
+    const record = (id: string, name: string) => ({ id, source: { name } });
+    const ticon = (id: string) => record(id, "TICON-4");
     expect(
       authoritativeDuplicateWinner(
-        "kartverket/TOS",
-        "ticon/tromso-123-nor-nhs",
+        record(
+          "kartverket/TOS",
+          "Kartverket / Norwegian Mapping Authority, Hydrographic Service",
+        ),
+        ticon("ticon/tromso-123-nor-nhs"),
       ),
     ).toBe("kartverket/TOS");
     expect(
       authoritativeDuplicateWinner(
-        "ticon/wellington-071-nzl-uhslc_fd",
-        "linz/071",
+        ticon("ticon/wellington-071-nzl-uhslc_fd"),
+        record("linz/071", "Toitū Te Whenua Land Information New Zealand"),
       ),
     ).toBe("linz/071");
-    expect(authoritativeDuplicateWinner("ticon/a", "ticon/b")).toBeUndefined();
+    expect(
+      authoritativeDuplicateWinner(ticon("ticon/a"), ticon("ticon/b")),
+    ).toBeUndefined();
   });
 
   test("accepts every LINZ port over the TICON relay of the same gauge", () => {
