@@ -47,6 +47,8 @@ records stays exactly as NOAA published it, so the `datums` object is mixed: obs
 synthesized extremes. That is why `datums_source` is left absent on NOAA stations rather
 than set to `harmonic` — one per-station value cannot describe both halves honestly.
 
+Run `npm run refresh:lat-hat -w packages/stations` after every `npm run import -w sources/noaa`, as the update workflow does: the import rewrites `datums` wholesale from NOAA's API and drops the synthesized LAT and HAT. The backfill is idempotent, and leaves a station alone once NOAA publishes its own LAT and HAT.
+
 Two kinds of station are deliberately left without LAT/HAT. Three (`8519024`, `8764311`,
 `9450623`) publish no MSL, so there is no frame to put a constituent-space result onto. Eight
 more carry **Sa and Ssa at zero amplitude** — NOAA ships its 37-name constituent list with

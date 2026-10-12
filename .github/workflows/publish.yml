@@ -54,7 +54,7 @@ jobs:
             git fetch --depth=1 origin "$LAST"
             export PUBLISHED_REF=FETCH_HEAD
           fi
-          npm run validate:database
+          npm run validate
 
       - name: Build and check npm package
         run: |
@@ -62,7 +62,7 @@ jobs:
           npm pack --dry-run --ignore-scripts -w packages/database
 
       - name: Build and test TCD harmonics files
-        run: npm run test -w packages/tcd
+        run: npm run test:docker -w packages/tcd
 
       # Prereleases go out under the beta dist-tag so `latest` only ever moves
       # on a stable publish.

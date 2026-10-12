@@ -13,7 +13,7 @@
  *   5. Compute composite score and write results
  *
  * Run directly to print a summary:
- *   node packages/stations/evaluate-quality.ts
+ *   npm run report:quality -w packages/stations
  */
 
 import { readdir, readFile } from "fs/promises";

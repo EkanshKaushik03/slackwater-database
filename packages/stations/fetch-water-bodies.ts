@@ -14,7 +14,7 @@
  *
  * Run manually when the catalogue gains stations in new water, then review the
  * context diff before committing:
- *   npm run fetch-water-bodies -w packages/stations
+ *   npm run refresh:water-bodies -w packages/stations
  */
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";

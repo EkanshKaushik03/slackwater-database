@@ -12,7 +12,7 @@
  *
  * Run manually, review the metadata diff, and record the printed checksums in
  * metadata/PROVENANCE.md:
- *   npm run fetch-places -w packages/stations
+ *   npm run refresh:places -w packages/stations
  */
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";

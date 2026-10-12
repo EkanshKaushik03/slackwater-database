@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "import": "node import.ts",
-    "refresh": "node import.ts --refresh",
     "validate": "node validate.ts",
-    "refresh-validation": "node validate.ts --refresh",
-    "test": "vitest"
+    "test": "vitest run",
+    "refresh:fixtures": "node import.ts --refresh",
+    "refresh:tide-tables": "node validate.ts --refresh"
   },
   "dependencies": {
     "@slackwater/stations": "*",

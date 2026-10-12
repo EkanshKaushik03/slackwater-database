@@ -55,4 +55,4 @@ the npm package.
 
 ## Release safeguards
 
-Each published station is a file under [`stations/`](../stations/README.md), which `npm run stations` keeps current. `npm run validate:database` fails on any station file it would change, and, with `PUBLISHED_REF` set, on a published path that no longer resolves or now names other water.
+Each published station is a file under [`stations/`](../stations/README.md), which `npm run stations` keeps current. `npm run validate` fails on any station file it would change, and, with `PUBLISHED_REF` set, on a published path that no longer resolves or now names other water.

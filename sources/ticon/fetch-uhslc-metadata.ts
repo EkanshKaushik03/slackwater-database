@@ -4,7 +4,7 @@
  * reads live data. UHSLC edits these files in place, so refresh deliberately
  * and review the diff.
  *
- * Usage: npm run fetch-uhslc-metadata -w sources/ticon
+ * Usage: npm run refresh:uhslc -w sources/ticon
  */
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";

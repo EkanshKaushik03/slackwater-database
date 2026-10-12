@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "./build",
-    "pretest": "npm run build",
-    "test": "vitest"
+    "pretest:docker": "npm run build",
+    "test:docker": "vitest"
   },
   "devDependencies": {
     "@slackwater/database": "*",
