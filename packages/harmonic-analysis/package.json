@@ -6,7 +6,7 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "test": "vitest",
+    "test": "vitest run",
     "report:score-line": "node score-line.ts"
   },
   "dependencies": {

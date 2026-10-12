@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "import": "./import",
-    "test": "vitest",
+    "test": "vitest run",
     "refresh:uhslc": "node fetch-uhslc-metadata.ts"
   },
   "dependencies": {

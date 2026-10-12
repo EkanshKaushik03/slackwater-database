@@ -5,7 +5,7 @@
   "scripts": {
     "import": "node import.ts",
     "validate": "node validate.ts",
-    "test": "vitest",
+    "test": "vitest run",
     "refresh:fixtures": "node import.ts --refresh",
     "refresh:tide-tables": "node validate.ts --refresh"
   },

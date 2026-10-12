@@ -6,7 +6,7 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "test": "vitest",
+    "test": "vitest run",
     "refresh:sea-regions": "node fetch-sea-regions.ts"
   },
   "dependencies": {
