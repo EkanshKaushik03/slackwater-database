@@ -90,7 +90,7 @@ assert.deepEqual(
 // In a station this repo owns, the name is the owned record's alone.
 const curatedNames = new Set(
   files.flatMap(({ name, provider, sources }) =>
-    !name ? [] : provider ? sources.filter((id) => !id.includes("/")) : sources,
+    !name ? [] : provider ? sources.slice(0, 1) : sources,
   ),
 );
 assert.deepEqual(
