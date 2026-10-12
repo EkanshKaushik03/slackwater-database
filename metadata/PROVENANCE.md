@@ -11,7 +11,7 @@ fallback context fields when curated and provider data do not supply them.
 `places.json` is a reviewed, filtered snapshot: the ten nearest GeoNames
 places, and the ten nearest that are not a section of a city, within 100 km of
 every station in the catalogue. `packages/stations/fetch-places.ts` builds it
-(`npm run fetch-places -w packages/stations`). The committed snapshot was built
+(`npm run refresh:places -w packages/stations`). The committed snapshot was built
 from `cities500.zip` and `admin1CodesASCII.txt` downloaded on 2026-09-27
 (SHA-256 `7a95c3f8f415ad2b31840625032f826a14bbf39ffbc22827a5004cb95c7ed093`
 and `1da92a6323a5fec3176f3f743bf4cf4040fd56a876da55e46fbca23c863aa60a`).

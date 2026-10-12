@@ -6,16 +6,16 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "backfill-lat-hat": "node backfill-lat-hat.ts",
-    "check-lat-hat": "node check-lat-hat.ts",
-    "validate-datums": "node validate-datums.ts",
-    "validate-database": "node validate-database.ts",
-    "fetch-water-bodies": "node fetch-water-bodies.ts",
-    "fetch-maritime-zones": "node fetch-maritime-zones.ts",
-    "fetch-places": "node fetch-places.ts",
     "test": "vitest",
-    "merge-report": "node merge-report.ts",
-    "stations": "node update-stations.ts"
+    "stations": "node update-stations.ts",
+    "report:lat-hat": "node check-lat-hat.ts",
+    "report:ticon-datums": "node validate-datums.ts",
+    "validate": "node validate-database.ts",
+    "refresh:water-bodies": "node fetch-water-bodies.ts",
+    "refresh:maritime-zones": "node fetch-maritime-zones.ts",
+    "refresh:places": "node fetch-places.ts",
+    "report:merges": "node merge-report.ts",
+    "report:quality": "node evaluate-quality.ts"
   },
   "dependencies": {
     "@slackwater/datums": "*",

@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "import": "./import",
-    "fetch-uhslc-metadata": "node fetch-uhslc-metadata.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "refresh:uhslc": "node fetch-uhslc-metadata.ts"
   },
   "dependencies": {
     "@slackwater/datums": "*",

@@ -20,25 +20,37 @@ See the org-wide [writing style](https://github.com/openwatersio/github/blob/mai
 
 ```sh
 npm ci
-npm run build
-npm test
+npm run check
 ```
 
 `.mise.toml` pins Node 24, npm 11.19.0 and `flatc` 25.9.23; CI selects the same Node with `actions/setup-node` and gets `flatc` from `jdx/mise-action`. A fresh checkout or worktree needs `mise trust` before anything builds, or `pretest` dies with `spawnSync flatc ENOENT`.
 
-## Checks
+## Commands
 
-CI runs these, so run them before pushing:
+From the repo root:
 
-```sh
-npm test              # builds packages/database, typechecks, then runs every workspace's tests
-npm run validate:database
-npm run lint          # prettier --check .
-```
+| Command                           | Does                                                                                                                        |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `npm run check`                   | Everything the main CI job checks: lint, test, validate. Run it before pushing.                                             |
+| `npm run build`                   | Generate the database and build `@slackwater/database`                                                                      |
+| `npm test`                        | Build, typecheck, then run every workspace's `test` script                                                                  |
+| `npm run stations`                | Evaluate quality and rewrite the [station files](stations/README.md) after a code or data change                            |
+| `npm run validate`                | Fail on any station file `npm run stations` would change; `PUBLISHED_REF=<ref>` also checks published URLs against that ref |
+| `npm run lint` / `npm run format` | Prettier check / write                                                                                                      |
+
+Each workspace uses the same verbs, run with `-w <workspace>`:
+
+| Verb                        | Means                                                                                                              | Where                                                                                                                                                                                                                                                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `import`                    | Pull a source's data into `data/`                                                                                  | `sources/noaa`, `noaa-current`, `ticon`, `kartverket`, `linz`, `chs`                                                                                                                                                                                                                                                 |
+| `refresh:<name>`            | Refresh a pinned snapshot or fixture; review the diff before committing                                            | `refresh:places`, `refresh:water-bodies`, `refresh:maritime-zones` (`packages/stations`), `refresh:sea-regions`, `refresh:gesla` (`packages/datums`), `refresh:uhslc` (`sources/ticon`), `refresh:lock`, `refresh:golden` (`sources/noaa-current`), `refresh:fixtures`, `refresh:tide-tables` (`sources/kartverket`) |
+| `report:<name>`             | Read-only diagnostics                                                                                              | `report:quality`, `report:merges`, `report:lat-hat`, `report:ticon-datums` (`packages/stations`), `report:score-line` (`packages/harmonic-analysis`), `report:drift` (`sources/noaa-current`)                                                                                                                        |
+| `validate`                  | Check a source's data against its publisher's predictions (`kartverket`, `rws`) or its own schema (`noaa-current`) | `sources/kartverket`, `sources/rws`, `sources/noaa-current`                                                                                                                                                                                                                                                          |
+| `test:docker`, `test:swift` | Tests that need Docker or a Swift toolchain, run in their own CI jobs                                              | `packages/tcd`, `packages/swift`                                                                                                                                                                                                                                                                                     |
 
 `npm test` **does** include the type gate: it is `npm run build -w packages/database && tsc -p tsconfig.node.json && …`. There is no root `tsconfig.json`, so `npx tsc -p tsconfig.json --noEmit` fails with TS5058 — name `tsconfig.node.json` explicitly. It inherits `exactOptionalPropertyTypes` from `tsconfig.base.json`, so assigning a possibly-undefined value into an optional field is an error; spread it conditionally instead.
 
-If `validate:database` reports that station files are stale, run `npm run stations`, review the station-file diff, and commit it.
+If `npm run validate` reports that station files are stale, run `npm run stations`, review the station-file diff, and commit it.
 
 The Swift job additionally regenerates the committed Swift and fails on drift:
 

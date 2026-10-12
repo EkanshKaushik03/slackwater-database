@@ -6,8 +6,8 @@
     ".": "./index.ts"
   },
   "scripts": {
-    "score-line": "node score-line.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "report:score-line": "node score-line.ts"
   },
   "dependencies": {
     "@slackwater/datums": "*",

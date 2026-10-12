@@ -34,7 +34,7 @@ Evidence and explanations are YAML comments. A field exists only when code reads
 - `sources`: the record ids the station publishes, as the database's route `station_ids`. A record belongs to exactly one station.
 - `retired_sources`: records the provider no longer publishes, or that are no longer routed (a NOAA current that loses its flood or ebb direction). `npm run stations` moves a vanished record here, and back to `sources` if the provider publishes it again. A station whose every record is retired keeps its file and publishes no route, so its paths answer 404 but stay reserved for its water. More than ten records retiring in one run is more often a broken import, so `npm run stations` refuses it unless run as `STATIONS_RETIRE=1 npm run stations`.
 - `redirect_from`: every path the station published and no longer uses. The database ships them as the route's `former_paths`, so consumers redirect them.
-- `region`: the ISO 3166-2 code of the URL's region segment, absent when the path has none. The country is the file's directory. Every record in the station takes both, so a change in derived geography cannot move a URL. A CHS station is filed under `ca/` (Saint-Pierre under `pm/`); `validate:database` refuses one anywhere else.
+- `region`: the ISO 3166-2 code of the URL's region segment, absent when the path has none. The country is the file's directory. Every record in the station takes both, so a change in derived geography cannot move a URL. A CHS station is filed under `ca/` (Saint-Pierre under `pm/`); `npm run validate` refuses one anywhere else.
 - `name`, `context`, `aliases`, `cities`, `position`: curated display fields. They apply to every record in the station, except in a station this repo owns (below), where they define the owned record.
 - `position_verified: true`: the published position is right although the coastline audit puts it ashore, as for a gauge sited up a river.
 - `provider`, `tide_reference`, `magnitude_note`, `derived`: a station this repo owns (below).
@@ -45,26 +45,26 @@ Evidence and explanations are YAML comments. A field exists only when code reads
 - **Rename or move.** `git mv` the file and add the old path to `redirect_from`. A published path never disappears and never changes hands.
 - **Same gauge, several records.** Move the record line into the station that publishes the gauge, add the absorbed station's path to `redirect_from`, and delete its file. Say why in a comment, citing the station documentation; matching names or nearby positions alone do not establish gauge identity.
 - **New records.** `npm run stations` gives each record no station lists a station of its own, with a slug no station or redirect holds.
-- **New relays of a gauge already published.** `npm run merge-report -w packages/stations` lists the stations that publish the same gauge: a relay that declares its originator (see [sources/ticon/provenance.ts](../sources/ticon/provenance.ts)), or a record quality marks as a duplicate. `-- --apply` folds each group into one station, which keeps the slug that names its primary record, takes that record's country when its source is authoritative, and keeps only the curated fields of the station that held it. Review the report's non-mechanical merges, the curated fields it drops, and any country a station takes.
+- **New relays of a gauge already published.** `npm run report:merges -w packages/stations` lists the stations that publish the same gauge: a relay that declares its originator (see [sources/ticon/provenance.ts](../sources/ticon/provenance.ts)), or a record quality marks as a duplicate. `-- --apply` folds each group into one station, which keeps the slug that names its primary record, takes that record's country when its source is authoritative, and keeps only the curated fields of the station that held it. Review the report's non-mechanical merges, the curated fields it drops, and any country a station takes.
 
 Run from the repo root after any change:
 
 ```shell
 npm run stations
-npm run validate:database
+npm run validate
 ```
 
-`validate:database` fails when any station file is not what `npm run stations` would write. With `PUBLISHED_REF` set, it also fails when a path that ref publishes no longer resolves, or now belongs to a station that shares none of its records; CI sets it to the base branch on a pull request and to the last release before publishing:
+`npm run validate` fails when any station file is not what `npm run stations` would write. With `PUBLISHED_REF` set, it also fails when a path that ref publishes no longer resolves, or now belongs to a station that shares none of its records; CI sets it to the base branch on a pull request and to the last release before publishing:
 
 ```shell
-PUBLISHED_REF=origin/main npm run validate:database
+PUBLISHED_REF=origin/main npm run validate
 ```
 
 ## Curation rules
 
 `context` is whatever most usefully distinguishes this place: a water body, an island group, a region, a county, or a characteristic. It must never restate the name. Without one, a station takes the qualifier in its provider name, then the OpenStreetMap bay or strait it sits in, then the nearest place. Curate `context` only where that answer is wrong or less useful.
 
-`cleanName` undoes a provider's formatting and nothing more. A spelling that takes knowing the place is a `name` here, so that one station's spelling can never change another's. `npm run validate:database` reports the curated names the cleanup already produces, which is the list to prune when a provider catches up.
+`cleanName` undoes a provider's formatting and nothing more. A spelling that takes knowing the place is a `name` here, so that one station's spelling can never change another's. `npm run validate` reports the curated names the cleanup already produces, which is the list to prune when a provider catches up.
 
 A redirect is for a path that named the _same place_: a rename qualifies, a mislabel does not, since redirecting a mislabel preserves a wrong link where a 404 is more honest (issue #6, the retired `anacortes`).
 

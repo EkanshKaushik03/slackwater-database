@@ -12,10 +12,10 @@ This private source workspace owns NOAA-current extraction and its reviewed bund
 ## Use it
 
 ```bash
-npm run check -w sources/noaa-current
-npm run extract -w sources/noaa-current -- --pace 300
-npm run golden -w sources/noaa-current -- pug1741.json --station PUG1741 --bin 27 --start 2026-07-19 --end 2026-07-21
-npm run lock -w sources/noaa-current
+npm run report:drift -w sources/noaa-current
+npm run import -w sources/noaa-current -- --pace 300
+npm run refresh:golden -w sources/noaa-current -- pug1741.json --station PUG1741 --bin 27 --start 2026-07-19 --end 2026-07-21
+npm run refresh:lock -w sources/noaa-current
 npm run validate -w sources/noaa-current
 ```
 
@@ -105,7 +105,7 @@ review issue with the validation summary and pull-request link — nothing updat
 pre-flight you can run yourself, and exits non-zero on drift.
 
 ```bash
-npm run check -w sources/noaa-current
+npm run report:drift -w sources/noaa-current
 npm run validate -w sources/noaa-current
 ```
 
