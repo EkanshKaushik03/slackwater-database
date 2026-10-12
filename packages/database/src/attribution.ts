@@ -20,6 +20,9 @@ const SOURCE_CREDITS: Record<string, string | null> = {
   // Kartverket's terms ask for "©Kartverket" with a link to kartverket.no.
   "Kartverket / Norwegian Mapping Authority, Hydrographic Service":
     "Source: © Kartverket / Norwegian Mapping Authority, Hydrographic Service, https://www.kartverket.no",
+  // LINZ asks for this statement on adapted data, in writing, never its logo.
+  "Toitū Te Whenua Land Information New Zealand":
+    "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence",
   "TICON-4":
     "Source: Hart-Davis, M., Dettmering, D., Seitz, F. (2025), TICON-4: TIdal CONstants based on GESLA-4 sea-level records, SEANOE, https://doi.org/10.17882/109129",
   // Public domain: credit is welcome, so not imposed on consumers.

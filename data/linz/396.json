@@ -1,0 +1,108 @@
+{
+  "name": "Manubay",
+  "country": "New Zealand",
+  "continent": "Oceania",
+  "latitude": -37.816667,
+  "longitude": 174.816667,
+  "timezone": "Pacific/Auckland",
+  "source": {
+    "name": "Toitū Te Whenua Land Information New Zealand",
+    "id": "396",
+    "published_harmonics": true,
+    "url": "https://www.linz.govt.nz/products-services/data/types-linz-data/sea-level-data/tide-constituents"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "LINZ asks that attribution be in writing and not use its logo: https://www.linz.govt.nz/copyright"
+  },
+  "disclaimers": "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence.",
+  "datums": {
+    "HAT": 3.834,
+    "MHHW": 3.143,
+    "MHW": 3.145,
+    "MSL": 2.025,
+    "MTL": 2.013,
+    "MLW": 0.882,
+    "MLLW": 0.882,
+    "LAT": 0.199,
+    "MHWS": 3.425,
+    "MLWS": 0.625,
+    "CD": 0
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "CD",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "O1",
+      "amplitude": 0.015217,
+      "phase": 290.4536
+    },
+    {
+      "name": "P1",
+      "amplitude": 0.017664,
+      "phase": 7.6528
+    },
+    {
+      "name": "K1",
+      "amplitude": 0.058409,
+      "phase": 14.1472
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0.035226,
+      "phase": 269.2857
+    },
+    {
+      "name": "mu2",
+      "amplitude": 0.032008,
+      "phase": 279.7615
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.211582,
+      "phase": 280.7932
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.041667,
+      "phase": 286.529
+    },
+    {
+      "name": "M2",
+      "amplitude": 1.093133,
+      "phase": 296.2408
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.037099,
+      "phase": 307.3583
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.306507,
+      "phase": 326.88
+    },
+    {
+      "name": "K2",
+      "amplitude": 0.082766,
+      "phase": 317.6744
+    },
+    {
+      "name": "M4",
+      "amplitude": 0.015692,
+      "phase": 64.4715
+    },
+    {
+      "name": "2MS6",
+      "amplitude": 0.006876,
+      "phase": 313.2016
+    }
+  ],
+  "epoch": {
+    "start": "2020-01-01",
+    "end": "2025-12-31"
+  }
+}

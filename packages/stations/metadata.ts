@@ -788,7 +788,11 @@ function sharesMeaningfulWord(left: string, right: string): boolean {
       .split(/[^a-z0-9]+/)
       .filter((word) => word && !NAME_STOP_WORDS.has(word));
   const rightWords = new Set(words(right));
-  return words(left).some((word) => rightWords.has(word));
+  if (words(left).some((word) => rightWords.has(word))) return true;
+  // Some providers squash a name into one word (LINZ's `PORTCHALMERS`), so a
+  // curated word may sit inside the published letters instead.
+  const letters = words(right).join("");
+  return words(left).some((word) => word.length >= 3 && letters.includes(word));
 }
 
 function distanceKm(

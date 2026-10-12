@@ -783,6 +783,15 @@ test/1:
     ).toMatch(/test\/1.*corrected position/);
   });
 
+  test("accepts a curated name that splits a squashed published name", () => {
+    const corrections = loadCorrections("test/1:\n  name: Marsden Point\n");
+    expect(
+      validateMetadata(corrections, new Map(), [
+        { ...baseStation, id: "test/1", name: "Marsdenpt" },
+      ]),
+    ).toEqual([]);
+  });
+
   test("rejects a curated name attached to a different published station", () => {
     const corrections = loadCorrections("test/1:\n  name: Anacortes\n");
     expect(

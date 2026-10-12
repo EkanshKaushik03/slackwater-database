@@ -296,7 +296,22 @@ describe("gauge deduplication", () => {
         "ticon/tromso-123-nor-nhs",
       ),
     ).toBe("kartverket/TOS");
+    expect(
+      authoritativeDuplicateWinner(
+        "ticon/wellington-071-nzl-uhslc_fd",
+        "linz/071",
+      ),
+    ).toBe("linz/071");
     expect(authoritativeDuplicateWinner("ticon/a", "ticon/b")).toBeUndefined();
+  });
+
+  test("accepts every LINZ port over the TICON relay of the same gauge", () => {
+    const linz = quality.filter((r) => r.id.startsWith("linz/"));
+    expect(linz).toHaveLength(56);
+    expect(linz.every((r) => r.accepted && r.factors.source === 1)).toBe(true);
+    expect(
+      quality.find((r) => r.id === "ticon/wellington-071-nzl-uhslc_fd"),
+    ).toMatchObject({ accepted: false, redundant: "linz/071" });
   });
 
   test("accepts all Kartverket gauges over co-located TICON records", () => {

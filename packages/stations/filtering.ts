@@ -79,7 +79,11 @@ export const NON_COMMERCIAL_SOURCES = ["cmems", "cv", "uz"];
 
 /** Direct records from authoritative tide-gauge providers. */
 export function isDirectAuthoritativeProvider(id: string): boolean {
-  return id.startsWith("noaa/") || id.startsWith("kartverket/");
+  return (
+    id.startsWith("noaa/") ||
+    id.startsWith("kartverket/") ||
+    id.startsWith("linz/")
+  );
 }
 
 /** Prefer the direct authoritative record when exactly one duplicate is direct. */
