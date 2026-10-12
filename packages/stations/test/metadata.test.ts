@@ -800,4 +800,15 @@ test/1:
       ]).join("\n"),
     ).toMatch(/test\/1.*Anacortes.*Swinomish Channel Entrance/);
   });
+
+  test("accepts a curated name that restores the accents a source dropped", () => {
+    const corrections = loadCorrections(
+      "test/1:\n  name: E4-bron Södertälje\n",
+    );
+    expect(
+      validateMetadata(corrections, new Map(), [
+        { ...baseStation, id: "test/1", name: "E4Bron Sodertalje" },
+      ]),
+    ).toEqual([]);
+  });
 });
