@@ -22,7 +22,7 @@ import { readdir, readFile, writeFile } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import { DATA_DIR } from "./station.ts";
-import { NODAL_CYCLE_DAYS } from "@slackwater/datums";
+import { DATUM_EPOCH, NODAL_CYCLE_DAYS } from "@slackwater/datums";
 import {
   distance,
   authoritativeDuplicateWinner,
@@ -453,12 +453,17 @@ function scoreEpoch(
   return toFixed(Math.min(1, years / (NODAL_CYCLE_DAYS / 365.2425)));
 }
 
+/** Recency is measured against the pinned datum epoch, not today's date, so
+ *  a re-run gives the same scores in any year. It moves when DATUM_EPOCH is
+ *  bumped, which regenerates everything anyway. */
+export const RECENCY_YEAR = DATUM_EPOCH.end.getUTCFullYear();
+
 /** Recency: how recent is the epoch end date? Stations with data from the
  *  current era score higher. Uses a sigmoid-like curve where data from
  *  ~2000+ scores well, and very old data (pre-1950) scores poorly.
  *  Subordinates inherit from reference.
  *  Stations with placeholder dates (year 0000) get benefit of the doubt. */
-function scoreRecency(
+export function scoreRecency(
   station: Station,
   stationMap: Map<string, Station>,
 ): number {
@@ -471,8 +476,7 @@ function scoreRecency(
   // getFullYear() reads "2025-01-01" as 2024 west of Greenwich, so the score
   // would differ between a laptop and CI.
   const endYear = new Date(epoch.end).getUTCFullYear();
-  const currentYear = new Date().getUTCFullYear();
-  const age = currentYear - endYear;
+  const age = RECENCY_YEAR - endYear;
 
   // Linear decay: 0 years old = 1.0, 100+ years old = 0.0
   return toFixed(Math.max(0, Math.min(1, 1 - age / 100)));
@@ -937,8 +941,10 @@ async function main() {
   deduplicate(survivingIds, stationMap, resultsMap, subordinateCounts);
 
   // Collect and sort results
+  // Codepoint order, not localeCompare: the output must not depend on the
+  // machine's ICU locale.
   const results = [...resultsMap.values()].sort((a, b) =>
-    a.id.localeCompare(b.id),
+    a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
   );
 
   // Write output
@@ -986,4 +992,4 @@ async function main() {
   console.log(`\nWrote quality.json (${results.length} entries)`);
 }
 
-main();
+if (import.meta.main) await main();
