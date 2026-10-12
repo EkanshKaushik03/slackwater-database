@@ -55,7 +55,4 @@ the npm package.
 
 ## Release safeguards
 
-`npm run validate:database` rejects unreviewed slug, route, position,
-coastline, or audit-policy changes. `npm run metadata:lock` updates the durable
-locks after review, but refuses to remove a published path unless it is
-tombstoned or retained as a redirect.
+Each published station is a file under [`stations/`](../stations/README.md), which `npm run stations` keeps current. `npm run validate:database` fails on any station file it would change, and, with `PUBLISHED_REF` set, on a published path that no longer resolves or now names other water.

@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5431
+redirect_from:
+  - /currents/us/ak/amak-island-4-3-nm-southeast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5431:
+      position: [55.349998474121094, -163.01669311523438]
+      coastline: unverifiable

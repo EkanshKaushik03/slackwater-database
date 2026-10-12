@@ -1,0 +1,26 @@
+region: US-LA
+sources:
+  - ticon/west_point_a_la_hache-8761494-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/west_point_a_la_hache-8761494-usa-noaa:
+      position: [29.5733, -89.805]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.119
+          recency: 0.73
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.082
+        issues:
+          - MHHW (10.627) < MHW (10.723)
+          - MHWS (10.538) < MHW (10.723)
+          - MSL (10.53) <= MLW (10.663)
+          - "Seasonal band (0.773m) is 11.9x the largest tidal constituent O1 (0.065m): the yearly swing exceeds the daily one"

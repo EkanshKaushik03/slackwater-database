@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-westport
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-westport:
+      position: [44.263641, -66.350064]
+      coastline: unverifiable

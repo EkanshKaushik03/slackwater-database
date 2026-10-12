@@ -1,5 +1,9 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
-import { RECENCY_YEAR, scoreRecency } from "../evaluate-quality.ts";
+import {
+  loadAllStations,
+  RECENCY_YEAR,
+  scoreRecency,
+} from "../evaluate-quality.ts";
 
 describe("scoreRecency", () => {
   afterEach(() => vi.useRealTimers());
@@ -13,4 +17,11 @@ describe("scoreRecency", () => {
     expect(score()).toBe(now);
     expect(now).toBe(1 - (RECENCY_YEAR - 2001) / 100);
   });
+});
+
+// CI's filesystem lists files in hash order, a Mac's in name order; quality
+// must not depend on which.
+test("weighs records in id order whatever the filesystem lists", async () => {
+  const ids = (await loadAllStations()).map(({ id }) => id);
+  expect(ids).toEqual([...ids].sort());
 });

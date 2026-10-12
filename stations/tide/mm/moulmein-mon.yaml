@@ -1,0 +1,20 @@
+sources:
+  - ticon/moulmein-906a-mmr-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/moulmein-906a-mmr-uhslc_rq:
+      position: [16.465, 97.622]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/moulmein-906-mmr-uhslc_fd
+        score: 48
+        factors:
+          epoch: 0.727
+          recency: 0.94
+          source: 0.192
+          quality: 0
+          amplitude: 1
+          coverage: 0.041

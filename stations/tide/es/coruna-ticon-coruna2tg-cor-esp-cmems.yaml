@@ -1,0 +1,20 @@
+sources:
+  - ticon/coruna2tg-cor-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/coruna2tg-cor-esp-cmems:
+      position: [43.364399, -8.3989]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/coruna-coru-esp-ieo
+        score: 50
+        factors:
+          epoch: 0.247
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.006

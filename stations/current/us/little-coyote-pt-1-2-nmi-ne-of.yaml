@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0511
+redirect_from:
+  - /currents/us/ca/little-coyote-point-1-2-nm-ne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0511:
+      position: [37.59033, -122.24867]
+      coastline: unverifiable

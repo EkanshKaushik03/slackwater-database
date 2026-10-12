@@ -1,0 +1,24 @@
+region: CA-ON
+sources:
+  - ticon/port_dover_ontario-12710-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_dover_ontario-12710-can-meds:
+      position: [42.78, -80.2]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (0.857) > MLW (0.845)
+          - MHWS (0.895) < MHW (0.899)
+          - "Seasonal band (0.157m) is 10.6x the largest tidal constituent M2 (0.015m): the yearly swing exceeds the daily one"

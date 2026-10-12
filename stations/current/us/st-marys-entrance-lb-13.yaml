@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/kb0101
+redirect_from:
+  - /currents/us/fl/st-marys-entrance/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/kb0101:
+      position: [30.7103, -81.3731]
+      coastline: unverifiable

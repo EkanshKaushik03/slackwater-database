@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6736
+redirect_from:
+  - /currents/us/sc/bennis-range/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6736:
+      position: [32.77629852294922, -79.89920043945312]
+      coastline: unverifiable

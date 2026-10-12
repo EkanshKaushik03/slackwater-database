@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/nassau_river_near_tisonia_fl-2231291-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nassau_river_near_tisonia_fl-2231291-usa-usgs:
+      position: [30.550793, -81.589818]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0.625
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.035
+        issues:
+          - MLWS (2.948) > MLW (2.859)

@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/ACT0451
+redirect_from:
+  - /currents/us/me/leadbetter-island-northwest-tip/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0451:
+      position: [44.08383, -68.91117]
+      coastline: unverifiable

@@ -1,0 +1,25 @@
+sources:
+  - ticon/simpevarp-sim-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/simpevarp-sim-swe-cmems:
+      position: [57.409199, 16.6759]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/simpevarp_sjov-35200-swe-smhi
+        seasonal_dominant: true
+        score: 52
+        factors:
+          epoch: 0.322
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.161) > MLW (0.152)
+          - MHWS (0.177) < MHW (0.178)
+          - "Seasonal band (0.064m) is 7.1x the largest tidal constituent K1 (0.009m): the yearly swing exceeds the daily one"

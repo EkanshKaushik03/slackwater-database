@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/sw_pass-8760943-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sw_pass-8760943-usa-noaa:
+      position: [28.925, -89.4183]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.397
+          recency: 0.78
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (4.532) > MLW (4.5)
+          - MHWS (4.588) < MHW (4.623)
+          - "Superseded source: noaa"

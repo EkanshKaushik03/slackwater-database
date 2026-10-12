@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4986
+redirect_from:
+  - /currents/us/md/sandy-point-2-3-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4986:
+      position: [39.00267, -76.34883]
+      coastline: unverifiable

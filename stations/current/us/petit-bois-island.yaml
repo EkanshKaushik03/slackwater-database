@@ -1,0 +1,9 @@
+region: US-AL
+sources:
+  - noaa/MOB1104
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/MOB1104:
+      position: [30.22178, -88.3708]
+      coastline: unverifiable

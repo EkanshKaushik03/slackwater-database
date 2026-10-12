@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-fair-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-fair-harbour:
+      position: [50.068867, -127.138867]
+      coastline: clear

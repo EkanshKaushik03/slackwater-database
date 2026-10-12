@@ -1,0 +1,11 @@
+region: US-NC
+sources:
+  - noaa/ACT6361
+redirect_from:
+  - /currents/us/nc/morehead-city/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6361:
+      position: [34.71667, -76.73283]
+      coastline: unverifiable

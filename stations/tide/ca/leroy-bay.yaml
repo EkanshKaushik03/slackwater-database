@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-leroy-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-leroy-bay:
+      position: [51.273, -127.664]
+      coastline: clear

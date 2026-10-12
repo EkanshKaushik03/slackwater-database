@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/old_river_barrier_near_dmc_below-b95365-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_barrier_near_dmc_below-b95365-usa-cdwr:
+      position: [37.811111, -121.543889]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/old_r_nr_delta_mendota_canal_ca-11312968-usa-usgs
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (0.906) > MLW (0.889)

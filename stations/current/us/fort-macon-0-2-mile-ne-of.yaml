@@ -1,0 +1,11 @@
+region: US-NC
+sources:
+  - noaa/ACT6341
+redirect_from:
+  - /currents/us/nc/fort-macon-0-2-nm-ne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6341:
+      position: [34.69967, -76.67533]
+      coastline: unverifiable

@@ -1,0 +1,20 @@
+sources:
+  - ticon/progreso-402-mex-unam_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/progreso-402-mex-unam_hist:
+      position: [21.303333, -89.666667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 49
+        factors:
+          epoch: 1
+          recency: 0.68
+          source: 0.131
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.45) < MHW (1.469)

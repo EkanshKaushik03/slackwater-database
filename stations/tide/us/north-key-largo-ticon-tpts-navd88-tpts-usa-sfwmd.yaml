@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/tpts_navd88-tpts-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tpts_navd88-tpts-usa-sfwmd:
+      position: [25.203333, -80.372222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.045
+        issues:
+          - MLWS (0.174) > MLW (0.084)
+          - MHWS (0.384) < MHW (0.469)
+          - "Seasonal band (0.109m) is 1.1x the largest tidal constituent M2 (0.095m): the yearly swing exceeds the daily one"

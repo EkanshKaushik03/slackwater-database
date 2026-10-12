@@ -1,0 +1,21 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Fos-sur-Mer
+sources:
+  - ticon/fos_sur_mer-719-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fos_sur_mer-719-fra-refmar:
+      position: [43.404935, 4.892935]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 0.949
+          recency: 0.97
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/stockton_california-9414883-usa-da_sat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/stockton_california-9414883-usa-da_sat:
+      position: [37.958333, -121.29]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9414883
+        score: 58
+        factors:
+          epoch: 1
+          recency: 0.28
+          source: 0
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.129) > MLW (1.124)

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-thompson-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-thompson-bay:
+      position: [52.16, -128.358]
+      coastline: unverifiable

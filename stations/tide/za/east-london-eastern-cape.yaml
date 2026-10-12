@@ -1,0 +1,20 @@
+sources:
+  - ticon/east_london-187a-zaf-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/east_london-187a-zaf-uhslc_rq:
+      position: [-33.017, 27.917]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/east_london-187-zaf-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.038

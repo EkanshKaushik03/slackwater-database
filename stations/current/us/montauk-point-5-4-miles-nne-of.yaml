@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2396
+redirect_from:
+  - /currents/us/ny/montauk-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2396:
+      position: [41.15917, -71.82467]
+      coastline: unverifiable

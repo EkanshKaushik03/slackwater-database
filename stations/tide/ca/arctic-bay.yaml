@@ -1,0 +1,9 @@
+region: CA-NU
+sources:
+  - chs-arctic-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-arctic-bay:
+      position: [72.99271, -85.0619]
+      coastline: unverifiable

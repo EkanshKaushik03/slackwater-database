@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6811
+redirect_from:
+  - /currents/us/sc/filbin-creek-reach/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6811:
+      position: [32.88867, -79.96533]
+      coastline: unverifiable

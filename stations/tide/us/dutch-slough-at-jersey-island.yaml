@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/dutch_slough_at_jersey_island-dsj-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dutch_slough_at_jersey_island-dsj-usa-cdwr:
+      position: [38.013, -121.671]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/dutch_slough_bl_jersey_island_rd_a_jersey_island-11313433-usa-usgs
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.006
+        issues:
+          - MLWS (0.968) > MLW (0.951)

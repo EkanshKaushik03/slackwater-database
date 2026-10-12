@@ -1,0 +1,23 @@
+sources:
+  - ticon/lombrum-56130-png-bom
+redirect_from:
+  - /tides/pg/lombrum-manus-province/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lombrum-56130-png-bom:
+      position: [-2.0367, 147.3753]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (0.649) > MLW (0.641)
+          - MHWS (0.941) < MHW (0.98)

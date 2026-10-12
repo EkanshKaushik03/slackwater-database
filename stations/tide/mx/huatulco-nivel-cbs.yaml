@@ -1,0 +1,20 @@
+sources:
+  - ticon/huatulco_nivelcbs-13-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/huatulco_nivelcbs-13-mex-unam:
+      position: [15.753333, -96.13]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/huatulco-409-mex-unam_hist
+        score: 51
+        factors:
+          epoch: 0.161
+          recency: 0.98
+          source: 0.141
+          quality: 1
+          amplitude: 1
+          coverage: 0

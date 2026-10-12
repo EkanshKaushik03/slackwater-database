@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-charlottetown-nl
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-charlottetown-nl:
+      position: [48.434052, -54.004372]
+      coastline: unverifiable

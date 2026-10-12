@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-kwatsi-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-kwatsi-bay:
+      position: [50.8643, -126.2486]
+      coastline: clear

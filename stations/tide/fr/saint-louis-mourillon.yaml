@@ -1,0 +1,18 @@
+sources:
+  - ticon/saintlouismourillontg_10minute-sai-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/saintlouismourillontg_10minute-sai-fra-cmems:
+      position: [43.1059, 5.937]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 32
+        factors:
+          epoch: 0.1
+          recency: 0.91
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.046

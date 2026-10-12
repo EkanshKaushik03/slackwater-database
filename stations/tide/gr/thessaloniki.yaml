@@ -1,0 +1,18 @@
+sources:
+  - ticon/thessaloniki-the-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/thessaloniki-the-grc-cmems:
+      position: [40.630001, 22.91]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.29
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 1

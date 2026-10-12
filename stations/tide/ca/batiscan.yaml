@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-batiscan
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-batiscan:
+      position: [46.500333, -72.245833]
+      coastline: unverifiable

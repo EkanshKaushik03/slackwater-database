@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/hunger_harbour_bc-9570-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hunger_harbour_bc-9570-can-meds:
+      position: [52.77, -132.05]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.83
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.53

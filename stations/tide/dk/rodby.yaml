@@ -1,0 +1,21 @@
+sources:
+  - ticon/rodby-rod-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rodby-rod-dnk-cmems:
+      position: [54.650002, 11.35]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.37
+        issues:
+          - HAT (0.2) < MHHW (0.211)

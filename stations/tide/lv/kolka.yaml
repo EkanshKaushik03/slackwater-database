@@ -1,0 +1,23 @@
+sources:
+  - ticon/kolka-kol-lva-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kolka-kol-lva-cmems:
+      position: [57.733299, 22.5833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 59
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.579
+        issues:
+          - MLWS (0.056) > MLW (0.036)
+          - MHWS (0.064) < MHW (0.076)
+          - "Seasonal band (0.105m) is 7.5x the largest tidal constituent K1 (0.014m): the yearly swing exceeds the daily one"

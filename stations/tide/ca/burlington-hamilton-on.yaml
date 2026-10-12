@@ -1,0 +1,23 @@
+region: CA-ON
+sources:
+  - ticon/burlington_ontario-13150-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/burlington_ontario-13150-can-meds:
+      position: [43.3, -79.79]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.129
+        issues:
+          - MHWS (0.692) < MHW (0.696)
+          - "Seasonal band (0.306m) is 37.7x the largest tidal constituent M2 (0.008m): the yearly swing exceeds the daily one"

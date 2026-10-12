@@ -1,0 +1,18 @@
+sources:
+  - noaa/9759110
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9759110:
+      position: [17.97011111111111, -67.04638888888888]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

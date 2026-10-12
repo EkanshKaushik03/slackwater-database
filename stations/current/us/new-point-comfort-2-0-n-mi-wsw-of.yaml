@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5516
+redirect_from:
+  - /currents/us/va/new-point-comfort-2-0-nm-wsw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5516:
+      position: [37.295, -76.32083]
+      coastline: unverifiable

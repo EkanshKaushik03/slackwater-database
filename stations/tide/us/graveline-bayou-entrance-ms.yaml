@@ -1,0 +1,24 @@
+region: US-MS
+sources:
+  - ticon/graveline_bayou_entrance-8742205-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/graveline_bayou_entrance-8742205-usa-noaa:
+      position: [30.3617, -88.6633]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.054
+          recency: 0.55
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.083) > MLW (1.036)
+          - MHWS (1.191) < MHW (1.253)
+          - "Superseded source: noaa"

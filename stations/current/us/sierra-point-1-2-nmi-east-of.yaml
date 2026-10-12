@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0476
+redirect_from:
+  - /currents/us/ca/sierra-point-1-2-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0476:
+      position: [37.678, -122.3175]
+      coastline: unverifiable

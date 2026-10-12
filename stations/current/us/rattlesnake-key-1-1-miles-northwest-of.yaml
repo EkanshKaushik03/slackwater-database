@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/ACT8436
+redirect_from:
+  - /currents/us/fl/rattlesnake-key-1-0-nm-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8436:
+      position: [27.57083, -82.64383]
+      coastline: unverifiable

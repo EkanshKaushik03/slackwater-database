@@ -1,0 +1,21 @@
+region: US-NY
+sources:
+  - ticon/west_pond_at_glen_cove_ny-1302600-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/west_pond_at_glen_cove_ny-1302600-usa-usgs:
+      position: [40.888556, -73.638]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.855
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.063
+        issues:
+          - MLW (0.147) < MLLW (0.176)

@@ -1,0 +1,8 @@
+sources:
+  - noaa/PWS0721
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PWS0721:
+      position: [59.86825, -147.28112]
+      coastline: unverifiable

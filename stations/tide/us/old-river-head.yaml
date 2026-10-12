@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/old_river_head-b95400-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_head-b95400-usa-cdwr:
+      position: [37.807609, -121.281282]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.065
+        issues:
+          - MHHW (1.947) < MHW (1.958)
+          - MHWS (1.828) < MHW (1.958)
+          - "Seasonal band (0.353m) is 2.5x the largest tidal constituent M2 (0.143m): the yearly swing exceeds the daily one"

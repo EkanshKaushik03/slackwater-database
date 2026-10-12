@@ -1,0 +1,23 @@
+region: US-LA
+sources:
+  - ticon/lawma-8764227-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lawma-8764227-usa-noaa:
+      position: [29.449611, -91.338111]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (7.651) < MHW (7.685)
+          - "Superseded source: noaa"

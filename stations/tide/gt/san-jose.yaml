@@ -1,0 +1,20 @@
+sources:
+  - ticon/san_jose-675a-gtm-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_jose-675a-gtm-uhslc_rq:
+      position: [13.917, -90.833]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/TWC0369
+        score: 64
+        factors:
+          epoch: 1
+          recency: 0.49
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

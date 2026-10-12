@@ -1,0 +1,21 @@
+sources:
+  - ticon/kapsali-kap-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kapsali-kap-grc-cmems:
+      position: [36.142899, 22.99935]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 55
+        factors:
+          epoch: 0.478
+          recency: 0.96
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.102m) is 4.6x the largest tidal constituent M2 (0.022m): the yearly swing exceeds the daily one"

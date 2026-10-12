@@ -1,0 +1,18 @@
+sources:
+  - ticon/suurhofbrug_noordzijde-suurhbnzde-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/suurhofbrug_noordzijde-suurhbnzde-nld-rws:
+      position: [51.937687, 4.107234]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.754
+          recency: 0.87
+          source: 0.788
+          quality: 1
+          amplitude: 1
+          coverage: 0.087

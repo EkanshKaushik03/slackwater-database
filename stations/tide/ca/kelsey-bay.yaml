@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-kelsey-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-kelsey-bay:
+      position: [50.398, -125.961]
+      coastline: clear

@@ -1,0 +1,21 @@
+region: CA-BC
+sources:
+  - ticon/saanichton_bay_bc-7255-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/saanichton_bay_bc-7255-can-meds:
+      position: [48.6, -123.39]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.096
+          recency: 0.93
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.111
+        issues:
+          - MHWS (2.788) < MHW (2.797)

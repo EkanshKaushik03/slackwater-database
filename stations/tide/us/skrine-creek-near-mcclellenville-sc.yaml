@@ -1,0 +1,19 @@
+region: US-SC
+sources:
+  - ticon/skrine_creek_near_mcclellenville_sc-2171920-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/skrine_creek_near_mcclellenville_sc-2171920-usa-usgs:
+      position: [33.074444, -79.419167]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.419
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.077

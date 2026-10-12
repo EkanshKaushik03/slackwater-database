@@ -1,0 +1,24 @@
+region: US-NC
+sources:
+  - ticon/uscg_station_hatteras-8654467-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/uscg_station_hatteras-8654467-usa-noaa:
+      position: [35.208639, -75.704167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.815
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"
+          - "Seasonal band (0.068m) is 1.5x the largest tidal constituent M2 (0.044m): the yearly swing exceeds the daily one"

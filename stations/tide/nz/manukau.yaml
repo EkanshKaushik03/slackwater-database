@@ -1,0 +1,18 @@
+sources:
+  - ticon/manukau-mnkt-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/manukau-mnkt-nzl-ttw:
+      position: [-37.046111, 174.511389]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0.775
+          recency: 0.98
+          source: 0.091
+          quality: 1
+          amplitude: 1
+          coverage: 0.544

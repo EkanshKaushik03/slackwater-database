@@ -1,0 +1,20 @@
+sources:
+  - ticon/hastingspiertg-has-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hastingspiertg-has-gbr-cmems:
+      position: [50.85088, 0.572861]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hastings_pier-hgp-gbr-cco
+        score: 54
+        factors:
+          epoch: 0.452
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

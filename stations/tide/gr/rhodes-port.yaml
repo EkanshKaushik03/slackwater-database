@@ -1,0 +1,21 @@
+sources:
+  - ticon/rhodes_port-rho-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rhodes_port-rho-grc-cmems:
+      position: [36.442104, 28.2374]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 60
+        factors:
+          epoch: 0.082
+          recency: 0.96
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.908
+        issues:
+          - "Seasonal band (0.082m) is 1.4x the largest tidal constituent M2 (0.058m): the yearly swing exceeds the daily one"

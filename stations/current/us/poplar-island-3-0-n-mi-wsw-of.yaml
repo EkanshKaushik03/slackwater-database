@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4931
+redirect_from:
+  - /currents/us/md/poplar-island-3-0-nm-wsw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4931:
+      position: [38.74967, -76.4455]
+      coastline: unverifiable

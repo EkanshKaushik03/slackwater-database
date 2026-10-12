@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/ACT0296
+redirect_from:
+  - /currents/us/me/islesboro-harbor-ne-of-penobscot-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0296:
+      position: [44.31717, -68.87783]
+      coastline: unverifiable

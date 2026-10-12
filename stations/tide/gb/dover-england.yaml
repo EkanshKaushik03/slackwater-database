@@ -1,0 +1,18 @@
+sources:
+  - ticon/dover-dov-gbr-bodc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dover-dov-gbr-bodc:
+      position: [51.114389, 1.322528]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.98
+          quality: 1
+          amplitude: 1
+          coverage: 0.01

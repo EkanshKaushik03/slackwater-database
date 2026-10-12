@@ -1,0 +1,15 @@
+name: Second Narrows
+context: Burrard Inlet
+region: CA-BC
+cities: [Vancouver]
+position: [49.2947, -123.0245]
+provider: chs
+tide_reference: chs-vancouver
+sources:
+  - chs-second-narrows
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-second-narrows:
+      position: [49.2947, -123.0245]
+      coastline: clear

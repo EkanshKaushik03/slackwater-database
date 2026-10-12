@@ -1,0 +1,19 @@
+region: US-NC
+sources:
+  - noaa/8658145
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8658145:
+      position: [34.217899322509766, -77.81230163574219]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.048

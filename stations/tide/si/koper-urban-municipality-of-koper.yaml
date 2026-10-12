@@ -1,0 +1,24 @@
+sources:
+  - ticon/koper_10minute-kop-svn-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/koper_10minute-kop-svn-cmems:
+      position: [45.548199, 13.7245]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        score: 0
+        factors:
+          epoch: 0.536
+          recency: 0.89
+          source: 0.02
+          quality: 1
+          amplitude: 0.75
+          coverage: 0
+        issues:
+          - MLWS (2.243) > MLW (2.017)
+          - MHWS (2.245) < MHW (2.487)
+          - HAT (2.501) < MHHW (2.555)
+          - N2 amplitude (0.0002) exceeds M2 (0.0002)

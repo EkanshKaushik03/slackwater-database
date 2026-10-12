@@ -1,0 +1,26 @@
+region: CA-QC
+sources:
+  - ticon/grenville-16045-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/grenville-16045-can-meds:
+      position: [45.63, -74.61]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.57
+          source: 0.96
+          quality: 0
+          amplitude: 0.75
+          coverage: 0.382
+        issues:
+          - MHWS (0.831) < MHW (0.844)
+          - "P1 amplitude (0.0088) exceeds K1 (0.0078): physically impossible"
+          - "Seasonal band (0.076m) is 8.6x the largest tidal constituent P1 (0.009m): the yearly swing exceeds the daily one"
+          - Q1 amplitude (0.0006) exceeds O1 (0.0006)

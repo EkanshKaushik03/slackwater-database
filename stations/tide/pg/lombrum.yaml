@@ -1,0 +1,21 @@
+sources:
+  - ticon/lombrum-400-png-uhslc_fd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lombrum-400-png-uhslc_fd:
+      position: [-2.033, 147.367]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.02
+        issues:
+          - MLWS (0.658) > MLW (0.651)
+          - MHWS (0.95) < MHW (0.988)

@@ -1,0 +1,23 @@
+sources:
+  - ticon/scott_base_antarctica-scot-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/scott_base_antarctica-scot-nzl-ttw:
+      position: [-77.8501, 166.769]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/scott_base-663a-nzl-uhslc_rq
+        score: 41
+        factors:
+          epoch: 0.483
+          recency: 0.98
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (2.128) > MLW (2.096)
+          - MHWS (2.248) < MHW (2.385)

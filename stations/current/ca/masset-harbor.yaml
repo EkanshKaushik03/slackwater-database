@@ -1,0 +1,11 @@
+region: CA-BC
+sources:
+  - noaa/PCT2616
+redirect_from:
+  - /currents/us/masset-harbor/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2616:
+      position: [54.01667, -132.16667]
+      coastline: clear

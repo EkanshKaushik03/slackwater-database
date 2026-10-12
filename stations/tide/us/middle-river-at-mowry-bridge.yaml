@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/middle_river_at_mowry_bridge-b95540-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/middle_river_at_mowry_bridge-b95540-usa-cdwr:
+      position: [37.835278, -121.383611]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - MHWS (1.664) < MHW (1.7)
+          - "Seasonal band (0.186m) is 1.2x the largest tidal constituent M2 (0.155m): the yearly swing exceeds the daily one"

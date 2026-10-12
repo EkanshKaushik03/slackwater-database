@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1134
+redirect_from:
+  - /currents/us/ma/stellwagen-basin-13-8-nm-se-of-eastern-point-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1134:
+      position: [42.38818, -70.48302]
+      coastline: unverifiable

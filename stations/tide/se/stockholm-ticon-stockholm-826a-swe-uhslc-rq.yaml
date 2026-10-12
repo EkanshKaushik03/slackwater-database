@@ -1,0 +1,24 @@
+sources:
+  - ticon/stockholm-826a-swe-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/stockholm-826a-swe-uhslc_rq:
+      position: [59.325, 18.082]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/stockholm-826-swe-uhslc_fd
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (6.919) > MLW (6.912)
+          - "Seasonal band (0.092m) is 10.6x the largest tidal constituent M2 (0.009m): the yearly swing exceeds the daily one"

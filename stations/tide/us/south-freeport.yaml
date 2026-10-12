@@ -1,0 +1,19 @@
+region: US-ME
+sources:
+  - noaa/8417801
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8417801:
+      position: [43.82, -70.1033]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.163

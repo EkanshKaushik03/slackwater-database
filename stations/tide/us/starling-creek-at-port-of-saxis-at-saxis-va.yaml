@@ -1,0 +1,23 @@
+region: US-VA
+sources:
+  - ticon/starling_creek_at_port_of_saxis_at_saxis_va-1484938-usa-usgs
+redirect_from:
+  - /tides/us/md/starling-creek-at-port-of-saxis-at-saxis-va/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/starling_creek_at_port_of_saxis_at_saxis_va-1484938-usa-usgs:
+      position: [37.918828, -75.727539]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8633777
+        score: 67
+        factors:
+          epoch: 0.52
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.006

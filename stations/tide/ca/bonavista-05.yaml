@@ -1,0 +1,19 @@
+region: CA-NL
+sources:
+  - ticon/bonavista-990-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bonavista-990-can-meds:
+      position: [48.65, -53.12]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

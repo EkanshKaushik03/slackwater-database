@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-montmorency
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-montmorency:
+      position: [46.881167, -71.144667]
+      coastline: unverifiable

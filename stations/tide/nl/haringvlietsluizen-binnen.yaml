@@ -1,0 +1,21 @@
+sources:
+  - ticon/haringvlietsluizen_binnen-harvszbnn-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/haringvlietsluizen_binnen-harvszbnn-nld-rws_hist:
+      position: [51.835992, 4.054941]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.609
+          recency: 0.59
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.02
+        issues:
+          - "Superseded source: rws_hist"

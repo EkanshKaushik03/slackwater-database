@@ -1,0 +1,11 @@
+region: US-DE
+sources:
+  - noaa/ACT4076
+redirect_from:
+  - /currents/us/de/cape-henlopen-0-7-nm-ese/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4076:
+      position: [38.7995, -75.08167]
+      coastline: unverifiable

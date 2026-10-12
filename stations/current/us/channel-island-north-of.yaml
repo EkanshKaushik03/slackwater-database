@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3086
+redirect_from:
+  - /currents/us/ak/channel-island-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3086:
+      position: [56.37517, -132.16967]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/ACT0101
+redirect_from:
+  - /currents/us/me/western-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0101:
+      position: [44.93167, -67]
+      coastline: unverifiable

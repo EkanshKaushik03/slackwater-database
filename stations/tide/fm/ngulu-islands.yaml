@@ -1,0 +1,18 @@
+sources:
+  - noaa/TPT2639
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TPT2639:
+      position: [8.300000190734863, 137.48330688476562]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0
+          recency: 0
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1

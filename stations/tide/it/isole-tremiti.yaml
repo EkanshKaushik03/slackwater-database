@@ -1,0 +1,18 @@
+sources:
+  - ticon/rmn_isoletremiti-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_isoletremiti-rmn-ita-cmems:
+      position: [42.1189, 15.5016]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 58
+        factors:
+          epoch: 0.619
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

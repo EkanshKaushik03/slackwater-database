@@ -1,0 +1,23 @@
+region: US-SC
+sources:
+  - ticon/ashepoo_river_at_us17_nr_greenpond_sc-2175148-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ashepoo_river_at_us17_nr_greenpond_sc-2175148-usa-usgs:
+      position: [32.743889, -80.556389]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8665814
+        score: 60
+        factors:
+          epoch: 0.16
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (2.418) > MLW (2.335)

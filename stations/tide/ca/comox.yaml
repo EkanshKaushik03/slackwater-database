@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-comox
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-comox:
+      position: [49.67, -124.928]
+      coastline: clear

@@ -1,0 +1,20 @@
+sources:
+  - ticon/papeeteuhslctg_01minute-pap-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/papeeteuhslctg_01minute-pap-fra-cmems:
+      position: [-17.533119, -149.57272]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/1732417
+        score: 47
+        factors:
+          epoch: 0.845
+          recency: 0.98
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-labouchere-channel-east
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-labouchere-channel-east:
+      position: [52.3829, -127.20847]
+      coastline: unverifiable

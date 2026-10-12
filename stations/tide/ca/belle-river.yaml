@@ -1,0 +1,27 @@
+region: CA-ON
+sources:
+  - ticon/belle_river_ontario-11965-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/belle_river_ontario-11965-can-meds:
+      position: [42.3, -82.71]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.373
+        issues:
+          - MHHW (0.84) < MHW (0.854)
+          - MHWS (0.811) < MHW (0.854)
+          - MSL (0.81) <= MLW (0.838)
+          - "Seasonal band (0.160m) is 90.9x the largest tidal constituent S1 (0.002m): the yearly swing exceeds the daily one"
+          - Q1 amplitude (0.0002) exceeds O1 (0.0001)

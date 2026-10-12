@@ -1,0 +1,24 @@
+region: US-NY
+sources:
+  - ticon/buffalo_ny-9063020-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/buffalo_ny-9063020-usa-noaa:
+      position: [42.877444, -78.890472]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.079
+        issues:
+          - MLWS (174.363) > MLW (174.338)
+          - MHWS (174.399) < MHW (174.418)
+          - "Seasonal band (0.139m) is 10.7x the largest tidal constituent M2 (0.013m): the yearly swing exceeds the daily one"

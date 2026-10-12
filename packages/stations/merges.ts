@@ -7,12 +7,14 @@
  * when the two agree on position and M2. Otherwise quality's `redundant` link,
  * made by its proximity, gauge-key and harmonic checks, joins a duplicate to
  * the record it duplicates. Joined
- * routes collapse onto the shortest published slug, so a clean URL such as
- * `bergen` survives even when an authoritative record took a suffixed one.
+ * routes collapse onto the published slug that names the primary record, so a
+ * clean URL such as `bergen` survives even when an authoritative record took a
+ * suffixed one.
  */
 import type { DatabaseRoutes, StationQuality } from "@slackwater/database";
 import { declaredOriginator } from "../../sources/ticon/provenance.ts";
 import { distance, isAuthoritative, MIN_AMPLITUDE_RATIO } from "./filtering.ts";
+import { toSlug } from "./routes.ts";
 import type { ResolvedStation } from "./metadata.ts";
 
 /** The farthest a relay may sit from the originator it declares. */
@@ -40,6 +42,8 @@ export interface MergeGroup {
   survivor: string;
   /** The record quality would choose to publish under it. */
   primary: string;
+  /** Whether the primary comes from an authoritative source, whose geography the station takes. */
+  authoritative: boolean;
   /** Every published slug in the group, survivor first. */
   slugs: string[];
   members: MergeMember[];
@@ -147,25 +151,45 @@ export function planMerges(
     const ids = slugs.flatMap((slug) => idsBySlug.get(slug)!);
     const records = ids.flatMap((id) => byId.get(id) ?? []);
     const accepted = records.filter(({ id }) => quality.get(id)?.accepted);
-    const authoritative = accepted.filter(isAuthoritative);
-    // Two accepted authoritative records are two gauges a provider publishes
-    // separately; joining them needs a person, not a chain of evidence.
-    if (authoritative.length > 1) {
+    // Two authoritative records are two station numbers a provider publishes,
+    // even when quality rejects one as a duplicate; joining them needs a
+    // person, not a chain of evidence.
+    if (records.filter(isAuthoritative).length > 1) {
       conflicts.push({
         slugs,
-        authoritative: authoritative.map(({ id }) => id),
+        authoritative: records.filter(isAuthoritative).map(({ id }) => id),
       });
       continue;
     }
     const primary =
-      authoritative[0] ??
+      accepted.find(isAuthoritative) ??
       [...accepted].sort(
         (a, b) =>
           quality.get(b.id)!.score - quality.get(a.id)!.score ||
           byCodepoint(a.id, b.id),
       )[0] ??
       records[0]!;
-    const survivor = slugs[0]!;
+    // The URL should name what the station shows, its primary record: its
+    // name exactly, else the primary's own slug, else the shortest one that
+    // starts with the name. A slug ending in a record id is the ladder's last
+    // resort and loses to any other.
+    const own = toSlug(primary.name ?? "");
+    const primarySlug = slugOf.get(primary.id);
+    const idRung = (slug: string) =>
+      idsBySlug.get(slug)!.some((id) => slug.endsWith(`-${toSlug(id)}`));
+    const rank = (slug: string) => [
+      slug === own ? 0 : 1,
+      idRung(slug) ? 1 : 0,
+      slug === primarySlug ? 0 : 1,
+      slug.startsWith(`${own}-`) ? 0 : 1,
+    ];
+    const survivor = [...slugs].sort((a, b) => {
+      const [ra, rb] = [rank(a), rank(b)];
+      const i = ra.findIndex((value, index) => value !== rb[index]);
+      return i >= 0 ? ra[i]! - rb[i]! : shortestSlug(a, b);
+    })[0]!;
+    slugs.splice(slugs.indexOf(survivor), 1);
+    slugs.unshift(survivor);
     const members = records.map((record): MergeMember => {
       const joined = evidence.get(record.id);
       return {
@@ -179,6 +203,7 @@ export function planMerges(
     groups.push({
       survivor,
       primary: primary.id,
+      authoritative: isAuthoritative(primary),
       slugs,
       members,
       mechanical: members.every(

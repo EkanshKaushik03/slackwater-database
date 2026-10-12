@@ -1,0 +1,20 @@
+sources:
+  - ticon/funafuti-025b-tuv-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/funafuti-025b-tuv-uhslc_rq:
+      position: [-8.503, 179.21]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/funafuti-025-tuv-uhslc_fd
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.033

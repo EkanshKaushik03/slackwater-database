@@ -1,0 +1,24 @@
+sources:
+  - ticon/pori-por-fin-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pori-por-fin-cmems:
+      position: [61.594398, 21.4634]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.01
+        issues:
+          - MLWS (0.017) > MLW (0.003)
+          - MHW (0.025) <= MSL (0.025)
+          - "Seasonal band (0.115m) is 20.5x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

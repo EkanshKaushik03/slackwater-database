@@ -1,0 +1,21 @@
+region: CA-BC
+sources:
+  - ticon/bamfield-541-can-uhslc_fd
+redirect_from:
+  - /tides/ca/bc/bamfield-02/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bamfield-541-can-uhslc_fd:
+      position: [48.833, -125.133]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.99
+          quality: 0
+          amplitude: 1
+          coverage: 0.019

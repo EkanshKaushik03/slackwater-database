@@ -1,0 +1,20 @@
+sources:
+  - ticon/moji-hd17-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/moji-yamaguchi/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/moji-hd17-jpn-jodc_jcg:
+      position: [33.95695, 130.961383]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 1
+          recency: 0.82
+          source: 0.111
+          quality: 0
+          amplitude: 1
+          coverage: 0.027

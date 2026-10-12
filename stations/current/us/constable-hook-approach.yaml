@@ -1,0 +1,9 @@
+region: US-NY
+sources:
+  - noaa/NYH1914
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/NYH1914:
+      position: [40.650699615478516, -74.06060028076172]
+      coastline: unverifiable

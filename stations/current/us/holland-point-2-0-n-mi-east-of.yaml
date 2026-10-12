@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4936
+redirect_from:
+  - /currents/us/md/holland-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4936:
+      position: [38.75167, -76.49883]
+      coastline: unverifiable

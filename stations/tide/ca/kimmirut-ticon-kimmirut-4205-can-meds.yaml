@@ -1,0 +1,18 @@
+sources:
+  - ticon/kimmirut-4205-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kimmirut-4205-can-meds:
+      position: [62.8, -69.78]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 79
+        factors:
+          epoch: 0.265
+          recency: 0.49
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

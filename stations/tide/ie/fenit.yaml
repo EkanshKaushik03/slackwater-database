@@ -1,0 +1,18 @@
+sources:
+  - ticon/fenit-fen-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fenit-fen-irl-cmems:
+      position: [52.2696, -9.8621]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 46
+        factors:
+          epoch: 0.8
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.003

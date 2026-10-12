@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7671
+redirect_from:
+  - /currents/us/ga/s-newport-river/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7671:
+      position: [31.65033, -81.302]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-seymour-narrows-2
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-seymour-narrows-2:
+      position: [50.135, -125.346]
+      coastline: clear

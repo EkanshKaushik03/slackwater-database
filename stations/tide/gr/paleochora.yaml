@@ -1,0 +1,21 @@
+sources:
+  - ticon/paleochora-pal-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/paleochora-pal-grc-cmems:
+      position: [35.23019, 23.683437]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 55
+        factors:
+          epoch: 0.477
+          recency: 0.96
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.105m) is 8.4x the largest tidal constituent M2 (0.012m): the yearly swing exceeds the daily one"

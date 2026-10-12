@@ -1,0 +1,22 @@
+region: US-AK
+sources:
+  - noaa/9468216
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9468216:
+      position: [63.62, -171.383]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 95
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.845
+        issues:
+          - "Seasonal band (0.118m) is 1.1x the largest tidal constituent M2 (0.111m) (from reference noaa/9468756): the yearly swing exceeds the daily one"

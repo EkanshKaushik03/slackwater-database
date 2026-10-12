@@ -1,0 +1,9 @@
+region: US-CA
+sources:
+  - noaa/hb0401
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/hb0401:
+      position: [40.7775, -124.19661]
+      coastline: unverifiable

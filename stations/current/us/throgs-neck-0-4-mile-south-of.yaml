@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3326
+redirect_from:
+  - /currents/us/ny/throgs-neck-0-3-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3326:
+      position: [40.79833, -73.79083]
+      coastline: unverifiable

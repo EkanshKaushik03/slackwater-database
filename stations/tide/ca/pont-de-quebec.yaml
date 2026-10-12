@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-pont-de-quebec
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pont-de-quebec:
+      position: [46.745581, -71.287938]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+sources:
+  - ticon/zakynthos-zak-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/zakynthos-zak-grc-cmems:
+      position: [37.781422, 20.905199]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.404
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.062m) is 1.4x the largest tidal constituent M2 (0.043m): the yearly swing exceeds the daily one"

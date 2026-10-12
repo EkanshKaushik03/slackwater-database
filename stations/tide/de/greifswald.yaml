@@ -1,0 +1,23 @@
+sources:
+  - ticon/greifswaldtg-gre-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/greifswaldtg-gre-deu-cmems:
+      position: [54.092999, 13.447]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 43
+        factors:
+          epoch: 0.615
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.017
+        issues:
+          - MLWS (0.059) > MLW (0.04)
+          - MHWS (0.097) < MHW (0.109)
+          - "Seasonal band (0.043m) is 2.7x the largest tidal constituent M2 (0.016m): the yearly swing exceeds the daily one"

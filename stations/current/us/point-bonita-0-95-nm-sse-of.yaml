@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1220
+redirect_from:
+  - /currents/us/ca/point-bonita/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1220:
+      position: [37.8011, -122.5184]
+      coastline: unverifiable

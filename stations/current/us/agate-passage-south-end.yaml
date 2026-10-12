@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1501
+redirect_from:
+  - /currents/us/wa/agate-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1501:
+      position: [47.711021423339844, -122.56714630126953]
+      coastline: clear

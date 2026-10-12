@@ -1,0 +1,23 @@
+region: US-MI
+sources:
+  - ticon/holland_mi-9087031-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/holland_mi-9087031-usa-noaa:
+      position: [42.773333, -86.212778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 100
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (176.519) < MHW (176.528)
+          - "Seasonal band (0.151m) is 15.1x the largest tidal constituent M2 (0.010m): the yearly swing exceeds the daily one"

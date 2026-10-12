@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-bamfield
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-bamfield:
+      position: [48.836, -125.136]
+      coastline: clear

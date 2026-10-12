@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI1209
+redirect_from:
+  - /currents/us/ak/fire-island-0-8-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI1209:
+      position: [61.18483, -150.2015]
+      coastline: unverifiable

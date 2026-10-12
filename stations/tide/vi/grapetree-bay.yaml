@@ -1,0 +1,20 @@
+sources:
+  - noaa/9751082
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9751082:
+      position: [17.740699768066406, -64.60579681396484]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.033
+        issues:
+          - MLW (7.023) < MLLW (7.024)

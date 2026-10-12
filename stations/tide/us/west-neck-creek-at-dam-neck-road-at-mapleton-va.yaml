@@ -1,0 +1,21 @@
+region: US-VA
+sources:
+  - ticon/west_neck_creek_at_dam_neck_road_at_mapleton_va-2043155-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/west_neck_creek_at_dam_neck_road_at_mapleton_va-2043155-usa-usgs:
+      position: [36.788361, -76.070778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.485
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.063
+        issues:
+          - MHWS (0.403) < MHW (0.414)

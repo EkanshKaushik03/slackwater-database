@@ -1,0 +1,24 @@
+region: CA-ON
+sources:
+  - ticon/peace_bridge_below-12954-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/peace_bridge_below-12954-can-meds:
+      position: [42.91, -78.91]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 71
+        factors:
+          epoch: 0.409
+          recency: 0.81
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.053
+        issues:
+          - MLWS (2.591) > MLW (2.578)
+          - MHWS (2.613) < MHW (2.628)
+          - "Seasonal band (0.132m) is 6.3x the largest tidal constituent S1 (0.021m): the yearly swing exceeds the daily one"

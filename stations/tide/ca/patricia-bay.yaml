@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-patricia-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-patricia-bay:
+      position: [48.6536, -123.4515]
+      coastline: clear

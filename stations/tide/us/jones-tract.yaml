@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/jones_tract-b95480-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/jones_tract-b95480-usa-cdwr:
+      position: [37.922472, -121.518306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.712
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.052
+        issues:
+          - MHHW (0.711) < MHW (0.727)
+          - MHWS (0.698) < MHW (0.727)
+          - MSL (0.679) <= MLW (0.687)
+          - "Seasonal band (0.032m) is 2.0x the largest tidal constituent M2 (0.016m): the yearly swing exceeds the daily one"

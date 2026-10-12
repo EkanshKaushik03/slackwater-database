@@ -1,0 +1,24 @@
+region: US-IL
+sources:
+  - ticon/calumet_harbor_il-9087044-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/calumet_harbor_il-9087044-usa-noaa:
+      position: [41.729721, -87.53833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 100
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (176.486) > MLW (176.48)
+          - MHWS (176.538) < MHW (176.543)
+          - "Seasonal band (0.150m) is 8.3x the largest tidal constituent M2 (0.018m): the yearly swing exceeds the daily one"

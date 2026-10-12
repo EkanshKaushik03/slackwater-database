@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1376
+redirect_from:
+  - /currents/us/ma/rainsford-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1376:
+      position: [42.315, -70.94917]
+      coastline: unverifiable

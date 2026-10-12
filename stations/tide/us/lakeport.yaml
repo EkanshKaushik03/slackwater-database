@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/lakeport_mi-9075002-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lakeport_mi-9075002-usa-noaa:
+      position: [43.141694, -82.493306]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.321
+        issues:
+          - MLWS (176.464) > MLW (176.46)
+          - MHWS (176.486) < MHW (176.506)
+          - "Seasonal band (0.149m) is 21.1x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

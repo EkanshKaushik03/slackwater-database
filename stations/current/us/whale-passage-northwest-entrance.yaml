@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/KOD0930
+redirect_from:
+  - /currents/us/ak/whale-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/KOD0930:
+      position: [57.93959, -152.86278]
+      coastline: unverifiable

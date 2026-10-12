@@ -1,0 +1,20 @@
+sources:
+  - ticon/westkapelletg-wes-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/westkapelletg-wes-nld-cmems:
+      position: [51.522301, 3.4402]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/westkapelle-westkple-nld-rws
+        score: 57
+        factors:
+          epoch: 0.586
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

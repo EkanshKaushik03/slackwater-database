@@ -1,0 +1,22 @@
+region: CA-ON
+sources:
+  - ticon/collingwood_ontario-11500-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/collingwood_ontario-11500-can-meds:
+      position: [44.51, -80.22]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 95
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.747
+        issues:
+          - "Seasonal band (0.140m) is 10.6x the largest tidal constituent M2 (0.013m): the yearly swing exceeds the daily one"

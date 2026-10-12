@@ -1,0 +1,18 @@
+sources:
+  - ticon/zeebruggetg-zee-bel-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/zeebruggetg-zee-bel-cmems:
+      position: [51.346001, 3.2]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 41
+        factors:
+          epoch: 0.528
+          recency: 0.98
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.037

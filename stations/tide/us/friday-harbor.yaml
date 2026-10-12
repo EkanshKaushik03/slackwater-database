@@ -1,0 +1,26 @@
+# These six arrive with their own qualifier already in the raw name (e.g.
+# "Blaine, Semiahmoo Bay"), which becomes the context. Bremerton and Tacoma
+# carry a second qualifier ("Sinclair Inlet, Port Orchard"), so their context
+# is curated to the first.
+
+name: Friday Harbor
+region: US-WA
+cities: [Friday Harbor]
+sources:
+  - noaa/9449880
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9449880:
+      position: [48.54527777777778, -123.0125]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

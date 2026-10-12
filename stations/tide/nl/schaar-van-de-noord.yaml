@@ -1,0 +1,18 @@
+sources:
+  - ticon/schaar_van_de_noord-schaarvdnd-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/schaar_van_de_noord-schaarvdnd-nld-rws:
+      position: [51.377868, 4.164992]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.788
+          quality: 1
+          amplitude: 1
+          coverage: 0.078

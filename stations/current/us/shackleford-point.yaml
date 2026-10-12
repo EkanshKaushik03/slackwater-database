@@ -1,0 +1,9 @@
+region: US-NC
+sources:
+  - noaa/ACT6396
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6396:
+      position: [34.69217, -76.65217]
+      coastline: unverifiable

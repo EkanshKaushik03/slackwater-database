@@ -1,0 +1,25 @@
+region: US-LA
+sources:
+  - ticon/houma_navigation_canal_at_dulac_la-7381328-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/houma_navigation_canal_at_dulac_la-7381328-usa-usgs:
+      position: [29.385221, -90.729812]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 66
+        factors:
+          epoch: 0.645
+          recency: 0.93
+          source: 0.596
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.137
+        issues:
+          - MLWS (0.316) > MLW (0.285)
+          - MHWS (0.34) < MHW (0.387)
+          - "Seasonal band (0.094m) is 1.4x the largest tidal constituent K1 (0.067m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0045) exceeds S2 (0.0035)

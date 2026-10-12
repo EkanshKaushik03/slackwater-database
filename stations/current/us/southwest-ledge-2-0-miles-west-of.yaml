@@ -1,0 +1,11 @@
+region: US-RI
+sources:
+  - noaa/ACT2376
+redirect_from:
+  - /currents/us/ri/southwest-ledge-1-7-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2376:
+      position: [41.11333, -71.71667]
+      coastline: unverifiable

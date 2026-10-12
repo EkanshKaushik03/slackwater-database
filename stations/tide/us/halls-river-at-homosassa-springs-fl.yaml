@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/halls_river_at_homosassa_springs_fl-2310689-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/halls_river_at_homosassa_springs_fl-2310689-usa-usgs:
+      position: [28.813111, -82.605639]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 71
+        factors:
+          epoch: 0.706
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.027
+        issues:
+          - MLWS (0.077) > MLW (0.051)
+          - MHWS (0.235) < MHW (0.243)
+          - "Seasonal band (0.090m) is 1.5x the largest tidal constituent M2 (0.061m): the yearly swing exceeds the daily one"

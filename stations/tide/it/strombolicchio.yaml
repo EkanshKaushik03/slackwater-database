@@ -1,0 +1,18 @@
+sources:
+  - ticon/strombolicchio-str-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/strombolicchio-str-ita-ispra:
+      position: [38.817481, 15.251625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.631
+          recency: 0.99
+          source: 0.747
+          quality: 1
+          amplitude: 1
+          coverage: 0

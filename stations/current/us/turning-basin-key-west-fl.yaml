@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/FLK1307
+redirect_from:
+  - /currents/us/fl/turning-basin/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/FLK1307:
+      position: [24.56389, -81.80622]
+      coastline: unverifiable

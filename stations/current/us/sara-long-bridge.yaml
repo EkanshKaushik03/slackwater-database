@@ -1,0 +1,9 @@
+region: US-NH
+sources:
+  - noaa/PIR0706
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PIR0706:
+      position: [43.0887, -70.76198]
+      coastline: unverifiable

@@ -1,0 +1,23 @@
+region: US-PR
+sources:
+  - ticon/san_juan_pr-245a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/san-juan-pr-san-juan/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_juan_pr-245a-usa-uhslc_rq:
+      position: [18.46, -66.117]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/san_juan_pr-245-usa-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

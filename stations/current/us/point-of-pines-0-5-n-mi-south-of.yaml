@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT0956
+redirect_from:
+  - /currents/us/ma/point-of-pines/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0956:
+      position: [42.43283, -70.95883]
+      coastline: unverifiable

@@ -1,0 +1,20 @@
+sources:
+  - ticon/zihuatanejo_nivelcbs-21-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/zihuatanejo_nivelcbs-21-mex-unam:
+      position: [17.636667, -101.558333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/zihuatanejo-509-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.149
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0

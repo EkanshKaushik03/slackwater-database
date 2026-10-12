@@ -1,0 +1,22 @@
+sources:
+  - ticon/tauranga-073a-nzl-uhslc_rq
+redirect_from:
+  - /tides/nz/tauranga/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tauranga-073a-nzl-uhslc_rq:
+      position: [-37.65, 176.183]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: linz/073
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

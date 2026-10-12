@@ -1,0 +1,21 @@
+region: US-TX
+sources:
+  - ticon/galveston_ppier-767a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/galveston_ppier-767a-usa-uhslc_rq:
+      position: [29.287, -94.79]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/galveston_ppier-767-usa-uhslc_fd
+        score: 67
+        factors:
+          epoch: 1
+          recency: 0.85
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.004

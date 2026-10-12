@@ -1,0 +1,23 @@
+sources:
+  - ticon/koserow-9690093-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/koserow-9690093-deu-wsv:
+      position: [54.060377, 14.000819]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0.273
+        issues:
+          - MLWS (5.113) > MLW (5.106)
+          - MHWS (5.143) < MHW (5.15)
+          - "Seasonal band (0.039m) is 3.0x the largest tidal constituent M2 (0.013m): the yearly swing exceeds the daily one"

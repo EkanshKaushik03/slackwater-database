@@ -1,0 +1,18 @@
+sources:
+  - ticon/maasmond_stroommeetpaal-maasmsmpl-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/maasmond_stroommeetpaal-maasmsmpl-nld-rws:
+      position: [51.992205, 4.007711]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.578
+          recency: 0.88
+          source: 0.788
+          quality: 0
+          amplitude: 1
+          coverage: 0.069

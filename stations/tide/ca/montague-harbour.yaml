@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-montague-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-montague-harbour:
+      position: [48.8927, -123.3922]
+      coastline: clear

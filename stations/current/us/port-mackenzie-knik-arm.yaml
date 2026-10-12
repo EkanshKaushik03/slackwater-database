@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI0211
+redirect_from:
+  - /currents/us/ak/port-mackenzie-anchorage-ak/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI0211:
+      position: [61.26765, -149.91688]
+      coastline: unverifiable

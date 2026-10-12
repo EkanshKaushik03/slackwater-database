@@ -1,0 +1,18 @@
+sources:
+  - ticon/ciudad_del_carmen-403-mex-unam_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ciudad_del_carmen-403-mex-unam_hist:
+      position: [18.636667, -91.836667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 44
+        factors:
+          epoch: 0.752
+          recency: 0.65
+          source: 0.131
+          quality: 0
+          amplitude: 1
+          coverage: 0

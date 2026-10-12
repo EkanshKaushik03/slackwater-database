@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0041
+redirect_from:
+  - /currents/us/ca/ballast-point-100-yards-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0041:
+      position: [32.68333, -117.23333]
+      coastline: unverifiable

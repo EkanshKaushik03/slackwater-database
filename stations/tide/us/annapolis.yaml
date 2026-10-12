@@ -1,0 +1,22 @@
+region: US-MD
+sources:
+  - ticon/annapolis-8575512-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/annapolis-8575512-usa-noaa:
+      position: [38.98328, -76.4816]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - "Superseded source: noaa"

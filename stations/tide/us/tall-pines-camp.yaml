@@ -1,0 +1,26 @@
+region: US-NJ
+sources:
+  - ticon/tall_pines_camp-8532721-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tall_pines_camp-8532721-usa-noaa:
+      position: [40.0583, -74.1167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8532721
+        seasonal_dominant: true
+        score: 56
+        factors:
+          epoch: 0.063
+          recency: 0.51
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0
+        issues:
+          - MHWS (0.688) < MHW (0.692)
+          - "Seasonal band (0.115m) is 4.9x the largest tidal constituent M2 (0.023m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0029) exceeds S2 (0.0020)

@@ -1,0 +1,26 @@
+# NOAA names these seven by distance from a landmark the name never states
+# ("8 Miles Above Mouth"), which reads only inside its own regional listing.
+# No mapped water body covers creeks this narrow, so the derived context falls
+# to the provider's state qualifier or the nearest town, and neither is what
+# the distance is measured along.
+
+context: Loxahatchee River
+region: US-FL
+sources:
+  - noaa/8722481
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8722481:
+      position: [26.97, -80.1267]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.029

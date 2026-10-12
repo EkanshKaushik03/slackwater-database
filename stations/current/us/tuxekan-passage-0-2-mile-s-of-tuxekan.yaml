@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3456
+redirect_from:
+  - /currents/us/ak/tuxekan-passage-0-2-nm-s-of-tuxekan/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3456:
+      position: [55.88267, -133.24233]
+      coastline: unverifiable

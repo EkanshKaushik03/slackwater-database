@@ -1,0 +1,21 @@
+region: US-LA
+sources:
+  - ticon/crms0544-crms0544-usa-crms
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0544-crms0544-usa-crms:
+      position: [29.68654, -91.57303]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.925
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.068
+        issues:
+          - MHWS (0.242) < MHW (0.249)

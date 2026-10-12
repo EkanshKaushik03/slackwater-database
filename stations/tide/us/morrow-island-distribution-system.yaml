@@ -1,0 +1,25 @@
+region: US-CA
+sources:
+  - ticon/morrow_island_distribution_system-mrw-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/morrow_island_distribution_system-mrw-usa-cdwr:
+      position: [38.11207, -122.09807]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.13
+          recency: 0.95
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.014
+        issues:
+          - MLWS (0.835) > MLW (0.802)
+          - MHW (0.929) <= MSL (0.97)
+          - "Seasonal band (0.213m) is 2.0x the largest tidal constituent M2 (0.107m): the yearly swing exceeds the daily one"

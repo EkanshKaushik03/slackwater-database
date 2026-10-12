@@ -1,0 +1,25 @@
+region: US-FL
+sources:
+  - ticon/yellow_river_nr_milton_fla-2369600-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/yellow_river_nr_milton_fla-2369600-usa-usgs:
+      position: [30.569639, -86.923573]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        score: 0
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.156
+        issues:
+          - MHHW (11.729) < MHW (11.781)
+          - MHWS (11.644) < MHW (11.781)
+          - MSL (11.627) <= MLW (11.687)
+          - K2 amplitude (0.0057) exceeds S2 (0.0054)

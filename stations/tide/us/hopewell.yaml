@@ -1,0 +1,23 @@
+region: US-VA
+sources:
+  - ticon/hopewell-8638481-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hopewell-8638481-usa-noaa:
+      position: [37.3133, -77.27]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.106
+          recency: 0.86
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.173) > MLW (1.158)
+          - "Superseded source: noaa"

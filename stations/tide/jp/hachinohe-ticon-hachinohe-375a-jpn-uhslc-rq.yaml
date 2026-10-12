@@ -1,0 +1,20 @@
+sources:
+  - ticon/hachinohe-375a-jpn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hachinohe-375a-jpn-uhslc_rq:
+      position: [40.533, 141.533]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hachinohe-ma08-jpn-jodc_jma
+        score: 67
+        factors:
+          epoch: 1
+          recency: 0.85
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.009

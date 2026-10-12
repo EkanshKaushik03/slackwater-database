@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - ticon/cordova_alaska-583a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cordova_alaska-583a-usa-uhslc_rq:
+      position: [60.558, -145.753]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cordova_alaska-583b-usa-uhslc_rq
+        score: 46
+        factors:
+          epoch: 0.204
+          recency: 0.27
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

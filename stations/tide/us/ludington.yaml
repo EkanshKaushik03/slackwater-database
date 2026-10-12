@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/ludington_mi-9087023-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ludington_mi-9087023-usa-noaa:
+      position: [43.947361, -86.441611]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 100
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (176.496) > MLW (176.488)
+          - MHWS (176.5) < MHW (176.525)
+          - "Seasonal band (0.146m) is 80.4x the largest tidal constituent K1 (0.002m): the yearly swing exceeds the daily one"

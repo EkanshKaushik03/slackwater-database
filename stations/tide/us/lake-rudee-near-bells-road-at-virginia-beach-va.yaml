@@ -1,0 +1,19 @@
+region: US-VA
+sources:
+  - ticon/lake_rudee_near_bells_road_at_virginia_beach_va-204297575-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lake_rudee_near_bells_road_at_virginia_beach_va-204297575-usa-usgs:
+      position: [36.824778, -75.98525]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.486
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.006

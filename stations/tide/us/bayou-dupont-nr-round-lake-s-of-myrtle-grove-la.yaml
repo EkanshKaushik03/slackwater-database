@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/bayou_dupont_nr_round_lake_s_of_myrtle_grove_la-7380255-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bayou_dupont_nr_round_lake_s_of_myrtle_grove_la-7380255-usa-usgs:
+      position: [29.576733, -89.986408]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 63
+        factors:
+          epoch: 0.278
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.056
+        issues:
+          - MLWS (0.555) > MLW (0.485)
+          - MHWS (0.567) < MHW (0.656)
+          - "Seasonal band (0.156m) is 2.5x the largest tidal constituent O1 (0.061m): the yearly swing exceeds the daily one"

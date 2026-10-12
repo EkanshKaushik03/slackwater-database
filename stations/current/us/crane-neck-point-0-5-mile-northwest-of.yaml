@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3026
+redirect_from:
+  - /currents/us/ny/crane-neck-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3026:
+      position: [40.96667, -73.16667]
+      coastline: unverifiable

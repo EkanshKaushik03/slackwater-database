@@ -1,0 +1,22 @@
+sources:
+  - ticon/sthelier-sth-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sthelier-sth-gbr-cmems:
+      position: [49.1833, -2.1167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/st_helier_jersey-jer-gbr-bodc
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHHW (9.693) < MHW (9.705)

@@ -1,0 +1,26 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Dumont d'Urville
+sources:
+  - ticon/dumont_d_urville-108-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dumont_d_urville-108-fra-refmar:
+      position: [-66.661668, 140.010001]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "P1 amplitude (0.1049) exceeds K1 (0.0873): physically impossible"
+          - "Seasonal band (0.464m) is 2.5x the largest tidal constituent M2 (0.184m): the yearly swing exceeds the daily one"

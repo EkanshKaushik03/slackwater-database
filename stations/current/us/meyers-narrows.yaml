@@ -1,0 +1,9 @@
+context: Klemtu, British Columbia
+sources:
+  - noaa/PCT2576
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2576:
+      position: [52.61667, -128.65]
+      coastline: unverifiable

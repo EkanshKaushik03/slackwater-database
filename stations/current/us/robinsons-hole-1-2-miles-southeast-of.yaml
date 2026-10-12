@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1846
+redirect_from:
+  - /currents/us/ma/robinsons-hole-1-0-nm-southeast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1846:
+      position: [41.435, -70.78]
+      coastline: unverifiable

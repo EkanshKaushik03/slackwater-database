@@ -1,0 +1,9 @@
+region: US-MA
+sources:
+  - noaa/BOS1115
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1115:
+      position: [42.3517, -71.02611]
+      coastline: unverifiable

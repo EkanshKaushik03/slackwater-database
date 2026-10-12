@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2781
+redirect_from:
+  - /currents/us/ny/rocky-point-0-3-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2781:
+      position: [41.14383, -72.357]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/old_river_above_doughty_cut-b95390-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_above_doughty_cut-b95390-usa-cdwr:
+      position: [37.810997, -121.386576]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 0.518
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.049
+        issues:
+          - MHWS (1.667) < MHW (1.716)

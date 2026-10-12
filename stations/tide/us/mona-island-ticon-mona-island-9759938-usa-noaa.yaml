@@ -1,0 +1,22 @@
+sources:
+  - ticon/mona_island-9759938-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mona_island-9759938-usa-noaa:
+      position: [18.089917, -67.9385]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHWS (8.957) < MHW (8.971)
+          - "Superseded source: noaa"

@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6661
+redirect_from:
+  - /currents/us/sc/south-chan/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6661:
+      position: [32.75867, -79.88467]
+      coastline: unverifiable

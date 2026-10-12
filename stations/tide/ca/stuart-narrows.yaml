@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-stuart-narrows
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-stuart-narrows:
+      position: [50.897, -126.896]
+      coastline: clear

@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - noaa/8761899
+redirect_from:
+  - /tides/us/la/lafitte/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8761899:
+      position: [29.6667, -90.1117]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 69
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.087m) is 4.0x the largest tidal constituent O1 (0.022m): the yearly swing exceeds the daily one"

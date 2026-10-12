@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5161
+redirect_from:
+  - /currents/us/ak/cairn-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5161:
+      position: [61.26717, -149.90083]
+      coastline: unverifiable

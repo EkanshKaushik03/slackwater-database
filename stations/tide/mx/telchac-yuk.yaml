@@ -1,0 +1,23 @@
+sources:
+  - ticon/telchac_yuk-862a-mex-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/telchac_yuk-862a-mex-uhslc_rq:
+      position: [21.34, -89.308]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/telchac_flotador-11-mex-unam
+        score: 49
+        factors:
+          epoch: 0.076
+          recency: 0.87
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.544) > MLW (1.493)
+          - MHWS (1.66) < MHW (1.736)

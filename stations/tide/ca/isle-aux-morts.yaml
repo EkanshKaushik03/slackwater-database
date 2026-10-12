@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-isle-aux-morts
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-isle-aux-morts:
+      position: [47.582132, -58.979109]
+      coastline: unverifiable

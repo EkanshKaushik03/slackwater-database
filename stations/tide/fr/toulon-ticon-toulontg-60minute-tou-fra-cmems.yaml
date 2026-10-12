@@ -1,0 +1,20 @@
+sources:
+  - ticon/toulontg_60minute-tou-fra-cmems
+redirect_from:
+  - /tides/fr/toulon-provence-alpes-cote-d-azur/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/toulontg_60minute-tou-fra-cmems:
+      position: [43.122799, 5.9146]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.013

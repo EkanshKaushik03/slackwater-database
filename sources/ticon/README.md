@@ -47,13 +47,13 @@ The importer runs one process per core, each taking every nth station. Set `SHAR
 
 Many TICON records relay a gauge this repo also imports directly. [provenance.ts](provenance.ts) names the record a relay was copied from when the relay declares it: a TICON NOAA relay carries the NOAA station number in its id, and UHSLC research-quality metadata names an originator. An originator number counts only when its `Data_Source` matches a provider in `UHSLC_RULES`, since UHSLC numbers have no namespace (071 is both Wellington and La Libertad).
 
-The UHSLC metadata is pinned in [uhslc-metadata.json](uhslc-metadata.json), because UHSLC edits it in place. Refresh it deliberately and review the diff:
+The UHSLC metadata is pinned in [uhslc-metadata.json](uhslc-metadata.json), because UHSLC edits it in place. It holds only what matching needs (station name, position, data source, originator number, last update) from UHSLC's public research-quality metadata, and nothing from it reaches the published database. Refresh it deliberately and review the diff:
 
 ```shell
 npm run fetch-uhslc-metadata -w sources/ticon
 ```
 
-`npm run merge-report -w packages/stations` lists every station merge this provenance and quality's duplicate links would make.
+`npm run merge-report -w packages/stations` lists every station merge this provenance and quality's duplicate links would make, and `-- --apply` makes them in the station files.
 
 ## Constituent names
 

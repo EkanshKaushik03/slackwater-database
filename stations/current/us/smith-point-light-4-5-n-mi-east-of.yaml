@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4761
+redirect_from:
+  - /currents/us/va/smith-point-light-4-5-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4761:
+      position: [37.87783, -76.08833]
+      coastline: unverifiable

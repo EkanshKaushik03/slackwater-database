@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-boat-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-boat-harbour:
+      position: [49.09, -123.7982]
+      coastline: clear

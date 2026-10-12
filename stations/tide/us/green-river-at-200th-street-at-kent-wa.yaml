@@ -1,0 +1,32 @@
+# A capital GESLA puts after a digit (`200Th`, `E4Bron`), which the cleanup
+# keeps as written.
+
+name: Green River at 200th Street at Kent
+region: US-WA
+sources:
+  - ticon/green_river_at_200th_street_at_kent_wa-12113344-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/green_river_at_200th_street_at_kent_wa-12113344-usa-usgs:
+      position: [47.422877, -122.2654]
+      coastline: ashore
+      metres_inland: 5964
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.716
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.107
+        issues:
+          - MLW (4.149) < MLLW (4.348)
+          - MLWS (4.49) > MLW (4.149)
+          - MHW (4.198) <= MSL (4.506)
+          - MHW (4.198) < MLLW (4.348)
+          - "Seasonal band (0.982m) is 80.7x the largest tidal constituent M2 (0.012m): the yearly swing exceeds the daily one"

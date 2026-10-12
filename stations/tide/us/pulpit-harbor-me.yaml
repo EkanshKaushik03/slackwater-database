@@ -1,0 +1,21 @@
+region: US-ME
+sources:
+  - ticon/pulpit_harbor-8414888-usa-da_sat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pulpit_harbor-8414888-usa-da_sat:
+      position: [44.1565, -68.8862]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8414888
+        score: 55
+        factors:
+          epoch: 0.977
+          recency: 0
+          source: 0
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

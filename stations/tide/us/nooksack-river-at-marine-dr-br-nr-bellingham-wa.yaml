@@ -1,0 +1,26 @@
+region: US-WA
+sources:
+  - ticon/nooksack_river_at_marine_dr_br_nr_bellingham_wa-12213145-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nooksack_river_at_marine_dr_br_nr_bellingham_wa-12213145-usa-usgs:
+      position: [48.791311, -122.589375]
+      coastline: ashore
+      metres_inland: 333
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 55
+        factors:
+          epoch: 0.108
+          recency: 0.91
+          source: 0.596
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.119
+        issues:
+          - MLW (2.471) < MLLW (2.481)
+          - MLWS (2.543) > MLW (2.471)
+          - "Seasonal band (0.471m) is 5.4x the largest tidal constituent M2 (0.087m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0367) exceeds S2 (0.0152)

@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1626
+redirect_from:
+  - /currents/us/wa/skagit-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1626:
+      position: [48.2671012878418, -122.52960205078125]
+      coastline: clear

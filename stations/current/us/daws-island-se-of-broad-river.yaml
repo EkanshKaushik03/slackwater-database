@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT7251
+redirect_from:
+  - /currents/us/sc/daws-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7251:
+      position: [32.30167, -80.725]
+      coastline: unverifiable

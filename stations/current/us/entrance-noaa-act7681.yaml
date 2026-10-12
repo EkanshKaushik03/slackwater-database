@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7681
+redirect_from:
+  - /currents/us/ga/entrance-darien-ga/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7681:
+      position: [31.54, -81.18]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9469237
+redirect_from:
+  - /tides/us/point-spencer/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9469237:
+      position: [65.2567, -166.847]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.406

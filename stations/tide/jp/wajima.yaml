@@ -1,0 +1,21 @@
+sources:
+  - ticon/wajima-4003-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wajima-4003-jpn-jodc_pahb:
+      position: [37.3975, 136.9028]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 61
+        factors:
+          epoch: 0.698
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.019
+        issues:
+          - "Seasonal band (0.168m) is 3.0x the largest tidal constituent M2 (0.057m): the yearly swing exceeds the daily one"

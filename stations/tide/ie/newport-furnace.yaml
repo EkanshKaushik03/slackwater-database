@@ -1,0 +1,25 @@
+sources:
+  - ticon/newport_furnace-nfu-irl-mi_r
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/newport_furnace-nfu-irl-mi_r:
+      position: [53.923088, -9.570644]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.358
+          recency: 0.99
+          source: 0.071
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLW (1.05) < MLLW (1.058)
+          - MLWS (1.056) > MLW (1.05)
+          - MHW (1.098) <= MSL (1.113)
+          - "Seasonal band (0.143m) is 4.1x the largest tidal constituent M2 (0.035m): the yearly swing exceeds the daily one"

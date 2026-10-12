@@ -1,0 +1,22 @@
+region: US-NY
+sources:
+  - ticon/mattituck_inlet-8512668-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mattituck_inlet-8512668-usa-noaa:
+      position: [41.015, -72.5617]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.516
+          recency: 0.87
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

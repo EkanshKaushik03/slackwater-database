@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/miami_north_s28_t-s28_t-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/miami_north_s28_t-s28_t-usa-sfwmd:
+      position: [25.8725, -80.180556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.038

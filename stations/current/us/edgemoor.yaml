@@ -1,0 +1,9 @@
+region: US-DE
+sources:
+  - noaa/DEB2118
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/DEB2118:
+      position: [39.747501373291016, -75.49089813232422]
+      coastline: unverifiable

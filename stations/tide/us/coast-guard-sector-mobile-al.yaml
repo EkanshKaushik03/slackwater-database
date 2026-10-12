@@ -1,0 +1,24 @@
+region: US-AL
+sources:
+  - ticon/coast_guard_sector_mobile-8736897-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/coast_guard_sector_mobile-8736897-usa-noaa:
+      position: [30.648306, -88.058306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.961
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (9.067) > MLW (9)
+          - MHWS (9.151) < MHW (9.234)
+          - "Superseded source: noaa"

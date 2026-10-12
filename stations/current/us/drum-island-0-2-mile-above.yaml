@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6776
+redirect_from:
+  - /currents/us/sc/drum-island-0-2-nm-above/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6776:
+      position: [32.81967, -79.92917]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-MA
+sources:
+  - ticon/popponesset_bay_mashpee_neck_rd_near_mashpee_ma-413601070275800-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/popponesset_bay_mashpee_neck_rd_near_mashpee_ma-413601070275800-usa-usgs:
+      position: [41.600161, -70.466117]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.584
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.03
+        issues:
+          - MHWS (0.427) < MHW (0.43)

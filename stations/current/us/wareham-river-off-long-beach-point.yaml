@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT2026
+redirect_from:
+  - /currents/us/ma/wareham-river/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2026:
+      position: [41.73333, -70.71667]
+      coastline: unverifiable

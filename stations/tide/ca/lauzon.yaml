@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-lauzon
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-lauzon:
+      position: [46.8325, -71.157833]
+      coastline: unverifiable

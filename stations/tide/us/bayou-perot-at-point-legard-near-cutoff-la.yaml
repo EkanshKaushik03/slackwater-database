@@ -1,0 +1,25 @@
+region: US-LA
+sources:
+  - ticon/bayou_perot_at_point_legard_near_cutoff_la-7380330-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bayou_perot_at_point_legard_near_cutoff_la-7380330-usa-usgs:
+      position: [29.565778, -90.165556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.829
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.006
+        issues:
+          - MLWS (0.713) > MLW (0.683)
+          - MHWS (0.723) < MHW (0.759)
+          - "Seasonal band (0.097m) is 2.0x the largest tidal constituent O1 (0.047m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0024) exceeds S2 (0.0020)

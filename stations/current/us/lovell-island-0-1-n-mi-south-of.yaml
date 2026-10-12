@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1271
+redirect_from:
+  - /currents/us/ma/lovell-island-0-1-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1271:
+      position: [42.32333, -70.92467]
+      coastline: unverifiable

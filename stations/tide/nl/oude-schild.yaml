@@ -1,0 +1,20 @@
+sources:
+  - ticon/oudeschildtg-oud-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oudeschildtg-oud-nld-cmems:
+      position: [53.040001, 4.85]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/oudeschild-oudsd-nld-rws
+        score: 57
+        factors:
+          epoch: 0.582
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

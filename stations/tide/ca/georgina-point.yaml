@@ -1,0 +1,11 @@
+# The generalized maritime boundary puts these border gauges in the neighboring country.
+
+region: CA-BC
+sources:
+  - chs-georgina-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-georgina-point:
+      position: [48.8725, -123.2923]
+      coastline: clear

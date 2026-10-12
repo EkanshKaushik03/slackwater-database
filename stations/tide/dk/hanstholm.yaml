@@ -1,0 +1,25 @@
+sources:
+  - ticon/hanstholmtg-han-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hanstholmtg-han-dnk-cmems:
+      position: [57.1166, 8.6]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.562
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (-0.014) > MLW (-0.033)
+          - MHWS (-0.012) < MHW (0.077)
+          - HAT (0.15) < MHHW (0.152)
+          - "Seasonal band (0.057m) is 5.6x the largest tidal constituent M1 (0.010m): the yearly swing exceeds the daily one"

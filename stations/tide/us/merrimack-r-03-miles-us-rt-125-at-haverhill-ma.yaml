@@ -1,0 +1,21 @@
+region: US-MA
+sources:
+  - ticon/merrimack_r_03_miles_usrt_125_at_haverhillma-1100693-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/merrimack_r_03_miles_usrt_125_at_haverhillma-1100693-usa-usgs:
+      position: [42.772778, -71.083056]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 78
+        factors:
+          epoch: 0.992
+          recency: 0.98
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.082
+        issues:
+          - MHWS (1.857) < MHW (1.934)

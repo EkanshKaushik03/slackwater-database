@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4811
+redirect_from:
+  - /currents/us/md/adams-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4811:
+      position: [38.1445, -76.1145]
+      coastline: unverifiable

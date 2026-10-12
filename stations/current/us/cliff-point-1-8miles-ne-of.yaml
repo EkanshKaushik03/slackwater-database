@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/KOD0901
+redirect_from:
+  - /currents/us/ak/cliff-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/KOD0901:
+      position: [57.73559, -152.38463]
+      coastline: unverifiable

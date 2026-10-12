@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT7211
+redirect_from:
+  - /currents/us/sc/parris-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7211:
+      position: [32.326698303222656, -80.65670013427734]
+      coastline: unverifiable

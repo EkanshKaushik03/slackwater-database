@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-trois-rivieres
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-trois-rivieres:
+      position: [46.3405, -72.539167]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0286
+redirect_from:
+  - /currents/us/ca/fort-point-0-5-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0286:
+      position: [37.81167, -122.46633]
+      coastline: unverifiable

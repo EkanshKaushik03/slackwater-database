@@ -1,0 +1,23 @@
+sources:
+  - ticon/mersrags-mer-lva-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mersrags-mer-lva-cmems:
+      position: [57.333302, 23.116699]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 58
+        factors:
+          epoch: 0.247
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.53
+        issues:
+          - MLWS (0.261) > MLW (0.234)
+          - MHWS (0.275) < MHW (0.292)
+          - "Seasonal band (0.078m) is 4.3x the largest tidal constituent K1 (0.018m): the yearly swing exceeds the daily one"

@@ -1,0 +1,22 @@
+region: US-MS
+sources:
+  - ticon/mississippi_sound_at_usgs_merrill_shell_bank_light-301429089145600-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mississippi_sound_at_usgs_merrill_shell_bank_light-301429089145600-usa-usgs:
+      position: [30.238254, -89.242819]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.882
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.16
+        issues:
+          - MLWS (0.897) > MLW (0.875)
+          - MHWS (1.009) < MHW (1.064)

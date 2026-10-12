@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/san_joaquin_river_at_jersey_point-sjj-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_joaquin_river_at_jersey_point-sjj-usa-cdwr:
+      position: [38.052, -121.689]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/san_joaquin_r_a_jersey_point_ca-11337190-usa-usgs
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.017) > MLW (1.006)

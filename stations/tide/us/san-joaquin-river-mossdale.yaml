@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/san_joaquin_river_mossdale-b95820-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_joaquin_river_mossdale-b95820-usa-cdwr:
+      position: [37.786141, -121.30649]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.063
+        issues:
+          - MHHW (2.052) < MHW (2.343)
+          - MHWS (1.93) < MHW (2.343)
+          - MSL (1.795) <= MLW (2.08)
+          - "Seasonal band (0.354m) is 3.0x the largest tidal constituent M2 (0.117m): the yearly swing exceeds the daily one"

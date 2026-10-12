@@ -1,0 +1,18 @@
+sources:
+  - ticon/anzio-anz-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/anzio-anz-ita-ispra:
+      position: [41.446858, 12.634797]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.819
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0

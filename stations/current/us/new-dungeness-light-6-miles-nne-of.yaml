@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1401
+redirect_from:
+  - /currents/us/wa/new-dungeness-light-5-2-nm-nne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1401:
+      position: [48.26667022705078, -123.05000305175781]
+      coastline: clear

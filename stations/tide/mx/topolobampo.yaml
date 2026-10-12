@@ -1,0 +1,20 @@
+sources:
+  - ticon/topolobampo-676-mex-unam_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/topolobampo-676-mex-unam_hist:
+      position: [25.586667, -109.056667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/topolobampo-676a-mex-uhslc_rq
+        score: 47
+        factors:
+          epoch: 0.112
+          recency: 0.68
+          source: 0.131
+          quality: 1
+          amplitude: 1
+          coverage: 0.033

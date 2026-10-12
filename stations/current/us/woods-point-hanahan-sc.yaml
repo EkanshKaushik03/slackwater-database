@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6846
+redirect_from:
+  - /currents/us/sc/woods-point-north-charleston-sc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6846:
+      position: [32.93167, -79.93833]
+      coastline: unverifiable

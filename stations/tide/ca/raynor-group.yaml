@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-raynor-group
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-raynor-group:
+      position: [50.886, -127.243]
+      coastline: clear

@@ -1,0 +1,19 @@
+region: US-ME
+sources:
+  - ticon/eastport_maine-8410140-usa-da_sat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/eastport_maine-8410140-usa-da_sat:
+      position: [44.9, -66.983333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 36
+        factors:
+          epoch: 0.056
+          recency: 0
+          source: 0
+          quality: 1
+          amplitude: 1
+          coverage: 0.007

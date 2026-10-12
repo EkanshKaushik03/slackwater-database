@@ -1,0 +1,22 @@
+sources:
+  - ticon/el_porvenir-739a-pan-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/el_porvenir-739a-pan-uhslc_rq:
+      position: [9.558, -78.948]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/el_porvenir-739-pan-uhslc_fd
+        score: 62
+        factors:
+          epoch: 0.664
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.291) > MLW (0.285)

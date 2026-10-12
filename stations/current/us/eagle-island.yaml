@@ -1,0 +1,9 @@
+region: US-ME
+sources:
+  - noaa/ACT0176
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0176:
+      position: [44.19383, -68.78217]
+      coastline: unverifiable

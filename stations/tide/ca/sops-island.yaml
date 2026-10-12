@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-sops-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sops-island:
+      position: [49.797178, -56.794615]
+      coastline: unverifiable

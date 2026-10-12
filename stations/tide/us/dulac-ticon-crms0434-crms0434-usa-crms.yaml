@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/crms0434-crms0434-usa-crms
+redirect_from:
+  - /tides/us/la/dulac-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0434-crms0434-usa-crms:
+      position: [29.32363, -90.72926]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.394
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.137
+        issues:
+          - MLWS (0.222) > MLW (0.206)
+          - MHWS (0.364) < MHW (0.397)

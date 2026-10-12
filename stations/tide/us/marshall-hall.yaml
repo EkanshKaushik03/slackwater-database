@@ -1,0 +1,21 @@
+region: US-MD
+sources:
+  - noaa/8579629
+redirect_from:
+  - /tides/us/va/marshall-hall/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8579629:
+      position: [38.6867, -77.1017]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.236

@@ -1,0 +1,11 @@
+region: US-NJ
+sources:
+  - noaa/ACT3971
+redirect_from:
+  - /currents/us/nj/lincoln-highway-bridge/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3971:
+      position: [40.733299255371094, -74.0999984741211]
+      coastline: unverifiable

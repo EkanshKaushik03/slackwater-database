@@ -1,0 +1,23 @@
+region: US-MI
+sources:
+  - ticon/de_tour_village_mi-9075099-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/de_tour_village_mi-9075099-usa-noaa:
+      position: [45.9925, -83.8982]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.063
+        issues:
+          - MHWS (176.432) < MHW (176.442)
+          - "Seasonal band (0.144m) is 12.0x the largest tidal constituent M2 (0.012m): the yearly swing exceeds the daily one"

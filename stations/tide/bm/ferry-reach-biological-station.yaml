@@ -1,0 +1,18 @@
+sources:
+  - noaa/2695535
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/2695535:
+      position: [32.37022399902344, -64.69572448730469]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 1
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

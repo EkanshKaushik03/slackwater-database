@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-pembina-terminal
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pembina-terminal:
+      position: [54.236287, -130.303479]
+      coastline: unverifiable

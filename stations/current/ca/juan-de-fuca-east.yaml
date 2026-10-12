@@ -1,0 +1,16 @@
+name: Juan de Fuca - East
+context: Victoria approaches
+region: CA-BC
+cities: [Victoria]
+position: [48.2317, -123.53]
+provider: chs
+sources:
+  - chs-juan-de-fuca-east
+redirect_from:
+  - /currents/us/wa/juan-de-fuca-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-juan-de-fuca-east:
+      position: [48.2317, -123.53]
+      coastline: clear

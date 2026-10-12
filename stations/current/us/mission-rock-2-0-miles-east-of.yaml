@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0421
+redirect_from:
+  - /currents/us/ca/mission-rock-1-7-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0421:
+      position: [37.77667, -122.33833]
+      coastline: unverifiable

@@ -1,0 +1,22 @@
+sources:
+  - ticon/frontera_radar-6-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/frontera_radar-6-mex-unam:
+      position: [18.572518, -92.657463]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 37
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0.089
+        issues:
+          - MHWS (1.769) < MHW (1.776)
+          - "Seasonal band (0.163m) is 1.2x the largest tidal constituent K1 (0.139m): the yearly swing exceeds the daily one"

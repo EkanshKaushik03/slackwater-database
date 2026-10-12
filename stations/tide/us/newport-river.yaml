@@ -1,0 +1,21 @@
+region: US-NC
+sources:
+  - ticon/newport_river-new-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/newport_river-new-usa-ncdem:
+      position: [34.780907, -76.859633]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.158
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.161
+        issues:
+          - MLWS (-0.114) > MLW (-0.176)

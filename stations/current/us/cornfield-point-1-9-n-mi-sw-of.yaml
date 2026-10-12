@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2801
+redirect_from:
+  - /currents/us/ct/cornfield-point-1-9-nm-sw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2801:
+      position: [41.24133, -72.42167]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-MD
+sources:
+  - noaa/8572342
+redirect_from:
+  - /tides/us/md/st-michaels-md/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8572342:
+      position: [38.7867, -76.2217]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.033

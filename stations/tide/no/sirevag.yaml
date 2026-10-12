@@ -1,0 +1,23 @@
+sources:
+  - ticon/sirevagtg-sir-nor-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sirevagtg-sir-nor-cmems:
+      position: [58.505199, 5.791602]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/SIE
+        seasonal_dominant: true
+        score: 48
+        factors:
+          epoch: 0.151
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.090m) is 2.7x the largest tidal constituent S2 (0.033m): the yearly swing exceeds the daily one"

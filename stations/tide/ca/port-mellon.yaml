@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-port-mellon
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-port-mellon:
+      position: [49.519233, -123.485311]
+      coastline: clear

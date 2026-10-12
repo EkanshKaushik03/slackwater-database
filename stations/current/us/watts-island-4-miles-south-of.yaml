@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5621
+redirect_from:
+  - /currents/us/va/watts-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5621:
+      position: [37.72, -75.9]
+      coastline: unverifiable

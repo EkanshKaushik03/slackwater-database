@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1513
+redirect_from:
+  - /currents/us/wa/rich-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1513:
+      position: [47.57001876831055, -122.52980041503906]
+      coastline: clear

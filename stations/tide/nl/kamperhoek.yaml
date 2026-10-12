@@ -1,0 +1,25 @@
+sources:
+  - ticon/kamperhoektg-kam-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kamperhoektg-kam-nld-cmems:
+      position: [52.610001, 5.6425]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.587
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.198
+        issues:
+          - MLWS (-0.212) > MLW (-0.217)
+          - MHWS (-0.19) < MHW (-0.186)
+          - "P1 amplitude (0.0032) exceeds K1 (0.0028): physically impossible"
+          - "Seasonal band (0.066m) is 8.6x the largest tidal constituent M2 (0.008m): the yearly swing exceeds the daily one"

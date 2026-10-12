@@ -1,0 +1,25 @@
+region: CA-QC
+sources:
+  - ticon/pointe_aux_trembles-15630-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointe_aux_trembles-15630-can-meds:
+      position: [45.63, -73.49]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.71
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.115
+        issues:
+          - MLWS (1.058) > MLW (1.035)
+          - MHW (1.052) <= MSL (1.062)
+          - "Seasonal band (0.541m) is 162.4x the largest tidal constituent O1 (0.003m): the yearly swing exceeds the daily one"

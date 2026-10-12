@@ -1,0 +1,11 @@
+region: US-NJ
+sources:
+  - noaa/DEB2104
+redirect_from:
+  - /currents/us/nj/cape-may-canal/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/DEB2104:
+      position: [38.96839904785156, -74.97239685058594]
+      coastline: unverifiable

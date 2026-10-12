@@ -1,0 +1,20 @@
+sources:
+  - ticon/majuro-005b-mhl-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/majuro-005b-mhl-uhslc_rq:
+      position: [7.108, 171.372]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/majuro-005-mhl-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

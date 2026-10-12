@@ -1,0 +1,23 @@
+sources:
+  - ticon/alicante_i_outer_harbour-alio-esp-da_mm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/alicante_i_outer_harbour-alio-esp-da_mm:
+      position: [38.338271, -0.477877]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/alicante_i-ali-esp-da_mm
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.04
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.066m) is 2.0x the largest tidal constituent K1 (0.033m): the yearly swing exceeds the daily one"

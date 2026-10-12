@@ -1,0 +1,18 @@
+sources:
+  - ticon/sevilla2tg-sev-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sevilla2tg-sev-esp-cmems:
+      position: [37.318501, -6.0077]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.715
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1

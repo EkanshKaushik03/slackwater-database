@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/rowland_bridge-row-usa-cm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rowland_bridge-row-usa-cm:
+      position: [38.0962, -122.5588]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 48
+        factors:
+          epoch: 0.321
+          recency: 0.98
+          source: 0.525
+          quality: 0
+          amplitude: 1
+          coverage: 0.102
+        issues:
+          - MHWS (1.674) < MHW (1.679)

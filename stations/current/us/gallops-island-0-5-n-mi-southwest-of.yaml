@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1371
+redirect_from:
+  - /currents/us/ma/gallops-island-0-5-nm-southwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1371:
+      position: [42.31883, -70.947]
+      coastline: unverifiable

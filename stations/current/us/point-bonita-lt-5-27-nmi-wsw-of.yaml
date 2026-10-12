@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0181
+redirect_from:
+  - /currents/us/ca/point-bonita-lt/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0181:
+      position: [37.8045, -122.63883]
+      coastline: unverifiable

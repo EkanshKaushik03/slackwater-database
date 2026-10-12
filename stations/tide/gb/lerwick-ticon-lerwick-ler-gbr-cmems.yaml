@@ -1,0 +1,20 @@
+sources:
+  - ticon/lerwick-ler-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lerwick-ler-gbr-cmems:
+      position: [60.154598, -1.1384]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/lerwick-ler-gbr-bodc
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.002

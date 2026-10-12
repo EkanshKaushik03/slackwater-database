@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6841
+redirect_from:
+  - /currents/us/sc/woods-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6841:
+      position: [32.92583084106445, -79.93283081054688]
+      coastline: unverifiable

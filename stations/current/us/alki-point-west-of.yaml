@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1516
+redirect_from:
+  - /currents/us/wa/alki-point-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1516:
+      position: [47.57606887817383, -122.4278335571289]
+      coastline: clear

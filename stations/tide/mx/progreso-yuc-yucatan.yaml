@@ -1,0 +1,20 @@
+sources:
+  - ticon/progreso_yuc-721b-mex-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/progreso_yuc-721b-mex-uhslc_rq:
+      position: [21.283, -89.667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 53
+        factors:
+          epoch: 0.298
+          recency: 0.78
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.157) < MHW (0.209)

@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/inner_harbor_navigation_canal_nr_seabrook_bridge-73802332-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/inner_harbor_navigation_canal_nr_seabrook_bridge-73802332-usa-usgs:
+      position: [30.030139, -90.034167]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.438
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.153
+        issues:
+          - MLWS (0.251) > MLW (0.243)
+          - MHWS (0.271) < MHW (0.289)
+          - "Seasonal band (0.104m) is 2.5x the largest tidal constituent K1 (0.041m): the yearly swing exceeds the daily one"

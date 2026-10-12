@@ -1,0 +1,9 @@
+region: US-CA
+sources:
+  - noaa/SFB1206
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1206:
+      position: [37.8053, -122.39728]
+      coastline: unverifiable

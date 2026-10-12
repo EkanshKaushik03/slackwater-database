@@ -1,0 +1,22 @@
+sources:
+  - ticon/holwerd-holwd-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/holwerd-holwd-nld-rws_hist:
+      position: [53.395352, 5.876582]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.351
+          recency: 0.92
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.173
+        issues:
+          - MLWS (-1.165) > MLW (-1.257)
+          - "Superseded source: rws_hist"

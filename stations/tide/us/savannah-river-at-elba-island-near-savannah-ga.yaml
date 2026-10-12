@@ -1,0 +1,19 @@
+region: US-GA
+sources:
+  - ticon/savannah_river_at_elba_island_near_savannah_ga-219897993-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/savannah_river_at_elba_island_near_savannah_ga-219897993-usa-usgs:
+      position: [32.103056, -81.006944]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0.629
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.057

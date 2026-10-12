@@ -1,0 +1,18 @@
+sources:
+  - ticon/aigio-aig-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/aigio-aig-grc-cmems:
+      position: [38.257141, 22.076851]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 49
+        factors:
+          epoch: 0.406
+          recency: 0.98
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.716

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-hunt-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-hunt-inlet:
+      position: [54.068, -130.446]
+      coastline: unverifiable

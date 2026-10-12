@@ -1,0 +1,22 @@
+sources:
+  - ticon/tampico_madero-406-mex-unam_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tampico_madero-406-mex-unam_hist:
+      position: [22.261667, -97.795]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9500966
+        score: 45
+        factors:
+          epoch: 0.846
+          recency: 0.53
+          source: 0.131
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.956) < MHW (1.963)

@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/FPI0902
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/FPI0902:
+      position: [27.46641, -80.30824]
+      coastline: unverifiable

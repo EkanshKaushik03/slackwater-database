@@ -1,0 +1,23 @@
+region: US-VA
+sources:
+  - ticon/rappahannock_bend-8635257-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rappahannock_bend-8635257-usa-noaa:
+      position: [38.2133, -77.2433]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.111
+          recency: 0.83
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (6.22) > MLW (6.202)
+          - "Superseded source: noaa"

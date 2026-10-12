@@ -1,0 +1,25 @@
+region: US-TX
+sources:
+  - ticon/baffin_bay-8776604-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/baffin_bay-8776604-usa-noaa:
+      position: [27.297, -97.405167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.685
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.451
+        issues:
+          - MHWS (4.292) < MHW (4.301)
+          - Tidal range 1.5cm < 2cm threshold
+          - "Seasonal band (0.110m) is 9.6x the largest tidal constituent S1 (0.011m): the yearly swing exceeds the daily one"

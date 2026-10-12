@@ -1,0 +1,24 @@
+region: US-SC
+sources:
+  - ticon/garden_city_bridge-8661419-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/garden_city_bridge-8661419-usa-noaa:
+      position: [33.5783, -79.0033]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.071
+          recency: 0.5
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.518) > MLW (0.509)
+          - MHWS (1.802) < MHW (1.82)
+          - "Superseded source: noaa"

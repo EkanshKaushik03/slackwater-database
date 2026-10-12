@@ -1,0 +1,25 @@
+region: US-LA
+sources:
+  - ticon/crms0489-crms0489-usa-crms
+redirect_from:
+  - /tides/us/la/franklin-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0489-crms0489-usa-crms:
+      position: [29.59944, -91.54178]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 77
+        factors:
+          epoch: 0.982
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.072
+        issues:
+          - MHWS (0.347) < MHW (0.362)
+          - "Seasonal band (0.047m) is 1.9x the largest tidal constituent K1 (0.025m): the yearly swing exceeds the daily one"

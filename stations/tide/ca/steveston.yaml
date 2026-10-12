@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-steveston
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-steveston:
+      position: [49.1245, -123.1922]
+      coastline: ashore
+      metres_inland: 433

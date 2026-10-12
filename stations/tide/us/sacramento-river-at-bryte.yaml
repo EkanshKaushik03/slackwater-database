@@ -1,0 +1,25 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_bryte-bry-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_bryte-bry-usa-cdwr:
+      position: [38.602, -121.533]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.6
+          recency: 0.69
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.013
+        issues:
+          - MLWS (2.344) > MLW (2.206)
+          - MHW (2.338) <= MSL (2.412)
+          - "Seasonal band (0.675m) is 11.0x the largest tidal constituent K1 (0.061m): the yearly swing exceeds the daily one"

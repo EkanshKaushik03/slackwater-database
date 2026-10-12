@@ -1,0 +1,18 @@
+sources:
+  - ticon/ponza-pon-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ponza-pon-ita-ispra:
+      position: [40.895178, 12.965589]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.752
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0

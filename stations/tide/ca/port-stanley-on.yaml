@@ -1,0 +1,26 @@
+region: CA-ON
+sources:
+  - ticon/port_stanley_ontario-12400-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_stanley_ontario-12400-can-meds:
+      position: [42.66, -81.21]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHHW (0.93) < MHW (0.945)
+          - MHWS (0.884) < MHW (0.945)
+          - MSL (0.877) <= MLW (0.911)
+          - "Seasonal band (0.170m) is 27.5x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

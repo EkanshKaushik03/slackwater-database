@@ -1,0 +1,19 @@
+region: US-NJ
+sources:
+  - ticon/barnegat_bay_near_waretown_nj-1409124-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/barnegat_bay_near_waretown_nj-1409124-usa-usgs:
+      position: [39.77, -74.188333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.345
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.048

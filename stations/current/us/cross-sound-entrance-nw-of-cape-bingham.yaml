@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA1008
+redirect_from:
+  - /currents/us/ak/cross-sound-entrance/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA1008:
+      position: [58.1225, -136.56735]
+      coastline: unverifiable

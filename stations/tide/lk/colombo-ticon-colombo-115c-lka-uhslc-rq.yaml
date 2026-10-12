@@ -1,0 +1,20 @@
+sources:
+  - ticon/colombo-115c-lka-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/colombo-115c-lka-uhslc_rq:
+      position: [6.935, 79.858]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/colombo-115-lka-uhslc_fd
+        score: 59
+        factors:
+          epoch: 0.562
+          recency: 0.9
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.018

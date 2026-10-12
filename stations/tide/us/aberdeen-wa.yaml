@@ -1,0 +1,22 @@
+region: US-WA
+sources:
+  - ticon/aberdeen-9441187-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/aberdeen-9441187-usa-noaa:
+      position: [46.9683, -123.853]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.098
+          recency: 0.79
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

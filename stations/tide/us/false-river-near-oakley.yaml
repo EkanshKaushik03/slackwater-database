@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/false_river_near_oakley-fal-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/false_river_near_oakley-fal-usa-cdwr:
+      position: [38.0558, -121.6669]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/false_r_nr_oakley_ca-11313440-usa-usgs
+        score: 76
+        factors:
+          epoch: 0.982
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (4.906) > MLW (4.877)
+          - MHWS (5.56) < MHW (5.562)

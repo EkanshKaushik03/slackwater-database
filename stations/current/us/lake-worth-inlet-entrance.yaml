@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/LWI0901
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LWI0901:
+      position: [26.77298, -80.0362]
+      coastline: unverifiable

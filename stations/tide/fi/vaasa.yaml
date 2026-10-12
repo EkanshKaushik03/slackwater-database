@@ -1,0 +1,25 @@
+sources:
+  - ticon/vaasa-vaa-fin-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/vaasa-vaa-fin-cmems:
+      position: [63.081501, 21.571199]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/vaasa_vaskiluoto-134223-fin-fmi
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - MLWS (0.028) > MLW (0.011)
+          - MHWS (0.04) < MHW (0.046)
+          - "Seasonal band (0.120m) is 13.4x the largest tidal constituent K1 (0.009m): the yearly swing exceeds the daily one"

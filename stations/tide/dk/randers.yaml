@@ -1,0 +1,18 @@
+sources:
+  - ticon/randers-ran-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/randers-ran-dnk-cmems:
+      position: [56.450001, 10.05]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 0.726
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.453

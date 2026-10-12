@@ -1,0 +1,26 @@
+region: US-WA
+sources:
+  - ticon/columbia_river_at_vancouver_wa-14144700-usa-usgs
+redirect_from:
+  - /tides/us/or/columbia-river-at-vancouver-wa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/columbia_river_at_vancouver_wa-14144700-usa-usgs:
+      position: [45.620673, -122.673431]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.042
+        issues:
+          - MHHW (1.887) < MHW (1.959)
+          - MHWS (1.824) < MHW (1.959)
+          - "Seasonal band (0.664m) is 3.2x the largest tidal constituent M2 (0.207m): the yearly swing exceeds the daily one"

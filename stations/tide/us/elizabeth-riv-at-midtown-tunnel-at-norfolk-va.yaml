@@ -1,0 +1,19 @@
+region: US-VA
+sources:
+  - ticon/elizabeth_riv_at_midtown_tunnel_at_norfolk_va-204288831-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/elizabeth_riv_at_midtown_tunnel_at_norfolk_va-204288831-usa-usgs:
+      position: [36.862, -76.3095]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.279
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.03

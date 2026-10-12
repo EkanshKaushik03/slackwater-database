@@ -1,0 +1,20 @@
+sources:
+  - ticon/puerto_quetzal-301a-gtm-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/puerto_quetzal-301a-gtm-uhslc_rq:
+      position: [13.922, -90.785]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/puerto_quetza-301b-gtm-uhslc_rq
+        score: 48
+        factors:
+          epoch: 0.154
+          recency: 0.6
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

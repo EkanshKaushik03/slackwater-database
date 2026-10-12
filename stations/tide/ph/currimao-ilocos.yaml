@@ -1,0 +1,23 @@
+sources:
+  - ticon/currimao-654a-phl-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/currimao-654a-phl-uhslc_rq:
+      position: [17.988, 120.488]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/currimao-654-phl-uhslc_fd
+        score: 59
+        factors:
+          epoch: 0.496
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.065
+        issues:
+          - MLWS (0.802) > MLW (0.731)
+          - MHWS (1.022) < MHW (1.071)

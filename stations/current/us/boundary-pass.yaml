@@ -1,0 +1,21 @@
+# NOAA CO-OPS station; position from the NOAA station page, not the CHS fitting pipeline that supplies the other gates. See PROVENANCE.md.
+
+name: Boundary Pass
+context: Saturna & Patos Islands
+region: US-WA
+position: [48.6912, -123.245]
+provider: noaa
+sources:
+  - noaa-boundary-pass
+  - noaa/PUG1717
+redirect_from:
+  - /currents/us/wa/turn-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa-boundary-pass:
+      position: [48.6912, -123.245]
+      coastline: clear
+    noaa/PUG1717:
+      position: [48.69121170043945, -123.24501037597656]
+      coastline: clear

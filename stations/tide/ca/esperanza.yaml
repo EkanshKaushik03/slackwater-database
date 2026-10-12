@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-esperanza
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-esperanza:
+      position: [49.872, -126.744]
+      coastline: clear

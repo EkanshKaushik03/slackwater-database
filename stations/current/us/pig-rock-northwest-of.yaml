@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1491
+redirect_from:
+  - /currents/us/ma/pig-rock-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1491:
+      position: [42.28133, -70.9425]
+      coastline: unverifiable

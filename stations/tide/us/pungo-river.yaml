@@ -1,0 +1,23 @@
+region: US-NC
+sources:
+  - noaa/8653244
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8653244:
+      position: [35.585201263427734, -76.48560333251953]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.849
+        issues:
+          - MLW (-0.138) < LAT (-0.123)
+          - HAT (0.033) < MHHW (0.067)

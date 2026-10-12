@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/toe_drain_at_liberty_island_nr_courtland-toe-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/toe_drain_at_liberty_island_nr_courtland-toe-usa-cdwr:
+      position: [38.349167, -121.64472]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/toe_drain_a_liberty_island_nr_courtland_ca-11455140-usa-usgs
+        score: 61
+        factors:
+          epoch: 0.212
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHHW (1.921) < MHW (1.923)
+          - MHWS (1.901) < MHW (1.923)

@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/FEB1102
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/FEB1102:
+      position: [30.70792, -81.44463]
+      coastline: unverifiable

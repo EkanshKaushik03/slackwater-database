@@ -1,0 +1,23 @@
+region: CA-ON
+sources:
+  - ticon/parry_sound_ontario-11375-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/parry_sound_ontario-11375-can-meds:
+      position: [45.34, -80.04]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (0.4) < MHW (0.402)
+          - "Seasonal band (0.147m) is 13.5x the largest tidal constituent M2 (0.011m): the yearly swing exceeds the daily one"

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-sidney
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sidney:
+      position: [48.649216, -123.3929]
+      coastline: clear

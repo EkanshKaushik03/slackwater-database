@@ -1,0 +1,20 @@
+sources:
+  - ticon/durban-181a-zaf-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/durban-181a-zaf-uhslc_rq:
+      position: [-29.867, 31.05]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/durban-181-zaf-uhslc_fd
+        score: 70
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.103

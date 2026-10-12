@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/watsonville_slough-wat-usa-cm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/watsonville_slough-wat-usa-cm:
+      position: [36.868, -121.8175]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 47
+        factors:
+          epoch: 0.23
+          recency: 0.98
+          source: 0.525
+          quality: 0
+          amplitude: 1
+          coverage: 0.114
+        issues:
+          - MHWS (0.913) < MHW (1.077)

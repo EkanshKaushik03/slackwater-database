@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/miner_slough_at_hwy_84_bridge-hwb-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/miner_slough_at_hwy_84_bridge-hwb-usa-cdwr:
+      position: [38.2917, -121.6308]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/miner_slough_a_hwy_84_bridge-11455165-usa-usgs
+        score: 60
+        factors:
+          epoch: 0.964
+          recency: 0.94
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.209) > MLW (1.187)

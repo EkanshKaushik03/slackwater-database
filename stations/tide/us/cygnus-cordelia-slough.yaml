@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/cygnus_cordelia_slough-cyg-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cygnus_cordelia_slough-cyg-usa-cdwr:
+      position: [38.1527, -122.0908]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 58
+        factors:
+          epoch: 0.81
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.04

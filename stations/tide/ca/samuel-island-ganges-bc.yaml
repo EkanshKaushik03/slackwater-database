@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-samuel-island-2
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-samuel-island-2:
+      position: [48.816667, -123.2]
+      coastline: ashore
+      metres_inland: 333

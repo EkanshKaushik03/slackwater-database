@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-ocean-falls
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-ocean-falls:
+      position: [52.352, -127.693]
+      coastline: unverifiable

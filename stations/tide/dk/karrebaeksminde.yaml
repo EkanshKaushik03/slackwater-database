@@ -1,0 +1,20 @@
+sources:
+  - ticon/karrebaeksminde-kar-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/karrebaeksminde-kar-dnk-cmems:
+      position: [55.1833, 11.65]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.618
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.735
+        issues:
+          - MHWS (0.219) < MHW (0.228)

@@ -1,0 +1,18 @@
+sources:
+  - ticon/pointeapitretg_60minute-poi-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointeapitretg_60minute-poi-fra-cmems:
+      position: [16.23, -61.529999]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.01

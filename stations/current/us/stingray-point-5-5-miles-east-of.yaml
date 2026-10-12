@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4711
+redirect_from:
+  - /currents/us/va/stingray-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4711:
+      position: [37.58333, -76.17333]
+      coastline: unverifiable

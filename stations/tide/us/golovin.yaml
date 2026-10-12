@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9468793
+redirect_from:
+  - /tides/us/golovin/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9468793:
+      position: [64.54630279541016, -163.0316925048828]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.2

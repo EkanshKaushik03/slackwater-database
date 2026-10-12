@@ -1,0 +1,22 @@
+name: Port Townsend
+context: Admiralty Inlet
+region: US-WA
+cities: [Port Townsend]
+sources:
+  - noaa/9444900
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9444900:
+      position: [48.11122222222222, -122.7596777777778]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.004

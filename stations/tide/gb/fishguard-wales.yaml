@@ -1,0 +1,20 @@
+sources:
+  - ticon/fishguard-fis-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fishguard-fis-gbr-cmems:
+      position: [52.016701, -4.98333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/fishguard-fis-gbr-bodc
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.008

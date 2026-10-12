@@ -52,7 +52,7 @@ The module exports every tide and current station in the database, along with st
 
 ## Data Format
 
-Tide harmonics come from the JSON files in [`data/`](./data), NOAA current data is imported during generation, and curated identity and routing inputs live in [`metadata/`](./metadata). The generated FlatBuffers file is the release source consumed by every runtime. Each tide station file includes basic station information, like location and name, and harmonics or subordinate station offsets. The format is defined by the schema in [schemas/station.schema.json](schemas/station.schema.json), which includes more detailed descriptions of each field. All data is validated against this schema automatically on each change.
+Tide harmonics come from the JSON files in [`data/`](./data), NOAA current data is imported during generation, each published station's identity, URL and curation is a file in [`stations/`](./stations/README.md), and reviewed reference snapshots live in [`metadata/`](./metadata). The generated FlatBuffers file is the release source consumed by every runtime. Each tide station file includes basic station information, like location and name, and harmonics or subordinate station offsets. The format is defined by the schema in [schemas/station.schema.json](schemas/station.schema.json), which includes more detailed descriptions of each field. All data is validated against this schema automatically on each change.
 
 ## Station Types
 
@@ -77,7 +77,7 @@ This repo is an npm workspace. Station data lives in [`data/`](./data), and ever
 - [`packages/tcd`](./packages/tcd) — TCD harmonics files for XTide-compatible software
 - [`packages/datums`](./packages/datums) — tidal datum computation and sea-region classification
 - [`packages/harmonic-analysis`](./packages/harmonic-analysis) — GESLA parsing and database policies around `@slackwater/engine` QR fitting; broad minimum-norm SVD fits remain local
-- [`packages/stations`](./packages/stations) — station file I/O, quality filtering, geocoding, the unified catalogue (curated inputs in [`metadata/`](./metadata)), and maintenance scripts (including `evaluate-quality`, which writes [`quality.json`](./quality.json))
+- [`packages/stations`](./packages/stations) — station file I/O, quality filtering, geocoding, the unified catalogue, and maintenance scripts (including `npm run stations`, which writes the [station files](./stations/README.md))
 - [`sources/*`](./sources) — one package per data source, most with an `npm run import`
 
 ## Maintenance

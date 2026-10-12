@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/ACT8716
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8716:
+      position: [30.335, -87.3]
+      coastline: unverifiable

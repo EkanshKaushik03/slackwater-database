@@ -1,0 +1,9 @@
+region: US-NJ
+sources:
+  - noaa/SHR9901
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SHR9901:
+      position: [40.1873, -74.0126]
+      coastline: unverifiable

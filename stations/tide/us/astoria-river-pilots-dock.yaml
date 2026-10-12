@@ -1,0 +1,19 @@
+region: US-WA
+sources:
+  - ticon/astoria_river_pilots_dock-9439040-usa-da_sat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/astoria_river_pilots_dock-9439040-usa-da_sat:
+      position: [46.190111, -122.829186]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 0.204
+          recency: 0.93
+          source: 0
+          quality: 1
+          amplitude: 1
+          coverage: 0.268

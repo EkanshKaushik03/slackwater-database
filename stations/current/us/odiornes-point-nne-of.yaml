@@ -1,0 +1,11 @@
+region: US-NH
+sources:
+  - noaa/ACT0686
+redirect_from:
+  - /currents/us/nh/odiornes-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0686:
+      position: [43.04333, -70.705]
+      coastline: unverifiable

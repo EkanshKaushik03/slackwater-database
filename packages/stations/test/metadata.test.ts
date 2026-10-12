@@ -1,5 +1,4 @@
 import { describe, expect, test } from "vitest";
-import { readFileSync } from "node:fs";
 import type { GeocodeResult, Geocoder } from "../geocode.ts";
 import {
   loadCorrections,
@@ -40,12 +39,6 @@ const baseStation: StationInput = {
   country: "United States",
   country_code: "US",
 };
-const corrections = loadCorrections(
-  readFileSync(
-    new URL("../../../metadata/corrections.yaml", import.meta.url),
-    "utf8",
-  ),
-);
 
 describe("metadata resolution", () => {
   test("keeps location components independent", () => {
@@ -53,7 +46,6 @@ describe("metadata resolution", () => {
       correction: {
         name: "Everett",
         context: "Port Gardner",
-        slug: "everett",
         cities: ["Marysville"],
       },
       geocoder,
@@ -61,7 +53,6 @@ describe("metadata resolution", () => {
 
     expect(result).toMatchObject({
       name: "Everett",
-      slug: "everett",
       locality: "Everett",
       region: "Washington",
       region_code: "US-WA",
@@ -251,7 +242,8 @@ describe("metadata resolution", () => {
         longitude: -123.17,
       },
       {
-        correction: corrections.get("noaa/9449828")!,
+        // As its station file pins it.
+        correction: { location: { countryCode: "US", regionCode: "US-WA" } },
         geocoder,
         maritimeZones: { country: () => "CA" },
       },
@@ -637,6 +629,17 @@ chs-port-renfrew:
     expect(result).not.toHaveProperty("region");
   });
 
+  test("a station pinned to no region takes none, even one its provider names", () => {
+    const result = resolveMetadata(
+      { ...baseStation, region_code: "US-WA" },
+      {
+        correction: { location: { countryCode: "US", regionCode: null } },
+        geocoder,
+      },
+    );
+    expect(result.region_code).toBeUndefined();
+  });
+
   test("a curated context is not marked as derived", () => {
     const result = resolveMetadata(
       { ...baseStation, context: "Automated place", context_derived: true },
@@ -649,16 +652,6 @@ chs-port-renfrew:
 });
 
 describe("metadata validation", () => {
-  test("accepts the migrated metadata sources", () => {
-    const registry = loadRegistry(
-      readFileSync(
-        new URL("../../../metadata/registry.yaml", import.meta.url),
-        "utf8",
-      ),
-    );
-    expect(validateMetadata(corrections, registry)).toEqual([]);
-  });
-
   test("accepts recognized country codes beyond the initial US and Canada data", () => {
     const corrections = loadCorrections(`
 test/1:
@@ -770,11 +763,25 @@ same-id:
     );
   });
 
+  test("a curated position must fit every record of its station", () => {
+    const corrections = loadCorrections("test/1:\n  position: [49, -123]\n");
+    expect(
+      validateMetadata(
+        corrections,
+        new Map(),
+        [
+          { ...baseStation, id: "test/1", latitude: 49, longitude: -123 },
+          { ...baseStation, id: "test/2", latitude: 50, longitude: -123 },
+        ],
+        new Map([["test/1", ["test/1", "test/2"]]]),
+      ).join("\n"),
+    ).toMatch(/corrected position is 111\.\d km/);
+  });
+
   test("rejects an implausibly distant position correction", () => {
     const corrections = loadCorrections(`
 test/1:
   position: [50, -125]
-  reason: source typo
 `);
     expect(
       validateMetadata(corrections, new Map(), [

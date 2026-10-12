@@ -4,7 +4,6 @@ import {
   distanceKm,
   identity,
   reconcile,
-  seedStations,
   type ChsStation,
   type IwlsStation,
 } from "../chs.ts";
@@ -140,7 +139,7 @@ describe("reconcile", () => {
     expect(out.map((s) => s.id)).toEqual(["chs-nearby-bay"]);
   });
 
-  it("never mints an id that is taken, including a removed station's tombstoned id", () => {
+  it("never mints an id that is taken, including a removed station's retired id", () => {
     const out = reconcile([iwls("1", "Gone Point", 50, -125)], [], {
       ports: [],
       taken: ["chs-gone-point"],
@@ -187,21 +186,5 @@ describe("reconcile", () => {
     const first = reconcile(stations, [], none);
     expect(first.find((s) => s.latitude === 47)?.id).toBe("chs-same-name");
     expect(reconcile([...stations].reverse(), [], none)).toEqual(first);
-  });
-});
-
-describe("seedStations", () => {
-  it("keeps only reserved ids and drops fields the database derives", () => {
-    const app = [
-      {
-        ...record("chs-kept", "Kept", 45, -64),
-        region: "Somewhere, NS",
-        timezone: "America/Halifax",
-      },
-      record("chs-point-atkinson-2", "Point Atkinson", 49.337, -123.254),
-    ] as ChsStation[];
-    expect(seedStations(app, new Set(["chs-kept"]))).toEqual([
-      record("chs-kept", "Kept", 45, -64),
-    ]);
   });
 });

@@ -1,0 +1,18 @@
+sources:
+  - ticon/tamaristg_10minute-tam-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tamaristg_10minute-tam-fra-cmems:
+      position: [43.091, 5.90112]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 33
+        factors:
+          epoch: 0.164
+          recency: 0.92
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.023

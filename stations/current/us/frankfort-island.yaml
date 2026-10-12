@@ -1,0 +1,9 @@
+region: US-ME
+sources:
+  - noaa/PIR0709
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PIR0709:
+      position: [43.11412, -70.80525]
+      coastline: unverifiable

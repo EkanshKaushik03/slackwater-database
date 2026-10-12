@@ -1,0 +1,30 @@
+name: Campbell River
+context: Discovery Passage
+region: CA-BC
+position: [50.042, -125.247]
+provider: chs
+sources:
+  - chs-campbell-river
+  - ticon/campbell_river_bc-8074-can-meds
+redirect_from:
+  - /tides/ca/bc/campbell-river-bc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-campbell-river:
+      position: [50.042, -125.247]
+      coastline: clear
+    ticon/campbell_river_bc-8074-can-meds:
+      position: [50.04, -125.25]
+      coastline: ashore
+      metres_inland: 256
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.325

@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4796
+redirect_from:
+  - /currents/us/va/point-lookout/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4796:
+      position: [38.01467, -76.202]
+      coastline: unverifiable

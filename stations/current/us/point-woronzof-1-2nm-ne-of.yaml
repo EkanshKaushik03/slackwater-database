@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI0206
+redirect_from:
+  - /currents/us/ak/point-woronzof/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI0206:
+      position: [61.21685, -149.98435]
+      coastline: unverifiable

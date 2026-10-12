@@ -1,0 +1,22 @@
+sources:
+  - ticon/ijgeulstroompaal1tg-ijg-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ijgeulstroompaal1tg-ijg-nld-cmems:
+      position: [52.466049, 4.518931]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ijmuiden_stroommeetpaal-ijmdsmpl-nld-rws
+        score: 49
+        factors:
+          epoch: 0.235
+          recency: 0.92
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MHWS (0.871) < MHW (0.876)

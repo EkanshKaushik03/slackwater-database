@@ -1,0 +1,21 @@
+sources:
+  - ticon/paleafokea-pal-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/paleafokea-pal-grc-cmems:
+      position: [37.717503, 23.945171]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 47
+        factors:
+          epoch: 0.087
+          recency: 0.96
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.117m) is 6.5x the largest tidal constituent K1 (0.018m): the yearly swing exceeds the daily one"

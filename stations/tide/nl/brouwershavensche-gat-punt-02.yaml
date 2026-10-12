@@ -1,0 +1,18 @@
+sources:
+  - ticon/brouwershavensche_gat_punt_02-brouwhvsgt02-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/brouwershavensche_gat_punt_02-brouwhvsgt02-nld-rws:
+      position: [51.767626, 3.617124]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.788
+          quality: 1
+          amplitude: 1
+          coverage: 0.007

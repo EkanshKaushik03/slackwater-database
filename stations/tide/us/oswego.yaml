@@ -1,0 +1,24 @@
+region: US-NY
+sources:
+  - ticon/oswego_ny-9052030-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oswego_ny-9052030-usa-noaa:
+      position: [43.46417, -76.51183]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 93
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.556
+        issues:
+          - MLWS (74.835) > MLW (74.832)
+          - MHWS (74.849) < MHW (74.857)
+          - "Seasonal band (0.279m) is 54.1x the largest tidal constituent M2 (0.005m): the yearly swing exceeds the daily one"

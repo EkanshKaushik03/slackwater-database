@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/calahootchieriver_vali_75-vali7-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/calahootchieriver_vali_75-vali7-usa-sfwmd:
+      position: [26.696944, -81.799444]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.995
+          recency: 0.98
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.046
+        issues:
+          - MLWS (0.229) > MLW (0.226)

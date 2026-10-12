@@ -1,0 +1,21 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Pont-du-Brault
+sources:
+  - ticon/pont_du_brault-6269-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pont_du_brault-6269-fra-refmar:
+      position: [46.316842, -1.082581]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.064
+          recency: 0.89
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0

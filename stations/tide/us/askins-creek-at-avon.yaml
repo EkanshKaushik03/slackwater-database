@@ -1,0 +1,23 @@
+region: US-NC
+sources:
+  - ticon/askinscreek_atavon-ask-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/askinscreek_atavon-ask-usa-ncdem:
+      position: [35.325819, -75.511523]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 48
+        factors:
+          epoch: 0.336
+          recency: 0.99
+          source: 0.545
+          quality: 0
+          amplitude: 1
+          coverage: 0.048
+        issues:
+          - MLWS (0.116) > MLW (0.104)
+          - "Seasonal band (0.050m) is 3.1x the largest tidal constituent M2 (0.016m): the yearly swing exceeds the daily one"

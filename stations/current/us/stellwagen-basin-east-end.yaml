@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1130
+redirect_from:
+  - /currents/us/ma/stellwagen-basin/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1130:
+      position: [42.33813, -70.532]
+      coastline: unverifiable

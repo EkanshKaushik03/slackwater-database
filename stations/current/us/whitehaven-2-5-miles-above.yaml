@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5701
+redirect_from:
+  - /currents/us/md/whitehaven-2-2-nm-above/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5701:
+      position: [38.29667, -75.75833]
+      coastline: unverifiable

@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/new_river_at_sunday_bay_fl-2290940-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/new_river_at_sunday_bay_fl-2290940-usa-usgs:
+      position: [25.7975, -81.255556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 63
+        factors:
+          epoch: 0.326
+          recency: 0.87
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.089
+        issues:
+          - "Seasonal band (0.138m) is 1.1x the largest tidal constituent M2 (0.131m): the yearly swing exceeds the daily one"

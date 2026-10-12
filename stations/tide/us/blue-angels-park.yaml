@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - noaa/8729941
+redirect_from:
+  - /tides/us/al/blue-angels-park/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8729941:
+      position: [30.38694444444445, -87.42880555555556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0

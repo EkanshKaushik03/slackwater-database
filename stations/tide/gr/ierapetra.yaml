@@ -1,0 +1,21 @@
+sources:
+  - ticon/ierapetra-ier-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ierapetra-ier-grc-cmems:
+      position: [35.00375, 25.738529]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 53
+        factors:
+          epoch: 0.404
+          recency: 0.98
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.098m) is 2.9x the largest tidal constituent M2 (0.034m): the yearly swing exceeds the daily one"

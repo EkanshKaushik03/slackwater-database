@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3286
+redirect_from:
+  - /currents/us/ny/hart-island-0-3-nm-sse/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3286:
+      position: [40.8405, -73.76567]
+      coastline: unverifiable

@@ -1,0 +1,22 @@
+sources:
+  - ticon/ciudadcarmen_radar-4-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ciudadcarmen_radar-4-mex-unam:
+      position: [18.636667, -91.836667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ciudad_del_carmen-403-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.446) < MHW (1.46)

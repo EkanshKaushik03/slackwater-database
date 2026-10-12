@@ -1,0 +1,24 @@
+region: US-TX
+sources:
+  - ticon/armand_bayou_pasadena_lake_nasa_road_1-arm-usa-hct
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/armand_bayou_pasadena_lake_nasa_road_1-arm-usa-hct:
+      position: [29.5641, -95.0707]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8770933
+        score: 51
+        factors:
+          epoch: 0.508
+          recency: 0.98
+          source: 0.535
+          quality: 0
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - MLWS (0.279) > MLW (0.183)
+          - MHWS (0.371) < MHW (0.479)

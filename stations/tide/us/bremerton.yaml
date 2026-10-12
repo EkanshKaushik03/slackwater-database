@@ -1,0 +1,27 @@
+# These six arrive with their own qualifier already in the raw name (e.g.
+# "Blaine, Semiahmoo Bay"), which becomes the context. Bremerton and Tacoma
+# carry a second qualifier ("Sinclair Inlet, Port Orchard"), so their context
+# is curated to the first.
+
+name: Bremerton
+context: Sinclair Inlet
+region: US-WA
+cities: [Bremerton, Port Orchard]
+sources:
+  - noaa/9445958
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9445958:
+      position: [47.56169891357422, -122.62300109863281]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.121

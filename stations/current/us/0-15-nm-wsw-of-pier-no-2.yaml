@@ -1,0 +1,9 @@
+region: US-VA
+sources:
+  - noaa/CHB9904
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CHB9904:
+      position: [36.97925, -76.44348]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-RI
+sources:
+  - noaa/ACT2316
+redirect_from:
+  - /currents/us/ri/lewis-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2316:
+      position: [41.13667, -71.62167]
+      coastline: unverifiable

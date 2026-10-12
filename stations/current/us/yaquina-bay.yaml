@@ -1,0 +1,9 @@
+region: US-OR
+sources:
+  - noaa/PCT1081
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1081:
+      position: [44.62329864501953, -124.05699920654297]
+      coastline: unverifiable

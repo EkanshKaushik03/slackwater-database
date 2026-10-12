@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-samuel-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-samuel-island:
+      position: [48.8217, -123.2084]
+      coastline: clear

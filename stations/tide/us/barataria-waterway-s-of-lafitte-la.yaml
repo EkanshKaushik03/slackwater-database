@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/barataria_waterway_s_of_lafitte_la-292859090004000-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/barataria_waterway_s_of_lafitte_la-292859090004000-usa-usgs:
+      position: [29.483056, -90.011111]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 51
+        factors:
+          epoch: 0.505
+          recency: 0.91
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.021
+        issues:
+          - MLWS (0.199) > MLW (0.154)
+          - MHWS (0.223) < MHW (0.303)
+          - "Seasonal band (0.111m) is 1.3x the largest tidal constituent K1 (0.085m): the yearly swing exceeds the daily one"

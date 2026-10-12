@@ -1,0 +1,24 @@
+region: US-WA
+sources:
+  - ticon/duwamish_river_at_golf_course_at_tukwila_wa-12113390-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/duwamish_river_at_golf_course_at_tukwila_wa-12113390-usa-usgs:
+      position: [47.478986, -122.258733]
+      coastline: ashore
+      metres_inland: 10080
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 71
+        factors:
+          epoch: 0.614
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.125
+        issues:
+          - MHWS (2.891) < MHW (2.941)
+          - "Seasonal band (0.527m) is 1.4x the largest tidal constituent M2 (0.390m): the yearly swing exceeds the daily one"

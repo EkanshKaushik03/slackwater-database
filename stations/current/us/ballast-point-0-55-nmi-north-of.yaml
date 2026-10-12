@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0046
+redirect_from:
+  - /currents/us/ca/ballast-point-0-55-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0046:
+      position: [32.69583, -117.2325]
+      coastline: unverifiable

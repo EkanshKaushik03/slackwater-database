@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-esquimalt-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-esquimalt-harbour:
+      position: [48.440433, -123.449833]
+      coastline: clear

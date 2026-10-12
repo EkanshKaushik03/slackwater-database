@@ -1,0 +1,20 @@
+sources:
+  - ticon/tenerife-ten-esp-da_mm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tenerife-ten-esp-da_mm:
+      position: [28.48, -16.24]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/tenerife-228a-esp-uhslc_rq
+        score: 49
+        factors:
+          epoch: 1
+          recency: 0.86
+          source: 0.04
+          quality: 0
+          amplitude: 1
+          coverage: 0

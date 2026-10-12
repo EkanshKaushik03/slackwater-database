@@ -1,0 +1,22 @@
+sources:
+  - ticon/wladyslawowo-wla-pol-eseas
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wladyslawowo-wla-pol-eseas:
+      position: [54.7967, 18.4186]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.77
+          source: 0.727
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (5.046) > MLW (5.043)
+          - "Seasonal band (0.092m) is 7.9x the largest tidal constituent M2 (0.012m): the yearly swing exceeds the daily one"

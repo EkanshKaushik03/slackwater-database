@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/cb1102
+redirect_from:
+  - /currents/us/md/chesapeake-bay-bridge/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/cb1102:
+      position: [38.97999954223633, -76.38999938964844]
+      coastline: unverifiable

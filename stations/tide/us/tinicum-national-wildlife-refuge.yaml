@@ -1,0 +1,19 @@
+region: US-PA
+sources:
+  - noaa/8542885
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8542885:
+      position: [39.8783, -75.2767]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.023

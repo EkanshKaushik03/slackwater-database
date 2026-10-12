@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - noaa/8723644
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8723644:
+      position: [25.1417, -80.9233]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.273

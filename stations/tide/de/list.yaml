@@ -1,0 +1,20 @@
+sources:
+  - ticon/listtg-lis-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/listtg-lis-deu-cmems:
+      position: [55.016998, 8.441]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/listaufsylt-9570070-deu-wsv
+        score: 43
+        factors:
+          epoch: 0.614
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.003

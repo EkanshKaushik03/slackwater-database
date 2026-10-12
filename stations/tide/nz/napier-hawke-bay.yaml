@@ -1,0 +1,20 @@
+sources:
+  - ticon/napier-napt-nzl-ttw
+redirect_from:
+  - /tides/nz/napier-hawke-s-bay-region/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/napier-napt-nzl-ttw:
+      position: [-39.475556, 176.92]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 49
+        factors:
+          epoch: 0.875
+          recency: 0.97
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 0.017

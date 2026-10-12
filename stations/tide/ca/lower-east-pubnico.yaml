@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-lower-east-pubnico
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-lower-east-pubnico:
+      position: [43.630445, -65.771242]
+      coastline: unverifiable

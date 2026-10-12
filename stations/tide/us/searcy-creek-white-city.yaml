@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/searcy_creek_whitecity-12322-usa-nwfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/searcy_creek_whitecity-12322-usa-nwfwmd:
+      position: [29.879722, -85.220278]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 55
+        factors:
+          epoch: 0.698
+          recency: 0.99
+          source: 0.556
+          quality: 0
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (0.334) > MLW (0.316)
+          - MHWS (0.378) < MHW (0.422)

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-northwest-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-northwest-bay:
+      position: [49.303, -124.202]
+      coastline: clear

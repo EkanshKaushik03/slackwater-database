@@ -1,0 +1,9 @@
+region: US-MA
+sources:
+  - noaa/bh0101
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/bh0101:
+      position: [42.34090042114258, -71.01229858398438]
+      coastline: unverifiable

@@ -1,0 +1,26 @@
+region: US-MI
+sources:
+  - ticon/windmill_point_mi-9044049-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/windmill_point_mi-9044049-usa-noaa:
+      position: [42.357498, -82.93]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.039
+        issues:
+          - MLWS (175.148) > MLW (175.147)
+          - MHWS (175.15) < MHW (175.162)
+          - Tidal range 1.5cm < 2cm threshold
+          - "Seasonal band (0.164m) is 89.1x the largest tidal constituent S1 (0.002m): the yearly swing exceeds the daily one"

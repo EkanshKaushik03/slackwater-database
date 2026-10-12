@@ -1,0 +1,20 @@
+sources:
+  - ticon/cromer-cro-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cromer-cro-gbr-cmems:
+      position: [52.9333, 1.3]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cromer-cro-gbr-bodc
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

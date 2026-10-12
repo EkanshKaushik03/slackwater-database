@@ -1,0 +1,25 @@
+region: CA-QC
+sources:
+  - ticon/lachine-15390-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lachine-15390-can-meds:
+      position: [45.43, -73.67]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.71
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.162
+        issues:
+          - MHWS (0.798) < MHW (0.815)
+          - MSL (0.796) <= MLW (0.797)
+          - "Seasonal band (0.190m) is 64.0x the largest tidal constituent S1 (0.003m): the yearly swing exceeds the daily one"

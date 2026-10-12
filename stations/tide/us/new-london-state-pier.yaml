@@ -1,0 +1,21 @@
+region: US-CT
+sources:
+  - noaa/8461490
+redirect_from:
+  - /tides/us/ct/new-london/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8461490:
+      position: [41.371667, -72.095556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.025

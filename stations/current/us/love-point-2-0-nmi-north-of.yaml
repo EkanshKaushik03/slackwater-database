@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/CHB0302
+redirect_from:
+  - /currents/us/md/love-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CHB0302:
+      position: [39.074, -76.30317]
+      coastline: unverifiable

@@ -1,0 +1,30 @@
+region: US-TX
+sources:
+  - ticon/keegans_bayou_at_roark_rd_nr_houston_tx-8074800-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/keegans_bayou_at_roark_rd_nr_houston_tx-8074800-usa-usgs:
+      position: [29.656621, -95.562166]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 0.5
+          coverage: 0.075
+        issues:
+          - MLW (18.422) < MLLW (18.428)
+          - MLWS (18.502) > MLW (18.422)
+          - MHW (18.479) <= MSL (18.506)
+          - MLW (18.422) < LAT (18.445)
+          - HAT (18.584) < MHHW (18.624)
+          - "Seasonal band (0.020m) is 1.9x the largest tidal constituent S1 (0.011m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0007) exceeds M2 (0.0004)
+          - Q1 amplitude (0.0018) exceeds O1 (0.0015)

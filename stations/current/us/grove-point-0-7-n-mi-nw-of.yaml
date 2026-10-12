@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5131
+redirect_from:
+  - /currents/us/md/grove-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5131:
+      position: [39.39633, -76.05033]
+      coastline: unverifiable

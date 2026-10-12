@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/high_island-8770808-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/high_island-8770808-usa-noaa:
+      position: [29.59472, -94.39028]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.676
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (4.576) < MHW (4.593)
+          - "Superseded source: noaa"

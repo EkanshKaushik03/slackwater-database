@@ -1,0 +1,18 @@
+sources:
+  - ticon/minicoy-153-ind-uhslc_fd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/minicoy-153-ind-uhslc_fd:
+      position: [8.117, 73.05]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 79
+        factors:
+          epoch: 0.72
+          recency: 0.99
+          source: 0.99
+          quality: 0
+          amplitude: 1
+          coverage: 1

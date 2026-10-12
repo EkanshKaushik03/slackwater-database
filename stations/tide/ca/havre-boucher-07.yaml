@@ -1,0 +1,22 @@
+region: CA-NS
+sources:
+  - ticon/havre_boucher-1576-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/havre_boucher-1576-can-meds:
+      position: [45.68, -61.53]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 63
+        factors:
+          epoch: 0.168
+          recency: 0.29
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.169
+        issues:
+          - "Seasonal band (0.323m) is 1.2x the largest tidal constituent M2 (0.274m): the yearly swing exceeds the daily one"

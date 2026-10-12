@@ -1,0 +1,18 @@
+sources:
+  - ticon/maeslantkering_zeezijde-maeslkrzzde-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/maeslantkering_zeezijde-maeslkrzzde-nld-rws:
+      position: [51.958239, 4.161443]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 80
+        factors:
+          epoch: 0.927
+          recency: 0.97
+          source: 0.788
+          quality: 1
+          amplitude: 1
+          coverage: 0.071

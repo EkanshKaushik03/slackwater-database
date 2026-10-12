@@ -1,0 +1,23 @@
+region: US-AK
+sources:
+  - ticon/dutch_harbor_ak-041a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dutch_harbor_ak-041a-usa-uhslc_rq:
+      position: [53.88, -166.537]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/dutch_harbor_ak-041-usa-uhslc_fd
+        score: 48
+        factors:
+          epoch: 0.292
+          recency: 0.29
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.946) < MHW (2.005)

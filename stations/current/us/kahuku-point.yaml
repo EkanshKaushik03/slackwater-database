@@ -1,0 +1,9 @@
+region: US-HI
+sources:
+  - noaa/HAI1112
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/HAI1112:
+      position: [21.72998, -157.98995]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-NC
+sources:
+  - ticon/ocracoke_pamlicosound_nc-ocr-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ocracoke_pamlicosound_nc-ocr-usa-ncdem:
+      position: [35.115373, -75.98735]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8654769
+        score: 54
+        factors:
+          epoch: 0.646
+          recency: 0.99
+          source: 0.545
+          quality: 0
+          amplitude: 1
+          coverage: 0.001

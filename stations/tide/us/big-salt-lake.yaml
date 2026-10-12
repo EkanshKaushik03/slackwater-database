@@ -1,0 +1,22 @@
+region: US-AK
+sources:
+  - noaa/9450623
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9450623:
+      position: [55.6, -132.95]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 0
+          coverage: 0.254
+        issues:
+          - "Missing constituents for prediction: M2, S2, O1"

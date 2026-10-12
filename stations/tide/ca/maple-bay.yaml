@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-maple-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-maple-bay:
+      position: [48.8157, -123.60961]
+      coastline: clear

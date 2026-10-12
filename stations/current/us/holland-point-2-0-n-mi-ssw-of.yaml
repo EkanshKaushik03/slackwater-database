@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5986
+redirect_from:
+  - /currents/us/md/holland-point-2-0-nm-ssw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5986:
+      position: [38.67383, -76.2575]
+      coastline: unverifiable

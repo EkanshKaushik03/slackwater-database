@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-porpoise-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-porpoise-bay:
+      position: [49.482, -123.759]
+      coastline: clear

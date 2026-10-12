@@ -1,0 +1,21 @@
+region: CA-BC
+sources:
+  - ticon/sidney_bc-7260-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sidney_bc-7260-can-meds:
+      position: [48.65, -123.39]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.448
+          recency: 0.94
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.088
+        issues:
+          - MHWS (2.87) < MHW (2.916)

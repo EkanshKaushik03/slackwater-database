@@ -1,0 +1,22 @@
+region: US-MD
+sources:
+  - ticon/kent_point-8572467-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kent_point-8572467-usa-noaa:
+      position: [38.8367, -76.3733]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.217
+          recency: 0.74
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

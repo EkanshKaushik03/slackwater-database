@@ -1,0 +1,20 @@
+sources:
+  - ticon/padang-107b-idn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/padang-107b-idn-uhslc_rq:
+      position: [-0.997, 100.375]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/padang-107-idn-uhslc_fd
+        score: 62
+        factors:
+          epoch: 0.702
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.019

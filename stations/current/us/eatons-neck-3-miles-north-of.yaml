@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/LIS1032
+redirect_from:
+  - /currents/us/ny/eatons-neck-2-6-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1032:
+      position: [41.00505, -73.405]
+      coastline: unverifiable

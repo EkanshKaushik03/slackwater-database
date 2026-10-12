@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4821
+redirect_from:
+  - /currents/us/md/point-no-point-4-3-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4821:
+      position: [38.1355, -76.22917]
+      coastline: unverifiable

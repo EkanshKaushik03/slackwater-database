@@ -1,0 +1,18 @@
+sources:
+  - ticon/midway-050-usa-uhslc_fd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/midway-050-usa-uhslc_fd:
+      position: [28.217, -177.367]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,20 @@
+sources:
+  - ticon/tremiti-tre-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tremiti-tre-ita-ispra:
+      position: [42.118881, 15.501567]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/rmn_isoletremiti-rmn-ita-cmems
+        score: 57
+        factors:
+          epoch: 0.629
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0

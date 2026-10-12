@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/shag_slough-sgg-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/shag_slough-sgg-usa-cdwr:
+      position: [38.31833, -121.69306]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.336
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.017
+        issues:
+          - MLWS (0.975) > MLW (0.944)

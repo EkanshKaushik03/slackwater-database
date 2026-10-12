@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-cypress-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-cypress-bay:
+      position: [49.261, -125.871]
+      coastline: clear

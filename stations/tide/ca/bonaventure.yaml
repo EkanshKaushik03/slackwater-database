@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-bonaventure
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-bonaventure:
+      position: [48.037623, -65.481124]
+      coastline: unverifiable

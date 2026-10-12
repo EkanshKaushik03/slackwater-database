@@ -1,0 +1,29 @@
+region: US-WA
+sources:
+  - ticon/nooksack_river_at_ferndale_wa-12213100-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nooksack_river_at_ferndale_wa-12213100-usa-usgs:
+      position: [48.844792, -122.589314]
+      coastline: ashore
+      metres_inland: 7752
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.119
+        issues:
+          - MLW (1.745) < MLLW (1.847)
+          - MLWS (2.03) > MLW (1.745)
+          - MHW (1.809) <= MSL (2.031)
+          - MHW (1.809) < MLLW (1.847)
+          - "Seasonal band (0.328m) is 26.7x the largest tidal constituent S1 (0.012m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0001) exceeds M2 (0.0001)

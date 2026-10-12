@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT4811
+redirect_from:
+  - /currents/us/ak/salmo-point-hawkins-island-1-0-nm-se/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT4811:
+      position: [60.6, -145.75]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2606
+redirect_from:
+  - /currents/us/ct/little-gull-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2606:
+      position: [41.2255, -72.092]
+      coastline: unverifiable

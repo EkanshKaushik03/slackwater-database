@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/mallard_island-9415112-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mallard_island-9415112-usa-noaa:
+      position: [38.0433, -121.918]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.612
+          recency: 0.65
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.757) > MLW (1.736)
+          - "Superseded source: noaa"

@@ -20,7 +20,9 @@ import {
   SEASONAL_CONSTITUENTS,
   TIDAL_CONSTITUENTS,
 } from "../filtering.js";
-import quality from "../../../quality.json" with { type: "json" };
+import { readStationFiles, storedQuality } from "../station-files.ts";
+
+const quality = [...storedQuality(readStationFiles()).values()];
 
 const ROOT = new URL("../../..", import.meta.url).pathname;
 const SCHEMA_PATH = join(ROOT, "schemas", "station.schema.json");
@@ -126,7 +128,7 @@ tideStations.forEach((station) => {
           throw new Error(
             `This TICON station has duplicate/very close coordinates with ${other.id}: ` +
               `${(dist * 1000).toFixed(0)}m apart. ` +
-              `Run npm run evaluate-quality -w packages/stations to re-filter.`,
+              `Run npm run stations to re-filter.`,
           );
         }
       });
@@ -147,7 +149,7 @@ tideStations.forEach((station) => {
           throw new Error(
             `This TICON station is ${(dist * 1000).toFixed(0)}m from NOAA station ${noaa.id}. ` +
               `Minimum distance is ${MIN_DISTANCE * 1000}m. ` +
-              `Run npm run evaluate-quality -w packages/stations to re-filter.`,
+              `Run npm run stations to re-filter.`,
           );
         }
       });
@@ -168,7 +170,7 @@ tideStations.forEach((station) => {
           throw new Error(
             `This TICON station is only ${(dist * 1000).toFixed(0)}m from ${other.id} ` +
               `(minimum: ${MIN_DISTANCE * 1000}m). ` +
-              `Run npm run evaluate-quality -w packages/stations to re-filter.`,
+              `Run npm run stations to re-filter.`,
           );
         }
       });
@@ -182,7 +184,7 @@ tideStations.forEach((station) => {
         expect(
           range,
           `Station ${station.id} has negligible tidal range: ${(range * 100).toFixed(1)}cm (MHW-MLW). ` +
-            `Run npm run evaluate-quality -w packages/stations to re-filter.`,
+            `Run npm run stations to re-filter.`,
           // The database stores datums as float32, so a station accepted right
           // at the threshold can read back a hair under it.
         ).toBeGreaterThanOrEqual(MIN_TIDAL_RANGE - 1e-6);
@@ -260,7 +262,7 @@ describe("seasonal-contamination gate", () => {
         sa / med,
         `Station ${station.id}: SA ${sa.toFixed(3)}m is ${(sa / med).toFixed(1)}x the ` +
           `median SA of its same-regime neighbours (${med.toFixed(3)}m). ` +
-          `Run npm run evaluate-quality -w packages/stations to re-filter.`,
+          `Run npm run stations to re-filter.`,
       ).toBeLessThan(SEASONAL_OUTLIER_RATIO);
     }
   });
@@ -315,7 +317,7 @@ describe("gauge deduplication", () => {
   test("accepts every LINZ port over the TICON relay of the same gauge", () => {
     const linz = quality.filter((r) => r.id.startsWith("linz/"));
     expect(linz).toHaveLength(56);
-    expect(linz.every((r) => r.accepted && r.factors.source === 1)).toBe(true);
+    expect(linz.every((r) => r.accepted && r.factors?.source === 1)).toBe(true);
     expect(
       quality.find((r) => r.id === "ticon/wellington-071-nzl-uhslc_fd"),
     ).toMatchObject({ accepted: false, redundant: "linz/071" });
@@ -324,7 +326,7 @@ describe("gauge deduplication", () => {
   test("accepts all Kartverket gauges over co-located TICON records", () => {
     const kartverket = quality.filter((r) => r.id.startsWith("kartverket/"));
     expect(kartverket).toHaveLength(33);
-    expect(kartverket.every((r) => r.accepted && r.factors.source === 1)).toBe(
+    expect(kartverket.every((r) => r.accepted && r.factors?.source === 1)).toBe(
       true,
     );
     expect(
@@ -350,7 +352,7 @@ describe("gauge deduplication", () => {
       expect(
         prior,
         `Stations ${prior} and ${station.id} share gauge key "${key}". ` +
-          `Run npm run evaluate-quality -w packages/stations to re-filter.`,
+          `Run npm run stations to re-filter.`,
       ).toBeUndefined();
       seen.set(key, station.id);
     }
@@ -423,7 +425,7 @@ describe("coordinate gate", () => {
       expect(
         onNullIsland,
         `Station ${station.id} is on Null Island (${station.latitude}, ${station.longitude}). ` +
-          `Run npm run evaluate-quality -w packages/stations to re-filter.`,
+          `Run npm run stations to re-filter.`,
       ).toBe(false);
     }
   });
@@ -562,7 +564,7 @@ describe("seasonal dominance", () => {
     }
   });
 
-  test("reaches the reader through the database, not just quality.json", () => {
+  test("reaches the reader through the database, not just the station files", () => {
     // Cobourg on Lake Ontario: SA 0.289 m against a largest tidal constituent
     // of 0.002 m, and it passes the 2 cm range floor by 6 mm, so nothing else
     // in the pass catches it.

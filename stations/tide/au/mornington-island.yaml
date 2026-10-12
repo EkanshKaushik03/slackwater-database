@@ -1,0 +1,21 @@
+sources:
+  - ticon/mornington_island-h074011a-aus-bom
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mornington_island-h074011a-aus-bom:
+      position: [-16.67, 139.17]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 0.511
+          recency: 0.9
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (1.948) > MLW (1.639)
+          - MHWS (2.298) < MHW (2.673)

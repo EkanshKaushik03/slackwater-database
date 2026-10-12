@@ -1,0 +1,23 @@
+sources:
+  - ticon/porvoo_emasalo_vaarlahti-100669-fin-fmi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/porvoo_emasalo_vaarlahti-100669-fin-fmi:
+      position: [60.21, 25.63]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 72
+        factors:
+          epoch: 0.582
+          recency: 0.99
+          source: 0.768
+          quality: 1
+          amplitude: 1
+          coverage: 0.011
+        issues:
+          - MLWS (0.017) > MLW (-0.011)
+          - MHWS (0.029) < MHW (0.03)
+          - "Seasonal band (0.090m) is 4.3x the largest tidal constituent O1 (0.021m): the yearly swing exceeds the daily one"

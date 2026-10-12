@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-powell-river
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-powell-river:
+      position: [49.866667, -124.55]
+      coastline: clear

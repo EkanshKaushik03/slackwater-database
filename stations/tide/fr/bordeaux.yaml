@@ -1,0 +1,18 @@
+sources:
+  - ticon/bordeaux-196-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bordeaux-196-fra-refmar:
+      position: [44.86, -0.5528]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 73
+        factors:
+          epoch: 0.521
+          recency: 0.89
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0

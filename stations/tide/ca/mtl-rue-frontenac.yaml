@@ -1,0 +1,26 @@
+region: CA-QC
+sources:
+  - ticon/mtl_rue_frontenac-15540-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mtl_rue_frontenac-15540-can-meds:
+      position: [45.53, -73.54]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.069
+        issues:
+          - MLWS (0.914) > MLW (0.903)
+          - MHWS (0.924) < MHW (0.925)
+          - "P1 amplitude (0.0043) exceeds K1 (0.0021): physically impossible"
+          - "Seasonal band (0.497m) is 114.9x the largest tidal constituent P1 (0.004m): the yearly swing exceeds the daily one"

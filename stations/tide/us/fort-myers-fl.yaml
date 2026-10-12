@@ -1,0 +1,26 @@
+region: US-FL
+sources:
+  - ticon/fort_myers-8725520-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fort_myers-8725520-usa-noaa:
+      position: [26.648, -81.871]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.504) > MLW (1.493)
+          - MHWS (1.752) < MHW (1.758)
+          - "Superseded source: noaa"
+          - "Seasonal band (0.098m) is 1.0x the largest tidal constituent M2 (0.095m): the yearly swing exceeds the daily one"

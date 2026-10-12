@@ -1,0 +1,21 @@
+region: US-NC
+sources:
+  - ticon/southport_nc-sou-usa-ncdem
+redirect_from:
+  - /tides/us/nc/southport-nc-nc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/southport_nc-sou-usa-ncdem:
+      position: [33.9169, -78.0119]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.306
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.013

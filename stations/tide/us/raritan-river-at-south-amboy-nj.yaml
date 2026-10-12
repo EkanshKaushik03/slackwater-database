@@ -1,0 +1,21 @@
+region: US-NJ
+sources:
+  - ticon/raritan_river_at_south_amboy_nj-1406710-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/raritan_river_at_south_amboy_nj-1406710-usa-usgs:
+      position: [40.492222, -74.281667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8531232
+        score: 51
+        factors:
+          epoch: 0.482
+          recency: 0.9
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.001

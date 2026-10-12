@@ -1,0 +1,25 @@
+sources:
+  - ticon/sassnitztg-sas-deu-cmems
+redirect_from:
+  - /tides/de/sassnitz-mecklenburg-vorpommern/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sassnitztg-sas-deu-cmems:
+      position: [54.511169, 13.64333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 43
+        factors:
+          epoch: 0.615
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.011
+        issues:
+          - MLWS (0.03) > MLW (0.028)
+          - MHWS (0.062) < MHW (0.069)
+          - "Seasonal band (0.046m) is 3.8x the largest tidal constituent O1 (0.012m): the yearly swing exceeds the daily one"

@@ -1,0 +1,22 @@
+# A station's own acronym, which a shouting name would recase.
+
+name: UNC Center Marine Science Dock
+region: US-NC
+sources:
+  - ticon/unc_centermarinescience_dock-unc-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/unc_centermarinescience_dock-unc-usa-ncdem:
+      position: [34.139931, -77.987222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 58
+        factors:
+          epoch: 0.084
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.008

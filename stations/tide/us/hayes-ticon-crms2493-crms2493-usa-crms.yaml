@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/crms2493-crms2493-usa-crms
+redirect_from:
+  - /tides/us/la/hayes-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms2493-crms2493-usa-crms:
+      position: [29.82445, -92.88556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.919
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.068
+        issues:
+          - MLWS (0.015) > MLW (-0.021)
+          - MHWS (0.045) < MHW (0.103)

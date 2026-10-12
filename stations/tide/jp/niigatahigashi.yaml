@@ -1,0 +1,21 @@
+sources:
+  - ticon/niigatahigashi-4001-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/niigatahigashi-4001-jpn-jodc_pahb:
+      position: [37.99045, 139.217283]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 66
+        factors:
+          epoch: 0.698
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.295
+        issues:
+          - "Seasonal band (0.144m) is 2.6x the largest tidal constituent M2 (0.055m): the yearly swing exceeds the daily one"

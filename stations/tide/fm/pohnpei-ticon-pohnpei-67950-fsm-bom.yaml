@@ -1,0 +1,20 @@
+sources:
+  - ticon/pohnpei-67950-fsm-bom
+redirect_from:
+  - /tides/fm/pohnpei-pohnpei-state/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pohnpei-67950-fsm-bom:
+      position: [6.9867, 158.2433]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

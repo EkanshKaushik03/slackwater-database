@@ -1,0 +1,23 @@
+sources:
+  - ticon/mawson-177a-aus-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mawson-177a-aus-uhslc_rq:
+      position: [-67.6, 62.867]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/mawson-177-aus-uhslc_fd
+        score: 66
+        factors:
+          epoch: 0.965
+          recency: 0.83
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.665) > MLW (0.553)
+          - MHWS (0.955) < MHW (1.053)

@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2851
+redirect_from:
+  - /currents/us/ct/hammonasset-point-4-3-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2851:
+      position: [41.16333, -72.5695]
+      coastline: unverifiable

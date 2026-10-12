@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-alice-arm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-alice-arm:
+      position: [55.47, -129.496]
+      coastline: unverifiable

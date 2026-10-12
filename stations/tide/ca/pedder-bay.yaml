@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-pedder-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pedder-bay:
+      position: [48.3317, -123.5501]
+      coastline: clear

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-sand-heads
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sand-heads:
+      position: [49.1052, -123.3042]
+      coastline: clear

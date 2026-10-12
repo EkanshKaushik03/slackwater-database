@@ -1,0 +1,20 @@
+sources:
+  - ticon/paimboeuftg_60minute-pai-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/paimboeuftg_60minute-pai-fra-cmems:
+      position: [47.286579, -2.00042]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/paimboeuf-6095-fra-refmar
+        score: 55
+        factors:
+          epoch: 0.528
+          recency: 0.95
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

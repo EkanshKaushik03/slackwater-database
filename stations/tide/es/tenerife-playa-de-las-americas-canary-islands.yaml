@@ -1,0 +1,20 @@
+sources:
+  - ticon/tenerife4tg-ten-esp-cmems
+redirect_from:
+  - /tides/es/tenerife-ticon-tenerife4tg-ten-esp-cmems/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tenerife4tg-ten-esp-cmems:
+      position: [28.04694, -16.71805]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 45
+        factors:
+          epoch: 0.288
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.563

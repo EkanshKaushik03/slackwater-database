@@ -1,0 +1,26 @@
+region: US-LA
+sources:
+  - ticon/carrollton-8761955-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/carrollton-8761955-usa-noaa:
+      position: [29.9329, -90.135472]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.88
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.214
+        issues:
+          - MHHW (2.025) < MHW (2.392)
+          - MHWS (1.949) < MHW (2.392)
+          - MSL (1.942) <= MLW (2.338)
+          - "Seasonal band (1.233m) is 23.6x the largest tidal constituent O1 (0.052m): the yearly swing exceeds the daily one"

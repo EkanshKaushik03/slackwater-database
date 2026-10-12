@@ -1,0 +1,20 @@
+sources:
+  - ticon/kerguelentg_60minute-ker-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kerguelentg_60minute-ker-fra-cmems:
+      position: [-49.352119, 70.219101]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/kerguelen-23-fra-refmar
+        score: 49
+        factors:
+          epoch: 1
+          recency: 0.87
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

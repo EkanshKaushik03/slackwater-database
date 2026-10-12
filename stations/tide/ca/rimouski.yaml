@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-rimouski
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-rimouski:
+      position: [48.478333, -68.513667]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-sullivan-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sullivan-bay:
+      position: [50.886, -126.826]
+      coastline: clear

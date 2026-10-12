@@ -1,0 +1,23 @@
+sources:
+  - ticon/mazatlan_flotador-16-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mazatlan_flotador-16-mex-unam:
+      position: [23.181667, -106.423333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: seasonal
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.072
+          recency: 0.96
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "SA amplitude (0.935m) is 6.8x the median SA of 3 same-regime neighbour(s) within 25km (0.138m): seasonal contamination"
+          - "Seasonal band (0.935m) is 2.7x the largest tidal constituent M2 (0.343m): the yearly swing exceeds the daily one"

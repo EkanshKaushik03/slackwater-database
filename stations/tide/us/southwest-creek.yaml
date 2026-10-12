@@ -1,0 +1,23 @@
+region: US-NC
+sources:
+  - ticon/southwest_creek-sou-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/southwest_creek-sou-usa-ncdem:
+      position: [34.705597, -77.480283]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 48
+        factors:
+          epoch: 0.278
+          recency: 0.99
+          source: 0.545
+          quality: 0
+          amplitude: 1
+          coverage: 0.132
+        issues:
+          - MLWS (0.146) > MLW (0.123)
+          - "Seasonal band (0.265m) is 5.2x the largest tidal constituent M2 (0.051m): the yearly swing exceeds the daily one"

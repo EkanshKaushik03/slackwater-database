@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-sheringham-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sheringham-point:
+      position: [48.377066, -123.921166]
+      coastline: clear

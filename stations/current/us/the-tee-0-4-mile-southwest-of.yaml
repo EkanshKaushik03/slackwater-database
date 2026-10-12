@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6876
+redirect_from:
+  - /currents/us/sc/the-tee/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6876:
+      position: [33.06333, -79.92967]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5631
+redirect_from:
+  - /currents/us/md/long-point-2-0-nm-northeast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5631:
+      position: [37.915, -75.79833]
+      coastline: unverifiable

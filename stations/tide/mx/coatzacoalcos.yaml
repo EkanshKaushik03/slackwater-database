@@ -1,0 +1,22 @@
+sources:
+  - ticon/coatzacoalcos-405-mex-unam_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/coatzacoalcos-405-mex-unam_hist:
+      position: [18.143333, -94.411667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 49
+        factors:
+          epoch: 1
+          recency: 0.67
+          source: 0.131
+          quality: 0
+          amplitude: 1
+          coverage: 0.007
+        issues:
+          - MHWS (2.097) < MHW (2.104)
+          - "Seasonal band (0.154m) is 1.1x the largest tidal constituent K1 (0.137m): the yearly swing exceeds the daily one"

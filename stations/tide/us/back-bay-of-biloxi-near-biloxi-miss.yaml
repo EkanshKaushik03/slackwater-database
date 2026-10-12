@@ -1,0 +1,22 @@
+region: US-MS
+sources:
+  - ticon/back_bay_of_biloxi_near_biloxi_miss-2481270-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/back_bay_of_biloxi_near_biloxi_miss-2481270-usa-usgs:
+      position: [30.415753, -88.975867]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 73
+        factors:
+          epoch: 0.831
+          recency: 0.97
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.006
+        issues:
+          - MLWS (0.124) > MLW (0.038)
+          - MHWS (0.278) < MHW (0.372)

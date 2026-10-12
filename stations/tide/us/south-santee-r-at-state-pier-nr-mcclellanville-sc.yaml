@@ -1,0 +1,21 @@
+region: US-SC
+sources:
+  - ticon/south_santee_r_at_state_pier_nr_mcclellanville_sc-2171905-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/south_santee_r_at_state_pier_nr_mcclellanville_sc-2171905-usa-usgs:
+      position: [33.154334, -79.354224]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8663219
+        score: 76
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0

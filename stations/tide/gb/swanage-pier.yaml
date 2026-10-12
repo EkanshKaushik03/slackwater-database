@@ -1,0 +1,18 @@
+sources:
+  - ticon/swanage_pier-swp-gbr-cco
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/swanage_pier-swp-gbr-cco:
+      position: [50.60935, -1.94918]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.935
+          recency: 0.99
+          source: 0.061
+          quality: 1
+          amplitude: 1
+          coverage: 0

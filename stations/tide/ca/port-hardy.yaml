@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-port-hardy
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-port-hardy:
+      position: [50.722, -127.489]
+      coastline: clear

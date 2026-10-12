@@ -1,0 +1,18 @@
+sources:
+  - ticon/moray_firth-mor-gbr-bodc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/moray_firth-mor-gbr-bodc:
+      position: [57.599167, -4.008778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.558
+          recency: 0.78
+          source: 0.98
+          quality: 1
+          amplitude: 1
+          coverage: 0.008

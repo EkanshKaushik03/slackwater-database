@@ -1,0 +1,22 @@
+sources:
+  - ticon/alvarado-400-mex-unam_hist
+redirect_from:
+  - /tides/mx/alvarado/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/alvarado-400-mex-unam_hist:
+      position: [18.766167, -95.756]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.131
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.082) < MHW (0.101)

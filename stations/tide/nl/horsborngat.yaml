@@ -1,0 +1,21 @@
+sources:
+  - ticon/horsborngat-horsbgt-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/horsborngat-horsbgt-nld-rws_hist:
+      position: [53.565287, 6.613264]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.376
+          recency: 0.61
+          source: 0.495
+          quality: 0
+          amplitude: 1
+          coverage: 0.071
+        issues:
+          - "Superseded source: rws_hist"

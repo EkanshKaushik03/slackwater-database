@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-carmanville
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-carmanville:
+      position: [49.403201, -54.281334]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3421
+redirect_from:
+  - /currents/us/ny/roosevelt-islands-west-of-off-63rd-street/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3421:
+      position: [40.759700775146484, -73.95449829101562]
+      coastline: unverifiable

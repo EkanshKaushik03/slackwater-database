@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4901
+redirect_from:
+  - /currents/us/md/plum-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4901:
+      position: [38.6125, -76.4775]
+      coastline: unverifiable

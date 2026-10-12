@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/JOP1103
+redirect_from:
+  - /currents/us/fl/johns-pass-bridge/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/JOP1103:
+      position: [27.78331, -82.78216]
+      coastline: unverifiable

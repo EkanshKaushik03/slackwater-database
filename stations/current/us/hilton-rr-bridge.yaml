@@ -1,0 +1,9 @@
+region: US-NC
+sources:
+  - noaa/CFR1601
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CFR1601:
+      position: [34.25918960571289, -77.94805908203125]
+      coastline: unverifiable

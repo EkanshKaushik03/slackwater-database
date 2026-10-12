@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1166
+redirect_from:
+  - /currents/us/ma/spectacle-island-0-2-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1166:
+      position: [42.31633, -70.98583]
+      coastline: unverifiable

@@ -1,0 +1,19 @@
+region: US-CT
+sources:
+  - ticon/housatonic_r_at_beacon_pt_marina_near_shelton_ct-1208760-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/housatonic_r_at_beacon_pt_marina_near_shelton_ct-1208760-usa-usgs:
+      position: [41.272436, -73.089658]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.154
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.006

@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1431
+redirect_from:
+  - /currents/us/ma/moon-head-0-9-nm-southeast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1431:
+      position: [42.29167, -70.98217]
+      coastline: unverifiable

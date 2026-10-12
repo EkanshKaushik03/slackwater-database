@@ -1,0 +1,9 @@
+region: US-MS
+sources:
+  - noaa/MOB1105
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/MOB1105:
+      position: [30.22569, -88.53994]
+      coastline: unverifiable

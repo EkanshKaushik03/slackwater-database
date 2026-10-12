@@ -1,0 +1,18 @@
+sources:
+  - ticon/bayonne_boucau-94-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bayonne_boucau-94-fra-refmar:
+      position: [43.52732, -1.51483]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

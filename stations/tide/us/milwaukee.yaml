@@ -1,0 +1,24 @@
+region: US-WI
+sources:
+  - ticon/milwaukee_wi-9087057-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/milwaukee_wi-9087057-usa-noaa:
+      position: [43.002, -87.8876]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 100
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (176.489) > MLW (176.488)
+          - MHWS (176.519) < MHW (176.529)
+          - "Seasonal band (0.150m) is 14.4x the largest tidal constituent M2 (0.010m): the yearly swing exceeds the daily one"

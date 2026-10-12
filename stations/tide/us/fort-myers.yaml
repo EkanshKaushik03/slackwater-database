@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - noaa/8725520
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8725520:
+      position: [26.64777777777778, -81.8711111111111]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - "Seasonal band (0.110m) is 1.1x the largest tidal constituent M2 (0.104m): the yearly swing exceeds the daily one"

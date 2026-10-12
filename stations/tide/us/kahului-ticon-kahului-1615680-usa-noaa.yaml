@@ -1,0 +1,22 @@
+region: US-HI
+sources:
+  - ticon/kahului-1615680-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kahului-1615680-usa-noaa:
+      position: [20.895, -156.476694]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.016
+        issues:
+          - "Superseded source: noaa"

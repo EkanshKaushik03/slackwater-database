@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1728
+redirect_from:
+  - /currents/us/wa/point-colville-1-4-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1728:
+      position: [48.41809844970703, -122.78119659423828]
+      coastline: clear

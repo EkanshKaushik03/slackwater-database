@@ -1,0 +1,19 @@
+region: US-TX
+sources:
+  - noaa/8775083
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8775083:
+      position: [27.908100128173828, -97.13529968261719]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 71
+        factors:
+          epoch: 0.268
+          recency: 0.8
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.196

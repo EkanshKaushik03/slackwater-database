@@ -1,0 +1,11 @@
+region: US-NJ
+sources:
+  - noaa/DEB2114
+redirect_from:
+  - /currents/us/nj/salem-river-entrance/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/DEB2114:
+      position: [39.57080078125, -75.502197265625]
+      coastline: unverifiable

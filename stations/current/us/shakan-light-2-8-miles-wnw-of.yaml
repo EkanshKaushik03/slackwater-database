@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3576
+redirect_from:
+  - /currents/us/ak/shakan-light-2-4-nm-wnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3576:
+      position: [56.16667, -133.7]
+      coastline: unverifiable

@@ -1,0 +1,19 @@
+region: US-CT
+sources:
+  - ticon/connecticut_river_nr_bridge_st_nr_old_saybrook_ct-1194815-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/connecticut_river_nr_bridge_st_nr_old_saybrook_ct-1194815-usa-usgs:
+      position: [41.281333, -72.349278]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.434
+          recency: 0.97
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.005

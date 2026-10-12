@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/saltery_bay_bc-7868-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/saltery_bay_bc-7868-can-meds:
+      position: [49.78, -124.18]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.376

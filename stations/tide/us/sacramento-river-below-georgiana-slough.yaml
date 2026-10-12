@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_below_georgiana_slough-ges-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_below_georgiana_slough-ges-usa-cdwr:
+      position: [38.2389, -121.5234]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sacramento_r_bl_georgiana_slough_ca-11447905-usa-usgs
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHWS (1.907) < MHW (1.926)

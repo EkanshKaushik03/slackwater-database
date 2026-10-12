@@ -1,0 +1,29 @@
+name: Owen Bay
+context: Sonora Island
+region: CA-BC
+position: [50.31, -125.223]
+provider: chs
+sources:
+  - chs-owen-bay
+  - ticon/owen_bay_bc-8120-can-meds
+redirect_from:
+  - /tides/ca/bc/owen-bay-bc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-owen-bay:
+      position: [50.31, -125.223]
+      coastline: clear
+    ticon/owen_bay_bc-8120-can-meds:
+      position: [50.31, -125.22]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.85
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.211

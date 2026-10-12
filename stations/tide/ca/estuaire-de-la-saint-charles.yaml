@@ -1,0 +1,19 @@
+region: CA-QC
+sources:
+  - ticon/estuaire_de_la_saint_charles-3246-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/estuaire_de_la_saint_charles-3246-can-meds:
+      position: [46.82, -71.2]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 80
+        factors:
+          epoch: 0.867
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.022

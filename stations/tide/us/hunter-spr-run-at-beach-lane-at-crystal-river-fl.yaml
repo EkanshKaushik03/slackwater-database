@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/hunter_spr_run_at_beach_lane_at_crystal_river_fl-2310743-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hunter_spr_run_at_beach_lane_at_crystal_river_fl-2310743-usa-usgs:
+      position: [28.894702, -82.593157]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.444
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.01

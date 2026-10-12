@@ -1,0 +1,20 @@
+sources:
+  - ticon/spring_bay-335a-aus-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/spring_bay-335a-aus-uhslc_rq:
+      position: [-42.547, 147.932]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/spring_bay-335-aus-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.007

@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6666
+redirect_from:
+  - /currents/us/sc/south-chan-0-3-nm-nw-of-ft-johnson/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6666:
+      position: [32.758, -79.90633]
+      coastline: unverifiable

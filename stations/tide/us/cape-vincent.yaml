@@ -1,0 +1,23 @@
+region: US-NY
+sources:
+  - ticon/cape_vincent_ny-9052000-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cape_vincent_ny-9052000-usa-noaa:
+      position: [44.13028, -76.332]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.36
+        issues:
+          - MHWS (74.829) < MHW (74.837)
+          - "Seasonal band (0.296m) is 43.2x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

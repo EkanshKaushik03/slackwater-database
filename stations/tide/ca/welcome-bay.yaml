@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-welcome-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-welcome-bay:
+      position: [49.7, -124.55]
+      coastline: clear

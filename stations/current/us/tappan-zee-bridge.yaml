@@ -1,0 +1,9 @@
+region: US-NY
+sources:
+  - noaa/HUR0502
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/HUR0502:
+      position: [41.06743, -73.88154]
+      coastline: unverifiable

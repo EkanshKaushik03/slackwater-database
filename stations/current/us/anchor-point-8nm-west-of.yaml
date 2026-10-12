@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI0420
+redirect_from:
+  - /currents/us/ak/anchor-point-8-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI0420:
+      position: [59.8187, -152.15553]
+      coastline: unverifiable

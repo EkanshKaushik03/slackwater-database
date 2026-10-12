@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6686
+redirect_from:
+  - /currents/us/sc/castle-pinckney-0-5-nm-southwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6686:
+      position: [32.76633, -79.9195]
+      coastline: unverifiable

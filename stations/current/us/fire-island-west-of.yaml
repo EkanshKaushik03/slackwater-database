@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5111
+redirect_from:
+  - /currents/us/ak/fire-island-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5111:
+      position: [61.1625, -150.5125]
+      coastline: unverifiable

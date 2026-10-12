@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4691
+redirect_from:
+  - /currents/us/va/wolf-trap-light-2-0-nm-nw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4691:
+      position: [37.41667, -76.215]
+      coastline: unverifiable

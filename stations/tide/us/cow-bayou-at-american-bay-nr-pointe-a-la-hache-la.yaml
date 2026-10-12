@@ -1,0 +1,22 @@
+region: US-LA
+sources:
+  - ticon/cow_bayou_at_american_bay_nr_pointe_a_la_hache_la-73745258-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cow_bayou_at_american_bay_nr_pointe_a_la_hache_la-73745258-usa-usgs:
+      position: [29.57077, -89.703952]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.115
+        issues:
+          - MLWS (0.355) > MLW (0.299)
+          - MHWS (0.431) < MHW (0.521)

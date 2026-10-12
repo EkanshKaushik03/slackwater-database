@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/eastbay_anerr_dock-11272-usa-nwfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/eastbay_anerr_dock-11272-usa-nwfwmd:
+      position: [29.769167, -84.881389]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.95
+          recency: 0.92
+          source: 0.556
+          quality: 1
+          amplitude: 1
+          coverage: 0.048
+        issues:
+          - MHWS (2.428) < MHW (2.431)

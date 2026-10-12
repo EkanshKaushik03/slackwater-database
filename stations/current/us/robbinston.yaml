@@ -1,0 +1,9 @@
+region: US-ME
+sources:
+  - noaa/EPT0004
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/EPT0004:
+      position: [45.0763, -67.10097]
+      coastline: unverifiable

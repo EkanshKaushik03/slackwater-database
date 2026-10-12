@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-kyuquot
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-kyuquot:
+      position: [50.026, -127.376]
+      coastline: clear

@@ -1,0 +1,22 @@
+sources:
+  - ticon/lameshur_bay-9751381-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lameshur_bay-9751381-usa-noaa:
+      position: [18.31825, -64.724222]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (8.94) > MLW (8.933)
+          - "Superseded source: noaa"

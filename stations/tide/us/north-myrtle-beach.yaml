@@ -1,0 +1,19 @@
+region: US-SC
+sources:
+  - noaa/8660642
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8660642:
+      position: [33.766700744628906, -78.81500244140625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.144

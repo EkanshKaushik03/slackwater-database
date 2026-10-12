@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-nugent-sound
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-nugent-sound:
+      position: [51.083333, -127.25]
+      coastline: ashore
+      metres_inland: 256

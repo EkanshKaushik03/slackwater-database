@@ -1,0 +1,18 @@
+sources:
+  - ticon/milford-mil-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/milford-mil-gbr-cmems:
+      position: [51.716702, -5.05]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.021

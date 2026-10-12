@@ -1,0 +1,20 @@
+sources:
+  - ticon/san_juan-096a-per-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_juan-096a-per-uhslc_rq:
+      position: [-15.367, -75.2]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/san_juan-096b-per-uhslc_rq
+        score: 67
+        factors:
+          epoch: 1
+          recency: 0.77
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

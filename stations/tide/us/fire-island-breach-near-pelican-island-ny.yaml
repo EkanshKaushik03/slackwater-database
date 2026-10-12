@@ -1,0 +1,19 @@
+region: US-NY
+sources:
+  - ticon/fire_island_breach_near_pelican_island_ny-1305207-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fire_island_breach_near_pelican_island_ny-1305207-usa-usgs:
+      position: [40.723611, -72.897222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 45
+        factors:
+          epoch: 0.166
+          recency: 0.89
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.059

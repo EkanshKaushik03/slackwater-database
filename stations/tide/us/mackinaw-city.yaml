@@ -1,0 +1,23 @@
+region: US-MI
+sources:
+  - ticon/mackinaw_city_mi-9075080-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mackinaw_city_mi-9075080-usa-noaa:
+      position: [45.8, -84.721107]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 100
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (176.442) < MHW (176.457)
+          - "Seasonal band (0.148m) is 13.4x the largest tidal constituent M2 (0.011m): the yearly swing exceeds the daily one"

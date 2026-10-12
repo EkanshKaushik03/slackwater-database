@@ -1,0 +1,18 @@
+sources:
+  - ticon/misumi-ma46-jpn-jodc_jma
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/misumi-ma46-jpn-jodc_jma:
+      position: [32.62305, 130.451383]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.87
+          source: 0.929
+          quality: 1
+          amplitude: 1
+          coverage: 0.328

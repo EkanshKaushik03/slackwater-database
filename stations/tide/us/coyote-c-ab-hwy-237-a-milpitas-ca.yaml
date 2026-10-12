@@ -1,0 +1,27 @@
+region: US-CA
+sources:
+  - ticon/coyote_c_ab_hwy_237_a_milpitas_ca-11172175-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/coyote_c_ab_hwy_237_a_milpitas_ca-11172175-usa-usgs:
+      position: [37.422162, -121.927458]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.083
+        issues:
+          - MLW (1.459) < MLLW (1.498)
+          - MLWS (1.546) > MLW (1.459)
+          - MHW (1.482) <= MSL (1.547)
+          - MHW (1.482) < MLLW (1.498)
+          - "Seasonal band (0.266m) is 146.2x the largest tidal constituent 2Q1 (0.002m): the yearly swing exceeds the daily one"

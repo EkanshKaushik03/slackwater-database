@@ -1,0 +1,23 @@
+sources:
+  - ticon/deshaies-673-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/deshaies-673-fra-refmar:
+      position: [16.30529, -61.79591]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 67
+        factors:
+          epoch: 0.476
+          recency: 0.81
+          source: 0.949
+          quality: 1
+          amplitude: 0.75
+          coverage: 0
+        issues:
+          - MHWS (0.483) < MHW (0.497)
+          - "Seasonal band (0.083m) is 1.0x the largest tidal constituent K1 (0.080m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0083) exceeds S2 (0.0044)

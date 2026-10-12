@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/LIS1020
+redirect_from:
+  - /currents/us/ny/roanoke-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/LIS1020:
+      position: [41.00697, -72.66322]
+      coastline: unverifiable

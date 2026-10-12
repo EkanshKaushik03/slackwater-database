@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-nanaimo-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-nanaimo-harbour:
+      position: [49.1628, -123.9235]
+      coastline: clear

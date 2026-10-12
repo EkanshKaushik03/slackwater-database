@@ -1,0 +1,18 @@
+sources:
+  - ticon/d151tg-d15-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/d151tg-d15-nld-cmems:
+      position: [54.316654, 2.933349]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.587
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.02

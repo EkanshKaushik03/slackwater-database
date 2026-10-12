@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT0916
+redirect_from:
+  - /currents/us/ma/nahant-1-nm-se-of-east-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0916:
+      position: [42.39717, -70.85283]
+      coastline: unverifiable

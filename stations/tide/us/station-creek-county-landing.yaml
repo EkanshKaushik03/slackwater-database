@@ -1,0 +1,21 @@
+region: US-SC
+sources:
+  - noaa/8668601
+redirect_from:
+  - /tides/us/sc/station-creek/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8668601:
+      position: [32.325, -80.6017]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.091

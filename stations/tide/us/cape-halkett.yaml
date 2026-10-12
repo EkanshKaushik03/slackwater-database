@@ -1,0 +1,24 @@
+region: US-AK
+sources:
+  - noaa/9496345
+redirect_from:
+  - /tides/us/cape-halkett/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9496345:
+      position: [70.75509643554688, -152.33779907226562]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.117m) is 1.7x the largest tidal constituent M2 (0.069m): the yearly swing exceeds the daily one"

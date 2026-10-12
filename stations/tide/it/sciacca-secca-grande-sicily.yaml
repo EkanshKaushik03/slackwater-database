@@ -1,0 +1,23 @@
+sources:
+  - ticon/sciacca-sci-ita-ispra
+redirect_from:
+  - /tides/it/sciacca/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sciacca-sci-ita-ispra:
+      position: [37.221208, 13.076456]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.701
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0.63
+        issues:
+          - "Seasonal band (0.051m) is 1.2x the largest tidal constituent M2 (0.043m): the yearly swing exceeds the daily one"

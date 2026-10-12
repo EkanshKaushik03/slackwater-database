@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_rio_vista_army_base-b91210-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_rio_vista_army_base-b91210-usa-cdwr:
+      position: [38.159722, -121.693889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 40
+        factors:
+          epoch: 0.134
+          recency: 0.59
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.013

@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/SAB0807
+redirect_from:
+  - /currents/us/fl/courtney-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SAB0807:
+      position: [30.138729, -85.699181]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: US-VA
+sources:
+  - noaa/cb0102
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/cb0102:
+      position: [36.9594, -76.0128]
+      coastline: unverifiable

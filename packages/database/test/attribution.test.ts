@@ -4,7 +4,7 @@ import { openDatabase } from "../src/database/reader.ts";
 import {
   MODIFICATIONS_URL,
   PROJECT_CREDIT,
-  attributionFor,
+  attributionWithCredit,
 } from "../src/attribution.ts";
 // From source: the stations package loads data, and this test checks the
 // database against the same per-source metadata the build used.
@@ -69,7 +69,7 @@ describe("attribution", () => {
       const t = shipped.stations(i)!;
       const license = t.license();
       expect(t.attribution()).toBe(
-        attributionFor(creditOf(t.source()?.name()!), {
+        attributionWithCredit(creditOf(t.source()?.name()!), {
           type: license!.type()!,
           url: license!.url()!,
         }),
@@ -80,7 +80,7 @@ describe("attribution", () => {
   // What a CC BY redistributor has to pass on (section 3(a)(1)): who made it,
   // the licence and its URI, and that it was modified.
   test("a CC BY station gets a complete notice", () => {
-    const notice = attributionFor(creditOf("TICON-4"), ccBy);
+    const notice = attributionWithCredit(creditOf("TICON-4"), ccBy);
     expect(notice.startsWith(`${PROJECT_CREDIT}. `)).toBe(true);
     expect(notice).toContain("Hart-Davis");
     expect(notice).toContain("https://doi.org/10.17882/109129");
@@ -91,7 +91,7 @@ describe("attribution", () => {
   });
 
   test("a CC BY-NC station names its own licence", () => {
-    const notice = attributionFor(creditOf("TICON-4"), ccByNc);
+    const notice = attributionWithCredit(creditOf("TICON-4"), ccByNc);
     expect(notice).toContain(
       "Licensed CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)",
     );
@@ -101,7 +101,7 @@ describe("attribution", () => {
   // Public domain imposes no notice, so nothing is put on the consumer.
   test("a source and licence requiring no notice give the project line alone", () => {
     expect(
-      attributionFor(
+      attributionWithCredit(
         creditOf("US National Oceanic and Atmospheric Administration"),
         publicDomain,
       ),
@@ -109,7 +109,7 @@ describe("attribution", () => {
   });
 
   test("gives the project line alone without a source credit", () => {
-    expect(attributionFor(null, undefined)).toBe(PROJECT_CREDIT);
-    expect(attributionFor(undefined, undefined)).toBe(PROJECT_CREDIT);
+    expect(attributionWithCredit(null, undefined)).toBe(PROJECT_CREDIT);
+    expect(attributionWithCredit(undefined, undefined)).toBe(PROJECT_CREDIT);
   });
 });

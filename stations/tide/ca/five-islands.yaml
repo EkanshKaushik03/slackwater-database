@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-five-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-five-islands:
+      position: [45.379434, -64.12989]
+      coastline: unverifiable

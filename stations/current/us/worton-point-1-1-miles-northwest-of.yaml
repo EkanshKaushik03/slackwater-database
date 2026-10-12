@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5116
+redirect_from:
+  - /currents/us/md/worton-point-1-0-nm-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5116:
+      position: [39.33167, -76.2]
+      coastline: unverifiable

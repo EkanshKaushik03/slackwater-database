@@ -1,0 +1,19 @@
+region: US-DE
+sources:
+  - ticon/vines_creek_near_dagsboro_de-1484549-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/vines_creek_near_dagsboro_de-1484549-usa-usgs:
+      position: [38.556389, -75.203167]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.535
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.079

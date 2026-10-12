@@ -1,0 +1,20 @@
+sources:
+  - linz/044
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/044:
+      position: [-38.066667, 174.816667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 0.806
+          recency: 0.97
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.556
+        issues:
+          - MHHW (3.346) < MHW (3.347)

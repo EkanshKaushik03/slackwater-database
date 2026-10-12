@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/old_river_at_bacon_island-obi-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_at_bacon_island-obi-usa-cdwr:
+      position: [37.96937, -121.57222]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/old_r_a_bacon_island_ca-11313405-usa-usgs
+        score: 76
+        factors:
+          epoch: 0.961
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.156) > MLW (1.14)
+          - MHWS (1.854) < MHW (1.861)

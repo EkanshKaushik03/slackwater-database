@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-kingcome-inlet
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-kingcome-inlet:
+      position: [50.908717, -126.19945]
+      coastline: clear

@@ -1,0 +1,20 @@
+sources:
+  - ticon/socorro-090a-mex-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/socorro-090a-mex-uhslc_rq:
+      position: [18.733, -111.017]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/socorro-090-mex-uhslc_fd
+        score: 45
+        factors:
+          epoch: 0.126
+          recency: 0.33
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

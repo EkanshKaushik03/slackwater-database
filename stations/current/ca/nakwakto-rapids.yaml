@@ -1,0 +1,16 @@
+# The sole entrance to the Seymour and Belize Inlet complex, at the east end of Slingsby Channel around Bramham Island, with Turret Rock mid-channel. Sailing Directions PAC 202 is unusually direct about the timing: slack runs about six minutes, and it says the rapids cannot be run safely at any other time. The ebb is the faster stream - CHS gives 14.5 knots ebbing against 11.5 flooding. Position from CHS's public current-station list, matched by position and confirmed in the channel - the tide reference ports' method, see PROVENANCE.md.
+
+name: Nakwakto Rapids
+context: Slingsby Channel
+region: CA-BC
+aliases: [turret rock, tremble island, seymour inlet, belize inlet]
+position: [51.0967, -127.5033]
+provider: chs
+sources:
+  - chs-nakwakto-rapids
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-nakwakto-rapids:
+      position: [51.0967, -127.5033]
+      coastline: clear

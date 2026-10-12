@@ -1,0 +1,21 @@
+sources:
+  - ticon/brouwersdam_buiten-brouwdbtn-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/brouwersdam_buiten-brouwdbtn-nld-rws_hist:
+      position: [51.748827, 3.824628]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.131
+          recency: 0.55
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.019
+        issues:
+          - "Superseded source: rws_hist"

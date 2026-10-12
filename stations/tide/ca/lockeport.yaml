@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-lockeport
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-lockeport:
+      position: [43.701539, -65.107167]
+      coastline: unverifiable

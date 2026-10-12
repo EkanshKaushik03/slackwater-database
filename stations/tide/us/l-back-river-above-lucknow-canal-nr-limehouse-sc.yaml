@@ -1,0 +1,23 @@
+region: US-SC
+sources:
+  - ticon/l_back_river_above_lucknow_canal_nr_limehouse_sc-21989784-usa-usgs
+redirect_from:
+  - /tides/us/ga/l-back-river-above-lucknow-canal-nr-limehouse-sc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/l_back_river_above_lucknow_canal_nr_limehouse_sc-21989784-usa-usgs:
+      position: [32.185757, -81.11789]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.033
+        issues:
+          - MLWS (-0.912) > MLW (-1.037)

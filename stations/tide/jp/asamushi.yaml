@@ -1,0 +1,18 @@
+sources:
+  - ticon/asamushi-gs06-jpn-jodc_giaj
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/asamushi-gs06-jpn-jodc_giaj:
+      position: [40.8975, 140.859167]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.101
+          quality: 1
+          amplitude: 1
+          coverage: 0.212

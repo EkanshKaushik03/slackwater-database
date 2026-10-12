@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0106
+redirect_from:
+  - /currents/us/ca/national-city/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0106:
+      position: [32.65, -117.11667]
+      coastline: unverifiable

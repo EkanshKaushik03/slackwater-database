@@ -1,0 +1,23 @@
+sources:
+  - ticon/hamada-348a-jpn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hamada-348a-jpn-uhslc_rq:
+      position: [34.9, 132.067]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hamada-348-jpn-uhslc_fd
+        seasonal_dominant: true
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.184m) is 2.1x the largest tidal constituent O1 (0.088m): the yearly swing exceeds the daily one"

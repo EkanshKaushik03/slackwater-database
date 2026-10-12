@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1496
+redirect_from:
+  - /currents/us/wa/point-wilson-0-7-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1496:
+      position: [48.150001525878906, -122.73332977294922]
+      coastline: clear

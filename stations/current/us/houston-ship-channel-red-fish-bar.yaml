@@ -1,0 +1,9 @@
+region: US-TX
+sources:
+  - noaa/ACT8881
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8881:
+      position: [29.50733, -94.87467]
+      coastline: unverifiable

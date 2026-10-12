@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-saavedra-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-saavedra-islands:
+      position: [49.622, -126.617]
+      coastline: clear

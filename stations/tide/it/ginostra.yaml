@@ -1,0 +1,18 @@
+sources:
+  - ticon/ginostra-gin-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ginostra-gin-ita-ispra:
+      position: [38.785181, 15.190767]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.788
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0.005

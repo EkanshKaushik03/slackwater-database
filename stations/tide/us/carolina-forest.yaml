@@ -1,0 +1,22 @@
+region: US-SC
+sources:
+  - noaa/8660754
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8660754:
+      position: [33.734901428222656, -78.88269805908203]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 0
+          coverage: 0.087
+        issues:
+          - "Missing constituents for prediction: M2, S2, O1"

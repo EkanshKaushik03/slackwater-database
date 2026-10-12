@@ -1,0 +1,19 @@
+region: US-NC
+sources:
+  - ticon/myrtle_grove_nc-myr-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/myrtle_grove_nc-myr-usa-ncdem:
+      position: [34.0451, -77.8891]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.338
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.031

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-white-rock
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-white-rock:
+      position: [49.016667, -122.8]
+      coastline: clear

@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4616
+redirect_from:
+  - /currents/us/va/fishermans-island-1-4-nm-wnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4616:
+      position: [37.10167, -76.0055]
+      coastline: unverifiable

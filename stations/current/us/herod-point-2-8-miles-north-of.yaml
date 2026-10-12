@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2906
+redirect_from:
+  - /currents/us/ny/herod-point-2-4-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2906:
+      position: [41.01617, -72.83217]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+sources:
+  - ticon/oscarsborgtg-osc-nor-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oscarsborgtg-osc-nor-cmems:
+      position: [59.678074, 10.604861]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "P1 amplitude (0.0045) exceeds K1 (0.0031): physically impossible"

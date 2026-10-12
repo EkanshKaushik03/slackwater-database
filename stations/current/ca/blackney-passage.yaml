@@ -1,0 +1,13 @@
+name: Blackney Passage
+context: Blackfish Sound
+region: CA-BC
+position: [50.555, -126.6842]
+provider: chs
+sources:
+  - chs-blackney-passage
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-blackney-passage:
+      position: [50.555, -126.6842]
+      coastline: clear

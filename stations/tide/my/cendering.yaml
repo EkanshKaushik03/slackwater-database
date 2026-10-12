@@ -1,0 +1,21 @@
+sources:
+  - ticon/cendering-320a-mys-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cendering-320a-mys-uhslc_rq:
+      position: [5.265, 103.187]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (1.841) > MLW (1.788)
+          - MHWS (2.677) < MHW (2.701)

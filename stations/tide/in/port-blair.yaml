@@ -1,0 +1,18 @@
+sources:
+  - ticon/port_blair-908-ind-uhslc_fd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_blair-908-ind-uhslc_fd:
+      position: [11.683, 92.767]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 0.143
+          recency: 0.99
+          source: 0.99
+          quality: 0
+          amplitude: 1
+          coverage: 1

@@ -1,0 +1,19 @@
+region: US-GA
+sources:
+  - noaa/8672462
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8672462:
+      position: [31.8217, -81.2983]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.128

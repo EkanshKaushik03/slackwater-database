@@ -1,0 +1,20 @@
+sources:
+  - ticon/pointe_pitre-272a-fra-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointe_pitre-272a-fra-uhslc_rq:
+      position: [16.225, -61.532]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/pointe_a_pitre-125-fra-refmar
+        score: 62
+        factors:
+          epoch: 0.708
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

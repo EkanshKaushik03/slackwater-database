@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7511
+redirect_from:
+  - /currents/us/ga/isle-of-hope-city/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7511:
+      position: [31.97667, -81.04667]
+      coastline: unverifiable

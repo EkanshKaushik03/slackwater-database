@@ -1,0 +1,11 @@
+region: US-ME
+sources:
+  - noaa/ACT0116
+redirect_from:
+  - /currents/us/me/moosabec-reach/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT0116:
+      position: [44.5285, -67.57267]
+      coastline: unverifiable

@@ -1,0 +1,18 @@
+sources:
+  - ticon/dalian-630a-chn-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dalian-630a-chn-uhslc_rq:
+      position: [38.925, 121.658]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.859
+          recency: 0.64
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.136

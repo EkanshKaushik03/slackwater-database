@@ -1,0 +1,20 @@
+sources:
+  - ticon/norfolk_island-062a-aus-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/norfolk_island-062a-aus-uhslc_rq:
+      position: [-29.067, 167.95]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/norfolk_island-062b-aus-uhslc_rq
+        score: 48
+        factors:
+          epoch: 0.114
+          recency: 0.61
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.02

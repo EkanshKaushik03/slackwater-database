@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/palatka-8720774-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/palatka-8720774-usa-noaa:
+      position: [29.6433, -81.6317]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.121
+          recency: 0.79
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

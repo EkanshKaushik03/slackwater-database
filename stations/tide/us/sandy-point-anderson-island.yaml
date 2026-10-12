@@ -1,0 +1,22 @@
+name: Sandy Point
+context: Anderson Island
+region: US-WA
+cities: [Steilacoom]
+sources:
+  - noaa/9446804
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9446804:
+      position: [47.15299987792969, -122.67510223388672]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.06

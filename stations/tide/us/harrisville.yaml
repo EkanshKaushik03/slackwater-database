@@ -1,0 +1,24 @@
+region: US-MI
+sources:
+  - ticon/harrisville_mi-9075059-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/harrisville_mi-9075059-usa-noaa:
+      position: [44.6593, -83.2863]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 97
+        factors:
+          epoch: 1
+          recency: 0.82
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.925
+        issues:
+          - MLWS (176.321) > MLW (176.317)
+          - MHWS (176.325) < MHW (176.342)
+          - "Seasonal band (0.129m) is 45.4x the largest tidal constituent K1 (0.003m): the yearly swing exceeds the daily one"

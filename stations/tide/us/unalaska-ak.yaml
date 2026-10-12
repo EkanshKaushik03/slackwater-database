@@ -1,0 +1,24 @@
+region: US-AK
+sources:
+  - ticon/unalaska-9462620-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/unalaska-9462620-usa-noaa:
+      position: [53.879194, -166.540306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.114) > MLW (1.104)
+          - MHWS (1.702) < MHW (1.765)
+          - "Superseded source: noaa"

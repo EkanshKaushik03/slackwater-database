@@ -1,0 +1,18 @@
+sources:
+  - ticon/santander-sant-esp-ieo
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/santander-sant-esp-ieo:
+      position: [43.4614, -3.7908]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.899
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-north-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-north-harbour:
+      position: [47.846313, -54.096719]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+sources:
+  - ticon/buenos_aires-285a-arg-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/buenos_aires-285a-arg-uhslc_rq:
+      position: [-34.667, -58.5]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.35
+          source: 0.192
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (0.47) > MLW (0.428)
+          - MHWS (1.148) < MHW (1.149)

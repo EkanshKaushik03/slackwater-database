@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-montreal-jetee-1
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-montreal-jetee-1:
+      position: [45.5035, -73.552528]
+      coastline: unverifiable

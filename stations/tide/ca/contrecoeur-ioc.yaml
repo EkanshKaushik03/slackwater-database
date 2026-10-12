@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-contrecoeur-ioc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-contrecoeur-ioc:
+      position: [45.832667, -73.283167]
+      coastline: unverifiable

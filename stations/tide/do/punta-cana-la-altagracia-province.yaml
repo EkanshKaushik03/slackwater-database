@@ -1,0 +1,22 @@
+sources:
+  - ticon/punta_cana-776a-dom-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/punta_cana-776a-dom-uhslc_rq:
+      position: [18.505, -68.375]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/punta_cana-776-dom-uhslc_fd
+        score: 64
+        factors:
+          epoch: 0.781
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.015
+        issues:
+          - MLWS (0.549) > MLW (0.528)

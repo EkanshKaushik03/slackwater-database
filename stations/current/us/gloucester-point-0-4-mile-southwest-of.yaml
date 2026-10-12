@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5446
+redirect_from:
+  - /currents/us/va/gloucester-point-0-3-nm-southwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5446:
+      position: [37.24033, -76.51083]
+      coastline: unverifiable

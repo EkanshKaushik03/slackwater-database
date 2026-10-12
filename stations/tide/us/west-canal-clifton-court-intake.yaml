@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/west_canal_clifton_court_intake-b95338-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/west_canal_clifton_court_intake-b95338-usa-cdwr:
+      position: [37.831612, -121.554056]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/old_river_at_clifton_court_ferry-b95340-usa-cdwr
+        score: 67
+        factors:
+          epoch: 0.517
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.005

@@ -1,0 +1,26 @@
+sources:
+  - ticon/roggebotsluisnoordtg-rog-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/roggebotsluisnoordtg-rog-nld-cmems:
+      position: [52.545502, 5.856455]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.47
+          recency: 0.97
+          source: 0.02
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.006
+        issues:
+          - MLWS (-0.237) > MLW (-0.25)
+          - MHWS (-0.209) < MHW (-0.196)
+          - "P1 amplitude (0.0050) exceeds K1 (0.0049): physically impossible"
+          - "Seasonal band (0.082m) is 6.6x the largest tidal constituent S1 (0.012m): the yearly swing exceeds the daily one"
+          - Q1 amplitude (0.0008) exceeds O1 (0.0008)

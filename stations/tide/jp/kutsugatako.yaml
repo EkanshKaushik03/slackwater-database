@@ -1,0 +1,21 @@
+sources:
+  - ticon/kutsugatako-0129-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kutsugatako-0129-jpn-jodc_pahb:
+      position: [45.18945, 141.13805]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.973
+        issues:
+          - "Seasonal band (0.094m) is 1.7x the largest tidal constituent K1 (0.054m): the yearly swing exceeds the daily one"

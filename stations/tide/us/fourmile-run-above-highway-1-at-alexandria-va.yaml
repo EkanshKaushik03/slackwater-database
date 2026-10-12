@@ -1,0 +1,21 @@
+region: US-VA
+sources:
+  - ticon/fourmile_run_above_highway_1_at_alexandria_va-1652545-usa-usgs
+redirect_from:
+  - /tides/us/dc/fourmile-run-above-highway-1-at-alexandria-va/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fourmile_run_above_highway_1_at_alexandria_va-1652545-usa-usgs:
+      position: [38.840222, -77.053306]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.055

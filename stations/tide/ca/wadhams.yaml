@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-wadhams
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-wadhams:
+      position: [51.51, -127.524]
+      coastline: unverifiable

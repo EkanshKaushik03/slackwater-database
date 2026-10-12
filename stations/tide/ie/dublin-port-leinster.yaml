@@ -1,0 +1,20 @@
+sources:
+  - ticon/dublinport-dub-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dublinport-dub-irl-cmems:
+      position: [53.345699, -6.22166]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/dublin_port-dub-irl-mi_c
+        score: 49
+        factors:
+          epoch: 0.924
+          recency: 0.98
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

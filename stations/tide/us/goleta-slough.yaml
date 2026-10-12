@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/goleta_slough-gol-usa-cm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/goleta_slough-gol-usa-cm:
+      position: [34.4172, -119.8317]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 55
+        factors:
+          epoch: 0.567
+          recency: 0.98
+          source: 0.525
+          quality: 0
+          amplitude: 1
+          coverage: 0.257
+        issues:
+          - MHWS (1.299) < MHW (1.331)

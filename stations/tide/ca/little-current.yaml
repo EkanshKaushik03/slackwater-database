@@ -1,0 +1,23 @@
+region: CA-ON
+sources:
+  - ticon/little_current_ontario-11195-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/little_current_ontario-11195-can-meds:
+      position: [45.98, -81.93]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (0.425) < MHW (0.432)
+          - "Seasonal band (0.151m) is 8.1x the largest tidal constituent M2 (0.019m): the yearly swing exceeds the daily one"

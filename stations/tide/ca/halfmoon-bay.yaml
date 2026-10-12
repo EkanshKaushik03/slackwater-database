@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-halfmoon-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-halfmoon-bay:
+      position: [49.511, -123.912]
+      coastline: clear

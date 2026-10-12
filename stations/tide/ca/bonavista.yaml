@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-bonavista
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-bonavista:
+      position: [48.650605, -53.115757]
+      coastline: unverifiable

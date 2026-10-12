@@ -1,0 +1,9 @@
+region: US-ME
+sources:
+  - noaa/CAB1409
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/CAB1409:
+      position: [43.70698, -70.1323]
+      coastline: unverifiable

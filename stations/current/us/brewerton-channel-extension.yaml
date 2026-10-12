@@ -1,0 +1,9 @@
+region: US-MD
+sources:
+  - noaa/cb1202
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/cb1202:
+      position: [39.14862823486328, -76.33]
+      coastline: unverifiable

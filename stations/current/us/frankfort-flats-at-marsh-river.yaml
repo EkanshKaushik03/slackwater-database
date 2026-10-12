@@ -1,0 +1,9 @@
+region: US-ME
+sources:
+  - noaa/PEB0606
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PEB0606:
+      position: [44.6049, -68.84673]
+      coastline: unverifiable

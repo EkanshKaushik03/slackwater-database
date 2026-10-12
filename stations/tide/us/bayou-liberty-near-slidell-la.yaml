@@ -1,0 +1,29 @@
+# A state code GESLA joins to the word before it (`SlidellLa`), which the import
+# keeps and title case reads as the French article.
+
+name: Bayou Liberty near Slidell
+region: US-LA
+sources:
+  - ticon/bayou_liberty_near_slidellla-7374581-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bayou_liberty_near_slidellla-7374581-usa-usgs:
+      position: [30.301306, -89.830621]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.942
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.097
+        issues:
+          - MLWS (0.391) > MLW (0.334)
+          - MHW (0.384) <= MSL (0.395)
+          - "Seasonal band (0.087m) is 2.7x the largest tidal constituent O1 (0.032m): the yearly swing exceeds the daily one"

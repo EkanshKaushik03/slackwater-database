@@ -1,0 +1,21 @@
+sources:
+  - ticon/puerto_morelos-401-mex-unam_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/puerto_morelos-401-mex-unam_hist:
+      position: [20.868333, -86.866667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        score: 0
+        factors:
+          epoch: 0.386
+          recency: 0.88
+          source: 0.131
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Tidal range 1.4cm < 2cm threshold

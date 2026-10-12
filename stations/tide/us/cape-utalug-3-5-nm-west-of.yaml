@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9461704
+redirect_from:
+  - /tides/us/cape-utalug-3-5-nm-west-of/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9461704:
+      position: [52.1183, -174.207]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.257

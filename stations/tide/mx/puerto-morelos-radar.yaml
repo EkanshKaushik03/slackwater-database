@@ -1,0 +1,20 @@
+sources:
+  - ticon/puertomorelos_radar-9-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/puertomorelos_radar-9-mex-unam:
+      position: [20.868333, -86.866667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/puerto_moreles-860a-mex-uhslc_rq
+        score: 36
+        factors:
+          epoch: 0.169
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0

@@ -34,7 +34,7 @@ describe("datums export", () => {
 });
 
 describe("qualityMap", () => {
-  test("records keep their station id, like the quality.json originals", () => {
+  test("records keep their station id, like the station files list them", () => {
     const station = stations.find(({ quality }) => quality)!;
     expect(qualityMap.get(station.id)?.id).toBe(station.id);
     expect(station.quality?.id).toBe(station.id);

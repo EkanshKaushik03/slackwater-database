@@ -1,0 +1,20 @@
+sources:
+  - ticon/muroranko-1626-jpn-jodc_pahb
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/muroranko-1626-jpn-jodc_pahb:
+      position: [42.34445, 140.953333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/muroran-hd03-jpn-jodc_jcg
+        score: 61
+        factors:
+          epoch: 0.698
+          recency: 0.97
+          source: 0.121
+          quality: 1
+          amplitude: 1
+          coverage: 0.006

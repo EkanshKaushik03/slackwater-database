@@ -1,0 +1,22 @@
+region: US-VA
+sources:
+  - ticon/tettington-8638450-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tettington-8638450-usa-noaa:
+      position: [37.24, -76.9433]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.151
+          recency: 0.84
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

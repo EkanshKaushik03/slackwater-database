@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-bloedel-menzies-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-bloedel-menzies-bay:
+      position: [50.118, -125.381]
+      coastline: clear

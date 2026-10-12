@@ -1,0 +1,9 @@
+region: US-TX
+sources:
+  - noaa/cc0501
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/cc0501:
+      position: [27.84673, -97.06076]
+      coastline: unverifiable

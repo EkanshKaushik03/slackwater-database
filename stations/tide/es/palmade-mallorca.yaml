@@ -1,0 +1,21 @@
+sources:
+  - ticon/palmademallorcatg-pal-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/palmademallorcatg-pal-esp-cmems:
+      position: [39.560299, 2.6375]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 63
+        factors:
+          epoch: 0.849
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.018
+        issues:
+          - "Seasonal band (0.088m) is 2.4x the largest tidal constituent K1 (0.037m): the yearly swing exceeds the daily one"

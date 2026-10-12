@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4876
+redirect_from:
+  - /currents/us/md/cove-point-4-9-nm-nne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4876:
+      position: [38.46717, -76.37667]
+      coastline: unverifiable

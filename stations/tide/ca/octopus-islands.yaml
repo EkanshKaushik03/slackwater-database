@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-octopus-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-octopus-islands:
+      position: [50.282, -125.224]
+      coastline: clear

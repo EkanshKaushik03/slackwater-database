@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4851
+redirect_from:
+  - /currents/us/md/cedar-point-1-0-nm-ene/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4851:
+      position: [38.3045, -76.35167]
+      coastline: unverifiable

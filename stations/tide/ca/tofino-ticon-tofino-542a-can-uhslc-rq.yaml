@@ -1,0 +1,21 @@
+region: CA-BC
+sources:
+  - ticon/tofino-542a-can-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tofino-542a-can-uhslc_rq:
+      position: [49.153, -125.913]
+      coastline: clear
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/tofino-542-can-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.008

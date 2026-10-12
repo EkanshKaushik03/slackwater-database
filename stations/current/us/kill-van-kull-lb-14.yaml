@@ -1,0 +1,9 @@
+region: US-NY
+sources:
+  - noaa/n06010
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/n06010:
+      position: [40.64358, -74.13889]
+      coastline: unverifiable

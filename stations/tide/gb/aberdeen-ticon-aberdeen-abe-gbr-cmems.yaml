@@ -1,0 +1,20 @@
+sources:
+  - ticon/aberdeen-abe-gbr-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/aberdeen-abe-gbr-cmems:
+      position: [57.150002, -2.08333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/aberdeen-abe-gbr-bodc
+        score: 51
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.014

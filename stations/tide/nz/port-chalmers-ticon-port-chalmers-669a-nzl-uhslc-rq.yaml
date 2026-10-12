@@ -1,0 +1,22 @@
+sources:
+  - ticon/port_chalmers-669a-nzl-uhslc_rq
+redirect_from:
+  - /tides/nz/port-chalmers-otago/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_chalmers-669a-nzl-uhslc_rq:
+      position: [-45.817, 170.65]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: linz/030
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

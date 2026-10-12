@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-winchelsea-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-winchelsea-island:
+      position: [49.3, -124.086]
+      coastline: clear

@@ -1,0 +1,21 @@
+sources:
+  - ticon/goteborg_eriksberg-33096-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/goteborg_eriksberg-33096-swe-smhi:
+      position: [57.6966, 11.9088]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 0.671
+          recency: 0.99
+          source: 0.919
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.080m) is 1.1x the largest tidal constituent M2 (0.071m): the yearly swing exceeds the daily one"

@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_bryte_lab-a02104-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_bryte_lab-a02104-usa-cdwr:
+      position: [38.6, -121.539722]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.013
+        issues:
+          - MHHW (2.87) < MHW (3.233)
+          - MHWS (2.846) < MHW (3.233)
+          - MSL (2.782) <= MLW (3.138)
+          - "Seasonal band (0.866m) is 14.6x the largest tidal constituent K1 (0.059m): the yearly swing exceeds the daily one"

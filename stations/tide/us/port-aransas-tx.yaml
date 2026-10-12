@@ -1,0 +1,25 @@
+region: US-TX
+sources:
+  - ticon/port_aransas-8775237-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_aransas-8775237-usa-noaa:
+      position: [27.839701, -97.072502]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.51
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.834) < MHW (1.838)
+          - "Superseded source: noaa"
+          - "Seasonal band (0.112m) is 1.2x the largest tidal constituent O1 (0.094m): the yearly swing exceeds the daily one"

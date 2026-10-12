@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-griffith-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-griffith-harbour:
+      position: [53.599, -130.543]
+      coastline: unverifiable

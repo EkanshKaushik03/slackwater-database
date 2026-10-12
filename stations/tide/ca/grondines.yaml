@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-grondines
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-grondines:
+      position: [46.585333, -72.038833]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-eastmain-river
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-eastmain-river:
+      position: [52.231944, -78.559777]
+      coastline: unverifiable

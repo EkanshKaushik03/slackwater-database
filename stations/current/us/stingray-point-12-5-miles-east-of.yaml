@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4716
+redirect_from:
+  - /currents/us/va/stingray-point-10-9-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4716:
+      position: [37.56333, -76.03833]
+      coastline: unverifiable

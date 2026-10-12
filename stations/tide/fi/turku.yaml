@@ -1,0 +1,23 @@
+sources:
+  - ticon/turku-tur-fin-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/turku-tur-fin-cmems:
+      position: [60.428299, 22.1005]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/turku_ruissalo_saaronniemi-134225-fin-fmi
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - "Seasonal band (0.114m) is 6.2x the largest tidal constituent M2 (0.018m): the yearly swing exceeds the daily one"

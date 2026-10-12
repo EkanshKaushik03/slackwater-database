@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3506
+redirect_from:
+  - /currents/us/ak/the-narrows-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3506:
+      position: [56.16017, -133.338]
+      coastline: unverifiable

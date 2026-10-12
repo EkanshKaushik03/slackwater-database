@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT4731
+redirect_from:
+  - /currents/us/va/windmill-point-light-2-2-nm-ese/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4731:
+      position: [37.58833, -76.19167]
+      coastline: unverifiable

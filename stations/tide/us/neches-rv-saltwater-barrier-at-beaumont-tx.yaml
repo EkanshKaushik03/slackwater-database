@@ -1,0 +1,26 @@
+region: US-TX
+sources:
+  - ticon/neches_rv_saltwater_barrier_at_beaumont_tx-8041780-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/neches_rv_saltwater_barrier_at_beaumont_tx-8041780-usa-usgs:
+      position: [30.156878, -94.114347]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.146
+        issues:
+          - MHHW (0.786) < MHW (0.803)
+          - MHWS (0.76) < MHW (0.803)
+          - MSL (0.712) <= MLW (0.72)
+          - "Seasonal band (0.092m) is 1.8x the largest tidal constituent K1 (0.052m): the yearly swing exceeds the daily one"

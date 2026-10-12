@@ -1,0 +1,13 @@
+name: Weynton Passage
+context: Broughton Strait
+region: CA-BC
+position: [50.6033, -126.8117]
+provider: chs
+sources:
+  - chs-weynton-passage
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-weynton-passage:
+      position: [50.6033, -126.8117]
+      coastline: clear

@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4871
+redirect_from:
+  - /currents/us/md/cove-point-3-9-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4871:
+      position: [38.37533, -76.29867]
+      coastline: unverifiable

@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/mdts-mdts-usa-sfwmd
+redirect_from:
+  - /tides/us/fl/north-key-largo-fl/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mdts-mdts-usa-sfwmd:
+      position: [25.278611, -80.395]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.055
+        issues:
+          - "Seasonal band (0.089m) is 1.5x the largest tidal constituent M2 (0.059m): the yearly swing exceeds the daily one"

@@ -1,0 +1,9 @@
+region: US-NY
+sources:
+  - noaa/ACT3176
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3176:
+      position: [40.96, -73.56133]
+      coastline: unverifiable

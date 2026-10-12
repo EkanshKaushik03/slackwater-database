@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1110
+redirect_from:
+  - /currents/us/ma/deer-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1110:
+      position: [42.34413, -70.93888]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: CA-NB
+sources:
+  - ticon/pointe_sapin-1830-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pointe_sapin-1830-can-meds:
+      position: [46.97, -64.83]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.64
+          recency: 0.49
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.256
+        issues:
+          - MLWS (0.451) > MLW (0.444)

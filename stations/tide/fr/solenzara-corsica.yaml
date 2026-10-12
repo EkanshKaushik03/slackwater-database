@@ -1,0 +1,20 @@
+sources:
+  - ticon/solenzaratg_60minute-sol-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/solenzaratg_60minute-sol-fra-cmems:
+      position: [41.856861, 9.40383]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/solenzara-710-fra-refmar
+        score: 46
+        factors:
+          epoch: 0.764
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

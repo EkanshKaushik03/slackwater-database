@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1725
+redirect_from:
+  - /currents/us/wa/cherry-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1725:
+      position: [48.83378982543945, -122.7279281616211]
+      coastline: clear

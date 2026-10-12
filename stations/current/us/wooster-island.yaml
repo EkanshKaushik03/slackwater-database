@@ -1,0 +1,9 @@
+region: US-CT
+sources:
+  - noaa/ACT2966
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2966:
+      position: [41.27783, -73.08667]
+      coastline: unverifiable

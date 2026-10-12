@@ -1,21 +1,27 @@
 /**
  * Print, as Markdown, every merge planMerges would make against the committed
  * catalogue: mechanical merges as one line each, the rest with their evidence,
- * then the groups it refused. Publishes nothing.
+ * then the groups it refused. With --apply, fold each group into its surviving
+ * station file; run `npm run stations` afterwards.
  *
- * Usage: npm run merge-report -w packages/stations > merges.md
+ * Usage: npm run merge-report -w packages/stations [-- --apply] > merges.md
  */
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import type { StationQuality } from "@slackwater/database";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { loadProductionCatalogue } from "./load-catalogue.ts";
 import { planMerges, type MergeGroup } from "./merges.ts";
+import {
+  mergeStationFiles,
+  readStationFiles,
+  type StationFile,
+} from "./station-files.ts";
 
 const root = join(import.meta.dirname, "..", "..");
-const catalogue = await loadProductionCatalogue(root);
-const quality = new Map<string, StationQuality>(
-  JSON.parse(readFileSync(join(root, "quality.json"), "utf8")).map(
-    (entry: StationQuality) => [entry.id, entry],
+const files = readStationFiles(join(root, "stations"));
+const catalogue = await loadProductionCatalogue(root, files);
+const quality = new Map(
+  catalogue.stations.flatMap(({ quality }) =>
+    quality ? [[quality.id, quality] as const] : [],
   ),
 );
 const plan = planMerges(catalogue.stations, catalogue.routes, quality);
@@ -50,7 +56,7 @@ const out = [
   ]),
   "## Left unmerged",
   "",
-  "Each would join more than one accepted authoritative record.",
+  "Each would join more than one authoritative record.",
   "",
   ...plan.conflicts.map(
     ({ slugs, authoritative }) =>
@@ -71,3 +77,57 @@ const out = [
   "",
 ];
 console.log(out.join("\n"));
+
+if (process.argv.includes("--apply")) {
+  const bySlug = new Map(
+    files
+      .filter(({ kind }) => kind === "tide")
+      .map((file) => [file.slug, file]),
+  );
+  const byId = new Map(
+    catalogue.stations.map((station) => [station.id, station]),
+  );
+  // Plan every merge before writing any, so one refused group leaves the
+  // station files as they were.
+  const conflicts: string[] = [];
+  const merges = [];
+  for (const group of plan.groups) {
+    const files = group.slugs.map((slug) => {
+      const file = bySlug.get(slug);
+      if (!file)
+        throw new Error(`${slug}: no station file; run npm run stations first`);
+      return file;
+    });
+    const [survivor, ...absorbed] = files as [StationFile, ...StationFile[]];
+    const primary = byId.get(group.primary)!;
+    // An authoritative primary's geography is right; a relay's can be the
+    // relaying agency's country, so the station keeps the one it published.
+    const geography = group.authoritative
+      ? {
+          country: primary.country_code,
+          ...(primary.region_code ? { region: primary.region_code } : {}),
+        }
+      : {
+          country: survivor.country,
+          ...(survivor.region ? { region: survivor.region } : {}),
+        };
+    const merged = await mergeStationFiles(
+      survivor,
+      absorbed,
+      files.find(({ sources }) => sources.includes(group.primary))!,
+      geography,
+      root,
+    );
+    conflicts.push(...merged.conflicts);
+    merges.push(merged);
+  }
+  for (const merged of merges) {
+    for (const file of merged.remove) rmSync(join(root, file));
+    if (merged.write.from) rmSync(join(root, merged.write.from));
+    mkdirSync(dirname(join(root, merged.write.file)), { recursive: true });
+    writeFileSync(join(root, merged.write.file), merged.write.text);
+  }
+  console.error(
+    `merged ${plan.groups.length} stations; ${conflicts.length} curated fields dropped:\n${conflicts.join("\n")}`,
+  );
+}

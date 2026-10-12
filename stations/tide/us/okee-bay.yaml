@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9462354
+redirect_from:
+  - /tides/us/okee-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9462354:
+      position: [53.0167, -168.835]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.176

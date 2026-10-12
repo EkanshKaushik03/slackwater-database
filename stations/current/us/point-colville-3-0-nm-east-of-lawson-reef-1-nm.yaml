@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1727
+redirect_from:
+  - /currents/us/wa/point-colville/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1727:
+      position: [48.41249084472656, -122.7402572631836]
+      coastline: clear

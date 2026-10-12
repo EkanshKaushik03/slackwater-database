@@ -1,0 +1,11 @@
+region: US-RI
+sources:
+  - noaa/ACT2346
+redirect_from:
+  - /currents/us/ri/sandy-point-3-6-nm-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2346:
+      position: [41.29333, -71.63333]
+      coastline: unverifiable

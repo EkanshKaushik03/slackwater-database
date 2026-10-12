@@ -1,0 +1,25 @@
+region: US-LA
+sources:
+  - ticon/tickfaw_river_near_springfield_la-7376300-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tickfaw_river_near_springfield_la-7376300-usa-usgs:
+      position: [30.376556, -90.551111]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.19
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.04
+        issues:
+          - MLWS (0.738) > MLW (0.688)
+          - MHW (0.739) <= MSL (0.741)
+          - "Seasonal band (0.110m) is 4.1x the largest tidal constituent K1 (0.027m): the yearly swing exceeds the daily one"

@@ -1,0 +1,14 @@
+name: Porlier Pass
+context: Galiano & Valdes Islands
+region: CA-BC
+position: [49.015, -123.585]
+provider: chs
+tide_reference: chs-fulford-harbour
+sources:
+  - chs-porlier-pass
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-porlier-pass:
+      position: [49.015, -123.585]
+      coastline: clear

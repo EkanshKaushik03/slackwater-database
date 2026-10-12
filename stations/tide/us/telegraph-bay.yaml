@@ -1,0 +1,27 @@
+# noaa/9449988 - a NOAA short-term gauge removed 2016-01-31. Coordinate
+# (48.443, -122.805) sits in Rosario Strait, not Puget Sound as the raw name
+# claims; NOAA chart 18429 is "Rosario Strait, southern part". Name override
+# strips the wrong qualifier. No `cities`: it sits mid-strait, ~5 km south of
+# the bay on Decatur Island it is named for, so naming a nearest town would
+# reintroduce the "which side?" ambiguity.
+
+name: Telegraph Bay
+region: US-WA
+sources:
+  - noaa/9449988
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9449988:
+      position: [48.44329833984375, -122.80500030517578]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.082

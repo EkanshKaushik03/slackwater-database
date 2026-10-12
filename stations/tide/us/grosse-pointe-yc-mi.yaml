@@ -1,0 +1,26 @@
+region: US-MI
+sources:
+  - ticon/grosse_pointe_yc_mi-9034051-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/grosse_pointe_yc_mi-9034051-usa-noaa:
+      position: [42.435, -82.8717]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.956
+          recency: 0.44
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.086
+        issues:
+          - MHHW (169.826) < MHW (169.867)
+          - MLWS (170.167) > MLW (169.828)
+          - MHW (169.867) <= MSL (170.171)
+          - "Seasonal band (0.479m) is 100.6x the largest tidal constituent 2Q1 (0.005m): the yearly swing exceeds the daily one"

@@ -1,0 +1,21 @@
+sources:
+  - ticon/kreekrak_noord-kreekrnd-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kreekrak_noord-kreekrnd-nld-rws_hist:
+      position: [51.450047, 4.229827]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.495
+          quality: 0
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - "Superseded source: rws_hist"

@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0603
+redirect_from:
+  - /currents/us/ak/sumner-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0603:
+      position: [56.40549, -133.74774]
+      coastline: unverifiable

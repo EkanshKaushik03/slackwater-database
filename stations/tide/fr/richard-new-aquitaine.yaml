@@ -1,0 +1,20 @@
+sources:
+  - ticon/richardtg_60minute-ric-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/richardtg_60minute-ric-fra-cmems:
+      position: [45.453671, -0.92305]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/richard-150-fra-refmar
+        score: 55
+        factors:
+          epoch: 0.517
+          recency: 0.89
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

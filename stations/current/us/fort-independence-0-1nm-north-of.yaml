@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1114
+redirect_from:
+  - /currents/us/ma/fort-independence/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1114:
+      position: [42.3418, -71.00892]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-gowlland-hbr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-gowlland-hbr:
+      position: [50.065, -125.217]
+      coastline: clear

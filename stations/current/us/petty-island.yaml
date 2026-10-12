@@ -1,0 +1,9 @@
+region: US-PA
+sources:
+  - noaa/db1935
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/db1935:
+      position: [39.96730041503906, -75.11720275878906]
+      coastline: unverifiable

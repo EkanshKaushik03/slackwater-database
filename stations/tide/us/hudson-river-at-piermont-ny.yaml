@@ -1,0 +1,19 @@
+region: US-NY
+sources:
+  - ticon/hudson_river_at_piermont_ny-1376269-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hudson_river_at_piermont_ny-1376269-usa-usgs:
+      position: [41.043194, -73.896056]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.778
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.089

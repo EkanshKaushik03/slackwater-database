@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/middle_river_near_holt-hlt-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/middle_river_near_holt-hlt-usa-cdwr:
+      position: [38.0031, -121.5108]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/middle_r_nr_holt_ca-11312685-usa-usgs
+        score: 66
+        factors:
+          epoch: 0.464
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (3.683) > MLW (3.661)

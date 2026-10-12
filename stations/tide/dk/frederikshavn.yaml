@@ -1,0 +1,18 @@
+sources:
+  - ticon/frederikshavn-fre-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/frederikshavn-fre-dnk-cmems:
+      position: [57.4333, 10.5667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.637

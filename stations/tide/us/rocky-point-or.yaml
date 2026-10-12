@@ -1,0 +1,25 @@
+region: US-OR
+sources:
+  - ticon/rocky_point-9439189-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rocky_point-9439189-usa-noaa:
+      position: [45.6967, -122.868]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.167
+          recency: 0.8
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.763) < MHW (1.776)
+          - "Superseded source: noaa"
+          - "Seasonal band (0.551m) is 2.5x the largest tidal constituent M2 (0.220m): the yearly swing exceeds the daily one"

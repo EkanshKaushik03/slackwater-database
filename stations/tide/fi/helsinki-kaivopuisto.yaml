@@ -1,0 +1,22 @@
+sources:
+  - ticon/helsinki_kaivopuisto-132310-fin-fmi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/helsinki_kaivopuisto-132310-fin-fmi:
+      position: [60.15, 24.96]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.768
+          quality: 1
+          amplitude: 1
+          coverage: 0.009
+        issues:
+          - MLWS (0.012) > MLW (-0.019)
+          - "Seasonal band (0.115m) is 6.2x the largest tidal constituent O1 (0.019m): the yearly swing exceeds the daily one"

@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI1207
+redirect_from:
+  - /currents/us/ak/point-possession/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI1207:
+      position: [61.0566, -150.36035]
+      coastline: unverifiable

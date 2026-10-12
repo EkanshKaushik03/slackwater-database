@@ -1,0 +1,20 @@
+sources:
+  - ticon/rmn_venice-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_venice-rmn-ita-cmems:
+      position: [45.418201, 12.4265]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/venezia-vene-ita-cv
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

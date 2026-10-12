@@ -1,0 +1,22 @@
+region: US-ME
+sources:
+  - ticon/walpole-8416731-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/walpole-8416731-usa-noaa:
+      position: [43.9333, -69.58]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.172
+          recency: 0.54
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

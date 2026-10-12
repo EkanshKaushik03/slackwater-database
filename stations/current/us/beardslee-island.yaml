@@ -1,0 +1,9 @@
+region: US-AK
+sources:
+  - noaa/SEA0847
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0847:
+      position: [58.467072, -136.03453]
+      coastline: unverifiable

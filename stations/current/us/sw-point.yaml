@@ -1,0 +1,8 @@
+sources:
+  - noaa/PCT5861
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5861:
+      position: [57.15, -170.45]
+      coastline: unverifiable

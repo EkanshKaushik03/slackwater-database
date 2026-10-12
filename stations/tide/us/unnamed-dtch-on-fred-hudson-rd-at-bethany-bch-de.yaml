@@ -1,0 +1,23 @@
+region: US-DE
+sources:
+  - ticon/unnamed_dtch_on_fred_hudson_rd_at_bethany_bch_de-1484690-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/unnamed_dtch_on_fred_hudson_rd_at_bethany_bch_de-1484690-usa-usgs:
+      position: [38.555444, -75.063444]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.536
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.032
+        issues:
+          - MLWS (0.021) > MLW (0.017)
+          - "Seasonal band (0.066m) is 1.4x the largest tidal constituent M2 (0.047m): the yearly swing exceeds the daily one"

@@ -1,0 +1,25 @@
+region: US-LA
+sources:
+  - ticon/bayou_terrebonne_at_ctrl_str_near_lapeyrouse_la-73813375-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bayou_terrebonne_at_ctrl_str_near_lapeyrouse_la-73813375-usa-usgs:
+      position: [29.388889, -90.587778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 0.534
+          recency: 0.91
+          source: 0.596
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.21
+        issues:
+          - MLWS (0.239) > MLW (0.188)
+          - MHWS (0.275) < MHW (0.38)
+          - "Seasonal band (0.106m) is 1.0x the largest tidal constituent K1 (0.105m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0084) exceeds S2 (0.0067)

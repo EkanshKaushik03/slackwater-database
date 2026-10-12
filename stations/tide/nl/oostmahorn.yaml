@@ -1,0 +1,21 @@
+sources:
+  - ticon/oostmahorn-oostmhn-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oostmahorn-oostmhn-nld-rws_hist:
+      position: [53.379798, 6.162597]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.43
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.079
+        issues:
+          - "Superseded source: rws_hist"

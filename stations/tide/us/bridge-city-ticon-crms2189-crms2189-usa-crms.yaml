@@ -1,0 +1,25 @@
+region: US-TX
+sources:
+  - ticon/crms2189-crms2189-usa-crms
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms2189-crms2189-usa-crms:
+      position: [29.92606, -93.76058]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.886
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.114
+        issues:
+          - MLWS (0.113) > MLW (0.109)
+          - Tidal range 0.7cm < 2cm threshold
+          - "Seasonal band (0.023m) is 8.7x the largest tidal constituent K1 (0.003m): the yearly swing exceeds the daily one"

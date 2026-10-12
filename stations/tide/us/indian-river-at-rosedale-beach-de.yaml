@@ -1,0 +1,21 @@
+region: US-DE
+sources:
+  - ticon/indian_river_at_rosedale_beach_de-1484540-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/indian_river_at_rosedale_beach_de-1484540-usa-usgs:
+      position: [38.591528, -75.211583]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8558814
+        score: 63
+        factors:
+          epoch: 0.376
+          recency: 0.88
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0

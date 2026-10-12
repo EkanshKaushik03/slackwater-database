@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3636
+redirect_from:
+  - /currents/us/ak/sumner-island-1-6-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3636:
+      position: [56.36667, -133.81667]
+      coastline: unverifiable

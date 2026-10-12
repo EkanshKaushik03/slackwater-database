@@ -1,0 +1,22 @@
+sources:
+  - ticon/pinnausperrwerkap-5970019-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pinnausperrwerkap-5970019-deu-wsv:
+      position: [53.67138, 9.558213]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/pinnausperrwerkbp-5970018-deu-wsv
+        score: 81
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (3.894) > MLW (3.836)

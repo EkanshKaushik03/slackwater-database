@@ -1,0 +1,24 @@
+region: US-CA
+sources:
+  - ticon/delta_cross_channel_btw_sac_and_snodgrass-dlc-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/delta_cross_channel_btw_sac_and_snodgrass-dlc-usa-cdwr:
+      position: [38.245, -121.505]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/delta_cross_channel_nr_walnut_grove-11336600-usa-usgs
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.181) > MLW (1.17)
+          - MHWS (1.727) < MHW (1.728)

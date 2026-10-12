@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-walker-group
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-walker-group:
+      position: [50.899, -127.526]
+      coastline: clear

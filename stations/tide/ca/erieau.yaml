@@ -1,0 +1,23 @@
+region: CA-ON
+sources:
+  - ticon/erieau_ontario-12250-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/erieau_ontario-12250-can-meds:
+      position: [42.26, -81.91]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (0.882) < MHW (0.89)
+          - "Seasonal band (0.188m) is 26.7x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

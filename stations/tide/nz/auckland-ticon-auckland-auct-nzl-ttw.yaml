@@ -1,0 +1,20 @@
+sources:
+  - ticon/auckland-auct-nzl-ttw
+redirect_from:
+  - /tides/nz/auckland-auckland/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/auckland-auct-nzl-ttw:
+      position: [-36.831389, 174.786389]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 49
+        factors:
+          epoch: 0.847
+          recency: 0.98
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 0.054

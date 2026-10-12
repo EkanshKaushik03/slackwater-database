@@ -1,0 +1,9 @@
+region: US-CA
+sources:
+  - noaa/PCT0246
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0246:
+      position: [37.79533, -122.51133]
+      coastline: unverifiable

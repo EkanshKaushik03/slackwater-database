@@ -1,0 +1,20 @@
+sources:
+  - ticon/rmn_napoli-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_napoli-rmn-ita-cmems:
+      position: [40.8414, 14.2692]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/napoli-nap-ita-ispra
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

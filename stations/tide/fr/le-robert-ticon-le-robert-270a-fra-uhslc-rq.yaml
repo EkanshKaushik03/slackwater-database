@@ -1,0 +1,20 @@
+sources:
+  - ticon/le_robert-270a-fra-uhslc_rq
+redirect_from:
+  - /tides/fr/le-robert-martinique/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/le_robert-270a-fra-uhslc_rq:
+      position: [14.683, -60.933]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 54
+        factors:
+          epoch: 0.432
+          recency: 0.58
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.02

@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6781
+redirect_from:
+  - /currents/us/sc/daniel-island-reach/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6781:
+      position: [32.82720184326172, -79.92880249023438]
+      coastline: unverifiable

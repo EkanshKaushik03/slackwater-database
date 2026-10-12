@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA1006
+redirect_from:
+  - /currents/us/ak/north-inian-pass/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA1006:
+      position: [58.28403, -136.36993]
+      coastline: unverifiable

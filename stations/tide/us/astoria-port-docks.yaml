@@ -1,0 +1,19 @@
+region: US-OR
+sources:
+  - noaa/9439023
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9439023:
+      position: [46.1867, -123.86]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.043

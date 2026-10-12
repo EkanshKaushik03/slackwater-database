@@ -1,0 +1,9 @@
+region: US-RI
+sources:
+  - noaa/ACT2146
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2146:
+      position: [41.575, -71.29667]
+      coastline: unverifiable

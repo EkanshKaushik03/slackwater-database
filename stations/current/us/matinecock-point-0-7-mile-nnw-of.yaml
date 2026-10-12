@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT3211
+redirect_from:
+  - /currents/us/ny/matinecock-point-0-6-nm-nnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT3211:
+      position: [40.91333, -73.64]
+      coastline: unverifiable

@@ -1,0 +1,22 @@
+sources:
+  - ticon/galwayport-gal-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/galwayport-gal-irl-cmems:
+      position: [53.269001, -9.04796]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/galway_port-gal-irl-mi_c
+        score: 50
+        factors:
+          epoch: 0.983
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHHW (1.833) < MHW (1.876)

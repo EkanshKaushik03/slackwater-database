@@ -1,0 +1,22 @@
+region: US-MS
+sources:
+  - ticon/mississippi_sound_at_usgs_gulfport_light_ms-301912088583300-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mississippi_sound_at_usgs_gulfport_light_ms-301912088583300-usa-usgs:
+      position: [30.318611, -88.972222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.832
+          recency: 0.98
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.211
+        issues:
+          - MLWS (0.235) > MLW (0.205)
+          - MHWS (0.355) < MHW (0.397)

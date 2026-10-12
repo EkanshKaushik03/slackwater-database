@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-pacofi-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-pacofi-bay:
+      position: [52.832, -131.883]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT6261
+redirect_from:
+  - /currents/us/va/cape-henry-light-0-6-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6261:
+      position: [36.92833, -75.99333]
+      coastline: unverifiable

@@ -1,0 +1,18 @@
+sources:
+  - ticon/lacaptetg_10minute-lac-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lacaptetg_10minute-lac-fra-cmems:
+      position: [43.065399, 6.1507]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 34
+        factors:
+          epoch: 0.129
+          recency: 0.93
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.087

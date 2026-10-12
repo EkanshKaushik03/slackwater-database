@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0506
+redirect_from:
+  - /currents/us/ca/little-coyote-point-3-1-nm-ene/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0506:
+      position: [37.598, -122.2055]
+      coastline: unverifiable

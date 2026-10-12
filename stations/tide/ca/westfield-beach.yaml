@@ -1,0 +1,24 @@
+region: CA-NB
+sources:
+  - ticon/westfield_beach-89-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/westfield_beach-89-can-meds:
+      position: [45.35, -66.22]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 67
+        factors:
+          epoch: 0.199
+          recency: 0.43
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.282
+        issues:
+          - MHHW (1.494) < MHW (1.496)
+          - MHWS (1.477) < MHW (1.496)
+          - "Seasonal band (0.488m) is 2.7x the largest tidal constituent M2 (0.181m): the yearly swing exceeds the daily one"

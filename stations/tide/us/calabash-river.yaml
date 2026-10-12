@@ -1,0 +1,19 @@
+region: US-NC
+sources:
+  - ticon/calabash_river-cal-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/calabash_river-cal-usa-ncdem:
+      position: [33.88502, -78.56686]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 45
+        factors:
+          epoch: 0.19
+          recency: 0.99
+          source: 0.545
+          quality: 0
+          amplitude: 1
+          coverage: 0.035

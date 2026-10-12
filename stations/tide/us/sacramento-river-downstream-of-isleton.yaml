@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_downstream_of_isleton-b91250q-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_downstream_of_isleton-b91250q-usa-cdwr:
+      position: [38.17548, -121.656863]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.518
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.018
+        issues:
+          - MLWS (0.982) > MLW (0.963)

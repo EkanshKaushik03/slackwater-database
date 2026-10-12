@@ -1,0 +1,21 @@
+region: US-LA
+sources:
+  - noaa/8761819
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8761819:
+      position: [29.4017, -90.0383]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.132
+        issues:
+          - Form number 25.57 exceeds 25

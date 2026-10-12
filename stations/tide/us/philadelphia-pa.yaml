@@ -1,0 +1,23 @@
+region: US-PA
+sources:
+  - ticon/philadelphia-8545240-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/philadelphia-8545240-usa-noaa:
+      position: [39.933333, -75.141667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.415) > MLW (1.327)
+          - "Superseded source: noaa"

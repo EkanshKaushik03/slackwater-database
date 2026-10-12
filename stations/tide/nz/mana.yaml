@@ -1,0 +1,20 @@
+sources:
+  - linz/323
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/323:
+      position: [-41.1, 174.866667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 0.907
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.43
+        issues:
+          - MHHW (1.582) < MHW (1.583)

@@ -1,0 +1,21 @@
+sources:
+  - ticon/catania-cat-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/catania-cat-ita-ispra:
+      position: [37.498081, 15.093825]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.065m) is 1.2x the largest tidal constituent M2 (0.056m): the yearly swing exceeds the daily one"

@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9453443
+redirect_from:
+  - /tides/us/moraine-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9453443:
+      position: [59.93000030517578, -141.36300659179688]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.145

@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/palm_river_near_goodland_fl-255732081363700-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/palm_river_near_goodland_fl-255732081363700-usa-usgs:
+      position: [25.958778, -81.610306]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.211
+          recency: 0.89
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.054

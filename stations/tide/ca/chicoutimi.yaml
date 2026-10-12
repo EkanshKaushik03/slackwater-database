@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-chicoutimi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-chicoutimi:
+      position: [48.43083333, -71.05483333]
+      coastline: unverifiable

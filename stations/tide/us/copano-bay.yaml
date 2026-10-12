@@ -1,0 +1,21 @@
+region: US-TX
+sources:
+  - noaa/8774513
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8774513:
+      position: [28.118305206298828, -97.02169799804688]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.268
+          recency: 0.8
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.011
+        issues:
+          - K2 amplitude (0.0020) exceeds S2 (0.0010)

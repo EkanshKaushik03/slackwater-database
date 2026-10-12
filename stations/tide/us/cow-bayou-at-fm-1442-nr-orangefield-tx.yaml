@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/cow_bayou_at_fm_1442_nr_orangefield_tx-8031010-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cow_bayou_at_fm_1442_nr_orangefield_tx-8031010-usa-usgs:
+      position: [30.107986, -93.896342]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 67
+        factors:
+          epoch: 0.342
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.202
+        issues:
+          - MLWS (0.306) > MLW (0.189)
+          - "Seasonal band (0.106m) is 1.6x the largest tidal constituent K1 (0.065m): the yearly swing exceeds the daily one"

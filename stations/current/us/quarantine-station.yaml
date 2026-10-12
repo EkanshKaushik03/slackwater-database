@@ -1,0 +1,12 @@
+# "La" in an American name is a capital, not the French article.
+
+name: Quarantine Station, La Playa
+region: US-CA
+sources:
+  - noaa/PCT0051
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0051:
+      position: [32.7, -117.23333]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+sources:
+  - ticon/soru-sor-est-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/soru-sor-est-cmems:
+      position: [58.693802, 22.5229]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 70
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.32
+        issues:
+          - "Seasonal band (0.100m) is 9.1x the largest tidal constituent M2 (0.011m): the yearly swing exceeds the daily one"

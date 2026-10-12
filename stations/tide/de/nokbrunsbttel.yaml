@@ -1,0 +1,21 @@
+sources:
+  - ticon/nokbrunsbttel-5970091-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nokbrunsbttel-5970091-deu-wsv:
+      position: [53.899991, 9.150963]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.993
+          recency: 0.99
+          source: 0.798
+          quality: 1
+          amplitude: 1
+          coverage: 0.024
+        issues:
+          - MLWS (4.937) > MLW (4.912)
+          - MHWS (4.967) < MHW (5)

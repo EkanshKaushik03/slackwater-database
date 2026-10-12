@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/manchester-8770777-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/manchester-8770777-usa-noaa:
+      position: [29.726222, -95.265778]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.542
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (2.181) < MHW (2.22)
+          - "Superseded source: noaa"

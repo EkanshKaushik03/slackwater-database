@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/FLK1306
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/FLK1306:
+      position: [24.56301, -81.80934]
+      coastline: unverifiable

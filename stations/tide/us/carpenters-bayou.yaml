@@ -1,0 +1,24 @@
+region: US-TX
+sources:
+  - ticon/carpenters_bayou-car-usa-hct
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/carpenters_bayou-car-usa-hct:
+      position: [29.7715, -95.149]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.535
+          quality: 0
+          amplitude: 1
+          coverage: 0.111
+        issues:
+          - MLWS (0.443) > MLW (0.415)
+          - MHWS (0.563) < MHW (0.655)
+          - "Seasonal band (0.157m) is 1.8x the largest tidal constituent K1 (0.086m): the yearly swing exceeds the daily one"

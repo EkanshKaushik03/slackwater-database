@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1466
+redirect_from:
+  - /currents/us/ma/bumkin-island-0-4-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1466:
+      position: [42.2805, -70.9125]
+      coastline: unverifiable

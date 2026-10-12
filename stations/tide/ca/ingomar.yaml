@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-ingomar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-ingomar:
+      position: [43.563155, -65.363373]
+      coastline: unverifiable

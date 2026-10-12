@@ -1,0 +1,23 @@
+region: US-GA
+sources:
+  - ticon/savannah_river_i_95_near_port_wentworth_ga-2198840-usa-usgs
+redirect_from:
+  - /tides/us/sc/savannah-river-i-95-near-port-wentworth-ga/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/savannah_river_i_95_near_port_wentworth_ga-2198840-usa-usgs:
+      position: [32.235472, -81.151083]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.014
+        issues:
+          - MLWS (-0.611) > MLW (-0.701)

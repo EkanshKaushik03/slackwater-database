@@ -1,0 +1,23 @@
+region: CA-ON
+sources:
+  - ticon/midland_ontario-11445-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/midland_ontario-11445-can-meds:
+      position: [44.75, -79.89]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 92
+        factors:
+          epoch: 0.837
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.747
+        issues:
+          - MLWS (0.486) > MLW (0.481)
+          - "Seasonal band (0.146m) is 10.6x the largest tidal constituent M2 (0.014m): the yearly swing exceeds the daily one"

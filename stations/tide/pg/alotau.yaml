@@ -1,0 +1,22 @@
+sources:
+  - ticon/alotau-069a-png-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/alotau-069a-png-uhslc_rq:
+      position: [-10.168, 150.453]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.56
+          recency: 0.69
+          source: 0.192
+          quality: 1
+          amplitude: 0.75
+          coverage: 1
+        issues:
+          - MLWS (0.807) > MLW (0.727)
+          - MHWS (1.037) < MHW (1.116)
+          - N2 amplitude (0.0329) exceeds M2 (0.0282)

@@ -1,0 +1,21 @@
+region: US-WA
+sources:
+  - ticon/sekiu_clallam_bay_wa-7037-can-meds
+redirect_from:
+  - /tides/ca/bc/sekiu-clallam-bay-wa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sekiu_clallam_bay_wa-7037-can-meds:
+      position: [48.27, -124.3]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.054
+          recency: 0.48
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.016

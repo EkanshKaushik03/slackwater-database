@@ -1,0 +1,24 @@
+sources:
+  - ticon/vuren-vurn-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/vuren-vurn-nld-rws_hist:
+      position: [51.822113, 5.016467]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MHWS (1.139) < MHW (1.162)
+          - "Superseded source: rws_hist"
+          - "Seasonal band (0.269m) is 2.0x the largest tidal constituent M2 (0.135m): the yearly swing exceeds the daily one"

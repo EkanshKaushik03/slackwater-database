@@ -1,0 +1,21 @@
+sources:
+  - ticon/gandiatg-gan-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gandiatg-gan-esp-cmems:
+      position: [38.994999, -0.152]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 80
+        factors:
+          epoch: 0.966
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - "Seasonal band (0.071m) is 1.9x the largest tidal constituent K1 (0.037m): the yearly swing exceeds the daily one"

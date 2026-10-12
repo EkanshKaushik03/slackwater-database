@@ -1,0 +1,9 @@
+region: US-NJ
+sources:
+  - noaa/NYH1932
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/NYH1932:
+      position: [40.50920104980469, -74.29060363769531]
+      coastline: unverifiable

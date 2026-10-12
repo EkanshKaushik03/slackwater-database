@@ -1,0 +1,25 @@
+region: US-CA
+sources:
+  - ticon/sacramento_r_above_delta_cross_channel-sdc-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_r_above_delta_cross_channel-sdc-usa-cdwr:
+      position: [38.257, -121.518]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sacramento_r_ab_delta_cross_channel_ca-11447890-usa-usgs
+        seasonal_dominant: true
+        score: 64
+        factors:
+          epoch: 0.357
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MHWS (2.038) < MHW (2.084)
+          - "Seasonal band (0.292m) is 1.5x the largest tidal constituent M2 (0.192m): the yearly swing exceeds the daily one"

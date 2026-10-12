@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-tom-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-tom-bay:
+      position: [52.402, -128.264]
+      coastline: unverifiable

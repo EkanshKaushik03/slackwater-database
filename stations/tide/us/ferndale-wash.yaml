@@ -1,0 +1,21 @@
+region: US-WA
+sources:
+  - ticon/ferndale_wash-7564-can-meds
+redirect_from:
+  - /tides/ca/bc/ferndale-wash/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ferndale_wash-7564-can-meds:
+      position: [48.83, -122.72]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.16
+          recency: 0.44
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.009

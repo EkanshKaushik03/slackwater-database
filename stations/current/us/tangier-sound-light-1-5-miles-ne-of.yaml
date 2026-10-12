@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5646
+redirect_from:
+  - /currents/us/va/tangier-sound-light-1-3-nm-ne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5646:
+      position: [37.80833, -75.95667]
+      coastline: unverifiable

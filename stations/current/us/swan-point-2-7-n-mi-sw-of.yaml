@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5036
+redirect_from:
+  - /currents/us/md/swan-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5036:
+      position: [39.108, -76.30533]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+sources:
+  - ticon/oterdum-otdm-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/oterdum-otdm-nld-rws_hist:
+      position: [53.312677, 7.019246]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.215
+          recency: 0.6
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.039
+        issues:
+          - "Superseded source: rws_hist"

@@ -1,0 +1,9 @@
+region: US-MD
+sources:
+  - noaa/ACT5726
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5726:
+      position: [38.22467, -75.9895]
+      coastline: unverifiable

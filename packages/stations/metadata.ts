@@ -22,7 +22,8 @@ const US_TERRITORIES = new Set(["AS", "GU", "MP", "PR", "VI"]);
 export interface MetadataLocation {
   locality?: string;
   region?: string;
-  regionCode?: string;
+  /** null pins a station to no region, so a derived one cannot appear. */
+  regionCode?: string | null;
   country?: string;
   countryCode?: string;
   continent?: string;
@@ -31,21 +32,17 @@ export interface MetadataLocation {
 export interface Correction {
   name?: string;
   context?: string;
-  slug?: string;
-  sameGauge?: string;
   aliases?: string[];
   cities?: string[];
-  formerSlugs?: string[];
   position?: [number, number];
-  reason?: string;
-  positionVerified?: string;
+  /** The published position is right although the coastline audit flags it. */
+  positionVerified?: true;
   location?: MetadataLocation;
 }
 
 export interface RegistryRecord extends Correction {
   provider?: string;
   kind?: "tide" | "current";
-  source?: string;
   tideReference?: string;
   magnitudeNote?: string;
   derived?: {
@@ -63,9 +60,7 @@ export interface ResolvedStation extends StationInput {
   longitude: number;
   country: string;
   country_code: string;
-  slug?: string;
-  former_slugs?: string[];
-  positionVerified?: string;
+  positionVerified?: true;
   routed?: boolean;
 }
 
@@ -95,42 +90,49 @@ export function validateMetadata(
   corrections: Corrections,
   registry: Registry,
   stations: StationInput[] = [],
+  /** The records sharing each record's station; a curation fits any of them. */
+  siblings: Map<string, string[]> = new Map(),
 ): string[] {
   const problems: string[] = [];
   const published = new Map(stations.map((station) => [station.id, station]));
 
   for (const [id, correction] of corrections) {
     validateCommon(id, correction, problems);
-    if (correction.sameGauge !== undefined && !nonEmpty(correction.reason))
-      problems.push(`${id}: sameGauge requires a non-empty reason`);
-    const station = published.get(id);
+    const records = (siblings.get(id) ?? [id]).flatMap(
+      (sibling) => published.get(sibling) ?? [],
+    );
+    const names = records.flatMap(({ name }) => (nonEmpty(name) ? [name] : []));
     if (
       nonEmpty(correction.name) &&
-      nonEmpty(station?.name) &&
-      !sharesMeaningfulWord(correction.name, station.name)
+      names.length &&
+      !names.some((name) => sharesMeaningfulWord(correction.name!, name))
     )
       problems.push(
-        `${id}: curated name ${JSON.stringify(correction.name)} shares no meaningful word with published name ${JSON.stringify(station.name)}`,
+        `${id}: curated name ${JSON.stringify(correction.name)} shares no meaningful word with published name ${JSON.stringify(names.join(" / "))}`,
       );
-    if (correction.position !== undefined) {
-      if (!nonEmpty(correction.reason))
-        problems.push(`${id}: position is corrected but no reason is given`);
-      if (
-        validPosition(correction.position) &&
-        typeof station?.latitude === "number" &&
-        typeof station.longitude === "number"
-      ) {
-        const distance = distanceKm(
-          station.latitude,
-          station.longitude,
-          correction.position[0],
-          correction.position[1],
+    if (
+      correction.position !== undefined &&
+      validPosition(correction.position)
+    ) {
+      const distances = records.flatMap(({ latitude, longitude }) =>
+        typeof latitude === "number" && typeof longitude === "number"
+          ? [
+              distanceKm(
+                latitude,
+                longitude,
+                correction.position![0],
+                correction.position![1],
+              ),
+            ]
+          : [],
+      );
+      // The position applies to every record in the station, so it must fit
+      // the farthest.
+      const distance = Math.max(...distances);
+      if (distances.length && distance > MAX_CORRECTION_KM)
+        problems.push(
+          `${id}: corrected position is ${distance.toFixed(1)} km from the published position (limit ${MAX_CORRECTION_KM} km)`,
         );
-        if (distance > MAX_CORRECTION_KM)
-          problems.push(
-            `${id}: corrected position is ${distance.toFixed(1)} km from the published position (limit ${MAX_CORRECTION_KM} km)`,
-          );
-      }
     }
     if (
       correction.position !== undefined &&
@@ -206,19 +208,12 @@ function validateCommon(
   record: Correction,
   problems: string[],
 ): void {
-  for (const field of [
-    "name",
-    "context",
-    "slug",
-    "sameGauge",
-    "reason",
-    "positionVerified",
-  ] as const) {
+  for (const field of ["name", "context"] as const) {
     const value = record[field];
     if (value !== undefined && !nonEmpty(value))
       problems.push(`${id}: ${field} must be a non-empty string`);
   }
-  for (const field of ["aliases", "cities", "formerSlugs"] as const) {
+  for (const field of ["aliases", "cities"] as const) {
     const value = record[field];
     if (
       value !== undefined &&
@@ -266,6 +261,7 @@ function validateLocation(
     "continent",
   ] as const) {
     const value = location[field];
+    if (field === "regionCode" && value === null) continue;
     if (value !== undefined && !nonEmpty(value))
       problems.push(`${id}: location.${field} must not be empty`);
   }
@@ -386,25 +382,27 @@ export function resolveMetadata(
     (zoneCountry === country.iso2
       ? geocoder.near(position[0], position[1], 100, 100).find(sameCountry)
       : undefined);
-  const authoritativeRegionCode =
-    explicitLocation?.regionCode ??
-    station.region_code ??
-    // The provider's own state code beats the nearest place, which can sit
-    // across a state line or, on the Alaska panhandle, not exist within reach.
-    (country.iso2 === "US" && /^[A-Z]{2}$/.test(station.region ?? "")
-      ? `US-${station.region}`
-      : undefined) ??
-    (place
-      ? isoSubdivisionCode(
-          country.iso2,
-          place.place.admin1,
-          place.place.admin1Code,
-        )
-      : undefined) ??
-    // A Canadian province the provider named, where no place is within reach.
-    (country.iso2 === "CA" && CANADIAN_SUBDIVISIONS[station.region ?? ""]
-      ? `CA-${CANADIAN_SUBDIVISIONS[station.region ?? ""]}`
-      : undefined);
+  const noRegion = explicitLocation?.regionCode === null;
+  const authoritativeRegionCode = noRegion
+    ? undefined
+    : (explicitLocation?.regionCode ??
+      station.region_code ??
+      // The provider's own state code beats the nearest place, which can sit
+      // across a state line or, on the Alaska panhandle, not exist within reach.
+      (country.iso2 === "US" && /^[A-Z]{2}$/.test(station.region ?? "")
+        ? `US-${station.region}`
+        : undefined) ??
+      (place
+        ? isoSubdivisionCode(
+            country.iso2,
+            place.place.admin1,
+            place.place.admin1Code,
+          )
+        : undefined) ??
+      // A Canadian province the provider named, where no place is within reach.
+      (country.iso2 === "CA" && CANADIAN_SUBDIVISIONS[station.region ?? ""]
+        ? `CA-${CANADIAN_SUBDIVISIONS[station.region ?? ""]}`
+        : undefined));
   const cleaned = cleanName(
     station.name ?? registry?.name ?? "",
     country.country,
@@ -413,7 +411,9 @@ export function resolveMetadata(
   );
   const regionCode =
     authoritativeRegionCode ??
-    (cleaned.region ? `${country.iso2}-${cleaned.region}` : undefined);
+    (cleaned.region && !noRegion
+      ? `${country.iso2}-${cleaned.region}`
+      : undefined);
   // NOAA current qualifiers locate the gauge; they do not consistently name its water.
   const split =
     station.kind === "current" && station.id.startsWith("noaa/")
@@ -552,11 +552,7 @@ export function resolveMetadata(
   if (cities?.length) result.cities = unique(cities);
   else delete result.cities;
 
-  if (authority?.slug) result.slug = authority.slug;
-  const formerSlugs = authority?.formerSlugs;
-  if (formerSlugs?.length) result.former_slugs = unique(formerSlugs);
-  if (authority?.positionVerified)
-    result.positionVerified = authority.positionVerified;
+  if (authority?.positionVerified) result.positionVerified = true;
 
   if (registry) {
     result.kind = registry.kind === "tide" ? "tide" : "current";

@@ -1,0 +1,19 @@
+region: CA-NU
+sources:
+  - ticon/albert_harbour-5803-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/albert_harbour-5803-can-meds:
+      position: [72.76, -77.48]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.093
+          recency: 0.6
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

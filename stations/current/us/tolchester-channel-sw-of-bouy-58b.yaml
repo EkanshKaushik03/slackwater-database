@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5056
+redirect_from:
+  - /currents/us/md/tolchester-channel/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5056:
+      position: [39.1825, -76.28117]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-DE
+sources:
+  - noaa/ACT4146
+redirect_from:
+  - /currents/us/de/big-stone-beach-2-2-nm-ene/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4146:
+      position: [39.008, -75.28417]
+      coastline: unverifiable

@@ -1,0 +1,19 @@
+region: CA-BC
+sources:
+  - ticon/okeover_inlet_bc-8006-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/okeover_inlet_bc-8006-can-meds:
+      position: [49.98, -124.7]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.1

@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5441
+redirect_from:
+  - /currents/us/va/gloucester-point-150-yds-southeast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5441:
+      position: [37.2425, -76.50167]
+      coastline: unverifiable

@@ -1,0 +1,28 @@
+sources:
+  - ticon/newport_black_river-nbl-irl-mi_r
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/newport_black_river-nbl-irl-mi_r:
+      position: [53.958645, -9.578614]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.211
+          recency: 0.96
+          source: 0.071
+          quality: 1
+          amplitude: 0.5
+          coverage: 0.077
+        issues:
+          - MLW (0.315) < MLLW (0.356)
+          - MLWS (0.382) > MLW (0.315)
+          - MHW (0.335) <= MSL (0.39)
+          - MHW (0.335) < MLLW (0.356)
+          - "Seasonal band (0.198m) is 24.7x the largest tidal constituent RHO1 (0.008m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0022) exceeds M2 (0.0019)
+          - Q1 amplitude (0.0038) exceeds O1 (0.0004)

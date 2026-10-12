@@ -62,10 +62,73 @@ const quality = new Map(
 describe("planMerges", () => {
   const plan = planMerges(stations, routes, quality);
 
-  test("keeps the shortest published slug with the authoritative primary", () => {
+  test("keeps the published slug that names the authoritative primary", () => {
     const group = plan.groups.find(({ primary }) => primary === "noaa/2695540");
     expect(group?.survivor).toBe("bermuda");
     expect(group?.slugs).toEqual(["bermuda", "st-georges-island"]);
+  });
+
+  test("the surviving URL names the primary record, not the shortest slug", () => {
+    const named = [
+      station("noaa/9461380", 51.86, 0.3, "Sweeper Cove"),
+      station("ticon/adak-040-usa-uhslc_fd", 51.86, 0.3, "Adak"),
+    ];
+    const plan = planMerges(
+      named,
+      {
+        tide: [
+          { slug: "sweeper-cove", station_ids: ["noaa/9461380"] },
+          { slug: "adak", station_ids: ["ticon/adak-040-usa-uhslc_fd"] },
+        ],
+        current: [],
+      },
+      new Map([
+        ["noaa/9461380", accepted("noaa/9461380")],
+        [
+          "ticon/adak-040-usa-uhslc_fd",
+          duplicate("ticon/adak-040-usa-uhslc_fd", "noaa/9461380"),
+        ],
+      ]),
+    );
+    expect(plan.groups[0]?.slugs).toEqual(["sweeper-cove", "adak"]);
+  });
+
+  test("without its name, the URL is the primary's own slug unless that ends in an id", () => {
+    const pair = (primary: string, relay: string) =>
+      planMerges(
+        [
+          station("linz/030", -45.8, 0.8, "Port Chalmers"),
+          station(
+            "ticon/port_chalmers-669a-nzl-uhslc_rq",
+            -45.8,
+            0.8,
+            "Port Chalmers",
+          ),
+        ],
+        {
+          tide: [
+            { slug: primary, station_ids: ["linz/030"] },
+            {
+              slug: relay,
+              station_ids: ["ticon/port_chalmers-669a-nzl-uhslc_rq"],
+            },
+          ],
+          current: [],
+        },
+        new Map([
+          ["linz/030", accepted("linz/030")],
+          [
+            "ticon/port_chalmers-669a-nzl-uhslc_rq",
+            duplicate("ticon/port_chalmers-669a-nzl-uhslc_rq", "linz/030"),
+          ],
+        ]),
+      ).groups[0]?.survivor;
+    expect(pair("port-chalmers-otago", "port-chalmers-dunedin")).toBe(
+      "port-chalmers-otago",
+    );
+    expect(pair("port-chalmers-linz-030", "port-chalmers-otago")).toBe(
+      "port-chalmers-otago",
+    );
   });
 
   test("a declared originator outranks an inferred duplicate", () => {
@@ -110,5 +173,30 @@ describe("planMerges", () => {
     expect(
       plan.conflicts.map(({ authoritative }) => authoritative.sort()),
     ).toEqual([["noaa/2695535", "noaa/2695540"]]);
+  });
+
+  // Quality rejecting one of two NOAA station numbers as a duplicate does not
+  // make them one gauge.
+  test("leaves two authoritative records unmerged even when one is rejected", () => {
+    const pair = [
+      station("noaa/8735180", 30.25, 0.3, "Dauphin Island"),
+      station("noaa/8735181", 30.25, 0.3, "Dauphin Island Hydro"),
+    ];
+    const plan = planMerges(
+      pair,
+      {
+        tide: [
+          { slug: "dauphin-island", station_ids: ["noaa/8735180"] },
+          { slug: "dauphin-island-hydro", station_ids: ["noaa/8735181"] },
+        ],
+        current: [],
+      },
+      new Map([
+        ["noaa/8735181", accepted("noaa/8735181")],
+        ["noaa/8735180", duplicate("noaa/8735180", "noaa/8735181")],
+      ]),
+    );
+    expect(plan.groups).toEqual([]);
+    expect(plan.conflicts).toHaveLength(1);
   });
 });

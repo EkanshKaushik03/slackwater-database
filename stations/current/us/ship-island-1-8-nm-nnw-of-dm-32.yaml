@@ -1,0 +1,9 @@
+region: US-MS
+sources:
+  - noaa/gp0301
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/gp0301:
+      position: [30.23917, -89]
+      coastline: unverifiable

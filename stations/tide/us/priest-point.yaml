@@ -1,0 +1,21 @@
+name: Priest Point
+region: US-WA
+cities: [Marysville, Everett]
+sources:
+  - noaa/9447717
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9447717:
+      position: [48.03494444444444, -122.2271944444445]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.032

@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-stag-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-stag-island:
+      position: [51.633333, -79.033333]
+      coastline: unverifiable

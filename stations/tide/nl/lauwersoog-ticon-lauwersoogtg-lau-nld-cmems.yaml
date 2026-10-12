@@ -1,0 +1,20 @@
+sources:
+  - ticon/lauwersoogtg-lau-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lauwersoogtg-lau-nld-cmems:
+      position: [53.41, 6.2]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/lauwersoog-lauwog-nld-rws
+        score: 41
+        factors:
+          epoch: 0.538
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.005

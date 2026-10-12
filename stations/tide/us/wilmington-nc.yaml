@@ -1,0 +1,23 @@
+region: US-NC
+sources:
+  - ticon/wilmington-8658120-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wilmington-8658120-usa-noaa:
+      position: [34.2275, -77.953611]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (0.938) > MLW (0.855)
+          - "Superseded source: noaa"

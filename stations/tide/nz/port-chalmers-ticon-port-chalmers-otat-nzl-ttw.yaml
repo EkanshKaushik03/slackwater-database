@@ -1,0 +1,18 @@
+sources:
+  - ticon/port_chalmers-otat-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_chalmers-otat-nzl-ttw:
+      position: [-45.8141, 170.6293]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 48
+        factors:
+          epoch: 0.797
+          recency: 0.98
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 0.033

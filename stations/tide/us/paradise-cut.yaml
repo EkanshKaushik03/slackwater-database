@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/paradise_cut-b95410q-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/paradise_cut-b95410q-usa-cdwr:
+      position: [37.80206, -121.412256]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.518
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.026
+        issues:
+          - MLWS (1.207) > MLW (1.198)
+          - MHWS (1.619) < MHW (1.678)

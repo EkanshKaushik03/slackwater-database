@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/sacramento_ship_channel_at_ryer_island-rye-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_ship_channel_at_ryer_island-rye-usa-cdwr:
+      position: [38.2283, -121.6722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.068
+          recency: 0.85
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.02

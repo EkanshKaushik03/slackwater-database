@@ -1,0 +1,25 @@
+region: US-TX
+sources:
+  - ticon/s_bird_island-8776139-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/s_bird_island-8776139-usa-noaa:
+      position: [27.484361, -97.318111]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.685
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.292
+        issues:
+          - MLWS (0.776) > MLW (0.76)
+          - MHW (0.778) <= MSL (0.779)
+          - "Seasonal band (0.108m) is 6.9x the largest tidal constituent O1 (0.016m): the yearly swing exceeds the daily one"

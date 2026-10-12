@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0541
+redirect_from:
+  - /currents/us/ca/dumbarton-point-2-0-nm-se/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0541:
+      position: [37.475, -122.07]
+      coastline: unverifiable

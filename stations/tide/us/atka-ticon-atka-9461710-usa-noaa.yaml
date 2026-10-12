@@ -1,0 +1,23 @@
+sources:
+  - ticon/atka-9461710-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/atka-9461710-usa-noaa:
+      position: [52.232, -174.1726]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (8.551) > MLW (8.47)
+          - MHWS (8.961) < MHW (9.077)
+          - "Superseded source: noaa"

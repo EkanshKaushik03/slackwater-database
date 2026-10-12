@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-fox-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-fox-islands:
+      position: [51.081, -127.604]
+      coastline: clear

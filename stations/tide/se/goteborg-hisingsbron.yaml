@@ -1,0 +1,21 @@
+sources:
+  - ticon/goteborg_hisingsbron-33097-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/goteborg_hisingsbron-33097-swe-smhi:
+      position: [57.7149, 11.9687]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 51
+        factors:
+          epoch: 0.119
+          recency: 0.99
+          source: 0.919
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.089m) is 1.2x the largest tidal constituent M2 (0.074m): the yearly swing exceeds the daily one"

@@ -1,0 +1,18 @@
+sources:
+  - ticon/skagen-ska-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/skagen-ska-dnk-cmems:
+      position: [57.719398, 10.5858]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.637

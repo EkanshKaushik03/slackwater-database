@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/galveston_pier_21-8771450-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/galveston_pier_21-8771450-usa-noaa:
+      position: [29.31, -94.793306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.836) < MHW (1.86)
+          - "Superseded source: noaa"

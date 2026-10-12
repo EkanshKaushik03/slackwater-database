@@ -1,0 +1,20 @@
+sources:
+  - ticon/norderneytg-nor-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/norderneytg-nor-deu-cmems:
+      position: [53.700001, 7.16]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/norderneyriffgat-9360010-deu-wsv
+        score: 43
+        factors:
+          epoch: 0.615
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.005

@@ -1,0 +1,10 @@
+sources:
+  - noaa/PCT4426
+redirect_from:
+  - /currents/us/carson-creek-entrance-2-4-nm-ese/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT4426:
+      position: [59.98667, -141.43667]
+      coastline: unverifiable

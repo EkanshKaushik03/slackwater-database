@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/g58_h_navd88-g58_h-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/g58_h_navd88-g58_h-usa-sfwmd:
+      position: [25.900278, -80.1625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.566
+          quality: 0
+          amplitude: 1
+          coverage: 0.045
+        issues:
+          - MLWS (-0.374) > MLW (-0.462)
+          - MHWS (0.034) < MHW (0.122)

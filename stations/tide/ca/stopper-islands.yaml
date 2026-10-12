@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-stopper-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-stopper-islands:
+      position: [48.993, -125.346]
+      coastline: clear

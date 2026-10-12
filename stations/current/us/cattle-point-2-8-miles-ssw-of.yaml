@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT1416
+redirect_from:
+  - /currents/us/wa/cattle-point-2-4-nm-ssw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT1416:
+      position: [48.400001525878906, -123]
+      coastline: clear

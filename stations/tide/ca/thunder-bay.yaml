@@ -1,0 +1,24 @@
+region: CA-ON
+sources:
+  - ticon/thunder_bay_ontario-10050-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/thunder_bay_ontario-10050-can-meds:
+      position: [48.41, -89.22]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (0.166) > MLW (0.158)
+          - MHWS (0.184) < MHW (0.194)
+          - "Seasonal band (0.152m) is 25.7x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

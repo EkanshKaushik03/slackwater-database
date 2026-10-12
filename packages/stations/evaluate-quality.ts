@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Evaluates station quality and produces quality.json
+ * Evaluates the quality of every provider tide record. `npm run stations`
+ * writes the results into each station file's `computed` block.
  *
  * Pipeline:
  *   1. Load all stations (NOAA + TICON)
@@ -11,16 +12,12 @@
  *   4. Deduplicate TICON stations by proximity
  *   5. Compute composite score and write results
  *
- * Output:
- *   quality.json — all stations with factors, score, and accept/reject status
- *
- * Usage:
- *   npm run evaluate-quality -w packages/stations
+ * Run directly to print a summary:
+ *   node packages/stations/evaluate-quality.ts
  */
 
-import { readdir, readFile, writeFile } from "fs/promises";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { readdir, readFile } from "fs/promises";
+import { join } from "path";
 import { DATA_DIR } from "./station.ts";
 import { DATUM_EPOCH, NODAL_CYCLE_DAYS } from "@slackwater/datums";
 import {
@@ -65,7 +62,7 @@ interface Factors {
   coverage: number;
 }
 
-interface QualityResult {
+export interface QualityResult {
   id: string;
   accepted: boolean;
   score: number;
@@ -581,15 +578,18 @@ function computeCompositeScore(factors: Factors): number {
 
 // ── I/O ─────────────────────────────────────────────────────────────────
 
-async function loadAllStations(): Promise<Station[]> {
+/** Every provider tide record, in id order: dedup is greedy, so the order in
+ *  which records are weighed decides ties, and readdir order varies by
+ *  filesystem. */
+export async function loadAllStations(): Promise<Station[]> {
   const stations: Station[] = [];
-  const sources = await readdir(DATA_DIR);
+  const sources = (await readdir(DATA_DIR)).sort();
 
   for (const source of sources) {
     const sourceDir = join(DATA_DIR, source);
     let files: string[];
     try {
-      files = await readdir(sourceDir);
+      files = (await readdir(sourceDir)).sort();
     } catch {
       continue;
     }
@@ -823,19 +823,12 @@ function deduplicateByGauge(
 
 // ── Main ────────────────────────────────────────────────────────────────
 
-async function main() {
-  console.log("Loading stations...");
+/** Every provider tide record's quality, sorted by id. */
+export async function evaluateQuality(): Promise<QualityResult[]> {
   const stations = await loadAllStations();
   const stationMap = new Map(stations.map((s) => [s.id, s]));
 
-  const noaaCount = stations.filter((s) => s.id.startsWith("noaa/")).length;
-  const ticonCount = stations.filter((s) => s.id.startsWith("ticon/")).length;
-  console.log(
-    `Loaded ${stations.length} stations (NOAA: ${noaaCount}, TICON: ${ticonCount})\n`,
-  );
-
   // Step 1: Compute factors and apply gates
-  console.log("Computing quality factors...");
   const resultsMap = new Map<string, QualityResult>();
 
   for (const station of stations) {
@@ -911,7 +904,6 @@ async function main() {
   }
 
   // Step 2: Compute coverage (needs all stations)
-  console.log("Computing coverage...");
   for (const station of stations) {
     const result = resultsMap.get(station.id)!;
     result.factors.coverage = scoreCoverage(station, stations);
@@ -926,7 +918,6 @@ async function main() {
   }
 
   // Step 4: Deduplicate
-  console.log("Deduplicating...");
   const subordinateCounts = countSubordinates(stations, resultsMap);
 
   // 4a: Collapse same-gauge records (shared station code) regardless of distance.
@@ -939,17 +930,15 @@ async function main() {
   const survivingIds = acceptedIds.filter((id) => resultsMap.get(id)!.accepted);
   deduplicate(survivingIds, stationMap, resultsMap, subordinateCounts);
 
-  // Collect and sort results
   // Codepoint order, not localeCompare: the output must not depend on the
   // machine's ICU locale.
-  const results = [...resultsMap.values()].sort((a, b) =>
+  return [...resultsMap.values()].sort((a, b) =>
     a.id < b.id ? -1 : a.id > b.id ? 1 : 0,
   );
+}
 
-  // Write output
-  const __dirname = dirname(fileURLToPath(import.meta.url));
-  const outPath = join(__dirname, "..", "..", "quality.json");
-  await writeFile(outPath, JSON.stringify(results, null, 2) + "\n");
+async function main() {
+  const results = await evaluateQuality();
 
   // Summary
   const accepted = results.filter((r) => r.accepted);
@@ -987,8 +976,6 @@ async function main() {
     (r) => r.accepted && r.issues.length > 0,
   );
   console.log(`\nAccepted stations with issues: ${stationsWithIssues.length}`);
-
-  console.log(`\nWrote quality.json (${results.length} entries)`);
 }
 
 if (import.meta.main) await main();

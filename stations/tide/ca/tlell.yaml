@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-tlell
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-tlell:
+      position: [53.5517, -131.9078]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-deep-cove
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-deep-cove:
+      position: [49.32683, -122.9485]
+      coastline: clear

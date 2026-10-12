@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/pensacola_fl-762a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/pensacola_fl-762a-usa-uhslc_rq:
+      position: [30.403, -87.213]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/pensacola_fl-762-usa-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (2.827) > MLW (2.75)
+          - MHWS (2.877) < MHW (2.982)

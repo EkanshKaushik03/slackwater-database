@@ -1,0 +1,23 @@
+region: US-WA
+sources:
+  - ticon/armitage_island-9449932-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/armitage_island-9449932-usa-noaa:
+      position: [48.535, -122.797]
+      coastline: clear
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.159
+          recency: 0.74
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (3.404) < MHW (3.409)
+          - "Superseded source: noaa"

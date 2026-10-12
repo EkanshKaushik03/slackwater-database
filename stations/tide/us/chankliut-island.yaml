@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9458849
+redirect_from:
+  - /tides/us/chankliut-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9458849:
+      position: [56.14670181274414, -158.10699462890625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.352

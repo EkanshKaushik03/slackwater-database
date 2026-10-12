@@ -1,0 +1,20 @@
+sources:
+  - ticon/portland_victoria-129a-aus-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/portland_victoria-129a-aus-uhslc_rq:
+      position: [-38.343, 141.613]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/portland_saus-129-aus-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/blackwater_river_milton-11992-usa-nwfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/blackwater_river_milton-11992-usa-nwfwmd:
+      position: [30.6225, -87.034722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 0.549
+          recency: 0.95
+          source: 0.556
+          quality: 0
+          amplitude: 1
+          coverage: 0.013
+        issues:
+          - MLWS (0.183) > MLW (0.129)
+          - MHWS (0.279) < MHW (0.345)

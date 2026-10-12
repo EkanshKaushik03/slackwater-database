@@ -14,11 +14,10 @@ LINZ publishes each year's zip at a new URL. The import reads the current link f
 
 ```sh
 npm run import -w sources/linz
-npm run evaluate-quality -w packages/stations
-npm run metadata:lock
+npm run stations
 ```
 
-LINZ's CDN refuses requests without a browser-like User-Agent, which the import sends. LINZ squashes many place names (`WAIHOPAIRIVERENTRANCE`). The importer title-cases what LINZ prints, and `metadata/corrections.yaml` gives each squashed site the name LINZ's tide tables use, so a new site needs an entry there.
+LINZ's CDN refuses requests without a browser-like User-Agent, which the import sends. LINZ squashes many place names (`WAIHOPAIRIVERENTRANCE`). The importer title-cases what LINZ prints, and each squashed site's station file gives it the name LINZ's tide tables use, so a new site needs a curated `name` there.
 
 ## Conversion
 

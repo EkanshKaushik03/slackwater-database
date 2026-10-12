@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/saint_marks_river_at_san_marcosde_apalachee_statepark-11352-usa-nwfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/saint_marks_river_at_san_marcosde_apalachee_statepark-11352-usa-nwfwmd:
+      position: [30.150278, -84.210556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.925
+          recency: 0.99
+          source: 0.556
+          quality: 1
+          amplitude: 1
+          coverage: 0.015

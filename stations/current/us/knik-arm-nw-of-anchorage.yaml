@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI0301
+redirect_from:
+  - /currents/us/ak/knik-arm/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI0301:
+      position: [61.27822, -149.89452]
+      coastline: unverifiable

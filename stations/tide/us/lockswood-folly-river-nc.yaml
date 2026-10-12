@@ -1,0 +1,21 @@
+region: US-NC
+sources:
+  - ticon/lockswood_folly_river_nc-loc-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lockswood_folly_river_nc-loc-usa-ncdem:
+      position: [34.0109, -78.2634]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.364
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.191
+        issues:
+          - MLWS (0.092) > MLW (-0.004)

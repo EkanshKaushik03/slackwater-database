@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/threemile_slough_at_san_joaquin_river-tsl-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/threemile_slough_at_san_joaquin_river-tsl-usa-cdwr:
+      position: [38.1033, -121.6861]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/threemile_slough_nr_rio_vista_ca-11337080-usa-usgs
+        score: 76
+        factors:
+          epoch: 0.975
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.979) > MLW (0.975)

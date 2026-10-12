@@ -1,0 +1,21 @@
+sources:
+  - ticon/manus-065a-png-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/manus-065a-png-uhslc_rq:
+      position: [-2.013, 147.272]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.555
+          recency: 0.68
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.216
+        issues:
+          - MLWS (0.888) > MLW (0.878)
+          - MHWS (1.186) < MHW (1.243)

@@ -1,0 +1,11 @@
+region: US-RI
+sources:
+  - noaa/ACT2361
+redirect_from:
+  - /currents/us/ri/quonochontaug-beach-3-3-nm-s/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2361:
+      position: [41.2725, -71.71667]
+      coastline: unverifiable

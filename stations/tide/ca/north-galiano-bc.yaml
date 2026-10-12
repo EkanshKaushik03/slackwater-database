@@ -1,0 +1,21 @@
+region: CA-BC
+sources:
+  - ticon/north_galiano_bc-7435-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/north_galiano_bc-7435-can-meds:
+      position: [48.99, -123.58]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.089
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.281
+        issues:
+          - MHWS (3.39) < MHW (3.408)

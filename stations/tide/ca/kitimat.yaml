@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-kitimat
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-kitimat:
+      position: [53.989, -128.696]
+      coastline: unverifiable

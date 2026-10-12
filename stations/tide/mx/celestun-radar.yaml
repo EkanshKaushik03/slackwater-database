@@ -1,0 +1,22 @@
+sources:
+  - ticon/celestun_radar-4-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/celestun_radar-4-mex-unam:
+      position: [20.858333, -90.403333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/celestun-412-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.155
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (2.196) < MHW (2.206)

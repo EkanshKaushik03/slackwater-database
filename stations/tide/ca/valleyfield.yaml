@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-valleyfield
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-valleyfield:
+      position: [49.122244, -53.607874]
+      coastline: unverifiable

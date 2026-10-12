@@ -6,7 +6,7 @@
  *
  * Usage: npm run fetch-uhslc-metadata -w sources/ticon
  */
-import { readdirSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
 import { uhslcCode, type UhslcMetadata } from "./provenance.ts";
@@ -32,7 +32,9 @@ const firstLine = (value: unknown) =>
 const pinned: Record<string, UhslcMetadata> = {};
 const missing: string[] = [];
 for (const code of codes) {
-  const response = await fetch(`${BASE}/${code}meta.yaml`);
+  const response = await fetch(`${BASE}/${code}meta.yaml`, {
+    signal: AbortSignal.timeout(30_000),
+  });
   if (response.status === 404) {
     missing.push(code);
     continue;
@@ -50,6 +52,15 @@ for (const code of codes) {
   };
 }
 
+// Losing most of the extract at once is UHSLC moving its files, not relays
+// losing their metadata, and would quietly drop every provenance match.
+const before = existsSync(OUT)
+  ? Object.keys(JSON.parse(readFileSync(OUT, "utf8"))).length
+  : 0;
+if (Object.keys(pinned).length < before / 2)
+  throw new Error(
+    `only ${Object.keys(pinned).length} of ${codes.length} relays have metadata, against ${before} pinned; check ${BASE} before refreshing`,
+  );
 writeFileSync(OUT, `${JSON.stringify(pinned, null, 2)}\n`);
 console.log(
   `pinned ${Object.keys(pinned).length} of ${codes.length} relays; no metadata for ${missing.join(", ") || "none"}`,

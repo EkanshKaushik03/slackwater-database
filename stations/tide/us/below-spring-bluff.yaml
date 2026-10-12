@@ -1,0 +1,23 @@
+# Spring Bluff is a hamlet in Camden County on the Little Satilla River; the
+# published position is rounded to the minute and reads ~7 km north of it.
+
+context: Little Satilla River
+region: US-GA
+sources:
+  - noaa/TEC3531
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TEC3531:
+      position: [31.16666666666701, -81.616666666667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.102

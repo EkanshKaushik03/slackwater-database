@@ -1,0 +1,31 @@
+name: Port Alberni
+context: Alberni Inlet
+region: CA-BC
+aliases: [alberni]
+position: [49.226, -124.814]
+provider: chs
+sources:
+  - chs-port-alberni
+  - ticon/port_alberni_bc-8575-can-meds
+redirect_from:
+  - /tides/ca/bc/port-alberni-bc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-port-alberni:
+      position: [49.226, -124.814]
+      coastline: clear
+    ticon/port_alberni_bc-8575-can-meds:
+      position: [49.23, -124.81]
+      coastline: ashore
+      metres_inland: 256
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 0.752
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.267

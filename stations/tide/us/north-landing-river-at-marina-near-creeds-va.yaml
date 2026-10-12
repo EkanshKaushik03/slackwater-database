@@ -1,0 +1,26 @@
+region: US-VA
+sources:
+  - ticon/north_landing_river_at_marina_near_creeds_va-2043269-usa-usgs
+redirect_from:
+  - /tides/us/nc/north-landing-river-at-marina-near-creeds-va/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/north_landing_river_at_marina_near_creeds_va-2043269-usa-usgs:
+      position: [36.618167, -76.046333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 68
+        factors:
+          epoch: 0.486
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.093
+        issues:
+          - MLWS (0.141) > MLW (0.132)
+          - MHWS (0.153) < MHW (0.161)
+          - "Seasonal band (0.134m) is 20.0x the largest tidal constituent S1 (0.007m): the yearly swing exceeds the daily one"

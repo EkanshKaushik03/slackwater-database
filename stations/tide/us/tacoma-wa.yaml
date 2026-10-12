@@ -1,0 +1,23 @@
+region: US-WA
+sources:
+  - ticon/tacoma-9446484-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tacoma-9446484-usa-noaa:
+      position: [47.27, -122.413]
+      coastline: ashore
+      metres_inland: 256
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.007
+        issues:
+          - "Superseded source: noaa"

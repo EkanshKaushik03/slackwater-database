@@ -1,0 +1,22 @@
+region: US-LA
+sources:
+  - ticon/crms0156-crms0156-usa-crms
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0156-crms0156-usa-crms:
+      position: [29.16394, -89.16671]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.956
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.061
+        issues:
+          - MLWS (0.143) > MLW (0.079)
+          - MHWS (0.171) < MHW (0.241)

@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-portneuf
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-portneuf:
+      position: [46.681167, -71.877167]
+      coastline: unverifiable

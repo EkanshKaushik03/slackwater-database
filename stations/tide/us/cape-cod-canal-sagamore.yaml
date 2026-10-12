@@ -1,0 +1,21 @@
+region: US-MA
+sources:
+  - noaa/8447173
+redirect_from:
+  - /tides/us/ma/cape-cod-canal/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8447173:
+      position: [41.775, -70.535]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.046

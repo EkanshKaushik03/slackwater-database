@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5746
+redirect_from:
+  - /currents/us/ak/entrance-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5746:
+      position: [56, -160.65]
+      coastline: unverifiable

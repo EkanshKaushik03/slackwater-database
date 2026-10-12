@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2846
+redirect_from:
+  - /currents/us/ct/hammonasset-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2846:
+      position: [41.237, -72.56667]
+      coastline: unverifiable

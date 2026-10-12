@@ -1,0 +1,24 @@
+region: US-NY
+sources:
+  - ticon/black_rock_canal_ny-9063017-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/black_rock_canal_ny-9063017-usa-noaa:
+      position: [42.9339, -78.9075]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 67
+        factors:
+          epoch: 0.314
+          recency: 0.49
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.053
+        issues:
+          - MLWS (172.711) > MLW (172.67)
+          - MHWS (172.727) < MHW (172.728)
+          - "Seasonal band (0.092m) is 3.7x the largest tidal constituent S1 (0.025m): the yearly swing exceeds the daily one"

@@ -1,0 +1,19 @@
+region: US-SC
+sources:
+  - ticon/myrtle_beach-8661000-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/myrtle_beach-8661000-usa-noaa:
+      position: [33.6833, -78.885]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.123
+          recency: 0.42
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.088

@@ -1,0 +1,21 @@
+sources:
+  - ticon/sonderborg-son-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sonderborg-son-dnk-cmems:
+      position: [54.916698, 9.7833]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.618
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.245
+        issues:
+          - MLWS (0.039) > MLW (0.02)
+          - MHWS (0.159) < MHW (0.171)

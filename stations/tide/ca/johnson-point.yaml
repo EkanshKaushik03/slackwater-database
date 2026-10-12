@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-johnson-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-johnson-point:
+      position: [51.11, -127.537]
+      coastline: clear

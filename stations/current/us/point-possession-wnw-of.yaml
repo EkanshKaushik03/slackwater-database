@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5091
+redirect_from:
+  - /currents/us/ak/point-possession-wnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5091:
+      position: [61.05, -150.46167]
+      coastline: unverifiable

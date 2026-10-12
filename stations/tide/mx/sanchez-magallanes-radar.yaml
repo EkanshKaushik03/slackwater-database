@@ -1,0 +1,25 @@
+sources:
+  - ticon/sanchezmagallanes_radar-37-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sanchezmagallanes_radar-37-mex-unam:
+      position: [18.296833, -93.8545]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sanchez_magallanes-417-mex-unam_hist
+        seasonal_dominant: true
+        score: 36
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (3.174) > MLW (3.167)
+          - MHWS (3.234) < MHW (3.261)
+          - "Seasonal band (0.111m) is 1.8x the largest tidal constituent O1 (0.061m): the yearly swing exceeds the daily one"

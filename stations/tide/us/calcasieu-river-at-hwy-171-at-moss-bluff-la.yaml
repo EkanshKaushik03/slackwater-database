@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/calcasieu_river_at_hwy_171_at_moss_bluff_la-8015910-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/calcasieu_river_at_hwy_171_at_moss_bluff_la-8015910-usa-usgs:
+      position: [30.286111, -93.188917]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 61
+        factors:
+          epoch: 0.085
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.153
+        issues:
+          - MLWS (7.834) > MLW (7.805)
+          - MHWS (7.926) < MHW (7.927)
+          - "Seasonal band (0.104m) is 1.7x the largest tidal constituent K1 (0.061m): the yearly swing exceeds the daily one"

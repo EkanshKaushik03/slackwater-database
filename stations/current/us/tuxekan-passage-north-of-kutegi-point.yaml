@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0627
+redirect_from:
+  - /currents/us/ak/tuxekan-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0627:
+      position: [55.908, -133.27065]
+      coastline: unverifiable

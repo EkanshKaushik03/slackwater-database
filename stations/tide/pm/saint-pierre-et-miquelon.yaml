@@ -1,0 +1,11 @@
+# IWLS serves Saint-Pierre, the French territory off Newfoundland, alongside
+# Canada's own ports.
+
+sources:
+  - chs-saint-pierre-et-miquelon
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-saint-pierre-et-miquelon:
+      position: [46.777365, -56.169216]
+      coastline: unverifiable

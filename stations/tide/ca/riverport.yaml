@@ -1,0 +1,9 @@
+region: CA-NS
+sources:
+  - chs-riverport
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-riverport:
+      position: [44.289312, -64.345007]
+      coastline: unverifiable

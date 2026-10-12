@@ -106,7 +106,7 @@ const byId = (a: ChsStation, b: ChsStation) =>
  * ever held a slug, so a removed record's id is never handed to new water.
  *
  * A record no station matches is kept unless `prune` is set: one empty probe
- * or truncated response must not tombstone a station's slug and cost it its id
+ * or truncated response must not retire a station and cost it its id
  * when it comes back.
  */
 export function reconcile(
@@ -181,22 +181,5 @@ export function reconcile(
       };
     })
     .concat(kept)
-    .sort(byId);
-}
-
-/** The app's shipped stations whose ids the database reserves a slug for. */
-export function seedStations(
-  app: ChsStation[],
-  reserved: Set<string>,
-): ChsStation[] {
-  return app
-    .filter(({ id }) => reserved.has(id))
-    .map(({ id, name, aliases, latitude, longitude }) => ({
-      id,
-      name,
-      aliases,
-      latitude,
-      longitude,
-    }))
     .sort(byId);
 }

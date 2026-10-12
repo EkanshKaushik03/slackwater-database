@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-holyrood-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-holyrood-bay:
+      position: [47.389127, -53.135356]
+      coastline: unverifiable

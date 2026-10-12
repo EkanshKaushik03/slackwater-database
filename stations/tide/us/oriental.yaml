@@ -1,0 +1,22 @@
+region: US-NC
+sources:
+  - noaa/8655133
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8655133:
+      position: [35.024600982666016, -76.69180297851562]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.444
+        issues:
+          - "Seasonal band (0.044m) is 3.7x the largest tidal constituent O1 (0.012m): the yearly swing exceeds the daily one"

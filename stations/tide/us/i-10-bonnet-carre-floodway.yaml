@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/i_10_bonnet_carre_floodway-8762483-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/i_10_bonnet_carre_floodway-8762483-usa-noaa:
+      position: [30.067861, -90.389972]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 70
+        factors:
+          epoch: 0.278
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.211) > MLW (0.196)
+          - MHWS (0.225) < MHW (0.245)
+          - "Seasonal band (0.107m) is 2.4x the largest tidal constituent K1 (0.045m): the yearly swing exceeds the daily one"

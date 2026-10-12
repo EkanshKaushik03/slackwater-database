@@ -1,0 +1,24 @@
+# LINZ's analysis files squash place names (`PORTCHALMERS`); these are the
+# names its tide tables print.
+
+name: Motuara Island
+sources:
+  - linz/472
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/472:
+      position: [-41.1, 174.266667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0.107
+          recency: 0.97
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.238
+        issues:
+          - MHHW (1.512) < MHW (1.514)

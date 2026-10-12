@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/grantline_canal_at_tracy_road_bridge-b95300-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/grantline_canal_at_tracy_road_bridge-b95300-usa-cdwr:
+      position: [37.820042, -121.449814]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - MLWS (1.034) > MLW (0.999)

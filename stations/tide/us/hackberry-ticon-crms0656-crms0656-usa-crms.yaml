@@ -1,0 +1,26 @@
+region: US-LA
+sources:
+  - ticon/crms0656-crms0656-usa-crms
+redirect_from:
+  - /tides/us/la/hackberry-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0656-crms0656-usa-crms:
+      position: [30.02042, -93.26057]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 76
+        factors:
+          epoch: 0.92
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.062
+        issues:
+          - MLWS (0.176) > MLW (0.171)
+          - MHWS (0.186) < MHW (0.2)
+          - "Seasonal band (0.076m) is 5.9x the largest tidal constituent O1 (0.013m): the yearly swing exceeds the daily one"

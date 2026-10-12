@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-bunsby-islands
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-bunsby-islands:
+      position: [50.11756, -127.5096]
+      coastline: clear

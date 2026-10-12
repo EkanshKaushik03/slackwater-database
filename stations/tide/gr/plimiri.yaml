@@ -1,0 +1,25 @@
+sources:
+  - ticon/plimiri-pli-grc-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/plimiri-pli-grc-cmems:
+      position: [35.927299, 27.8575]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.419
+          recency: 0.97
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHHW (0.778) < MHW (0.797)
+          - MHWS (0.782) < MHW (0.797)
+          - MSL (0.696) <= MLW (0.706)
+          - "Seasonal band (0.113m) is 2.2x the largest tidal constituent M2 (0.053m): the yearly swing exceeds the daily one"

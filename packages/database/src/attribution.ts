@@ -29,7 +29,7 @@ export const LICENSE_NAMES: Record<string, string> = {
  * rest are CC BY. `credit` is the source's own line from its
  * `sources/<name>/metadata.yaml`, or null when it requires none.
  */
-export function attributionFor(
+export function attributionWithCredit(
   credit: string | null | undefined,
   license: { type: string; url: string } | undefined,
 ): string {

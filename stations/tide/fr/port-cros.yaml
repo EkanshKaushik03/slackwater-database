@@ -1,0 +1,18 @@
+sources:
+  - ticon/portcrostg_10minute-por-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/portcrostg_10minute-por-fra-cmems:
+      position: [43.0098, 6.38193]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 39
+        factors:
+          epoch: 0.165
+          recency: 0.93
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.396

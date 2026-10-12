@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1826
+redirect_from:
+  - /currents/us/ma/west-chop-0-2-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1826:
+      position: [41.48333, -70.61]
+      coastline: unverifiable

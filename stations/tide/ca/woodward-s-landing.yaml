@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-woodward-s-landing
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-woodward-s-landing:
+      position: [49.1251, -123.0754]
+      coastline: ashore
+      metres_inland: 10080

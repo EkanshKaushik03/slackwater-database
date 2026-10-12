@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-hornby-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-hornby-island:
+      position: [49.49623, -124.676]
+      coastline: clear

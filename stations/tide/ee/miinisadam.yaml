@@ -1,0 +1,22 @@
+sources:
+  - ticon/miinisadam-mii-est-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/miinisadam-mii-est-cmems:
+      position: [59.458302, 24.7208]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 51
+        factors:
+          epoch: 0.241
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.055
+        issues:
+          - MLWS (-0.023) > MLW (-0.041)
+          - "Seasonal band (0.083m) is 4.7x the largest tidal constituent O1 (0.018m): the yearly swing exceeds the daily one"

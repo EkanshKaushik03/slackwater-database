@@ -1,0 +1,18 @@
+sources:
+  - ticon/uapoutg_60minute-uap-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/uapoutg_60minute-uap-fra-cmems:
+      position: [-9.35789, -140.04646]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 46
+        factors:
+          epoch: 0.085
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.951

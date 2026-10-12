@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/new_river_burnt_bridge_road-10134-usa-nwfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/new_river_burnt_bridge_road-10134-usa-nwfwmd:
+      position: [29.88, -84.737778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 0.426
+          recency: 0.95
+          source: 0.556
+          quality: 0
+          amplitude: 1
+          coverage: 0.155

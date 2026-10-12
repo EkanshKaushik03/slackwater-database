@@ -1,0 +1,20 @@
+sources:
+  - ticon/portbloctg_60minute-por-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/portbloctg_60minute-por-fra-cmems:
+      position: [45.568432, -1.06148]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_bloc-15-fra-refmar
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

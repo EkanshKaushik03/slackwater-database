@@ -1,0 +1,21 @@
+region: US-CT
+sources:
+  - ticon/new_london_ct-744a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/ct/new-london-ct/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/new_london_ct-744a-usa-uhslc_rq:
+      position: [41.355, -72.087]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.015

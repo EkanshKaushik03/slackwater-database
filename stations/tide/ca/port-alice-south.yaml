@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-port-alice-south
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-port-alice-south:
+      position: [50.41101, -127.48592]
+      coastline: clear

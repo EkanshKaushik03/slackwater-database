@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/mare_island-9415218-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/mare_island-9415218-usa-noaa:
+      position: [38.07, -122.25]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.878
+          recency: 0.86
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

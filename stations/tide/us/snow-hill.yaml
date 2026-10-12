@@ -1,0 +1,23 @@
+region: US-MD
+sources:
+  - ticon/snow_hill-8571359-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/snow_hill-8571359-usa-noaa:
+      position: [38.17833, -75.39667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.304
+          recency: 0.84
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (3.938) > MLW (3.914)
+          - "Superseded source: noaa"

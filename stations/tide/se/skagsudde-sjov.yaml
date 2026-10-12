@@ -1,0 +1,24 @@
+sources:
+  - ticon/skagsudde_sjov-35138-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/skagsudde_sjov-35138-swe-smhi:
+      position: [63.1906, 19.0119]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/skagsudde-2321-swe-smhi
+        seasonal_dominant: true
+        score: 81
+        factors:
+          epoch: 0.869
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (0.053) > MLW (0.038)
+          - "Seasonal band (0.099m) is 19.3x the largest tidal constituent K1 (0.005m): the yearly swing exceeds the daily one"

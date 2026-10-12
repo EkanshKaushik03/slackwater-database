@@ -1,0 +1,10 @@
+sources:
+  - noaa/PCT5656
+redirect_from:
+  - /currents/us/adak-strait/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5656:
+      position: [51.78333, -177]
+      coastline: unverifiable

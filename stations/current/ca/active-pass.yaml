@@ -1,0 +1,14 @@
+name: Active Pass
+context: Galiano & Mayne Islands
+region: CA-BC
+position: [48.8604, -123.3128]
+provider: chs
+tide_reference: chs-fulford-harbour
+sources:
+  - chs-active-pass
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-active-pass:
+      position: [48.8604, -123.3128]
+      coastline: clear

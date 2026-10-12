@@ -1,0 +1,23 @@
+sources:
+  - ticon/stromoren_sjov-35183-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/stromoren_sjov-35183-swe-smhi:
+      position: [65.5497, 22.2383]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 73
+        factors:
+          epoch: 0.472
+          recency: 0.99
+          source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.114) > MLW (0.096)
+          - MHWS (0.12) < MHW (0.123)
+          - "Seasonal band (0.106m) is 9.2x the largest tidal constituent K1 (0.012m): the yearly swing exceeds the daily one"

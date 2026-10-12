@@ -1,0 +1,18 @@
+sources:
+  - ticon/san_benedetto_del_tronto-san-ita-ispra
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_benedetto_del_tronto-san-ita-ispra:
+      position: [42.955122, 13.889758]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.809
+          recency: 0.99
+          source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0

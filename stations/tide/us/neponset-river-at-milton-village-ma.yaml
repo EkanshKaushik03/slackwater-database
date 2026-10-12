@@ -1,0 +1,23 @@
+region: US-MA
+sources:
+  - ticon/neponset_river_at_milton_village_ma-11055566-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/neponset_river_at_milton_village_ma-11055566-usa-usgs:
+      position: [42.270806, -71.068351]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.056
+        issues:
+          - MHWS (1.109) < MHW (1.111)
+          - "Seasonal band (0.161m) is 5.1x the largest tidal constituent M2 (0.032m): the yearly swing exceeds the daily one"

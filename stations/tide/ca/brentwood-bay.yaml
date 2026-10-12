@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-brentwood-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-brentwood-bay:
+      position: [48.578, -123.467]
+      coastline: clear

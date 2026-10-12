@@ -1,0 +1,21 @@
+sources:
+  - ticon/lae-067a-png-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lae-067a-png-uhslc_rq:
+      position: [-6.733, 146.983]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.725
+          recency: 0.72
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (1.131) > MLW (1.072)
+          - MHWS (1.461) < MHW (1.526)

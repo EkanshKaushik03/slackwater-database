@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5411
+redirect_from:
+  - /currents/us/va/tue-marshes-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5411:
+      position: [37.24667, -76.388]
+      coastline: unverifiable

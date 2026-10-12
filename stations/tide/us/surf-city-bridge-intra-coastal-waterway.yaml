@@ -1,0 +1,21 @@
+region: US-NC
+sources:
+  - ticon/surfcitybridge_intracoastal_waterway-sur-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/surfcitybridge_intracoastal_waterway-sur-usa-ncdem:
+      position: [34.4269, -77.54883]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.307
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.113
+        issues:
+          - MHWS (0.476) < MHW (0.478)

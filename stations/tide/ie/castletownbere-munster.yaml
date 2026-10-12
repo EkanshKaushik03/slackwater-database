@@ -1,0 +1,20 @@
+sources:
+  - ticon/castletownbere-cas-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/castletownbere-cas-irl-cmems:
+      position: [51.649601, -9.9034]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/castletownbere_port-cas-irl-mi_c
+        score: 50
+        factors:
+          epoch: 0.982
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

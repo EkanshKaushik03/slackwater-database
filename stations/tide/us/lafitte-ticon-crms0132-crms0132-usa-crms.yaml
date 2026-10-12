@@ -1,0 +1,27 @@
+region: US-LA
+sources:
+  - ticon/crms0132-crms0132-usa-crms
+redirect_from:
+  - /tides/us/la/lafitte-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms0132-crms0132-usa-crms:
+      position: [29.66476, -89.88548]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 71
+        factors:
+          epoch: 0.943
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.062
+        issues:
+          - MLWS (0.192) > MLW (0.145)
+          - MHWS (0.204) < MHW (0.244)
+          - "Seasonal band (0.102m) is 2.8x the largest tidal constituent O1 (0.037m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0028) exceeds S2 (0.0025)

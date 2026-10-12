@@ -1,0 +1,11 @@
+region: US-TX
+sources:
+  - noaa/g09010
+redirect_from:
+  - /currents/us/tx/galveston-channel/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/g09010:
+      position: [29.30940055847168, -94.82060241699219]
+      coastline: unverifiable

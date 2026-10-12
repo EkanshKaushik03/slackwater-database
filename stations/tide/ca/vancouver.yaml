@@ -1,0 +1,32 @@
+name: Vancouver
+context: Burrard Inlet
+region: CA-BC
+aliases: [vancouver harbour]
+cities: [Vancouver]
+position: [49.286, -123.1]
+provider: chs
+sources:
+  - chs-vancouver
+  - ticon/vancouver_bc-7735-can-meds
+redirect_from:
+  - /tides/ca/bc/vancouver-bc-02/
+  - /tides/ca/bc/vancouver-bc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-vancouver:
+      position: [49.286, -123.1]
+      coastline: clear
+    ticon/vancouver_bc-7735-can-meds:
+      position: [49.29, -123.11]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.049

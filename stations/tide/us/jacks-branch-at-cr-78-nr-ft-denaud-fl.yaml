@@ -1,0 +1,25 @@
+region: US-FL
+sources:
+  - ticon/jacks_branch_at_cr_78_nr_ft_denaud_fl-2292740-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/jacks_branch_at_cr_78_nr_ft_denaud_fl-2292740-usa-usgs:
+      position: [26.747428, -81.513233]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.347
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.125
+        issues:
+          - MLWS (0.507) > MLW (0.502)
+          - MHW (0.517) <= MSL (0.518)
+          - "Seasonal band (0.030m) is 3.1x the largest tidal constituent O1 (0.010m): the yearly swing exceeds the daily one"

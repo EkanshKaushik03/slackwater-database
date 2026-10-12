@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/ACT8491
+redirect_from:
+  - /currents/us/fl/pinellas-point-0-4-nm-southeast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8491:
+      position: [27.69700050354004, -82.63249969482422]
+      coastline: unverifiable

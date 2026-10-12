@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-roberts-bank
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-roberts-bank:
+      position: [49.015, -123.156]
+      coastline: clear

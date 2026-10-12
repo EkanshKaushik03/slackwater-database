@@ -1,0 +1,18 @@
+sources:
+  - ticon/stanley-sta-gbr-noc
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/stanley-sta-gbr-noc:
+      position: [-51.6924, -57.8205]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.737
+          quality: 1
+          amplitude: 1
+          coverage: 0.201

@@ -1,0 +1,24 @@
+region: US-NC
+sources:
+  - ticon/town_creek-tow-usa-ncdem
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/town_creek-tow-usa-ncdem:
+      position: [34.136556, -77.987222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 60
+        factors:
+          epoch: 0.192
+          recency: 0.99
+          source: 0.545
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - MLWS (1.634) > MLW (1.288)
+          - MHWS (1.924) < MHW (2.158)
+          - "Seasonal band (0.455m) is 3.5x the largest tidal constituent M2 (0.130m): the yearly swing exceeds the daily one"

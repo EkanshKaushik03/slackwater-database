@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-false-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-false-bay:
+      position: [49.483, -124.35]
+      coastline: clear

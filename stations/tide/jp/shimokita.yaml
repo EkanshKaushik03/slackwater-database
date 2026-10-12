@@ -1,0 +1,18 @@
+sources:
+  - ticon/shimokita-ma74-jpn-jodc_jma
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/shimokita-ma74-jpn-jodc_jma:
+      position: [41.3647, 141.2381]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.929
+          quality: 1
+          amplitude: 1
+          coverage: 0.287

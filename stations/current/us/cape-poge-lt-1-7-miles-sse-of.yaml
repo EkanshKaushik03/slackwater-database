@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1721
+redirect_from:
+  - /currents/us/ma/cape-poge-lt/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1721:
+      position: [41.4, -70.42667]
+      coastline: unverifiable

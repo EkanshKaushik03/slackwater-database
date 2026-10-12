@@ -1,0 +1,21 @@
+sources:
+  - ticon/goteborg_larjeholm-33094-swe-smhi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/goteborg_larjeholm-33094-swe-smhi:
+      position: [57.7649, 12.003]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 64
+        factors:
+          epoch: 0.798
+          recency: 0.99
+          source: 0.919
+          quality: 0
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - "Seasonal band (0.091m) is 1.4x the largest tidal constituent M2 (0.065m): the yearly swing exceeds the daily one"

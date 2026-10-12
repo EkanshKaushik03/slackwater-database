@@ -1,0 +1,22 @@
+sources:
+  - ticon/paldiski-pal-est-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/paldiski-pal-est-cmems:
+      position: [59.3349, 24.079599]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.77
+        issues:
+          - MLWS (-0.055) > MLW (-0.062)
+          - "Seasonal band (0.103m) is 8.2x the largest tidal constituent O1 (0.013m): the yearly swing exceeds the daily one"

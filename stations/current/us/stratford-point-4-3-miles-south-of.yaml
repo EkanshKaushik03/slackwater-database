@@ -1,0 +1,11 @@
+region: US-CT
+sources:
+  - noaa/ACT2986
+redirect_from:
+  - /currents/us/ct/stratford-point-3-7-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2986:
+      position: [41.0795, -73.11117]
+      coastline: unverifiable

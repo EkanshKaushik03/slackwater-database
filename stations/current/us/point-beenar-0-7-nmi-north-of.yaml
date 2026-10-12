@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0916
+redirect_from:
+  - /currents/us/ca/point-beenar/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0916:
+      position: [38.04217, -121.838]
+      coastline: unverifiable

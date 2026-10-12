@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PWS0733
+redirect_from:
+  - /currents/us/ak/salmo-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PWS0733:
+      position: [60.61672, -145.77075]
+      coastline: unverifiable

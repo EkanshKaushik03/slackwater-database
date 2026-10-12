@@ -1,0 +1,22 @@
+sources:
+  - ticon/wangeroogetg-wan-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wangeroogetg-wan-deu-cmems:
+      position: [53.806, 7.929]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/wangeroogenord-9420030-deu-wsv
+        score: 43
+        factors:
+          epoch: 0.615
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - MLW (-1.35) < MLLW (-1.347)

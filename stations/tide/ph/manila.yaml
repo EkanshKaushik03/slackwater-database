@@ -1,0 +1,21 @@
+sources:
+  - ticon/manila-370-phl-uhslc_fd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/manila-370-phl-uhslc_fd:
+      position: [14.583, 120.967]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.99
+          quality: 0
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - MLWS (2.277) > MLW (2.158)
+          - MHWS (2.787) < MHW (2.866)

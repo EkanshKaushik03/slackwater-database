@@ -1,0 +1,21 @@
+sources:
+  - ticon/tobishima-gs25-jpn-jodc_giaj
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tobishima-gs25-jpn-jodc_giaj:
+      position: [39.18555, 139.547783]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 78
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.101
+          quality: 1
+          amplitude: 1
+          coverage: 0.763
+        issues:
+          - "Seasonal band (0.132m) is 2.4x the largest tidal constituent O1 (0.054m): the yearly swing exceeds the daily one"

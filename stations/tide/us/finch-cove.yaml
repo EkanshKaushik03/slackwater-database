@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9461945
+redirect_from:
+  - /tides/us/finch-cove/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9461945:
+      position: [52.3917, -172.405]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1

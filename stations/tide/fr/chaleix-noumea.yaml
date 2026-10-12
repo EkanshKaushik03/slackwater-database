@@ -1,0 +1,18 @@
+sources:
+  - ticon/chaleix_noumea-16-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/chaleix_noumea-16-fra-refmar:
+      position: [-22.291478, 166.436742]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.79
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3726
+redirect_from:
+  - /currents/us/ak/high-island-northwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3726:
+      position: [56.75, -133.73333]
+      coastline: unverifiable

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-shoal-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-shoal-bay:
+      position: [50.46, -125.361]
+      coastline: clear

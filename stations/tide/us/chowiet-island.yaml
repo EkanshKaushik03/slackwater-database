@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9458519
+redirect_from:
+  - /tides/us/chowiet-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9458519:
+      position: [56.0517, -156.698]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1

@@ -1,0 +1,28 @@
+# "La" in an American name is a capital, not the French article.
+
+name: La Marque Levee Pump Sta nr La Marque
+region: US-TX
+sources:
+  - ticon/la_marque_levee_pump_sta_nr_la_marque_tx-8077740-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/la_marque_levee_pump_sta_nr_la_marque_tx-8077740-usa-usgs:
+      position: [29.34579, -94.963257]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 58
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 0.75
+          coverage: 0.16
+        issues:
+          - MLWS (0.289) > MLW (0.255)
+          - MHWS (0.359) < MHW (0.369)
+          - "Seasonal band (0.095m) is 1.2x the largest tidal constituent K1 (0.079m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0071) exceeds S2 (0.0060)

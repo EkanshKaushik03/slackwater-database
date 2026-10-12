@@ -1,0 +1,9 @@
+region: US-AK
+sources:
+  - noaa/UNI1011
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/UNI1011:
+      position: [53.95372, -166.21471]
+      coastline: unverifiable

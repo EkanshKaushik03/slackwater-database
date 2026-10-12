@@ -1,0 +1,21 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+
+name: Baie-du-Lazaret
+sources:
+  - ticon/baiedulazarettg_10minute-bai-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/baiedulazarettg_10minute-bai-fra-cmems:
+      position: [43.080502, 5.90252]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 34
+        factors:
+          epoch: 0.215
+          recency: 0.93
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.011

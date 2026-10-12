@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-valdes-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-valdes-island:
+      position: [49.058, -123.62]
+      coastline: clear

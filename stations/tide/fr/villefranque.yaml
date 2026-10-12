@@ -1,0 +1,18 @@
+sources:
+  - ticon/villefranquetg_05minute-vil-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/villefranquetg_05minute-vil-fra-cmems:
+      position: [43.437981, -1.46024]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.909
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.1

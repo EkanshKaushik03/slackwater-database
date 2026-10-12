@@ -1,0 +1,22 @@
+region: US-FL
+sources:
+  - ticon/boca_raton-8722816-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/boca_raton-8722816-usa-noaa:
+      position: [26.3433, -80.0767]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.191
+          recency: 0.47
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

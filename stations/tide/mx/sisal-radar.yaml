@@ -1,0 +1,23 @@
+sources:
+  - ticon/sisal_radar-10-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sisal_radar-10-mex-unam:
+      position: [21.161667, -90.048333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sisal-416-mex-unam_hist
+        score: 36
+        factors:
+          epoch: 0.161
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.858) > MLW (1.852)
+          - MHWS (2.052) < MHW (2.109)

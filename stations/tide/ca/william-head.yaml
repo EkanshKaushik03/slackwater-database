@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-william-head
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-william-head:
+      position: [48.341, -123.5369]
+      coastline: clear

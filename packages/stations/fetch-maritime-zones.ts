@@ -2,15 +2,15 @@
  * Regenerate metadata/maritime-zones.geojson from the Marine Regions Maritime
  * Boundaries (EEZ) polygons served by VLIZ's public WFS.
  *
- * Only registry stations need it: every provider file states its own country,
- * and a registry record that does not falls back to the nearest gazetteer
- * place, which can sit across a strait in the wrong country. The snapshot
- * covers the half-degree cells within half a degree of each registry position
- * and records them as `coverage`. Each zone is clipped to those cells and
+ * Only stations this repo owns need it: every provider file states its own
+ * country, and an owned record that does not falls back to the nearest
+ * gazetteer place, which can sit across a strait in the wrong country. The
+ * snapshot covers the half-degree cells within half a degree of each owned
+ * station's position and records them as `coverage`. Each zone is clipped to those cells and
  * Douglas–Peucker simplified to ~100 m. Joint regimes and overlapping claims
  * are left out, so a station there keeps the gazetteer fallback.
  *
- * Run manually when the registry gains a station outside the coverage:
+ * Run manually when an owned station lands outside the coverage:
  *   npm run fetch-maritime-zones -w packages/stations
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -18,7 +18,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import countryLookup from "country-code-lookup";
 import { simplify } from "@slackwater/datums";
-import { loadRegistry } from "./metadata.ts";
+import { readStationFiles } from "./station-files.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const OUT = join(root, "metadata", "maritime-zones.geojson");
@@ -88,11 +88,10 @@ function clip(ring: Ring, [minLon, minLat, maxLon, maxLat]: Box): Ring {
 }
 
 async function main() {
-  const registry = loadRegistry(
-    readFileSync(join(root, "metadata", "registry.yaml"), "utf8"),
-  );
+  // Only stations this repo owns take their country from the zones.
+  const owned = readStationFiles().filter(({ provider }) => provider);
   const cells = new Map<string, Box>();
-  for (const { position } of registry.values()) {
+  for (const { position } of owned) {
     if (!position) continue;
     const [lat, lon] = position;
     for (let y = Math.floor((lat - CELL) / CELL); y * CELL < lat + CELL; y++)
@@ -105,7 +104,7 @@ async function main() {
         ]);
   }
   const boxes = [...cells.values()].sort((a, b) => a[1] - b[1] || a[0] - b[0]);
-  console.log(`${boxes.length} cells around ${registry.size} registry records`);
+  console.log(`${boxes.length} cells around ${owned.length} owned stations`);
 
   const mrgids = new Set<number>();
   for (const [minLon, minLat, maxLon, maxLat] of boxes) {

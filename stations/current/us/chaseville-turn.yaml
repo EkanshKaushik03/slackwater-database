@@ -1,0 +1,9 @@
+region: US-FL
+sources:
+  - noaa/SJR0302
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SJR0302:
+      position: [30.37833, -81.62833]
+      coastline: unverifiable

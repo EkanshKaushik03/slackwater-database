@@ -1,0 +1,21 @@
+sources:
+  - ticon/triigi-tri-est-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/triigi-tri-est-cmems:
+      position: [58.5914, 22.7173]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 52
+        factors:
+          epoch: 0.821
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.32
+        issues:
+          - "Seasonal band (0.084m) is 6.3x the largest tidal constituent M2 (0.013m): the yearly swing exceeds the daily one"

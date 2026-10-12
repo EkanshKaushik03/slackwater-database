@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0301
+redirect_from:
+  - /currents/us/ca/alcatraz-island-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0301:
+      position: [37.81833, -122.422]
+      coastline: unverifiable

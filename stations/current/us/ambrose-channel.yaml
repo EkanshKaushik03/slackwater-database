@@ -1,0 +1,9 @@
+region: US-NY
+sources:
+  - noaa/NYH1903
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/NYH1903:
+      position: [40.516700744628906, -73.97470092773438]
+      coastline: unverifiable

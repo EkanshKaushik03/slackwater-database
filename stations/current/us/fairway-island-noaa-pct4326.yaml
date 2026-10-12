@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT4326
+redirect_from:
+  - /currents/us/ak/fairway-island-mitchell-bay/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT4326:
+      position: [57.45, -134.88333]
+      coastline: unverifiable

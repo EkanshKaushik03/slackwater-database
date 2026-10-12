@@ -1,0 +1,24 @@
+region: US-PA
+sources:
+  - ticon/erie_lake_erie_pa-9063038-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/erie_lake_erie_pa-9063038-usa-noaa:
+      position: [42.1539, -80.07583]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.898
+        issues:
+          - MLWS (174.372) > MLW (174.363)
+          - MHWS (174.404) < MHW (174.409)
+          - "Seasonal band (0.160m) is 12.8x the largest tidal constituent M2 (0.013m): the yearly swing exceeds the daily one"

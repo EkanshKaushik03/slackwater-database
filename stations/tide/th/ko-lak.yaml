@@ -1,0 +1,23 @@
+sources:
+  - ticon/ko_lak-328a-tha-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ko_lak-328a-tha-uhslc_rq:
+      position: [11.795, 99.817]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ko_lak-328-tha-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.93
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (2.521) > MLW (2.18)
+          - MHWS (2.675) < MHW (3.037)

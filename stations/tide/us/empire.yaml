@@ -1,0 +1,26 @@
+region: US-LA
+sources:
+  - ticon/empire-8761193-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/empire-8761193-usa-noaa:
+      position: [29.39, -89.595]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.125
+          recency: 0.73
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.109
+        issues:
+          - MHHW (3.082) < MHW (3.101)
+          - MHWS (2.992) < MHW (3.101)
+          - MSL (2.98) <= MLW (3.036)
+          - "Seasonal band (0.459m) is 6.3x the largest tidal constituent O1 (0.073m): the yearly swing exceeds the daily one"

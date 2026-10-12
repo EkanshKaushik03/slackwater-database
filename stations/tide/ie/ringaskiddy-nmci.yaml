@@ -1,0 +1,18 @@
+sources:
+  - ticon/ringaskiddynmci-rin-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ringaskiddynmci-rin-irl-cmems:
+      position: [51.84, -8.304]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 0.725
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.418

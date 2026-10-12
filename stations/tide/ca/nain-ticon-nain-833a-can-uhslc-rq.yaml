@@ -1,0 +1,21 @@
+region: CA-NL
+sources:
+  - ticon/nain-833a-can-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nain-833a-can-uhslc_rq:
+      position: [56.55, -61.683]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/nain-833-can-uhslc_fd
+        score: 67
+        factors:
+          epoch: 0.926
+          recency: 0.92
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.004

@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-little-river
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-little-river:
+      position: [49.741, -124.923]
+      coastline: clear

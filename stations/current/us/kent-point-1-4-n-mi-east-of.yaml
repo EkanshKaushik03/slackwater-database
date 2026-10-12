@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT6051
+redirect_from:
+  - /currents/us/md/kent-point-1-4-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6051:
+      position: [38.83883, -76.3375]
+      coastline: unverifiable

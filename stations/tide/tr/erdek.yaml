@@ -1,0 +1,24 @@
+sources:
+  - ticon/ioc_erdek-ioc-tur-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ioc_erdek-ioc-tur-cmems:
+      position: [40.3899, 27.8452]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.116
+          recency: 0.96
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (1.83) < MHW (1.834)
+          - Tidal range 1.8cm < 2cm threshold
+          - "Seasonal band (0.061m) is 4.7x the largest tidal constituent K1 (0.013m): the yearly swing exceeds the daily one"

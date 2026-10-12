@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/sacramento_deep_water_shipping_canal-dws-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_deep_water_shipping_canal-dws-usa-cdwr:
+      position: [38.25611, -121.66667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 53
+        factors:
+          epoch: 0.552
+          recency: 0.95
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.042
+        issues:
+          - MLWS (6.665) > MLW (6.647)

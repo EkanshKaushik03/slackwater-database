@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/MIH0812
+redirect_from:
+  - /currents/us/fl/dodge-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/MIH0812:
+      position: [25.78178, -80.180603]
+      coastline: unverifiable

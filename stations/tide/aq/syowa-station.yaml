@@ -1,0 +1,18 @@
+sources:
+  - ticon/syowa_station_antarctica-hd50-ata-jodc_jcg
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/syowa_station_antarctica-hd50-ata-jodc_jcg:
+      position: [-69.007783, 39.570283]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.111
+          quality: 0
+          amplitude: 1
+          coverage: 0.029

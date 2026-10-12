@@ -1,0 +1,20 @@
+sources:
+  - ticon/prickley_bay-789a-grd-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/prickley_bay-789a-grd-uhslc_rq:
+      position: [12.005, -61.765]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/prickley_bay-789-grd-uhslc_fd
+        score: 63
+        factors:
+          epoch: 0.733
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.012

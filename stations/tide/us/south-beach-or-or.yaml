@@ -1,0 +1,21 @@
+region: US-OR
+sources:
+  - ticon/south_beach_or-592a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/south_beach_or-592a-usa-uhslc_rq:
+      position: [44.625, -124.043]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/south_beach_or-592-usa-uhslc_fd
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

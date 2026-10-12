@@ -5,6 +5,11 @@ on:
     # Run on the 1st of every month at 2:00 AM UTC
     - cron: "0 2 1 * *"
   workflow_dispatch: # Allow manual triggering
+    inputs:
+      retire:
+        description: Allow more than ten records to retire in this run, once the import is checked
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -46,18 +51,20 @@ jobs:
         # publishing LAT for a station we had been filling.
         run: npm run backfill-lat-hat -w packages/stations
 
-      - name: Re-evaluate station quality
-        # New/moved NOAA stations shift proximity and can supersede TICON
-        # records, so quality.json must be regenerated in the same commit or it
-        # goes stale against the data it describes.
-        run: npm run evaluate-quality -w packages/stations
+      - name: Update station files
+        # New or moved NOAA records shift proximity and can supersede TICON
+        # records, and a new record needs a station and URL, so the station
+        # files are rewritten in the same commit or validation fails.
+        env:
+          STATIONS_RETIRE: ${{ inputs.retire && '1' || '' }}
+        run: npm run stations
 
       - name: Check for changes
         id: changes
         run: |
-          if [[ -n $(git status --porcelain data/ quality.json) ]]; then
+          if [[ -n $(git status --porcelain data/ stations/) ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in station data or quality.json"
+            echo "Changes detected in station data or station files"
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes detected"

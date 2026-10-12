@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-oak-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-oak-bay:
+      position: [48.4237, -123.3027]
+      coastline: clear

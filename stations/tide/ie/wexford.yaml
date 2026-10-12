@@ -1,0 +1,20 @@
+sources:
+  - ticon/wexford-wex-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wexford-wex-irl-cmems:
+      position: [52.338501, -6.4589]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/wexford_harbour-wex-irl-mi_c
+        score: 50
+        factors:
+          epoch: 0.978
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0

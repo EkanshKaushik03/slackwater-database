@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1131
+redirect_from:
+  - /currents/us/ma/stellwagen-bank/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1131:
+      position: [42.32397, -70.29397]
+      coastline: unverifiable

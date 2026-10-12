@@ -1,0 +1,18 @@
+sources:
+  - ticon/shimonoseki-ma51-jpn-jodc_jma
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/shimonoseki-ma51-jpn-jodc_jma:
+      position: [33.925, 130.927783]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 1
+          recency: 0.86
+          source: 0.929
+          quality: 0
+          amplitude: 1
+          coverage: 0.002

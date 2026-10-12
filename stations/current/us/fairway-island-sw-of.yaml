@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0619
+redirect_from:
+  - /currents/us/ak/fairway-island-sw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0619:
+      position: [56.03688, -134.07526]
+      coastline: unverifiable

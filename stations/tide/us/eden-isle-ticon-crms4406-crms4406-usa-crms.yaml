@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/crms4406-crms4406-usa-crms
+redirect_from:
+  - /tides/us/la/eden-isle-la/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/crms4406-crms4406-usa-crms:
+      position: [30.20187, -89.72922]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.923
+          recency: 0.99
+          source: 0.586
+          quality: 1
+          amplitude: 1
+          coverage: 0.048
+        issues:
+          - MLWS (0.056) > MLW (-0.015)
+          - MHWS (0.138) < MHW (0.218)

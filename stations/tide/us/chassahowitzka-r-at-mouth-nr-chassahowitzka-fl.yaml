@@ -1,0 +1,24 @@
+region: US-FL
+sources:
+  - ticon/chassahowitzka_r_at_mouth_nr_chassahowitzka_fl-2310674-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/chassahowitzka_r_at_mouth_nr_chassahowitzka_fl-2310674-usa-usgs:
+      position: [28.694709, -82.638989]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8727235
+        score: 76
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.007
+        issues:
+          - MLWS (-0.228) > MLW (-0.239)
+          - MHWS (0.326) < MHW (0.335)

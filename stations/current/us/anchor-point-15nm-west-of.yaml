@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI0419
+redirect_from:
+  - /currents/us/ak/anchor-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI0419:
+      position: [59.83933, -152.36833]
+      coastline: unverifiable

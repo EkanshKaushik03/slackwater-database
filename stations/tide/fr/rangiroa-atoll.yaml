@@ -1,0 +1,20 @@
+sources:
+  - ticon/rangiroa_atoll-455-fra-uhslc_fd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rangiroa_atoll-455-fra-uhslc_fd:
+      position: [-14.945, -147.707]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/rangiroa-78-fra-refmar
+        score: 72
+        factors:
+          epoch: 0.349
+          recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.003

@@ -1,0 +1,22 @@
+region: US-DE
+sources:
+  - ticon/indian_river_inlet-8558690-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/indian_river_inlet-8558690-usa-noaa:
+      position: [38.61, -75.07]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.517
+          recency: 0.6
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

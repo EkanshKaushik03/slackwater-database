@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT5056
+redirect_from:
+  - /currents/us/ak/east-foreland-1-5-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5056:
+      position: [60.72333, -151.46667]
+      coastline: unverifiable

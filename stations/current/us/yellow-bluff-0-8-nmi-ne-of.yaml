@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0546
+redirect_from:
+  - /currents/us/ca/yellow-bluff/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0546:
+      position: [37.8455, -122.45717]
+      coastline: unverifiable

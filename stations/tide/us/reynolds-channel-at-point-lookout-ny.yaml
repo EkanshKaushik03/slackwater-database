@@ -1,0 +1,21 @@
+region: US-NY
+sources:
+  - ticon/reynolds_channel_at_point_lookout_ny-1310740-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/reynolds_channel_at_point_lookout_ny-1310740-usa-usgs:
+      position: [40.593437, -73.58374]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8516402
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

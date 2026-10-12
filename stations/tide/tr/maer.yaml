@@ -1,0 +1,22 @@
+sources:
+  - ticon/ioc_maer-ioc-tur-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ioc_maer-ioc-tur-cmems:
+      position: [40.969002, 27.9622]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 52
+        factors:
+          epoch: 0.354
+          recency: 0.97
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (1.301) < MHW (1.304)
+          - "Seasonal band (0.034m) is 2.3x the largest tidal constituent K1 (0.015m): the yearly swing exceeds the daily one"

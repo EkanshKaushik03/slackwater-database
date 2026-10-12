@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3196
+redirect_from:
+  - /currents/us/ak/cape-muzon-4-3-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3196:
+      position: [54.66667, -132.53333]
+      coastline: unverifiable

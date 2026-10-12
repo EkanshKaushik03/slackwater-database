@@ -1,0 +1,23 @@
+sources:
+  - ticon/groote_eylandt-145a-aus-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/groote_eylandt-145a-aus-uhslc_rq:
+      position: [-13.86, 136.417]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/milner_bay_groote_eylandt-63511-aus-bom
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (1.114) > MLW (0.932)
+          - MHWS (1.302) < MHW (1.453)

@@ -1,0 +1,18 @@
+sources:
+  - ticon/hofu-ma67-jpn-jodc_jma
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hofu-ma67-jpn-jodc_jma:
+      position: [34.033333, 131.583333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.215
+          recency: 0.64
+          source: 0.929
+          quality: 1
+          amplitude: 1
+          coverage: 0.009

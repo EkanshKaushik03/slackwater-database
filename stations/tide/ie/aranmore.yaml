@@ -1,0 +1,20 @@
+sources:
+  - ticon/aranmore-ara-irl-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/aranmore-ara-irl-cmems:
+      position: [54.989601, -8.49562]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/aranmore_island_leabgarrow-ara-irl-mi_c
+        score: 49
+        factors:
+          epoch: 0.919
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.002

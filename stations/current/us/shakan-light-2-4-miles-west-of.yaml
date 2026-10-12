@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/SEA0610
+redirect_from:
+  - /currents/us/ak/shakan-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SEA0610:
+      position: [56.1455, -133.69709]
+      coastline: unverifiable

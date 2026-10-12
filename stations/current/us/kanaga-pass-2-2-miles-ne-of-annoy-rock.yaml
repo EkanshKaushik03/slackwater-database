@@ -1,0 +1,10 @@
+sources:
+  - noaa/PCT5671
+redirect_from:
+  - /currents/us/kanaga-pass-1-9-nm-ne-of-annoy-rock/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT5671:
+      position: [51.75, -177.75]
+      coastline: unverifiable

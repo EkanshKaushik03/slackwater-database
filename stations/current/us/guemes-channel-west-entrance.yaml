@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1734
+redirect_from:
+  - /currents/us/wa/guemes-channel/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1734:
+      position: [48.521240234375, -122.65218353271484]
+      coastline: clear

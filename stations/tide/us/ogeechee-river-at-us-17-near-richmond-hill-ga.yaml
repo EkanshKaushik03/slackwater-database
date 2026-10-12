@@ -1,0 +1,21 @@
+region: US-GA
+sources:
+  - ticon/ogeechee_river_at_us_17_near_richmond_hill_ga-2203536-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ogeechee_river_at_us_17_near_richmond_hill_ga-2203536-usa-usgs:
+      position: [31.976972, -81.287861]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.825
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.017
+        issues:
+          - MLWS (0.101) > MLW (-0.011)

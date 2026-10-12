@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1619
+redirect_from:
+  - /currents/us/wa/marrowstone-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1619:
+      position: [48.10633087158203, -122.67247009277344]
+      coastline: clear

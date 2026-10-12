@@ -1,0 +1,19 @@
+region: US-NY
+sources:
+  - ticon/great_kills_harbor_at_great_kills_ny-1376562-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/great_kills_harbor_at_great_kills_ny-1376562-usa-usgs:
+      position: [40.538889, -74.129889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.43
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.02

@@ -1,0 +1,23 @@
+sources:
+  - ticon/korotiti_bay-gbit-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/korotiti_bay-gbit-nzl-ttw:
+      position: [-36.189167, 175.489167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        score: 0
+        factors:
+          epoch: 0.775
+          recency: 0.98
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHHW (7.835) < MHW (8.949)
+          - MHWS (7.755) < MHW (8.949)
+          - MSL (6.952) <= MLW (8.447)

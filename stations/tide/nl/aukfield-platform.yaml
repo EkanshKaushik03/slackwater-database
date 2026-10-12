@@ -1,0 +1,18 @@
+sources:
+  - ticon/aukfield_platform-aukfpfm-nld-rws
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/aukfield_platform-aukfpfm-nld-rws:
+      position: [56.39904, 2.06402]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 94
+        factors:
+          epoch: 1
+          recency: 0.8
+          source: 0.788
+          quality: 1
+          amplitude: 1
+          coverage: 1

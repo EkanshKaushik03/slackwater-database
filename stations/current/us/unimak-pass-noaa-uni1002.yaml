@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/UNI1002
+redirect_from:
+  - /currents/us/ak/unimak-pass-ak/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/UNI1002:
+      position: [54.30863, -164.74683]
+      coastline: unverifiable

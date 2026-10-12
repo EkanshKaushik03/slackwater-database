@@ -1,0 +1,20 @@
+sources:
+  - ticon/palmeira-235a-cpv-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/palmeira-235a-cpv-uhslc_rq:
+      position: [16.755, -22.983]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/palmeira-235-cpv-uhslc_fd
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.011

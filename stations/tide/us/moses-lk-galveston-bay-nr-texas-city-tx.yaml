@@ -1,0 +1,22 @@
+region: US-TX
+sources:
+  - ticon/moses_lk_galveston_bay_nr_texas_city_tx-8077650-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/moses_lk_galveston_bay_nr_texas_city_tx-8077650-usa-usgs:
+      position: [29.447454, -94.920202]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.072
+        issues:
+          - MLWS (0.338) > MLW (0.323)
+          - MHWS (0.412) < MHW (0.427)

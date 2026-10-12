@@ -1,0 +1,11 @@
+# The generalized maritime boundary puts these border gauges in the neighboring country.
+
+region: CA-BC
+sources:
+  - chs-bedwell-harbour
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-bedwell-harbour:
+      position: [48.7478, -123.2273]
+      coastline: clear

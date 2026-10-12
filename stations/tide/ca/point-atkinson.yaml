@@ -1,0 +1,31 @@
+name: Point Atkinson
+context: West Vancouver
+region: CA-BC
+aliases: [lighthouse park, caulfeild cove]
+position: [49.337, -123.254]
+provider: chs
+sources:
+  - chs-point-atkinson
+  - ticon/point_atkinson_bc-7795-can-meds
+redirect_from:
+  - /tides/ca/bc/point-atkinson-bc/
+  - /tides/ca/bc/point-atkinson-west-vancouver-bc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-point-atkinson:
+      position: [49.337, -123.254]
+      coastline: clear
+    ticon/point_atkinson_bc-7795-can-meds:
+      position: [49.34, -123.25]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.029

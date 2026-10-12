@@ -1,0 +1,22 @@
+name: Naval Air Station Whidbey Island
+region: US-WA
+aliases: [nas whidbey, whidbey island naval air station]
+cities: [Oak Harbor]
+sources:
+  - noaa/9447973
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9447973:
+      position: [48.34280014038086, -122.68579864501953]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.146

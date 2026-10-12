@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/COI1205
+redirect_from:
+  - /currents/us/ak/kalgin-island-4-nm-east/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COI1205:
+      position: [60.47183, -151.70633]
+      coastline: unverifiable

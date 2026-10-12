@@ -1,0 +1,10 @@
+sources:
+  - noaa/PCT4411
+redirect_from:
+  - /currents/us/claybluff-point-light-2-3-nm-se/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT4411:
+      position: [59.94667, -141.52]
+      coastline: unverifiable

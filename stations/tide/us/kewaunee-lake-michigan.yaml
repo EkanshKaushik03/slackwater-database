@@ -1,0 +1,27 @@
+region: US-WI
+sources:
+  - ticon/kewaunee_lake_michigan_wi-9087068-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kewaunee_lake_michigan_wi-9087068-usa-noaa:
+      position: [44.463972, -87.501028]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.794
+        issues:
+          - MLWS (176.487) > MLW (176.466)
+          - MHWS (176.493) < MHW (176.508)
+          - "P1 amplitude (0.0005) exceeds K1 (0.0003): physically impossible"
+          - "Seasonal band (0.160m) is 74.8x the largest tidal constituent M2 (0.002m): the yearly swing exceeds the daily one"
+          - Q1 amplitude (0.0004) exceeds O1 (0.0003)

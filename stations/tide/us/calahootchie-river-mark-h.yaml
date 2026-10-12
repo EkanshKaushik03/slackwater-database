@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/calahootchieriver_markh-markh-usa-sfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/calahootchieriver_markh-markh-usa-sfwmd:
+      position: [26.523611, -82.004722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.957
+          recency: 0.96
+          source: 0.566
+          quality: 1
+          amplitude: 1
+          coverage: 0.079

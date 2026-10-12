@@ -1,0 +1,20 @@
+sources:
+  - noaa/9650593
+redirect_from:
+  - /tides/hn/puerto-cortes-cortes-department/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9650593:
+      position: [15.835000038146973, -87.87000274658203]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.171

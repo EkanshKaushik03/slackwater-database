@@ -1,0 +1,20 @@
+sources:
+  - ticon/campeche_radar-3-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/campeche_radar-3-mex-unam:
+      position: [20.080284, -90.570752]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/campeche_flotador-3-mex-unam
+        score: 36
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0

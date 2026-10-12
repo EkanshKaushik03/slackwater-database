@@ -1,0 +1,18 @@
+sources:
+  - ticon/san_felipe-307a-mex-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_felipe-307a-mex-uhslc_rq:
+      position: [31.018, -114.818]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 65
+        factors:
+          epoch: 0.256
+          recency: 0.6
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 1

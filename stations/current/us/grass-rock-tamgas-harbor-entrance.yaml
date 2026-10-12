@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT2836
+redirect_from:
+  - /currents/us/ak/grass-rock/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2836:
+      position: [55.02167, -131.52233]
+      coastline: unverifiable

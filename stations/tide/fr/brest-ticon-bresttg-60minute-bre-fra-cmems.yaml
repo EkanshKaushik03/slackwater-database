@@ -1,0 +1,20 @@
+sources:
+  - ticon/bresttg_60minute-bre-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bresttg_60minute-bre-fra-cmems:
+      position: [48.3829, -4.4951]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/brest-3-fra-refmar
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

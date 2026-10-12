@@ -1,0 +1,20 @@
+sources:
+  - ticon/cilicap-162-idn-uhslc_fd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cilicap-162-idn-uhslc_fd:
+      position: [-7.752, 109.017]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cilicap-162b-idn-uhslc_rq
+        score: 57
+        factors:
+          epoch: 0.389
+          recency: 0.99
+          source: 0.99
+          quality: 0
+          amplitude: 1
+          coverage: 0

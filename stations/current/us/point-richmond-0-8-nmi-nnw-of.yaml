@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0661
+redirect_from:
+  - /currents/us/ca/point-richmond-0-8-nm-nnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0661:
+      position: [37.92083, -122.39667]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9454561
+redirect_from:
+  - /tides/us/perch-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9454561:
+      position: [60.1267, -147.395]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.303

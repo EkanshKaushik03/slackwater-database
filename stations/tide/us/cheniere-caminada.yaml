@@ -1,0 +1,24 @@
+region: US-LA
+sources:
+  - ticon/cheniere_caminada-8761826-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cheniere_caminada-8761826-usa-noaa:
+      position: [29.21, -90.04]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.068
+          recency: 0.62
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.91) > MLW (0.873)
+          - MHWS (0.954) < MHW (1.018)
+          - "Superseded source: noaa"

@@ -1,0 +1,9 @@
+region: US-AK
+sources:
+  - noaa/PWS0743
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PWS0743:
+      position: [60.90998, -147.26555]
+      coastline: unverifiable

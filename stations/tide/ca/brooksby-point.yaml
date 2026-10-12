@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-brooksby-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-brooksby-point:
+      position: [48.982, -124.985]
+      coastline: clear

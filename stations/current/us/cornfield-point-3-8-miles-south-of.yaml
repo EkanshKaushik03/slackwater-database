@@ -1,0 +1,11 @@
+region: US-VA
+sources:
+  - noaa/ACT5781
+redirect_from:
+  - /currents/us/va/cornfield-point-3-3-nm-south/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5781:
+      position: [37.9900016784668, -76.35832977294922]
+      coastline: unverifiable

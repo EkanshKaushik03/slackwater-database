@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-kennedy-cove
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-kennedy-cove:
+      position: [49.14, -125.671]
+      coastline: clear

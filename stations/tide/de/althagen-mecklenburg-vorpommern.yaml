@@ -1,0 +1,26 @@
+sources:
+  - ticon/althagentg-alt-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/althagentg-alt-deu-cmems:
+      position: [54.3769, 12.4194]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: range
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.244
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 0.75
+          coverage: 0.011
+        issues:
+          - MLWS (0.134) > MLW (0.122)
+          - MHWS (0.138) < MHW (0.141)
+          - Tidal range 1.9cm < 2cm threshold
+          - "Seasonal band (0.046m) is 20.3x the largest tidal constituent P1 (0.002m): the yearly swing exceeds the daily one"
+          - Q1 amplitude (0.0023) exceeds O1 (0.0018)

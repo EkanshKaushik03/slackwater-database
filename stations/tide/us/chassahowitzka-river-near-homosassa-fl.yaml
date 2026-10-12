@@ -1,0 +1,23 @@
+region: US-FL
+sources:
+  - ticon/chassahowitzka_river_near_homosassa_fl-2310650-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/chassahowitzka_river_near_homosassa_fl-2310650-usa-usgs:
+      position: [28.715264, -82.576766]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8727246
+        score: 72
+        factors:
+          epoch: 0.773
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (0.043) > MLW (0.027)

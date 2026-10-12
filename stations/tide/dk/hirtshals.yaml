@@ -1,0 +1,25 @@
+sources:
+  - ticon/hirtshalstg-hir-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/hirtshalstg-hir-dnk-cmems:
+      position: [57.599998, 9.9667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.562
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.783
+        issues:
+          - MLWS (-0.059) > MLW (-0.099)
+          - MHWS (-0.055) < MHW (0.037)
+          - HAT (0.06) < MHHW (0.1)
+          - "Seasonal band (0.047m) is 2.8x the largest tidal constituent M1 (0.017m): the yearly swing exceeds the daily one"

@@ -1,0 +1,18 @@
+sources:
+  - ticon/gomeratg-gom-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gomeratg-gom-esp-cmems:
+      position: [28, -17]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.994
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.563

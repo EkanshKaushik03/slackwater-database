@@ -1,0 +1,18 @@
+sources:
+  - ticon/rochefort-118-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rochefort-118-fra-refmar:
+      position: [45.946335, -0.953483]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 78
+        factors:
+          epoch: 0.791
+          recency: 0.82
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0

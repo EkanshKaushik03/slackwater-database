@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1135
+redirect_from:
+  - /currents/us/ma/stellwagen-bank-17-nm-ese-of-eastern-point-light/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1135:
+      position: [42.47305, -70.31203]
+      coastline: unverifiable

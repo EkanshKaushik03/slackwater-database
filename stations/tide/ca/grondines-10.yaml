@@ -1,0 +1,21 @@
+region: CA-QC
+sources:
+  - ticon/grondines-3325-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/grondines-3325-can-meds:
+      position: [46.59, -72.04]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.68
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.126
+        issues:
+          - MHWS (3.086) < MHW (3.102)

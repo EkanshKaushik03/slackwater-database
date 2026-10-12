@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1310
+redirect_from:
+  - /currents/us/ca/point-chauncey-1-25-nm-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1310:
+      position: [37.9153, -122.44607]
+      coastline: unverifiable

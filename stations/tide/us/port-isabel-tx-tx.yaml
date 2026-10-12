@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/port_isabel_tx-772a-usa-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_isabel_tx-772a-usa-uhslc_rq:
+      position: [26.06, -97.215]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8779770
+        score: 68
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MHWS (1.625) < MHW (1.652)

@@ -1,0 +1,27 @@
+# "La" in an American name is a capital, not the French article.
+
+name: Bayou La Batre Bridge
+region: US-AL
+sources:
+  - ticon/bayou_la_batre_bridge-8739803-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bayou_la_batre_bridge-8739803-usa-noaa:
+      position: [30.40625, -88.247806]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.731
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (8.496) > MLW (8.454)
+          - MHWS (8.6) < MHW (8.651)
+          - "Superseded source: noaa"

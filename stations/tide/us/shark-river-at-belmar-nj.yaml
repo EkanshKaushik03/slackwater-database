@@ -1,0 +1,19 @@
+region: US-NJ
+sources:
+  - ticon/shark_river_at_belmar_nj-1407770-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/shark_river_at_belmar_nj-1407770-usa-usgs:
+      position: [40.185556, -74.026111]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.003

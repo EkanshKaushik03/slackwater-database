@@ -1,0 +1,23 @@
+# A station's own acronym, which a shouting name would recase.
+
+name: AWG
+sources:
+  - ticon/awgtg-awg-nld-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/awgtg-awg-nld-cmems:
+      position: [53.492001, 5.94]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/amelander_westgat_platform-awgpfm-nld-rws
+        score: 56
+        factors:
+          epoch: 0.538
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

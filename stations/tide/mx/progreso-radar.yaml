@@ -1,0 +1,23 @@
+sources:
+  - ticon/progreso_radar-8-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/progreso_radar-8-mex-unam:
+      position: [21.303333, -89.666667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/progreso-402-mex-unam_hist
+        score: 38
+        factors:
+          epoch: 0.244
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (5.571) > MLW (5.534)
+          - MHWS (5.717) < MHW (5.806)

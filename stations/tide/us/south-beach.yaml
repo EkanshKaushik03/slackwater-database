@@ -1,0 +1,22 @@
+region: US-OR
+sources:
+  - ticon/south_beach-9435380-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/south_beach-9435380-usa-noaa:
+      position: [44.6254, -124.04494]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

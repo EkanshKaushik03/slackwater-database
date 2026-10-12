@@ -1,0 +1,9 @@
+region: CA-NB
+sources:
+  - chs-miscou
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-miscou:
+      position: [47.896209, -64.578601]
+      coastline: unverifiable

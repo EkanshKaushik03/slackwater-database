@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/dumbarton_railroad_bridge-9414510-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dumbarton_railroad_bridge-9414510-usa-noaa:
+      position: [37.5, -122.1]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.107
+          recency: 0.59
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.03

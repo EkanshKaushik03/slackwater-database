@@ -1,0 +1,18 @@
+# Canadian Sailing Directions PAC 201 (2023/03), paragraph 224.
+
+name: Sechelt Rapids
+context: Skookumchuck Narrows
+region: CA-BC
+aliases: [skookumchuck]
+position: [49.7383, -123.8983]
+provider: chs
+tide_reference: chs-point-atkinson
+magnitude_note: 16.5 kn flood · 16 kn ebb
+sources:
+  - chs-sechelt-rapids
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sechelt-rapids:
+      position: [49.7383, -123.8983]
+      coastline: clear

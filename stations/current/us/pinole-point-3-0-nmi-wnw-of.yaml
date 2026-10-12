@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0711
+redirect_from:
+  - /currents/us/ca/pinole-point-3-0-nm-wnw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0711:
+      position: [38.02667, -122.42467]
+      coastline: unverifiable

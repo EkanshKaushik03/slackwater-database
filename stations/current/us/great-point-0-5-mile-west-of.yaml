@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1666
+redirect_from:
+  - /currents/us/ma/great-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1666:
+      position: [41.39333, -70.06167]
+      coastline: unverifiable

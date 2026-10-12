@@ -1,0 +1,15 @@
+name: Beazley Passage
+context: Surge Narrows
+region: CA-BC
+aliases: [surge narrows]
+position: [50.2263, -125.142]
+provider: chs
+tide_reference: chs-owen-bay
+sources:
+  - chs-beazley-passage
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-beazley-passage:
+      position: [50.2263, -125.142]
+      coastline: clear

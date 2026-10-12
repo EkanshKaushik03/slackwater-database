@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6696
+redirect_from:
+  - /currents/us/sc/customhouse-reach/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6696:
+      position: [32.77949905395508, -79.92250061035156]
+      coastline: unverifiable

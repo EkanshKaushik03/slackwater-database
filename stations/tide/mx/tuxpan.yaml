@@ -1,0 +1,20 @@
+sources:
+  - ticon/tuxpan-404-mex-unam_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tuxpan-404-mex-unam_hist:
+      position: [20.968333, -97.311667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 36
+        factors:
+          epoch: 0.243
+          recency: 0.87
+          source: 0.131
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.573) < MHW (1.619)

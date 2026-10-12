@@ -1,0 +1,21 @@
+sources:
+  - ticon/kreekrak_oude_diensthaven-kreekroddhvn-nld-rws_hist
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/kreekrak_oude_diensthaven-kreekroddhvn-nld-rws_hist:
+      position: [51.44655, 4.230635]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.169
+          recency: 0.49
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - "Superseded source: rws_hist"

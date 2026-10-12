@@ -1,0 +1,19 @@
+region: US-VA
+sources:
+  - ticon/lynnhaven_riv_off_vista_cir_nr_virginia_beach_va-365423076051300-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/lynnhaven_riv_off_vista_cir_nr_virginia_beach_va-365423076051300-usa-usgs:
+      position: [36.906336, -76.086853]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.224
+          recency: 0.93
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.006

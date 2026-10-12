@@ -1,0 +1,20 @@
+sources:
+  - ticon/rmn_ginostra-rmn-ita-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rmn_ginostra-rmn-ita-cmems:
+      position: [38.784, 15.1933]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ginostra-gin-ita-ispra
+        score: 46
+        factors:
+          epoch: 0.779
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.005

@@ -1,0 +1,25 @@
+region: US-WI
+sources:
+  - ticon/sturgeon_bay_canal_wi-9087072-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sturgeon_bay_canal_wi-9087072-usa-noaa:
+      position: [44.795583, -87.314333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.794
+        issues:
+          - MHWS (176.498) < MHW (176.509)
+          - "P1 amplitude (0.0010) exceeds K1 (0.0005): physically impossible"
+          - "Seasonal band (0.152m) is 19.4x the largest tidal constituent M2 (0.008m): the yearly swing exceeds the daily one"

@@ -1,0 +1,22 @@
+region: US-CA
+sources:
+  - ticon/old_river_at_coney_island-b95290-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/old_river_at_coney_island-b95290-usa-cdwr:
+      position: [37.846111, -121.536944]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.044
+        issues:
+          - MLWS (0.934) > MLW (0.933)
+          - MHWS (1.608) < MHW (1.625)

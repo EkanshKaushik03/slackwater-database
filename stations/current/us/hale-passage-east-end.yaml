@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1529
+redirect_from:
+  - /currents/us/wa/hale-passage/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1529:
+      position: [47.24789810180664, -122.59559631347656]
+      coastline: clear

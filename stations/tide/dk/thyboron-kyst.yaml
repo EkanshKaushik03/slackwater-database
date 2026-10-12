@@ -1,0 +1,18 @@
+sources:
+  - ticon/thyboronkysttg-thy-dnk-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/thyboronkysttg-thy-dnk-cmems:
+      position: [56.7075, 8.209]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 48
+        factors:
+          epoch: 0.562
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.423

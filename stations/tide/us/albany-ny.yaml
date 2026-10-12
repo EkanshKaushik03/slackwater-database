@@ -1,0 +1,22 @@
+region: US-NY
+sources:
+  - ticon/albany-8518995-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/albany-8518995-usa-noaa:
+      position: [42.65, -73.7467]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.312
+          recency: 0.61
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

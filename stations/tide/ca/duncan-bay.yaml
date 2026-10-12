@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-duncan-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-duncan-bay:
+      position: [50.076, -125.301]
+      coastline: clear

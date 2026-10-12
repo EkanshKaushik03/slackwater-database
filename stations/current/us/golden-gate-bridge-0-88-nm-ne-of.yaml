@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1202
+redirect_from:
+  - /currents/us/ca/golden-gate-bridge/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1202:
+      position: [37.82922, -122.46202]
+      coastline: unverifiable

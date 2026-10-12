@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0231
+redirect_from:
+  - /currents/us/ca/point-bonita-0-8-nm-ne/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0231:
+      position: [37.82083, -122.51617]
+      coastline: unverifiable

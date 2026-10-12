@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/napa_river_at_lincoln_avenue-nap-usa-cm
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/napa_river_at_lincoln_avenue-nap-usa-cm:
+      position: [38.3104, -122.2775]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 66
+        factors:
+          epoch: 0.533
+          recency: 0.98
+          source: 0.525
+          quality: 1
+          amplitude: 1
+          coverage: 0.027
+        issues:
+          - MLWS (-0.419) > MLW (-0.426)

@@ -1,0 +1,26 @@
+region: US-CA
+sources:
+  - ticon/tom_paine_slough_at_pescadero_pp_6-b95425-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/tom_paine_slough_at_pescadero_pp_6-b95425-usa-cdwr:
+      position: [37.767389, -121.351083]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.089
+        issues:
+          - MHHW (1.346) < MHW (1.37)
+          - MHWS (1.29) < MHW (1.37)
+          - MSL (1.261) <= MLW (1.302)
+          - "Seasonal band (0.077m) is 2.0x the largest tidal constituent K1 (0.039m): the yearly swing exceeds the daily one"

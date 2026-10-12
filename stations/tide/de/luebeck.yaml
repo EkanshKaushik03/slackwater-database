@@ -1,0 +1,18 @@
+sources:
+  - ticon/luebecktg-lue-deu-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/luebecktg-lue-deu-cmems:
+      position: [53.9025, 10.7745]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 44
+        factors:
+          epoch: 0.615
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.096

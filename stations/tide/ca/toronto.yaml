@@ -1,0 +1,23 @@
+region: CA-ON
+sources:
+  - ticon/toronto_ontario-13320-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/toronto_ontario-13320-can-meds:
+      position: [43.64, -79.38]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.926
+        issues:
+          - MHWS (0.679) < MHW (0.689)
+          - "Seasonal band (0.290m) is 43.3x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

@@ -1,0 +1,23 @@
+region: US-NJ
+sources:
+  - ticon/green_bank-8534117-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/green_bank-8534117-usa-noaa:
+      position: [39.6117, -74.59]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8534117
+        score: 63
+        factors:
+          epoch: 0.147
+          recency: 0.55
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.32) > MLW (1.283)

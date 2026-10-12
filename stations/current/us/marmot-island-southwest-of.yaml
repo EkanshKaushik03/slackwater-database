@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/KOD0943
+redirect_from:
+  - /currents/us/ak/marmot-island-southwest/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/KOD0943:
+      position: [58.17085, -151.96862]
+      coastline: unverifiable

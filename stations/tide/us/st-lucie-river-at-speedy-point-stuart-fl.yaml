@@ -1,0 +1,19 @@
+region: US-FL
+sources:
+  - ticon/st_lucie_river_at_speedy_point_stuart_fl-2277100-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/st_lucie_river_at_speedy_point_stuart_fl-2277100-usa-usgs:
+      position: [27.2048, -80.258783]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.011

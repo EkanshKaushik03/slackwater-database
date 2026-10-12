@@ -1,0 +1,11 @@
+region: US-SC
+sources:
+  - noaa/ACT6541
+redirect_from:
+  - /currents/us/sc/frazier-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6541:
+      position: [33.295, -79.27283]
+      coastline: unverifiable

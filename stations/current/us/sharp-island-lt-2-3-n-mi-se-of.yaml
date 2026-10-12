@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT4906
+redirect_from:
+  - /currents/us/md/sharp-island-lt/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4906:
+      position: [38.60717, -76.348]
+      coastline: unverifiable

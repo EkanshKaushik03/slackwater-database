@@ -1,0 +1,20 @@
+sources:
+  - ticon/fer_de_noronha-203c-bra-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fer_de_noronha-203c-bra-uhslc_rq:
+      position: [-3.828, -32.403]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/fer_de_noronha-203b-bra-uhslc_rq
+        score: 46
+        factors:
+          epoch: 0.061
+          recency: 0.6
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

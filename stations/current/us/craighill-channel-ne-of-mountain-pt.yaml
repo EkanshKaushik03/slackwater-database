@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5021
+redirect_from:
+  - /currents/us/md/craighill-channel/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5021:
+      position: [39.08133, -76.3945]
+      coastline: unverifiable

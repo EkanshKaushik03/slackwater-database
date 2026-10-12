@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-yorke-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-yorke-island:
+      position: [50.444, -125.978]
+      coastline: clear

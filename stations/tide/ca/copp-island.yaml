@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-copp-island
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-copp-island:
+      position: [50.045938, -127.190348]
+      coastline: clear

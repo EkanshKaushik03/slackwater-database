@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/ACT1251
+redirect_from:
+  - /currents/us/ma/squantum-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1251:
+      position: [42.3105, -71.02833]
+      coastline: unverifiable

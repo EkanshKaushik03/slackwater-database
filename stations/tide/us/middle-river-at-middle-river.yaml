@@ -1,0 +1,23 @@
+region: US-CA
+sources:
+  - ticon/middle_river_at_middle_river-b95468-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/middle_river_at_middle_river-b95468-usa-cdwr:
+      position: [37.942528, -121.534]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/middle_r_at_middle_river_ca-11312676-usa-usgs
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.013) > MLW (0.97)

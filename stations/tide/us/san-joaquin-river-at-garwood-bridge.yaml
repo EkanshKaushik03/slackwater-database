@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/san_joaquin_river_at_garwood_bridge-sjg-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/san_joaquin_river_at_garwood_bridge-sjg-usa-cdwr:
+      position: [37.935, -121.329]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/san_joaquin_r_bl_garwood_bridge_a_stockton_ca-11304810-usa-usgs
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.002

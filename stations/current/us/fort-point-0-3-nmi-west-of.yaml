@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0261
+redirect_from:
+  - /currents/us/ca/fort-point-0-3-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0261:
+      position: [37.80917, -122.48283]
+      coastline: unverifiable

@@ -1,0 +1,25 @@
+region: US-LA
+sources:
+  - ticon/caernarvon_canal_sector_gate_at_caernarvon_la-73745245-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/caernarvon_canal_sector_gate_at_caernarvon_la-73745245-usa-usgs:
+      position: [29.858889, -89.906944]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 62
+        factors:
+          epoch: 0.446
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.1
+        issues:
+          - MLWS (0.376) > MLW (0.367)
+          - MHWS (0.38) < MHW (0.42)
+          - "Seasonal band (0.097m) is 4.3x the largest tidal constituent O1 (0.022m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0015) exceeds S2 (0.0007)

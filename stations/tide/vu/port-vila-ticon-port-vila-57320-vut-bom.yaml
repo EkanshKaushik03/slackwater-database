@@ -1,0 +1,20 @@
+sources:
+  - ticon/port_vila-57320-vut-bom
+redirect_from:
+  - /tides/vu/port-vila-shefa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/port_vila-57320-vut-bom:
+      position: [-17.7614, 168.2928]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.93
+          source: 0.939
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

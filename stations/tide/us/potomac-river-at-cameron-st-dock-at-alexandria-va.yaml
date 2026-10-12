@@ -1,0 +1,21 @@
+region: US-VA
+sources:
+  - ticon/potomac_river_at_cameron_st_dock_at_alexandria_va-165258890-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/potomac_river_at_cameron_st_dock_at_alexandria_va-165258890-usa-usgs:
+      position: [38.805278, -77.038333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8634214
+        score: 76
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.001

@@ -1,0 +1,27 @@
+region: US-TX
+sources:
+  - ticon/vince_bayou_at_pasadena_tx-8075730-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/vince_bayou_at_pasadena_tx-8075730-usa-usgs:
+      position: [29.694674, -95.216323]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 0.75
+          coverage: 0.119
+        issues:
+          - MLW (1.977) < MLLW (1.999)
+          - MLWS (2.031) > MLW (1.977)
+          - MHW (1.999) <= MSL (2.034)
+          - "Seasonal band (0.043m) is 4.0x the largest tidal constituent S1 (0.011m): the yearly swing exceeds the daily one"
+          - N2 amplitude (0.0013) exceeds M2 (0.0006)

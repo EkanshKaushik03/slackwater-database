@@ -1,0 +1,24 @@
+sources:
+  - ticon/puertovallarta_nivelpls-19-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/puertovallarta_nivelpls-19-mex-unam:
+      position: [20.658333, -105.243333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.161
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (7.438) < MHW (8.056)
+          - MSL (6.98) <= MLW (7.211)
+          - "Seasonal band (2.063m) is 7.8x the largest tidal constituent M2 (0.266m): the yearly swing exceeds the daily one"

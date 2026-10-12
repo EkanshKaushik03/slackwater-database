@@ -1,0 +1,9 @@
+region: US-PA
+sources:
+  - noaa/db0301
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/db0301:
+      position: [39.94620132446289, -75.13960266113281]
+      coastline: unverifiable

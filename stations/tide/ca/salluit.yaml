@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-salluit
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-salluit:
+      position: [62.216667, -75.65]
+      coastline: unverifiable

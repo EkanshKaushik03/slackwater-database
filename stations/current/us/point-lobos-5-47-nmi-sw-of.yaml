@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0211
+redirect_from:
+  - /currents/us/ca/point-lobos-5-47-nm-sw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0211:
+      position: [37.7205, -122.59783]
+      coastline: unverifiable

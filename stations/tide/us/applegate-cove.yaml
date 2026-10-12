@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9462239
+redirect_from:
+  - /tides/us/applegate-cove/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9462239:
+      position: [52.8617, -169.862]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.504

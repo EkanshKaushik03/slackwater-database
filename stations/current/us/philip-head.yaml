@@ -1,0 +1,9 @@
+region: US-MA
+sources:
+  - noaa/ACT1536
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT1536:
+      position: [42.25, -70.97033]
+      coastline: unverifiable

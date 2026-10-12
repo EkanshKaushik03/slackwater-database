@@ -1,0 +1,11 @@
+region: US-AK
+sources:
+  - noaa/PCT3301
+redirect_from:
+  - /currents/us/ak/cape-flores/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT3301:
+      position: [55.35, -133.31667]
+      coastline: unverifiable

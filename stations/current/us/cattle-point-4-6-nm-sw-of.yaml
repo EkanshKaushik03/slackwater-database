@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PUG1743
+redirect_from:
+  - /currents/us/wa/cattle-point-4-6-nm-sw/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PUG1743:
+      position: [48.384010314941406, -123.01567077636719]
+      coastline: clear

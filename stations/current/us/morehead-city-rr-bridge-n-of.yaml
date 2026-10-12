@@ -1,0 +1,11 @@
+region: US-NC
+sources:
+  - noaa/ACT6366
+redirect_from:
+  - /currents/us/nc/morehead-city-rr-bridge-n/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT6366:
+      position: [34.72283, -76.69383]
+      coastline: unverifiable

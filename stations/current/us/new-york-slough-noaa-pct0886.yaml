@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/PCT0886
+redirect_from:
+  - /currents/us/ca/new-york-slough-0-5-nm-e-of-point-emmet/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT0886:
+      position: [38.0325, -121.8695]
+      coastline: unverifiable

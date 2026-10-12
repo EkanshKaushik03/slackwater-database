@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-sedgwick-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-sedgwick-bay:
+      position: [52.636, -131.583]
+      coastline: unverifiable

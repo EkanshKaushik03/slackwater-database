@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/ochlockonee_river_sr319-10164-usa-nwfwmd
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ochlockonee_river_sr319-10164-usa-nwfwmd:
+      position: [29.988333, -84.502222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.694
+          recency: 0.99
+          source: 0.556
+          quality: 0
+          amplitude: 1
+          coverage: 0.164
+        issues:
+          - MLWS (0.144) > MLW (0.142)

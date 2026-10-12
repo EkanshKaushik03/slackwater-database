@@ -1,0 +1,11 @@
+region: US-DE
+sources:
+  - noaa/ACT4326
+redirect_from:
+  - /currents/us/de/penns-neck-0-3-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT4326:
+      position: [39.617801666259766, -75.57630157470703]
+      coastline: unverifiable

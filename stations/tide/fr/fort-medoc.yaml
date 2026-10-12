@@ -1,0 +1,18 @@
+sources:
+  - ticon/fort_medoc-6117-fra-refmar
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fort_medoc-6117-fra-refmar:
+      position: [45.117, -0.7]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 73
+        factors:
+          epoch: 0.518
+          recency: 0.89
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0

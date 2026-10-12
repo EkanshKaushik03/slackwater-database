@@ -1,0 +1,11 @@
+region: US-DE
+sources:
+  - noaa/DEB2103
+redirect_from:
+  - /currents/us/de/cape-henlopen-5-mi-north/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/DEB2103:
+      position: [38.883399963378906, -75.08329772949219]
+      coastline: unverifiable

@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/sacramento_river_at_mallard_island-mal-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/sacramento_river_at_mallard_island-mal-usa-cdwr:
+      position: [38.0428, -121.92009]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9415112
+        score: 61
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0

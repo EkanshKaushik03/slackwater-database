@@ -1,0 +1,23 @@
+sources:
+  - ticon/qui_nhon-381b-vnm-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/qui_nhon-381b-vnm-uhslc_rq:
+      position: [13.775, 109.255]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/qui_nhon-381-vnm-uhslc_fd
+        score: 67
+        factors:
+          epoch: 0.924
+          recency: 0.98
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.021
+        issues:
+          - MLWS (1.199) > MLW (1.072)
+          - MHWS (1.685) < MHW (1.834)

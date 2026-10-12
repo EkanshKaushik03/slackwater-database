@@ -1,0 +1,26 @@
+region: US-MI
+sources:
+  - ticon/dunn_paper_mi-9014096-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/dunn_paper_mi-9014096-usa-noaa:
+      position: [43.0033, -82.4217]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - MLWS (176.254) > MLW (176.245)
+          - MHWS (176.274) < MHW (176.288)
+          - "P1 amplitude (0.0025) exceeds K1 (0.0023): physically impossible"
+          - "Seasonal band (0.131m) is 20.5x the largest tidal constituent M2 (0.006m): the yearly swing exceeds the daily one"

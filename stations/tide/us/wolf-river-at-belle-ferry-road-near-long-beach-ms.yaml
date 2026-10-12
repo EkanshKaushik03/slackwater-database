@@ -1,0 +1,22 @@
+region: US-MS
+sources:
+  - ticon/wolf_river_at_belle_ferry_road_near_long_beach_ms-2481521-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wolf_river_at_belle_ferry_road_near_long_beach_ms-2481521-usa-usgs:
+      position: [30.393361, -89.206389]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 0.45
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.15
+        issues:
+          - MLWS (0.843) > MLW (0.751)
+          - MHWS (0.949) < MHW (0.971)

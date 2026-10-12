@@ -1,0 +1,11 @@
+region: US-CA
+sources:
+  - noaa/SFB1316
+redirect_from:
+  - /currents/us/ca/davis-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/SFB1316:
+      position: [38.0619, -122.27668]
+      coastline: unverifiable

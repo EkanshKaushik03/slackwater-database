@@ -1,0 +1,11 @@
+region: US-GA
+sources:
+  - noaa/ACT7381
+redirect_from:
+  - /currents/us/ga/elba-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT7381:
+      position: [32.09, -80.99333]
+      coastline: unverifiable

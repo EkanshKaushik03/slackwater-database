@@ -1,0 +1,11 @@
+region: US-MD
+sources:
+  - noaa/ACT5081
+redirect_from:
+  - /currents/us/md/pooles-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT5081:
+      position: [39.22667, -76.33133]
+      coastline: unverifiable

@@ -1,0 +1,11 @@
+region: US-WA
+sources:
+  - noaa/PCT2086
+redirect_from:
+  - /currents/us/wa/matia-island-0-7-nm-west/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2086:
+      position: [48.74882888793945, -122.86582946777344]
+      coastline: clear

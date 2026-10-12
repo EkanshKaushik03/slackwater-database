@@ -1,0 +1,20 @@
+sources:
+  - noaa/TWC0385
+redirect_from:
+  - /tides/mx/mazatlan-sinaloa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/TWC0385:
+      position: [23.200000762939453, -106.41699981689453]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.011

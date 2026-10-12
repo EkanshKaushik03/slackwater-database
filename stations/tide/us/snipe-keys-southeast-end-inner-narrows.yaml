@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - noaa/8724409
+redirect_from:
+  - /tides/us/fl/snipe-keys/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8724409:
+      position: [24.6583, -81.6083]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.048

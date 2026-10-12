@@ -1,0 +1,24 @@
+region: CA-ON
+sources:
+  - ticon/gros_cap_ontario-10920-can-meds
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/gros_cap_ontario-10920-can-meds:
+      position: [46.53, -84.59]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.119
+        issues:
+          - MLWS (0.158) > MLW (0.157)
+          - MHWS (0.198) < MHW (0.204)
+          - "Seasonal band (0.143m) is 9.9x the largest tidal constituent M2 (0.014m): the yearly swing exceeds the daily one"

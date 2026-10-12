@@ -1,0 +1,22 @@
+sources:
+  - ticon/rauma_ulko_petajas-134224-fin-fmi
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rauma_ulko_petajas-134224-fin-fmi:
+      position: [61.13, 21.43]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.768
+          quality: 1
+          amplitude: 1
+          coverage: 0.009
+        issues:
+          - MLWS (0.023) > MLW (0.012)
+          - "Seasonal band (0.115m) is 17.6x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

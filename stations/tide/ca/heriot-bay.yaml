@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-heriot-bay
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-heriot-bay:
+      position: [50.1, -125.2]
+      coastline: clear

@@ -1,0 +1,21 @@
+region: US-FL
+sources:
+  - ticon/chassahowitzka_r_at_dog_isl_nr_chassahowitzka_fl-2310673-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/chassahowitzka_r_at_dog_isl_nr_chassahowitzka_fl-2310673-usa-usgs:
+      position: [28.702639, -82.624722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.033
+        issues:
+          - MLWS (-0.179) > MLW (-0.203)

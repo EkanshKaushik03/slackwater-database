@@ -1,0 +1,21 @@
+sources:
+  - ticon/diego_garcia-2431000-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/diego_garcia-2431000-usa-noaa:
+      position: [-7.29, 72.3933]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.209
+          recency: 0.69
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

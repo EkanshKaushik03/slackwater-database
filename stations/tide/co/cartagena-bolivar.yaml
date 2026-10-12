@@ -1,0 +1,20 @@
+sources:
+  - ticon/cartagena-265b-col-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/cartagena-265b-col-uhslc_rq:
+      position: [10.39, -75.532]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cartagena-265a-col-uhslc_rq
+        score: 53
+        factors:
+          epoch: 1
+          recency: 0.93
+          source: 0.192
+          quality: 0
+          amplitude: 1
+          coverage: 0.016

@@ -1,0 +1,26 @@
+region: US-LA
+sources:
+  - ticon/l_cataouatche_at_whiskey_canal_s_of_waggaman_la-2951190901217-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/l_cataouatche_at_whiskey_canal_s_of_waggaman_la-2951190901217-usa-usgs:
+      position: [29.855278, -90.204722]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 67
+        factors:
+          epoch: 0.945
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 0.5
+          coverage: 0.111
+        issues:
+          - MLWS (1.373) > MLW (1.369)
+          - MHWS (1.377) < MHW (1.406)
+          - "Seasonal band (0.119m) is 5.4x the largest tidal constituent O1 (0.022m): the yearly swing exceeds the daily one"
+          - K2 amplitude (0.0008) exceeds S2 (0.0005)
+          - Form number 26.69 exceeds 25

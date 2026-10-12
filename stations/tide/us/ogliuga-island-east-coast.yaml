@@ -1,0 +1,21 @@
+region: US-AK
+sources:
+  - noaa/9461081
+redirect_from:
+  - /tides/us/ogliuga-island-east-coast/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9461081:
+      position: [51.6033, -178.617]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.412

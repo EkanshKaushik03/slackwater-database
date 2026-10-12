@@ -1,0 +1,21 @@
+region: US-CA
+sources:
+  - ticon/yolo_bypass_at_liberty_island-b91510-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/yolo_bypass_at_liberty_island-b91510-usa-cdwr:
+      position: [38.329167, -121.693889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 0
+          amplitude: 1
+          coverage: 0.007
+        issues:
+          - MLWS (0.957) > MLW (0.94)

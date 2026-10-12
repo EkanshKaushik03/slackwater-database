@@ -1,0 +1,18 @@
+sources:
+  - ticon/ilemiquelontg_01minute-ile-fra-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ilemiquelontg_01minute-ile-fra-cmems:
+      position: [47.10125, -56.376141]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 43
+        factors:
+          epoch: 0.066
+          recency: 0.97
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.783

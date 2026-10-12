@@ -1,0 +1,24 @@
+sources:
+  - ticon/nynasfiskehamn-nyn-swe-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nynasfiskehamn-nyn-swe-cmems:
+      position: [58.9006, 17.9536]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/nynas_fiskehamn-35112-swe-smhi
+        seasonal_dominant: true
+        score: 52
+        factors:
+          epoch: 0.322
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - MLWS (0.133) > MLW (0.128)
+          - "Seasonal band (0.068m) is 7.8x the largest tidal constituent M2 (0.009m): the yearly swing exceeds the daily one"

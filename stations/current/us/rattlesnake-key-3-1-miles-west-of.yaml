@@ -1,0 +1,11 @@
+region: US-FL
+sources:
+  - noaa/ACT8431
+redirect_from:
+  - /currents/us/fl/rattlesnake-key/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT8431:
+      position: [27.55333, -82.68833]
+      coastline: unverifiable

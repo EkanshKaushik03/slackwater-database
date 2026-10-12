@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-varennes
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-varennes:
+      position: [45.684306, -73.443694]
+      coastline: unverifiable

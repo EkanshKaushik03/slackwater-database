@@ -1,0 +1,20 @@
+sources:
+  - ticon/wellington-wlgt-nzl-ttw
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/wellington-wlgt-nzl-ttw:
+      position: [-41.284444, 174.779722]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: linz/071
+        score: 51
+        factors:
+          epoch: 0.955
+          recency: 0.98
+          source: 0.091
+          quality: 0
+          amplitude: 1
+          coverage: 0.006

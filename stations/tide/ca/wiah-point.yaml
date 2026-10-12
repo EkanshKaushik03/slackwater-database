@@ -1,0 +1,9 @@
+region: CA-BC
+sources:
+  - chs-wiah-point
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-wiah-point:
+      position: [54.112, -132.31]
+      coastline: clear

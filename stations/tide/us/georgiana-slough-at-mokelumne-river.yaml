@@ -1,0 +1,19 @@
+region: US-CA
+sources:
+  - ticon/georgiana_slough_at_mokelumne_river-b94100-usa-cdwr
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/georgiana_slough_at_mokelumne_river-b94100-usa-cdwr:
+      position: [38.1295, -121.583889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.576
+          quality: 1
+          amplitude: 1
+          coverage: 0.014

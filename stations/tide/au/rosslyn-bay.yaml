@@ -1,0 +1,18 @@
+sources:
+  - ticon/rosslyn_bay-330a-aus-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/rosslyn_bay-330a-aus-uhslc_rq:
+      position: [-23.162, 150.79]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.011

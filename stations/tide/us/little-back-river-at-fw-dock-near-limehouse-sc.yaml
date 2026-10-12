@@ -1,0 +1,23 @@
+region: US-SC
+sources:
+  - ticon/little_back_river_at_fw_dock_near_limehouse_sc-21989791-usa-usgs
+redirect_from:
+  - /tides/us/ga/little-back-river-at-fw-dock-near-limehouse-sc/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/little_back_river_at_fw_dock_near_limehouse_sc-21989791-usa-usgs:
+      position: [32.171, -81.117639]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0.628
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.026
+        issues:
+          - MLWS (-0.917) > MLW (-1.022)

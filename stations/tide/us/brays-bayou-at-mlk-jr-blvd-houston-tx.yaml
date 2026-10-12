@@ -1,0 +1,22 @@
+region: US-TX
+sources:
+  - ticon/brays_bayou_at_mlk_jr_blvd_houston_tx-8075110-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/brays_bayou_at_mlk_jr_blvd_houston_tx-8075110-usa-usgs:
+      position: [29.714167, -95.338889]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.944
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.068
+        issues:
+          - MLWS (0.338) > MLW (0.334)
+          - MHWS (0.562) < MHW (0.565)

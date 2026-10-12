@@ -1,0 +1,21 @@
+sources:
+  - ticon/nokkielbinnen-5979020-deu-wsv
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/nokkielbinnen-5979020-deu-wsv:
+      position: [54.367331, 10.140122]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 57
+        factors:
+          epoch: 0.54
+          recency: 0.99
+          source: 0.798
+          quality: 0
+          amplitude: 1
+          coverage: 0.008
+        issues:
+          - MLWS (4.866) > MLW (4.86)
+          - MHWS (4.946) < MHW (4.951)

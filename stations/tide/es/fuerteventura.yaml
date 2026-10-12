@@ -1,0 +1,18 @@
+sources:
+  - ticon/fuerteventura3tg-fue-esp-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fuerteventura3tg-fue-esp-cmems:
+      position: [28.491199, -13.8552]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 52
+        factors:
+          epoch: 0.295
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.022

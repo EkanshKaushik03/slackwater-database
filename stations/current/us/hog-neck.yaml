@@ -1,0 +1,9 @@
+region: US-MA
+sources:
+  - noaa/COD0905
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/COD0905:
+      position: [41.72389, -70.63938]
+      coastline: unverifiable

@@ -1,0 +1,18 @@
+sources:
+  - ticon/reykjavik-reyk-isl-icg
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/reykjavik-reyk-isl-icg:
+      position: [64.150581, -21.93989]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 79
+        factors:
+          epoch: 1
+          recency: 0.94
+          source: 0.707
+          quality: 1
+          amplitude: 1
+          coverage: 0.007

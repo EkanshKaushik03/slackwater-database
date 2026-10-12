@@ -1,0 +1,25 @@
+region: US-NY
+sources:
+  - ticon/alexandria_bay_ny-8311062-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/alexandria_bay_ny-8311062-usa-noaa:
+      position: [44.33111, -75.934528]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.703
+        issues:
+          - MHWS (74.693) < MHW (74.706)
+          - MSL (74.684) <= MLW (74.686)
+          - "Seasonal band (0.279m) is 37.6x the largest tidal constituent M2 (0.007m): the yearly swing exceeds the daily one"

@@ -1,0 +1,21 @@
+sources:
+  - ticon/telchac_flotador-11-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/telchac_flotador-11-mex-unam:
+      position: [21.34, -89.308333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 51
+        factors:
+          epoch: 0.17
+          recency: 0.98
+          source: 0.141
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.555) > MLW (1.492)
+          - MHWS (1.675) < MHW (1.752)

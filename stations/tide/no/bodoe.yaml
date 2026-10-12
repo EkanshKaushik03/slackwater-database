@@ -1,0 +1,20 @@
+sources:
+  - ticon/bodoetg-bod-nor-cmems
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/bodoetg-bod-nor-cmems:
+      position: [67.292328, 14.39977]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/BOO
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

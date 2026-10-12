@@ -1,0 +1,9 @@
+region: US-NJ
+sources:
+  - noaa/DEB2123
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/DEB2123:
+      position: [39.83150100708008, -75.23600006103516]
+      coastline: unverifiable

@@ -1,0 +1,20 @@
+sources:
+  - ticon/paita-678a-per-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/paita-678a-per-uhslc_rq:
+      position: [-5.083, -81.167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/paita-678b-per-uhslc_rq
+        score: 49
+        factors:
+          epoch: 0.193
+          recency: 0.58
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0

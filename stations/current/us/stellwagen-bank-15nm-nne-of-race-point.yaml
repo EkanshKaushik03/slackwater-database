@@ -1,0 +1,11 @@
+region: US-MA
+sources:
+  - noaa/BOS1132
+redirect_from:
+  - /currents/us/ma/stellwagen-bank-15-nm-nne-of-race-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/BOS1132:
+      position: [42.31213, -70.11202]
+      coastline: unverifiable

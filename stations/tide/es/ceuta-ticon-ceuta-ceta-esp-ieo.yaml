@@ -1,0 +1,20 @@
+sources:
+  - ticon/ceuta-ceta-esp-ieo
+redirect_from:
+  - /tides/es/ceuta-ceuta/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ceuta-ceta-esp-ieo:
+      position: [35.89, -5.314]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.899
+          quality: 1
+          amplitude: 1
+          coverage: 0.023

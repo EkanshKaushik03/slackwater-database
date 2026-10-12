@@ -1,0 +1,19 @@
+region: US-LA
+sources:
+  - noaa/8763206
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8763206:
+      position: [29.0633, -90.8067]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 71
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.13

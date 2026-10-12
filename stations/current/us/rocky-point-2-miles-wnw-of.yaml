@@ -1,0 +1,11 @@
+region: US-NY
+sources:
+  - noaa/ACT2466
+redirect_from:
+  - /currents/us/ny/rocky-point/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/ACT2466:
+      position: [41.05917, -72.03]
+      coastline: unverifiable

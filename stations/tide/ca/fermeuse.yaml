@@ -1,0 +1,9 @@
+region: CA-NL
+sources:
+  - chs-fermeuse
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-fermeuse:
+      position: [46.964724, -52.938131]
+      coastline: unverifiable

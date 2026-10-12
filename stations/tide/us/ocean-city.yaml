@@ -1,0 +1,22 @@
+region: US-MD
+sources:
+  - ticon/ocean_city-8570280-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/ocean_city-8570280-usa-noaa:
+      position: [38.3267, -75.0833]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 0.882
+          recency: 0.65
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Superseded source: noaa"

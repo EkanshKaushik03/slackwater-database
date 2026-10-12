@@ -1,0 +1,21 @@
+sources:
+  - ticon/islamujeres_radar-7-mex-unam
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/islamujeres_radar-7-mex-unam:
+      position: [21.241875, -86.731661]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 36
+        factors:
+          epoch: 0.167
+          recency: 0.98
+          source: 0.141
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal band (0.075m) is 1.0x the largest tidal constituent M2 (0.075m): the yearly swing exceeds the daily one"

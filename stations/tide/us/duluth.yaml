@@ -1,0 +1,23 @@
+region: US-MN
+sources:
+  - ticon/duluth_mn-9099064-usa-noaa
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/duluth_mn-9099064-usa-noaa:
+      position: [46.77575, -92.092028]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 100
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MHWS (183.483) < MHW (183.491)
+          - "Seasonal band (0.146m) is 7.4x the largest tidal constituent M2 (0.020m): the yearly swing exceeds the daily one"

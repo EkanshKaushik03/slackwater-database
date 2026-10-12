@@ -1,0 +1,9 @@
+region: CA-QC
+sources:
+  - chs-vieux-quebec
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-vieux-quebec:
+      position: [46.811111, -71.20175]
+      coastline: unverifiable

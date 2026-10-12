@@ -1,0 +1,16 @@
+name: First Narrows
+context: Lions Gate Bridge
+region: CA-BC
+aliases: [lions gate]
+cities: [Vancouver]
+position: [49.316, -123.1401]
+provider: chs
+tide_reference: chs-vancouver
+sources:
+  - chs-first-narrows
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-first-narrows:
+      position: [49.316, -123.1401]
+      coastline: clear

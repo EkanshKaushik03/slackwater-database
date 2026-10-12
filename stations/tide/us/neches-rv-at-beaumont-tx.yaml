@@ -1,0 +1,23 @@
+region: US-TX
+sources:
+  - ticon/neches_rv_at_beaumont_tx-8041790-usa-usgs
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/neches_rv_at_beaumont_tx-8041790-usa-usgs:
+      position: [30.094428, -94.090942]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 48
+        factors:
+          epoch: 0.221
+          recency: 0.99
+          source: 0.596
+          quality: 0
+          amplitude: 1
+          coverage: 0.146
+        issues:
+          - MLWS (0.214) > MLW (0.17)
+          - "Seasonal band (0.103m) is 1.2x the largest tidal constituent K1 (0.086m): the yearly swing exceeds the daily one"

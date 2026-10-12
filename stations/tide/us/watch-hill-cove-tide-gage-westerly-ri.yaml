@@ -1,0 +1,21 @@
+region: US-RI
+sources:
+  - ticon/watch_hill_cove_tide_gage_westerly_ri-411838071513000-usa-usgs
+redirect_from:
+  - /tides/us/ct/watch-hill-cove-tide-gage-westerly-ri/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/watch_hill_cove_tide_gage_westerly_ri-411838071513000-usa-usgs:
+      position: [41.310556, -71.858333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.523
+          recency: 0.99
+          source: 0.596
+          quality: 1
+          amplitude: 1
+          coverage: 0.013

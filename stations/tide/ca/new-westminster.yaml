@@ -1,0 +1,10 @@
+region: CA-BC
+sources:
+  - chs-new-westminster
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    chs-new-westminster:
+      position: [49.2, -122.91]
+      coastline: ashore
+      metres_inland: 10077

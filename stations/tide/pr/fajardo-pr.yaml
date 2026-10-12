@@ -1,0 +1,20 @@
+sources:
+  - ticon/fajardo_pr-783a-pri-uhslc_rq
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    ticon/fajardo_pr-783a-pri-uhslc_rq:
+      position: [18.333, -65.633]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/fajardo_pr-783b-pri-uhslc_rq
+        score: 41
+        factors:
+          epoch: 0.105
+          recency: 0
+          source: 0.192
+          quality: 1
+          amplitude: 1
+          coverage: 0.006
