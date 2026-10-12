@@ -89,6 +89,10 @@ A new station takes its country from the **Marine Regions Maritime Boundaries Ge
 
 Neither snapshot is included in the published database or npm package. Only the derived `context` and country fields reach the TCDB, and neither source publishes tide or current stations.
 
+### UHSLC relay metadata
+
+`sources/ticon/uhslc-metadata.json` pins five fields (station name, position, data source, originator number, last update) from the per-station metadata the University of Hawaii Sea Level Center publishes with its research-quality records, the Joint Archive for Sea Level (Caldwell, Merrifield and Thompson, 2015, NOAA NCEI, https://doi.org/10.7289/V5V40S7W). It is used only to match a TICON relay to the gauge it copies. None of it reaches the published database or npm package. `sources/ticon/fetch-uhslc-metadata.ts` refreshes it; review the diff before committing.
+
 ## Human review
 
 Every registry station's identity is reviewed by a person before it lands.

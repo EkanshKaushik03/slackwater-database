@@ -41,6 +41,10 @@ for (const code of codes) {
   }
   if (!response.ok) throw new Error(`${code}: HTTP ${response.status}`);
   const meta = parse(await response.text());
+  // A 200 that is not a station's metadata (an HTML error page, say) would
+  // pin empty entries and quietly drop every provenance match.
+  if (!meta?.Location?.Station)
+    throw new Error(`${code}: response is not UHSLC station metadata`);
   const originator = String(meta.Location?.Originator_Number ?? "").trim();
   pinned[code] = {
     station: String(meta.Location?.Station ?? ""),

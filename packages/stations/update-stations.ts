@@ -36,7 +36,7 @@ const planned = await planStationFiles(
 const retiring = newlyRetired(files, planned);
 if (retiring.length > RETIRE_LIMIT && process.env["STATIONS_RETIRE"] !== "1")
   throw new Error(
-    `${retiring.length} records would retire, more than ${RETIRE_LIMIT}; check the import, then rerun with STATIONS_RETIRE=1 npm run stations:\n${retiring.slice(0, 20).join("\n")}`,
+    `${retiring.length} records would retire, more than ${RETIRE_LIMIT}; check the import, then rerun with STATIONS_RETIRE=1 npm run stations (or the update workflow's retire input):\n${retiring.slice(0, 20).join("\n")}`,
   );
 for (const { file, from, text } of planned) {
   if (from) rmSync(join(ROOT, from));
