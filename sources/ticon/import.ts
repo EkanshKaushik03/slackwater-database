@@ -296,13 +296,19 @@ async function getDatums(
         return { datums: existing.datums, ...cached };
       // The constituents changed since these datums were computed. The
       // observed means come from the record and still hold; the rest are
-      // synthesized from the constituents, so re-synthesize them.
+      // synthesized from the constituents, so re-synthesize them. A harmonic
+      // datum the new synthesis omits is dropped, not kept from the cache: a
+      // near-tideless lake gauge has no LLWLT, and a cached one is an artifact.
       const harmonic = computeDatums(harmonic_constituents, {});
       return {
         datums:
           existing.datums_source === "observed"
             ? {
-                ...existing.datums,
+                ...Object.fromEntries(
+                  Object.entries(existing.datums).filter(
+                    ([k]) => !HARMONIC_KEYS.includes(k),
+                  ),
+                ),
                 ...shiftHarmonicDatums(
                   harmonic.datums,
                   existing.datums["MSL"] ?? 0,
