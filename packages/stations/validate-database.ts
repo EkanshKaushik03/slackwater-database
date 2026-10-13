@@ -4,6 +4,7 @@ import { loadProductionCatalogue } from "./load-catalogue.ts";
 import { cleanName } from "./name-cleanup.ts";
 import { classifyPosition } from "./position-audit.ts";
 import {
+  filePath,
   planStationFiles,
   publishedPaths,
   pathsChangingHands,
@@ -32,6 +33,30 @@ assert.deepEqual(
   "station files are stale; run npm run stations",
 );
 
+// Paths that published another gauge and now publish the one they name, with
+// that gauge's record. When their slugs were assigned, TICON's meta.csv rows
+// were matched to the wrong Channel Coastal Observatory records, so each slug
+// took a neighbor's name: /tides/gb/brighton/ showed Hastings Pier (#257).
+// Each passes only while it holds the record it names.
+const CORRECTED_PATHS = new Map(
+  [
+    ["brighton", "ticon/brighton-btn-gbr-cco"],
+    ["hastings-pier", "ticon/hastings_pier-hgp-gbr-cco"],
+    ["teignmouth-pier", "ticon/teignmouth_pier-tnp-gbr-cco"],
+    ["port-isaac", "ticon/port_isaac-pti-gbr-cco"],
+    ["severn-bridge", "ticon/severn_bridge-ssc-gbr-cco"],
+    ["scarborough", "ticon/scarborough-sca-gbr-cco"],
+    ["west-bay-harbour", "ticon/west_bay_harbour-wbh-gbr-cco"],
+  ].map(([slug, id]) => [`/tides/gb/${slug}/`, id!]),
+);
+const corrected = (path: string) => {
+  const id = CORRECTED_PATHS.get(path);
+  return (
+    !!id &&
+    files.some((file) => filePath(file) === path && file.sources.includes(id))
+  );
+};
+
 // A published path never disappears and never changes hands: a station that
 // moves or is absorbed keeps its old path in some station's redirect_from.
 // Checked against PUBLISHED_REF, such as origin/main, when it is set.
@@ -47,7 +72,9 @@ if (ref) {
   const before = stationFilesAt(ref);
   if (before) {
     assert.deepEqual(
-      pathsChangingHands(before, files),
+      pathsChangingHands(before, files).filter(
+        (change) => !corrected(change.split(":")[0]!),
+      ),
       [],
       `paths ${ref} publishes now name other water`,
     );

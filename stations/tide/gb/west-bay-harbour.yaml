@@ -1,18 +1,20 @@
 sources:
-  - ticon/port_isaac-pti-gbr-cco
+  - ticon/west_bay_harbour-wbh-gbr-cco
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/port_isaac-pti-gbr-cco:
-      position: [50.59419, -4.83437]
+    ticon/west_bay_harbour-wbh-gbr-cco:
+      position: [50.70888, -2.76411]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 62
+        score: 65
         factors:
-          epoch: 0.798
+          epoch: 0.931
           recency: 0.99
           source: 0.061
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - MHHW (3.799) < MHW (3.804)
