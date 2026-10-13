@@ -9,7 +9,7 @@ computed:
       quality:
         accepted: false
         reason: duplicate
-        redundant: ticon/la_paz-671a-mex-uhslc_rq
+        redundant: ticon/lapaz_flotador-14-mex-unam
         score: 51
         factors:
           epoch: 0.161
@@ -18,5 +18,3 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
-        issues:
-          - M2 here (0.251 m, 103.8°) runs 29 min earlier than (0.238 m, 117.9°) in ticon/la_paz-671a-mex-uhslc_rq, the record kept

@@ -19,7 +19,7 @@
 import { readdir, readFile } from "fs/promises";
 import { join } from "path";
 import { DATA_DIR } from "./station.ts";
-import { DATUM_EPOCH, NODAL_CYCLE_DAYS } from "@slackwater/datums";
+import { DATUM_EPOCH, M2_SPEED, NODAL_CYCLE_DAYS } from "@slackwater/datums";
 import {
   distance,
   authoritativeDuplicateWinner,
@@ -40,6 +40,8 @@ import {
   AMPLITUDE_TOLERANCE,
   SAME_GAUGE_M2_DIFFERENCE,
   CLOCK_ERROR_SOURCES,
+  MAX_PROVENANCE_KM,
+  m2Contradicts,
   RESOLVED_P1,
   seasonalPeak,
   seasonalTerms,
@@ -52,7 +54,10 @@ import {
   PRINCIPAL_TIDAL_CONSTITUENTS,
 } from "./filtering.ts";
 import type { StationData } from "@slackwater/database";
-import { declaredOriginator } from "../../sources/ticon/provenance.ts";
+import {
+  declaredOriginator,
+  hasUhslcMetadata,
+} from "../../sources/ticon/provenance.ts";
 
 // ── Types ───────────────────────────────────────────────────────────────
 
@@ -242,16 +247,24 @@ function checkTiming(station: Station): string | null {
   return error ? `Clock error in source ${suffix}: ${error}` : null;
 }
 
-/** Each TICON gauge's declared originator, so every record of the gauge
- *  shares what one of its records declares: UHSLC metadata covers only the
- *  research-quality series, and TICON's own id only its NOAA and Norwegian
- *  Hydrographic Service relays. */
+/** Each TICON gauge's declared originator, for the records of the gauge that
+ *  have no UHSLC metadata of their own: UHSLC's metadata covers only its
+ *  research-quality series, so its fast-delivery series follows a
+ *  research-quality sibling. A record the metadata covers speaks for itself,
+ *  even when no rule accepts what it names: Bermuda's 259A gives St. George's
+ *  under UHSLC's own data source, so it declares nothing rather than taking
+ *  259B's Ferry Reach. */
 function originatorsByGauge(stations: Station[]): Map<string, string> {
   const originators = new Map<string, string>();
   for (const station of stations) {
     if (!station.id.startsWith("ticon/")) continue;
     const originator = declaredOriginator(station.id);
-    if (originator) originators.set(gaugeKey(station.source.id), originator);
+    if (!originator) continue;
+    const key = gaugeKey(station.source.id);
+    const other = originators.get(key);
+    if (other && other !== originator)
+      throw new Error(`${key} declares both ${other} and ${originator}`);
+    originators.set(key, originator);
   }
   return originators;
 }
@@ -273,13 +286,29 @@ function checkSuperseded(
   }
   const originator =
     declaredOriginator(station.id) ??
-    originators.get(gaugeKey(station.source.id));
+    (hasUhslcMetadata(station.id)
+      ? undefined
+      : originators.get(gaugeKey(station.source.id)));
   const direct = originator ? stationMap.get(originator) : undefined;
   if (!direct?.harmonic_constituents?.length) return null;
   if (failures.get(direct.id)!.length > 0) return null;
+  const apart = distance(
+    station.latitude,
+    station.longitude,
+    direct.latitude,
+    direct.longitude,
+  );
+  if (apart > MAX_PROVENANCE_KM) return null;
+  // Amplitudes that contradict one gauge leave the pair to deduplication,
+  // which the merge report follows too.
+  if (m2Contradicts(station, direct)) return null;
+  const conflict = tideConflict(station, direct);
   return {
     reason: "superseded",
-    issues: [`Superseded by ${direct.id}, its operator's own record`],
+    issues: [
+      `Superseded by ${direct.id}, its operator's own record`,
+      ...(conflict ? [`${conflict} in ${direct.id}`] : []),
+    ],
     by: direct.id,
   };
 }
@@ -813,14 +842,34 @@ function deduplicate(
       if (rejected.has(idB)) continue;
       const stationB = stationMap.get(idB)!;
 
-      let dist = Infinity;
-      for (const a of positions.get(idA) ?? [stationA])
-        for (const b of positions.get(idB) ?? [stationB])
-          dist = Math.min(
-            dist,
-            distance(a.latitude, a.longitude, b.latitude, b.longitude),
-          );
-      if (!areDuplicates(stationA, stationB, dist, hasSubs)) continue;
+      const own = distance(
+        stationA.latitude,
+        stationA.longitude,
+        stationB.latitude,
+        stationB.longitude,
+      );
+      if (!areDuplicates(stationA, stationB, own, hasSubs)) {
+        // Through another record of the same gauge, two records can meet
+        // where their own positions do not. Two reference stations must then
+        // also agree on tide, so a historical record placed at a modern gauge
+        // does not absorb that gauge. A subordinate has no constants of its
+        // own to compare and keeps the position rule.
+        let dist = Infinity;
+        for (const a of positions.get(idA) ?? [stationA])
+          for (const b of positions.get(idB) ?? [stationB])
+            dist = Math.min(
+              dist,
+              distance(a.latitude, a.longitude, b.latitude, b.longitude),
+            );
+        if (dist === own) continue;
+        if (!areDuplicates(stationA, stationB, dist, hasSubs)) continue;
+        if (
+          stationA.type === "reference" &&
+          stationB.type === "reference" &&
+          tideConflict(stationB, stationA)
+        )
+          continue;
+      }
 
       markDuplicate(resultsMap, stationMap, idB, idA);
       rejected.add(idB);
@@ -841,7 +890,7 @@ function markDuplicate(
   const a = stationMap.get(loser)!;
   const b = stationMap.get(winner)!;
   const kept = tideConflict(a, b);
-  if (kept) result.issues.push(`${kept} in ${winner}, the record kept`);
+  if (kept) result.issues.push(`${kept} in ${winner}, which this duplicates`);
   const duplicate = tideConflict(b, a);
   if (duplicate)
     results.get(winner)!.issues.push(`${duplicate} in ${loser}, a duplicate`);
@@ -871,15 +920,14 @@ export function tideConflict(a: Station, b: Station): string | null {
     return null;
   const phase = ((m2A.phase - m2B.phase + 540) % 360) - 180;
   const minutes = Math.round((phase / M2_SPEED) * 60);
+  const mm = Math.round((m2A.amplitude - m2B.amplitude) * 1000);
   return (
-    `M2 here (${m2A.amplitude.toFixed(3)} m, ${m2A.phase.toFixed(1)}°) runs ` +
-    `${Math.abs(minutes)} min ${minutes >= 0 ? "later" : "earlier"} than ` +
-    `(${m2B.amplitude.toFixed(3)} m, ${m2B.phase.toFixed(1)}°)`
+    `M2 here (${m2A.amplitude.toFixed(3)} m, ${m2A.phase.toFixed(1)}°) ` +
+    `differs from (${m2B.amplitude.toFixed(3)} m, ${m2B.phase.toFixed(1)}°) ` +
+    `by ${mm >= 0 ? "+" : ""}${mm} mm and ${Math.abs(minutes)} min ` +
+    `${minutes >= 0 ? "later" : "earlier"}`
   );
 }
-
-/** M2's speed in degrees per hour. */
-const M2_SPEED = 28.9841042;
 
 /** The order in which duplicates are kept, best first:
  *

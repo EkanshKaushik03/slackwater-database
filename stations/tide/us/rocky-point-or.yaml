@@ -9,10 +9,10 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: superseded
+        reason: duplicate
         redundant: noaa/9439189
         seasonal_dominant: true
-        score: 0
+        score: 66
         factors:
           epoch: 0.167
           recency: 0.8
@@ -22,5 +22,4 @@ computed:
           coverage: 0
         issues:
           - MHWS (1.763) < MHW (1.776)
-          - Superseded by noaa/9439189, its operator's own record
           - "Seasonal curve peak (0.929m) exceeds the principal tide M2+S2+K1+O1 (0.449m): the yearly swing exceeds the daily one"

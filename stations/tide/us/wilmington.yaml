@@ -16,4 +16,7 @@ computed:
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0.016
+          coverage: 0.001
+        issues:
+          - M2 here (0.651 m, 59.5°) differs from (0.577 m, 67.4°) by +74 mm and 16 min earlier in ticon/wilmington-8658120-usa-noaa, a duplicate
+          - M2 here (0.651 m, 59.5°) differs from (0.574 m, 67.7°) by +77 mm and 17 min earlier in ticon/wilmington_nc-750a-usa-uhslc_rq, a duplicate

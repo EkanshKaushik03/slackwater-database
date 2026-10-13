@@ -19,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - M2 here (0.141 m, 140.1°) runs 15 min later than (0.008 m, 133.0°) in ticon/uddevalla-2541-swe-smhi, the record kept
+          - M2 here (0.141 m, 140.1°) differs from (0.008 m, 133.0°) by +133 mm and 15 min later in ticon/uddevalla-2541-swe-smhi, which this duplicates

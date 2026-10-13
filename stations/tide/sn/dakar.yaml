@@ -17,5 +17,5 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - M2 here (0.463 m, 259.1°) runs 57 min later than (0.436 m, 231.4°) in ticon/dakar-223d-sen-uhslc_rq, a duplicate
-          - M2 here (0.463 m, 259.1°) runs 60 min later than (0.438 m, 230.1°) in ticon/dakar-223b-sen-uhslc_rq, a duplicate
+          - M2 here (0.463 m, 259.1°) differs from (0.436 m, 231.4°) by +26 mm and 57 min later in ticon/dakar-223d-sen-uhslc_rq, a duplicate
+          - M2 here (0.463 m, 259.1°) differs from (0.438 m, 230.1°) by +24 mm and 60 min later in ticon/dakar-223b-sen-uhslc_rq, a duplicate

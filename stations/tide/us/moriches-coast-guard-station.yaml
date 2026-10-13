@@ -16,4 +16,6 @@ computed:
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0.003
+          coverage: 0
+        issues:
+          - M2 here (0.258 m, 36.4°) differs from (0.295 m, 28.3°) by -37 mm and 17 min later in ticon/moriches_cgs-8513388-usa-noaa, a duplicate

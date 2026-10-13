@@ -29,9 +29,13 @@ export function uhslcCode(ticonId: string): string | undefined {
   return parts.at(-3)?.toUpperCase();
 }
 
-/** A place name folded for matching: "Ny-Ålesund" and "Ny-Alesund" agree. */
-function fold(name: string): string {
+/** A place name folded for matching: "Vardø" and "Vardo" agree. Ø and Æ
+ *  have no decomposition, so they are spelled out before accents are
+ *  stripped. */
+export function fold(name: string): string {
   return name
+    .replace(/ø/gi, "o")
+    .replace(/æ/gi, "ae")
     .normalize("NFD")
     .replace(/\p{M}/gu, "")
     .toLowerCase()
@@ -46,14 +50,16 @@ let kartverketByName: Map<string, string> | undefined;
 function kartverketRecord(station: string): string | undefined {
   if (!kartverketByName) {
     const dir = join(import.meta.dirname, "..", "..", "data", "kartverket");
-    kartverketByName = new Map(
-      readdirSync(dir)
-        .filter((file) => file.endsWith(".json"))
-        .map((file) => [
-          fold(JSON.parse(readFileSync(join(dir, file), "utf8")).name),
-          `kartverket/${file.replace(/\.json$/, "")}`,
-        ]),
-    );
+    kartverketByName = new Map();
+    for (const file of readdirSync(dir).sort()) {
+      if (!file.endsWith(".json")) continue;
+      const name = fold(JSON.parse(readFileSync(join(dir, file), "utf8")).name);
+      const id = `kartverket/${file.replace(/\.json$/, "")}`;
+      const other = kartverketByName.get(name);
+      if (other)
+        throw new Error(`${id} and ${other} have the same name, ${name}`);
+      kartverketByName.set(name, id);
+    }
   }
   return kartverketByName.get(fold(station));
 }
@@ -79,6 +85,16 @@ const UHSLC_RULES: {
     id: (_, meta) => kartverketRecord(meta.station),
   },
 ];
+
+/** Whether UHSLC's metadata covers this TICON record. A record it covers
+ *  speaks for itself, even where no rule matches what it names. */
+export function hasUhslcMetadata(
+  ticonId: string,
+  metadata: Record<string, UhslcMetadata> = pinned,
+): boolean {
+  const code = uhslcCode(ticonId);
+  return !!code && code in metadata;
+}
 
 /** The record id a TICON relay declares as its originator, if any. */
 export function declaredOriginator(

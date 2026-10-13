@@ -12,8 +12,9 @@ import { sourceMetadata } from "./sources.ts";
  * or more authoritative.
  */
 export const SOURCE_PRIORITY: Record<string, number> = {
-  // TICON's reanalysis of a NOAA gauge that NOAA itself publishes without
-  // harmonic constants (a direct record supersedes the relay otherwise). The
+  // TICON's reanalysis of a NOAA gauge that NOAA publishes without harmonic
+  // constants, or whose NOAA record fails a check (a direct record supersedes
+  // the relay otherwise). The
   // data are NOAA's, but the analysis is a relay's, so it ranks with the
   // national services rather than with NOAA.
   noaa: 4,
@@ -54,7 +55,6 @@ export const SOURCE_PRIORITY: Record<string, number> = {
   sfwmd: 43,
   nwfwmd: 44,
   ncdem: 45,
-  hct: 46,
   cm: 47,
 
   // Tier 5: Lower priority - historical series and smaller contributors
@@ -95,7 +95,7 @@ export const CLOCK_ERROR_SOURCES: Record<string, string> = {
   // on M2 and about 30 on K1 and O1; USGS (591 pairs) and California DWR (97)
   // run within a minute by the same comparison. Every one of its records has
   // a NOAA harmonic station within 15 km.
-  hct: "runs 25 to 45 minutes behind every NOAA and USGS gauge near it",
+  hct: "runs 23 to 71 minutes behind every NOAA and USGS gauge near it",
 };
 
 /** GESLA sources that restrict commercial/consultancy use */
@@ -283,14 +283,40 @@ export function exceeds(a: number, b: number): boolean {
  *  P1 reaches 10 mm. Baltic K1 runs about 4 to 30 mm. */
 export const RESOLVED_P1 = 0.01;
 
+/** How far apart, in km, a relay and the record it declares as its
+ *  originator can be and still be the same gauge. Older relays round
+ *  positions to 0.1°, about 11 km; beyond this the declaration is more likely
+ *  wrong than the coordinates. */
+export const MAX_PROVENANCE_KM = 10;
+
 /** How far apart two records' M2 can be, as a vector difference relative to
- *  the larger amplitude, and still describe the same tide. 0.15 is the 95th
- *  percentile across 447 NOAA gauges of NOAA's own M2 against TICON's
- *  reanalysis of the same gauge: about 5° of phase or 15% of amplitude. It is
- *  this project's definition, derived from those pairs. Beyond it, two merged
+ *  the larger amplitude, and still describe the same tide: about 8.6° of
+ *  phase at equal amplitudes, or 15% of amplitude at equal phases. Across 447
+ *  NOAA gauges, NOAA's own M2 against TICON's reanalysis of the same gauge
+ *  has a 95th percentile of 0.137, which 0.15 rounds up. It is this project's
+ *  definition, derived from those pairs. Beyond it, two merged
  *  records disagree by more than one gauge analyzed twice does, most often
  *  because one record's clock is off. */
 export const SAME_GAUGE_M2_DIFFERENCE = 0.15;
+
+/** Whether two records' M2 amplitudes contradict a claim that they are one
+ *  gauge: both measurable, and apart by more than both MIN_AMPLITUDE_RATIO
+ *  and AMPLITUDE_TOLERANCE. A record without M2, such as a subordinate, or
+ *  with NOAA's 0 for a constituent it did not determine, has nothing to
+ *  contradict. Quality evaluation and the merge report share it,
+ *  so a relay superseded by its operator's record also joins its route. */
+export function m2Contradicts(
+  a: { harmonic_constituents?: { name: string; amplitude: number }[] },
+  b: { harmonic_constituents?: { name: string; amplitude: number }[] },
+): boolean {
+  const m2 = (s: typeof a) =>
+    s.harmonic_constituents?.find(({ name }) => name === "M2")?.amplitude;
+  const [ma, mb] = [m2(a), m2(b)];
+  if (!ma || !mb) return false;
+  const low = Math.min(ma, mb);
+  const high = Math.max(ma, mb);
+  return exceeds(high, low) && low / high < MIN_AMPLITUDE_RATIO;
+}
 
 /** Minimum M2 amplitude ratio to consider two reference stations as duplicates.
  *  Pairs within MAX_DEDUP_DISTANCE but above MIN_DEDUP_DISTANCE are only

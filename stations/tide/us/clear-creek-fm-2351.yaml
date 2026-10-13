@@ -14,10 +14,10 @@ computed:
         factors:
           epoch: 0.61
           recency: 0.98
-          source: 0.535
+          source: 0.495
           quality: 0
           amplitude: 1
           coverage: 0.066
         issues:
           - MLWS (0.602) > MLW (0.374)
-          - "Clock error in source hct: runs 25 to 45 minutes behind every NOAA and USGS gauge near it"
+          - "Clock error in source hct: runs 23 to 71 minutes behind every NOAA and USGS gauge near it"

@@ -19,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0.002
         issues:
-          - M2 here (0.242 m, 284.3°) runs 46 min later than (0.233 m, 262.2°) in ticon/venezia-ven-ita-ispra, the record kept
+          - M2 here (0.242 m, 284.3°) differs from (0.233 m, 262.2°) by +9 mm and 46 min later in ticon/venezia-ven-ita-ispra, which this duplicates

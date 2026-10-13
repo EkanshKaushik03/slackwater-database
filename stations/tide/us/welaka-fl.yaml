@@ -9,10 +9,10 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: superseded
+        reason: duplicate
         redundant: noaa/8720832
         seasonal_dominant: true
-        score: 0
+        score: 69
         factors:
           epoch: 0.354
           recency: 0.78
@@ -21,5 +21,4 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - Superseded by noaa/8720832, its operator's own record
           - "Seasonal curve peak (0.213m) exceeds the principal tide M2+S2+K1+O1 (0.067m): the yearly swing exceeds the daily one"

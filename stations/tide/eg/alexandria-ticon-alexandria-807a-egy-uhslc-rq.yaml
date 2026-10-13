@@ -7,9 +7,7 @@ computed:
       position: [31.212, 29.923]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/alexandria-ale-egy-noc
+        accepted: true
         score: 71
         factors:
           epoch: 0.333
@@ -18,5 +16,3 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.016
-        issues:
-          - M2 here (0.074 m, 246.3°) runs 20 min earlier than (0.072 m, 256.1°) in ticon/alexandria-ale-egy-noc, the record kept

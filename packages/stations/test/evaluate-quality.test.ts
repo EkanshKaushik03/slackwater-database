@@ -248,8 +248,8 @@ describe("tideConflict", () => {
     // Venice: the City of Venice record runs about 46 minutes from ISPRA's.
     const cv = station({ M2: { amplitude: 0.242, phase: 284.3 } });
     const ispra = station({ M2: { amplitude: 0.233, phase: 262.2 } });
-    expect(tideConflict(cv, ispra)).toMatch(/runs 46 min later/);
-    expect(tideConflict(ispra, cv)).toMatch(/runs 46 min earlier/);
+    expect(tideConflict(cv, ispra)).toMatch(/by \+9 mm and 46 min later/);
+    expect(tideConflict(ispra, cv)).toMatch(/by -9 mm and 46 min earlier/);
   });
 
   test("passes a pair within one gauge analyzed twice", () => {

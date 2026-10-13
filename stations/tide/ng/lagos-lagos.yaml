@@ -19,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - M2 here (0.406 m, 108.6°) runs 18 min later than (0.337 m, 99.8°) in ticon/lagos-233a-nga-uhslc_rq, the record kept
+          - M2 here (0.406 m, 108.6°) differs from (0.337 m, 99.8°) by +68 mm and 18 min later in ticon/lagos-233a-nga-uhslc_rq, which this duplicates

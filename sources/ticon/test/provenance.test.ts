@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { declaredOriginator, type UhslcMetadata } from "../provenance.ts";
+import { declaredOriginator, fold, type UhslcMetadata } from "../provenance.ts";
 
 const meta = (
   data_source: string,
@@ -40,6 +40,13 @@ test("UHSLC's Norwegian Hydrographic Service gauges match Kartverket by name", (
   expect(
     declaredOriginator("ticon/nowhere-999a-nor-uhslc_rq", pinned),
   ).toBeUndefined();
+});
+
+test("folds Norwegian letters that have no decomposition", () => {
+  expect(fold("Vardø")).toBe(fold("Vardo"));
+  expect(fold("Rørvik")).toBe("rorvik");
+  expect(fold("Måløy")).toBe("maloy");
+  expect(fold("Ny-Ålesund")).toBe("nyalesund");
 });
 
 test("UHSLC metadata names an originator only through a known provider", () => {

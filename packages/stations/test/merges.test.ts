@@ -93,6 +93,38 @@ describe("planMerges", () => {
     expect(plan.groups[0]?.slugs).toEqual(["sweeper-cove", "adak"]);
   });
 
+  test("joins a relay superseded by its operator's record", () => {
+    // UHSLC's fast-delivery Ny-Ålesund declares nothing itself; quality
+    // supersedes it through its research-quality sibling.
+    const plan = planMerges(
+      [
+        station("kartverket/NYA", 78.93, 0.457, "Ny-Ålesund"),
+        station("ticon/nylesund-823-nor-uhslc_fd", 78.93, 0.457, "Nylesund"),
+      ],
+      {
+        tide: [
+          { slug: "ny-alesund", station_ids: ["kartverket/NYA"] },
+          {
+            slug: "nylesund",
+            station_ids: ["ticon/nylesund-823-nor-uhslc_fd"],
+          },
+        ],
+        current: [],
+      },
+      new Map<string, StationQuality>([
+        ["kartverket/NYA", accepted("kartverket/NYA")],
+        [
+          "ticon/nylesund-823-nor-uhslc_fd",
+          {
+            ...duplicate("ticon/nylesund-823-nor-uhslc_fd", "kartverket/NYA"),
+            reason: "superseded",
+          },
+        ],
+      ]),
+    );
+    expect(plan.groups[0]?.slugs).toEqual(["ny-alesund", "nylesund"]);
+  });
+
   test("without its name, the URL is the primary's own slug unless that ends in an id", () => {
     const pair = (primary: string, relay: string) =>
       planMerges(

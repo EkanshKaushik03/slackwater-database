@@ -20,4 +20,4 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - M2 here (0.634 m, 354.6°) runs 69 min earlier than (0.662 m, 28.1°) in noaa/8720220, the record kept
+          - M2 here (0.634 m, 354.6°) differs from (0.662 m, 28.1°) by -28 mm and 69 min earlier in noaa/8720220, which this duplicates

@@ -19,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0.016
         issues:
-          - M2 here (0.104 m, 150.7°) runs 14 min later than (0.125 m, 144.0°) in ticon/fanning-012b-kir-uhslc_rq, the record kept
+          - M2 here (0.104 m, 150.7°) differs from (0.125 m, 144.0°) by -21 mm and 14 min later in ticon/fanning-012b-kir-uhslc_rq, which this duplicates

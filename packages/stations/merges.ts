@@ -4,21 +4,26 @@
  *
  * Two kinds of evidence join routes. A TICON relay that declares its
  * originator (see sources/ticon/provenance.ts) joins the originator's route
- * when the two agree on position and M2. Otherwise quality's `redundant` link,
- * made by its proximity, gauge-key and harmonic checks, joins a duplicate to
- * the record it duplicates. Joined
+ * when the two agree on position and M2. Otherwise quality's `redundant` link
+ * joins a duplicate, or a relay superseded by its operator's record, to the
+ * record published for its gauge. Joined
  * routes collapse onto the published slug that names the primary record, so a
  * clean URL such as `bergen` survives even when an authoritative record took a
  * suffixed one.
  */
 import type { DatabaseRoutes, StationQuality } from "@slackwater/database";
 import { declaredOriginator } from "../../sources/ticon/provenance.ts";
-import { distance, isAuthoritative, MIN_AMPLITUDE_RATIO } from "./filtering.ts";
+import {
+  distance,
+  isAuthoritative,
+  m2Contradicts,
+  MAX_PROVENANCE_KM,
+} from "./filtering.ts";
 import { toSlug } from "./routes.ts";
 import type { ResolvedStation } from "./metadata.ts";
 
 /** The farthest a relay may sit from the originator it declares. */
-export const MAX_PROVENANCE_KM = 10;
+export { MAX_PROVENANCE_KM };
 /** Members this close to the survivor, under its name, merge by rule alone. */
 export const MECHANICAL_RADIUS_KM = 0.05;
 
@@ -68,16 +73,6 @@ export interface MergePlan {
 const km = (a: ResolvedStation, b: ResolvedStation) =>
   distance(a.latitude, a.longitude, b.latitude, b.longitude);
 
-const m2 = (station: ResolvedStation) =>
-  station.harmonic_constituents?.find(({ name }) => name === "M2")?.amplitude;
-
-function similarM2(a: ResolvedStation, b: ResolvedStation): boolean {
-  const [ma, mb] = [m2(a), m2(b)];
-  // A subordinate carries offsets, not constituents: position is the check.
-  if (!ma || !mb) return true;
-  return Math.min(ma, mb) / Math.max(ma, mb) >= MIN_AMPLITUDE_RATIO;
-}
-
 const byCodepoint = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 const shortestSlug = (a: string, b: string) =>
   a.length - b.length || byCodepoint(a, b);
@@ -123,15 +118,21 @@ export function planMerges(
         target,
         reason: `${apart.toFixed(1)} km apart`,
       });
-    else if (!similarM2(station, origin))
+    else if (m2Contradicts(station, origin))
       refused.push({ id: station.id, target, reason: "M2 amplitudes differ" });
     else join(station.id, target, "provenance");
   }
 
   // A declared originator outranks an inferred duplicate: UHSLC 259B names
   // Ferry Reach even though quality pairs it with St George's 0.75 km away.
+  // Quality supersedes a relay only under the tests above, so a superseded
+  // relay's link is never one refused here.
   for (const [id, result] of quality)
-    if (result.reason === "duplicate" && result.redundant && !evidence.has(id))
+    if (
+      (result.reason === "duplicate" || result.reason === "superseded") &&
+      result.redundant &&
+      !evidence.has(id)
+    )
       join(id, result.redundant, "duplicate");
 
   const slugsByRoot = new Map<string, string[]>();

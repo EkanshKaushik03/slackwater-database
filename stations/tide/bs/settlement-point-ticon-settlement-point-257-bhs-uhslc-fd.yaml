@@ -9,9 +9,7 @@ computed:
       position: [26.69, -78.983]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: noaa/9710441
+        accepted: true
         score: 85
         factors:
           epoch: 1
@@ -21,5 +19,4 @@ computed:
           amplitude: 1
           coverage: 0.052
         issues:
-          - M2 here (0.338 m, 52.8°) runs 86 min later than (0.402 m, 11.2°) in ticon/settlement_point-257a-bhs-uhslc_rq, a duplicate
-          - M2 here (0.338 m, 52.8°) runs 87 min later than (0.405 m, 10.6°) in noaa/9710441, the record kept
+          - M2 here (0.338 m, 52.8°) differs from (0.402 m, 11.2°) by -65 mm and 86 min later in ticon/settlement_point-257a-bhs-uhslc_rq, a duplicate

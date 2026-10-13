@@ -9,9 +9,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: superseded
+        reason: duplicate
         redundant: noaa/8513388
-        score: 0
+        score: 83
         factors:
           epoch: 1
           recency: 0.88
@@ -20,4 +20,4 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - Superseded by noaa/8513388, its operator's own record
+          - M2 here (0.295 m, 28.3°) differs from (0.258 m, 36.4°) by +37 mm and 17 min earlier in noaa/8513388, which this duplicates

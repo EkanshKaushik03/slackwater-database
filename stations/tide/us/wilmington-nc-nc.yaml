@@ -9,9 +9,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: superseded
+        reason: duplicate
         redundant: noaa/8658120
-        score: 0
+        score: 84
         factors:
           epoch: 1
           recency: 0.95
@@ -21,4 +21,4 @@ computed:
           coverage: 0.001
         issues:
           - MLWS (0.913) > MLW (0.83)
-          - Superseded by noaa/8658120, its operator's own record
+          - M2 here (0.574 m, 67.7°) differs from (0.651 m, 59.5°) by -77 mm and 17 min later in noaa/8658120, which this duplicates

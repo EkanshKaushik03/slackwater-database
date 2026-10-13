@@ -22,6 +22,7 @@ import {
   exceeds,
 } from "../filtering.js";
 import { readStationFiles, storedQuality } from "../station-files.ts";
+import { sourceMetadata } from "../sources.ts";
 
 const quality = [...storedQuality(readStationFiles()).values()];
 
@@ -340,12 +341,27 @@ describe("gauge deduplication", () => {
 
   test("supersedes a relay only by an operator record that passes its checks", () => {
     const byId = new Map(quality.map((r) => [r.id, r]));
-    for (const r of quality.filter((r) => r.reason === "superseded")) {
+    const relays = quality.filter(
+      (r) => r.reason === "superseded" && !r.id.endsWith("-rws_hist"),
+    );
+    expect(relays.length).toBeGreaterThan(0);
+    for (const r of relays) {
       const direct = (r.issues ?? [])
         .join(" ")
         .match(/Superseded by (\S+),/)?.[1];
-      if (!direct) continue; // a source superseded outright
-      const verdict = byId.get(direct);
+      expect(direct, r.id).toBeDefined();
+      const operator = allTideStations.find((s) => s.id === direct)!;
+      const relay = allTideStations.find((s) => s.id === r.id)!;
+      expect(
+        distance(
+          relay.latitude,
+          relay.longitude,
+          operator.latitude,
+          operator.longitude,
+        ),
+        r.id,
+      ).toBeLessThanOrEqual(10);
+      const verdict = byId.get(direct!);
       expect(verdict?.accepted || verdict?.reason === "duplicate", r.id).toBe(
         true,
       );
@@ -373,9 +389,22 @@ describe("gauge deduplication", () => {
     });
   });
 
+  test("NOAA's jurisdiction names countries its records use", () => {
+    const countries = new Set(
+      allTideStations
+        .filter((s) => s.id.startsWith("noaa/"))
+        .map((s) => s.country),
+    );
+    const { jurisdiction } = sourceMetadata(
+      "US National Oceanic and Atmospheric Administration",
+    );
+    for (const country of jurisdiction ?? [])
+      expect(countries.has(country), country).toBe(true);
+  });
+
   test("rejects Harris County's records for their clock error", () => {
     const hct = quality.filter((r) => r.id.endsWith("-hct"));
-    expect(hct.length).toBeGreaterThan(0);
+    expect(hct).toHaveLength(17);
     expect(hct.every((r) => !r.accepted && r.reason === "timing")).toBe(true);
   });
 

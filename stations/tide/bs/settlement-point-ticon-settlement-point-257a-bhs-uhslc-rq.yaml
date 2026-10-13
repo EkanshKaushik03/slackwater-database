@@ -9,7 +9,7 @@ computed:
       quality:
         accepted: false
         reason: duplicate
-        redundant: noaa/9710441
+        redundant: ticon/settlement_point-257-bhs-uhslc_fd
         score: 80
         factors:
           epoch: 0.893
@@ -19,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - M2 here (0.402 m, 11.2°) runs 86 min earlier than (0.338 m, 52.8°) in ticon/settlement_point-257-bhs-uhslc_fd, the record kept
+          - M2 here (0.402 m, 11.2°) differs from (0.338 m, 52.8°) by +65 mm and 86 min earlier in ticon/settlement_point-257-bhs-uhslc_fd, which this duplicates

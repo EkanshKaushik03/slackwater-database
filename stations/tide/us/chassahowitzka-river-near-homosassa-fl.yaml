@@ -21,4 +21,4 @@ computed:
           coverage: 0.001
         issues:
           - MLWS (0.043) > MLW (0.027)
-          - M2 here (0.121 m, 280.4°) runs 99 min earlier than (0.042 m, 328.0°) in noaa/8727246, the record kept
+          - M2 here (0.121 m, 280.4°) differs from (0.042 m, 328.0°) by +79 mm and 99 min earlier in noaa/8727246, which this duplicates

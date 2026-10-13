@@ -19,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0.094
         issues:
-          - M2 here (0.740 m, 1.6°) runs 54 min earlier than (0.747 m, 27.9°) in ticon/las_palmas-217-esp-uhslc_fd, the record kept
+          - M2 here (0.740 m, 1.6°) differs from (0.747 m, 27.9°) by -7 mm and 54 min earlier in ticon/las_palmas-217-esp-uhslc_fd, which this duplicates

@@ -19,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0.019
         issues:
-          - M2 here (0.445 m, 47.8°) runs 40 min later than (0.460 m, 28.5°) in ticon/hiva_oa-017b-fra-uhslc_rq, the record kept
+          - M2 here (0.445 m, 47.8°) differs from (0.460 m, 28.5°) by -14 mm and 40 min later in ticon/hiva_oa-017b-fra-uhslc_rq, which this duplicates

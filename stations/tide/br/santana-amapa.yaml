@@ -17,5 +17,5 @@ computed:
           amplitude: 1
           coverage: 0.019
         issues:
-          - M2 here (1.133 m, 207.9°) runs 20 min later than (1.059 m, 198.2°) in ticon/santana-716b-bra-uhslc_rq, a duplicate
-          - M2 here (1.133 m, 207.9°) runs 28 min later than (1.152 m, 194.5°) in ticon/santana-716a-bra-uhslc_rq, a duplicate
+          - M2 here (1.133 m, 207.9°) differs from (1.059 m, 198.2°) by +74 mm and 20 min later in ticon/santana-716b-bra-uhslc_rq, a duplicate
+          - M2 here (1.133 m, 207.9°) differs from (1.152 m, 194.5°) by -19 mm and 28 min later in ticon/santana-716a-bra-uhslc_rq, a duplicate
