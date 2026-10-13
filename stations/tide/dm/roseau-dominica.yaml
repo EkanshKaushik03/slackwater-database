@@ -9,7 +9,9 @@ computed:
       position: [15.3, -61.4]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/roseau-786-dom-uhslc_fd
         score: 83
         factors:
           epoch: 1

@@ -10,6 +10,9 @@ export interface SourceMetadata {
   authoritative: boolean;
   /** The provider's own credit line, or null when it requires none. */
   credit: string | null;
+  /** The countries, as records write `country`, whose gauges an authoritative
+   *  provider operates. Absent means everywhere it publishes. */
+  jurisdiction?: string[];
 }
 
 const SOURCES_DIR = join(import.meta.dirname, "..", "..", "sources");
@@ -31,6 +34,14 @@ export function loadSources(dir = SOURCES_DIR): Map<string, SourceMetadata> {
       throw new Error(`${path}: authoritative must be true or false`);
     if (source.credit !== null && typeof source.credit !== "string")
       throw new Error(`${path}: credit must be a string or null`);
+    if (
+      source.jurisdiction !== undefined &&
+      !(
+        Array.isArray(source.jurisdiction) &&
+        source.jurisdiction.every((c) => typeof c === "string" && c)
+      )
+    )
+      throw new Error(`${path}: jurisdiction must be a list of countries`);
     if (sources.has(source.name))
       throw new Error(`${path}: ${source.name} is declared twice`);
     sources.set(source.name, source);

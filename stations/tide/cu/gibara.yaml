@@ -7,9 +7,7 @@ computed:
       position: [21.117, -76.117]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: noaa/TEC4653
+        accepted: true
         score: 54
         factors:
           epoch: 0.43

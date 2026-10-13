@@ -9,7 +9,9 @@ computed:
       position: [19.200000762939453, -96.13330078125]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/veracruz_ver-250a-mex-uhslc_rq
         score: 83
         factors:
           epoch: 1

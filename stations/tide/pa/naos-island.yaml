@@ -7,7 +7,9 @@ computed:
       position: [8.916999816894531, -79.53299713134766]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/naos-300b-pan-uhslc_rq
         score: 55
         factors:
           epoch: 0

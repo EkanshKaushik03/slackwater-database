@@ -7,7 +7,9 @@ computed:
       position: [13.916999816894531, -90.83300018310547]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/san_jose-675a-gtm-uhslc_rq
         score: 55
         factors:
           epoch: 0

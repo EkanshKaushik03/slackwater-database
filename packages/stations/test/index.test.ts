@@ -315,6 +315,39 @@ describe("gauge deduplication", () => {
     ).toBeUndefined();
   });
 
+  test("does not prefer NOAA's subordinate outside its jurisdiction", () => {
+    const noaa = (country: string) => ({
+      id: "noaa/sub",
+      type: "subordinate",
+      country,
+      source: { name: "US National Oceanic and Atmospheric Administration" },
+    });
+    const relay = { id: "ticon/relay", source: { name: "TICON-4" } };
+    expect(authoritativeDuplicateWinner(noaa("Mexico"), relay)).toBeUndefined();
+    expect(authoritativeDuplicateWinner(noaa("Puerto Rico"), relay)).toBe(
+      "noaa/sub",
+    );
+  });
+
+  test("keeps a local analysis over NOAA's subordinate predicted from San Diego", () => {
+    // TWC0379 predicts Manzanillo from San Diego, 1,986 km away, and runs about
+    // 110 minutes from the 19-year UHSLC analysis at the gauge.
+    expect(quality.find((r) => r.id === "noaa/TWC0379")).toMatchObject({
+      accepted: false,
+      redundant: "ticon/manzanillo-395-mex-uhslc_fd",
+    });
+  });
+
+  test("points every duplicate at a published record", () => {
+    const accepted = new Set(
+      quality.filter((r) => r.accepted).map((r) => r.id),
+    );
+    const unpublished = quality.filter(
+      (r) => r.redundant && !accepted.has(r.redundant),
+    );
+    expect(unpublished.map((r) => `${r.id} → ${r.redundant}`)).toEqual([]);
+  });
+
   test("accepts every LINZ port over the TICON relay of the same gauge", () => {
     const linz = quality.filter((r) => r.id.startsWith("linz/"));
     expect(linz).toHaveLength(56);

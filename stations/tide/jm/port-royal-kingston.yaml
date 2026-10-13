@@ -7,7 +7,9 @@ computed:
       position: [17.933333333332993, -76.85]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_royal-782a-jam-uhslc_rq
         score: 83
         factors:
           epoch: 1

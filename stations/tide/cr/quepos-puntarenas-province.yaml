@@ -7,7 +7,9 @@ computed:
       position: [9.399999618530273, -84.16699981689453]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/quepos-087-cri-uhslc_fd
         score: 55
         factors:
           epoch: 0

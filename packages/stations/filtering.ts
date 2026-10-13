@@ -86,15 +86,31 @@ export function isAuthoritative(record: {
   return !!record.source && sourceMetadata(record.source.name).authoritative;
 }
 
-type SourcedRecord = { id: string; source?: { name: string } };
+type SourcedRecord = {
+  id: string;
+  source?: { name: string };
+  type?: string;
+  country?: string;
+};
 
-/** Prefer the authoritative record when exactly one duplicate is authoritative. */
+/** Whether a record's authority holds when choosing among duplicates. An
+ *  authoritative source's subordinate station outside its jurisdiction is a
+ *  legacy foreign table predicted from a distant reference, not a gauge the
+ *  source operates, so it does not outrank a local record on authority. */
+export function winsOnAuthority(record: SourcedRecord): boolean {
+  if (!isAuthoritative(record)) return false;
+  if (record.type !== "subordinate") return true;
+  const { jurisdiction } = sourceMetadata(record.source!.name);
+  return !jurisdiction || jurisdiction.includes(record.country ?? "");
+}
+
+/** Prefer the authoritative record when exactly one duplicate wins on authority. */
 export function authoritativeDuplicateWinner(
   a: SourcedRecord,
   b: SourcedRecord,
 ): string | undefined {
-  const directA = isAuthoritative(a);
-  const directB = isAuthoritative(b);
+  const directA = winsOnAuthority(a);
+  const directB = winsOnAuthority(b);
   return directA === directB ? undefined : directA ? a.id : b.id;
 }
 

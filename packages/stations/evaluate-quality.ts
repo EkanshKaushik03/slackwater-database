@@ -711,23 +711,29 @@ function countSubordinates(
   return counts;
 }
 
-/** Unified deduplication: for all pairs within range, keep the higher-scoring station.
- *  A reference station with accepted subordinates beats one without, regardless of score. */
+/** Proximity deduplication. Records are taken best first (see `precedence`);
+ *  each one still accepted absorbs every later record that duplicates it. A
+ *  record that has lost never absorbs another, so the outcome does not depend
+ *  on the order the records were loaded in. */
 function deduplicate(
   stationIds: string[],
   stationMap: Map<string, Station>,
   resultsMap: Map<string, QualityResult>,
   subordinateCounts: Map<string, number>,
 ): void {
+  const ranked = [...stationIds].sort(
+    precedence(stationMap, resultsMap, subordinateCounts),
+  );
   const rejected = new Set<string>();
 
-  for (let i = 0; i < stationIds.length; i++) {
-    const idA = stationIds[i]!;
+  for (let i = 0; i < ranked.length; i++) {
+    const idA = ranked[i]!;
     if (rejected.has(idA)) continue;
     const stationA = stationMap.get(idA)!;
+    const hasSubs = (subordinateCounts.get(idA) ?? 0) > 0;
 
-    for (let j = i + 1; j < stationIds.length; j++) {
-      const idB = stationIds[j]!;
+    for (let j = i + 1; j < ranked.length; j++) {
+      const idB = ranked[j]!;
       if (rejected.has(idB)) continue;
       const stationB = stationMap.get(idB)!;
 
@@ -737,55 +743,53 @@ function deduplicate(
         stationB.latitude,
         stationB.longitude,
       );
+      if (!areDuplicates(stationA, stationB, dist, hasSubs)) continue;
 
-      const [winner, loser] = pickWinner(
-        idA,
-        idB,
-        stationMap,
-        resultsMap,
-        subordinateCounts,
-      );
-
-      const winnerHasSubs = (subordinateCounts.get(winner) ?? 0) > 0;
-      if (!areDuplicates(stationA, stationB, dist, winnerHasSubs)) continue;
-
-      const result = resultsMap.get(loser)!;
-      result.accepted = false;
-      result.reason = "duplicate";
-      result.redundant = winner;
-      rejected.add(loser);
+      markDuplicate(resultsMap.get(idB)!, idA);
+      rejected.add(idB);
     }
   }
 }
 
-/** Pick the winner between two stations: a reference with accepted subordinates
- *  beats one without; otherwise the higher composite score wins. Ties on score
- *  fall to the more precisely located record, so the survivor keeps the better
- *  coordinates rather than an older coarsely-rounded fix. */
-function pickWinner(
-  idA: string,
-  idB: string,
+function markDuplicate(result: QualityResult, winner: string): void {
+  result.accepted = false;
+  result.reason = "duplicate";
+  result.redundant = winner;
+}
+
+/** The order in which duplicates are kept, best first:
+ *
+ *  1. A record that wins on authority (`winsOnAuthority`) beats a relay.
+ *  2. A reference station beats a subordinate. A subordinate predicts from a
+ *     distant reference plus offsets; a reference was analyzed at the gauge.
+ *  3. A reference with accepted subordinates beats one without, so they keep
+ *     the reference they predict from.
+ *  4. The higher score wins.
+ *  5. The more precisely located record wins, keeping the surveyed fix over a
+ *     coarsely rounded one.
+ *  6. Otherwise the lower id, so the result is the same on every machine. */
+function precedence(
   stationMap: Map<string, Station>,
   resultsMap: Map<string, QualityResult>,
   subordinateCounts: Map<string, number>,
-): [winner: string, loser: string] {
-  const directWinner = authoritativeDuplicateWinner(
-    stationMap.get(idA)!,
-    stationMap.get(idB)!,
-  );
-  if (directWinner) return [directWinner, directWinner === idA ? idB : idA];
-  const subsA = subordinateCounts.get(idA) ?? 0;
-  const subsB = subordinateCounts.get(idB) ?? 0;
-  if (subsA > 0 && subsB === 0) return [idA, idB];
-  if (subsB > 0 && subsA === 0) return [idB, idA];
-  const scoreA = resultsMap.get(idA)!.score;
-  const scoreB = resultsMap.get(idB)!.score;
-  if (scoreA !== scoreB) return scoreA > scoreB ? [idA, idB] : [idB, idA];
-  const a = stationMap.get(idA)!;
-  const b = stationMap.get(idB)!;
-  const precA = coordinatePrecision(a.latitude, a.longitude);
-  const precB = coordinatePrecision(b.latitude, b.longitude);
-  return precA >= precB ? [idA, idB] : [idB, idA];
+): (idA: string, idB: string) => number {
+  return (idA, idB) => {
+    const a = stationMap.get(idA)!;
+    const b = stationMap.get(idB)!;
+    const authority = authoritativeDuplicateWinner(a, b);
+    if (authority) return authority === idA ? -1 : 1;
+    if (a.type !== b.type) return a.type === "reference" ? -1 : 1;
+    const subsA = (subordinateCounts.get(idA) ?? 0) > 0;
+    const subsB = (subordinateCounts.get(idB) ?? 0) > 0;
+    if (subsA !== subsB) return subsA ? -1 : 1;
+    const score = resultsMap.get(idB)!.score - resultsMap.get(idA)!.score;
+    if (score !== 0) return score;
+    const precision =
+      coordinatePrecision(b.latitude, b.longitude) -
+      coordinatePrecision(a.latitude, a.longitude);
+    if (precision !== 0) return precision;
+    return idA < idB ? -1 : idA > idB ? 1 : 0;
+  };
 }
 
 /** Deduplicate TICON records that share a physical-gauge key (same station code,
@@ -809,27 +813,27 @@ function deduplicateByGauge(
     (groups.get(key) ?? groups.set(key, []).get(key)!).push(id);
   }
 
+  const order = precedence(stationMap, resultsMap, subordinateCounts);
   for (const ids of groups.values()) {
     if (ids.length < 2) continue;
-    // Resolve the single survivor first so every rejected record's `redundant`
-    // pointer references the final winner rather than an intermediate one.
-    let winner = ids[0]!;
-    for (let i = 1; i < ids.length; i++) {
-      [winner] = pickWinner(
-        winner,
-        ids[i]!,
-        stationMap,
-        resultsMap,
-        subordinateCounts,
-      );
+    const [winner, ...losers] = [...ids].sort(order);
+    for (const id of losers) markDuplicate(resultsMap.get(id)!, winner!);
+  }
+}
+
+/** Point every duplicate at the record that is published for its gauge. A
+ *  gauge's best record can itself lose to a nearby record in the proximity
+ *  pass, which would otherwise leave its own duplicates pointing at a record
+ *  that is not published. */
+function resolveRedundant(resultsMap: Map<string, QualityResult>): void {
+  for (const result of resultsMap.values()) {
+    let target = result.redundant;
+    const seen = new Set<string>();
+    while (target && !resultsMap.get(target)!.accepted && !seen.has(target)) {
+      seen.add(target);
+      target = resultsMap.get(target)!.redundant;
     }
-    for (const id of ids) {
-      if (id === winner) continue;
-      const result = resultsMap.get(id)!;
-      result.accepted = false;
-      result.reason = "duplicate";
-      result.redundant = winner;
-    }
+    if (target) result.redundant = target;
   }
 }
 
@@ -941,6 +945,7 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
   // 4b: Deduplicate the survivors by proximity and harmonic similarity.
   const survivingIds = acceptedIds.filter((id) => resultsMap.get(id)!.accepted);
   deduplicate(survivingIds, stationMap, resultsMap, subordinateCounts);
+  resolveRedundant(resultsMap);
 
   // Codepoint order, not localeCompare: the output must not depend on the
   // machine's ICU locale.

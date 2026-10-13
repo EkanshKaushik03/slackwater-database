@@ -226,19 +226,19 @@ Two subordinates predict the same when they use the same reference station and t
 - Two reference stations within 50 m are merged whatever their M2 amplitudes.
 - The M2 test compares amplitude, not phase, so two gauges with the same M2 amplitude an hour apart in timing pass as one.
 - Records more than 500 m apart are never merged by this rule, so a relay with poor coordinates stays separate unless it shares an identifier.
-- Pairs are compared one at a time in a fixed order, and a record found to be a duplicate can still absorb later records. The record named as the one kept can therefore itself be a duplicate of a third record. Readers should follow the chain to the record that is published.
 
 ### Choosing the record to keep
 
-When two records are the same gauge, the one kept is decided by these rules, in order:
+Records are ranked by these rules, in order:
 
-1. A record from an authoritative source beats a relay.
-2. A reference station that has accepted subordinate stations beats one that has none, so the subordinates keep the reference they predict from.
-3. The higher score wins.
-4. The record with the more precise position wins, as a surveyed fix is more likely than a rounded one to locate the gauge.
-5. Otherwise, the record compared first is kept.
+1. A record from an authoritative source beats a relay. NOAA's subordinate stations outside the United States and its territories are the exception. NOAA does not operate those gauges; it predicts them from legacy foreign tide tables as time and height differences on a US reference station, often more than 1,000 km away. Manzanillo, Mexico, is predicted from San Diego, 1,986 km away, and runs about 110 minutes from the 19-year UHSLC analysis of the gauge itself. The waters each source speaks for are listed as `jurisdiction` in its `metadata.yaml`.
+2. A reference station beats a subordinate, since its constants were analyzed at the gauge.
+3. A reference station that has accepted subordinate stations beats one that has none, so the subordinates keep the reference they predict from.
+4. The higher score wins.
+5. The record with the more precise position wins, as a surveyed fix is more likely than a rounded one to locate the gauge.
+6. Otherwise, the record with the lower id wins.
 
-The order of these rules is an engineering choice. With three or more records of one gauge, the outcome can depend on the order in which they are compared.
+Duplicates are resolved best record first. The best remaining record absorbs every record that duplicates it, and a record that has lost absorbs nothing, so the outcome does not depend on the order in which records are loaded. Each duplicate's `redundant` names the record published for its gauge. The order of these rules is an engineering choice of this project.
 
 ## Implementation
 
@@ -256,7 +256,7 @@ npm run report:quality -w packages/stations
 | ------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `accepted`          | Whether the record is published.                                                                                 |
 | `reason`            | `coordinates`, `datum`, `range`, `superseded`, `constituents`, `seasonal`, or `duplicate`. Absent when accepted. |
-| `redundant`         | For a duplicate, the id of the record it lost to.                                                                |
+| `redundant`         | For a duplicate, the id of the record published for its gauge.                                                   |
 | `seasonal_dominant` | `true` for the seasonal label.                                                                                   |
 | `score`             | The composite score. 0 for a record rejected by a check; a duplicate keeps the score it was compared on.         |
 | `factors`           | `epoch`, `recency`, `source`, `quality`, `amplitude`, `coverage`, each 0 to 1, rounded to three decimals.        |
@@ -269,8 +269,9 @@ npm run report:quality -w packages/stations
 3. `scoreCoverage` runs once all positions are loaded, against every record including rejected ones.
 4. `computeCompositeScore` sets the score of each record that passed the checks.
 5. `countSubordinates` counts each reference's accepted subordinates. The count is not updated as duplicates are rejected.
-6. `deduplicateByGauge` merges TICON records by `gaugeKey`, folding `pickWinner` over each group in id order.
-7. `deduplicate` compares the survivors pairwise in id order, using `areDuplicates` and `pickWinner`.
+6. `deduplicateByGauge` merges TICON records by `gaugeKey`, keeping the first record of each group in `precedence` order.
+7. `deduplicate` ranks the survivors by `precedence`, and each record still accepted absorbs the later records that `areDuplicates` matches to it.
+8. `resolveRedundant` points each duplicate at the record published for its gauge.
 
 ### Constants
 
@@ -304,7 +305,6 @@ The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`
 - The docstring on `scoreEpoch` says years divided by 19; the code divides by 18.613 years.
 - The docstring on `scoreRecency` describes a sigmoid-like curve; the code is linear.
 - The header of `evaluate-quality.ts` describes NOAA and TICON only; the evaluation covers every source under `data/`, and the proximity rule compares records across all of them.
-- In `deduplicate`, a record rejected as the loser of a pair continues through the rest of its comparisons and can reject later records, so a `redundant` link can point at a record that is itself a duplicate.
 
 ## References
 

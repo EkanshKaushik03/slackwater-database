@@ -7,7 +7,9 @@ computed:
       position: [13.333000183105469, -87.81700134277344]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/la_union-086a-slv-uhslc_rq
         score: 55
         factors:
           epoch: 0
