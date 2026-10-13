@@ -16,7 +16,12 @@ export const SOURCE_PRIORITY: Record<string, number> = {
   noaa: 0, // NOAA CO-OPS
 
   // Tier 1: Highest priority - most reliable and current
-  uhslc_fd: 1, // University of Hawaii Sea Level Center - Fast Delivery
+  // University of Hawaii Sea Level Center. Research quality is the delayed-mode
+  // series that has had UHSLC's full quality control and replaces fast delivery
+  // as it becomes available; fast delivery is more recent. They rank equally,
+  // so record length and recency decide between them.
+  uhslc_fd: 1,
+  uhslc_rq: 1,
   bodc: 2, // British Oceanographic Data Centre
 
   // Tier 2: High quality national/regional services
@@ -49,8 +54,7 @@ export const SOURCE_PRIORITY: Record<string, number> = {
   hct: 46,
   cm: 47,
 
-  // Tier 5: Lower priority - older versions or research quality
-  uhslc_rq: 80, // Research Quality - older UHSLC version
+  // Tier 5: Lower priority - historical series and smaller contributors
   unam: 85,
   unam_hist: 86,
   jodc_pahb: 87,
@@ -60,6 +64,8 @@ export const SOURCE_PRIORITY: Record<string, number> = {
   mi_c: 91,
   mi_r: 92,
   cco: 93,
+  // Historical records contributed to GESLA by individual researchers
+  // (Haigh, Marcos, Talke), often of gauges an agency also relays.
   da_idh: 94,
   da_mm: 95,
   gloss: 96,
@@ -69,8 +75,9 @@ export const SOURCE_PRIORITY: Record<string, number> = {
   cv: 97, // City of Venice
   uz: 97, // University of Zagreb
 
-  // Tier 7: Lowest priority - often duplicates
-  da_sat: 99, // Satellite-derived, often duplicates NOAA
+  // Tier 7: Lowest priority - historical records of gauges, mostly NOAA's, that
+  // Stefan Talke contributed to GESLA
+  da_sat: 99,
 };
 
 /** Default priority for unknown sources */

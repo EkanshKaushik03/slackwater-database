@@ -7,12 +7,14 @@ computed:
       position: [5.833, 95.333]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 72
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sabang-123a-idn-uhslc_rq
+        score: 85
         factors:
           epoch: 1
           recency: 0.99
           source: 0.99
           quality: 0
           amplitude: 1
-          coverage: 0.127
+          coverage: 1

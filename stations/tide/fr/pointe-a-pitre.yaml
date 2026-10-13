@@ -7,7 +7,9 @@ computed:
       position: [16.224397, -61.531454]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/pointe_pitre-272a-fra-uhslc_rq
         score: 69
         factors:
           epoch: 1

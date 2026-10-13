@@ -7,7 +7,9 @@ computed:
       position: [56.099998, 12.466666]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hornbaek-838a-dnk-uhslc_rq
         score: 80
         factors:
           epoch: 1

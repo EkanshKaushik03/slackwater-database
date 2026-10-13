@@ -7,7 +7,9 @@ computed:
       position: [-12.1167, 96.8919]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cocos-171-aus-uhslc_fd
         score: 83
         factors:
           epoch: 1

@@ -7,7 +7,9 @@ computed:
       position: [-15.4533, 128.101]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/wyndham-165a-aus-uhslc_rq
         score: 83
         factors:
           epoch: 1

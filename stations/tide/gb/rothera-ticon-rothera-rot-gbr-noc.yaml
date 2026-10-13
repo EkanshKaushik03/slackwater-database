@@ -7,7 +7,9 @@ computed:
       position: [-67.5713, -68.1298]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/rothera-832a-gbr-uhslc_rq
         score: 76
         factors:
           epoch: 0.844

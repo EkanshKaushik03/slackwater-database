@@ -165,23 +165,25 @@ Authoritative agencies score 1. Each agency that supplies data to TICON is ranke
 | Tier | Agencies                                                                                                          | Score     |
 | ---- | ----------------------------------------------------------------------------------------------------------------- | --------- |
 | 0    | NOAA (as relayed by TICON)                                                                                        | 1.0       |
-| 1    | UHSLC fast delivery, BODC                                                                                         | 0.98–0.99 |
+| 1    | UHSLC fast delivery and research quality, BODC                                                                    | 0.98–0.99 |
 | 2    | national services of Canada (MEDS), France, Australia, Japan (JMA), Sweden, Norway, Spain                         | 0.90–0.96 |
 | 3    | regional European services, including Germany, the Netherlands, Finland, Denmark and Italy                        | 0.71–0.80 |
 | 4    | US regional networks, including USGS and state agencies                                                           | 0.53–0.60 |
-| 5    | UHSLC research quality, historical and research series, other Japanese agencies, GLOSS                            | 0.03–0.19 |
+| 5    | historical and research series, other Japanese agencies, GLOSS                                                    | 0.03–0.19 |
 | 6    | sources that GESLA licenses for non-commercial use only (Copernicus Marine, City of Venice, University of Zagreb) | 0.02      |
-| 7    | satellite-related duplicates                                                                                      | 0.0       |
+| 7    | historical records, mostly of NOAA gauges, contributed by Stefan Talke (`da_sat`)                                 | 0.0       |
 
 An agency not in the ranking scores about 0.5.
 
 **Why.** National hydrographic and oceanographic services generally maintain their datums and apply consistent quality control, so their records are the safer choice when two describe the same water. The ranking is an editorial judgment, not a published standard. Placing the non-commercial sources low steers duplicate selection toward records without license restrictions.
 
-**Limitations.** UHSLC describes its research-quality series as the more thoroughly quality-controlled, delayed-mode product (Caldwell et al., 2015), yet the ranking places the fast-delivery series far above it because that series continues to the present. Source carries a large weight, so this choice usually decides which UHSLC record of a gauge is published. A TICON relay of a NOAA gauge that NOAA publishes without constants scores the same as an authoritative record.
+UHSLC's two series rank equally. Its research-quality series has had UHSLC's full quality control and replaces the fast-delivery series as it becomes available, while the fast-delivery series is more recent (UHSLC, n.d.). With source equal, record length and recency decide, which matches GESLA's advice to use the longest and then the most recent record of a gauge (Haigh et al., 2023).
+
+**Limitations.** A TICON relay of a NOAA gauge that NOAA publishes without constants scores the same as an authoritative record.
 
 ### Provider quality flag
 
-A record scores 0 when its provider flagged it for possible datum and quality-control problems, and 1 otherwise. The flag is TICON's own assessment of the underlying record, which this project trusts rather than re-derives. It cannot distinguish a minor problem from a severe one.
+A record scores 0 when GESLA flagged it for possible datum and quality-control problems, and 1 otherwise. The flag is GESLA's overall record quality, which TICON carries as `record_quality`: a brief, qualitative judgment made by visually inspecting each record (Haigh et al., 2023). This project trusts it rather than re-deriving it. It cannot distinguish a minor problem from a severe one.
 
 ### Amplitudes
 
@@ -198,9 +200,9 @@ The score starts at 1 and loses 0.25 for each implausibility, down to 0:
 
 ### Isolation
 
-The score is the distance to the nearest other record of any kind, divided by 50 km and capped at 1. A gauge with no other gauge nearby adds more to the map than one in a dense cluster. The 50 km scale is an engineering choice.
+The score is the distance to the nearest other gauge, divided by 50 km and capped at 1. A gauge with no other gauge nearby adds more to the map than one in a dense cluster. Only records that pass every rejection check count as neighbors, and a record of the same TICON gauge (see [Same identifier](#same-identifier)) is not another gauge. The 50 km scale is an engineering choice.
 
-**Limitations.** The nearest record is often another relay of the same gauge, so duplicate records all score near 0 here regardless of the network around them. The factor rarely decides between duplicates; it mostly lowers the scores of stations in dense networks.
+**Limitations.** Two agencies' records of one gauge under different identifiers still count as neighbors, so both score near 0 here. Isolation describes the map, not the record, so it can still decide between duplicates whose other factors tie.
 
 ## Duplicates
 
@@ -225,6 +227,8 @@ Records from all sources are compared in pairs. Whether two count as one gauge d
 Two subordinates predict the same when they use the same reference station and their height differences agree within 0.1 (as a ratio, or 0.1 m for fixed differences) and their time differences within 10 minutes.
 
 **Why.** Records within 50 m are almost certainly the same gauge, or gauges too close for their tides to differ in a way that matters. Between 50 and 500 m, gauges can sit on opposite sides of a breakwater, at a harbor mouth and inside it, or at the two ends of a short channel, and their tides can differ. M2 dominates nearly every tide, so similar M2 amplitudes are a direct test that two reference stations describe the same tidal regime. Similar means within 10% of each other, or within the amplitude tolerance where M2 is too small for a ratio to mean anything. Two M2 amplitudes that are both within the tolerance of zero carry no evidence either way, so they are not similar. A reference station that has subordinates may absorb a neighbor within 100 m even when the M2 test fails, since very small M2 amplitudes make the ratio noisy. Subordinates have no constants to compare, so they get the tighter 100 m limit, and two subordinates must also predict the same tide. Many subordinates share coarse or placeholder positions: Suwarrow Island is recorded at the exact position of Hao Island, but Suwarrow's time difference is +64 minutes and Hao's is −315. All of these distances and tolerances are engineering choices of this project.
+
+The distance between two records is the shortest between any of the positions recorded for their gauges, since the records of one TICON gauge can place it kilometers apart.
 
 **Limitations.**
 
@@ -272,7 +276,7 @@ npm run report:quality -w packages/stations
 
 1. `loadAllStations` reads every JSON file under `data/`, sorting directories and file names, so records are processed in record-id order.
 2. `checkGates` runs `checkCoordinates`, `checkDatumOrdering`, `checkTidalRange`, `checkConstituents` and `checkSeasonalContamination` on every record. `checkSuperseded` then runs on each relay, using those results for the operator's record, and takes its place after the range check. The first failure sets `reason`. Then `checkSeasonalDominance` and five factors are computed.
-3. `scoreCoverage` runs once all positions are loaded, against every record including rejected ones.
+3. `scoreCoverage` runs once every record has been checked, against the records that passed.
 4. `computeCompositeScore` sets the score of each record that passed the checks.
 5. `countSubordinates` counts each reference's accepted subordinates. The count is not updated as duplicates are rejected.
 6. `deduplicateByGauge` merges TICON records by `gaugeKey`, keeping the first record of each group in `precedence` order.
@@ -314,7 +318,6 @@ The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`
 
 ## References
 
-- Caldwell, P. C., Merrifield, M. A., & Thompson, P. R. (2015). _Sea level measured by tide gauges from global oceans: the Joint Archive for Sea Level holdings (NCEI Accession 0019568)_, Version 5.5. NOAA National Centers for Environmental Information. https://doi.org/10.7289/V5V40S7W
 - Cartwright, D. E., & Tayler, R. J. (1971). New computations of the tide-generating potential. _Geophysical Journal of the Royal Astronomical Society_, 23(1), 45–73. https://doi.org/10.1111/j.1365-246X.1971.tb01803.x
 - Codiga, D. L. (2011). _Unified Tidal Analysis and Prediction Using the UTide Matlab Functions_. Technical Report 2011-01. Graduate School of Oceanography, University of Rhode Island. https://www.po.gso.uri.edu/codiga/utide/2011Codiga-UTide-Report.pdf
 - Courtier, A. (1938). _Marées_. Service Hydrographique de la Marine, Paris.
@@ -337,3 +340,4 @@ The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`
 - Sinnott, R. W. (1984). Virtues of the haversine. _Sky and Telescope_, 68(2), 159.
 - Talke, S. A., & Jay, D. A. (2020). Changing tides: The role of natural and anthropogenic factors. _Annual Review of Marine Science_, 12, 121–151. https://doi.org/10.1146/annurev-marine-010419-010727
 - Tsimplis, M. N., & Woodworth, P. L. (1994). The global distribution of the seasonal sea level cycle calculated from coastal tide gauge data. _Journal of Geophysical Research: Oceans_, 99(C8), 16031–16039. https://doi.org/10.1029/94JC01115
+- University of Hawaii Sea Level Center (n.d.). _Data information_. https://uhslc.soest.hawaii.edu/datainfo/

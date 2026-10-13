@@ -7,7 +7,9 @@ computed:
       position: [57.6847, 11.7906]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/goteborgorsh-819-swe-uhslc_fd
         seasonal_dominant: true
         score: 83
         factors:

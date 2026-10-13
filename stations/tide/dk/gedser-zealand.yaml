@@ -7,7 +7,9 @@ computed:
       position: [54.566666, 11.933333]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/gedser-837a-dnk-uhslc_rq
         score: 80
         factors:
           epoch: 1
@@ -15,4 +17,4 @@ computed:
           source: 0.758
           quality: 1
           amplitude: 1
-          coverage: 0
+          coverage: 0.001

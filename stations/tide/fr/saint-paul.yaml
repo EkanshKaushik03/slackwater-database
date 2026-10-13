@@ -7,12 +7,14 @@ computed:
       position: [-38.712, 77.538]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 69
+        accepted: false
+        reason: duplicate
+        redundant: ticon/saint_paul-179a-fra-uhslc_rq
+        score: 70
         factors:
           epoch: 1
           recency: 0.96
           source: 0.99
           quality: 0
           amplitude: 1
-          coverage: 0
+          coverage: 0.014

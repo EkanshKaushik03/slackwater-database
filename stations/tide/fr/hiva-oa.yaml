@@ -7,7 +7,9 @@ computed:
       position: [-9.81, -139.027]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hiva_oa-495-fra-refmar
         score: 66
         factors:
           epoch: 0.796
@@ -15,4 +17,4 @@ computed:
           source: 0.99
           quality: 0
           amplitude: 1
-          coverage: 0
+          coverage: 0.019

@@ -7,15 +7,17 @@ computed:
       position: [14.583, 120.967]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 70
+        accepted: false
+        reason: duplicate
+        redundant: ticon/manila-370a-phl-uhslc_rq
+        score: 85
         factors:
           epoch: 1
           recency: 0.99
           source: 0.99
           quality: 0
           amplitude: 1
-          coverage: 0.005
+          coverage: 1
         issues:
           - MLWS (2.277) > MLW (2.158)
           - MHWS (2.787) < MHW (2.866)

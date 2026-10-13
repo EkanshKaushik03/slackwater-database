@@ -9,7 +9,9 @@ computed:
       position: [-12.4718, 130.8459]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/darwin-168-aus-uhslc_fd
         score: 83
         factors:
           epoch: 1

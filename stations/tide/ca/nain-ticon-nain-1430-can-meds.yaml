@@ -10,7 +10,9 @@ computed:
       position: [56.55, -61.68]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/nain-833-can-uhslc_fd
         score: 69
         factors:
           epoch: 1

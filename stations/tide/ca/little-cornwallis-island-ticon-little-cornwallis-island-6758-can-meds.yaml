@@ -7,7 +7,9 @@ computed:
       position: [75.38, -96.95]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/l_cornwallis_i-705a-can-uhslc_rq
         score: 70
         factors:
           epoch: 0.424

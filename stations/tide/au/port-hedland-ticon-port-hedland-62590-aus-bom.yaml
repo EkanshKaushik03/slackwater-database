@@ -9,7 +9,9 @@ computed:
       position: [-20.3176, 118.5744]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_hedland-169-aus-uhslc_fd
         score: 83
         factors:
           epoch: 1

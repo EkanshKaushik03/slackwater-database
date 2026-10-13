@@ -7,7 +7,9 @@ computed:
       position: [15.9533, -86.5]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cochino_pequeno-269a-hnd-uhslc_rq
         score: 63
         factors:
           epoch: 0.063

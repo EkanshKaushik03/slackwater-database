@@ -7,7 +7,9 @@ computed:
       position: [-31.533, 159.067]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/lord_howe-399b-aus-uhslc_rq
         score: 84
         factors:
           epoch: 1

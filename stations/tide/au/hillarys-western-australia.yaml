@@ -7,7 +7,9 @@ computed:
       position: [-31.8256, 115.7386]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hillarys-132a-aus-uhslc_rq
         score: 83
         factors:
           epoch: 1

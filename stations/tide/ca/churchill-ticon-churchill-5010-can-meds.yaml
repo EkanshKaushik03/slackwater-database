@@ -8,7 +8,9 @@ computed:
       position: [58.77, -94.18]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/churchill-274-can-uhslc_fd
         score: 84
         factors:
           epoch: 1

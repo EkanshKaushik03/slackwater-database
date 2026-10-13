@@ -15,14 +15,14 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 83
+        score: 85
         factors:
           epoch: 1
           recency: 0.75
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0
+          coverage: 0.193
     ticon/duck_pier_nc-260-usa-uhslc_fd:
       position: [36.183, -75.74]
       coastline: unverifiable

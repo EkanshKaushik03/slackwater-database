@@ -10,14 +10,14 @@ computed:
       quality:
         accepted: true
         seasonal_dominant: true
-        score: 83
+        score: 84
         factors:
           epoch: 1
           recency: 0.75
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0
+          coverage: 0.125
         issues:
           - MHHW (0.994) < MHW (0.995)
           - MLW (0.863) < MLLW (0.864)

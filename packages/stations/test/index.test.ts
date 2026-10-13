@@ -334,7 +334,7 @@ describe("gauge deduplication", () => {
     // 110 minutes from the 19-year UHSLC analysis at the gauge.
     expect(quality.find((r) => r.id === "noaa/TWC0379")).toMatchObject({
       accepted: false,
-      redundant: "ticon/manzanillo-395-mex-uhslc_fd",
+      redundant: expect.stringMatching(/^ticon\/manzanillo-395/),
     });
   });
 
@@ -360,6 +360,17 @@ describe("gauge deduplication", () => {
     expect(
       quality.find((r) => r.id === "ticon/nylesund-823-nor-uhslc_fd"),
     ).toMatchObject({ accepted: false, reason: "superseded" });
+  });
+
+  test("publishes the longer UHSLC series of a gauge", () => {
+    // Research quality covers 19 years to April 2011, fast delivery 3.9 years
+    // to the same date.
+    expect(
+      quality.find((r) => r.id === "ticon/acapulco_gro-316-mex-uhslc_fd"),
+    ).toMatchObject({
+      accepted: false,
+      redundant: "ticon/acapulco_gro-316a-mex-uhslc_rq",
+    });
   });
 
   test("points every duplicate at a published record", () => {
@@ -547,8 +558,8 @@ describe("seasonal dominance", () => {
   });
 
   test("labels independently of the rejection verdict", () => {
-    expect(labelled.filter((q) => q.accepted).length).toBe(505);
-    expect(labelled.filter((q) => !q.accepted).length).toBe(494);
+    expect(labelled.filter((q) => q.accepted).length).toBe(503);
+    expect(labelled.filter((q) => !q.accepted).length).toBe(496);
   });
 
   test("is a different question from the contamination gate", () => {

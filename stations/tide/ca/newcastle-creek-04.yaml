@@ -18,7 +18,7 @@ computed:
           source: 0.96
           quality: 1
           amplitude: 1
-          coverage: 0.565
+          coverage: 1
         issues:
           - MLWS (1.476) > MLW (1.457)
           - MHW (1.479) <= MSL (1.482)

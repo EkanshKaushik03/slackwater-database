@@ -9,7 +9,9 @@ computed:
       position: [28.399167, 129.497783]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/naze-359-jpn-uhslc_fd
         score: 67
         factors:
           epoch: 1

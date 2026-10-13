@@ -7,7 +7,9 @@ computed:
       position: [-35.1086, 138.467]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_stanvac-100a-aus-uhslc_rq
         score: 82
         factors:
           epoch: 0.991

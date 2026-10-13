@@ -9,7 +9,9 @@ computed:
       position: [-24.8987, 113.651]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/carnarvon-167-aus-uhslc_fd
         score: 83
         factors:
           epoch: 1

@@ -7,7 +7,9 @@ computed:
       position: [-13.8601, 136.4156]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/groote_eylandt-145a-aus-uhslc_rq
         score: 83
         factors:
           epoch: 1

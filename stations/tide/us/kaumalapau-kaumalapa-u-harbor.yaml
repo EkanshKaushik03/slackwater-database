@@ -10,7 +10,9 @@ computed:
       position: [20.783, -157]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/kaumalapau_hi-548a-usa-uhslc_rq
         score: 72
         factors:
           epoch: 0.413

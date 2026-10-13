@@ -7,7 +7,9 @@ computed:
       position: [19.056667, -104.318333]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/manzanillo-395b-mex-uhslc_rq
         score: 36
         factors:
           epoch: 0.169

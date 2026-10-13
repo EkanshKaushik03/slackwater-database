@@ -10,11 +10,11 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/sligo-sli-irl-cmems
-        score: 50
+        score: 61
         factors:
           epoch: 0.912
           recency: 0.99
           source: 0.081
           quality: 0
           amplitude: 1
-          coverage: 0.021
+          coverage: 0.765

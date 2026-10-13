@@ -9,7 +9,9 @@ computed:
       position: [40.531667, 141.527783]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hachinohe-375a-jpn-uhslc_rq
         score: 82
         factors:
           epoch: 1

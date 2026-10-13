@@ -10,11 +10,11 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/holyhead-hol-gbr-bodc
-        score: 50
+        score: 65
         factors:
           epoch: 1
           recency: 0.99
           source: 0.02
           quality: 0
           amplitude: 1
-          coverage: 0.008
+          coverage: 1

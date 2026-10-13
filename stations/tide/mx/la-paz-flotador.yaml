@@ -7,7 +7,9 @@ computed:
       position: [24.266667, -110.333333]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/la_paz-671a-mex-uhslc_rq
         score: 51
         factors:
           epoch: 0.161

@@ -607,11 +607,22 @@ export function scoreAmplitude(station: Station): {
   return { score: toFixed(Math.max(0, score)), issues };
 }
 
-/** Coverage: nearest-neighbor distance. Computed separately (needs all stations). */
-function scoreCoverage(station: Station, allStations: Station[]): number {
+/** Coverage: distance to the nearest other gauge that passed every check.
+ *  A record of the same TICON gauge is not another gauge, and a rejected
+ *  record adds nothing to the map, so neither counts. */
+function scoreCoverage(station: Station, neighbors: Station[]): number {
+  const gauge = station.id.startsWith("ticon/")
+    ? gaugeKey(station.source.id)
+    : undefined;
   let minDist = Infinity;
-  for (const other of allStations) {
+  for (const other of neighbors) {
     if (other.id === station.id) continue;
+    if (
+      gauge &&
+      other.id.startsWith("ticon/") &&
+      gaugeKey(other.source.id) === gauge
+    )
+      continue;
     const d = distance(
       station.latitude,
       station.longitude,
@@ -768,12 +779,17 @@ function countSubordinates(
 /** Proximity deduplication. Records are taken best first (see `precedence`);
  *  each one still accepted absorbs every later record that duplicates it. A
  *  record that has lost never absorbs another, so the outcome does not depend
- *  on the order the records were loaded in. */
+ *  on the order the records were loaded in.
+ *
+ *  Two records are as close as any of the positions recorded for their
+ *  gauges: the records of one TICON gauge can place it kilometers apart, and
+ *  the one kept is not always the one beside a neighboring record. */
 function deduplicate(
   stationIds: string[],
   stationMap: Map<string, Station>,
   resultsMap: Map<string, QualityResult>,
   subordinateCounts: Map<string, number>,
+  positions: Map<string, Station[]>,
 ): void {
   const ranked = [...stationIds].sort(
     precedence(stationMap, resultsMap, subordinateCounts),
@@ -791,12 +807,13 @@ function deduplicate(
       if (rejected.has(idB)) continue;
       const stationB = stationMap.get(idB)!;
 
-      const dist = distance(
-        stationA.latitude,
-        stationA.longitude,
-        stationB.latitude,
-        stationB.longitude,
-      );
+      let dist = Infinity;
+      for (const a of positions.get(idA) ?? [stationA])
+        for (const b of positions.get(idB) ?? [stationB])
+          dist = Math.min(
+            dist,
+            distance(a.latitude, a.longitude, b.latitude, b.longitude),
+          );
       if (!areDuplicates(stationA, stationB, dist, hasSubs)) continue;
 
       markDuplicate(resultsMap.get(idB)!, idA);
@@ -969,10 +986,11 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
     resultsMap.set(station.id, result);
   }
 
-  // Step 2: Compute coverage (needs all stations)
+  // Step 2: Compute coverage (needs every record's checks)
+  const passed = stations.filter((s) => resultsMap.get(s.id)!.accepted);
   for (const station of stations) {
     const result = resultsMap.get(station.id)!;
-    result.factors.coverage = scoreCoverage(station, stations);
+    result.factors.coverage = scoreCoverage(station, passed);
   }
 
   // Step 3: Compute composite scores
@@ -994,7 +1012,21 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
 
   // 4b: Deduplicate the survivors by proximity and harmonic similarity.
   const survivingIds = acceptedIds.filter((id) => resultsMap.get(id)!.accepted);
-  deduplicate(survivingIds, stationMap, resultsMap, subordinateCounts);
+  const positions = new Map<string, Station[]>();
+  for (const id of acceptedIds) {
+    const result = resultsMap.get(id)!;
+    const kept = result.accepted ? id : result.redundant!;
+    (positions.get(kept) ?? positions.set(kept, []).get(kept)!).push(
+      stationMap.get(id)!,
+    );
+  }
+  deduplicate(
+    survivingIds,
+    stationMap,
+    resultsMap,
+    subordinateCounts,
+    positions,
+  );
   resolveRedundant(resultsMap);
 
   // Codepoint order, not localeCompare: the output must not depend on the

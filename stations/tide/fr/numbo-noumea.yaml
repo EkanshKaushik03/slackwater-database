@@ -7,7 +7,9 @@ computed:
       position: [-22.241966, 166.416218]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/noumea-019-fra-uhslc_fd
         score: 84
         factors:
           epoch: 1

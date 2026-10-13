@@ -17,7 +17,7 @@ computed:
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0.001
+          coverage: 0.004
         issues:
           - MHWS (8.006) < MHW (8.008)
           - Superseded by noaa/1631428, its operator's own record

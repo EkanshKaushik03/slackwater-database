@@ -9,7 +9,9 @@ computed:
       position: [-33.8709, 121.8954]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/esperance-176-aus-uhslc_fd
         score: 83
         factors:
           epoch: 1

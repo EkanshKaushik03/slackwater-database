@@ -7,7 +7,9 @@ computed:
       position: [19.9067, -75.1467]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/guantanamo_bay-251a-cub-uhslc_rq
         score: 64
         factors:
           epoch: 0.087

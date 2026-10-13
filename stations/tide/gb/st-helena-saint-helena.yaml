@@ -7,7 +7,9 @@ computed:
       position: [-15.9205, -5.7178]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/st_helena-292a-shn-uhslc_rq
         score: 72
         factors:
           epoch: 0.727
