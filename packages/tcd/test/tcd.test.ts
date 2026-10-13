@@ -249,6 +249,32 @@ describe("XTide TCD", () => {
     });
   });
 
+  describe("Notes", () => {
+    test("keep wrapped disclaimers together", () => {
+      const about = getXTideAbout(
+        "Mayport Naval Station, FL, United States (8720211)",
+      );
+      expect(about.get("Notes")).toMatch(/^These raw data/);
+      expect(about.has("Comments")).toBe(false);
+    });
+  });
+
+  describe("Non-ASCII names", () => {
+    test("round-trip as UTF-8", () => {
+      const about = getXTideAbout("Bodø, Nordland, Norway");
+      expect(about.get("Name")).toBe("Bodø, Nordland, Norway");
+      expect(about.get("Notes")).toContain("© Kartverket");
+
+      const subordinate = getXTideAbout(
+        "Puerto Limon, Limón Province, Costa Rica",
+      );
+      expect(subordinate.get("Name")).toBe(
+        "Puerto Limon, Limón Province, Costa Rica",
+      );
+      expect(subordinate.get("Type")).toBe("Subordinate station, tide");
+    });
+  });
+
   describe("Current stations", () => {
     test("reference current carries directions and knots", () => {
       const station = stations.find((s) => s.id === CURRENT_REFERENCE.id)!;

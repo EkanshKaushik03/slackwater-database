@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "./build",
+    "test": "vitest run test/names.test.ts",
     "pretest:docker": "npm run build",
     "test:docker": "vitest"
   },
