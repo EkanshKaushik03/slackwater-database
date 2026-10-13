@@ -1,16 +1,16 @@
 sources:
-  - ticon/hastings_pier-hgp-gbr-cco
+  - ticon/brighton-btn-gbr-cco
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/hastings_pier-hgp-gbr-cco:
-      position: [50.85088, 0.57283]
+    ticon/brighton-btn-gbr-cco:
+      position: [50.8118, -0.1013]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 55
+        score: 53
         factors:
-          epoch: 0.448
+          epoch: 0.364
           recency: 0.99
           source: 0.061
           quality: 1

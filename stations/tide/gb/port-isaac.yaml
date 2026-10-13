@@ -1,16 +1,16 @@
 sources:
-  - ticon/severn_bridge-ssc-gbr-cco
+  - ticon/port_isaac-pti-gbr-cco
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/severn_bridge-ssc-gbr-cco:
-      position: [51.57012, -2.70001]
+    ticon/port_isaac-pti-gbr-cco:
+      position: [50.59419, -4.83437]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 61
+        score: 62
         factors:
-          epoch: 0.721
+          epoch: 0.798
           recency: 0.99
           source: 0.061
           quality: 1

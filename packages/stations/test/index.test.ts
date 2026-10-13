@@ -681,3 +681,22 @@ describe("seasonal dominance", () => {
     expect(seattle?.quality?.seasonal_dominant).toBeUndefined();
   });
 });
+
+describe("station slugs", () => {
+  // These Channel Coastal Observatory slugs were assigned while TICON's
+  // meta.csv rows sat on their neighbors' records: brighton held Hastings Pier.
+  test.each([
+    ["brighton", "ticon/brighton-btn-gbr-cco"],
+    ["hastings-pier", "ticon/hastings_pier-hgp-gbr-cco"],
+    ["teignmouth-pier", "ticon/teignmouth_pier-tnp-gbr-cco"],
+    ["port-isaac", "ticon/port_isaac-pti-gbr-cco"],
+    ["severn-bridge", "ticon/severn_bridge-ssc-gbr-cco"],
+    ["scarborough", "ticon/scarborough-sca-gbr-cco"],
+    ["west-bay-harbour", "ticon/west_bay_harbour-wbh-gbr-cco"],
+  ])("gb/%s publishes the gauge it names", (slug, id) => {
+    const file = readStationFiles().find(
+      (f) => f.kind === "tide" && f.country === "GB" && f.slug === slug,
+    );
+    expect(file?.sources).toContain(id);
+  });
+});
