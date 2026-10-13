@@ -267,8 +267,9 @@ Records are ranked by these rules, in order:
 2. A reference station beats a subordinate, since its constants were analyzed at the gauge.
 3. A reference station that has accepted subordinate stations beats one that has none, so the subordinates keep the reference they predict from.
 4. The higher score wins.
-5. The record with the more precise position wins, as a surveyed fix is more likely than a rounded one to locate the gauge.
-6. Otherwise, the record with the lower id wins.
+5. At an equal score, any other record beats a CMEMS record. CMEMS relays European agencies' gauges, and GESLA redistributes its data for non-commercial use only, so between otherwise equal records the other one publishes. A CMEMS record that scores higher, because its record is longer or carries no quality-control flag, still wins: Arklow's 19-year CMEMS record beats a 13-month Marine Institute one.
+6. The record with the more precise position wins, as a surveyed fix is more likely than a rounded one to locate the gauge.
+7. Otherwise, the record with the lower id wins.
 
 Duplicates are resolved best record first. The best remaining record absorbs every record that duplicates it, and a record that has lost absorbs nothing, so the outcome does not depend on the order in which records are loaded. Each duplicate's `redundant` names the record published for its gauge. The order of these rules is an engineering choice of this project.
 

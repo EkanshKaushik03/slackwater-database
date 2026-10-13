@@ -1,8 +1,10 @@
 sources:
   - kartverket/VIK
   - ticon/viker-vik-nor-nhs
+  - ticon/vikertg-vik-nor-cmems
 redirect_from:
   - /tides/no/viker-kartverket-vik/
+  - /tides/no/viker-ostfold/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -36,3 +38,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/VIK, its operator's own record
+    ticon/vikertg-vik-nor-cmems:
+      position: [59.036045, 10.949769]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/VIK
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

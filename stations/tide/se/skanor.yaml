@@ -1,5 +1,8 @@
 sources:
   - ticon/skanor-30488-swe-smhi
+  - ticon/skanor-ska-swe-cmems
+redirect_from:
+  - /tides/se/skanor-skane/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +19,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+    ticon/skanor-ska-swe-cmems:
+      position: [55.416698, 12.8294]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/skanor-30488-swe-smhi
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.236) < MHW (0.237)

@@ -1,5 +1,8 @@
 sources:
   - ticon/marviken-2076-swe-smhi
+  - ticon/marviken-mar-swe-cmems
+redirect_from:
+  - /tides/se/marviken-soedermanland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,6 +17,25 @@ computed:
           epoch: 1
           recency: 0.93
           source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.109) > MLW (0.103)
+          - "Seasonal curve peak (0.134m) exceeds the principal tide M2+S2+K1+O1 (0.025m): the yearly swing exceeds the daily one"
+    ticon/marviken-mar-swe-cmems:
+      position: [58.5536, 16.8372]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/marviken-2076-swe-smhi
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.93
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

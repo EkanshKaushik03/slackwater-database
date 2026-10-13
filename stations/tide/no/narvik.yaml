@@ -1,8 +1,10 @@
 sources:
   - kartverket/NVK
   - ticon/narvik-nvk-nor-nhs
+  - ticon/narviktg-nar-nor-cmems
 redirect_from:
   - /tides/no/narvik-kartverket-nvk/
+  - /tides/no/narvik-nordland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -36,3 +38,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/NVK, its operator's own record
+    ticon/narviktg-nar-nor-cmems:
+      position: [68.428284, 17.425758]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/NVK
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

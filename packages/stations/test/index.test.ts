@@ -497,17 +497,17 @@ describe("coordinate-precision tiebreak", () => {
   // more precise coordinates, so the kept station carries the better location.
   test("keeps the more precisely located record of a tied duplicate pair", () => {
     const byId = new Map(quality.map((r) => [r.id, r]));
-    const kept = byId.get("ticon/lymingtontg-lym-gbr-cmems");
-    const dropped = byId.get("ticon/lymington-lym-gbr-cco");
+    const kept = byId.get("ticon/burnie-60910-aus-bom");
+    const dropped = byId.get("ticon/burnie-344a-aus-uhslc_rq");
     expect(kept?.accepted).toBe(true);
     expect(dropped?.accepted).toBe(false);
-    expect(dropped?.redundant).toBe("ticon/lymingtontg-lym-gbr-cmems");
+    expect(dropped?.redundant).toBe("ticon/burnie-60910-aus-bom");
 
     const keptStation = tideStations.find(
-      (s) => s.id === "ticon/lymingtontg-lym-gbr-cmems",
+      (s) => s.id === "ticon/burnie-60910-aus-bom",
     )!;
     const droppedStation = allTideStations.find(
-      (s) => s.id === "ticon/lymington-lym-gbr-cco",
+      (s) => s.id === "ticon/burnie-344a-aus-uhslc_rq",
     )!;
     expect(
       coordinatePrecision(keptStation.latitude, keptStation.longitude),
@@ -698,5 +698,33 @@ describe("station slugs", () => {
       (f) => f.kind === "tide" && f.country === "GB" && f.slug === slug,
     );
     expect(file?.sources).toContain(id);
+  });
+});
+
+describe("CMEMS precedence", () => {
+  test.each([
+    ["ticon/otranto-otr-ita-ispra", "ticon/rmn_otranto-rmn-ita-cmems"],
+    ["ticon/arun_platform-arn-gbr-cco", "ticon/arunplatformtg-aru-gbr-cmems"],
+    ["ticon/lymington-lym-gbr-cco", "ticon/lymingtontg-lym-gbr-cmems"],
+  ])("%s beats its CMEMS copy at an equal score", (agency, copy) => {
+    const byId = new Map(quality.map((r) => [r.id, r]));
+    expect(byId.get(agency)?.accepted).toBe(true);
+    expect(byId.get(copy)).toMatchObject({
+      accepted: false,
+      redundant: agency,
+    });
+    expect(byId.get(agency)?.score).toBe(byId.get(copy)?.score);
+  });
+
+  test("a better-scored CMEMS record still wins", () => {
+    // 19 years against 13 months of the same gauge.
+    const byId = new Map(quality.map((r) => [r.id, r]));
+    expect(byId.get("ticon/arklowharbour-ark-irl-cmems")?.accepted).toBe(true);
+    expect(
+      byId.get("ticon/arklow_harbour_opw_station-ark-irl-mi_c"),
+    ).toMatchObject({
+      accepted: false,
+      redundant: "ticon/arklowharbour-ark-irl-cmems",
+    });
   });
 });

@@ -1,5 +1,8 @@
 sources:
   - ticon/anzio-anz-ita-ispra
+  - ticon/rmn_anzio-rmn-ita-cmems
+redirect_from:
+  - /tides/it/anzio-lazio/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.99
           source: 0.747
           quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/rmn_anzio-rmn-ita-cmems:
+      position: [41.446899, 12.6348]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/anzio-anz-ita-ispra
+        score: 61
+        factors:
+          epoch: 0.809
+          recency: 0.99
+          source: 0.02
+          quality: 1
           amplitude: 1
           coverage: 0

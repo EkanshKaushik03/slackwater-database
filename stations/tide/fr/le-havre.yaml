@@ -1,5 +1,8 @@
 sources:
   - ticon/le_havre-4-fra-refmar
+  - ticon/lehavretg_60minute-leh-fra-cmems
+redirect_from:
+  - /tides/fr/le-havre-normandy/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -18,3 +21,20 @@ computed:
           coverage: 0.001
         issues:
           - MLW (2.116) < MLLW (2.123)
+    ticon/lehavretg_60minute-leh-fra-cmems:
+      position: [49.481602, 0.1056]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/le_havre-4-fra-refmar
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLW (2.115) < MLLW (2.122)

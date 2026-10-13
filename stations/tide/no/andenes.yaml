@@ -3,10 +3,12 @@ sources:
   - ticon/andenes-800-nor-uhslc_fd
   - ticon/andenes-800a-nor-uhslc_rq
   - ticon/andenes-anx-nor-nhs
+  - ticon/andenestg-and-nor-cmems
 redirect_from:
   - /tides/no/andenes-kartverket-anx/
   - /tides/no/andenes-nordland/
   - /tides/no/andenes-ticon-andenes-800a-nor-uhslc-rq/
+  - /tides/no/andenes-ticon-andenestg-and-nor-cmems/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -74,3 +76,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/ANX, its operator's own record
+    ticon/andenestg-and-nor-cmems:
+      position: [69.326065, 16.1348]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/ANX
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

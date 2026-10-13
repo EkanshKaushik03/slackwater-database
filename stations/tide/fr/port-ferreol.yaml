@@ -1,5 +1,8 @@
 sources:
   - ticon/port_ferreol-847-fra-refmar
+  - ticon/portferreoltg_60minute-por-fra-cmems
+redirect_from:
+  - /tides/fr/port-ferreol-provence-alpes-cote-d-azur/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.699
           recency: 0.99
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/portferreoltg_60minute-por-fra-cmems:
+      position: [43.35907, 6.71761]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_ferreol-847-fra-refmar
+        score: 59
+        factors:
+          epoch: 0.699
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

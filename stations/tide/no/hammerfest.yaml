@@ -1,7 +1,9 @@
 sources:
   - kartverket/HFT
   - ticon/hammerfest-hft-nor-nhs
+  - ticon/hammerfesttg-ham-nor-cmems
 redirect_from:
+  - /tides/no/hammerfest-finnmark/
   - /tides/no/hammerfest-kartverket-hft/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -36,3 +38,18 @@ computed:
           coverage: 0.003
         issues:
           - Superseded by kartverket/HFT, its operator's own record
+    ticon/hammerfesttg-ham-nor-cmems:
+      position: [70.664749, 23.67869]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/HFT
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

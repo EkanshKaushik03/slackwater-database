@@ -1,5 +1,8 @@
 sources:
   - ticon/scarborough-sca-gbr-cco
+  - ticon/scarboroughtg-sca-gbr-cmems
+redirect_from:
+  - /tides/gb/scarborough-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.99
           source: 0.061
           quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/scarboroughtg-sca-gbr-cmems:
+      position: [54.282497, -0.390286]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/scarborough-sca-gbr-cco
+        score: 43
+        factors:
+          epoch: 0.647
+          recency: 0.99
+          source: 0.02
+          quality: 0
           amplitude: 1
           coverage: 0

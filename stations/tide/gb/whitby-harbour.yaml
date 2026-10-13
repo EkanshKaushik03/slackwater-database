@@ -1,5 +1,8 @@
 sources:
   - ticon/whitby_harbour-wtb-gbr-cco
+  - ticon/whitbyharbourtg-whi-gbr-cmems
+redirect_from:
+  - /tides/gb/whitby-harbour-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -15,6 +18,21 @@ computed:
           epoch: 0.611
           recency: 0.99
           source: 0.061
+          quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/whitbyharbourtg-whi-gbr-cmems:
+      position: [54.488632, -0.614636]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/whitby-whi-gbr-bodc
+        score: 43
+        factors:
+          epoch: 0.615
+          recency: 0.99
+          source: 0.02
           quality: 0
           amplitude: 1
           coverage: 0

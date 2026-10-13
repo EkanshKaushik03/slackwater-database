@@ -1,5 +1,8 @@
 sources:
   - ticon/union_hall_harbor-uni-irl-mi_c
+  - ticon/unionhallharbor-uni-irl-cmems
+redirect_from:
+  - /tides/ie/union-hall-harbor-munster/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,5 +19,20 @@ computed:
           recency: 0.99
           source: 0.081
           quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/unionhallharbor-uni-irl-cmems:
+      position: [51.558964, -9.13349]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/union_hall_harbor_2-uni-irl-mi_c
+        score: 50
+        factors:
+          epoch: 0.248
+          recency: 0.99
+          source: 0.02
+          quality: 1
           amplitude: 1
           coverage: 0

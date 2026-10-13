@@ -1,5 +1,8 @@
 sources:
   - ticon/calais-55-fra-refmar
+  - ticon/calaistg_60minute-cal-fra-cmems
+redirect_from:
+  - /tides/fr/calais-hauts-de-france/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 1
           recency: 0.99
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/calaistg_60minute-cal-fra-cmems:
+      position: [50.969501, 1.8677]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/calais-55-fra-refmar
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

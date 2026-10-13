@@ -1,5 +1,8 @@
 sources:
   - ticon/stenungsund-2110-swe-smhi
+  - ticon/stenungsund-ste-swe-cmems
+redirect_from:
+  - /tides/se/stenungsund-vaestra-goetaland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -18,3 +21,20 @@ computed:
           coverage: 0
         issues:
           - MHWS (0.161) < MHW (0.166)
+    ticon/stenungsund-ste-swe-cmems:
+      position: [58.0933, 11.8325]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/stenungsund-2110-swe-smhi
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.161) < MHW (0.168)

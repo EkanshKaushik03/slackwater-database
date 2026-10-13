@@ -1,5 +1,8 @@
 sources:
   - ticon/kilrush_lough-kil-irl-mi_c
+  - ticon/kilrushlough-kil-irl-cmems
+redirect_from:
+  - /tides/ie/kilrush-lough-munster/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +19,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+    ticon/kilrushlough-kil-irl-cmems:
+      position: [52.631908, -9.50208]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/kilrush_lough-kil-irl-mi_c
+        score: 36
+        factors:
+          epoch: 0.291
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLW (-2.127) < MLLW (-1.915)

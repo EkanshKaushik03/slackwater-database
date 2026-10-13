@@ -1,5 +1,8 @@
 sources:
   - ticon/west_bay_harbour-wbh-gbr-cco
+  - ticon/westbayharbourtg-wes-gbr-cmems
+redirect_from:
+  - /tides/gb/west-bay-harbour-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -18,3 +21,18 @@ computed:
           coverage: 0
         issues:
           - MHHW (3.799) < MHW (3.804)
+    ticon/westbayharbourtg-wes-gbr-cmems:
+      position: [50.70887, -2.76411]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/west_bay_harbour-wbh-gbr-cco
+        score: 47
+        factors:
+          epoch: 0.08
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

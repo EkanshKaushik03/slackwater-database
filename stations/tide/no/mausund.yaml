@@ -1,8 +1,10 @@
 sources:
   - kartverket/MSU
   - ticon/mausund-msu-nor-nhs
+  - ticon/mausundtg-mau-nor-cmems
 redirect_from:
   - /tides/no/mausund-kartverket-msu/
+  - /tides/no/mausund-trondelag/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -36,3 +38,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/MSU, its operator's own record
+    ticon/mausundtg-mau-nor-cmems:
+      position: [63.869331, 8.665231]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/MSU
+        score: 61
+        factors:
+          epoch: 0.789
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,5 +1,8 @@
 sources:
   - ticon/arun_platform-arn-gbr-cco
+  - ticon/arunplatformtg-aru-gbr-cmems
+redirect_from:
+  - /tides/gb/arun-platform-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -7,14 +10,27 @@ computed:
       position: [50.76983, -0.49215]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/arunplatformtg-aru-gbr-cmems
+        accepted: true
         score: 62
         factors:
           epoch: 0.813
           recency: 0.97
           source: 0.061
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/arunplatformtg-aru-gbr-cmems:
+      position: [50.769825, -0.492154]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/arun_platform-arn-gbr-cco
+        score: 62
+        factors:
+          epoch: 0.834
+          recency: 0.98
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

@@ -1,5 +1,8 @@
 sources:
   - ticon/nantes_salorges-6143-fra-refmar
+  - ticon/nantessalorgestg_60minute-nan-fra-cmems
+redirect_from:
+  - /tides/fr/nantes-salorges-pays-de-la-loire/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.541
           recency: 0.95
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/nantessalorgestg_60minute-nan-fra-cmems:
+      position: [47.20422, -1.57425]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/nantes_salorges-6143-fra-refmar
+        score: 56
+        factors:
+          epoch: 0.541
+          recency: 0.95
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

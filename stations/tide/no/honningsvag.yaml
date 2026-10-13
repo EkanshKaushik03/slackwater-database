@@ -1,9 +1,11 @@
 sources:
   - kartverket/HVG
+  - ticon/honningsvaagtg-hon-nor-cmems
   - ticon/honningsvag-801-nor-uhslc_fd
   - ticon/honningsvag-801a-nor-uhslc_rq
   - ticon/honningsvag-hvg-nor-nhs
 redirect_from:
+  - /tides/no/honningsvaag/
   - /tides/no/honningsvag-finnmark/
   - /tides/no/honningsvag-kartverket-hvg/
   - /tides/no/honningsvag-ticon-honningsvag-hvg-nor-nhs/
@@ -20,6 +22,21 @@ computed:
           epoch: 0.806
           recency: 0.94
           source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/honningsvaagtg-hon-nor-cmems:
+      position: [70.980316, 25.972696]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/HVG
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

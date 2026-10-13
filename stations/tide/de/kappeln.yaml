@@ -1,5 +1,8 @@
 sources:
   - ticon/kappeln-9610035-deu-wsv
+  - ticon/kappelntg-kap-deu-cmems
+redirect_from:
+  - /tides/de/kappeln-schleswig-holstein/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,3 +22,21 @@ computed:
         issues:
           - MLWS (5.033) > MLW (5.013)
           - MHWS (5.103) < MHW (5.124)
+    ticon/kappelntg-kap-deu-cmems:
+      position: [54.664398, 9.9381]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/kappeln-9610035-deu-wsv
+        score: 50
+        factors:
+          epoch: 0.244
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.061) > MLW (0.031)
+          - MHWS (0.133) < MHW (0.16)

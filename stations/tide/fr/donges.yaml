@@ -1,5 +1,8 @@
 sources:
   - ticon/donges-396-fra-refmar
+  - ticon/dongestg_60minute-don-fra-cmems
+redirect_from:
+  - /tides/fr/donges-pays-de-la-loire/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.85
           source: 0.949
           quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/dongestg_60minute-don-fra-cmems:
+      position: [47.305672, -2.0883]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/donges-396-fra-refmar
+        score: 49
+        factors:
+          epoch: 1
+          recency: 0.85
+          source: 0.02
+          quality: 0
           amplitude: 1
           coverage: 0

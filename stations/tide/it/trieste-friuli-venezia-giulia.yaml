@@ -1,5 +1,8 @@
 sources:
   - ticon/rmn_trieste-rmn-ita-cmems
+  - ticon/trieste-tri-ita-ispra
+redirect_from:
+  - /tides/it/trieste-ticon-trieste-tri-ita-ispra/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -15,6 +18,21 @@ computed:
           epoch: 1
           recency: 0.99
           source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/trieste-tri-ita-ispra:
+      position: [45.649392, 13.757939]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/trieste-829-ita-uhslc_fd
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.747
           quality: 0
           amplitude: 1
           coverage: 0

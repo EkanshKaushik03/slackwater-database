@@ -1,5 +1,8 @@
 sources:
   - ticon/hienghene-429-fra-refmar
+  - ticon/hienghenetg_60minute-hie-fra-cmems
+redirect_from:
+  - /tides/fr/hienghene-north-province/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.755
           recency: 0.99
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/hienghenetg_60minute-hie-fra-cmems:
+      position: [-20.69199, 164.94312]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hienghene-429-fra-refmar
+        score: 60
+        factors:
+          epoch: 0.755
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

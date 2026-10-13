@@ -1,5 +1,8 @@
 sources:
   - ticon/porto_empedocle-por-ita-ispra
+  - ticon/rmn_portoempedocle-rmn-ita-cmems
+redirect_from:
+  - /tides/it/porto-empedocle-sicily/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 1
           recency: 0.99
           source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/rmn_portoempedocle-rmn-ita-cmems:
+      position: [37.285801, 13.5268]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/porto_empedocle-por-ita-ispra
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 0
           amplitude: 1
           coverage: 0

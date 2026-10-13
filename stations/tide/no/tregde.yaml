@@ -3,10 +3,12 @@ sources:
   - ticon/tregde-804-nor-uhslc_fd
   - ticon/tregde-804a-nor-uhslc_rq
   - ticon/tregde-trg-nor-nhs
+  - ticon/tregdetg-tre-nor-cmems
 redirect_from:
   - /tides/no/tregde-agder/
   - /tides/no/tregde-kartverket-trg/
   - /tides/no/tregde-ticon-tregde-804a-nor-uhslc-rq/
+  - /tides/no/tregde-ticon-tregdetg-tre-nor-cmems/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -74,3 +76,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/TRG, its operator's own record
+    ticon/tregdetg-tre-nor-cmems:
+      position: [58.006378, 7.554759]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/TRG
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,5 +1,8 @@
 sources:
   - ticon/port_isaac-pti-gbr-cco
+  - ticon/portisaactg-por-gbr-cmems
+redirect_from:
+  - /tides/gb/port-isaac-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.798
           recency: 0.99
           source: 0.061
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/portisaactg-por-gbr-cmems:
+      position: [50.594177, -4.834405]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_isaac-pti-gbr-cco
+        score: 61
+        factors:
+          epoch: 0.802
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

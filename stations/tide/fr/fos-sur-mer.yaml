@@ -3,6 +3,9 @@
 name: Fos-sur-Mer
 sources:
   - ticon/fos_sur_mer-719-fra-refmar
+  - ticon/fossurmertg_60minute-fos-fra-cmems
+redirect_from:
+  - /tides/fr/fos-sur-mer-provence-alpes-cote-d-azur/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,6 +19,21 @@ computed:
           epoch: 0.949
           recency: 0.97
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/fossurmertg_60minute-fos-fra-cmems:
+      position: [43.404942, 4.89294]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/fos_sur_mer-719-fra-refmar
+        score: 64
+        factors:
+          epoch: 0.922
+          recency: 0.97
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

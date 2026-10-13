@@ -1,5 +1,8 @@
 sources:
   - ticon/ile_royale_anse_legoff-127-fra-refmar
+  - ticon/ileroyaleanselegofftg_60minute-ile-fra-cmems
+redirect_from:
+  - /tides/fr/ile-royale-anse-legoff-guyane/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -15,6 +18,21 @@ computed:
           epoch: 0.997
           recency: 0.81
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/ileroyaleanselegofftg_60minute-ile-fra-cmems:
+      position: [5.28833, -52.586658]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ile_royale-749-fra-refmar
+        score: 63
+        factors:
+          epoch: 0.997
+          recency: 0.81
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

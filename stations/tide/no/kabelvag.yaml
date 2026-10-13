@@ -1,7 +1,9 @@
 sources:
   - kartverket/KAB
+  - ticon/kabelvaagtg-kab-nor-cmems
   - ticon/kabelvag-kab-nor-nhs
 redirect_from:
+  - /tides/no/kabelvaag/
   - /tides/no/kabelvag-nordland/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -16,6 +18,21 @@ computed:
           epoch: 0.806
           recency: 0.94
           source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/kabelvaagtg-kab-nor-cmems:
+      position: [68.212639, 14.482149]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/KAB
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

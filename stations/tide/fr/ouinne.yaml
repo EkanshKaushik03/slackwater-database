@@ -1,5 +1,8 @@
 sources:
   - ticon/ouinne-334-fra-refmar
+  - ticon/ouinnetg_60minute-oui-fra-cmems
+redirect_from:
+  - /tides/fr/ouinne-south-province/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.728
           recency: 0.99
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/ouinnetg_60minute-oui-fra-cmems:
+      position: [-21.98288, 166.68327]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ouinne-334-fra-refmar
+        score: 60
+        factors:
+          epoch: 0.728
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

@@ -1,5 +1,10 @@
+# One gauge: the CMEMS record shares the Marine Institute's gauge code (ros)
+# but sits 22 km west at -6.6648; the Marine Institute position is the harbor.
 sources:
   - ticon/rosslare-ros-irl-mi_c
+  - ticon/rosslare-ros-irl-cmems
+redirect_from:
+  - /tides/ie/rosslare-leinster/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -7,9 +12,7 @@ computed:
       position: [52.2546, -6.334861]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/rosslare-ros-irl-cmems
+        accepted: true
         score: 42
         factors:
           epoch: 0.356
@@ -18,3 +21,20 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0.252
+    ticon/rosslare-ros-irl-cmems:
+      position: [52.254601, -6.6648]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/rosslare-ros-irl-mi_c
+        score: 42
+        factors:
+          epoch: 0.319
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.337
+        issues:
+          - MLW (-0.746) < MLLW (-0.73)

@@ -1,5 +1,8 @@
 sources:
   - ticon/herbaudiere-198-fra-refmar
+  - ticon/herbaudieretg_60minute-her-fra-cmems
+redirect_from:
+  - /tides/fr/herbaudiere-pays-de-la-loire/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.579
           recency: 0.99
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+    ticon/herbaudieretg_60minute-her-fra-cmems:
+      position: [47.02494, -2.29831]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/herbaudiere-198-fra-refmar
+        score: 57
+        factors:
+          epoch: 0.579
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0.001

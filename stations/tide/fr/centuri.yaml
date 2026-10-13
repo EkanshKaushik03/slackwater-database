@@ -1,5 +1,8 @@
 sources:
   - ticon/centuri-807-fra-refmar
+  - ticon/centuritg_60minute-cen-fra-cmems
+redirect_from:
+  - /tides/fr/centuri-corsica/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.776
           recency: 0.99
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/centuritg_60minute-cen-fra-cmems:
+      position: [42.965778, 9.34983]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/centuri-807-fra-refmar
+        score: 61
+        factors:
+          epoch: 0.776
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

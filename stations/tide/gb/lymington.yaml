@@ -1,5 +1,8 @@
 sources:
   - ticon/lymington-lym-gbr-cco
+  - ticon/lymingtontg-lym-gbr-cmems
+redirect_from:
+  - /tides/gb/lymington-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -7,14 +10,27 @@ computed:
       position: [50.7403, -1.50714]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/lymingtontg-lym-gbr-cmems
+        accepted: true
         score: 65
         factors:
           epoch: 0.958
           recency: 0.99
           source: 0.061
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/lymingtontg-lym-gbr-cmems:
+      position: [50.740292, -1.507128]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/lymington-lym-gbr-cco
+        score: 65
+        factors:
+          epoch: 0.962
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

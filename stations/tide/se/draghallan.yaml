@@ -1,5 +1,8 @@
 sources:
   - ticon/draghallan-2062-swe-smhi
+  - ticon/draghallan-dra-swe-cmems
+redirect_from:
+  - /tides/se/draghallan-vaesternorrland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,6 +17,26 @@ computed:
           epoch: 1
           recency: 0.43
           source: 0.919
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.373) > MLW (0.37)
+          - MHWS (0.389) < MHW (0.391)
+          - "Seasonal curve peak (0.150m) exceeds the principal tide M2+S2+K1+O1 (0.020m): the yearly swing exceeds the daily one"
+    ticon/draghallan-dra-swe-cmems:
+      position: [62.333302, 17.4667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/draghallan-2062-swe-smhi
+        seasonal_dominant: true
+        score: 60
+        factors:
+          epoch: 1
+          recency: 0.43
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

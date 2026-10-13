@@ -939,9 +939,13 @@ export function tideConflict(a: Station, b: Station): string | null {
  *  3. A reference with accepted subordinates beats one without, so they keep
  *     the reference they predict from.
  *  4. The higher score wins.
- *  5. The more precisely located record wins, keeping the surveyed fix over a
+ *  5. At an equal score, any other record beats a CMEMS one. CMEMS relays
+ *     European agencies' gauges, and its data is for non-commercial use only;
+ *     a better-scored CMEMS record, longer or without a quality flag, still
+ *     wins.
+ *  6. The more precisely located record wins, keeping the surveyed fix over a
  *     coarsely rounded one.
- *  6. Otherwise the lower id, so the result is the same on every machine. */
+ *  7. Otherwise the lower id, so the result is the same on every machine. */
 function precedence(
   stationMap: Map<string, Station>,
   resultsMap: Map<string, QualityResult>,
@@ -958,6 +962,9 @@ function precedence(
     if (subsA !== subsB) return subsA ? -1 : 1;
     const score = resultsMap.get(idB)!.score - resultsMap.get(idA)!.score;
     if (score !== 0) return score;
+    const relayA = getSourceSuffix(a.source.id) === "cmems";
+    const relayB = getSourceSuffix(b.source.id) === "cmems";
+    if (relayA !== relayB) return relayA ? 1 : -1;
     const precision =
       coordinatePrecision(b.latitude, b.longitude) -
       coordinatePrecision(a.latitude, a.longitude);

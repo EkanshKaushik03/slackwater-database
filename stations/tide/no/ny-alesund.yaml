@@ -1,10 +1,12 @@
 sources:
   - kartverket/NYA
   - ticon/ny_alesund-nya-nor-nhs
+  - ticon/ny_alesundtg-ny_-nor-cmems
   - ticon/nylesund-823-nor-uhslc_fd
   - ticon/nylesund-823a-nor-uhslc_rq
 redirect_from:
   - /tides/no/ny-alesund-kartverket-nya/
+  - /tides/no/ny-alesund-ticon-ny-alesundtg-ny-nor-cmems/
   - /tides/no/nylesund-ticon-nylesund-823-nor-uhslc-fd/
   - /tides/no/nylesund/
 # Written by `npm run stations`. Do not edit.
@@ -40,6 +42,21 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/NYA, its operator's own record
+    ticon/ny_alesundtg-ny_-nor-cmems:
+      position: [78.928543, 11.938015]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/NYA
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/nylesund-823-nor-uhslc_fd:
       position: [78.933, 11.933]
       coastline: unverifiable

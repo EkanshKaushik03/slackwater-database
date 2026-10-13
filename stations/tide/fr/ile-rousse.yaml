@@ -1,5 +1,8 @@
 sources:
   - ticon/ile_rousse-802-fra-refmar
+  - ticon/ileroussetg_60minute-ile-fra-cmems
+redirect_from:
+  - /tides/fr/ile-rousse-corsica/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.642
           recency: 0.99
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/ileroussetg_60minute-ile-fra-cmems:
+      position: [42.639599, 8.93524]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ile_rousse-802-fra-refmar
+        score: 58
+        factors:
+          epoch: 0.629
+          recency: 0.98
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0
