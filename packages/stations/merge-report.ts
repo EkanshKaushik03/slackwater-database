@@ -1,13 +1,14 @@
 /**
  * Print, as Markdown, every merge planMerges would make against the committed
- * catalogue: mechanical merges as one line each, the rest with their evidence,
- * then the groups it refused. With --apply, fold each group into its surviving
- * station file; run `npm run stations` afterwards.
+ * catalogue: confident merges as one line each, the groups that need a person
+ * with their evidence, then the links it refused. With --apply, fold each
+ * confident group, and each review group whose surviving slug follows, into
+ * its surviving station file; run `npm run stations` afterwards.
  *
  * Usage: npm run report:merges -w packages/stations > merges.md
- *        npm run merge -w packages/stations
+ *        npm run merge -w packages/stations [-- slug...]
  */
-import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { loadProductionCatalogue } from "./load-catalogue.ts";
 import { planMerges, type MergeGroup } from "./merges.ts";
@@ -26,21 +27,28 @@ const quality = new Map(
   ),
 );
 const plan = planMerges(catalogue.stations, catalogue.routes, quality);
+const confident = planMerges(catalogue.stations, catalogue.routes, quality, {
+  confident: true,
+});
 
-const mechanical = plan.groups.filter((group) => group.mechanical);
-const review = plan.groups.filter((group) => !group.mechanical);
-const redirects = plan.groups.reduce((n, g) => n + g.slugs.length - 1, 0);
+const key = (group: MergeGroup) => [...group.slugs].sort().join(" ");
+const settled = new Set(confident.groups.map(key));
+const review = plan.groups.filter((group) => !settled.has(key(group)));
+const redirects = confident.groups.reduce(
+  (n, g) => n + g.slugs.filter((slug) => slug !== g.survivor).length,
+  0,
+);
 
 const line = (group: MergeGroup) =>
   `- \`${group.survivor}\` ← ${group.slugs
-    .slice(1)
+    .filter((slug) => slug !== group.survivor)
     .map((slug) => `\`${slug}\``)
     .join(", ")}`;
 
 const out = [
   "# Station merges",
   "",
-  `${plan.groups.length} stations absorb ${redirects} others, whose URLs redirect. ${mechanical.length} merges are mechanical and ${review.length} need review. ${plan.conflicts.length} groups were left unmerged and ${plan.refused.length} declared originators were refused.`,
+  `${confident.groups.length} confident merges absorb ${redirects} stations, whose URLs redirect. ${review.length} groups need review and ${plan.refused.length} links were refused.`,
   "",
   "## Need review",
   "",
@@ -55,31 +63,29 @@ const out = [
     ),
     "",
   ]),
-  "## Left unmerged",
-  "",
-  "Each would join more than one authoritative record.",
-  "",
-  ...plan.conflicts.map(
-    ({ slugs, authoritative }) =>
-      `- ${slugs.map((slug) => `\`${slug}\``).join(", ")}: ${authoritative.join(", ")}`,
-  ),
-  "",
-  "## Refused originators",
+  "## Refused links",
   "",
   ...plan.refused.map(
     ({ id, target, reason }) => `- ${id} → ${target}: ${reason}`,
   ),
   "",
-  "## Mechanical",
+  "## Confident",
   "",
-  "Same name, within 50 m of the primary record.",
+  "Declared provenance, or a gauge code shared within 2 km. `--apply` makes these.",
   "",
-  ...mechanical.map(line),
+  ...confident.groups.map(line),
   "",
 ];
 console.log(out.join("\n"));
 
-if (process.argv.includes("--apply")) {
+const apply = process.argv.indexOf("--apply");
+if (apply >= 0) {
+  const chosen = [...new Set(process.argv.slice(apply + 1))];
+  const picked = chosen.map((slug) => {
+    const group = review.find(({ survivor }) => survivor === slug);
+    if (!group) throw new Error(`${slug}: no review group survives as it`);
+    return group;
+  });
   const bySlug = new Map(
     files
       .filter(({ kind }) => kind === "tide")
@@ -92,7 +98,28 @@ if (process.argv.includes("--apply")) {
   // station files as they were.
   const conflicts: string[] = [];
   const merges = [];
-  for (const group of plan.groups) {
+  // A review group holds any confident group within it, so it replaces it.
+  const within = (group: MergeGroup) =>
+    picked.some(({ slugs }) =>
+      group.slugs.every((slug) => slugs.includes(slug)),
+    );
+  const groups = [
+    ...confident.groups.filter((group) => !within(group)),
+    ...picked,
+  ];
+  // The two plans can split a gauge differently; a station file in two
+  // merges would be written twice, so refuse before writing anything.
+  const claimed = new Map<string, string>();
+  for (const group of groups)
+    for (const slug of group.slugs) {
+      const other = claimed.get(slug);
+      if (other)
+        throw new Error(
+          `${slug} is in the merges into ${other} and ${group.survivor}; merge one at a time`,
+        );
+      claimed.set(slug, group.survivor);
+    }
+  for (const group of groups) {
     const files = group.slugs.map((slug) => {
       const file = bySlug.get(slug);
       if (!file)
@@ -118,17 +145,26 @@ if (process.argv.includes("--apply")) {
       files.find(({ sources }) => sources.includes(group.primary))!,
       geography,
       root,
+      group.survivor,
     );
+    // A survivor taken from a redirect may land on a path another station's
+    // file holds once the station takes its primary's country.
+    if (
+      existsSync(join(root, merged.write.file)) &&
+      !files.some(({ file }) => file === merged.write.file)
+    )
+      throw new Error(`${merged.write.file} already holds another station`);
     conflicts.push(...merged.conflicts);
     merges.push(merged);
   }
   for (const merged of merges) {
-    for (const file of merged.remove) rmSync(join(root, file));
-    if (merged.write.from) rmSync(join(root, merged.write.from));
+    for (const file of merged.remove) rmSync(join(root, file), { force: true });
+    if (merged.write.from)
+      rmSync(join(root, merged.write.from), { force: true });
     mkdirSync(dirname(join(root, merged.write.file)), { recursive: true });
     writeFileSync(join(root, merged.write.file), merged.write.text);
   }
   console.error(
-    `merged ${plan.groups.length} stations; ${conflicts.length} curated fields dropped:\n${conflicts.join("\n")}`,
+    `merged ${merges.length} stations; ${conflicts.length} curated fields dropped:\n${conflicts.join("\n")}`,
   );
 }

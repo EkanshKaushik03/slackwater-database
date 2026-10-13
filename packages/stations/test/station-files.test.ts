@@ -324,6 +324,31 @@ computed:
     ]);
   });
 
+  test("a merged station keeps the comments beside absorbed records and redirects", async () => {
+    const root = repo({
+      "stations/tide/no/bergen.yaml":
+        "sources:\n  - ticon/bergen-bgo-nor-nhs\n",
+      "stations/tide/no/bergen-kartverket-bgo.yaml":
+        "sources:\n  # Kartverket's own gauge.\n  - kartverket/BGO\nredirect_from:\n  - /tides/no/bergen-havn/ # Its old name.\n",
+    });
+    const files = readStationFiles(join(root, "stations"));
+    const survivor = files.find(({ slug }) => slug === "bergen")!;
+    const absorbed = files.find(({ slug }) => slug !== "bergen")!;
+    const merged = await mergeStationFiles(
+      survivor,
+      [absorbed],
+      absorbed,
+      { country: "NO" },
+      root,
+    );
+    expect(merged.write.text).toContain(
+      "  # Kartverket's own gauge.\n  - kartverket/BGO\n",
+    );
+    expect(merged.write.text).toContain(
+      "/tides/no/bergen-havn/ # Its old name.",
+    );
+  });
+
   test("an owned station tolerates a vanished provider record", () => {
     const { registry } = curatedRecords(
       [

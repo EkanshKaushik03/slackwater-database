@@ -9,7 +9,11 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
-import { uhslcCode, type UhslcMetadata } from "./provenance.ts";
+import {
+  currentProvider,
+  uhslcCode,
+  type UhslcMetadata,
+} from "./provenance.ts";
 
 const BASE = "https://uhslc.soest.hawaii.edu/rqds/metadata_yaml";
 const DATA_DIR = join(import.meta.dirname, "..", "..", "data", "ticon");
@@ -24,10 +28,12 @@ const codes = [
   ),
 ].sort();
 
-const firstLine = (value: unknown) =>
-  (Array.isArray(value) ? String(value[0] ?? "") : String(value ?? ""))
-    .split("\n")[0]!
-    .trim();
+const provider = (value: unknown) =>
+  currentProvider(
+    (Array.isArray(value) ? value : [value])
+      .map((entry) => String(entry ?? ""))
+      .join("\n"),
+  );
 
 const pinned: Record<string, UhslcMetadata> = {};
 const missing: string[] = [];
@@ -50,7 +56,7 @@ for (const code of codes) {
     station: String(meta.Location?.Station ?? ""),
     latitude: Number(meta.Location?.Latitude),
     longitude: Number(meta.Location?.Longitude),
-    data_source: firstLine(meta.Data_Source),
+    data_source: provider(meta.Data_Source),
     originator_number: originator,
     last_updated: String(meta.Last_Updated ?? ""),
   };

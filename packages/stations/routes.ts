@@ -98,8 +98,21 @@ export function assignSlugs(
   return result;
 }
 
+// Letters that NFD leaves whole, so stripping marks would delete them.
+const TRANSLITERATE: Record<string, string> = {
+  æ: "ae",
+  đ: "d",
+  ł: "l",
+  œ: "oe",
+  ø: "o",
+  ß: "ss",
+  þ: "th",
+};
+
 export function toSlug(value: string): string {
   return value
+    .toLowerCase()
+    .replace(/[æđłœøßþ]/g, (letter) => TRANSLITERATE[letter]!)
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()

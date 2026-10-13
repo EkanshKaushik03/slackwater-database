@@ -299,8 +299,10 @@ function checkSuperseded(
     direct.longitude,
   );
   if (apart > MAX_PROVENANCE_KM) return null;
-  // Amplitudes that contradict one gauge leave the pair to deduplication,
-  // which the merge report follows too.
+  // Amplitudes that contradict one gauge leave the pair to deduplication.
+  // The merge report still joins a relay whose own id, or a NOAA station
+  // number from NOAA, names the record, since the number says which gauge it
+  // is (see planMerges).
   if (m2Contradicts(station, direct)) return null;
   const conflict = tideConflict(station, direct);
   return {

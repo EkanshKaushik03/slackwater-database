@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import {
   assignSlugs,
   buildRoutes,
+  toSlug,
   type RouteLock,
   type RouteMember,
 } from "../routes.ts";
@@ -46,6 +47,14 @@ const nothing = () => ({ tide: new Set<string>(), current: new Set<string>() });
 const emptyRoutes = (): RouteLock => ({ tide: {}, current: {} });
 
 describe("slug allocation", () => {
+  test("transliterates letters that carry no separable mark", () => {
+    expect(toSlug("Tromsø")).toBe("tromso");
+    expect(toSlug("Heimsjøen")).toBe("heimsjoen");
+    expect(toSlug("Ærøskøbing")).toBe("aeroskobing");
+    expect(toSlug("Łeba")).toBe("leba");
+    expect(toSlug("Honningsvåg")).toBe("honningsvag");
+  });
+
   test("keeps a station's slug and resolves new collisions deterministically", () => {
     const held = none();
     held.tide.set("noaa/existing", "seattle");
