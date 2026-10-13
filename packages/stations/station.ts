@@ -183,8 +183,10 @@ export const PUBLISHED_PRECISION: Record<
   linz: { amplitude: 6, phase: 4 },
 };
 
-/** Round constituents to the source's published precision, keeping phases in
- *  [0, 360). Throws for a source with no declared precision. */
+/** Round constituents to the source's published precision. Phases stay as
+ *  published, including NOAA's few above 360°: cos(φ) reads them the same,
+ *  and the source's own value is kept. Throws for a source with no declared
+ *  precision. */
 export function roundConstituents(
   source: string,
   constituents: StationData["harmonic_constituents"],
@@ -198,9 +200,7 @@ export function roundConstituents(
   return constituents.map((c) => ({
     ...c,
     amplitude: round(c.amplitude, precision.amplitude),
-    // Wrap before rounding: adding 360 to a rounded value brings back float
-    // noise. A phase that rounds up to 360 is 0.
-    phase: round(((c.phase % 360) + 360) % 360, precision.phase) % 360,
+    phase: round(c.phase, precision.phase),
   }));
 }
 

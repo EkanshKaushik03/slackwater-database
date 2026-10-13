@@ -30,9 +30,7 @@ describe.each(sources)("data/%s constituents", (source) => {
       for (const { name, amplitude, phase } of harmonic_constituents) {
         if (
           !isRounded(amplitude, precision!.amplitude) ||
-          !isRounded(phase, precision!.phase) ||
-          phase < 0 ||
-          phase >= 360
+          !isRounded(phase, precision!.phase)
         ) {
           unrounded.push(`${file} ${name}: ${amplitude} ${phase}`);
         }
@@ -43,25 +41,23 @@ describe.each(sources)("data/%s constituents", (source) => {
 });
 
 describe("roundConstituents", () => {
-  test("strips conversion noise and wraps a phase that rounds to 360", () => {
+  test("strips conversion noise", () => {
     expect(
       roundConstituents("ticon", [
-        { name: "M2", amplitude: 0.27384021000000003, phase: 359.9999999 },
+        {
+          name: "M2",
+          amplitude: 0.27384021000000003,
+          phase: 131.04180299999996,
+        },
       ]),
-    ).toEqual([{ name: "M2", amplitude: 0.27384021, phase: 0 }]);
+    ).toEqual([{ name: "M2", amplitude: 0.27384021, phase: 131.041803 }]);
   });
 
-  test("wraps a negative phase into [0, 360)", () => {
+  test("keeps a phase as the source publishes it", () => {
+    // NOAA publishes SA at Neah Bay as 684°.
     expect(
-      roundConstituents("noaa", [{ name: "M2", amplitude: 0.5, phase: -5 }]),
-    ).toEqual([{ name: "M2", amplitude: 0.5, phase: 355 }]);
-  });
-
-  test("keeps a wrapped phase free of float noise", () => {
-    // (38.3 + 360) % 360 is 38.30000000000001.
-    expect(
-      roundConstituents("noaa", [{ name: "M2", amplitude: 0.5, phase: 38.3 }]),
-    ).toEqual([{ name: "M2", amplitude: 0.5, phase: 38.3 }]);
+      roundConstituents("noaa", [{ name: "SA", amplitude: 0.122, phase: 684 }]),
+    ).toEqual([{ name: "SA", amplitude: 0.122, phase: 684 }]);
   });
 
   test("refuses a source with no declared precision", () => {
