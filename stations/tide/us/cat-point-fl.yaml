@@ -9,16 +9,17 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: superseded
-        score: 0
+        reason: duplicate
+        redundant: noaa/8728619
+        score: 69
         factors:
           epoch: 1
           recency: 0.95
-          source: 1
+          source: 0.96
           quality: 0
           amplitude: 1
           coverage: 0
         issues:
           - MLWS (-0.063) > MLW (-0.089)
           - MHWS (0.063) < MHW (0.097)
-          - "Superseded source: noaa"
+          - M2 here (0.048 m, 196.3°) differs from (0.168 m, 118.3°) by -120 mm and 162 min later in noaa/8728619, which this duplicates

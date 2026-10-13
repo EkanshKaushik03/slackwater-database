@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { declaredOriginator, type UhslcMetadata } from "../provenance.ts";
+import { declaredOriginator, fold, type UhslcMetadata } from "../provenance.ts";
 
 const meta = (
   data_source: string,
@@ -17,6 +17,36 @@ test("a TICON NOAA relay names its station in its id", () => {
   expect(declaredOriginator("ticon/aberdeen-9441187-usa-noaa")).toBe(
     "noaa/9441187",
   );
+});
+
+test("a TICON Norwegian Hydrographic Service relay names its Kartverket code", () => {
+  expect(declaredOriginator("ticon/bergen-bgo-nor-nhs")).toBe("kartverket/BGO");
+});
+
+test("UHSLC's Norwegian Hydrographic Service gauges match Kartverket by name", () => {
+  const pinned = {
+    "823A": {
+      ...meta("Norwegian Hydrographic Services (NHS)", ""),
+      station: "Ny-Alesund",
+    },
+    "999A": {
+      ...meta("Norwegian Hydrographic Services", ""),
+      station: "Nowhere",
+    },
+  };
+  expect(declaredOriginator("ticon/nylesund-823a-nor-uhslc_rq", pinned)).toBe(
+    "kartverket/NYA",
+  );
+  expect(
+    declaredOriginator("ticon/nowhere-999a-nor-uhslc_rq", pinned),
+  ).toBeUndefined();
+});
+
+test("folds Norwegian letters that have no decomposition", () => {
+  expect(fold("Vardø")).toBe(fold("Vardo"));
+  expect(fold("Rørvik")).toBe("rorvik");
+  expect(fold("Måløy")).toBe("maloy");
+  expect(fold("Ny-Ålesund")).toBe("nyalesund");
 });
 
 test("UHSLC metadata names an originator only through a known provider", () => {

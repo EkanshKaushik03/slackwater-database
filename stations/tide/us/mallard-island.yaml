@@ -10,14 +10,15 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/9415112
         score: 0
         factors:
           epoch: 0.612
           recency: 0.65
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
           - MLWS (1.757) > MLW (1.736)
-          - "Superseded source: noaa"
+          - Superseded by noaa/9415112, its operator's own record

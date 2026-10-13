@@ -7,7 +7,9 @@ computed:
       position: [-27.15, -109.448]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/easter-022c-chl-uhslc_rq
         score: 85
         factors:
           epoch: 1

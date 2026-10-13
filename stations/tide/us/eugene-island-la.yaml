@@ -10,14 +10,16 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8764314
         score: 0
         factors:
           epoch: 0.112
           recency: 0.79
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
           - MHWS (1.836) < MHW (1.866)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8764311, its operator's own record
+          - M2 here (0.102 m, 264.9°) differs from (0.109 m, 256.1°) by -7 mm and 18 min later in noaa/8764311

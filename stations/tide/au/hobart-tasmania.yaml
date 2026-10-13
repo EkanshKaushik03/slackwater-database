@@ -7,7 +7,9 @@ computed:
       position: [-42.8773, 147.341]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hobart-339a-aus-uhslc_rq
         score: 83
         factors:
           epoch: 1

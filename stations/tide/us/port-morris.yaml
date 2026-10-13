@@ -9,14 +9,15 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: superseded
-        score: 0
+        reason: duplicate
+        redundant: noaa/8518639
+        score: 63
         factors:
           epoch: 0.057
           recency: 0.75
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
-          - "Superseded source: noaa"
+          - M2 here (0.831 m, 112.3°) differs from (1.006 m, 116.5°) by -175 mm and 9 min earlier in noaa/8518639, which this duplicates

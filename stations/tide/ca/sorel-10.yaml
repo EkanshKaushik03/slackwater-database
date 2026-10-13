@@ -18,7 +18,7 @@ computed:
           source: 0.96
           quality: 1
           amplitude: 1
-          coverage: 0.244
+          coverage: 0.488
         issues:
-          - Tidal range 1.8cm < 2cm threshold
+          - Tidal range 1.80cm < 2cm threshold
           - "Seasonal curve peak (0.616m) exceeds the principal tide M2+S2+K1+O1 (0.030m): the yearly swing exceeds the daily one"

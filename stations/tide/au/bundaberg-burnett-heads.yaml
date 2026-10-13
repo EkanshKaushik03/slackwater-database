@@ -7,7 +7,9 @@ computed:
       position: [-24.7667, 152.3833]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/bundaberg-332-aus-uhslc_fd
         score: 83
         factors:
           epoch: 1

@@ -45,7 +45,7 @@ The importer runs one process per core, each taking every nth station. Set `SHAR
 
 ## Relay provenance
 
-Many TICON records relay a gauge this repo also imports directly. [provenance.ts](provenance.ts) names the record a relay was copied from when the relay declares it: a TICON NOAA relay carries the NOAA station number in its id, and UHSLC research-quality metadata names an originator. An originator number counts only when its `Data_Source` matches a provider in `UHSLC_RULES`, since UHSLC numbers have no namespace (071 is both Wellington and La Libertad).
+Many TICON records relay a gauge this repo also imports directly. [provenance.ts](provenance.ts) names the record a relay was copied from when the relay declares it: a TICON NOAA relay carries the NOAA station number in its id, a Norwegian Hydrographic Service relay (`-nhs`) carries the Kartverket station code, and UHSLC research-quality metadata names an originator. An originator number counts only when its `Data_Source` matches a provider in `UHSLC_RULES`, since UHSLC numbers have no namespace (071 is both Wellington and La Libertad). UHSLC records the Norwegian Hydrographic Service with no number, so those gauges match the Kartverket record of the same place name, read from `data/kartverket`. Quality evaluation shares a declaration across every TICON record of one gauge, so UHSLC's fast-delivery series follows its research-quality sibling.
 
 The UHSLC metadata is pinned in [uhslc-metadata.json](uhslc-metadata.json), because UHSLC edits it in place. It holds only what matching needs (station name, position, data source, originator number, last update) from UHSLC's public research-quality metadata, and nothing from it reaches the published database. Refresh it deliberately and review the diff:
 
@@ -53,7 +53,7 @@ The UHSLC metadata is pinned in [uhslc-metadata.json](uhslc-metadata.json), beca
 npm run refresh:uhslc -w sources/ticon
 ```
 
-`npm run report:merges -w packages/stations` lists every station merge this provenance and quality's duplicate links would make, and `npm run merge -w packages/stations` makes them in the station files.
+`npm run report:merges -w packages/stations` lists every station merge this provenance and quality's duplicate and superseded links would make, and `npm run merge -w packages/stations` makes them in the station files.
 
 ## Constituent names
 

@@ -9,16 +9,16 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
-        redundant: noaa/8770933
-        score: 51
+        reason: timing
+        score: 0
         factors:
           epoch: 0.508
           recency: 0.98
-          source: 0.535
+          source: 0.495
           quality: 0
           amplitude: 1
           coverage: 0.008
         issues:
           - MLWS (0.279) > MLW (0.183)
           - MHWS (0.371) < MHW (0.479)
+          - "Clock error in source hct: runs 23 to 71 minutes behind every NOAA and USGS gauge near it"

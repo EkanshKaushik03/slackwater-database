@@ -15,10 +15,10 @@ computed:
         factors:
           epoch: 0.956
           recency: 0.44
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
-          coverage: 0.086
+          coverage: 0.474
         issues:
           - MHHW (169.826) < MHW (169.867)
           - MLWS (170.167) > MLW (169.828)

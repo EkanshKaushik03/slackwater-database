@@ -10,11 +10,11 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/crozet-178-fra-uhslc_fd
-        score: 48
+        score: 64
         factors:
           epoch: 0.074
           recency: 0.75
-          source: 0.192
+          source: 0.99
           quality: 1
           amplitude: 1
-          coverage: 0
+          coverage: 0.011

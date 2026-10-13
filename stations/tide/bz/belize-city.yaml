@@ -7,7 +7,9 @@ computed:
       position: [17.5, -88.18299865722656]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/belize-781a-blz-uhslc_rq
         score: 83
         factors:
           epoch: 1

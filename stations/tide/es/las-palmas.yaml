@@ -16,3 +16,7 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.003
+        issues:
+          - M2 here (0.747 m, 27.9°) differs from (0.740 m, 1.6°) by +7 mm and 54 min later in ticon/las_palmas-217b-esp-uhslc_rq, a duplicate
+          - M2 here (0.747 m, 27.9°) differs from (0.737 m, 0.9°) by +9 mm and 56 min later in ticon/las_palmas-217c-esp-uhslc_rq, a duplicate
+          - M2 here (0.747 m, 27.9°) differs from (0.745 m, 359.7°) by +2 mm and 58 min later in ticon/las_palmas-217a-esp-uhslc_rq, a duplicate

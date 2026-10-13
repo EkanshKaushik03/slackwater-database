@@ -15,12 +15,13 @@ computed:
         factors:
           epoch: 0.125
           recency: 0.73
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
-          coverage: 0.036
+          coverage: 0.072
         issues:
           - MHHW (8.863) < MHW (9.014)
           - MHWS (8.789) < MHW (9.014)
           - MSL (8.78) <= MLW (8.958)
+          - "SA amplitude (0.896m) is 10.3x the median SA of 19 same-regime neighbour(s) within 25km (0.087m): seasonal contamination"
           - "Seasonal curve peak (0.944m) exceeds the principal tide M2+S2+K1+O1 (0.129m): the yearly swing exceeds the daily one"

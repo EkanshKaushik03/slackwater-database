@@ -22,6 +22,7 @@ import {
   exceeds,
 } from "../filtering.js";
 import { readStationFiles, storedQuality } from "../station-files.ts";
+import { sourceMetadata } from "../sources.ts";
 
 const quality = [...storedQuality(readStationFiles()).values()];
 
@@ -315,6 +316,108 @@ describe("gauge deduplication", () => {
     ).toBeUndefined();
   });
 
+  test("does not prefer NOAA's subordinate outside its jurisdiction", () => {
+    const noaa = (country: string) => ({
+      id: "noaa/sub",
+      type: "subordinate",
+      country,
+      source: { name: "US National Oceanic and Atmospheric Administration" },
+    });
+    const relay = { id: "ticon/relay", source: { name: "TICON-4" } };
+    expect(authoritativeDuplicateWinner(noaa("Mexico"), relay)).toBeUndefined();
+    expect(authoritativeDuplicateWinner(noaa("Puerto Rico"), relay)).toBe(
+      "noaa/sub",
+    );
+  });
+
+  test("keeps a local analysis over NOAA's subordinate predicted from San Diego", () => {
+    // TWC0379 predicts Manzanillo from San Diego, 1,986 km away, and runs about
+    // 110 minutes from the 19-year UHSLC analysis at the gauge.
+    expect(quality.find((r) => r.id === "noaa/TWC0379")).toMatchObject({
+      accepted: false,
+      redundant: expect.stringMatching(/^ticon\/manzanillo-395/),
+    });
+  });
+
+  test("supersedes a relay only by an operator record that passes its checks", () => {
+    const byId = new Map(quality.map((r) => [r.id, r]));
+    const relays = quality.filter(
+      (r) => r.reason === "superseded" && !r.id.endsWith("-rws_hist"),
+    );
+    expect(relays.length).toBeGreaterThan(0);
+    for (const r of relays) {
+      const direct = (r.issues ?? [])
+        .join(" ")
+        .match(/Superseded by (\S+),/)?.[1];
+      expect(direct, r.id).toBeDefined();
+      const operator = allTideStations.find((s) => s.id === direct)!;
+      const relay = allTideStations.find((s) => s.id === r.id)!;
+      expect(
+        distance(
+          relay.latitude,
+          relay.longitude,
+          operator.latitude,
+          operator.longitude,
+        ),
+        r.id,
+      ).toBeLessThanOrEqual(10);
+      const verdict = byId.get(direct!);
+      expect(verdict?.accepted || verdict?.reason === "duplicate", r.id).toBe(
+        true,
+      );
+    }
+    // NOAA's Snow Hill record fails its datum check, so the relay stands in.
+    expect(byId.get("ticon/snow_hill-8571359-usa-noaa")?.accepted).toBe(true);
+  });
+
+  test("supersedes UHSLC's copy of a Kartverket gauge", () => {
+    // UHSLC names the Norwegian Hydrographic Service as originator of 823A,
+    // and the fast-delivery series shares its gauge.
+    expect(
+      quality.find((r) => r.id === "ticon/nylesund-823-nor-uhslc_fd"),
+    ).toMatchObject({ accepted: false, reason: "superseded" });
+  });
+
+  test("publishes the longer UHSLC series of a gauge", () => {
+    // Research quality covers 19 years to April 2011, fast delivery 3.9 years
+    // to the same date.
+    expect(
+      quality.find((r) => r.id === "ticon/acapulco_gro-316-mex-uhslc_fd"),
+    ).toMatchObject({
+      accepted: false,
+      redundant: "ticon/acapulco_gro-316a-mex-uhslc_rq",
+    });
+  });
+
+  test("NOAA's jurisdiction names countries its records use", () => {
+    const countries = new Set(
+      allTideStations
+        .filter((s) => s.id.startsWith("noaa/"))
+        .map((s) => s.country),
+    );
+    const { jurisdiction } = sourceMetadata(
+      "US National Oceanic and Atmospheric Administration",
+    );
+    for (const country of jurisdiction ?? [])
+      expect(countries.has(country), country).toBe(true);
+  });
+
+  test("rejects Harris County's records for their clock error", () => {
+    const hct = quality.filter((r) => r.id.endsWith("-hct"));
+    expect(hct).toHaveLength(17);
+    expect(hct.every((r) => !r.accepted && r.reason === "timing")).toBe(true);
+  });
+
+  test("points every duplicate at a published record", () => {
+    const accepted = new Set(
+      quality.filter((r) => r.accepted).map((r) => r.id),
+    );
+    const unpublished = quality.filter(
+      (r) => r.redundant && !accepted.has(r.redundant),
+    );
+    expect(unpublished.map((r) => `${r.id} → ${r.redundant}`)).toEqual([]);
+  });
+
   test("accepts every LINZ port over the TICON relay of the same gauge", () => {
     const linz = quality.filter((r) => r.id.startsWith("linz/"));
     expect(linz).toHaveLength(56);
@@ -490,8 +593,8 @@ describe("seasonal dominance", () => {
   });
 
   test("labels independently of the rejection verdict", () => {
-    expect(labelled.filter((q) => q.accepted).length).toBe(506);
-    expect(labelled.filter((q) => !q.accepted).length).toBe(493);
+    expect(labelled.filter((q) => q.accepted).length).toBe(502);
+    expect(labelled.filter((q) => !q.accepted).length).toBe(497);
   });
 
   test("is a different question from the contamination gate", () => {

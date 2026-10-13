@@ -10,7 +10,9 @@ computed:
       position: [-20.934891, 55.285115]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/reunion-164-fra-uhslc_fd
         score: 83
         factors:
           epoch: 0.94

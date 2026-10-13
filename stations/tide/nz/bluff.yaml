@@ -7,7 +7,9 @@ computed:
       position: [-46.6, 168.333]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: linz/072
         score: 85
         factors:
           epoch: 1

@@ -7,7 +7,9 @@ computed:
       position: [23.181667, -106.423333]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/mazatlan-673a-mex-uhslc_rq
         score: 36
         factors:
           epoch: 0.17

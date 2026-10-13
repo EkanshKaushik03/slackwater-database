@@ -10,7 +10,9 @@ computed:
       position: [49.15, -125.91]
       coastline: clear
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/tofino-542-can-uhslc_fd
         score: 84
         factors:
           epoch: 1

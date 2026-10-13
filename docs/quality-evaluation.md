@@ -36,11 +36,12 @@ A reference station has its own harmonic constants. A subordinate (secondary) st
 
 ## Rejection checks
 
-These checks are pass or fail. A record that fails any of them is rejected and gets a score of 0. When a record fails more than one, only the first failure in the order below is recorded.
+These checks are pass or fail. A record that fails any of them is rejected and gets a score of 0. When a record fails more than one, the first failure in the order below is its `reason`, and every failure is listed in its `issues`.
 
 | Check                  | Rejects a record when                                        | Basis                    |
 | ---------------------- | ------------------------------------------------------------ | ------------------------ |
 | Position               | it sits at the (0°, 0°) placeholder                          | Engineering choice       |
+| Clock error            | its source's times are off by a measured amount              | Measured on this data    |
 | Datum consistency      | its datums contradict their definitions                      | NOAA and IHO definitions |
 | Tidal range            | its mean range is under 2 cm                                 | Engineering choice       |
 | Superseded relay       | it relays a gauge whose operator publishes its own constants | Editorial choice         |
@@ -54,6 +55,18 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 **Threshold.** Both coordinates within 0.05° of zero (about 5.6 km). This is an engineering choice. No coastline lies inside it, so it cannot reject a real gauge.
 
 **Limitations.** It catches only that one placeholder. Swapped latitude and longitude, a dropped sign, or a coarse rounding all pass. Whether a position is in water is checked separately, against the coastline, and is not part of this evaluation.
+
+### Clock error
+
+**What it catches.** A source whose record times are wrong. A harmonic analysis of records stamped in the wrong time zone, or in local time that shifts with daylight saving, fits the right tide at the wrong time, and its predictions put high and low water early or late by that amount.
+
+**Rejected** when a TICON record comes from a source listed in `CLOCK_ERROR_SOURCES`, with the measurement that put it there:
+
+- Harris County Flood Control District (`hct`). Against the nearest NOAA or USGS gauge within 5 km, its 9 comparable records run a median 44 minutes late on M2 (23 to 71 minutes) and about 30 minutes late on K1 and O1. USGS (591 pairs) and California's Department of Water Resources (97 pairs) run within a minute by the same comparison. The other 8 Harris County records have no NOAA or USGS gauge within 5 km to compare with and are rejected with their source. Every Harris County record has a NOAA harmonic station within 15 km with about the same range.
+
+**Basis.** A comparison against independent gauges on this data. A source is listed by hand, from evidence such as the flags described under [Disagreeing duplicates](#disagreeing-duplicates).
+
+**Limitations.** A clock error in a single record, rather than a whole source, is caught only when it is merged with a record that has the right time, and the flag does not say which of the two is wrong.
 
 ### Datum consistency
 
@@ -79,31 +92,39 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 
 **What it catches.** Water whose astronomical tide is too small to predict. When the mean range (MHW − MLW) is under a couple of centimeters, the tide is at the level of measurement and analysis error, and the water level is governed by wind, air pressure, seiches and river flow. Published times of high and low water would be noise presented as fact.
 
-**Threshold.** A mean range under 2 cm. This is an engineering choice, of the order of the measurement error of a tide gauge.
+**Threshold.** A mean range under 2 cm. This is an engineering choice, twice the 10 mm accuracy that GLOSS asks of a tide gauge (IOC, 2002). The IHO treats a range under about 0.30 m as negligible for charting, which calls for mean sea level as the datum rather than for rejecting the record (IHO, M-3, Resolution 3/1919).
 
 **Limitations.** In strongly diurnal water the great diurnal range (MHHW − MLLW) is the more natural measure, though the two converge there. A subordinate is judged on its reference station's range, not on the range after its own height differences, so a subordinate with a small height ratio can pass on its reference's range. Water with a tiny tide and a large seasonal swing can clear the floor by millimeters; Cobourg, on Lake Ontario, clears it by 6 mm. The seasonal label below exists for such water.
 
 ### Superseded relay
 
-**What it catches.** A second, indirect answer for a gauge whose operator already publishes one. TICON-4 includes its own reanalysis of many NOAA gauges. NOAA CO-OPS publishes harmonic constants for the same gauges, analyzed by the operating agency with its own quality control and over its own chosen period (Parker, 2007). When the direct NOAA record has harmonic constants, the TICON relay is rejected. When NOAA publishes the gauge only as a subordinate station, or not at all, the relay is kept. TICON's historical Rijkswaterstaat series is also rejected, because the current Rijkswaterstaat series covers the same gauges.
+**What it catches.** A second, indirect answer for a gauge whose operator already publishes one. TICON-4 reanalyzes many gauges that NOAA, Kartverket and LINZ operate, and those agencies publish harmonic constants for the same gauges, analyzed with their own quality control and over their own chosen period (Parker, 2007). A relay is matched to its operator's record only by what it declares:
+
+- TICON's NOAA relays carry the NOAA station number in their id, and its Norwegian Hydrographic Service relays the Kartverket station code.
+- UHSLC's station metadata names the originating agency and, for NOAA and LINZ, its station number. For the Norwegian Hydrographic Service it gives no number, and the gauge is matched to the Kartverket station of the same name, ignoring accents (Vardø matches Vardo).
+- A TICON record that UHSLC's metadata does not cover, such as a fast-delivery series, shares what another record of its gauge (see [Same identifier](#same-identifier)) declares. A record the metadata covers speaks for itself, even when no rule accepts what it names: Bermuda's 1932–1949 series gives St. George's under UHSLC's own data source, so it declares nothing rather than taking its 2000s sibling's Ferry Reach, 0.75 km away. A gauge whose records declare two different originators stops the evaluation.
+
+The relay is rejected when its operator's record has harmonic constants, passes every other check here, lies within 10 km, and has an M2 amplitude that does not contradict the relay's (beyond both a 10% ratio and the amplitude tolerance). Beyond 10 km the declaration is more likely wrong than the coordinates. A relay that fails either test is left to deduplication, and the merge report applies the same tests, so a superseded relay's route always joins its operator's. A relay whose M2 disagrees with its operator's record by more than one gauge analyzed twice does (see [Disagreeing duplicates](#disagreeing-duplicates)) says so in `issues`. When the operator publishes the gauge only as a subordinate station, not at all, or with a record that fails a check, the relay stands in for it. TICON's historical Rijkswaterstaat series is also rejected, because the current Rijkswaterstaat series covers the same gauges.
 
 **Basis.** An editorial choice of this project: the operator's analysis is the primary source.
 
-**Limitations.** Only NOAA relays are matched to a direct record here. Relays of Norwegian and New Zealand gauges are caught only if deduplication pairs them with the direct record, which requires the two positions to agree within the distances given below.
+**Limitations.** A relay that declares nothing is caught only if deduplication pairs it with the operator's record, which requires the two positions to agree within the distances given below. TICON's relays of LINZ's sea-level network (source `ttw`) carry their own station codes rather than LINZ's, so a relay such as Auckland, 2.7 km from LINZ's Auckland port, stays separate.
 
 ### Essential constituents
 
 **What it catches.** A harmonic model that cannot reproduce the shape of the tide. M2, S2, K1 and O1 are the four largest constituents of the equilibrium tide (Cartwright & Tayler, 1971) and dominate the real tide almost everywhere. They also define the form number, which classifies a tide as semidiurnal, mixed or diurnal (Defant, 1961; Pugh & Woodworth, 2014). A reference station is rejected if any of the four is missing, including NOAA's 0/0 marker for a constituent it did not determine. A small or zero amplitude with a phase is a real value below detection and passes.
 
-It also rejects a model whose P1 amplitude exceeds K1. In the tide-generating potential, P1 is about 0.331 of K1 (Cartwright & Tayler, 1971). The ocean's response varies smoothly with frequency across a tidal band (Munk & Cartwright, 1966), and P1 and K1 are only 0.082°/h apart, so the observed ratio stays close to the equilibrium value; harmonic analysis routinely infers P1 from K1 on that basis (Foreman, 1977; Pawlowicz et al., 2002). Separating the two needs at least 182.6 days of data, the Rayleigh criterion for that pair (Foreman, 1977; Parker, 2007). P1 larger than K1 almost always means the analysis could not resolve them, and the diurnal band of the model cannot be trusted. The ratio holds for the gravitational tide only. Radiational forcing by the sun puts energy on both frequencies, and where the diurnal tide is a few millimeters it can bring P1 level with K1: at Aladga in the Caspian Sea K1 and P1 are nearly equal, and across the Baltic the radiational S1 is about the size of P1 (Medvedev, Rabinovich & Kulikov, 2016). That explains a P1 near a small K1, not a resolved P1 well above it. A record is rejected when P1 is at least 10 mm and exceeds K1 by more than the amplitude tolerance. The 10 mm floor is an engineering choice.
+It also rejects a model whose P1 amplitude exceeds K1. In the tide-generating potential, P1 is about 0.331 of K1 (Cartwright & Tayler, 1971). The ocean's response varies smoothly with frequency across a tidal band (Munk & Cartwright, 1966), and P1 and K1 are only 0.082°/h apart, so the observed ratio stays close to the equilibrium value. Harmonic analysis can infer P1 from K1 when nearby data give their relative amplitude and phase, and falls back on the equilibrium ratio otherwise (Foreman, 1977; Pawlowicz et al., 2002). Separating the two needs about 182.6 days of data, the Rayleigh criterion for that pair, though the limit depends on the signal-to-noise ratio and P1 can be determined from somewhat shorter records (Parker, 2007). TICON-4 analyzes only records of at least a year (Hart-Davis et al., 2026), so an unresolved pair is rarely the cause in this database: every TICON record with P1 above K1 spans at least 1.5 years. A resolved P1 well above K1 marks a fit whose diurnal band cannot be trusted. The ratio holds for the gravitational tide only. Radiational forcing by the sun puts energy on both frequencies, and where the diurnal tide is a few millimeters it can bring P1 level with K1: at Aladga in the Caspian Sea K1 and P1 are nearly equal, and across the Baltic the radiational S1 is about the size of P1 (Medvedev, Rabinovich & Kulikov, 2016). That explains a P1 near a small K1, not a resolved P1 well above it. A record is rejected when P1 is at least 10 mm and exceeds K1 by more than the amplitude tolerance. The 10 mm floor is an engineering choice.
 
-**Exemptions.** Records from authoritative sources are not required to have K1 and are not tested for P1 against K1. Two Norwegian gauges publish no K1, and several have K1 and P1 of a few millimeters with P1 slightly larger. Along parts of the Norwegian coast the diurnal tide is close to an amphidrome, and at that level the ratio carries no information.
+**Exemptions.** Records from authoritative sources are not required to have K1: two Norwegian gauges, Solumstrand and Viker, publish none. The P1 test applies to every source alike. Five Kartverket records have P1 above K1, Viker among them with no K1 at all, and all five have P1 under 10 mm.
+
+The one record rejected on P1 alone with K1 above 1 cm is TICON's analysis of REFMAR's Dumont d'Urville series, 1952–2024: K1 8.7 cm, P1 10.5 cm. The fault is the whole fit, not the ratio. UHSLC's analysis of the same gauge, 2008–2023, has K1 30.1 cm and P1 9.9 cm (P1/K1 0.33, the equilibrium value) and is the record published there; the REFMAR fit puts K1 at a third of that, its phases 30° to 55° away, and S1 and SA at 13 cm and 46 cm.
 
 **Limitations.** Subordinate stations are not tested; they use their reference station's constants. The P1 test catches only the gross case, so a P1/K1 ratio of 0.8 passes, and a P1 under 10 mm is never tested. A NOAA amplitude below 0.5 mm whose phase also rounds to 0.0° cannot be told apart from the 0/0 marker.
 
 ### Seasonal contamination
 
-**What it catches.** A harmonic fit that absorbed spurious energy into the annual constituent, SA. The seasonal cycle in sea level is driven by heating and cooling of the water column, wind, air pressure and river runoff. It varies smoothly along a coast, with typical amplitudes of a few centimeters to a few decimeters (Tsimplis & Woodworth, 1994; Pugh & Woodworth, 2014). SA cannot be resolved from less than a year of data, and a short, gappy or datum-shifted record pushes spurious low-frequency energy into it. An inflated SA inflates the predicted extremes, including LAT and HAT, and so the chart datum.
+**What it catches.** A harmonic fit that absorbed spurious energy into the annual constituent, SA. The seasonal cycle in sea level is driven by heating and cooling of the water column, wind, air pressure and river runoff. It varies smoothly along a coast, with typical amplitudes of a few centimeters to a few decimeters (Tsimplis & Woodworth, 1994; Pugh & Woodworth, 2014). NOAA derives SA and SSA from several years of monthly mean sea levels, and a stable estimate may need on the order of ten years (Gill & Schultz, 2001). A short, gappy or datum-shifted record pushes spurious low-frequency energy into it. An inflated SA inflates the predicted extremes, including LAT and HAT, and so the chart datum.
 
 **Threshold.** A TICON reference station is rejected when its SA amplitude is at least 0.5 m and at least five times the median SA of nearby reference stations in the same tidal regime. Nearby means within 25 km. The same regime means similar M2 amplitudes (see Duplicates), which keeps a river-influenced station, with a large real SA on a small tide, from being compared with the open coast. The annual term is read under each provider's name for it: SA, Sa, or Kartverket's SA_KV. The 0.5 m floor, 25 km radius and factor of five are engineering choices of this project.
 
@@ -138,9 +159,9 @@ The weights are an engineering choice of this project.
 
 ### Record length
 
-The score is the length of the analyzed record divided by 18.61 years, capped at 1. A record with no stated period scores 0, and one with a placeholder period gets the benefit of the doubt and scores 1. A subordinate station takes its reference station's period.
+The score is the length of the analyzed record divided by 18.61 years, capped at 1. A record with no stated period scores 0, and so does one whose period is a placeholder (year 0000), since it says nothing about the record. The same holds for recency. A subordinate station takes its reference station's period.
 
-**Why.** The lunar node precesses with a period of 18.61 years and modulates the lunar constituents by up to several tens of percent (Schureman, 1958). Datums averaged over less than a full cycle are biased toward the part of the cycle they sampled, which is why NOAA computes datums over a 19-year National Tidal Datum Epoch, currently 1983–2001 (Gill & Schultz, 2001; NOAA, 2003). Harmonic constants can be estimated from one year of data with nodal corrections (Foreman, 1977; Parker, 2007), but a longer record averages over more weather and resolves more constituents. The linear scale is this project's choice.
+**Why.** The lunar node precesses with a period of 18.61 years and modulates the lunar constituents by up to several tens of percent (Schureman, 1958). Datums averaged over less than a full cycle are biased toward the part of the cycle they sampled, which is why NOAA computes datums over a 19-year National Tidal Datum Epoch, currently 1983–2001 (Gill & Schultz, 2001; NOAA, 2003). Harmonic constants can be estimated from one year of data with nodal corrections (Foreman, 1977; Parker, 2007), but a longer record averages over more weather and resolves more constituents. The IHO asks for harmonic constants from at least one year of observations when computing LAT and HAT (IHO, M-3, Resolution 3/1919), and every accepted record with a stated period meets it. The linear scale is this project's choice.
 
 **Limitations.** The period is the span of the record, not the data actually used, so a 19-year span that is half gaps scores the same as a complete one.
 
@@ -156,26 +177,27 @@ The score falls linearly from 1 for a record ending in 2026 to 0 for one ending 
 
 Authoritative agencies score 1. Each agency that supplies data to TICON is ranked, and the score falls with rank:
 
-| Tier | Agencies                                                                                                          | Score     |
-| ---- | ----------------------------------------------------------------------------------------------------------------- | --------- |
-| 0    | NOAA (as relayed by TICON)                                                                                        | 1.0       |
-| 1    | UHSLC fast delivery, BODC                                                                                         | 0.98–0.99 |
-| 2    | national services of Canada (MEDS), France, Australia, Japan (JMA), Sweden, Norway, Spain                         | 0.90–0.96 |
-| 3    | regional European services, including Germany, the Netherlands, Finland, Denmark and Italy                        | 0.71–0.80 |
-| 4    | US regional networks, including USGS and state agencies                                                           | 0.53–0.60 |
-| 5    | UHSLC research quality, historical and research series, other Japanese agencies, GLOSS                            | 0.03–0.19 |
-| 6    | sources that GESLA licenses for non-commercial use only (Copernicus Marine, City of Venice, University of Zagreb) | 0.02      |
-| 7    | satellite-related duplicates                                                                                      | 0.0       |
+| Tier | Agencies                                                                                                                      | Score     |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 1    | UHSLC fast delivery and research quality, BODC                                                                                | 0.98–0.99 |
+| 2    | national services of the US (NOAA, as relayed by TICON), Canada (MEDS), France, Australia, Japan (JMA), Sweden, Norway, Spain | 0.90–0.96 |
+| 3    | regional European services, including Germany, the Netherlands, Finland, Denmark and Italy                                    | 0.71–0.80 |
+| 4    | US regional networks, including USGS and state agencies                                                                       | 0.53–0.60 |
+| 5    | historical and research series, other Japanese agencies, GLOSS                                                                | 0.03–0.14 |
+| 6    | sources that GESLA licenses for non-commercial use only (Copernicus Marine, City of Venice, University of Zagreb)             | 0.02      |
+| 7    | historical records, mostly of NOAA gauges, contributed by Stefan Talke (`da_sat`)                                             | 0.0       |
 
 An agency not in the ranking scores about 0.5.
 
 **Why.** National hydrographic and oceanographic services generally maintain their datums and apply consistent quality control, so their records are the safer choice when two describe the same water. The ranking is an editorial judgment, not a published standard. Placing the non-commercial sources low steers duplicate selection toward records without license restrictions.
 
-**Limitations.** UHSLC describes its research-quality series as the more thoroughly quality-controlled, delayed-mode product (Caldwell et al., 2015), yet the ranking places the fast-delivery series far above it because that series continues to the present. Source carries a large weight, so this choice usually decides which UHSLC record of a gauge is published. A TICON relay of a NOAA gauge that NOAA publishes without constants scores the same as an authoritative record.
+UHSLC's two series rank equally. Its research-quality series has had UHSLC's full quality control and replaces the fast-delivery series as it becomes available, while the fast-delivery series is more recent (UHSLC, n.d.). With source equal, record length and recency decide, which matches GESLA's advice to use the longest and then the most recent record of a gauge (Haigh et al., 2023).
+
+A TICON relay of a NOAA gauge reaches this ranking only when NOAA's record does not supersede it (see [Superseded relay](#superseded-relay)), most often because NOAA publishes no constants for the gauge, as for most Great Lakes gauges. The data are NOAA's, but the analysis is TICON's, so it ranks with the national services.
 
 ### Provider quality flag
 
-A record scores 0 when its provider flagged it for possible datum and quality-control problems, and 1 otherwise. The flag is TICON's own assessment of the underlying record, which this project trusts rather than re-derives. It cannot distinguish a minor problem from a severe one.
+A record scores 0 when GESLA flagged it for possible datum and quality-control problems, and 1 otherwise. The flag is GESLA's overall record quality, which TICON carries as `record_quality`: a brief, qualitative judgment made by visually inspecting each record (Haigh et al., 2023). This project trusts it rather than re-deriving it. It cannot distinguish a minor problem from a severe one.
 
 ### Amplitudes
 
@@ -192,9 +214,9 @@ The score starts at 1 and loses 0.25 for each implausibility, down to 0:
 
 ### Isolation
 
-The score is the distance to the nearest other record of any kind, divided by 50 km and capped at 1. A gauge with no other gauge nearby adds more to the map than one in a dense cluster. The 50 km scale is an engineering choice.
+The score is the distance to the nearest other gauge, divided by 50 km and capped at 1. A gauge with no other gauge nearby adds more to the map than one in a dense cluster. Only records that pass every rejection check count as neighbors, and a record of the same TICON gauge (see [Same identifier](#same-identifier)) is not another gauge. The 50 km scale is an engineering choice.
 
-**Limitations.** The nearest record is often another relay of the same gauge, so duplicate records all score near 0 here regardless of the network around them. The factor rarely decides between duplicates; it mostly lowers the scores of stations in dense networks.
+**Limitations.** Two agencies' records of one gauge under different identifiers still count as neighbors, so both score near 0 here. Isolation describes the map, not the record, so it can still decide between duplicates whose other factors tie.
 
 ## Duplicates
 
@@ -220,25 +242,35 @@ Two subordinates predict the same when they use the same reference station and t
 
 **Why.** Records within 50 m are almost certainly the same gauge, or gauges too close for their tides to differ in a way that matters. Between 50 and 500 m, gauges can sit on opposite sides of a breakwater, at a harbor mouth and inside it, or at the two ends of a short channel, and their tides can differ. M2 dominates nearly every tide, so similar M2 amplitudes are a direct test that two reference stations describe the same tidal regime. Similar means within 10% of each other, or within the amplitude tolerance where M2 is too small for a ratio to mean anything. Two M2 amplitudes that are both within the tolerance of zero carry no evidence either way, so they are not similar. A reference station that has subordinates may absorb a neighbor within 100 m even when the M2 test fails, since very small M2 amplitudes make the ratio noisy. Subordinates have no constants to compare, so they get the tighter 100 m limit, and two subordinates must also predict the same tide. Many subordinates share coarse or placeholder positions: Suwarrow Island is recorded at the exact position of Hao Island, but Suwarrow's time difference is +64 minutes and Hao's is −315. All of these distances and tolerances are engineering choices of this project.
 
+The distance between two records is the shortest between any of the positions recorded for their gauges, since the records of one TICON gauge can place it kilometers apart. When only another record's position brings two reference stations together, their M2 must also agree (see [Disagreeing duplicates](#disagreeing-duplicates)): UNAM's historical La Paz record sits at the position of UNAM's current gauge, 11.7 km from UHSLC's, and the current gauge, which runs 29 minutes from UHSLC's 1964–1983 analysis, is not absorbed into it.
+
 **Limitations.**
 
 - A reference and a subordinate within 100 m are merged without comparing their tides, though the subordinate's predictions, made from a different reference plus time and height differences, can differ from the nearby reference station's.
 - Two reference stations within 50 m are merged whatever their M2 amplitudes.
 - The M2 test compares amplitude, not phase, so two gauges with the same M2 amplitude an hour apart in timing pass as one.
-- Records more than 500 m apart are never merged by this rule, so a relay with poor coordinates stays separate unless it shares an identifier.
-- Pairs are compared one at a time in a fixed order, and a record found to be a duplicate can still absorb later records. The record named as the one kept can therefore itself be a duplicate of a third record. Readers should follow the chain to the record that is published.
+- Records whose recorded positions are all more than 500 m apart are never merged by this rule, so a relay with poor coordinates stays separate unless it shares an identifier. Through a TICON gauge's other positions, a record can merge with one several kilometers from its own position: the Salina Cruz record from UNAM's historical series merges with NOAA's Salina Cruz, 17.6 km from its own coordinates.
+
+### Disagreeing duplicates
+
+Two merged reference stations can still disagree. When their M2 constants differ, as a vector, by more than 15% of the larger amplitude and by more than the amplitude tolerance, both records name the other in `issues` and give the difference as time. The 15% is the 95th percentile of the difference between NOAA's own M2 and TICON's reanalysis of the same gauge across 447 NOAA gauges, so a larger difference is more than one gauge analyzed twice shows. It is this project's definition, derived from those pairs.
+
+The pair stays merged. Where the difference is the same time offset in M2, S2, K1 and O1, one record's clock is off, and publishing both would show a wrong answer beside the right one. The City of Venice record runs 46 minutes from ISPRA's and Copernicus's, which agree with each other. The Harris County Flood Control District records (`hct`) run 23 to 71 minutes behind every NOAA and USGS gauge near them, where USGS and California's records run within a minute; the [clock error](#clock-error) check rejects them. The flag does not say which record is wrong; that takes a third, independent record. Nor is an even lag proof of a clock error: a gauge moved behind a breakwater lags too. At Settlement Point, Grand Bahama, UHSLC moved its gauge in 2002 from NOAA's open-coast site into the Bootle Bay basin 2.6 km away, and its record runs about 90 minutes behind NOAA's. There the semidiurnal amplitudes are 17% lower and M4 six times larger, which a basin does and a clock cannot, so both records are right for their own water and both are published. A clock error shifts every constituent by the same minutes and leaves amplitudes and M4 alone, as at Harris County's Houston Ship Channel gauge, 0.4 km from NOAA's Lynchburg Landing.
+
+**Limitations.** A real difference across a short distance is flagged the same way: on the Loxahatchee River, two docks 356 m apart differ by about 22 minutes, and the record not kept is lost. The record kept is still the better-ranked one, and score rewards record length, so a long analysis that ended decades ago can win over a short recent one that disagrees with it.
 
 ### Choosing the record to keep
 
-When two records are the same gauge, the one kept is decided by these rules, in order:
+Records are ranked by these rules, in order:
 
-1. A record from an authoritative source beats a relay.
-2. A reference station that has accepted subordinate stations beats one that has none, so the subordinates keep the reference they predict from.
-3. The higher score wins.
-4. The record with the more precise position wins, as a surveyed fix is more likely than a rounded one to locate the gauge.
-5. Otherwise, the record compared first is kept.
+1. A record from an authoritative source beats a relay. NOAA's subordinate stations outside the United States and its territories are the exception. NOAA does not operate those gauges; it predicts them from legacy foreign tide tables as time and height differences on a US reference station, often more than 1,000 km away. Manzanillo, Mexico, is predicted from San Diego, 1,986 km away, and runs about 110 minutes from the 19-year UHSLC analysis of the gauge itself. The waters each source speaks for are listed as `jurisdiction` in its `metadata.yaml`.
+2. A reference station beats a subordinate, since its constants were analyzed at the gauge.
+3. A reference station that has accepted subordinate stations beats one that has none, so the subordinates keep the reference they predict from.
+4. The higher score wins.
+5. The record with the more precise position wins, as a surveyed fix is more likely than a rounded one to locate the gauge.
+6. Otherwise, the record with the lower id wins.
 
-The order of these rules is an engineering choice. With three or more records of one gauge, the outcome can depend on the order in which they are compared.
+Duplicates are resolved best record first. The best remaining record absorbs every record that duplicates it, and a record that has lost absorbs nothing, so the outcome does not depend on the order in which records are loaded. Each duplicate's `redundant` names the record published for its gauge. The order of these rules is an engineering choice of this project.
 
 ## Implementation
 
@@ -252,25 +284,26 @@ npm run report:quality -w packages/stations
 
 ### Stored result
 
-| Field               | Meaning                                                                                                          |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `accepted`          | Whether the record is published.                                                                                 |
-| `reason`            | `coordinates`, `datum`, `range`, `superseded`, `constituents`, `seasonal`, or `duplicate`. Absent when accepted. |
-| `redundant`         | For a duplicate, the id of the record it lost to.                                                                |
-| `seasonal_dominant` | `true` for the seasonal label.                                                                                   |
-| `score`             | The composite score. 0 for a record rejected by a check; a duplicate keeps the score it was compared on.         |
-| `factors`           | `epoch`, `recency`, `source`, `quality`, `amplitude`, `coverage`, each 0 to 1, rounded to three decimals.        |
-| `issues`            | The rejection message, datum warnings, the seasonal-label note, and amplitude findings, as text.                 |
+| Field               | Meaning                                                                                                                                        |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accepted`          | Whether the record is published.                                                                                                               |
+| `reason`            | `coordinates`, `timing`, `datum`, `range`, `superseded`, `constituents`, `seasonal`, or `duplicate`. Absent when accepted.                     |
+| `redundant`         | For a duplicate, or a relay superseded by its operator's record, the id of the record published for its gauge.                                 |
+| `seasonal_dominant` | `true` for the seasonal label.                                                                                                                 |
+| `score`             | The composite score. 0 for a record rejected by a check; a duplicate keeps the score it was compared on.                                       |
+| `factors`           | `epoch`, `recency`, `source`, `quality`, `amplitude`, `coverage`, each 0 to 1, rounded to three decimals.                                      |
+| `issues`            | Every failed check's message, datum warnings, the seasonal-label note, amplitude findings, and M2 disagreements with a merged record, as text. |
 
 ### Order of operations
 
 1. `loadAllStations` reads every JSON file under `data/`, sorting directories and file names, so records are processed in record-id order.
-2. For each record, all six checks run: `checkCoordinates`, `checkDatumOrdering`, `checkTidalRange`, `checkSuperseded`, `checkConstituents`, `checkSeasonalContamination`. The first failure sets `reason`. Then `checkSeasonalDominance` and five factors are computed.
-3. `scoreCoverage` runs once all positions are loaded, against every record including rejected ones.
+2. `checkGates` runs `checkCoordinates`, `checkTiming`, `checkDatumOrdering`, `checkTidalRange`, `checkConstituents` and `checkSeasonalContamination` on every record. `checkSuperseded` then runs on each relay, using those results for the operator's record, and takes its place after the range check. The first failure sets `reason`, and every failure's message goes into `issues`. Then `checkSeasonalDominance` and five factors are computed.
+3. `scoreCoverage` runs once every record has been checked, against the records that passed.
 4. `computeCompositeScore` sets the score of each record that passed the checks.
 5. `countSubordinates` counts each reference's accepted subordinates. The count is not updated as duplicates are rejected.
-6. `deduplicateByGauge` merges TICON records by `gaugeKey`, folding `pickWinner` over each group in id order.
-7. `deduplicate` compares the survivors pairwise in id order, using `areDuplicates` and `pickWinner`.
+6. `deduplicateByGauge` merges TICON records by `gaugeKey`, keeping the first record of each group in `precedence` order.
+7. `deduplicate` ranks the survivors by `precedence`, and each record still accepted absorbs the later records that `areDuplicates` matches to it.
+8. `resolveRedundant` points each duplicate at the record published for its gauge.
 
 ### Constants
 
@@ -279,7 +312,7 @@ npm run report:quality -w packages/stations
 | `NULL_ISLAND_RADIUS`                  | 0.05°                                        | Position                           |
 | `EPSILON` (in `checkDatumOrdering`)   | 0.5 m                                        | Low chart datums below LAT         |
 | `MIN_TIDAL_RANGE`                     | 0.02 m                                       | Tidal range                        |
-| `SUPERSEDED_SOURCES`                  | `noaa`, `rws_hist`                           | Superseded relay                   |
+| `SUPERSEDED_SOURCES`                  | `rws_hist`                                   | Superseded relay                   |
 | `ESSENTIAL_CONSTITUENTS`              | M2, S2, K1, O1                               | Essential constituents             |
 | `SEASONAL_OUTLIER_MIN_SA`             | 0.5 m                                        | Seasonal contamination             |
 | `SEASONAL_OUTLIER_RADIUS`             | 25 km                                        | Seasonal contamination             |
@@ -296,19 +329,15 @@ npm run report:quality -w packages/stations
 | `MAX_DEDUP_DISTANCE`                  | 500 m                                        | Duplicates                         |
 | `MAX_OFFSET_HEIGHT_DELTA`             | 0.1                                          | Duplicate subordinates             |
 | `MAX_OFFSET_TIME_DELTA`               | 10 min                                       | Duplicate subordinates             |
+| `MAX_PROVENANCE_KM`                   | 10 km                                        | Superseded relay, merge report     |
+| `CLOCK_ERROR_SOURCES`                 | `hct`                                        | Clock error                        |
+| `jurisdiction` (in `metadata.yaml`)   | NOAA: US and its territories                 | Choosing the record to keep        |
+| `SAME_GAUGE_M2_DIFFERENCE`            | 0.15                                         | Disagreeing duplicates             |
 
 The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`, 2026. Distances use the haversine formula on a sphere of radius 6371 km (Sinnott, 1984). Position precision is the smaller of the decimal-place counts of latitude and longitude. The quality factor matches the text "quality control issues" in a record's `disclaimers`, which the TICON import fills from TICON's `record_quality` field.
 
-### Code and comments
-
-- The docstring on `scoreEpoch` says years divided by 19; the code divides by 18.613 years.
-- The docstring on `scoreRecency` describes a sigmoid-like curve; the code is linear.
-- The header of `evaluate-quality.ts` describes NOAA and TICON only; the evaluation covers every source under `data/`, and the proximity rule compares records across all of them.
-- In `deduplicate`, a record rejected as the loser of a pair continues through the rest of its comparisons and can reject later records, so a `redundant` link can point at a record that is itself a duplicate.
-
 ## References
 
-- Caldwell, P. C., Merrifield, M. A., & Thompson, P. R. (2015). _Sea level measured by tide gauges from global oceans: the Joint Archive for Sea Level holdings (NCEI Accession 0019568)_, Version 5.5. NOAA National Centers for Environmental Information. https://doi.org/10.7289/V5V40S7W
 - Cartwright, D. E., & Tayler, R. J. (1971). New computations of the tide-generating potential. _Geophysical Journal of the Royal Astronomical Society_, 23(1), 45–73. https://doi.org/10.1111/j.1365-246X.1971.tb01803.x
 - Codiga, D. L. (2011). _Unified Tidal Analysis and Prediction Using the UTide Matlab Functions_. Technical Report 2011-01. Graduate School of Oceanography, University of Rhode Island. https://www.po.gso.uri.edu/codiga/utide/2011Codiga-UTide-Report.pdf
 - Courtier, A. (1938). _Marées_. Service Hydrographique de la Marine, Paris.
@@ -316,7 +345,9 @@ The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`
 - Foreman, M. G. G. (1977, revised 2004). _Manual for Tidal Heights Analysis and Prediction_. Pacific Marine Science Report 77-10. Institute of Ocean Sciences, Sidney, B.C.
 - Gill, S. K., & Schultz, J. R. (Eds.) (2001). _Tidal Datums and Their Applications_. NOAA Special Publication NOS CO-OPS 1. https://tidesandcurrents.noaa.gov/publications/tidal_datums_and_their_applications.pdf
 - Haigh, I. D., Marcos, M., Talke, S. A., Woodworth, P. L., Hunter, J. R., Hague, B. S., Arns, A., Bradshaw, E., & Thompson, P. (2023). GESLA Version 3: A major update to the global higher-frequency sea-level dataset. _Geoscience Data Journal_, 10(3), 293–314. https://doi.org/10.1002/gdj3.174
+- Hart-Davis, M. G., Sulzbach, R., Talke, S. A., Haigh, I. D., Marcos, M., Woodworth, P., Ray, R., Andersen, O. B., Lyard, F., Fouchet, E., Dettmering, D., Thomas, M., & Seitz, F. (2026). Tide of the time: Global tidal characteristics observed from in-situ measurements. _Ocean Science_, 22(3), 1681–1709. https://doi.org/10.5194/os-22-1681-2026
 - Hart-Davis, M., Dettmering, D., & Seitz, F. (2025). _TICON-4: TIdal CONstants based on GESLA-4 sea-level records_. SEANOE. https://doi.org/10.17882/109129
+- Intergovernmental Oceanographic Commission (2002). _Manual on Sea Level Measurement and Interpretation, Volume III: Reappraisals and Recommendations as of the Year 2000_. IOC Manuals and Guides No. 14. UNESCO.
 - International Hydrographic Organization. _Hydrographic Dictionary_, Publication S-32: entries for Chart Datum, Lowest Astronomical Tide and Highest Astronomical Tide. https://iho.int
 - International Hydrographic Organization. _Resolutions of the International Hydrographic Organization_, Publication M-3, Resolution 3/1919, "Datums and Benchmarks". https://iho.int
 - Medvedev, I. P., Rabinovich, A. B., & Kulikov, E. A. (2016). Tides in three enclosed basins: the Baltic, Black, and Caspian Seas. _Frontiers in Marine Science_, 3, 46. https://doi.org/10.3389/fmars.2016.00046
@@ -331,3 +362,4 @@ The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`
 - Sinnott, R. W. (1984). Virtues of the haversine. _Sky and Telescope_, 68(2), 159.
 - Talke, S. A., & Jay, D. A. (2020). Changing tides: The role of natural and anthropogenic factors. _Annual Review of Marine Science_, 12, 121–151. https://doi.org/10.1146/annurev-marine-010419-010727
 - Tsimplis, M. N., & Woodworth, P. L. (1994). The global distribution of the seasonal sea level cycle calculated from coastal tide gauge data. _Journal of Geophysical Research: Oceans_, 99(C8), 16031–16039. https://doi.org/10.1029/94JC01115
+- University of Hawaii Sea Level Center (n.d.). _Data information_. https://uhslc.soest.hawaii.edu/datainfo/

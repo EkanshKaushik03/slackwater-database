@@ -7,7 +7,9 @@ computed:
       position: [21.34, -89.308333]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/telchac_yuk-862a-mex-uhslc_rq
         score: 51
         factors:
           epoch: 0.17

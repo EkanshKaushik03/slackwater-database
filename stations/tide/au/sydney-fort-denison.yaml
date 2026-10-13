@@ -7,7 +7,9 @@ computed:
       position: [-33.8547, 151.2258]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/fort_denison-333-aus-uhslc_fd
         score: 83
         factors:
           epoch: 1

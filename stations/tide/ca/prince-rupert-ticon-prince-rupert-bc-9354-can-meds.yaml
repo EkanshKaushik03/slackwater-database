@@ -10,7 +10,9 @@ computed:
       position: [54.32, -130.32]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/prince_rupert-540-can-uhslc_fd
         score: 84
         factors:
           epoch: 1

@@ -7,7 +7,9 @@ computed:
       position: [31.85, -116.63333333333004]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ensenada-317a-mex-uhslc_rq
         score: 83
         factors:
           epoch: 1

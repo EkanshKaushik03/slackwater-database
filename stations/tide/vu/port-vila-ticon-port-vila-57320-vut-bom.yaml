@@ -9,7 +9,9 @@ computed:
       position: [-17.7614, 168.2928]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_vila-046-vut-uhslc_fd
         score: 83
         factors:
           epoch: 1

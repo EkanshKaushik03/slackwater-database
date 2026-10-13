@@ -10,11 +10,11 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/rikitea-016-fra-uhslc_fd
-        score: 53
+        score: 70
         factors:
           epoch: 1
           recency: 0.95
-          source: 0.192
+          source: 0.99
           quality: 0
           amplitude: 1
-          coverage: 0
+          coverage: 0.029

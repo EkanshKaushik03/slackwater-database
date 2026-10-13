@@ -9,14 +9,15 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/1631428
         score: 0
         factors:
           epoch: 1
           recency: 0.99
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
-          coverage: 0.001
+          coverage: 0.004
         issues:
           - MHWS (8.006) < MHW (8.008)
-          - "Superseded source: noaa"
+          - Superseded by noaa/1631428, its operator's own record

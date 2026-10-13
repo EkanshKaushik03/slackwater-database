@@ -9,7 +9,9 @@ computed:
       position: [-21.1368, -175.1807]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/nuku_alofa-038a-ton-uhslc_rq
         score: 83
         factors:
           epoch: 1

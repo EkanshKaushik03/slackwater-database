@@ -4,13 +4,13 @@
  * Evaluates the quality of every provider tide record. `npm run stations`
  * writes the results into each station file's `computed` block.
  *
- * Pipeline:
- *   1. Load all stations (NOAA + TICON)
- *   2. Compute quality factors for each station
- *   3. Apply hard gates (datum ordering, tidal range, superseded source,
- *      missing constituents, seasonal contamination)
- *   4. Deduplicate TICON stations by proximity
- *   5. Compute composite score and write results
+ * Pipeline (docs/quality-evaluation.md describes each rule):
+ *   1. Load every record under data/
+ *   2. Apply the rejection checks (position, datum ordering, tidal range,
+ *      superseded relay, constituents, seasonal contamination)
+ *   3. Compute the scored factors and the composite score
+ *   4. Deduplicate: TICON records of one gauge, then records of every source
+ *      by position and tide
  *
  * Run directly to print a summary:
  *   npm run report:quality -w packages/stations
@@ -19,7 +19,7 @@
 import { readdir, readFile } from "fs/promises";
 import { join } from "path";
 import { DATA_DIR } from "./station.ts";
-import { DATUM_EPOCH, NODAL_CYCLE_DAYS } from "@slackwater/datums";
+import { DATUM_EPOCH, M2_SPEED, NODAL_CYCLE_DAYS } from "@slackwater/datums";
 import {
   distance,
   authoritativeDuplicateWinner,
@@ -38,6 +38,10 @@ import {
   MAX_OFFSET_TIME_DELTA,
   MIN_AMPLITUDE_RATIO,
   AMPLITUDE_TOLERANCE,
+  SAME_GAUGE_M2_DIFFERENCE,
+  CLOCK_ERROR_SOURCES,
+  MAX_PROVENANCE_KM,
+  m2Contradicts,
   RESOLVED_P1,
   seasonalPeak,
   seasonalTerms,
@@ -50,6 +54,10 @@ import {
   PRINCIPAL_TIDAL_CONSTITUENTS,
 } from "./filtering.ts";
 import type { StationData } from "@slackwater/database";
+import {
+  declaredOriginator,
+  hasUhslcMetadata,
+} from "../../sources/ticon/provenance.ts";
 
 // ── Types ───────────────────────────────────────────────────────────────
 
@@ -78,8 +86,9 @@ export interface QualityResult {
   seasonal_dominant?: boolean;
 }
 
-// Sources superseded by better datasets in this database
-const SUPERSEDED_SOURCES = ["noaa", "rws_hist"];
+// TICON sources superseded outright: the current Rijkswaterstaat series covers
+// the gauges of its historical one.
+const SUPERSEDED_SOURCES = ["rws_hist"];
 
 // Weights for composite score (must sum to 100)
 const WEIGHTS = {
@@ -211,7 +220,7 @@ function checkTidalRange(
   if (high === undefined || low === undefined) return null; // can't evaluate
   const range = high - low;
   if (range < MIN_TIDAL_RANGE) {
-    return `Tidal range ${(range * 100).toFixed(1)}cm < ${MIN_TIDAL_RANGE * 100}cm threshold`;
+    return `Tidal range ${(range * 100).toFixed(2)}cm < ${MIN_TIDAL_RANGE * 100}cm threshold`;
   }
   return null;
 }
@@ -230,23 +239,108 @@ function checkCoordinates(station: Station): string | null {
   return null;
 }
 
-/** Check if source is superseded. */
+/** Reject a record from a source whose times are off by a measured amount. */
+function checkTiming(station: Station): string | null {
+  if (!station.id.startsWith("ticon/")) return null;
+  const suffix = getSourceSuffix(station.source.id);
+  const error = CLOCK_ERROR_SOURCES[suffix];
+  return error ? `Clock error in source ${suffix}: ${error}` : null;
+}
+
+/** Each TICON gauge's declared originator, for the records of the gauge that
+ *  have no UHSLC metadata of their own: UHSLC's metadata covers only its
+ *  research-quality series, so its fast-delivery series follows a
+ *  research-quality sibling. A record the metadata covers speaks for itself,
+ *  even when no rule accepts what it names: Bermuda's 259A gives St. George's
+ *  under UHSLC's own data source, so it declares nothing rather than taking
+ *  259B's Ferry Reach. */
+function originatorsByGauge(stations: Station[]): Map<string, string> {
+  const originators = new Map<string, string>();
+  for (const station of stations) {
+    if (!station.id.startsWith("ticon/")) continue;
+    const originator = declaredOriginator(station.id);
+    if (!originator) continue;
+    const key = gaugeKey(station.source.id);
+    const other = originators.get(key);
+    if (other && other !== originator)
+      throw new Error(`${key} declares both ${other} and ${originator}`);
+    originators.set(key, originator);
+  }
+  return originators;
+}
+
+/** A relay is superseded when the gauge's operator publishes its own
+ *  harmonic constants and they pass every check here: the operator's analysis
+ *  is the primary source. A relay of a gauge whose operator publishes no
+ *  constants, or whose record is rejected, stands in for it. */
 function checkSuperseded(
   station: Station,
   stationMap: Map<string, Station>,
-): string | null {
+  originators: Map<string, string>,
+  failures: Map<string, Gate[]>,
+): Gate | null {
   if (!station.id.startsWith("ticon/")) return null;
   const suffix = getSourceSuffix(station.source.id);
-  if (suffix === "noaa") {
-    // TICON's NOAA source code identifies the direct gauge, if it ships harmonics.
-    const code = station.source.id.split("-").at(-3);
-    const replacement = stationMap.get(`noaa/${code}`);
-    if (!replacement?.harmonic_constituents?.length) return null;
-  }
   if (SUPERSEDED_SOURCES.includes(suffix)) {
-    return `Superseded source: ${suffix}`;
+    return { reason: "superseded", issues: [`Superseded source: ${suffix}`] };
   }
-  return null;
+  const originator =
+    declaredOriginator(station.id) ??
+    (hasUhslcMetadata(station.id)
+      ? undefined
+      : originators.get(gaugeKey(station.source.id)));
+  const direct = originator ? stationMap.get(originator) : undefined;
+  if (!direct?.harmonic_constituents?.length) return null;
+  if (failures.get(direct.id)!.length > 0) return null;
+  const apart = distance(
+    station.latitude,
+    station.longitude,
+    direct.latitude,
+    direct.longitude,
+  );
+  if (apart > MAX_PROVENANCE_KM) return null;
+  // Amplitudes that contradict one gauge leave the pair to deduplication,
+  // which the merge report follows too.
+  if (m2Contradicts(station, direct)) return null;
+  const conflict = tideConflict(station, direct);
+  return {
+    reason: "superseded",
+    issues: [
+      `Superseded by ${direct.id}, its operator's own record`,
+      ...(conflict ? [`${conflict} in ${direct.id}`] : []),
+    ],
+    by: direct.id,
+  };
+}
+
+interface Gate {
+  reason: string;
+  issues: string[];
+  /** The record that publishes this gauge instead, for a superseded relay. */
+  by?: string;
+}
+
+/** Every check a record fails, in the order the reason is taken from, except
+ *  the superseded relay check, which needs these results for the direct
+ *  record. Datum warnings are not failures and are returned separately. */
+function checkGates(
+  station: Station,
+  stationMap: Map<string, Station>,
+  stations: Station[],
+): { failures: Gate[]; warnings: string[] } {
+  const failures: Gate[] = [];
+  const fail = (reason: string, issue: string | null) => {
+    if (issue) failures.push({ reason, issues: [issue] });
+  };
+  fail("coordinates", checkCoordinates(station));
+  fail("timing", checkTiming(station));
+  const datum = checkDatumOrdering(station, stationMap);
+  if (datum.fatal.length > 0)
+    failures.push({ reason: "datum", issues: datum.fatal });
+  fail("range", checkTidalRange(station, stationMap));
+  fail("constituents", checkConstituents(station));
+  fail("seasonal", checkSeasonalContamination(station, stations));
+  return { failures, warnings: datum.warnings };
 }
 
 /** Essential constituents needed for tide prediction. */
@@ -286,14 +380,11 @@ export function checkConstituents(station: Station): string | null {
   }
 
   // The gravitational tide keeps P1 at a third of K1, so a resolved P1 above
-  // K1 marks a bad fit (see RESOLVED_P1).
+  // K1 marks a bad fit (see RESOLVED_P1). The same physics holds whoever
+  // published the record.
   const k1Amp = getAmplitude(station, "K1");
   const p1Amp = getAmplitude(station, "P1");
-  if (
-    !isAuthoritative(station) &&
-    p1Amp >= RESOLVED_P1 &&
-    exceeds(p1Amp, k1Amp)
-  ) {
+  if (p1Amp >= RESOLVED_P1 && exceeds(p1Amp, k1Amp)) {
     return `P1 amplitude (${p1Amp.toFixed(4)}) exceeds K1 (${k1Amp.toFixed(4)}): inconsistent with the gravitational tide`;
   }
 
@@ -441,15 +532,16 @@ export function checkSeasonalDominance(
 
 // ── Scored Factors (each returns 0.0–1.0) ────────────────────────────────
 
-/** Epoch: years/19 capped at 1.0. Subordinates inherit from reference.
- *  Stations with placeholder dates (year 0000) get benefit of the doubt. */
+/** Epoch: the analyzed span over one nodal cycle (18.61 years), capped at 1.
+ *  Subordinates inherit from their reference. A placeholder period (year
+ *  0000) says nothing about the record, so it scores as no period. */
 function scoreEpoch(
   station: Station,
   stationMap: Map<string, Station>,
 ): number {
   const epoch =
     station.epoch ?? stationMap.get(station.offsets?.reference ?? "")?.epoch;
-  if (epoch && !hasValidEpoch(epoch)) return 1;
+  if (!hasValidEpoch(epoch)) return 0;
   const years = epochYears(epoch);
   return toFixed(Math.min(1, years / (NODAL_CYCLE_DAYS / 365.2425)));
 }
@@ -459,19 +551,16 @@ function scoreEpoch(
  *  bumped, which regenerates everything anyway. */
 export const RECENCY_YEAR = DATUM_EPOCH.end.getUTCFullYear();
 
-/** Recency: how recent is the epoch end date? Stations with data from the
- *  current era score higher. Uses a sigmoid-like curve where data from
- *  ~2000+ scores well, and very old data (pre-1950) scores poorly.
- *  Subordinates inherit from reference.
- *  Stations with placeholder dates (year 0000) get benefit of the doubt. */
+/** Recency: falls linearly from 1 for a period ending in RECENCY_YEAR to 0 a
+ *  century earlier. Subordinates inherit from their reference. A placeholder
+ *  period (year 0000) scores as no period. */
 export function scoreRecency(
   station: Station,
   stationMap: Map<string, Station>,
 ): number {
   const epoch =
     station.epoch ?? stationMap.get(station.offsets?.reference ?? "")?.epoch;
-  if (!epoch?.end) return 0;
-  if (!hasValidEpoch(epoch)) return 1;
+  if (!epoch?.end || !hasValidEpoch(epoch)) return 0;
 
   // UTC, because epoch dates are bare dates parsed as UTC midnight. A local
   // getFullYear() reads "2025-01-01" as 2024 west of Greenwich, so the score
@@ -553,11 +642,22 @@ export function scoreAmplitude(station: Station): {
   return { score: toFixed(Math.max(0, score)), issues };
 }
 
-/** Coverage: nearest-neighbor distance. Computed separately (needs all stations). */
-function scoreCoverage(station: Station, allStations: Station[]): number {
+/** Coverage: distance to the nearest other gauge that passed every check.
+ *  A record of the same TICON gauge is not another gauge, and a rejected
+ *  record adds nothing to the map, so neither counts. */
+function scoreCoverage(station: Station, neighbors: Station[]): number {
+  const gauge = station.id.startsWith("ticon/")
+    ? gaugeKey(station.source.id)
+    : undefined;
   let minDist = Infinity;
-  for (const other of allStations) {
+  for (const other of neighbors) {
     if (other.id === station.id) continue;
+    if (
+      gauge &&
+      other.id.startsWith("ticon/") &&
+      gaugeKey(other.source.id) === gauge
+    )
+      continue;
     const d = distance(
       station.latitude,
       station.longitude,
@@ -711,81 +811,157 @@ function countSubordinates(
   return counts;
 }
 
-/** Unified deduplication: for all pairs within range, keep the higher-scoring station.
- *  A reference station with accepted subordinates beats one without, regardless of score. */
+/** Proximity deduplication. Records are taken best first (see `precedence`);
+ *  each one still accepted absorbs every later record that duplicates it. A
+ *  record that has lost never absorbs another, so the outcome does not depend
+ *  on the order the records were loaded in.
+ *
+ *  Two records are as close as any of the positions recorded for their
+ *  gauges: the records of one TICON gauge can place it kilometers apart, and
+ *  the one kept is not always the one beside a neighboring record. */
 function deduplicate(
   stationIds: string[],
   stationMap: Map<string, Station>,
   resultsMap: Map<string, QualityResult>,
   subordinateCounts: Map<string, number>,
+  positions: Map<string, Station[]>,
 ): void {
+  const ranked = [...stationIds].sort(
+    precedence(stationMap, resultsMap, subordinateCounts),
+  );
   const rejected = new Set<string>();
 
-  for (let i = 0; i < stationIds.length; i++) {
-    const idA = stationIds[i]!;
+  for (let i = 0; i < ranked.length; i++) {
+    const idA = ranked[i]!;
     if (rejected.has(idA)) continue;
     const stationA = stationMap.get(idA)!;
+    const hasSubs = (subordinateCounts.get(idA) ?? 0) > 0;
 
-    for (let j = i + 1; j < stationIds.length; j++) {
-      const idB = stationIds[j]!;
+    for (let j = i + 1; j < ranked.length; j++) {
+      const idB = ranked[j]!;
       if (rejected.has(idB)) continue;
       const stationB = stationMap.get(idB)!;
 
-      const dist = distance(
+      const own = distance(
         stationA.latitude,
         stationA.longitude,
         stationB.latitude,
         stationB.longitude,
       );
+      if (!areDuplicates(stationA, stationB, own, hasSubs)) {
+        // Through another record of the same gauge, two records can meet
+        // where their own positions do not. Two reference stations must then
+        // also agree on tide, so a historical record placed at a modern gauge
+        // does not absorb that gauge. A subordinate has no constants of its
+        // own to compare and keeps the position rule.
+        let dist = Infinity;
+        for (const a of positions.get(idA) ?? [stationA])
+          for (const b of positions.get(idB) ?? [stationB])
+            dist = Math.min(
+              dist,
+              distance(a.latitude, a.longitude, b.latitude, b.longitude),
+            );
+        if (dist === own) continue;
+        if (!areDuplicates(stationA, stationB, dist, hasSubs)) continue;
+        if (
+          stationA.type === "reference" &&
+          stationB.type === "reference" &&
+          tideConflict(stationB, stationA)
+        )
+          continue;
+      }
 
-      const [winner, loser] = pickWinner(
-        idA,
-        idB,
-        stationMap,
-        resultsMap,
-        subordinateCounts,
-      );
-
-      const winnerHasSubs = (subordinateCounts.get(winner) ?? 0) > 0;
-      if (!areDuplicates(stationA, stationB, dist, winnerHasSubs)) continue;
-
-      const result = resultsMap.get(loser)!;
-      result.accepted = false;
-      result.reason = "duplicate";
-      result.redundant = winner;
-      rejected.add(loser);
+      markDuplicate(resultsMap, stationMap, idB, idA);
+      rejected.add(idB);
     }
   }
 }
 
-/** Pick the winner between two stations: a reference with accepted subordinates
- *  beats one without; otherwise the higher composite score wins. Ties on score
- *  fall to the more precisely located record, so the survivor keeps the better
- *  coordinates rather than an older coarsely-rounded fix. */
-function pickWinner(
-  idA: string,
-  idB: string,
+function markDuplicate(
+  results: Map<string, QualityResult>,
+  stationMap: Map<string, Station>,
+  loser: string,
+  winner: string,
+): void {
+  const result = results.get(loser)!;
+  result.accepted = false;
+  result.reason = "duplicate";
+  result.redundant = winner;
+  const a = stationMap.get(loser)!;
+  const b = stationMap.get(winner)!;
+  const kept = tideConflict(a, b);
+  if (kept) result.issues.push(`${kept} in ${winner}, which this duplicates`);
+  const duplicate = tideConflict(b, a);
+  if (duplicate)
+    results.get(winner)!.issues.push(`${duplicate} in ${loser}, a duplicate`);
+}
+
+/** How record `a`'s M2 disagrees with `b`'s, when they disagree by more than
+ *  one gauge analyzed twice does (SAME_GAUGE_M2_DIFFERENCE), with the phase
+ *  difference as time.
+ *  The pair stays merged: a disagreement this close is most often one
+ *  record's clock error, which publishing both would not fix. */
+export function tideConflict(a: Station, b: Station): string | null {
+  const m2A = a.harmonic_constituents?.find((c) => c.name === "M2");
+  const m2B = b.harmonic_constituents?.find((c) => c.name === "M2");
+  if (!m2A || !m2B) return null;
+  const rad = Math.PI / 180;
+  const difference = Math.hypot(
+    m2A.amplitude * Math.cos(m2A.phase * rad) -
+      m2B.amplitude * Math.cos(m2B.phase * rad),
+    m2A.amplitude * Math.sin(m2A.phase * rad) -
+      m2B.amplitude * Math.sin(m2B.phase * rad),
+  );
+  const larger = Math.max(m2A.amplitude, m2B.amplitude);
+  if (
+    difference <= AMPLITUDE_TOLERANCE ||
+    difference <= SAME_GAUGE_M2_DIFFERENCE * larger
+  )
+    return null;
+  const phase = ((m2A.phase - m2B.phase + 540) % 360) - 180;
+  const minutes = Math.round((phase / M2_SPEED) * 60);
+  const mm = Math.round((m2A.amplitude - m2B.amplitude) * 1000);
+  return (
+    `M2 here (${m2A.amplitude.toFixed(3)} m, ${m2A.phase.toFixed(1)}°) ` +
+    `differs from (${m2B.amplitude.toFixed(3)} m, ${m2B.phase.toFixed(1)}°) ` +
+    `by ${mm >= 0 ? "+" : ""}${mm} mm and ${Math.abs(minutes)} min ` +
+    `${minutes >= 0 ? "later" : "earlier"}`
+  );
+}
+
+/** The order in which duplicates are kept, best first:
+ *
+ *  1. A record that wins on authority (`winsOnAuthority`) beats a relay.
+ *  2. A reference station beats a subordinate. A subordinate predicts from a
+ *     distant reference plus offsets; a reference was analyzed at the gauge.
+ *  3. A reference with accepted subordinates beats one without, so they keep
+ *     the reference they predict from.
+ *  4. The higher score wins.
+ *  5. The more precisely located record wins, keeping the surveyed fix over a
+ *     coarsely rounded one.
+ *  6. Otherwise the lower id, so the result is the same on every machine. */
+function precedence(
   stationMap: Map<string, Station>,
   resultsMap: Map<string, QualityResult>,
   subordinateCounts: Map<string, number>,
-): [winner: string, loser: string] {
-  const directWinner = authoritativeDuplicateWinner(
-    stationMap.get(idA)!,
-    stationMap.get(idB)!,
-  );
-  if (directWinner) return [directWinner, directWinner === idA ? idB : idA];
-  const subsA = subordinateCounts.get(idA) ?? 0;
-  const subsB = subordinateCounts.get(idB) ?? 0;
-  if (subsA > 0 && subsB === 0) return [idA, idB];
-  if (subsB > 0 && subsA === 0) return [idB, idA];
-  const scoreA = resultsMap.get(idA)!.score;
-  const scoreB = resultsMap.get(idB)!.score;
-  if (scoreA !== scoreB) return scoreA > scoreB ? [idA, idB] : [idB, idA];
-  const a = stationMap.get(idA)!;
-  const b = stationMap.get(idB)!;
-  const precA = coordinatePrecision(a.latitude, a.longitude);
-  const precB = coordinatePrecision(b.latitude, b.longitude);
-  return precA >= precB ? [idA, idB] : [idB, idA];
+): (idA: string, idB: string) => number {
+  return (idA, idB) => {
+    const a = stationMap.get(idA)!;
+    const b = stationMap.get(idB)!;
+    const authority = authoritativeDuplicateWinner(a, b);
+    if (authority) return authority === idA ? -1 : 1;
+    if (a.type !== b.type) return a.type === "reference" ? -1 : 1;
+    const subsA = (subordinateCounts.get(idA) ?? 0) > 0;
+    const subsB = (subordinateCounts.get(idB) ?? 0) > 0;
+    if (subsA !== subsB) return subsA ? -1 : 1;
+    const score = resultsMap.get(idB)!.score - resultsMap.get(idA)!.score;
+    if (score !== 0) return score;
+    const precision =
+      coordinatePrecision(b.latitude, b.longitude) -
+      coordinatePrecision(a.latitude, a.longitude);
+    if (precision !== 0) return precision;
+    return idA < idB ? -1 : idA > idB ? 1 : 0;
+  };
 }
 
 /** Deduplicate TICON records that share a physical-gauge key (same station code,
@@ -809,27 +985,27 @@ function deduplicateByGauge(
     (groups.get(key) ?? groups.set(key, []).get(key)!).push(id);
   }
 
+  const order = precedence(stationMap, resultsMap, subordinateCounts);
   for (const ids of groups.values()) {
     if (ids.length < 2) continue;
-    // Resolve the single survivor first so every rejected record's `redundant`
-    // pointer references the final winner rather than an intermediate one.
-    let winner = ids[0]!;
-    for (let i = 1; i < ids.length; i++) {
-      [winner] = pickWinner(
-        winner,
-        ids[i]!,
-        stationMap,
-        resultsMap,
-        subordinateCounts,
-      );
+    const [winner, ...losers] = [...ids].sort(order);
+    for (const id of losers) markDuplicate(resultsMap, stationMap, id, winner!);
+  }
+}
+
+/** Point every duplicate at the record that is published for its gauge. A
+ *  gauge's best record can itself lose to a nearby record in the proximity
+ *  pass, which would otherwise leave its own duplicates pointing at a record
+ *  that is not published. */
+function resolveRedundant(resultsMap: Map<string, QualityResult>): void {
+  for (const result of resultsMap.values()) {
+    let target = result.redundant;
+    const seen = new Set<string>();
+    while (target && !resultsMap.get(target)!.accepted && !seen.has(target)) {
+      seen.add(target);
+      target = resultsMap.get(target)!.redundant;
     }
-    for (const id of ids) {
-      if (id === winner) continue;
-      const result = resultsMap.get(id)!;
-      result.accepted = false;
-      result.reason = "duplicate";
-      result.redundant = winner;
-    }
+    if (target) result.redundant = target;
   }
 }
 
@@ -843,40 +1019,37 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
   // Step 1: Compute factors and apply gates
   const resultsMap = new Map<string, QualityResult>();
 
+  const gates = new Map(
+    stations.map((s) => [s.id, checkGates(s, stationMap, stations)]),
+  );
+  const failures = new Map(
+    [...gates].map(([id, { failures }]) => [id, failures]),
+  );
+  const originators = originatorsByGauge(stations);
+
   for (const station of stations) {
-    const issues: string[] = [];
-
-    // Gates
-    const coordinateIssue = checkCoordinates(station);
-    const datumIssues = checkDatumOrdering(station, stationMap);
-    const rangeIssue = checkTidalRange(station, stationMap);
-    const supersededIssue = checkSuperseded(station, stationMap);
-    const constituentIssue = checkConstituents(station);
-    const seasonalIssue = checkSeasonalContamination(station, stations);
-
-    // Diurnal pair warnings are non-fatal
-    issues.push(...datumIssues.warnings);
-
-    let gateReason: string | undefined;
-    if (coordinateIssue) {
-      issues.push(coordinateIssue);
-      gateReason = "coordinates";
-    } else if (datumIssues.fatal.length > 0) {
-      issues.push(...datumIssues.fatal);
-      gateReason = "datum";
-    } else if (rangeIssue) {
-      issues.push(rangeIssue);
-      gateReason = "range";
-    } else if (supersededIssue) {
-      issues.push(supersededIssue);
-      gateReason = "superseded";
-    } else if (constituentIssue) {
-      issues.push(constituentIssue);
-      gateReason = "constituents";
-    } else if (seasonalIssue) {
-      issues.push(seasonalIssue);
-      gateReason = "seasonal";
+    const { warnings } = gates.get(station.id)!;
+    const failed = [...failures.get(station.id)!];
+    const superseded = checkSuperseded(
+      station,
+      stationMap,
+      originators,
+      failures,
+    );
+    if (superseded) {
+      // Taken after a record's own data checks and before its constituents.
+      const at = failed.findIndex((g) =>
+        ["constituents", "seasonal"].includes(g.reason),
+      );
+      failed.splice(at === -1 ? failed.length : at, 0, superseded);
     }
+
+    // Every failed check is listed, so fixing one cannot reveal another that
+    // was never reported; the first sets `reason`. Datum warnings are not
+    // failures.
+    const issues: string[] = [...warnings];
+    const gateReason = failed[0]?.reason;
+    for (const gate of failed) issues.push(...gate.issues);
 
     // A label, deliberately outside the gate chain above: a seasonal-dominated
     // station is accepted, and its consumers decide how to present water whose
@@ -909,16 +1082,18 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
       factors,
       issues,
       ...(gateReason ? { reason: gateReason } : {}),
+      ...(failed[0]?.by ? { redundant: failed[0].by } : {}),
       ...(dominanceIssue ? { seasonal_dominant: true } : {}),
     };
 
     resultsMap.set(station.id, result);
   }
 
-  // Step 2: Compute coverage (needs all stations)
+  // Step 2: Compute coverage (needs every record's checks)
+  const passed = stations.filter((s) => resultsMap.get(s.id)!.accepted);
   for (const station of stations) {
     const result = resultsMap.get(station.id)!;
-    result.factors.coverage = scoreCoverage(station, stations);
+    result.factors.coverage = scoreCoverage(station, passed);
   }
 
   // Step 3: Compute composite scores
@@ -940,7 +1115,22 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
 
   // 4b: Deduplicate the survivors by proximity and harmonic similarity.
   const survivingIds = acceptedIds.filter((id) => resultsMap.get(id)!.accepted);
-  deduplicate(survivingIds, stationMap, resultsMap, subordinateCounts);
+  const positions = new Map<string, Station[]>();
+  for (const id of acceptedIds) {
+    const result = resultsMap.get(id)!;
+    const kept = result.accepted ? id : result.redundant!;
+    (positions.get(kept) ?? positions.set(kept, []).get(kept)!).push(
+      stationMap.get(id)!,
+    );
+  }
+  deduplicate(
+    survivingIds,
+    stationMap,
+    resultsMap,
+    subordinateCounts,
+    positions,
+  );
+  resolveRedundant(resultsMap);
 
   // Codepoint order, not localeCompare: the output must not depend on the
   // machine's ICU locale.

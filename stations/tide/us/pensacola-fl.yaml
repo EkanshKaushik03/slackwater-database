@@ -10,15 +10,16 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8729840
         score: 0
         factors:
           epoch: 1
           recency: 0.99
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
           - MLWS (2.85) > MLW (2.769)
           - MHWS (2.9) < MHW (3.003)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8729840, its operator's own record

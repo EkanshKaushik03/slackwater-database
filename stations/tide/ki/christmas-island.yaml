@@ -7,7 +7,9 @@ computed:
       position: [1.9850000143051147, -157.4770050048828]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/christmas-011a-kir-uhslc_rq
         score: 83
         factors:
           epoch: 1

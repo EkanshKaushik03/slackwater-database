@@ -10,14 +10,15 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8540433
         score: 0
         factors:
           epoch: 1
           recency: 0.99
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
           - MLWS (6.779) > MLW (6.761)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8540433, its operator's own record

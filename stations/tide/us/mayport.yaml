@@ -19,3 +19,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - M2 here (0.634 m, 354.6°) differs from (0.662 m, 28.1°) by -28 mm and 69 min earlier in noaa/8720220, which this duplicates

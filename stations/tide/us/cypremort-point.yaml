@@ -16,4 +16,6 @@ computed:
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0
+          coverage: 0.001
+        issues:
+          - M2 here (0.070 m, 356.7°) differs from (0.082 m, 349.1°) by -12 mm and 16 min later in ticon/vermilion_bay_near_cypremort_point_la-7387040-usa-usgs, a duplicate

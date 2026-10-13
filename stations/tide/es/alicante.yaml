@@ -9,7 +9,7 @@ computed:
       quality:
         accepted: false
         reason: duplicate
-        redundant: ticon/alicante_i_outer_harbour-alio-esp-da_mm
+        redundant: ticon/alicante_i-ali-esp-da_mm
         seasonal_dominant: true
         score: 51
         factors:
@@ -21,3 +21,4 @@ computed:
           coverage: 0.006
         issues:
           - "Seasonal curve peak (0.096m) exceeds the principal tide M2+S2+K1+O1 (0.086m): the yearly swing exceeds the daily one"
+          - M2 here (0.018 m, 59.8°) differs from (0.017 m, 23.4°) by +1 mm and 75 min later in ticon/alicante_i-ali-esp-da_mm, which this duplicates

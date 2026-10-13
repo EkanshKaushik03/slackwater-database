@@ -12,11 +12,20 @@ import { sourceMetadata } from "./sources.ts";
  * or more authoritative.
  */
 export const SOURCE_PRIORITY: Record<string, number> = {
-  // Tier 0: Authoritative national source (included directly)
-  noaa: 0, // NOAA CO-OPS
+  // TICON's reanalysis of a NOAA gauge that NOAA publishes without harmonic
+  // constants, or whose NOAA record fails a check (a direct record supersedes
+  // the relay otherwise). The
+  // data are NOAA's, but the analysis is a relay's, so it ranks with the
+  // national services rather than with NOAA.
+  noaa: 4,
 
   // Tier 1: Highest priority - most reliable and current
-  uhslc_fd: 1, // University of Hawaii Sea Level Center - Fast Delivery
+  // University of Hawaii Sea Level Center. Research quality is the delayed-mode
+  // series that has had UHSLC's full quality control and replaces fast delivery
+  // as it becomes available; fast delivery is more recent. They rank equally,
+  // so record length and recency decide between them.
+  uhslc_fd: 1,
+  uhslc_rq: 1,
   bodc: 2, // British Oceanographic Data Centre
 
   // Tier 2: High quality national/regional services
@@ -46,11 +55,9 @@ export const SOURCE_PRIORITY: Record<string, number> = {
   sfwmd: 43,
   nwfwmd: 44,
   ncdem: 45,
-  hct: 46,
   cm: 47,
 
-  // Tier 5: Lower priority - older versions or research quality
-  uhslc_rq: 80, // Research Quality - older UHSLC version
+  // Tier 5: Lower priority - historical series and smaller contributors
   unam: 85,
   unam_hist: 86,
   jodc_pahb: 87,
@@ -60,6 +67,8 @@ export const SOURCE_PRIORITY: Record<string, number> = {
   mi_c: 91,
   mi_r: 92,
   cco: 93,
+  // Historical records contributed to GESLA by individual researchers
+  // (Haigh, Marcos, Talke), often of gauges an agency also relays.
   da_idh: 94,
   da_mm: 95,
   gloss: 96,
@@ -69,12 +78,25 @@ export const SOURCE_PRIORITY: Record<string, number> = {
   cv: 97, // City of Venice
   uz: 97, // University of Zagreb
 
-  // Tier 7: Lowest priority - often duplicates
-  da_sat: 99, // Satellite-derived, often duplicates NOAA
+  // Tier 7: Lowest priority - historical records of gauges, mostly NOAA's, that
+  // Stefan Talke contributed to GESLA
+  da_sat: 99,
 };
 
 /** Default priority for unknown sources */
 export const DEFAULT_PRIORITY = 50;
+
+/** TICON sources whose record times are off by a measured amount, with the
+ *  measurement. A record from one is rejected: its predictions would publish
+ *  high and low water at the wrong time. */
+export const CLOCK_ERROR_SOURCES: Record<string, string> = {
+  // Harris County Flood Control District. Against the nearest NOAA or USGS
+  // gauge within 5 km, its 9 comparable records run a median 44 minutes late
+  // on M2 and about 30 on K1 and O1; USGS (591 pairs) and California DWR (97)
+  // run within a minute by the same comparison. Every one of its records has
+  // a NOAA harmonic station within 15 km.
+  hct: "runs 23 to 71 minutes behind every NOAA and USGS gauge near it",
+};
 
 /** GESLA sources that restrict commercial/consultancy use */
 export const NON_COMMERCIAL_SOURCES = ["cmems", "cv", "uz"];
@@ -86,15 +108,31 @@ export function isAuthoritative(record: {
   return !!record.source && sourceMetadata(record.source.name).authoritative;
 }
 
-type SourcedRecord = { id: string; source?: { name: string } };
+type SourcedRecord = {
+  id: string;
+  source?: { name: string };
+  type?: string;
+  country?: string;
+};
 
-/** Prefer the authoritative record when exactly one duplicate is authoritative. */
+/** Whether a record's authority holds when choosing among duplicates. An
+ *  authoritative source's subordinate station outside its jurisdiction is a
+ *  legacy foreign table predicted from a distant reference, not a gauge the
+ *  source operates, so it does not outrank a local record on authority. */
+export function winsOnAuthority(record: SourcedRecord): boolean {
+  if (!isAuthoritative(record)) return false;
+  if (record.type !== "subordinate") return true;
+  const { jurisdiction } = sourceMetadata(record.source!.name);
+  return !jurisdiction || jurisdiction.includes(record.country ?? "");
+}
+
+/** Prefer the authoritative record when exactly one duplicate wins on authority. */
 export function authoritativeDuplicateWinner(
   a: SourcedRecord,
   b: SourcedRecord,
 ): string | undefined {
-  const directA = isAuthoritative(a);
-  const directB = isAuthoritative(b);
+  const directA = winsOnAuthority(a);
+  const directB = winsOnAuthority(b);
   return directA === directB ? undefined : directA ? a.id : b.id;
 }
 
@@ -244,6 +282,41 @@ export function exceeds(a: number, b: number): boolean {
  *  few millimetres, not a resolved P1 well above K1, so the gate applies once
  *  P1 reaches 10 mm. Baltic K1 runs about 4 to 30 mm. */
 export const RESOLVED_P1 = 0.01;
+
+/** How far apart, in km, a relay and the record it declares as its
+ *  originator can be and still be the same gauge. Older relays round
+ *  positions to 0.1°, about 11 km; beyond this the declaration is more likely
+ *  wrong than the coordinates. */
+export const MAX_PROVENANCE_KM = 10;
+
+/** How far apart two records' M2 can be, as a vector difference relative to
+ *  the larger amplitude, and still describe the same tide: about 8.6° of
+ *  phase at equal amplitudes, or 15% of amplitude at equal phases. Across 447
+ *  NOAA gauges, NOAA's own M2 against TICON's reanalysis of the same gauge
+ *  has a 95th percentile of 0.137, which 0.15 rounds up. It is this project's
+ *  definition, derived from those pairs. Beyond it, two merged
+ *  records disagree by more than one gauge analyzed twice does, most often
+ *  because one record's clock is off. */
+export const SAME_GAUGE_M2_DIFFERENCE = 0.15;
+
+/** Whether two records' M2 amplitudes contradict a claim that they are one
+ *  gauge: both measurable, and apart by more than both MIN_AMPLITUDE_RATIO
+ *  and AMPLITUDE_TOLERANCE. A record without M2, such as a subordinate, or
+ *  with NOAA's 0 for a constituent it did not determine, has nothing to
+ *  contradict. Quality evaluation and the merge report share it,
+ *  so a relay superseded by its operator's record also joins its route. */
+export function m2Contradicts(
+  a: { harmonic_constituents?: { name: string; amplitude: number }[] },
+  b: { harmonic_constituents?: { name: string; amplitude: number }[] },
+): boolean {
+  const m2 = (s: typeof a) =>
+    s.harmonic_constituents?.find(({ name }) => name === "M2")?.amplitude;
+  const [ma, mb] = [m2(a), m2(b)];
+  if (!ma || !mb) return false;
+  const low = Math.min(ma, mb);
+  const high = Math.max(ma, mb);
+  return exceeds(high, low) && low / high < MIN_AMPLITUDE_RATIO;
+}
 
 /** Minimum M2 amplitude ratio to consider two reference stations as duplicates.
  *  Pairs within MAX_DEDUP_DISTANCE but above MIN_DEDUP_DISTANCE are only

@@ -7,12 +7,14 @@ computed:
       position: [-26.65, 15.15]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 69
+        accepted: false
+        reason: duplicate
+        redundant: ticon/luderitz-702a-zaf-uhslc_rq
+        score: 84
         factors:
           epoch: 1
           recency: 0.89
           source: 0.99
           quality: 0
           amplitude: 1
-          coverage: 0
+          coverage: 1

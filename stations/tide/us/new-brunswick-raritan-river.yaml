@@ -10,13 +10,14 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8531463
         score: 0
         factors:
           epoch: 0.058
           recency: 0.51
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
-          - "Superseded source: noaa"
+          - Superseded by noaa/8531463, its operator's own record

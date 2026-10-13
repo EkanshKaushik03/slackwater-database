@@ -7,7 +7,9 @@ computed:
       position: [21.116666666667008, -76.116666666667]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/gibara-244a-cub-uhslc_rq
         score: 83
         factors:
           epoch: 1

@@ -19,3 +19,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.006
+        issues:
+          - M2 here (0.432 m, 316.3°) differs from (0.457 m, 307.9°) by -25 mm and 18 min later in ticon/roaring_river-ror-usa-cdwr, which this duplicates

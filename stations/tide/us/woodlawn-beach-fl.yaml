@@ -10,15 +10,17 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8729736
         score: 0
         factors:
           epoch: 0.081
           recency: 0.6
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
           - MLWS (0.656) > MLW (0.543)
           - MHWS (0.702) < MHW (0.823)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8729736, its operator's own record
+          - M2 here (0.018 m, 195.9°) differs from (0.020 m, 187.9°) by -2 mm and 17 min later in noaa/8729736

@@ -7,12 +7,14 @@ computed:
       position: [-33.0267, -71.625]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 65
+        accepted: false
+        reason: duplicate
+        redundant: ticon/valparaiso-081-chl-uhslc_fd
+        score: 64
         factors:
           epoch: 0.148
           recency: 0.72
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0.004

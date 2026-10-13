@@ -17,3 +17,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.001
+        issues:
+          - M2 here (0.017 m, 160.9°) differs from (0.014 m, 162.4°) by +3 mm and 3 min earlier in ticon/grand_isle-8761724-usa-noaa, a duplicate
+          - M2 here (0.017 m, 160.9°) differs from (0.014 m, 163.2°) by +3 mm and 5 min earlier in ticon/grand_isle_la-765a-usa-uhslc_rq, a duplicate

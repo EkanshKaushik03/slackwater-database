@@ -10,17 +10,18 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8761899
         seasonal_dominant: true
         score: 0
         factors:
           epoch: 0.108
           recency: 0.65
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
           - MLWS (0.846) > MLW (0.845)
           - MHWS (0.85) < MHW (0.872)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8761899, its operator's own record
           - "Seasonal curve peak (0.130m) exceeds the principal tide M2+S2+K1+O1 (0.046m): the yearly swing exceeds the daily one"

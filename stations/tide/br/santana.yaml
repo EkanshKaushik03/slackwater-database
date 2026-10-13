@@ -10,11 +10,13 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/santana-716e-bra-uhslc_rq
-        score: 31
+        score: 47
         factors:
           epoch: 0.116
           recency: 0.46
-          source: 0.192
+          source: 0.99
           quality: 0
           amplitude: 1
-          coverage: 0
+          coverage: 0.046
+        issues:
+          - M2 here (1.152 m, 194.5°) differs from (1.133 m, 207.9°) by +19 mm and 28 min earlier in ticon/santana-716e-bra-uhslc_rq, which this duplicates

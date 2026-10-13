@@ -9,7 +9,9 @@ computed:
       position: [-19.2767, 147.0583]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cape_ferguson-343a-aus-uhslc_rq
         score: 83
         factors:
           epoch: 1

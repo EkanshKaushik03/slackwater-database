@@ -7,6 +7,7 @@ import {
   RECENCY_YEAR,
   scoreAmplitude,
   scoreRecency,
+  tideConflict,
 } from "../evaluate-quality.ts";
 import { exceeds, seasonalTerms } from "../filtering.ts";
 
@@ -240,4 +241,26 @@ describe("scoreRecency", () => {
 test("weighs records in id order whatever the filesystem lists", async () => {
   const ids = (await loadAllStations()).map(({ id }) => id);
   expect(ids).toEqual([...ids].sort());
+});
+
+describe("tideConflict", () => {
+  test("states a merged record's M2 disagreement as time", () => {
+    // Venice: the City of Venice record runs about 46 minutes from ISPRA's.
+    const cv = station({ M2: { amplitude: 0.242, phase: 284.3 } });
+    const ispra = station({ M2: { amplitude: 0.233, phase: 262.2 } });
+    expect(tideConflict(cv, ispra)).toMatch(/by \+9 mm and 46 min later/);
+    expect(tideConflict(ispra, cv)).toMatch(/by -9 mm and 46 min earlier/);
+  });
+
+  test("passes a pair within one gauge analyzed twice", () => {
+    const a = station({ M2: { amplitude: 0.5, phase: 100 } });
+    const b = station({ M2: { amplitude: 0.5, phase: 104 } });
+    expect(tideConflict(a, b)).toBeNull();
+  });
+
+  test("passes millimeter tides whose phase is noise", () => {
+    const a = station({ M2: { amplitude: 0.002, phase: 10 } });
+    const b = station({ M2: { amplitude: 0.002, phase: 60 } });
+    expect(tideConflict(a, b)).toBeNull();
+  });
 });

@@ -9,7 +9,9 @@ computed:
       position: [-2.0367, 147.3753]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/lombrum_manus_is-400a-png-uhslc_rq
         score: 83
         factors:
           epoch: 1

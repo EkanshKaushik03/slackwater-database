@@ -9,12 +9,14 @@ computed:
       quality:
         accepted: false
         reason: duplicate
-        redundant: ticon/hiva_oa-017-fra-uhslc_fd
-        score: 47
+        redundant: ticon/hiva_oa-495-fra-refmar
+        score: 64
         factors:
           epoch: 0.157
           recency: 0.54
-          source: 0.192
+          source: 0.99
           quality: 1
           amplitude: 1
-          coverage: 0
+          coverage: 0.019
+        issues:
+          - M2 here (0.445 m, 47.8°) differs from (0.460 m, 28.5°) by -14 mm and 40 min later in ticon/hiva_oa-017b-fra-uhslc_rq, which this duplicates

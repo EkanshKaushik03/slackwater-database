@@ -7,7 +7,9 @@ computed:
       position: [55.367, -7.333]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/malin_head-834a-irl-uhslc_rq
         score: 68
         factors:
           epoch: 0.922
@@ -15,4 +17,4 @@ computed:
           source: 0.99
           quality: 0
           amplitude: 1
-          coverage: 0
+          coverage: 0.011

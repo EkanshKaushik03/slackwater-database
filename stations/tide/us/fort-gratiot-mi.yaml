@@ -12,11 +12,11 @@ computed:
         reason: duplicate
         redundant: ticon/dunn_paper_mi-9014096-usa-noaa
         seasonal_dominant: true
-        score: 85
+        score: 84
         factors:
           epoch: 1
           recency: 0.99
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0.008

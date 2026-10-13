@@ -7,7 +7,9 @@ computed:
       position: [15.666667, -96.491667]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/puerto_angel-672a-mex-uhslc_rq
         score: 36
         factors:
           epoch: 0.148
