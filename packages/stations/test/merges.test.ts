@@ -594,6 +594,20 @@ describe("CMEMS copy edge cases", () => {
     expect(pair("Galway Port 2", "Galway Port")).toBe(0);
   });
 
+  test("a gauge code does not rejoin a pair whose M2 phase disagrees", () => {
+    const phased = (id: string, phase: number) => ({
+      ...station(id, 54.8, 0.5, "Wladyslawowo"),
+      harmonic_constituents: [{ name: "M2", amplitude: 0.5, phase }],
+    });
+    // The two share the code wla-pol, 0 km apart, 56 minutes out of phase.
+    expect(
+      run([
+        phased("ticon/wladyslawowo-wla-pol-cmems", 30),
+        phased("ticon/wladyslawowo-wla-pol-eseas", 2),
+      ]).groups,
+    ).toEqual([]);
+  });
+
   test("a copy needs an M2 on both sides to compare", () => {
     const bare = {
       ...station("ticon/x-1-nor-nhs", 60, 0.5, "Bodø"),

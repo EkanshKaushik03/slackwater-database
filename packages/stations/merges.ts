@@ -101,6 +101,12 @@ const gaugeCode = (station: ResolvedStation) =>
 
 type Tide = Parameters<typeof tideConflict>[0];
 
+/** Whether two records' M2 disagrees in amplitude or phase by more than one
+ *  gauge analyzed twice does, so a rule that joins on a code or a name
+ *  refuses what the copy rule refuses. */
+const m2Differs = (a: ResolvedStation, b: ResolvedStation) =>
+  m2Contradicts(a, b) || !!tideConflict(a as Tide, b as Tide);
+
 /**
  * A place name's spellings for matching: CMEMS writes Bodø as Bodoe and
  * Göteborg as Goteborg, so ø, ö, æ, ä, ü and å match either their bare letter
@@ -246,8 +252,7 @@ export function planMerges(
     if (
       confident &&
       kind === "gauge" &&
-      (km(station, target) > MAX_GAUGE_CODE_KM ||
-        m2Contradicts(station, target))
+      (km(station, target) > MAX_GAUGE_CODE_KM || m2Differs(station, target))
     )
       return [];
     return [{ id, target: result.redundant, kind }];
@@ -277,6 +282,9 @@ export function planMerges(
     const roots = new Set(named.map(({ id }) => find(slugOf.get(id) ?? id)));
     if (roots.size !== 1) continue;
     const other = named[0]!;
+    // Records one route already holds are one station whatever M2 says.
+    const rootOf = (id: string) => find(slugOf.get(id) ?? id);
+    if (rootOf(copy.id) === rootOf(other.id)) continue;
     // Every record it would join must have an M2 that agrees with the copy's.
     const m2 = (station: ResolvedStation) =>
       station.harmonic_constituents?.some(({ name }) => name === "M2");
@@ -300,10 +308,7 @@ export function planMerges(
     if (!code) continue;
     const segments = byGauge.get(code) ?? [];
     for (const other of segments)
-      if (
-        km(station, other) <= MAX_GAUGE_CODE_KM &&
-        !m2Contradicts(station, other)
-      )
+      if (km(station, other) <= MAX_GAUGE_CODE_KM && !m2Differs(station, other))
         join(station.id, other.id, "gauge");
     byGauge.set(code, [...segments, station]);
   }
