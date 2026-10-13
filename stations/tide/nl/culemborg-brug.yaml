@@ -20,4 +20,5 @@ computed:
           coverage: 0.412
         issues:
           - "Superseded source: rws_hist"
+          - "P1 amplitude (0.0130) exceeds K1 (0.0092): inconsistent with the gravitational tide"
           - "Seasonal curve peak (0.112m) exceeds the principal tide M2+S2+K1+O1 (0.045m): the yearly swing exceeds the daily one"

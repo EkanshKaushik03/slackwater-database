@@ -23,4 +23,7 @@ computed:
           - MLWS (1.356) > MLW (1.319)
           - MHW (1.319) <= MSL (1.453)
           - MHW (1.319) < MLLW (1.324)
+          - Tidal range 0.00cm < 2cm threshold
+          - "P1 amplitude (0.0101) exceeds K1 (0.0051): inconsistent with the gravitational tide"
+          - "SA amplitude (0.978m) is 13.1x the median SA of 1 same-regime neighbour(s) within 25km (0.075m): seasonal contamination"
           - "Seasonal curve peak (1.179m) exceeds the principal tide M2+S2+K1+O1 (0.113m): the yearly swing exceeds the daily one"

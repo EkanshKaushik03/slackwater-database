@@ -213,7 +213,7 @@ function checkTidalRange(
   if (high === undefined || low === undefined) return null; // can't evaluate
   const range = high - low;
   if (range < MIN_TIDAL_RANGE) {
-    return `Tidal range ${(range * 100).toFixed(1)}cm < ${MIN_TIDAL_RANGE * 100}cm threshold`;
+    return `Tidal range ${(range * 100).toFixed(2)}cm < ${MIN_TIDAL_RANGE * 100}cm threshold`;
   }
   return null;
 }
@@ -941,10 +941,12 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
       failed.splice(at === -1 ? failed.length : at, 0, superseded);
     }
 
-    // Diurnal pair warnings are non-fatal
+    // Every failed check is listed, so fixing one cannot reveal another that
+    // was never reported; the first sets `reason`. Datum warnings are not
+    // failures.
     const issues: string[] = [...warnings];
     const gateReason = failed[0]?.reason;
-    if (failed[0]) issues.push(...failed[0].issues);
+    for (const gate of failed) issues.push(...gate.issues);
 
     // A label, deliberately outside the gate chain above: a seasonal-dominated
     // station is accepted, and its consumers decide how to present water whose

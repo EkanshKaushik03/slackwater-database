@@ -36,7 +36,7 @@ A reference station has its own harmonic constants. A subordinate (secondary) st
 
 ## Rejection checks
 
-These checks are pass or fail. A record that fails any of them is rejected and gets a score of 0. When a record fails more than one, only the first failure in the order below is recorded.
+These checks are pass or fail. A record that fails any of them is rejected and gets a score of 0. When a record fails more than one, the first failure in the order below is its `reason`, and every failure is listed in its `issues`.
 
 | Check                  | Rejects a record when                                        | Basis                    |
 | ---------------------- | ------------------------------------------------------------ | ------------------------ |
@@ -269,12 +269,12 @@ npm run report:quality -w packages/stations
 | `seasonal_dominant` | `true` for the seasonal label.                                                                                   |
 | `score`             | The composite score. 0 for a record rejected by a check; a duplicate keeps the score it was compared on.         |
 | `factors`           | `epoch`, `recency`, `source`, `quality`, `amplitude`, `coverage`, each 0 to 1, rounded to three decimals.        |
-| `issues`            | The rejection message, datum warnings, the seasonal-label note, and amplitude findings, as text.                 |
+| `issues`            | Every failed check's message, datum warnings, the seasonal-label note, and amplitude findings, as text.          |
 
 ### Order of operations
 
 1. `loadAllStations` reads every JSON file under `data/`, sorting directories and file names, so records are processed in record-id order.
-2. `checkGates` runs `checkCoordinates`, `checkDatumOrdering`, `checkTidalRange`, `checkConstituents` and `checkSeasonalContamination` on every record. `checkSuperseded` then runs on each relay, using those results for the operator's record, and takes its place after the range check. The first failure sets `reason`. Then `checkSeasonalDominance` and five factors are computed.
+2. `checkGates` runs `checkCoordinates`, `checkDatumOrdering`, `checkTidalRange`, `checkConstituents` and `checkSeasonalContamination` on every record. `checkSuperseded` then runs on each relay, using those results for the operator's record, and takes its place after the range check. The first failure sets `reason`, and every failure's message goes into `issues`. Then `checkSeasonalDominance` and five factors are computed.
 3. `scoreCoverage` runs once every record has been checked, against the records that passed.
 4. `computeCompositeScore` sets the score of each record that passed the checks.
 5. `countSubordinates` counts each reference's accepted subordinates. The count is not updated as duplicates are rejected.
