@@ -236,6 +236,14 @@ The distance between two records is the shortest between any of the positions re
 - The M2 test compares amplitude, not phase, so two gauges with the same M2 amplitude an hour apart in timing pass as one.
 - Records more than 500 m apart are never merged by this rule, so a relay with poor coordinates stays separate unless it shares an identifier.
 
+### Disagreeing duplicates
+
+Two merged reference stations can still disagree. When their M2 constants differ, as a vector, by more than 15% of the larger amplitude and by more than the amplitude tolerance, both records name the other in `issues` and give the difference as time. The 15% is the 95th percentile of the difference between NOAA's own M2 and TICON's reanalysis of the same gauge across 447 NOAA gauges, so a larger difference is more than one gauge analyzed twice shows. It is this project's definition, derived from those pairs.
+
+The pair stays merged. Where the difference is the same time offset in M2, S2, K1 and O1, one record's clock is off, and publishing both would show a wrong answer beside the right one. The City of Venice record runs 46 minutes from ISPRA's and Copernicus's, which agree with each other. The Harris County Flood Control District records (`hct`) run 25 to 45 minutes behind every NOAA and USGS gauge near them, where USGS and California's records run within a minute. The flag does not say which record is wrong; that takes a third, independent record.
+
+**Limitations.** A real difference across a short distance is flagged the same way: on the Loxahatchee River, two docks 356 m apart differ by about 22 minutes, and the record not kept is lost.
+
 ### Choosing the record to keep
 
 Records are ranked by these rules, in order:
@@ -306,6 +314,7 @@ npm run report:quality -w packages/stations
 | `MAX_DEDUP_DISTANCE`                  | 500 m                                        | Duplicates                         |
 | `MAX_OFFSET_HEIGHT_DELTA`             | 0.1                                          | Duplicate subordinates             |
 | `MAX_OFFSET_TIME_DELTA`               | 10 min                                       | Duplicate subordinates             |
+| `SAME_GAUGE_M2_DIFFERENCE`            | 0.15                                         | Disagreeing duplicates             |
 
 The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`, 2026. Distances use the haversine formula on a sphere of radius 6371 km (Sinnott, 1984). Position precision is the smaller of the decimal-place counts of latitude and longitude. The quality factor matches the text "quality control issues" in a record's `disclaimers`, which the TICON import fills from TICON's `record_quality` field.
 

@@ -271,6 +271,15 @@ export function exceeds(a: number, b: number): boolean {
  *  P1 reaches 10 mm. Baltic K1 runs about 4 to 30 mm. */
 export const RESOLVED_P1 = 0.01;
 
+/** How far apart two records' M2 can be, as a vector difference relative to
+ *  the larger amplitude, and still describe the same tide. 0.15 is the 95th
+ *  percentile across 447 NOAA gauges of NOAA's own M2 against TICON's
+ *  reanalysis of the same gauge: about 5° of phase or 15% of amplitude. It is
+ *  this project's definition, derived from those pairs. Beyond it, two merged
+ *  records disagree by more than one gauge analyzed twice does, most often
+ *  because one record's clock is off. */
+export const SAME_GAUGE_M2_DIFFERENCE = 0.15;
+
 /** Minimum M2 amplitude ratio to consider two reference stations as duplicates.
  *  Pairs within MAX_DEDUP_DISTANCE but above MIN_DEDUP_DISTANCE are only
  *  deduplicated if their M2 amplitudes are similar: at least this ratio, or

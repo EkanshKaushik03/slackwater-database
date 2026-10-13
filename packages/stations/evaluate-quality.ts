@@ -38,6 +38,7 @@ import {
   MAX_OFFSET_TIME_DELTA,
   MIN_AMPLITUDE_RATIO,
   AMPLITUDE_TOLERANCE,
+  SAME_GAUGE_M2_DIFFERENCE,
   RESOLVED_P1,
   seasonalPeak,
   seasonalTerms,
@@ -811,17 +812,64 @@ function deduplicate(
           );
       if (!areDuplicates(stationA, stationB, dist, hasSubs)) continue;
 
-      markDuplicate(resultsMap.get(idB)!, idA);
+      markDuplicate(resultsMap, stationMap, idB, idA);
       rejected.add(idB);
     }
   }
 }
 
-function markDuplicate(result: QualityResult, winner: string): void {
+function markDuplicate(
+  results: Map<string, QualityResult>,
+  stationMap: Map<string, Station>,
+  loser: string,
+  winner: string,
+): void {
+  const result = results.get(loser)!;
   result.accepted = false;
   result.reason = "duplicate";
   result.redundant = winner;
+  const a = stationMap.get(loser)!;
+  const b = stationMap.get(winner)!;
+  const kept = tideConflict(a, b);
+  if (kept) result.issues.push(`${kept} in ${winner}, the record kept`);
+  const duplicate = tideConflict(b, a);
+  if (duplicate)
+    results.get(winner)!.issues.push(`${duplicate} in ${loser}, a duplicate`);
 }
+
+/** How record `a`'s M2 disagrees with `b`'s, when they disagree by more than
+ *  one gauge analyzed twice does (SAME_GAUGE_M2_DIFFERENCE), with the phase
+ *  difference as time.
+ *  The pair stays merged: a disagreement this close is most often one
+ *  record's clock error, which publishing both would not fix. */
+export function tideConflict(a: Station, b: Station): string | null {
+  const m2A = a.harmonic_constituents?.find((c) => c.name === "M2");
+  const m2B = b.harmonic_constituents?.find((c) => c.name === "M2");
+  if (!m2A || !m2B) return null;
+  const rad = Math.PI / 180;
+  const difference = Math.hypot(
+    m2A.amplitude * Math.cos(m2A.phase * rad) -
+      m2B.amplitude * Math.cos(m2B.phase * rad),
+    m2A.amplitude * Math.sin(m2A.phase * rad) -
+      m2B.amplitude * Math.sin(m2B.phase * rad),
+  );
+  const larger = Math.max(m2A.amplitude, m2B.amplitude);
+  if (
+    difference <= AMPLITUDE_TOLERANCE ||
+    difference <= SAME_GAUGE_M2_DIFFERENCE * larger
+  )
+    return null;
+  const phase = ((m2A.phase - m2B.phase + 540) % 360) - 180;
+  const minutes = Math.round((phase / M2_SPEED) * 60);
+  return (
+    `M2 here (${m2A.amplitude.toFixed(3)} m, ${m2A.phase.toFixed(1)}°) runs ` +
+    `${Math.abs(minutes)} min ${minutes >= 0 ? "later" : "earlier"} than ` +
+    `(${m2B.amplitude.toFixed(3)} m, ${m2B.phase.toFixed(1)}°)`
+  );
+}
+
+/** M2's speed in degrees per hour. */
+const M2_SPEED = 28.9841042;
 
 /** The order in which duplicates are kept, best first:
  *
@@ -883,7 +931,7 @@ function deduplicateByGauge(
   for (const ids of groups.values()) {
     if (ids.length < 2) continue;
     const [winner, ...losers] = [...ids].sort(order);
-    for (const id of losers) markDuplicate(resultsMap.get(id)!, winner!);
+    for (const id of losers) markDuplicate(resultsMap, stationMap, id, winner!);
   }
 }
 

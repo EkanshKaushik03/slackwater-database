@@ -20,3 +20,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.052
+        issues:
+          - M2 here (0.338 m, 52.8°) runs 86 min later than (0.402 m, 11.2°) in ticon/settlement_point-257a-bhs-uhslc_rq, a duplicate
+          - M2 here (0.338 m, 52.8°) runs 87 min later than (0.405 m, 10.6°) in noaa/9710441, the record kept

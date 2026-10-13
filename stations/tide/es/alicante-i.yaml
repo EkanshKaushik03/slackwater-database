@@ -16,3 +16,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - M2 here (0.017 m, 23.4°) runs 75 min earlier than (0.018 m, 59.8°) in ticon/alicante2tg-ali-esp-cmems, a duplicate
+          - M2 here (0.017 m, 23.4°) runs 76 min earlier than (0.018 m, 60.3°) in ticon/alicantetg-ali-esp-cmems, a duplicate
