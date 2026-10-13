@@ -340,14 +340,11 @@ export function checkConstituents(station: Station): string | null {
   }
 
   // The gravitational tide keeps P1 at a third of K1, so a resolved P1 above
-  // K1 marks a bad fit (see RESOLVED_P1).
+  // K1 marks a bad fit (see RESOLVED_P1). The same physics holds whoever
+  // published the record.
   const k1Amp = getAmplitude(station, "K1");
   const p1Amp = getAmplitude(station, "P1");
-  if (
-    !isAuthoritative(station) &&
-    p1Amp >= RESOLVED_P1 &&
-    exceeds(p1Amp, k1Amp)
-  ) {
+  if (p1Amp >= RESOLVED_P1 && exceeds(p1Amp, k1Amp)) {
     return `P1 amplitude (${p1Amp.toFixed(4)}) exceeds K1 (${k1Amp.toFixed(4)}): inconsistent with the gravitational tide`;
   }
 
