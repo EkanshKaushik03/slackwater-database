@@ -38,6 +38,8 @@ let route = db.stationRoute(kind: .tide, slug: "friday-harbor")
 
 `StationDatabase` is a `RandomAccessCollection` of `Station`, in id order. `Station` exposes typed identity, quality, source, license, tide, and current values. Generated FlatBuffers accessors are not part of the public API.
 
+The package requires Swift 6. `StationDatabase`, `Station`, and their typed metadata conform to `Sendable` and support concurrent reads. The reader retains immutable `Data`, including memory-mapped files, without exposing the FlatBuffers buffer for mutation.
+
 A subordinate station's record holds no constituents or datums of its own, only the offsets that correct its reference's. Reading `constituents`, `datums`, `chartDatumShift`, or `astronomicalBounds` on one resolves the reference for you, so both station types answer the same questions.
 
 Get the database file from the [latest release](https://github.com/openwatersio/slackwater-database/releases) and bundle it with your app, or fetch it at runtime.

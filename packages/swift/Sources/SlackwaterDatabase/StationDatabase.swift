@@ -5,27 +5,27 @@ import Foundation
 /// is missing.
 public struct InvalidStationDatabase: Error {}
 
-public enum StationKind: Hashable {
+public enum StationKind: Hashable, Sendable {
   case tide
   case current
 }
 
-public enum StationType: Hashable {
+public enum StationType: Hashable, Sendable {
   case reference
   case subordinate
 }
 
-public enum HeightOffsetType: Hashable {
+public enum HeightOffsetType: Hashable, Sendable {
   case ratio
   case fixed
 }
 
-public enum StationRouteKind: Hashable {
+public enum StationRouteKind: Hashable, Sendable {
   case tide
   case current
 }
 
-public struct StationRoute: Equatable {
+public struct StationRoute: Equatable, Sendable {
   public let slug: String
   public let stationIDs: [String]
   public let formerPaths: [String]
@@ -44,21 +44,21 @@ public struct StationRoute: Equatable {
   }
 }
 
-public struct StationSource: Equatable {
+public struct StationSource: Equatable, Sendable {
   public let name: String?
   public let id: String?
   public let url: String?
   public let publishedHarmonics: Bool
 }
 
-public struct StationLicense: Equatable {
+public struct StationLicense: Equatable, Sendable {
   public let type: String?
   public let url: String?
   public let notes: String?
   public let commercialUse: Bool
 }
 
-public struct TideOffsets: Equatable {
+public struct TideOffsets: Equatable, Sendable {
   public let reference: String
   public let timeHigh: Int
   public let timeLow: Int
@@ -67,7 +67,7 @@ public struct TideOffsets: Equatable {
   public let heightLow: Double
 }
 
-public struct CurrentOffsets: Equatable {
+public struct CurrentOffsets: Equatable, Sendable {
   public let reference: String
   public let slackBeforeFlood: Int?
   public let slackBeforeEbb: Int?
@@ -77,13 +77,13 @@ public struct CurrentOffsets: Equatable {
   public let ebbSpeedRatio: Double?
 }
 
-public struct TideDerivedCurrent: Equatable {
+public struct TideDerivedCurrent: Equatable, Sendable {
   public let reference: String
   public let highWaterLagMinutes: Int
   public let lowWaterLagMinutes: Int
 }
 
-public struct CurrentRecord: Equatable {
+public struct CurrentRecord: Equatable, Sendable {
   public let floodDirection: Double?
   public let ebbDirection: Double?
   public let meanFlow: Double?
@@ -107,7 +107,8 @@ public struct CurrentRecord: Equatable {
 ///     let nearest = db.min { distance(to: $0) < distance(to: $1) }
 ///     let station = db.station(id: "noaa/9447130")
 ///     let m2 = station?.constituents.first { $0.name == "M2" }
-public struct StationDatabase: RandomAccessCollection {
+// FlatBuffers retains Data; the hidden accessors only read it and never expose a mutable buffer.
+public struct StationDatabase: RandomAccessCollection, @unchecked Sendable {
   let root: Slackwater_Root
 
   /// Read a database from bytes already in memory (e.g. downloaded).
@@ -172,7 +173,8 @@ public struct StationDatabase: RandomAccessCollection {
 ///
 /// Identity, quality, provenance, tide/current data, and subordinate offsets
 /// have typed accessors. Generated FlatBuffers accessors remain internal.
-public struct Station: Identifiable {
+// Both accessors retain the database's immutable Data; lazy reads have no shared mutable state.
+public struct Station: Identifiable, @unchecked Sendable {
   /// The project half of every station credit, and the fallback for a file
   /// written before credits were stored in it.
   public static let projectCredit =
@@ -300,7 +302,7 @@ public struct Station: Identifiable {
   }
 
   /// Amplitude in metres (tides) or knots (currents); phase in degrees.
-  public struct Constituent {
+  public struct Constituent: Sendable {
     public let name: String
     public let amplitude: Double
     public let phase: Double
@@ -367,7 +369,7 @@ public struct Station: Identifiable {
 
   /// The floor and ceiling of this station's predictions, in metres above its
   /// chart datum.
-  public struct AstronomicalBounds {
+  public struct AstronomicalBounds: Sendable {
     /// Lowest Astronomical Tide.
     public let lat: Double
     /// Highest Astronomical Tide.
