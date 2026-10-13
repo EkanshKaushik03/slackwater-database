@@ -1,5 +1,8 @@
 sources:
   - ticon/pauillac_trompeloup-779-fra-refmar
+  - ticon/pauillactrompelouptg_60minute-pau-fra-cmems
+redirect_from:
+  - /tides/fr/pauillac-trompeloup-new-aquitaine/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.521
           recency: 0.89
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/pauillactrompelouptg_60minute-pau-fra-cmems:
+      position: [45.21806, -0.74603]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/pauillac_trompeloup-779-fra-refmar
+        score: 55
+        factors:
+          epoch: 0.521
+          recency: 0.89
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

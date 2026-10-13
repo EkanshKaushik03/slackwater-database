@@ -1,8 +1,10 @@
 sources:
   - kartverket/SVG
   - ticon/stavanger-svg-nor-nhs
+  - ticon/stavangertg-sta-nor-cmems
 redirect_from:
   - /tides/no/stavanger-kartverket-svg/
+  - /tides/no/stavanger-rogaland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -36,3 +38,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/SVG, its operator's own record
+    ticon/stavangertg-sta-nor-cmems:
+      position: [58.974339, 5.730121]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/SVG
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

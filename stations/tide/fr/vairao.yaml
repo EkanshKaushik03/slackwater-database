@@ -1,5 +1,8 @@
 sources:
   - ticon/vairao-317-fra-refmar
+  - ticon/vairaotg_60minute-vai-fra-cmems
+redirect_from:
+  - /tides/fr/vairao-iles-du-vent/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.803
           recency: 0.98
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/vairaotg_60minute-vai-fra-cmems:
+      position: [-17.805901, -149.295]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/vairao-317-fra-refmar
+        score: 61
+        factors:
+          epoch: 0.803
+          recency: 0.98
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

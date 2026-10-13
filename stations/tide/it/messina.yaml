@@ -1,5 +1,8 @@
 sources:
   - ticon/messina-mes-ita-ispra
+  - ticon/rmn_messina-rmn-ita-cmems
+redirect_from:
+  - /tides/it/messina-sicily/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 1
           recency: 0.99
           source: 0.747
+          quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/rmn_messina-rmn-ita-cmems:
+      position: [38.196301, 15.5635]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/messina-mes-ita-ispra
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 0
           amplitude: 1
           coverage: 0

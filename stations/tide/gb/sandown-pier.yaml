@@ -1,5 +1,8 @@
 sources:
   - ticon/sandown_pier-sdp-gbr-cco
+  - ticon/sandownpiertg-san-gbr-cmems
+redirect_from:
+  - /tides/gb/sandown-pier-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.99
           source: 0.061
           quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/sandownpiertg-san-gbr-cmems:
+      position: [50.651108, -1.153158]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/sandown_pier-sdp-gbr-cco
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
           amplitude: 1
           coverage: 0

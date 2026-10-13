@@ -1,5 +1,8 @@
 sources:
   - ticon/smogen-2111-swe-smhi
+  - ticon/smogen-smo-swe-cmems
+redirect_from:
+  - /tides/se/smogen-ticon-smogen-smo-swe-cmems/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +23,20 @@ computed:
           coverage: 0
         issues:
           - MHWS (0.134) < MHW (0.143)
+    ticon/smogen-smo-swe-cmems:
+      position: [58.3536, 11.2178]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/smogen-818-swe-uhslc_fd
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (0.134) < MHW (0.146)

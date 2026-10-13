@@ -1,5 +1,8 @@
 sources:
   - ticon/esbjerg-esb-dnk-dmi
+  - ticon/esbjergtg-esb-dnk-cmems
+redirect_from:
+  - /tides/dk/esbjerg-south-denmark/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.99
           source: 0.758
           quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/esbjergtg-esb-dnk-cmems:
+      position: [55.466702, 8.4333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/esbjerg-esb-dnk-dmi
+        score: 42
+        factors:
+          epoch: 0.587
+          recency: 0.99
+          source: 0.02
+          quality: 0
           amplitude: 1
           coverage: 0

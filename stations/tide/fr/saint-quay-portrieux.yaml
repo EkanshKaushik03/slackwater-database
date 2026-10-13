@@ -1,5 +1,8 @@
 sources:
   - ticon/saint_quay_portrieux-506-fra-refmar
+  - ticon/saintquayportrieuxtg_60minute-sai-fra-cmems
+redirect_from:
+  - /tides/fr/saint-quay-portrieux-brittany/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.99
           source: 0.949
           quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/saintquayportrieuxtg_60minute-sai-fra-cmems:
+      position: [48.647499, -2.81806]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/saint_quay_portrieux-506-fra-refmar
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
           amplitude: 1
           coverage: 0

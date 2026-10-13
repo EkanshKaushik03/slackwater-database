@@ -1,8 +1,24 @@
 sources:
+  - ticon/rotterdamtg-rot-nld-cmems
   - ticon/rotterdam-rottdm-nld-rws_hist
+redirect_from:
+  - /tides/nl/rotterdam-south-holland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    ticon/rotterdamtg-rot-nld-cmems:
+      position: [51.919998, 4.5]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 42
+        factors:
+          epoch: 0.533
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.057
     ticon/rotterdam-rottdm-nld-rws_hist:
       position: [51.920018, 4.499762]
       coastline: unverifiable

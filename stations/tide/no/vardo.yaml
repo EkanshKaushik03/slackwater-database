@@ -3,10 +3,12 @@ sources:
   - ticon/vardo-805-nor-uhslc_fd
   - ticon/vardo-805a-nor-uhslc_rq
   - ticon/vardo-vaw-nor-nhs
+  - ticon/vardoetg-var-nor-cmems
 redirect_from:
   - /tides/no/vard/
   - /tides/no/vardo-finnmark/
   - /tides/no/vardo-ticon-vardo-805a-nor-uhslc-rq/
+  - /tides/no/vardoe/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -74,3 +76,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/VAW, its operator's own record
+    ticon/vardoetg-var-nor-cmems:
+      position: [70.374977, 31.104015]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/VAW
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

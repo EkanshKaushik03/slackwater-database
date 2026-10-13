@@ -1,7 +1,9 @@
 sources:
   - kartverket/AES
+  - ticon/aalesundtg-aal-nor-cmems
   - ticon/alesund-aes-nor-nhs
 redirect_from:
+  - /tides/no/aalesund/
   - /tides/no/alesund-more-og-romsdal/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -16,6 +18,21 @@ computed:
           epoch: 0.806
           recency: 0.94
           source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/aalesundtg-aal-nor-cmems:
+      position: [62.469414, 6.151946]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/AES
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

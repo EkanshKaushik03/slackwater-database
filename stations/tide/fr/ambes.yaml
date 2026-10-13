@@ -1,5 +1,8 @@
 sources:
   - ticon/ambes-6118-fra-refmar
+  - ticon/ambestg_60minute-amb-fra-cmems
+redirect_from:
+  - /tides/fr/ambes-new-aquitaine/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.532
           recency: 0.89
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/ambestg_60minute-amb-fra-cmems:
+      position: [45.040482, -0.60352]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ambes-6118-fra-refmar
+        score: 55
+        factors:
+          epoch: 0.532
+          recency: 0.89
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

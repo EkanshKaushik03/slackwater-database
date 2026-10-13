@@ -1,5 +1,8 @@
 sources:
   - ticon/port_camargue-804-fra-refmar
+  - ticon/portcamarguetg_60minute-por-fra-cmems
+redirect_from:
+  - /tides/fr/port-camargue-occitanie/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.18
           recency: 0.86
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/portcamarguetg_60minute-por-fra-cmems:
+      position: [43.520321, 4.1264]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_camargue-804-fra-refmar
+        score: 48
+        factors:
+          epoch: 0.18
+          recency: 0.86
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

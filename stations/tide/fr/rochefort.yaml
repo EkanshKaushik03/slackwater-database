@@ -1,5 +1,8 @@
 sources:
   - ticon/rochefort-118-fra-refmar
+  - ticon/rocheforttg_60minute-roc-fra-cmems
+redirect_from:
+  - /tides/fr/rochefort-new-aquitaine/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.791
           recency: 0.82
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/rocheforttg_60minute-roc-fra-cmems:
+      position: [45.946339, -0.95348]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/rochefort-118-fra-refmar
+        score: 59
+        factors:
+          epoch: 0.791
+          recency: 0.82
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

@@ -1,8 +1,10 @@
 sources:
   - kartverket/HRO
   - ticon/helgeroa-hro-nor-nhs
+  - ticon/helgeroatg-hel-nor-cmems
 redirect_from:
   - /tides/no/helgeroa-kartverket-hro/
+  - /tides/no/helgeroa-telemark/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -36,3 +38,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/HRO, its operator's own record
+    ticon/helgeroatg-hel-nor-cmems:
+      position: [58.995213, 9.856379]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/HRO
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

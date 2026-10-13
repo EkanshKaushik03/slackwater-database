@@ -1,8 +1,25 @@
 sources:
+  - ticon/nuku_hiva-795-fra-refmar
   - ticon/nukuhivatg_60minute-nuk-fra-cmems
+redirect_from:
+  - /tides/fr/nuku-hiva-ticon-nuku-hiva-795-fra-refmar/
+  - /tides/fr/nuku-hiva-ticon-nukuhivatg-60minute-nuk-fra-cmems/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    ticon/nuku_hiva-795-fra-refmar:
+      position: [-8.91489, -140.095967]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.944
+          recency: 0.81
+          source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/nukuhivatg_60minute-nuk-fra-cmems:
       position: [-8.9149, -140.09596]
       coastline: unverifiable

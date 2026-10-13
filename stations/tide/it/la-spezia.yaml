@@ -1,5 +1,8 @@
 sources:
   - ticon/laspezia-las-ita-ispra
+  - ticon/rmn_laspezia-rmn-ita-cmems
+redirect_from:
+  - /tides/it/la-spezia-liguria/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.99
           source: 0.747
           quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/rmn_laspezia-rmn-ita-cmems:
+      position: [44.0966, 9.8576]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/laspezia-las-ita-ispra
+        score: 62
+        factors:
+          epoch: 0.822
+          recency: 0.99
+          source: 0.02
+          quality: 1
           amplitude: 1
           coverage: 0

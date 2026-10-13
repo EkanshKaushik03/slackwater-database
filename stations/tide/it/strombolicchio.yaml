@@ -1,5 +1,8 @@
 sources:
   - ticon/strombolicchio-str-ita-ispra
+  - ticon/rmn_strombolicchio-rmn-ita-cmems
+redirect_from:
+  - /tides/it/strombolicchio-sicily/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.631
           recency: 0.99
           source: 0.747
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/rmn_strombolicchio-rmn-ita-cmems:
+      position: [38.817299, 15.2517]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/strombolicchio-str-ita-ispra
+        score: 58
+        factors:
+          epoch: 0.621
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

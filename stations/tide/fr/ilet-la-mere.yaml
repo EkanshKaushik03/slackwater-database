@@ -3,6 +3,9 @@
 name: Ilet-la-Mere
 sources:
   - ticon/ilet_la_mere-535-fra-refmar
+  - ticon/iletlameretg_60minute-ile-fra-cmems
+redirect_from:
+  - /tides/fr/ilet-la-mere-guyane/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,6 +19,21 @@ computed:
           epoch: 0.768
           recency: 0.92
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/iletlameretg_60minute-ile-fra-cmems:
+      position: [4.89378, -52.190479]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ilet_la_mere-535-fra-refmar
+        score: 60
+        factors:
+          epoch: 0.768
+          recency: 0.92
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

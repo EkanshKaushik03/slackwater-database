@@ -1,8 +1,10 @@
 sources:
   - kartverket/HAR
   - ticon/harstad-har-nor-nhs
+  - ticon/harstadtg-har-nor-cmems
 redirect_from:
   - /tides/no/harstad-kartverket-har/
+  - /tides/no/harstad-troms/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -36,3 +38,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/HAR, its operator's own record
+    ticon/harstadtg-har-nor-cmems:
+      position: [68.801262, 16.548237]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/HAR
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

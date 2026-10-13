@@ -1,5 +1,8 @@
 sources:
   - ticon/chaleix_noumea-16-fra-refmar
+  - ticon/chaleixnoumeatg_60minute-cha-fra-cmems
+redirect_from:
+  - /tides/fr/chaleix-noumea-ticon-chaleixnoumeatg-60minute-cha-fra-cmems/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 1
           recency: 0.79
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/chaleixnoumeatg_60minute-cha-fra-cmems:
+      position: [-22.291479, 166.43674]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/chaleix_noumea-16-fra-refmar
+        score: 63
+        factors:
+          epoch: 1
+          recency: 0.79
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

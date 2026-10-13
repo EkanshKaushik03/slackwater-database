@@ -1,5 +1,8 @@
 sources:
   - ticon/goteborg_tingstadstunneln-33093-swe-smhi
+  - ticon/goteborgtingstadstunneln-got-swe-cmems
+redirect_from:
+  - /tides/se/goteborg-tingstadstunneln-vaestra-goetaland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,3 +22,21 @@ computed:
           coverage: 0
         issues:
           - "Seasonal curve peak (0.114m) exceeds the principal tide M2+S2+K1+O1 (0.107m): the yearly swing exceeds the daily one"
+    ticon/goteborgtingstadstunneln-got-swe-cmems:
+      position: [57.723099, 11.9869]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/goteborg_tingstadstunneln-33093-swe-smhi
+        seasonal_dominant: true
+        score: 44
+        factors:
+          epoch: 0.671
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal curve peak (0.117m) exceeds the principal tide M2+S2+K1+O1 (0.108m): the yearly swing exceeds the daily one"

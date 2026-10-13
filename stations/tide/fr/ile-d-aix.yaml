@@ -3,6 +3,9 @@
 name: Ile d'Aix
 sources:
   - ticon/ile_d_aix-189-fra-refmar
+  - ticon/iledaixtg_60minute-ile-fra-cmems
+redirect_from:
+  - /tides/fr/ile-d-aix-new-aquitaine/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,6 +19,21 @@ computed:
           epoch: 0.729
           recency: 0.98
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/iledaixtg_60minute-ile-fra-cmems:
+      position: [46.007359, -1.17434]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ile_d_aix-189-fra-refmar
+        score: 60
+        factors:
+          epoch: 0.729
+          recency: 0.98
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

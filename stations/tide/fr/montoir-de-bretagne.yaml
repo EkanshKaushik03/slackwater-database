@@ -3,6 +3,9 @@
 name: Montoir-de-Bretagne
 sources:
   - ticon/montoir_de_bretagne-6106-fra-refmar
+  - ticon/montoirdebretagnetg_60minute-mon-fra-cmems
+redirect_from:
+  - /tides/fr/montoir-de-bretagne-pays-de-la-loire/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,6 +19,21 @@ computed:
           epoch: 0.527
           recency: 0.95
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/montoirdebretagnetg_60minute-mon-fra-cmems:
+      position: [47.30555, -2.10837]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/montoir_de_bretagne-6106-fra-refmar
+        score: 55
+        factors:
+          epoch: 0.527
+          recency: 0.95
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

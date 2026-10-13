@@ -1,5 +1,8 @@
 sources:
   - ticon/marina_di_campo-mar-ita-ispra
+  - ticon/rmn_marinadicampo-rmn-ita-cmems
+redirect_from:
+  - /tides/it/marina-di-campo-tuscany/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.99
           source: 0.747
           quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/rmn_marinadicampo-rmn-ita-cmems:
+      position: [42.742599, 10.2383]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/marina_di_campo-mar-ita-ispra
+        score: 60
+        factors:
+          epoch: 0.74
+          recency: 0.99
+          source: 0.02
+          quality: 1
           amplitude: 1
           coverage: 0

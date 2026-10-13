@@ -3,9 +3,11 @@ sources:
   - ticon/maloy-802-nor-uhslc_fd
   - ticon/maloy-802a-nor-uhslc_rq
   - ticon/maloy-may-nor-nhs
+  - ticon/maloytg-mal-nor-cmems
 redirect_from:
   - /tides/no/mal-y/
   - /tides/no/maloy-ticon-maloy-may-nor-nhs/
+  - /tides/no/maloy-ticon-maloytg-mal-nor-cmems/
   - /tides/no/maloy-vestland/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -74,3 +76,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/MAY, its operator's own record
+    ticon/maloytg-mal-nor-cmems:
+      position: [61.933777, 5.11331]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/MAY
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

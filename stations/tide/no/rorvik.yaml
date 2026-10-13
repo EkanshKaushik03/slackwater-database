@@ -3,9 +3,11 @@ sources:
   - ticon/rorvik-803-nor-uhslc_fd
   - ticon/rorvik-803a-nor-uhslc_rq
   - ticon/rorvik-rvk-nor-nhs
+  - ticon/rorviktg-ror-nor-cmems
 redirect_from:
   - /tides/no/r-rvik/
   - /tides/no/rorvik-ticon-rorvik-803a-nor-uhslc-rq/
+  - /tides/no/rorvik-ticon-rorviktg-ror-nor-cmems/
   - /tides/no/rorvik-trondelag/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -74,3 +76,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/RVK, its operator's own record
+    ticon/rorviktg-ror-nor-cmems:
+      position: [64.859459, 11.230107]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/RVK
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0

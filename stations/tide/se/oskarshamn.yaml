@@ -1,5 +1,8 @@
 sources:
   - ticon/oskarshamn-2085-swe-smhi
+  - ticon/oskarshamn-osk-swe-cmems
+redirect_from:
+  - /tides/se/oskarshamn-kalmar/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,4 +23,24 @@ computed:
         issues:
           - MLWS (0.147) > MLW (0.134)
           - MHWS (0.163) < MHW (0.165)
+          - "Seasonal curve peak (0.126m) exceeds the principal tide M2+S2+K1+O1 (0.023m): the yearly swing exceeds the daily one"
+    ticon/oskarshamn-osk-swe-cmems:
+      position: [57.275002, 16.4781]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/oskarshamn-2085-swe-smhi
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.146) > MLW (0.134)
+          - MHWS (0.162) < MHW (0.165)
           - "Seasonal curve peak (0.126m) exceeds the principal tide M2+S2+K1+O1 (0.023m): the yearly swing exceeds the daily one"

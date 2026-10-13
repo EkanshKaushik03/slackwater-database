@@ -1,8 +1,10 @@
 sources:
   - kartverket/OSL
   - ticon/oslo-osl-nor-nhs
+  - ticon/oslotg-osl-nor-cmems
 redirect_from:
   - /tides/no/oslo-kartverket-osl/
+  - /tides/no/oslo-oslo/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -31,6 +33,21 @@ computed:
           epoch: 1
           recency: 0.99
           source: 0.909
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/oslotg-osl-nor-cmems:
+      position: [59.908558, 10.73451]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/OSL
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

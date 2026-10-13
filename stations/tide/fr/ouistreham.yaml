@@ -1,5 +1,8 @@
 sources:
   - ticon/ouistreham-311-fra-refmar
+  - ticon/ouistrehamtg_60minute-oui-fra-cmems
+redirect_from:
+  - /tides/fr/ouistreham-normandy/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 0.811
           recency: 0.99
           source: 0.949
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/ouistrehamtg_60minute-oui-fra-cmems:
+      position: [49.279362, -0.24903]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/ouistreham-311-fra-refmar
+        score: 62
+        factors:
+          epoch: 0.811
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 0

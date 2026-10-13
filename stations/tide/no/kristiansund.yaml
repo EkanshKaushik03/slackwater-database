@@ -1,8 +1,10 @@
 sources:
   - kartverket/KSU
   - ticon/kristiansund-ksu-nor-nhs
+  - ticon/kristiansundtg-kri-nor-cmems
 redirect_from:
   - /tides/no/kristiansund-kartverket-ksu/
+  - /tides/no/kristiansund-more-og-romsdal/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -36,3 +38,18 @@ computed:
           coverage: 0
         issues:
           - Superseded by kartverket/KSU, its operator's own record
+    ticon/kristiansundtg-kri-nor-cmems:
+      position: [63.113857, 7.734352]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: kartverket/KSU
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.002

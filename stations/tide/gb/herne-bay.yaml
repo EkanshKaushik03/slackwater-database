@@ -1,5 +1,8 @@
 sources:
   - ticon/herne_bay-hby-gbr-cco
+  - ticon/hernebaytg-her-gbr-cmems
+redirect_from:
+  - /tides/gb/herne-bay-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 1
           recency: 0.99
           source: 0.061
+          quality: 0
+          amplitude: 1
+          coverage: 0
+    ticon/hernebaytg-her-gbr-cmems:
+      position: [51.381985, 1.11556]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/herne_bay-hby-gbr-cco
+        score: 50
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 0
           amplitude: 1
           coverage: 0
