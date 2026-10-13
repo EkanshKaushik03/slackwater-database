@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import type { StationQuality } from "@slackwater/database";
-import { planMerges } from "../merges.ts";
+import { planMerges, selectMerges, type MergeGroup } from "../merges.ts";
 import type { ResolvedStation } from "../metadata.ts";
 
 const NOAA = "US National Oceanic and Atmospheric Administration";
@@ -485,6 +485,36 @@ describe("planMerges", () => {
     );
     expect(evidence.find(({ id }) => id.includes("290b"))?.evidence).toBe(
       "gauge",
+    );
+  });
+});
+
+describe("selectMerges", () => {
+  const group = (survivor: string, ...rest: string[]): MergeGroup => ({
+    survivor,
+    primary: `noaa/${survivor}`,
+    authoritative: true,
+    slugs: [survivor, ...rest],
+    members: [],
+  });
+
+  test("a named review group replaces the confident group within it", () => {
+    const picked = group("a", "b", "c");
+    expect(
+      selectMerges([group("a", "b"), group("x", "y")], [picked], ["a", "a"]),
+    ).toEqual([group("x", "y"), picked]);
+  });
+
+  test("refuses a station in two merges", () => {
+    // The confident plan joined b and d; the review group holds only b.
+    expect(() =>
+      selectMerges([group("b", "d")], [group("a", "b")], ["a"]),
+    ).toThrow(/b is in the merges into b and a/);
+  });
+
+  test("refuses a name that is no review group", () => {
+    expect(() => selectMerges([], [], ["--dry-run"])).toThrow(
+      /no review group/,
     );
   });
 });

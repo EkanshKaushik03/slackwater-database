@@ -323,3 +323,38 @@ export function planMerges(
   groups.sort((a, b) => byCodepoint(a.survivor, b.survivor));
   return { groups, refused };
 }
+
+/**
+ * The merges `npm run merge` makes: every confident group, and each review
+ * group whose surviving slug is named, which replaces the confident groups
+ * within it. Throws before anything is written when a name matches no review
+ * group or a station would be in two merges, since the plans can split a
+ * gauge differently.
+ */
+export function selectMerges(
+  confident: MergeGroup[],
+  review: MergeGroup[],
+  named: string[],
+): MergeGroup[] {
+  const picked = [...new Set(named)].map((slug) => {
+    const group = review.find(({ survivor }) => survivor === slug);
+    if (!group) throw new Error(`${slug}: no review group survives as it`);
+    return group;
+  });
+  const within = (group: MergeGroup) =>
+    picked.some(({ slugs }) =>
+      group.slugs.every((slug) => slugs.includes(slug)),
+    );
+  const groups = [...confident.filter((group) => !within(group)), ...picked];
+  const claimed = new Map<string, string>();
+  for (const group of groups)
+    for (const slug of group.slugs) {
+      const other = claimed.get(slug);
+      if (other)
+        throw new Error(
+          `${slug} is in the merges into ${other} and ${group.survivor}; merge one at a time`,
+        );
+      claimed.set(slug, group.survivor);
+    }
+  return groups;
+}

@@ -11,7 +11,7 @@
 import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { loadProductionCatalogue } from "./load-catalogue.ts";
-import { planMerges, type MergeGroup } from "./merges.ts";
+import { planMerges, selectMerges, type MergeGroup } from "./merges.ts";
 import {
   mergeStationFiles,
   readStationFiles,
@@ -80,12 +80,11 @@ console.log(out.join("\n"));
 
 const apply = process.argv.indexOf("--apply");
 if (apply >= 0) {
-  const chosen = [...new Set(process.argv.slice(apply + 1))];
-  const picked = chosen.map((slug) => {
-    const group = review.find(({ survivor }) => survivor === slug);
-    if (!group) throw new Error(`${slug}: no review group survives as it`);
-    return group;
-  });
+  const groups = selectMerges(
+    confident.groups,
+    review,
+    process.argv.slice(apply + 1),
+  );
   const bySlug = new Map(
     files
       .filter(({ kind }) => kind === "tide")
@@ -98,27 +97,6 @@ if (apply >= 0) {
   // station files as they were.
   const conflicts: string[] = [];
   const merges = [];
-  // A review group holds any confident group within it, so it replaces it.
-  const within = (group: MergeGroup) =>
-    picked.some(({ slugs }) =>
-      group.slugs.every((slug) => slugs.includes(slug)),
-    );
-  const groups = [
-    ...confident.groups.filter((group) => !within(group)),
-    ...picked,
-  ];
-  // The two plans can split a gauge differently; a station file in two
-  // merges would be written twice, so refuse before writing anything.
-  const claimed = new Map<string, string>();
-  for (const group of groups)
-    for (const slug of group.slugs) {
-      const other = claimed.get(slug);
-      if (other)
-        throw new Error(
-          `${slug} is in the merges into ${other} and ${group.survivor}; merge one at a time`,
-        );
-      claimed.set(slug, group.survivor);
-    }
   for (const group of groups) {
     const files = group.slugs.map((slug) => {
       const file = bySlug.get(slug);
