@@ -1,13 +1,13 @@
 sources:
-  - ticon/rmn_otranto-rmn-ita-cmems
   - ticon/otranto-otr-ita-ispra
+  - ticon/rmn_otranto-rmn-ita-cmems
 redirect_from:
   - /tides/it/otranto-apulia/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/rmn_otranto-rmn-ita-cmems:
-      position: [40.147202, 18.497101]
+    ticon/otranto-otr-ita-ispra:
+      position: [40.14715, 18.497089]
       coastline: unverifiable
       quality:
         accepted: true
@@ -15,22 +15,22 @@ computed:
         factors:
           epoch: 1
           recency: 0.99
-          source: 0.02
-          quality: 1
+          source: 0.747
+          quality: 0
           amplitude: 1
           coverage: 0
-    ticon/otranto-otr-ita-ispra:
-      position: [40.14715, 18.497089]
+    ticon/rmn_otranto-rmn-ita-cmems:
+      position: [40.147202, 18.497101]
       coastline: unverifiable
       quality:
         accepted: false
         reason: duplicate
-        redundant: ticon/rmn_otranto-rmn-ita-cmems
+        redundant: ticon/otranto-otr-ita-ispra
         score: 65
         factors:
           epoch: 1
           recency: 0.99
-          source: 0.747
-          quality: 0
+          source: 0.02
+          quality: 1
           amplitude: 1
           coverage: 0
