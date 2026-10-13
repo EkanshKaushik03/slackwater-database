@@ -42,8 +42,8 @@ enum HeightOffsetType : ubyte { Ratio = 0, Fixed = 1 }
 enum DatumsSource : ubyte { Unknown = 0, Observed = 1, Harmonic = 2 }
 
 /// 12 bytes, contiguous per station. Amplitude in metres (tides) or knots
-/// (currents); phase in degrees. float32 keeps 7 significant digits, more
-/// than any publisher's millimetre / 0.1° precision.
+/// (currents); phase in degrees. float32 keeps 7 significant digits, which
+/// drops published digits only far below any analysis's uncertainty.
 struct Constituent {
   name: ushort;      // index into Root.constituent_names
   amplitude: float;
@@ -147,12 +147,12 @@ table Quality {
   reason: string;
   /// Station.id of the station that makes this one redundant, if any.
   redundant: string;
-  /// The seasonal band (SA, SSA) is larger than this station's largest tidal
-  /// constituent, so its yearly swing exceeds its daily one — a Great Lakes
-  /// gauge, a river reach, a Baltic bodden. Accepted, not rejected: the
-  /// predictions are right and only the framing is wrong, so a consumer quoting
-  /// a high and a low reads this first and says what the water is. The ratio is
-  /// in `issues`.
+  /// The peak of the seasonal curve (SA and SSA with their phases) exceeds the
+  /// principal tide M2+S2+K1+O1 by more than 3 mm, so the yearly swing exceeds
+  /// the daily one — a Great Lakes gauge, a river reach, a Baltic bodden.
+  /// Accepted, not rejected: the predictions are right and only the framing is
+  /// wrong, so a consumer quoting a high and a low reads this first and says
+  /// what the water is. `issues` gives both heights.
   seasonal_dominant: bool;
 }
 

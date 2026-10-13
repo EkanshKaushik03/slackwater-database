@@ -11,14 +11,13 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/nome_ak-595-usa-uhslc_fd
-        score: 63
+        score: 68
         factors:
           epoch: 1
           recency: 0.95
           source: 0.192
           quality: 1
-          amplitude: 0.75
+          amplitude: 1
           coverage: 0
         issues:
           - MHWS (1.549) < MHW (1.577)
-          - K2 amplitude (0.0159) exceeds S2 (0.0139)

@@ -21,4 +21,4 @@ computed:
           coverage: 0
         issues:
           - "Superseded source: noaa"
-          - "Seasonal band (0.086m) is 1.4x the largest tidal constituent M2 (0.060m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.107m) exceeds the principal tide M2+S2+K1+O1 (0.099m): the yearly swing exceeds the daily one"

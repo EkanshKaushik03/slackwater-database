@@ -9,7 +9,7 @@ computed:
       quality:
         accepted: false
         reason: duplicate
-        redundant: ticon/alicante_i-ali-esp-da_mm
+        redundant: ticon/alicante_i_outer_harbour-alio-esp-da_mm
         seasonal_dominant: true
         score: 51
         factors:
@@ -20,4 +20,4 @@ computed:
           amplitude: 1
           coverage: 0.006
         issues:
-          - "Seasonal band (0.079m) is 2.2x the largest tidal constituent K1 (0.036m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.096m) exceeds the principal tide M2+S2+K1+O1 (0.086m): the yearly swing exceeds the daily one"

@@ -10,7 +10,6 @@ computed:
       quality:
         accepted: false
         reason: superseded
-        seasonal_dominant: true
         score: 0
         factors:
           epoch: 1
@@ -21,4 +20,3 @@ computed:
           coverage: 0
         issues:
           - "Superseded source: noaa"
-          - "Seasonal band (0.086m) is 1.1x the largest tidal constituent O1 (0.075m): the yearly swing exceeds the daily one"

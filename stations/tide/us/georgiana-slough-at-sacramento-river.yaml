@@ -11,7 +11,6 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/sacramento_river_at_walnut_grove_stage-b91651-usa-cdwr
-        seasonal_dominant: true
         score: 61
         factors:
           epoch: 1
@@ -22,4 +21,3 @@ computed:
           coverage: 0.001
         issues:
           - MHWS (1.894) < MHW (1.91)
-          - "Seasonal band (0.221m) is 1.1x the largest tidal constituent M2 (0.207m): the yearly swing exceeds the daily one"

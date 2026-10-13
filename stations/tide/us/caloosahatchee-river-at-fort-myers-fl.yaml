@@ -11,7 +11,6 @@ computed:
         accepted: false
         reason: duplicate
         redundant: noaa/8725520
-        seasonal_dominant: true
         score: 66
         factors:
           epoch: 0.434
@@ -22,4 +21,3 @@ computed:
           coverage: 0.008
         issues:
           - MLWS (-0.118) > MLW (-0.126)
-          - "Seasonal band (0.118m) is 1.2x the largest tidal constituent M2 (0.102m): the yearly swing exceeds the daily one"

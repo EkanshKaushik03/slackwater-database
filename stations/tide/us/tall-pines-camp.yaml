@@ -12,15 +12,14 @@ computed:
         reason: duplicate
         redundant: noaa/8532721
         seasonal_dominant: true
-        score: 56
+        score: 61
         factors:
           epoch: 0.063
           recency: 0.51
           source: 1
           quality: 1
-          amplitude: 0.75
+          amplitude: 1
           coverage: 0
         issues:
           - MHWS (0.688) < MHW (0.692)
-          - "Seasonal band (0.115m) is 4.9x the largest tidal constituent M2 (0.023m): the yearly swing exceeds the daily one"
-          - K2 amplitude (0.0029) exceeds S2 (0.0020)
+          - "Seasonal curve peak (0.141m) exceeds the principal tide M2+S2+K1+O1 (0.057m): the yearly swing exceeds the daily one"

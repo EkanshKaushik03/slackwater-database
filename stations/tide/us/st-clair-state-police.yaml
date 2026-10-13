@@ -8,10 +8,9 @@ computed:
       position: [42.812222, -82.485558]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: constituents
+        accepted: true
         seasonal_dominant: true
-        score: 0
+        score: 88
         factors:
           epoch: 1
           recency: 0.99
@@ -22,5 +21,4 @@ computed:
         issues:
           - MLWS (175.787) > MLW (175.782)
           - MHWS (175.799) < MHW (175.811)
-          - "P1 amplitude (0.0011) exceeds K1 (0.0005): physically impossible"
-          - "Seasonal band (0.103m) is 27.7x the largest tidal constituent M2 (0.004m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.148m) exceeds the principal tide M2+S2+K1+O1 (0.007m): the yearly swing exceeds the daily one"

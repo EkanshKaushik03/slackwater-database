@@ -10,7 +10,6 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/wakkanai-360-jpn-uhslc_fd
-        seasonal_dominant: true
         score: 69
         factors:
           epoch: 1
@@ -22,4 +21,3 @@ computed:
         issues:
           - MLWS (1.762) > MLW (1.755)
           - MHWS (1.85) < MHW (1.857)
-          - "Seasonal band (0.096m) is 1.4x the largest tidal constituent K1 (0.067m): the yearly swing exceeds the daily one"

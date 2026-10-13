@@ -9,7 +9,6 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        seasonal_dominant: true
         score: 58
         factors:
           epoch: 0.065
@@ -20,4 +19,3 @@ computed:
           coverage: 0.093
         issues:
           - MHWS (0.427) < MHW (0.509)
-          - "Seasonal band (0.143m) is 1.2x the largest tidal constituent K1 (0.123m): the yearly swing exceeds the daily one"

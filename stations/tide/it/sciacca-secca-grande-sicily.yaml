@@ -10,7 +10,6 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        seasonal_dominant: true
         score: 68
         factors:
           epoch: 0.701
@@ -19,5 +18,3 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0.63
-        issues:
-          - "Seasonal band (0.051m) is 1.2x the largest tidal constituent M2 (0.043m): the yearly swing exceeds the daily one"

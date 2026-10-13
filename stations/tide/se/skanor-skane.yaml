@@ -10,7 +10,6 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/skanor-30488-swe-smhi
-        seasonal_dominant: true
         score: 65
         factors:
           epoch: 1
@@ -21,4 +20,3 @@ computed:
           coverage: 0
         issues:
           - MHWS (0.236) < MHW (0.237)
-          - "Seasonal band (0.042m) is 1.3x the largest tidal constituent M2 (0.031m): the yearly swing exceeds the daily one"

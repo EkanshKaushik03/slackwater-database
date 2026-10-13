@@ -8,7 +8,9 @@ computed:
       position: [46.4847, -84.301]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/little_rapids_mi-9076033-usa-noaa
         seasonal_dominant: true
         score: 71
         factors:
@@ -20,4 +22,4 @@ computed:
           coverage: 0.003
         issues:
           - MHWS (176.323) < MHW (176.33)
-          - "Seasonal band (0.093m) is 2.8x the largest tidal constituent S1 (0.033m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.166m) exceeds the principal tide M2+S2+K1+O1 (0.026m): the yearly swing exceeds the daily one"

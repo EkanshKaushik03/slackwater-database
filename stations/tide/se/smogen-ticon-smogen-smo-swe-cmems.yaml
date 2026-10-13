@@ -8,8 +8,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: constituents
-        score: 0
+        reason: duplicate
+        redundant: ticon/smogen-2111-swe-smhi
+        score: 65
         factors:
           epoch: 1
           recency: 0.99
@@ -19,4 +20,3 @@ computed:
           coverage: 0
         issues:
           - MHWS (0.134) < MHW (0.146)
-          - "P1 amplitude (0.0023) exceeds K1 (0.0018): physically impossible"

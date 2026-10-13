@@ -17,8 +17,9 @@ import {
   distance,
   authoritativeDuplicateWinner,
   SEASONAL_DOMINANCE_RATIO,
-  SEASONAL_CONSTITUENTS,
-  TIDAL_CONSTITUENTS,
+  seasonalPeak,
+  PRINCIPAL_TIDAL_CONSTITUENTS,
+  exceeds,
 } from "../filtering.js";
 import { readStationFiles, storedQuality } from "../station-files.ts";
 
@@ -485,12 +486,12 @@ describe("seasonal dominance", () => {
     // than a floor so that a release which quietly moves the rule has to say so:
     // the whole point of the label is that two consumers describe the same water
     // the same way, which a drifting population defeats.
-    expect(labelled.length).toBe(1213);
+    expect(labelled.length).toBe(999);
   });
 
   test("labels independently of the rejection verdict", () => {
-    expect(labelled.filter((q) => q.accepted).length).toBe(652);
-    expect(labelled.filter((q) => !q.accepted).length).toBe(561);
+    expect(labelled.filter((q) => q.accepted).length).toBe(506);
+    expect(labelled.filter((q) => !q.accepted).length).toBe(493);
   });
 
   test("is a different question from the contamination gate", () => {
@@ -514,23 +515,9 @@ describe("seasonal dominance", () => {
     ).toBe(1);
   });
 
-  test("measures a subordinate on the model it predicts from", () => {
-    // A subordinate's own record carries no constituents; the reader fills them
-    // from its reference. Evaluating the raw record would label the reference
-    // and leave its subordinates reading as ordinary tides on the same water,
-    // which is where these two were.
-    for (const id of ["noaa/9468123", "noaa/9468216"]) {
-      const station = allTideStations.find((s) => s.id === id);
-      expect(station?.type, id).toBe("subordinate");
-      expect(station?.offsets?.reference, id).toBe("noaa/9468756");
-      expect(station?.quality?.seasonal_dominant, id).toBe(true);
-      // Named, so a reader of a subordinate's issues can find numbers that are
-      // not in its own record.
-      expect(station?.quality?.issues?.join(" "), id).toContain(
-        "from reference noaa/9468756",
-      );
-    }
-    // And no accepted subordinate is left behind by its reference.
+  test("leaves no subordinate behind its labelled reference", () => {
+    // A subordinate predicts from its reference's constituents, so it carries
+    // its reference's label. evaluate-quality.test.ts covers how.
     const labelledIds = new Set(labelled.map((q) => q.id));
     const orphans = allTideStations.filter(
       (s) =>
@@ -543,30 +530,40 @@ describe("seasonal dominance", () => {
   });
 
   test("agrees with the constituents it is derived from", () => {
-    // Recomputed from the data rather than trusted, because the label is the
-    // only thing standing between a consumer and a tide table drawn over
-    // Lake Ontario.
-    const byId = new Map(allTideStations.map((s) => [s.id, s]));
-    for (const q of labelled) {
-      const station = byId.get(q.id);
-      if (!station?.harmonic_constituents?.length) continue;
+    // Recomputed from the data rather than trusted, both ways: a label the
+    // constituents do not support, and a station the label misses, because the
+    // label is the only thing standing between a consumer and a tide table
+    // drawn over Lake Ontario.
+    const verdicts = new Map(
+      quality.map((q) => [
+        q.id,
+        Boolean((q as { seasonal_dominant?: boolean }).seasonal_dominant),
+      ]),
+    );
+    const disagreements: string[] = [];
+    for (const station of allTideStations) {
+      if (!station.harmonic_constituents?.length) continue;
       const amp = (name: string) =>
         Math.abs(
           station.harmonic_constituents!.find((c) => c.name === name)
             ?.amplitude ?? 0,
         );
-      const seasonal = Math.max(...SEASONAL_CONSTITUENTS.map(amp));
-      const tidal = Math.max(...TIDAL_CONSTITUENTS.map(amp));
-      expect(
-        seasonal / tidal,
-        `${q.id} carries the label but its seasonal band does not dominate`,
-      ).toBeGreaterThanOrEqual(SEASONAL_DOMINANCE_RATIO);
+      const seasonal = seasonalPeak(station.harmonic_constituents);
+      const tidal = PRINCIPAL_TIDAL_CONSTITUENTS.map(amp).reduce(
+        (a, b) => a + b,
+        0,
+      );
+      const dominant = exceeds(seasonal, tidal * SEASONAL_DOMINANCE_RATIO);
+      if (dominant !== verdicts.get(station.id)) {
+        disagreements.push(`${station.id}: constituents say ${dominant}`);
+      }
     }
+    expect(disagreements).toEqual([]);
   });
 
   test("reaches the reader through the database, not just the station files", () => {
-    // Cobourg on Lake Ontario: SA 0.289 m against a largest tidal constituent
-    // of 0.002 m, and it passes the 2 cm range floor by 6 mm, so nothing else
+    // Cobourg on Lake Ontario: SA 0.289 m against a principal tide of
+    // 0.004 m, and it passes the 2 cm range floor by 6 mm, so nothing else
     // in the pass catches it.
     const cobourg = allTideStations.find(
       (s) => s.id === "ticon/cobourg_ontario-13590-can-meds",

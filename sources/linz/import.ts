@@ -11,7 +11,7 @@ import { execFileSync } from "node:child_process";
 import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { DATA_DIR } from "@slackwater/stations";
+import { DATA_DIR, withPublishedPrecision } from "@slackwater/stations";
 import { buildStation, parseHarmonics, siteId } from "./linz.ts";
 
 const PAGE_URL =
@@ -78,7 +78,7 @@ export async function importDirectory(dir: string, dataDir = DATA_DIR) {
   for (const harmonics of stations)
     await writeFile(
       join(out, `${harmonics.id}.json`),
-      `${JSON.stringify(buildStation(harmonics), null, 2)}\n`,
+      `${JSON.stringify(withPublishedPrecision("linz", buildStation(harmonics)), null, 2)}\n`,
     );
   return stations.length;
 }

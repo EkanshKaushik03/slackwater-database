@@ -10,7 +10,6 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/toyama-349-jpn-uhslc_fd
-        seasonal_dominant: true
         score: 69
         factors:
           epoch: 1
@@ -19,5 +18,3 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.018
-        issues:
-          - "Seasonal band (0.161m) is 2.6x the largest tidal constituent M2 (0.061m): the yearly swing exceeds the daily one"

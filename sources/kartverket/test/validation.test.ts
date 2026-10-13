@@ -12,6 +12,8 @@ const point = (minutes: number, level: number, high = true) => ({
 });
 
 describe("validation snapshot refresh", () => {
+  // About 5 s on its own, which is vitest's default limit, and slower when the
+  // root `npm test` runs it beside the other suites.
   it("preserves pinned comparisons when refreshing source metadata", async () => {
     const parent = await mkdtemp(join(tmpdir(), "kartverket-validation-"));
     const directory = join(parent, "fixtures");
@@ -35,7 +37,7 @@ describe("validation snapshot refresh", () => {
     } finally {
       await rm(parent, { recursive: true, force: true });
     }
-  });
+  }, 30_000);
   it("leaves the snapshot intact after a partially successful validation refresh", async () => {
     const parent = await mkdtemp(join(tmpdir(), "kartverket-validation-"));
     const directory = join(parent, "fixtures");

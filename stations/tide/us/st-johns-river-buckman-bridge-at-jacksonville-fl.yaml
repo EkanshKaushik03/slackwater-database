@@ -9,6 +9,7 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
+        seasonal_dominant: true
         score: 66
         factors:
           epoch: 0.404
@@ -17,3 +18,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.044
+        issues:
+          - "Seasonal curve peak (0.211m) exceeds the principal tide M2+S2+K1+O1 (0.193m): the yearly swing exceeds the daily one"

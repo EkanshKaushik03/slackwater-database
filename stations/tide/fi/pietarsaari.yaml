@@ -7,9 +7,7 @@ computed:
       position: [63.708599, 22.6896]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/pietarsaari_leppaluoto-134250-fin-fmi
+        accepted: true
         seasonal_dominant: true
         score: 65
         factors:
@@ -22,4 +20,4 @@ computed:
         issues:
           - MLWS (0.041) > MLW (0.033)
           - MHWS (0.049) < MHW (0.057)
-          - "Seasonal band (0.126m) is 11.6x the largest tidal constituent K1 (0.011m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.170m) exceeds the principal tide M2+S2+K1+O1 (0.022m): the yearly swing exceeds the daily one"

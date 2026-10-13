@@ -8,13 +8,11 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 77
+        score: 82
         factors:
           epoch: 1
           recency: 0.9
           source: 0.899
           quality: 1
-          amplitude: 0.75
+          amplitude: 1
           coverage: 0.005
-        issues:
-          - Q1 amplitude (0.0044) exceeds O1 (0.0043)

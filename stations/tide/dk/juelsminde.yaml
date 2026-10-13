@@ -7,9 +7,8 @@ computed:
       position: [55.716702, 10.0167]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: constituents
-        score: 0
+        accepted: true
+        score: 55
         factors:
           epoch: 1
           recency: 0.99
@@ -17,5 +16,3 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0.344
-        issues:
-          - "P1 amplitude (0.0049) exceeds K1 (0.0022): physically impossible"

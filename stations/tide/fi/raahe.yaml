@@ -7,9 +7,7 @@ computed:
       position: [64.665901, 24.407101]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/raahe_lapaluoto-100540-fin-fmi
+        accepted: true
         seasonal_dominant: true
         score: 65
         factors:
@@ -22,4 +20,4 @@ computed:
         issues:
           - MLWS (0.028) > MLW (0.007)
           - MHWS (0.032) < MHW (0.039)
-          - "Seasonal band (0.133m) is 9.8x the largest tidal constituent K1 (0.014m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.175m) exceeds the principal tide M2+S2+K1+O1 (0.025m): the yearly swing exceeds the daily one"

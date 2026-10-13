@@ -245,7 +245,8 @@ export function fitHarmonics(
       .map(({ t, level }) => ({ time: new Date(t), value: level })),
     cons.map(({ c }) => c.name),
   );
-  // Database precision is 1 mm amplitude and 0.01 degrees phase.
+  // Our own analyses are published to 1 mm and 0.01 degrees, as NOAA's
+  // amplitudes are; finer digits sit below any fit's uncertainty.
   return result.constituents.map((c, i) => ({
     name: cons[i]!.name,
     amplitude: Math.round(c.amplitude * 1000) / 1000,

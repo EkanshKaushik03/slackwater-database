@@ -9,7 +9,9 @@ computed:
       position: [63.188099, 19.0161]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/skagsudde-2321-swe-smhi
         seasonal_dominant: true
         score: 52
         factors:
@@ -22,4 +24,4 @@ computed:
         issues:
           - MLWS (0.048) > MLW (0.04)
           - MHWS (0.06) < MHW (0.061)
-          - "Seasonal band (0.085m) is 14.3x the largest tidal constituent K1 (0.006m): the yearly swing exceeds the daily one"
+          - "Seasonal curve peak (0.145m) exceeds the principal tide M2+S2+K1+O1 (0.017m): the yearly swing exceeds the daily one"

@@ -10,6 +10,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        seasonal_dominant: true
         score: 0
         factors:
           epoch: 1
@@ -20,3 +21,4 @@ computed:
           coverage: 0.006
         issues:
           - "Superseded source: noaa"
+          - "Seasonal curve peak (0.216m) exceeds the principal tide M2+S2+K1+O1 (0.192m): the yearly swing exceeds the daily one"

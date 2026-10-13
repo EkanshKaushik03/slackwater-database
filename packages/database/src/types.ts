@@ -162,15 +162,16 @@ export interface StationQuality {
   /** Id of the station that makes this one redundant, if any. */
   redundant?: string;
   /**
-   * The seasonal band (SA, SSA) is larger than this station's largest tidal
-   * constituent, so its yearly swing exceeds its daily one.
+   * The peak of the seasonal curve (SA and SSA with their phases) exceeds the
+   * principal tide M2+S2+K1+O1 by more than 3 mm, so the yearly swing exceeds
+   * the daily one.
    *
    * Accepted rather than rejected: the predictions are correct and only the
    * frame is wrong. A consumer quoting a high and a low should read this and
    * say what the water is — a Great Lakes gauge, a river reach, a Baltic
    * bodden — because an entire 24-hour window can sit below the annual mean,
    * which is a true statement about the water and reads as a broken tide
-   * table. `issues` carries the ratio.
+   * table. `issues` gives both heights.
    */
   seasonal_dominant?: boolean;
 }

@@ -37,13 +37,17 @@ import {
   MAX_OFFSET_HEIGHT_DELTA,
   MAX_OFFSET_TIME_DELTA,
   MIN_AMPLITUDE_RATIO,
+  AMPLITUDE_TOLERANCE,
+  RESOLVED_P1,
+  seasonalPeak,
+  seasonalTerms,
+  exceeds,
   MIN_TIDAL_RANGE,
   SEASONAL_OUTLIER_RADIUS,
   SEASONAL_OUTLIER_MIN_SA,
   SEASONAL_OUTLIER_RATIO,
   SEASONAL_DOMINANCE_RATIO,
-  SEASONAL_CONSTITUENTS,
-  TIDAL_CONSTITUENTS,
+  PRINCIPAL_TIDAL_CONSTITUENTS,
 } from "./filtering.ts";
 import type { StationData } from "@slackwater/database";
 
@@ -70,7 +74,7 @@ export interface QualityResult {
   issues: string[];
   reason?: string;
   redundant?: string;
-  /** Seasonal band larger than the largest tidal term — see checkSeasonalDominance. */
+  /** Seasonal curve peak above the principal tide — see checkSeasonalDominance. */
   seasonal_dominant?: boolean;
 }
 
@@ -248,8 +252,20 @@ function checkSuperseded(
 /** Essential constituents needed for tide prediction. */
 const ESSENTIAL_CONSTITUENTS = ["M2", "S2", "K1", "O1"];
 
+/** Whether the source marks a constituent as not determined: NOAA publishes
+ *  amplitude 0 with phase 0 for a constituent it left out of its analysis. */
+function isNotDetermined(station: Station, name: string): boolean {
+  const c = station.harmonic_constituents.find((h) => h.name === name);
+  return station.id.startsWith("noaa/") && c?.amplitude === 0 && c.phase === 0;
+}
+
+/** Whether the record lists a constituent, at any amplitude. */
+function hasConstituent(station: Station, name: string): boolean {
+  return station.harmonic_constituents.some((c) => c.name === name);
+}
+
 /** Check that reference stations have the essential constituents for prediction. */
-function checkConstituents(station: Station): string | null {
+export function checkConstituents(station: Station): string | null {
   if (station.type === "subordinate") return null;
 
   const essential = isAuthoritative(station)
@@ -261,22 +277,24 @@ function checkConstituents(station: Station): string | null {
     return `Missing constituents for prediction: ${missing.join(", ")}`;
   }
 
-  // A constituent with zero amplitude provides no tidal signal — treat as missing
-  const zeroAmplitude = essential.filter((c) => {
-    const constituent = station.harmonic_constituents.find((h) => h.name === c);
-    return constituent !== undefined && constituent.amplitude === 0;
-  });
-  if (zeroAmplitude.length > 0) {
-    return `Essential constituents with zero amplitude: ${zeroAmplitude.join(", ")}`;
+  // NOAA publishes amplitude 0 with phase 0 for a constituent it did not
+  // determine, so that pair is missing, not a measured zero. Any other small
+  // amplitude is a real value below detection and predicts correctly.
+  const notDetermined = essential.filter((c) => isNotDetermined(station, c));
+  if (notDetermined.length > 0) {
+    return `Essential constituents not determined by the source: ${notDetermined.join(", ")}`;
   }
 
-  // P1 > K1 is physically impossible — P1/K1 ≈ 0.331 in equilibrium theory
-  const k1Amp =
-    station.harmonic_constituents.find((c) => c.name === "K1")?.amplitude ?? 0;
-  const p1Amp =
-    station.harmonic_constituents.find((c) => c.name === "P1")?.amplitude ?? 0;
-  if (!isAuthoritative(station) && k1Amp > 0 && p1Amp > k1Amp) {
-    return `P1 amplitude (${p1Amp.toFixed(4)}) exceeds K1 (${k1Amp.toFixed(4)}): physically impossible`;
+  // The gravitational tide keeps P1 at a third of K1, so a resolved P1 above
+  // K1 marks a bad fit (see RESOLVED_P1).
+  const k1Amp = getAmplitude(station, "K1");
+  const p1Amp = getAmplitude(station, "P1");
+  if (
+    !isAuthoritative(station) &&
+    p1Amp >= RESOLVED_P1 &&
+    exceeds(p1Amp, k1Amp)
+  ) {
+    return `P1 amplitude (${p1Amp.toFixed(4)}) exceeds K1 (${k1Amp.toFixed(4)}): inconsistent with the gravitational tide`;
   }
 
   return null;
@@ -316,7 +334,8 @@ function checkSeasonalContamination(
   if (!station.id.startsWith("ticon/")) return null;
   if (station.type === "subordinate") return null;
 
-  const sa = getAmplitude(station, "SA");
+  const sa =
+    seasonalTerms(station.harmonic_constituents).annual?.amplitude ?? 0;
   if (sa < SEASONAL_OUTLIER_MIN_SA) return null;
   if (getAmplitude(station, "M2") <= 0) return null; // no tidal regime to compare
 
@@ -327,7 +346,7 @@ function checkSeasonalContamination(
     // Only neighbours with a genuine (positive) SA term can vouch. Treating an
     // SA=0 placeholder as a valid comparator would drag the median toward zero
     // and silently disable the gate where such placeholders are common.
-    const otherSA = other.harmonic_constituents.find((c) => c.name === "SA");
+    const otherSA = seasonalTerms(other.harmonic_constituents).annual;
     if (otherSA === undefined || otherSA.amplitude <= 0) continue;
     if (!hasSimilarM2(station, other)) continue; // same tidal regime only
     const d = distance(
@@ -358,8 +377,8 @@ function checkSeasonalContamination(
  * NOT the gate above it, and the difference is the whole point.
  * `checkSeasonalContamination` asks whether a station's SA is anomalous against
  * its *neighbours*, which catches a harmonic fit that absorbed spurious energy
- * into the seasonal band. This asks whether SA is large against the station's
- * *own* tidal terms, which catches water with no meaningful tide at all: a
+ * into the seasonal band. This asks whether the seasonal curve is large against
+ * the station's *own* principal tide, which catches water with no meaningful tide at all: a
  * Great Lakes gauge, a river reach, a Baltic bodden. The contamination gate
  * compares only within a tidal regime precisely so it does not fire on these,
  * so nothing else in the pass sees them.
@@ -383,12 +402,11 @@ function checkSeasonalContamination(
  * it predicts from: the reader fills a subordinate's `harmonic_constituents`
  * from its reference, so evaluating the raw record — which carries none — would
  * label the reference and leave its subordinates reading as ordinary tides on
- * the same water. Two accepted subordinates of `noaa/9468756` were in exactly
- * that state. The height offsets do not enter it: a ratio scales SA and the
+ * the same water. The height offsets do not enter it: a ratio scales SA and the
  * tidal terms together and a fixed offset moves the datum, so neither changes
  * which band dominates.
  */
-function checkSeasonalDominance(
+export function checkSeasonalDominance(
   station: Station,
   stationMap: Map<string, Station>,
 ): string | null {
@@ -399,34 +417,24 @@ function checkSeasonalDominance(
   // missing — which `checkConstituents` and the route builder already reject.
   if (!model?.harmonic_constituents?.length) return null;
 
-  let seasonal = 0;
-  for (const name of SEASONAL_CONSTITUENTS) {
-    seasonal = Math.max(seasonal, Math.abs(getAmplitude(model, name)));
-  }
+  const seasonal = seasonalPeak(model.harmonic_constituents);
   if (seasonal === 0) return null;
 
   let tidal = 0;
-  let largest = "";
-  for (const name of TIDAL_CONSTITUENTS) {
-    const amplitude = Math.abs(getAmplitude(model, name));
-    if (amplitude > tidal) {
-      tidal = amplitude;
-      largest = name;
-    }
+  for (const name of PRINCIPAL_TIDAL_CONSTITUENTS) {
+    tidal += Math.abs(getAmplitude(model, name));
   }
-  // No tidal term at all is `checkConstituents`' business, not this one: it
-  // rejects a reference station missing M2, S2, K1 or O1 outright.
-  if (tidal === 0) return null;
 
-  const ratio = seasonal / tidal;
-  if (ratio < SEASONAL_DOMINANCE_RATIO) return null;
+  // A difference inside the tolerance is not dominance. A principal tide of
+  // zero still compares: the seasonal band need only be measurable.
+  if (!exceeds(seasonal, tidal * SEASONAL_DOMINANCE_RATIO)) return null;
 
   // Named when the numbers are not in this station's own record, so a reader
   // of a subordinate's issues can find them.
   const measured = model === station ? "" : ` (from reference ${model.id})`;
   return (
-    `Seasonal band (${seasonal.toFixed(3)}m) is ${ratio.toFixed(1)}x the largest ` +
-    `tidal constituent ${largest} (${tidal.toFixed(3)}m)${measured}: ` +
+    `Seasonal curve peak (${seasonal.toFixed(3)}m) exceeds the principal tide ` +
+    `M2+S2+K1+O1 (${tidal.toFixed(3)}m)${measured}: ` +
     `the yearly swing exceeds the daily one`
   );
 }
@@ -489,7 +497,10 @@ function scoreQuality(station: Station): number {
 }
 
 /** Amplitude plausibility. Start at 1.0, subtract 0.25 per violation. */
-function scoreAmplitude(station: Station): { score: number; issues: string[] } {
+export function scoreAmplitude(station: Station): {
+  score: number;
+  issues: string[];
+} {
   // Subordinate stations inherit predictions from their reference
   if (station.type === "subordinate") {
     return { score: 1, issues: [] };
@@ -513,8 +524,13 @@ function scoreAmplitude(station: Station): { score: number; issues: string[] } {
   for (const [parent, child] of pairs) {
     const parentAmp = getAmplitude(station, parent);
     const childAmp = getAmplitude(station, child);
-    // Only check if both are present and parent is non-zero
-    if (parentAmp > 0 && childAmp > 0 && childAmp > parentAmp) {
+    if (
+      hasConstituent(station, parent) &&
+      hasConstituent(station, child) &&
+      !isNotDetermined(station, parent) &&
+      !isNotDetermined(station, child) &&
+      exceeds(childAmp, parentAmp)
+    ) {
       issues.push(
         `${child} amplitude (${childAmp.toFixed(4)}) exceeds ${parent} (${parentAmp.toFixed(4)})`,
       );
@@ -522,21 +538,14 @@ function scoreAmplitude(station: Station): { score: number; issues: string[] } {
     }
   }
 
-  // Form number sanity: F = (K1+O1)/(M2+S2) should be in (0, 25]
-  const m2 = getAmplitude(station, "M2");
-  const s2 = getAmplitude(station, "S2");
-  const k1 = getAmplitude(station, "K1");
-  const o1 = getAmplitude(station, "O1");
-  const semidiurnal = m2 + s2;
-  const diurnal = k1 + o1;
-
-  if (semidiurnal > 0 && diurnal > 0) {
-    const F = diurnal / semidiurnal;
-    if (F > 25) {
-      issues.push(`Form number ${F.toFixed(2)} exceeds 25`);
-      score -= 0.25;
-    }
-  } else if (semidiurnal === 0 && diurnal === 0) {
+  // The form number (K1+O1)/(M2+S2) has no upper bound (Courtier 1938; NOAA
+  // CO-OPS 2000): NOAA's own Gulf stations exceed 25. It is not a quality
+  // signal, so only a record with no diurnal or semidiurnal tide at all is.
+  const principal = PRINCIPAL_TIDAL_CONSTITUENTS.reduce(
+    (sum, name) => sum + getAmplitude(station, name),
+    0,
+  );
+  if (principal === 0) {
     issues.push("No diurnal or semidiurnal constituents with amplitude > 0");
     score -= 0.25;
   }
@@ -611,15 +620,18 @@ export async function loadAllStations(): Promise<Station[]> {
 
 // ── Deduplication ────────────────────────────────────────────────────────
 
-/** Check if two reference stations have similar M2 amplitudes. */
-function hasSimilarM2(stationA: Station, stationB: Station): boolean {
+/** Check if two reference stations have similar M2 amplitudes: within the
+ *  ratio, or within AMPLITUDE_TOLERANCE where M2 is too small for a ratio to
+ *  mean anything. Two M2 values both inside the tolerance carry no evidence
+ *  either way, so they do not make a pair similar. */
+export function hasSimilarM2(stationA: Station, stationB: Station): boolean {
   const m2A = stationA.harmonic_constituents.find((c) => c.name === "M2");
   const m2B = stationB.harmonic_constituents.find((c) => c.name === "M2");
-  if (!m2A || !m2B || m2A.amplitude <= 0 || m2B.amplitude <= 0) return false;
-  const ratio =
-    Math.min(m2A.amplitude, m2B.amplitude) /
-    Math.max(m2A.amplitude, m2B.amplitude);
-  return ratio >= MIN_AMPLITUDE_RATIO;
+  if (!m2A || !m2B) return false;
+  const low = Math.min(m2A.amplitude, m2B.amplitude);
+  const high = Math.max(m2A.amplitude, m2B.amplitude);
+  if (high <= AMPLITUDE_TOLERANCE) return false;
+  return !exceeds(high, low) || low / high >= MIN_AMPLITUDE_RATIO;
 }
 
 /** Check if two subordinate stations would produce the same tide prediction:
