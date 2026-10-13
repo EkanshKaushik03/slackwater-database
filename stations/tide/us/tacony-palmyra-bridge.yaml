@@ -1,6 +1,9 @@
 region: US-NJ
 sources:
   - noaa/8538886
+  - ticon/tacony_palmyra_bridge-8538886-usa-noaa
+redirect_from:
+  - /tides/us/nj/tacony-palmyra-bridge-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.044
+    ticon/tacony_palmyra_bridge-8538886-usa-noaa:
+      position: [40.01194, -75.043]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8538886
+        score: 0
+        factors:
+          epoch: 0.572
+          recency: 0.87
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (5.481) > MLW (5.446)
+          - Superseded by noaa/8538886, its operator's own record

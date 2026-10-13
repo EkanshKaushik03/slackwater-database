@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8729909
+  - ticon/big_lagoon-8729909-usa-noaa
+redirect_from:
+  - /tides/us/fl/big-lagoon-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,23 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.086
+    ticon/big_lagoon-8729909-usa-noaa:
+      position: [30.3267, -87.3567]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8729909
+        score: 0
+        factors:
+          epoch: 0.923
+          recency: 0.68
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.943) > MLW (0.914)
+          - MHWS (0.975) < MHW (1.026)
+          - Superseded by noaa/8729909, its operator's own record
+          - M2 here (0.010 m, 118.3°) differs from (0.012 m, 135.7°) by -2 mm and 36 min earlier in noaa/8729909

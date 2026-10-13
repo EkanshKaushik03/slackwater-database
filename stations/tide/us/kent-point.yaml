@@ -1,9 +1,25 @@
 region: US-MD
 sources:
+  - noaa/8572467
   - ticon/kent_point-8572467-usa-noaa
+redirect_from:
+  - /tides/us/md/kent-point-marina/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8572467:
+      position: [38.8367, -76.3733]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.161
     ticon/kent_point-8572467-usa-noaa:
       position: [38.8367, -76.3733]
       coastline: unverifiable

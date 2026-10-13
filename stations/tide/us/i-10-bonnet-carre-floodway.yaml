@@ -1,6 +1,9 @@
 region: US-LA
 sources:
   - ticon/i_10_bonnet_carre_floodway-8762483-usa-noaa
+  - noaa/8762483
+redirect_from:
+  - /tides/us/la/i-10-bonnet-carre-floodway-la/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -22,3 +25,20 @@ computed:
           - MLWS (0.211) > MLW (0.196)
           - MHWS (0.225) < MHW (0.245)
           - "Seasonal curve peak (0.160m) exceeds the principal tide M2+S2+K1+O1 (0.093m): the yearly swing exceeds the daily one"
+    noaa/8762483:
+      position: [30.067899703979492, -90.38999938964844]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: constituents
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 0
+          coverage: 0
+        issues:
+          - MLW (-0.04) < MLLW (-0.039)
+          - "Missing constituents for prediction: M2, S2, O1"

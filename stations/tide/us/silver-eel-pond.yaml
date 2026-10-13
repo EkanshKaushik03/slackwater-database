@@ -1,7 +1,9 @@
 region: US-NY
 sources:
   - noaa/8510719
+  - ticon/silver_eel_pond-8510719-usa-noaa
 redirect_from:
+  - /tides/us/ct/silver-eel-pond-ct/
   - /tides/us/ct/silver-eel-pond/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -19,3 +21,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.164
+    ticon/silver_eel_pond-8510719-usa-noaa:
+      position: [41.2567, -72.03]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8510719
+        score: 0
+        factors:
+          epoch: 0.969
+          recency: 0.81
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8510719, its operator's own record

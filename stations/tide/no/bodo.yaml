@@ -1,8 +1,24 @@
 sources:
+  - kartverket/BOO
   - ticon/bodo-boo-nor-nhs
+redirect_from:
+  - /tides/no/bod/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    kartverket/BOO:
+      position: [67.29233, 14.39977]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.806
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/bodo-boo-nor-nhs:
       position: [67.29233, 14.39977]
       coastline: unverifiable

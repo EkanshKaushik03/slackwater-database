@@ -1,5 +1,8 @@
 sources:
   - ticon/wladyslawowo-wla-pol-eseas
+  - ticon/wladyslawowo-wla-pol-cmems
+redirect_from:
+  - /tides/pl/wladyslawowo-pomerania/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -21,3 +24,23 @@ computed:
           - MLWS (5.046) > MLW (5.043)
           - "Seasonal curve peak (0.135m) exceeds the principal tide M2+S2+K1+O1 (0.027m): the yearly swing exceeds the daily one"
           - M2 here (0.012 m, 18.5°) differs from (0.013 m, 351.3°) by -2 mm and 56 min later in ticon/wladyslawowo-wla-pol-cmems, a duplicate
+    ticon/wladyslawowo-wla-pol-cmems:
+      position: [54.796799, 18.418699]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/wladyslawowo-wla-pol-eseas
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 0.25
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.954
+        issues:
+          - MLWS (0.118) > MLW (0.113)
+          - "Seasonal curve peak (0.128m) exceeds the principal tide M2+S2+K1+O1 (0.030m): the yearly swing exceeds the daily one"
+          - M2 here (0.013 m, 351.3°) differs from (0.012 m, 18.5°) by +2 mm and 56 min earlier in ticon/wladyslawowo-wla-pol-eseas, which this duplicates

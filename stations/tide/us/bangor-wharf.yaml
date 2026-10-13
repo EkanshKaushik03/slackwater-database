@@ -3,6 +3,9 @@ region: US-WA
 cities: [Silverdale, Poulsbo]
 sources:
   - noaa/9445133
+  - ticon/bangor-9445133-usa-noaa
+redirect_from:
+  - /tides/us/wa/bangor-wa/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,3 +22,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.143
+    ticon/bangor-9445133-usa-noaa:
+      position: [47.7483, -122.727]
+      coastline: clear
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9445133
+        score: 0
+        factors:
+          epoch: 0.119
+          recency: 0.77
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9445133, its operator's own record

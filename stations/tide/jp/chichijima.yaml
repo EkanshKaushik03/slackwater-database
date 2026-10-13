@@ -1,5 +1,8 @@
 sources:
   - ticon/chichijima-047-jpn-uhslc_fd
+  - ticon/chichijima-047a-jpn-uhslc_rq
+redirect_from:
+  - /tides/jp/chichijima-tokyo/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -12,6 +15,21 @@ computed:
         factors:
           epoch: 1
           recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.027
+    ticon/chichijima-047a-jpn-uhslc_rq:
+      position: [27.1, 142.183]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/chichijima-047-jpn-uhslc_fd
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.97
           source: 0.99
           quality: 1
           amplitude: 1

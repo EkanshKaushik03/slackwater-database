@@ -1,8 +1,28 @@
 sources:
+  - kartverket/TRG
   - ticon/tregde-804-nor-uhslc_fd
+  - ticon/tregde-804a-nor-uhslc_rq
+  - ticon/tregde-trg-nor-nhs
+redirect_from:
+  - /tides/no/tregde-agder/
+  - /tides/no/tregde-kartverket-trg/
+  - /tides/no/tregde-ticon-tregde-804a-nor-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    kartverket/TRG:
+      position: [58.006377, 7.554759]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.806
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/tregde-804-nor-uhslc_fd:
       position: [58, 7.567]
       coastline: unverifiable
@@ -18,5 +38,39 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0.02
+        issues:
+          - Superseded by kartverket/TRG, its operator's own record
+    ticon/tregde-804a-nor-uhslc_rq:
+      position: [58, 7.567]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: kartverket/TRG
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.99
+          quality: 0
+          amplitude: 1
+          coverage: 0.02
+        issues:
+          - Superseded by kartverket/TRG, its operator's own record
+    ticon/tregde-trg-nor-nhs:
+      position: [58.006377, 7.554759]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: kartverket/TRG
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.909
+          quality: 1
+          amplitude: 1
+          coverage: 0
         issues:
           - Superseded by kartverket/TRG, its operator's own record

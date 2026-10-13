@@ -1,0 +1,41 @@
+region: US-PA
+sources:
+  - noaa/8545240
+  - ticon/philadelphia-8545240-usa-noaa
+redirect_from:
+  - /tides/us/pa/philadelphia-pa/
+  - /tides/us/pa/philadelphia-us-coast-guard-station-pa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8545240:
+      position: [39.93305555555556, -75.14198055555556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.03
+    ticon/philadelphia-8545240-usa-noaa:
+      position: [39.933333, -75.141667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8545240
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.415) > MLW (1.327)
+          - Superseded by noaa/8545240, its operator's own record

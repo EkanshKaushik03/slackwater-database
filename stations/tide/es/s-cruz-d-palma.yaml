@@ -1,8 +1,26 @@
 sources:
+  - ticon/scruz_d_palma-206b-esp-uhslc_rq
   - ticon/scruz_d_palma-206a-esp-uhslc_rq
+  - ticon/scruz_d_palma-206d-esp-uhslc_rq
+redirect_from:
+  - /tides/es/s-cruz-d-palma-canary-islands/
+  - /tides/es/s-cruz-d-palma-ticon-scruz-d-palma-206d-esp-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    ticon/scruz_d_palma-206b-esp-uhslc_rq:
+      position: [28.683, -17.75]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 1
+          recency: 0.55
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.037
     ticon/scruz_d_palma-206a-esp-uhslc_rq:
       position: [28.683, -17.75]
       coastline: unverifiable
@@ -14,6 +32,21 @@ computed:
         factors:
           epoch: 0.528
           recency: 0.33
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.037
+    ticon/scruz_d_palma-206d-esp-uhslc_rq:
+      position: [28.683, -17.75]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/scruz_d_palma-206b-esp-uhslc_rq
+        score: 64
+        factors:
+          epoch: 0.1
+          recency: 0.64
           source: 0.99
           quality: 1
           amplitude: 1

@@ -1,6 +1,9 @@
 region: US-NY
 sources:
   - noaa/8515186
+  - ticon/fire_island-8515186-usa-noaa
+redirect_from:
+  - /tides/us/ny/fire-island-ny/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.058
+    ticon/fire_island-8515186-usa-noaa:
+      position: [40.6267, -73.26]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8515186
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8515186, its operator's own record

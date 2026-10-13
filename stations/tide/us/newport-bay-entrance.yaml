@@ -1,6 +1,9 @@
 region: US-CA
 sources:
   - noaa/9410580
+  - ticon/newport_beach-9410580-usa-noaa
+redirect_from:
+  - /tides/us/ca/newport-beach/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.032
+    ticon/newport_beach-9410580-usa-noaa:
+      position: [33.6033, -117.883]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9410580
+        score: 0
+        factors:
+          epoch: 0.783
+          recency: 0.68
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9410580, its operator's own record

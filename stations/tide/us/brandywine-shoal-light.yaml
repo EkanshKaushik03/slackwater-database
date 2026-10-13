@@ -1,7 +1,9 @@
 region: US-DE
 sources:
   - noaa/8555889
+  - ticon/brandywine_shoal_light-8555889-usa-noaa
 redirect_from:
+  - /tides/us/nj/brandywine-shoal-light-nj/
   - /tides/us/nj/brandywine-shoal-light/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -19,3 +21,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.261
+    ticon/brandywine_shoal_light-8555889-usa-noaa:
+      position: [38.987, -75.113]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8555889
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/8555889, its operator's own record

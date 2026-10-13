@@ -1,7 +1,9 @@
 region: US-PA
 sources:
   - noaa/8548989
+  - ticon/newbold-8548989-usa-noaa
 redirect_from:
+  - /tides/us/nj/newbold-nj/
   - /tides/us/nj/newbold/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -19,3 +21,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.026
+    ticon/newbold-8548989-usa-noaa:
+      position: [40.137306, -74.751889]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8548989
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (4.567) > MLW (4.52)
+          - Superseded by noaa/8548989, its operator's own record

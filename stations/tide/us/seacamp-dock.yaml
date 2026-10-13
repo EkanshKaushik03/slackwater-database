@@ -1,6 +1,9 @@
 region: US-GA
 sources:
   - noaa/8679758
+  - ticon/dungeness-8679758-usa-noaa
+redirect_from:
+  - /tides/us/ga/dungeness-ga/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.002
+    ticon/dungeness-8679758-usa-noaa:
+      position: [30.7633, -81.4717]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8679758
+        score: 0
+        factors:
+          epoch: 0.446
+          recency: 0.61
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8679758, its operator's own record

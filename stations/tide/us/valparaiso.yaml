@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8729501
+  - ticon/valparaiso-8729501-usa-noaa
+redirect_from:
+  - /tides/us/fl/valparaiso-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +23,24 @@ computed:
           coverage: 0.09
         issues:
           - "Seasonal curve peak (0.123m) exceeds the principal tide M2+S2+K1+O1 (0.099m): the yearly swing exceeds the daily one"
+    ticon/valparaiso-8729501-usa-noaa:
+      position: [30.5033, -86.4933]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8729501
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.125
+          recency: 0.85
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.472) > MLW (1.459)
+          - MHWS (1.484) < MHW (1.521)
+          - Superseded by noaa/8729501, its operator's own record
+          - "Seasonal curve peak (0.171m) exceeds the principal tide M2+S2+K1+O1 (0.097m): the yearly swing exceeds the daily one"

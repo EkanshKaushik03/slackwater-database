@@ -1,5 +1,8 @@
 sources:
   - noaa/1732417
+  - ticon/fare_ute_point-1732417-usa-noaa
+redirect_from:
+  - /tides/us/fare-ute-point/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +19,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.004
+    ticon/fare_ute_point-1732417-usa-noaa:
+      position: [-17.535, -149.572]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/1732417
+        score: 0
+        factors:
+          epoch: 0.359
+          recency: 0.76
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/1732417, its operator's own record

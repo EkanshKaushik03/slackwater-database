@@ -1,0 +1,39 @@
+sources:
+  - linz/073
+  - ticon/tauranga-073a-nzl-uhslc_rq
+redirect_from:
+  - /tides/nz/tauranga-linz-073/
+  - /tides/nz/tauranga-mount-maunganui-bay-of-plenty/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    linz/073:
+      position: [-37.65, 176.183333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.021
+    ticon/tauranga-073a-nzl-uhslc_rq:
+      position: [-37.65, 176.183]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: linz/073
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by linz/073, its operator's own record

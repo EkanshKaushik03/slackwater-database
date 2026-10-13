@@ -1,6 +1,9 @@
 region: US-NY
 sources:
   - noaa/8512668
+  - ticon/mattituck_inlet-8512668-usa-noaa
+redirect_from:
+  - /tides/us/ny/mattituck-inlet-ny/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.158
+    ticon/mattituck_inlet-8512668-usa-noaa:
+      position: [41.015, -72.5617]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8512668
+        score: 0
+        factors:
+          epoch: 0.516
+          recency: 0.87
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8512668, its operator's own record

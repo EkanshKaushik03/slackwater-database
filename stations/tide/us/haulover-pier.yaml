@@ -1,6 +1,11 @@
 region: US-FL
 sources:
   - noaa/8723080
+  - ticon/haulover_pier-8723080-usa-noaa
+  - ticon/miami-241a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/fl/haulover-pier-fl/
+  - /tides/us/fl/miami/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +22,37 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.01
+    ticon/haulover_pier-8723080-usa-noaa:
+      position: [25.9033, -80.12]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8723080
+        score: 0
+        factors:
+          epoch: 0.601
+          recency: 0.66
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8723080, its operator's own record
+    ticon/miami-241a-usa-uhslc_rq:
+      position: [25.903, -80.12]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8723080
+        score: 0
+        factors:
+          epoch: 0.415
+          recency: 0.66
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/8723080, its operator's own record

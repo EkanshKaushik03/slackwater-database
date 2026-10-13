@@ -1,0 +1,40 @@
+region: US-SC
+sources:
+  - noaa/8664941
+  - ticon/south_capers_island-8664941-usa-noaa
+redirect_from:
+  - /tides/us/sc/capers-creek-south-capers-island/
+  - /tides/us/sc/south-capers-island/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8664941:
+      position: [32.8567, -79.7067]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.016
+    ticon/south_capers_island-8664941-usa-noaa:
+      position: [32.8567, -79.7067]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8664941
+        score: 0
+        factors:
+          epoch: 0.244
+          recency: 0.82
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8664941, its operator's own record

@@ -1,9 +1,28 @@
 region: US-FL
 sources:
+  - noaa/8720357
   - ticon/i_295_bridge-8720357-usa-noaa
+redirect_from:
+  - /tides/us/fl/i-295-bridge-west-end/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8720357:
+      position: [30.19241666666667, -81.68888888888888]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.044
+        issues:
+          - "Seasonal curve peak (0.216m) exceeds the principal tide M2+S2+K1+O1 (0.187m): the yearly swing exceeds the daily one"
     ticon/i_295_bridge-8720357-usa-noaa:
       position: [30.1917, -81.6917]
       coastline: unverifiable

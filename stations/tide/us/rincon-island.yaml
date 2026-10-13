@@ -1,6 +1,9 @@
 region: US-CA
 sources:
   - noaa/9411270
+  - ticon/rincon_island-9411270-usa-noaa
+redirect_from:
+  - /tides/us/ca/rincon-island-ca/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.345
+    ticon/rincon_island-9411270-usa-noaa:
+      position: [34.3483, -119.443]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9411270
+        score: 0
+        factors:
+          epoch: 0.591
+          recency: 0.64
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9411270, its operator's own record

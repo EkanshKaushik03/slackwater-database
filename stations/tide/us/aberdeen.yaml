@@ -1,6 +1,9 @@
 region: US-WA
 sources:
   - noaa/9441187
+  - ticon/aberdeen-9441187-usa-noaa
+redirect_from:
+  - /tides/us/wa/aberdeen-wa/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.114
+    ticon/aberdeen-9441187-usa-noaa:
+      position: [46.9683, -123.853]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9441187
+        score: 0
+        factors:
+          epoch: 0.098
+          recency: 0.79
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9441187, its operator's own record

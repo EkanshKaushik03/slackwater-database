@@ -1,5 +1,8 @@
 sources:
   - ticon/st_helena-292a-shn-uhslc_rq
+  - ticon/st_helena-292b-shn-uhslc_rq
+redirect_from:
+  - /tides/sh/st-helena-ticon-st-helena-292b-shn-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -12,6 +15,21 @@ computed:
         factors:
           epoch: 0.727
           recency: 0.8
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+    ticon/st_helena-292b-shn-uhslc_rq:
+      position: [-15.917, -5.717]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/st_helena-292a-shn-uhslc_rq
+        score: 66
+        factors:
+          epoch: 0.112
+          recency: 0.87
           source: 0.99
           quality: 1
           amplitude: 1

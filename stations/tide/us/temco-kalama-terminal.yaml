@@ -1,6 +1,9 @@
 region: US-WA
 sources:
   - noaa/9440357
+  - ticon/temco_kalama_terminal-9440357-usa-noaa
+redirect_from:
+  - /tides/us/wa/temco-kalama-terminal-wa/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.278
+    ticon/temco_kalama_terminal-9440357-usa-noaa:
+      position: [45.987, -122.837]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9440357
+        score: 0
+        factors:
+          epoch: 0.48
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/9440357, its operator's own record

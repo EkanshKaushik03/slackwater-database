@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8725520
+  - ticon/fort_myers-8725520-usa-noaa
+redirect_from:
+  - /tides/us/fl/fort-myers-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.008
+    ticon/fort_myers-8725520-usa-noaa:
+      position: [26.648, -81.871]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8725520
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (1.504) > MLW (1.493)
+          - MHWS (1.752) < MHW (1.758)
+          - Superseded by noaa/8725520, its operator's own record

@@ -4,6 +4,9 @@ name: LAWMA
 region: US-LA
 sources:
   - noaa/8764227
+  - ticon/lawma-8764227-usa-noaa
+redirect_from:
+  - /tides/us/la/lawma-la/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +23,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.044
+    ticon/lawma-8764227-usa-noaa:
+      position: [29.449611, -91.338111]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8764227
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (7.651) < MHW (7.685)
+          - Superseded by noaa/8764227, its operator's own record

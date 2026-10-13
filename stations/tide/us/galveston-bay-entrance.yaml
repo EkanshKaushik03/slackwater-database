@@ -1,0 +1,41 @@
+region: US-TX
+sources:
+  - noaa/8771341
+  - ticon/galveston_bay_entrance-8771341-usa-noaa
+redirect_from:
+  - /tides/us/tx/galveston-bay-entrance-north-jetty/
+  - /tides/us/tx/galveston-bay-entrance-tx/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8771341:
+      position: [29.35746111111111, -94.724725]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.092
+    ticon/galveston_bay_entrance-8771341-usa-noaa:
+      position: [29.3573, -94.7248]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8771341
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (3.356) < MHW (3.363)
+          - Superseded by noaa/8771341, its operator's own record

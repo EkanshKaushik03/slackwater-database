@@ -1,8 +1,28 @@
 sources:
+  - noaa/1770000
   - ticon/pago_pago-056-asm-uhslc_fd
+  - ticon/pago_pago-056a-asm-uhslc_rq
+  - ticon/pago_pago-1770000-usa-noaa
+redirect_from:
+  - /tides/as/pago-pago-eastern-district/
+  - /tides/as/pago-pago-harbor/
+  - /tides/us/pago-pago-ticon-pago-pago-1770000-usa-noaa/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/1770000:
+      position: [-14.279999732971191, -170.69000244140625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 59
+        factors:
+          epoch: 0
+          recency: 0
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.253
     ticon/pago_pago-056-asm-uhslc_fd:
       position: [-14.283, -170.683]
       coastline: unverifiable
@@ -18,5 +38,39 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.017
+        issues:
+          - Superseded by noaa/1770000, its operator's own record
+    ticon/pago_pago-056a-asm-uhslc_rq:
+      position: [-14.283, -170.683]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/1770000
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.93
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.017
+        issues:
+          - Superseded by noaa/1770000, its operator's own record
+    ticon/pago_pago-1770000-usa-noaa:
+      position: [-14.276667, -170.689444]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/1770000
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
         issues:
           - Superseded by noaa/1770000, its operator's own record

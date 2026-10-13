@@ -1,8 +1,24 @@
 sources:
+  - ticon/sligo-sli-irl-cmems
   - ticon/sligo-sli-irl-mi_c
+redirect_from:
+  - /tides/ie/sligo-connacht/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    ticon/sligo-sli-irl-cmems:
+      position: [54.3046, -8.5689]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.909
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.771
     ticon/sligo-sli-irl-mi_c:
       position: [54.3099, -8.582]
       coastline: unverifiable

@@ -1,6 +1,9 @@
 region: US-ME
 sources:
   - noaa/8414612
+  - ticon/bangor-8414612-usa-noaa
+redirect_from:
+  - /tides/us/me/bangor-me/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.025
+    ticon/bangor-8414612-usa-noaa:
+      position: [44.785, -68.7667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8414612
+        score: 0
+        factors:
+          epoch: 0.121
+          recency: 0.8
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8414612, its operator's own record

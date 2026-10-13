@@ -1,8 +1,24 @@
 sources:
+  - ticon/chatham-079a-nzl-uhslc_rq
   - ticon/chatham-079-nzl-uhslc_fd
+redirect_from:
+  - /tides/nz/chatham-ticon-chatham-079a-nzl-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    ticon/chatham-079a-nzl-uhslc_rq:
+      position: [-43.947, -176.562]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.84
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 1
     ticon/chatham-079-nzl-uhslc_fd:
       position: [-43.947, -176.562]
       coastline: unverifiable

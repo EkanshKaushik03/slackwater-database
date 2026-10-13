@@ -1,5 +1,8 @@
 sources:
   - ticon/texel_noordzee-texnze-nld-rws
+  - ticon/texel_noordzee-texnze-nld-rws_hist
+redirect_from:
+  - /tides/nl/texel-noordzee-north-holland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +19,19 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.238
+    ticon/texel_noordzee-texnze-nld-rws_hist:
+      position: [53.120609, 4.733193]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.238
+        issues:
+          - "Superseded source: rws_hist"

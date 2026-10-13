@@ -1,0 +1,39 @@
+sources:
+  - noaa/9710441
+  - ticon/settlement_point-9710441-usa-noaa
+redirect_from:
+  - /tides/bs/settlement-point-grand-bahamas-island/
+  - /tides/us/settlement-point-ticon-settlement-point-9710441-usa-noaa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9710441:
+      position: [26.71, -78.9967]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+    ticon/settlement_point-9710441-usa-noaa:
+      position: [26.71, -78.9967]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9710441
+        score: 0
+        factors:
+          epoch: 0.312
+          recency: 0.75
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9710441, its operator's own record

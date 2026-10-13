@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8720625
+  - ticon/racy_point-8720625-usa-noaa
+redirect_from:
+  - /tides/us/fl/racy-point-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +23,22 @@ computed:
           coverage: 0.005
         issues:
           - "Seasonal curve peak (0.233m) exceeds the principal tide M2+S2+K1+O1 (0.217m): the yearly swing exceeds the daily one"
+    ticon/racy_point-8720625-usa-noaa:
+      position: [29.8017, -81.5483]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8720625
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.874
+          recency: 0.93
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8720625, its operator's own record
+          - "Seasonal curve peak (0.220m) exceeds the principal tide M2+S2+K1+O1 (0.216m): the yearly swing exceeds the daily one"

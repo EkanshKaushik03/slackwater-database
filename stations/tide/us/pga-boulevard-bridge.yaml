@@ -4,6 +4,9 @@ name: PGA Boulevard Bridge
 region: US-FL
 sources:
   - noaa/8722548
+  - ticon/pga_boulevard_bridge-8722548-usa-noaa
+redirect_from:
+  - /tides/us/fl/pga-boulevard-bridge-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +23,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.044
+    ticon/pga_boulevard_bridge-8722548-usa-noaa:
+      position: [26.8433, -80.0667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8722548
+        score: 0
+        factors:
+          epoch: 0.135
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8722548, its operator's own record

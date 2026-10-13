@@ -1,0 +1,40 @@
+region: US-TX
+sources:
+  - noaa/8772471
+  - ticon/freeport_spip-8772471-usa-noaa
+redirect_from:
+  - /tides/us/tx/freeport-harbor-noaa-8772471/
+  - /tides/us/tx/freeport-spip/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8772471:
+      position: [28.935699462890625, -95.29419708251953]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.023
+    ticon/freeport_spip-8772471-usa-noaa:
+      position: [28.935699, -95.294197]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8772471
+        score: 0
+        factors:
+          epoch: 0.484
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8772471, its operator's own record

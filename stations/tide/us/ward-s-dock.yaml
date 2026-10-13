@@ -1,6 +1,9 @@
 region: US-SC
 sources:
   - noaa/8662071
+  - ticon/pawleys_inlet-8662071-usa-noaa
+redirect_from:
+  - /tides/us/sc/pawleys-inlet/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.054
+    ticon/pawleys_inlet-8662071-usa-noaa:
+      position: [33.4117, -79.135]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8662071
+        score: 0
+        factors:
+          epoch: 0.077
+          recency: 0.5
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.108) > MLW (1.072)
+          - Superseded by noaa/8662071, its operator's own record

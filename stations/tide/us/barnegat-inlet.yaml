@@ -1,6 +1,9 @@
 region: US-NJ
 sources:
   - noaa/8533615
+  - ticon/barnegat_inlet_inside-8533615-usa-noaa
+redirect_from:
+  - /tides/us/nj/barnegat-inlet-inside/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.003
+    ticon/barnegat_inlet_inside-8533615-usa-noaa:
+      position: [39.7617, -74.1117]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8533615
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.87
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.822) < MHW (1.829)
+          - Superseded by noaa/8533615, its operator's own record

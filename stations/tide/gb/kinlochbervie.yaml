@@ -1,5 +1,8 @@
 sources:
   - ticon/kinlochbervie-kin-gbr-bodc
+  - ticon/kinlochbervie-kin-gbr-cmems
+redirect_from:
+  - /tides/gb/kinlochbervie-scotland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,5 +17,20 @@ computed:
           recency: 0.98
           source: 0.98
           quality: 1
+          amplitude: 1
+          coverage: 1
+    ticon/kinlochbervie-kin-gbr-cmems:
+      position: [58.457199, -5.0496]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/kinlochbervie-kin-gbr-bodc
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
           amplitude: 1
           coverage: 1

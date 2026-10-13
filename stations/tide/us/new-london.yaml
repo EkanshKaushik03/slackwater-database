@@ -1,0 +1,60 @@
+region: US-CT
+sources:
+  - noaa/8461490
+  - ticon/new_london-8461490-usa-noaa
+  - ticon/new_london_ct-744a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/ct/new-london-ct/
+  - /tides/us/ct/new-london-groton-ct/
+  - /tides/us/ct/new-london-state-pier/
+  - /tides/us/ct/new-london-ticon-new-london-8461490-usa-noaa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8461490:
+      position: [41.371667, -72.095556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.13
+    ticon/new_london-8461490-usa-noaa:
+      position: [41.361401, -72.089996]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8461490
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.025
+        issues:
+          - Superseded by noaa/8461490, its operator's own record
+    ticon/new_london_ct-744a-usa-uhslc_rq:
+      position: [41.355, -72.087]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8461490
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.04
+        issues:
+          - Superseded by noaa/8461490, its operator's own record

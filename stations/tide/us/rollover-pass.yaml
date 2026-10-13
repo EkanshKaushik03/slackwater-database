@@ -1,6 +1,9 @@
 region: US-TX
 sources:
   - noaa/8770971
+  - ticon/rollover_pass-8770971-usa-noaa
+redirect_from:
+  - /tides/us/tx/rollover-pass-tx/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.058
+    ticon/rollover_pass-8770971-usa-noaa:
+      position: [29.515556, -94.510556]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8770971
+        score: 0
+        factors:
+          epoch: 0.542
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - MHWS (1.538) < MHW (1.581)
+          - Superseded by noaa/8770971, its operator's own record

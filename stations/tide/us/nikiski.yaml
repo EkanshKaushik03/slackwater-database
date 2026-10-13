@@ -1,6 +1,9 @@
 region: US-AK
 sources:
   - noaa/9455760
+  - ticon/nikiski-9455760-usa-noaa
+redirect_from:
+  - /tides/us/ak/nikiski-ak/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.077
+    ticon/nikiski-9455760-usa-noaa:
+      position: [60.683333, -151.398056]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9455760
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9455760, its operator's own record

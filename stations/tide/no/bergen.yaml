@@ -1,8 +1,24 @@
 sources:
+  - kartverket/BGO
   - ticon/bergen-bgo-nor-nhs
+redirect_from:
+  - /tides/no/bergen-kartverket-bgo/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    kartverket/BGO:
+      position: [60.398046, 5.320487]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.806
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/bergen-bgo-nor-nhs:
       position: [60.398046, 5.320487]
       coastline: unverifiable

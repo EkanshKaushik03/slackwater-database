@@ -1,9 +1,25 @@
 region: US-CA
 sources:
+  - noaa/9415252
   - ticon/petaluma_river_entrance-9415252-usa-noaa
+redirect_from:
+  - /tides/us/ca/petaluma-river-entrance-ca/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/9415252:
+      position: [38.11530555555556, -122.5056666666667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/petaluma_river_entrance-9415252-usa-noaa:
       position: [38.115306, -122.5057]
       coastline: unverifiable

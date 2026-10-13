@@ -1,6 +1,9 @@
 region: US-NJ
 sources:
   - noaa/8531390
+  - ticon/sayreville-8531390-usa-noaa
+redirect_from:
+  - /tides/us/nj/sayreville-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.101
+    ticon/sayreville-8531390-usa-noaa:
+      position: [40.4783, -74.3567]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8531390
+        score: 0
+        factors:
+          epoch: 0.065
+          recency: 0.51
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8531390, its operator's own record

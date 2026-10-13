@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8721147
+  - ticon/ponce_de_leon_inlet_south-8721147-usa-noaa
+redirect_from:
+  - /tides/us/fl/ponce-de-leon-inlet-south/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.058
+    ticon/ponce_de_leon_inlet_south-8721147-usa-noaa:
+      position: [29.0633, -80.915]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8721147
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - Superseded by noaa/8721147, its operator's own record

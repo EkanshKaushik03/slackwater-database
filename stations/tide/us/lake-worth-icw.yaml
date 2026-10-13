@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8722669
+  - ticon/lake_worth_icw-8722669-usa-noaa
+redirect_from:
+  - /tides/us/fl/lake-worth-icw-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.025
+    ticon/lake_worth_icw-8722669-usa-noaa:
+      position: [26.6133, -80.0467]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8722669
+        score: 0
+        factors:
+          epoch: 0.147
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8722669, its operator's own record

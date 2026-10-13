@@ -1,5 +1,8 @@
 sources:
   - noaa/9761115
+  - ticon/barbuda-9761115-usa-noaa
+redirect_from:
+  - /tides/us/barbuda-barbuda/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +19,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 1
+    ticon/barbuda-9761115-usa-noaa:
+      position: [17.590834, -61.820557]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9761115
+        score: 0
+        factors:
+          epoch: 0.232
+          recency: 0.89
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9761115, its operator's own record

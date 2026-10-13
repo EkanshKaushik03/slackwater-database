@@ -1,6 +1,9 @@
 region: US-LA
 sources:
   - noaa/8760943
+  - ticon/sw_pass-8760943-usa-noaa
+redirect_from:
+  - /tides/us/la/sw-pass-la/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.025
+    ticon/sw_pass-8760943-usa-noaa:
+      position: [28.925, -89.4183]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8760943
+        score: 0
+        factors:
+          epoch: 0.397
+          recency: 0.78
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (4.532) > MLW (4.5)
+          - MHWS (4.588) < MHW (4.623)
+          - Superseded by noaa/8760943, its operator's own record

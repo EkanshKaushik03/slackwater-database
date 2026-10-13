@@ -1,5 +1,14 @@
 sources:
   - noaa/2695535
+  - ticon/bermuda-259-gbr-uhslc_fd
+  - ticon/bermuda-259a-gbr-uhslc_rq
+  - ticon/bermuda-259b-gbr-uhslc_rq
+  - ticon/bermuda_biological_station-2695535-usa-noaa
+redirect_from:
+  - /tides/gb/bermuda-saint-george-s-parish/
+  - /tides/gb/bermuda-ticon-bermuda-259b-gbr-uhslc-rq/
+  - /tides/gb/bermuda/
+  - /tides/us/bermuda-biological-station/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +25,69 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.015
+    ticon/bermuda-259-gbr-uhslc_fd:
+      position: [32.373, -64.703]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/2695535
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/2695535, its operator's own record
+    ticon/bermuda-259a-gbr-uhslc_rq:
+      position: [32.373, -64.703]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/2695540
+        score: 76
+        factors:
+          epoch: 0.927
+          recency: 0.23
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+    ticon/bermuda-259b-gbr-uhslc_rq:
+      position: [32.373, -64.703]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/2695535
+        score: 0
+        factors:
+          epoch: 0.922
+          recency: 0.93
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/2695535, its operator's own record
+    ticon/bermuda_biological_station-2695535-usa-noaa:
+      position: [32.369999, -64.695]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/2695535
+        score: 0
+        factors:
+          epoch: 0.482
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/2695535, its operator's own record

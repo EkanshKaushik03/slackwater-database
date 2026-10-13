@@ -1,6 +1,9 @@
 region: US-NJ
 sources:
   - noaa/8537614
+  - ticon/artificial_is-8537614-usa-noaa
+redirect_from:
+  - /tides/us/nj/artificial-is/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,6 +17,21 @@ computed:
           epoch: 1
           recency: 0.75
           source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/artificial_is-8537614-usa-noaa:
+      position: [39.46, -75.5317]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8537614
+        score: 70
+        factors:
+          epoch: 0.481
+          recency: 0.61
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0

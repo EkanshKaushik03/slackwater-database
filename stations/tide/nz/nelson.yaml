@@ -1,8 +1,24 @@
 sources:
+  - linz/077
   - ticon/nelson-077a-nzl-uhslc_rq
+redirect_from:
+  - /tides/nz/nelson-linz-077/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    linz/077:
+      position: [-41.266667, 173.266667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 94
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.638
     ticon/nelson-077a-nzl-uhslc_rq:
       position: [-41.267, 173.267]
       coastline: unverifiable

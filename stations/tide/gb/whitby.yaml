@@ -1,5 +1,8 @@
 sources:
   - ticon/whitby-whi-gbr-bodc
+  - ticon/whitby-whi-gbr-cmems
+redirect_from:
+  - /tides/gb/whitby-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +19,18 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.003
+    ticon/whitby-whi-gbr-cmems:
+      position: [54.483299, -0.61667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/whitby-whi-gbr-bodc
+        score: 65
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 1
+          amplitude: 1
+          coverage: 0.012

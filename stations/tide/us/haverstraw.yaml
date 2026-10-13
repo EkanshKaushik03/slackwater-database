@@ -1,6 +1,9 @@
 region: US-NY
 sources:
   - noaa/8518924
+  - ticon/haverstraw_bay-8518924-usa-noaa
+redirect_from:
+  - /tides/us/ny/haverstraw-bay/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.164
+    ticon/haverstraw_bay-8518924-usa-noaa:
+      position: [41.2183, -73.9633]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8518924
+        score: 0
+        factors:
+          epoch: 0.164
+          recency: 0.58
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8518924, its operator's own record

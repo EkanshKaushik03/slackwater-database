@@ -1,6 +1,11 @@
 region: US-TX
 sources:
   - noaa/8770570
+  - ticon/sabine_pass_n_tx-766a-usa-uhslc_rq
+  - ticon/sabine_pass_north-8770570-usa-noaa
+redirect_from:
+  - /tides/us/tx/sabine-pass-n-tx/
+  - /tides/us/tx/sabine-pass-north/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +22,37 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.103
+    ticon/sabine_pass_n_tx-766a-usa-uhslc_rq:
+      position: [29.73, -93.87]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8770570
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.94
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - Superseded by noaa/8770570, its operator's own record
+    ticon/sabine_pass_north-8770570-usa-noaa:
+      position: [29.7284, -93.8701]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8770570
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.94
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8770570, its operator's own record

@@ -1,6 +1,9 @@
 region: US-LA
 sources:
   - noaa/8761305
+  - ticon/shell_beach-8761305-usa-noaa
+redirect_from:
+  - /tides/us/la/shell-beach-la/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.021
+    ticon/shell_beach-8761305-usa-noaa:
+      position: [29.8683, -89.673]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8761305
+        score: 0
+        factors:
+          epoch: 0.907
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (9.886) > MLW (9.827)
+          - MHWS (9.966) < MHW (10.053)
+          - Superseded by noaa/8761305, its operator's own record

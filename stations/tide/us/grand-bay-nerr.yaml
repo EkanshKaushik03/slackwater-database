@@ -1,7 +1,9 @@
 region: US-MS
 sources:
   - noaa/8740166
+  - ticon/grand_bay_nerr-8740166-usa-noaa
 redirect_from:
+  - /tides/us/al/grand-bay-nerr-al/
   - /tides/us/al/grand-bay-nerr/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -19,3 +21,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.092
+    ticon/grand_bay_nerr-8740166-usa-noaa:
+      position: [30.413194, -88.402889]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8740166
+        score: 0
+        factors:
+          epoch: 0.457
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (4.576) > MLW (4.54)
+          - Superseded by noaa/8740166, its operator's own record

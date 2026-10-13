@@ -1,6 +1,9 @@
 region: US-TX
 sources:
   - noaa/8773146
+  - ticon/matagorda_city-8773146-usa-noaa
+redirect_from:
+  - /tides/us/tx/matagorda-city/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +23,24 @@ computed:
           coverage: 0.217
         issues:
           - "Seasonal curve peak (0.189m) exceeds the principal tide M2+S2+K1+O1 (0.088m): the yearly swing exceeds the daily one"
+    ticon/matagorda_city-8773146-usa-noaa:
+      position: [28.71006, -95.914]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8773146
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.678
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (9.627) > MLW (9.626)
+          - MHWS (9.663) < MHW (9.671)
+          - Superseded by noaa/8773146, its operator's own record
+          - "Seasonal curve peak (0.180m) exceeds the principal tide M2+S2+K1+O1 (0.091m): the yearly swing exceeds the daily one"

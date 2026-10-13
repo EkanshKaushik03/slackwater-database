@@ -1,5 +1,10 @@
 sources:
   - ticon/hiva_oa-017-fra-uhslc_fd
+  - ticon/hiva_oa-017a-fra-uhslc_rq
+  - ticon/hiva_oa-017b-fra-uhslc_rq
+redirect_from:
+  - /tides/fr/hiva-oa-ticon-hiva-oa-017a-fra-uhslc-rq/
+  - /tides/fr/hiva-oa-ticon-hiva-oa-017b-fra-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -18,3 +23,37 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0.019
+    ticon/hiva_oa-017a-fra-uhslc_rq:
+      position: [-9.81, -139.027]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hiva_oa-495-fra-refmar
+        score: 64
+        factors:
+          epoch: 0.157
+          recency: 0.54
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.019
+        issues:
+          - M2 here (0.445 m, 47.8°) differs from (0.460 m, 28.5°) by -14 mm and 40 min later in ticon/hiva_oa-017b-fra-uhslc_rq, which this duplicates
+    ticon/hiva_oa-017b-fra-uhslc_rq:
+      position: [-9.805, -139.035]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/hiva_oa-495-fra-refmar
+        score: 71
+        factors:
+          epoch: 0.376
+          recency: 0.91
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - M2 here (0.460 m, 28.5°) differs from (0.445 m, 47.8°) by +14 mm and 40 min earlier in ticon/hiva_oa-017a-fra-uhslc_rq, a duplicate

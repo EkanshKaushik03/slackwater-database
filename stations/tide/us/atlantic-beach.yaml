@@ -1,6 +1,9 @@
 region: US-NC
 sources:
   - noaa/8656590
+  - ticon/atlantic_beach_triple_s_pier-8656590-usa-noaa
+redirect_from:
+  - /tides/us/nc/atlantic-beach-triple-s-pier/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.056
+    ticon/atlantic_beach_triple_s_pier-8656590-usa-noaa:
+      position: [34.6933, -76.7117]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8656590
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.74
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8656590, its operator's own record

@@ -1,5 +1,8 @@
 sources:
   - ticon/rikitea-016-fra-uhslc_fd
+  - ticon/rikitea-016a-fra-uhslc_rq
+redirect_from:
+  - /tides/fr/rikitea-ticon-rikitea-016a-fra-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -12,6 +15,21 @@ computed:
         factors:
           epoch: 1
           recency: 0.99
+          source: 0.99
+          quality: 0
+          amplitude: 1
+          coverage: 0.029
+    ticon/rikitea-016a-fra-uhslc_rq:
+      position: [-23.125, -134.953]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/rikitea-016-fra-uhslc_fd
+        score: 70
+        factors:
+          epoch: 1
+          recency: 0.95
           source: 0.99
           quality: 0
           amplitude: 1

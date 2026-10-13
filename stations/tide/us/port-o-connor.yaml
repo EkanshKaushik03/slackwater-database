@@ -1,6 +1,9 @@
 region: US-TX
 sources:
   - noaa/8773701
+  - ticon/port_o_aoconnor-8773701-usa-noaa
+redirect_from:
+  - /tides/us/tx/port-o-aoconnor/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.126
+    ticon/port_o_aoconnor-8773701-usa-noaa:
+      position: [28.445861, -96.395556]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8773701
+        score: 0
+        factors:
+          epoch: 0.542
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.019
+        issues:
+          - MLWS (3.729) > MLW (3.717)
+          - MHWS (3.773) < MHW (3.815)
+          - Superseded by noaa/8773701, its operator's own record

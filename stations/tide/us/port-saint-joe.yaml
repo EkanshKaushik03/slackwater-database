@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8728912
+  - ticon/port_st_joe-8728912-usa-noaa
+redirect_from:
+  - /tides/us/fl/port-st-joe/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.142
+    ticon/port_st_joe-8728912-usa-noaa:
+      position: [29.815, -85.3133]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8728912
+        score: 0
+        factors:
+          epoch: 0.057
+          recency: 0.51
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.052) > MLW (1.034)
+          - MHWS (1.164) < MHW (1.197)
+          - Superseded by noaa/8728912, its operator's own record

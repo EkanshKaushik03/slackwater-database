@@ -1,6 +1,9 @@
 region: US-MS
 sources:
   - noaa/8747437
+  - ticon/bay_waveland_yacht_club-8747437-usa-noaa
+redirect_from:
+  - /tides/us/ms/bay-waveland-yacht-club/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.123
+    ticon/bay_waveland_yacht_club-8747437-usa-noaa:
+      position: [30.325, -89.325]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8747437
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (1.054) > MLW (0.955)
+          - MHWS (1.164) < MHW (1.273)
+          - Superseded by noaa/8747437, its operator's own record

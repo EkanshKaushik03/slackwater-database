@@ -1,9 +1,25 @@
 region: US-MS
 sources:
+  - noaa/8743735
   - ticon/biloxi_cadet_point-8743735-usa-noaa
+redirect_from:
+  - /tides/us/ms/biloxi-cadet-point-ms/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8743735:
+      position: [30.39, -88.8567]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.269
+          recency: 0.9
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/biloxi_cadet_point-8743735-usa-noaa:
       position: [30.39, -88.8567]
       coastline: unverifiable
