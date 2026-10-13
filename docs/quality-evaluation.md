@@ -144,7 +144,7 @@ The weights are an engineering choice of this project.
 
 ### Record length
 
-The score is the length of the analyzed record divided by 18.61 years, capped at 1. A record with no stated period scores 0, and one with a placeholder period gets the benefit of the doubt and scores 1. A subordinate station takes its reference station's period.
+The score is the length of the analyzed record divided by 18.61 years, capped at 1. A record with no stated period scores 0, and so does one whose period is a placeholder (year 0000), since it says nothing about the record. The same holds for recency. A subordinate station takes its reference station's period.
 
 **Why.** The lunar node precesses with a period of 18.61 years and modulates the lunar constituents by up to several tens of percent (Schureman, 1958). Datums averaged over less than a full cycle are biased toward the part of the cycle they sampled, which is why NOAA computes datums over a 19-year National Tidal Datum Epoch, currently 1983–2001 (Gill & Schultz, 2001; NOAA, 2003). Harmonic constants can be estimated from one year of data with nodal corrections (Foreman, 1977; Parker, 2007), but a longer record averages over more weather and resolves more constituents. The linear scale is this project's choice.
 
@@ -162,16 +162,15 @@ The score falls linearly from 1 for a record ending in 2026 to 0 for one ending 
 
 Authoritative agencies score 1. Each agency that supplies data to TICON is ranked, and the score falls with rank:
 
-| Tier | Agencies                                                                                                          | Score     |
-| ---- | ----------------------------------------------------------------------------------------------------------------- | --------- |
-| 0    | NOAA (as relayed by TICON)                                                                                        | 1.0       |
-| 1    | UHSLC fast delivery and research quality, BODC                                                                    | 0.98–0.99 |
-| 2    | national services of Canada (MEDS), France, Australia, Japan (JMA), Sweden, Norway, Spain                         | 0.90–0.96 |
-| 3    | regional European services, including Germany, the Netherlands, Finland, Denmark and Italy                        | 0.71–0.80 |
-| 4    | US regional networks, including USGS and state agencies                                                           | 0.53–0.60 |
-| 5    | historical and research series, other Japanese agencies, GLOSS                                                    | 0.03–0.19 |
-| 6    | sources that GESLA licenses for non-commercial use only (Copernicus Marine, City of Venice, University of Zagreb) | 0.02      |
-| 7    | historical records, mostly of NOAA gauges, contributed by Stefan Talke (`da_sat`)                                 | 0.0       |
+| Tier | Agencies                                                                                                                      | Score     |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------- | --------- |
+| 1    | UHSLC fast delivery and research quality, BODC                                                                                | 0.98–0.99 |
+| 2    | national services of the US (NOAA, as relayed by TICON), Canada (MEDS), France, Australia, Japan (JMA), Sweden, Norway, Spain | 0.90–0.96 |
+| 3    | regional European services, including Germany, the Netherlands, Finland, Denmark and Italy                                    | 0.71–0.80 |
+| 4    | US regional networks, including USGS and state agencies                                                                       | 0.53–0.60 |
+| 5    | historical and research series, other Japanese agencies, GLOSS                                                                | 0.03–0.19 |
+| 6    | sources that GESLA licenses for non-commercial use only (Copernicus Marine, City of Venice, University of Zagreb)             | 0.02      |
+| 7    | historical records, mostly of NOAA gauges, contributed by Stefan Talke (`da_sat`)                                             | 0.0       |
 
 An agency not in the ranking scores about 0.5.
 
@@ -179,7 +178,7 @@ An agency not in the ranking scores about 0.5.
 
 UHSLC's two series rank equally. Its research-quality series has had UHSLC's full quality control and replaces the fast-delivery series as it becomes available, while the fast-delivery series is more recent (UHSLC, n.d.). With source equal, record length and recency decide, which matches GESLA's advice to use the longest and then the most recent record of a gauge (Haigh et al., 2023).
 
-**Limitations.** A TICON relay of a NOAA gauge that NOAA publishes without constants scores the same as an authoritative record.
+A TICON relay of a NOAA gauge reaches this ranking only when NOAA publishes no constants for the gauge (see [Superseded relay](#superseded-relay)), as for most Great Lakes gauges. The data are NOAA's, but the analysis is TICON's, so it ranks with the national services.
 
 ### Provider quality flag
 
@@ -309,12 +308,6 @@ npm run report:quality -w packages/stations
 | `MAX_OFFSET_TIME_DELTA`               | 10 min                                       | Duplicate subordinates             |
 
 The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`, 2026. Distances use the haversine formula on a sphere of radius 6371 km (Sinnott, 1984). Position precision is the smaller of the decimal-place counts of latitude and longitude. The quality factor matches the text "quality control issues" in a record's `disclaimers`, which the TICON import fills from TICON's `record_quality` field.
-
-### Code and comments
-
-- The docstring on `scoreEpoch` says years divided by 19; the code divides by 18.613 years.
-- The docstring on `scoreRecency` describes a sigmoid-like curve; the code is linear.
-- The header of `evaluate-quality.ts` describes NOAA and TICON only; the evaluation covers every source under `data/`, and the proximity rule compares records across all of them.
 
 ## References
 

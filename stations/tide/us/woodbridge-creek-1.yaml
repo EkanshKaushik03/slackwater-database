@@ -11,11 +11,11 @@ computed:
         accepted: false
         reason: duplicate
         redundant: noaa/8531156
-        score: 46
+        score: 45
         factors:
           epoch: 0.059
           recency: 0.51
-          source: 1
+          source: 0.96
           quality: 0
           amplitude: 1
           coverage: 0

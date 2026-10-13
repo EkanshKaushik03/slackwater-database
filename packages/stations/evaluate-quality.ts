@@ -4,13 +4,13 @@
  * Evaluates the quality of every provider tide record. `npm run stations`
  * writes the results into each station file's `computed` block.
  *
- * Pipeline:
- *   1. Load all stations (NOAA + TICON)
- *   2. Compute quality factors for each station
- *   3. Apply hard gates (datum ordering, tidal range, superseded source,
- *      missing constituents, seasonal contamination)
- *   4. Deduplicate TICON stations by proximity
- *   5. Compute composite score and write results
+ * Pipeline (docs/quality-evaluation.md describes each rule):
+ *   1. Load every record under data/
+ *   2. Apply the rejection checks (position, datum ordering, tidal range,
+ *      superseded relay, constituents, seasonal contamination)
+ *   3. Compute the scored factors and the composite score
+ *   4. Deduplicate: TICON records of one gauge, then records of every source
+ *      by position and tide
  *
  * Run directly to print a summary:
  *   npm run report:quality -w packages/stations
@@ -495,15 +495,16 @@ export function checkSeasonalDominance(
 
 // ── Scored Factors (each returns 0.0–1.0) ────────────────────────────────
 
-/** Epoch: years/19 capped at 1.0. Subordinates inherit from reference.
- *  Stations with placeholder dates (year 0000) get benefit of the doubt. */
+/** Epoch: the analyzed span over one nodal cycle (18.61 years), capped at 1.
+ *  Subordinates inherit from their reference. A placeholder period (year
+ *  0000) says nothing about the record, so it scores as no period. */
 function scoreEpoch(
   station: Station,
   stationMap: Map<string, Station>,
 ): number {
   const epoch =
     station.epoch ?? stationMap.get(station.offsets?.reference ?? "")?.epoch;
-  if (epoch && !hasValidEpoch(epoch)) return 1;
+  if (!hasValidEpoch(epoch)) return 0;
   const years = epochYears(epoch);
   return toFixed(Math.min(1, years / (NODAL_CYCLE_DAYS / 365.2425)));
 }
@@ -513,19 +514,16 @@ function scoreEpoch(
  *  bumped, which regenerates everything anyway. */
 export const RECENCY_YEAR = DATUM_EPOCH.end.getUTCFullYear();
 
-/** Recency: how recent is the epoch end date? Stations with data from the
- *  current era score higher. Uses a sigmoid-like curve where data from
- *  ~2000+ scores well, and very old data (pre-1950) scores poorly.
- *  Subordinates inherit from reference.
- *  Stations with placeholder dates (year 0000) get benefit of the doubt. */
+/** Recency: falls linearly from 1 for a period ending in RECENCY_YEAR to 0 a
+ *  century earlier. Subordinates inherit from their reference. A placeholder
+ *  period (year 0000) scores as no period. */
 export function scoreRecency(
   station: Station,
   stationMap: Map<string, Station>,
 ): number {
   const epoch =
     station.epoch ?? stationMap.get(station.offsets?.reference ?? "")?.epoch;
-  if (!epoch?.end) return 0;
-  if (!hasValidEpoch(epoch)) return 1;
+  if (!epoch?.end || !hasValidEpoch(epoch)) return 0;
 
   // UTC, because epoch dates are bare dates parsed as UTC midnight. A local
   // getFullYear() reads "2025-01-01" as 2024 west of Greenwich, so the score

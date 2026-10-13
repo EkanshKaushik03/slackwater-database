@@ -10,11 +10,11 @@ computed:
       quality:
         accepted: true
         seasonal_dominant: true
-        score: 71
+        score: 70
         factors:
           epoch: 0.278
           recency: 0.94
-          source: 1
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0.058

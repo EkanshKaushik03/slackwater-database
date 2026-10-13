@@ -15,7 +15,7 @@ computed:
         factors:
           epoch: 1
           recency: 0.95
-          source: 1
+          source: 0.96
           quality: 0
           amplitude: 1
           coverage: 0

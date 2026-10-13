@@ -12,8 +12,11 @@ import { sourceMetadata } from "./sources.ts";
  * or more authoritative.
  */
 export const SOURCE_PRIORITY: Record<string, number> = {
-  // Tier 0: Authoritative national source (included directly)
-  noaa: 0, // NOAA CO-OPS
+  // TICON's reanalysis of a NOAA gauge that NOAA itself publishes without
+  // harmonic constants (a direct record supersedes the relay otherwise). The
+  // data are NOAA's, but the analysis is a relay's, so it ranks with the
+  // national services rather than with NOAA.
+  noaa: 4,
 
   // Tier 1: Highest priority - most reliable and current
   // University of Hawaii Sea Level Center. Research quality is the delayed-mode
