@@ -10,6 +10,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8779748
         score: 0
         factors:
           epoch: 0.525
@@ -20,4 +21,4 @@ computed:
           coverage: 0.002
         issues:
           - MHWS (1.602) < MHW (1.641)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8779748, its operator's own record

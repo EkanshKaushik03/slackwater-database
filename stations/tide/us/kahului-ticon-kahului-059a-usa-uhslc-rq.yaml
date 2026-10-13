@@ -9,9 +9,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
-        redundant: ticon/kahului-059-usa-uhslc_fd
-        score: 68
+        reason: superseded
+        redundant: noaa/1615680
+        score: 0
         factors:
           epoch: 1
           recency: 0.95
@@ -19,3 +19,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by noaa/1615680, its operator's own record

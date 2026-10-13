@@ -50,6 +50,7 @@ import {
   PRINCIPAL_TIDAL_CONSTITUENTS,
 } from "./filtering.ts";
 import type { StationData } from "@slackwater/database";
+import { declaredOriginator } from "../../sources/ticon/provenance.ts";
 
 // ── Types ───────────────────────────────────────────────────────────────
 
@@ -78,8 +79,9 @@ export interface QualityResult {
   seasonal_dominant?: boolean;
 }
 
-// Sources superseded by better datasets in this database
-const SUPERSEDED_SOURCES = ["noaa", "rws_hist"];
+// TICON sources superseded outright: the current Rijkswaterstaat series covers
+// the gauges of its historical one.
+const SUPERSEDED_SOURCES = ["rws_hist"];
 
 // Weights for composite score (must sum to 100)
 const WEIGHTS = {
@@ -230,23 +232,75 @@ function checkCoordinates(station: Station): string | null {
   return null;
 }
 
-/** Check if source is superseded. */
+/** Each TICON gauge's declared originator, so every record of the gauge
+ *  shares what one of its records declares: UHSLC metadata covers only the
+ *  research-quality series, and TICON's own id only its NOAA and Norwegian
+ *  Hydrographic Service relays. */
+function originatorsByGauge(stations: Station[]): Map<string, string> {
+  const originators = new Map<string, string>();
+  for (const station of stations) {
+    if (!station.id.startsWith("ticon/")) continue;
+    const originator = declaredOriginator(station.id);
+    if (originator) originators.set(gaugeKey(station.source.id), originator);
+  }
+  return originators;
+}
+
+/** A relay is superseded when the gauge's operator publishes its own
+ *  harmonic constants and they pass every check here: the operator's analysis
+ *  is the primary source. A relay of a gauge whose operator publishes no
+ *  constants, or whose record is rejected, stands in for it. */
 function checkSuperseded(
   station: Station,
   stationMap: Map<string, Station>,
-): string | null {
+  originators: Map<string, string>,
+  failures: Map<string, Gate[]>,
+): Gate | null {
   if (!station.id.startsWith("ticon/")) return null;
   const suffix = getSourceSuffix(station.source.id);
-  if (suffix === "noaa") {
-    // TICON's NOAA source code identifies the direct gauge, if it ships harmonics.
-    const code = station.source.id.split("-").at(-3);
-    const replacement = stationMap.get(`noaa/${code}`);
-    if (!replacement?.harmonic_constituents?.length) return null;
-  }
   if (SUPERSEDED_SOURCES.includes(suffix)) {
-    return `Superseded source: ${suffix}`;
+    return { reason: "superseded", issues: [`Superseded source: ${suffix}`] };
   }
-  return null;
+  const originator =
+    declaredOriginator(station.id) ??
+    originators.get(gaugeKey(station.source.id));
+  const direct = originator ? stationMap.get(originator) : undefined;
+  if (!direct?.harmonic_constituents?.length) return null;
+  if (failures.get(direct.id)!.length > 0) return null;
+  return {
+    reason: "superseded",
+    issues: [`Superseded by ${direct.id}, its operator's own record`],
+    by: direct.id,
+  };
+}
+
+interface Gate {
+  reason: string;
+  issues: string[];
+  /** The record that publishes this gauge instead, for a superseded relay. */
+  by?: string;
+}
+
+/** Every check a record fails, in the order the reason is taken from, except
+ *  the superseded relay check, which needs these results for the direct
+ *  record. Datum warnings are not failures and are returned separately. */
+function checkGates(
+  station: Station,
+  stationMap: Map<string, Station>,
+  stations: Station[],
+): { failures: Gate[]; warnings: string[] } {
+  const failures: Gate[] = [];
+  const fail = (reason: string, issue: string | null) => {
+    if (issue) failures.push({ reason, issues: [issue] });
+  };
+  fail("coordinates", checkCoordinates(station));
+  const datum = checkDatumOrdering(station, stationMap);
+  if (datum.fatal.length > 0)
+    failures.push({ reason: "datum", issues: datum.fatal });
+  fail("range", checkTidalRange(station, stationMap));
+  fail("constituents", checkConstituents(station));
+  fail("seasonal", checkSeasonalContamination(station, stations));
+  return { failures, warnings: datum.warnings };
 }
 
 /** Essential constituents needed for tide prediction. */
@@ -847,40 +901,35 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
   // Step 1: Compute factors and apply gates
   const resultsMap = new Map<string, QualityResult>();
 
-  for (const station of stations) {
-    const issues: string[] = [];
+  const gates = new Map(
+    stations.map((s) => [s.id, checkGates(s, stationMap, stations)]),
+  );
+  const failures = new Map(
+    [...gates].map(([id, { failures }]) => [id, failures]),
+  );
+  const originators = originatorsByGauge(stations);
 
-    // Gates
-    const coordinateIssue = checkCoordinates(station);
-    const datumIssues = checkDatumOrdering(station, stationMap);
-    const rangeIssue = checkTidalRange(station, stationMap);
-    const supersededIssue = checkSuperseded(station, stationMap);
-    const constituentIssue = checkConstituents(station);
-    const seasonalIssue = checkSeasonalContamination(station, stations);
+  for (const station of stations) {
+    const { warnings } = gates.get(station.id)!;
+    const failed = [...failures.get(station.id)!];
+    const superseded = checkSuperseded(
+      station,
+      stationMap,
+      originators,
+      failures,
+    );
+    if (superseded) {
+      // Taken after a record's own data checks and before its constituents.
+      const at = failed.findIndex((g) =>
+        ["constituents", "seasonal"].includes(g.reason),
+      );
+      failed.splice(at === -1 ? failed.length : at, 0, superseded);
+    }
 
     // Diurnal pair warnings are non-fatal
-    issues.push(...datumIssues.warnings);
-
-    let gateReason: string | undefined;
-    if (coordinateIssue) {
-      issues.push(coordinateIssue);
-      gateReason = "coordinates";
-    } else if (datumIssues.fatal.length > 0) {
-      issues.push(...datumIssues.fatal);
-      gateReason = "datum";
-    } else if (rangeIssue) {
-      issues.push(rangeIssue);
-      gateReason = "range";
-    } else if (supersededIssue) {
-      issues.push(supersededIssue);
-      gateReason = "superseded";
-    } else if (constituentIssue) {
-      issues.push(constituentIssue);
-      gateReason = "constituents";
-    } else if (seasonalIssue) {
-      issues.push(seasonalIssue);
-      gateReason = "seasonal";
-    }
+    const issues: string[] = [...warnings];
+    const gateReason = failed[0]?.reason;
+    if (failed[0]) issues.push(...failed[0].issues);
 
     // A label, deliberately outside the gate chain above: a seasonal-dominated
     // station is accepted, and its consumers decide how to present water whose
@@ -913,6 +962,7 @@ export async function evaluateQuality(): Promise<QualityResult[]> {
       factors,
       issues,
       ...(gateReason ? { reason: gateReason } : {}),
+      ...(failed[0]?.by ? { redundant: failed[0].by } : {}),
       ...(dominanceIssue ? { seasonal_dominant: true } : {}),
     };
 

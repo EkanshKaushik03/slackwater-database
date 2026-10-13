@@ -19,6 +19,29 @@ test("a TICON NOAA relay names its station in its id", () => {
   );
 });
 
+test("a TICON Norwegian Hydrographic Service relay names its Kartverket code", () => {
+  expect(declaredOriginator("ticon/bergen-bgo-nor-nhs")).toBe("kartverket/BGO");
+});
+
+test("UHSLC's Norwegian Hydrographic Service gauges match Kartverket by name", () => {
+  const pinned = {
+    "823A": {
+      ...meta("Norwegian Hydrographic Services (NHS)", ""),
+      station: "Ny-Alesund",
+    },
+    "999A": {
+      ...meta("Norwegian Hydrographic Services", ""),
+      station: "Nowhere",
+    },
+  };
+  expect(declaredOriginator("ticon/nylesund-823a-nor-uhslc_rq", pinned)).toBe(
+    "kartverket/NYA",
+  );
+  expect(
+    declaredOriginator("ticon/nowhere-999a-nor-uhslc_rq", pinned),
+  ).toBeUndefined();
+});
+
 test("UHSLC metadata names an originator only through a known provider", () => {
   const pinned = {
     "073A": meta("Land Information New Zealand", "073"),

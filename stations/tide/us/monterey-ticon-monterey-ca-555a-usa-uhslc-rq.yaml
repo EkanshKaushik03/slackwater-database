@@ -10,8 +10,10 @@ computed:
       position: [36.605, -121.888]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 68
+        accepted: false
+        reason: superseded
+        redundant: noaa/9413450
+        score: 0
         factors:
           epoch: 1
           recency: 0.95
@@ -19,3 +21,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by noaa/9413450, its operator's own record

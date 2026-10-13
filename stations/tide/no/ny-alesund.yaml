@@ -8,9 +8,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
+        reason: superseded
         redundant: kartverket/NYA
-        score: 83
+        score: 0
         factors:
           epoch: 1
           recency: 0.99
@@ -18,3 +18,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by kartverket/NYA, its operator's own record

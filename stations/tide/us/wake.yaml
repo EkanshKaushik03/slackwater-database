@@ -7,8 +7,10 @@ computed:
       position: [19.283, 166.617]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 85
+        accepted: false
+        reason: superseded
+        redundant: noaa/1890000
+        score: 0
         factors:
           epoch: 1
           recency: 0.99
@@ -16,3 +18,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by noaa/1890000, its operator's own record

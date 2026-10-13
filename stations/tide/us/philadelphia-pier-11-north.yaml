@@ -10,6 +10,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8545530
         score: 0
         factors:
           epoch: 1
@@ -21,4 +22,4 @@ computed:
         issues:
           - MLWS (1.335) > MLW (1.192)
           - MHWS (3.011) < MHW (3.049)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8545530, its operator's own record

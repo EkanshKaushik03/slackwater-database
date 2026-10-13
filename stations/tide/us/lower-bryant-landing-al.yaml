@@ -10,6 +10,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8737373
         score: 0
         factors:
           epoch: 0.169
@@ -21,4 +22,4 @@ computed:
         issues:
           - MLWS (6.455) > MLW (6.306)
           - MHWS (6.519) < MHW (6.678)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8737373, its operator's own record

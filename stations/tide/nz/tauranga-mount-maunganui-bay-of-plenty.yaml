@@ -10,9 +10,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
+        reason: superseded
         redundant: linz/073
-        score: 69
+        score: 0
         factors:
           epoch: 1
           recency: 0.98
@@ -20,3 +20,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.001
+        issues:
+          - Superseded by linz/073, its operator's own record

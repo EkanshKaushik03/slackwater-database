@@ -9,9 +9,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
-        redundant: ticon/nome_ak-595-usa-uhslc_fd
-        score: 68
+        reason: superseded
+        redundant: noaa/9468756
+        score: 0
         factors:
           epoch: 1
           recency: 0.95
@@ -21,3 +21,4 @@ computed:
           coverage: 0
         issues:
           - MHWS (1.549) < MHW (1.577)
+          - Superseded by noaa/9468756, its operator's own record

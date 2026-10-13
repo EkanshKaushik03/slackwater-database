@@ -9,6 +9,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/9753216
         score: 0
         factors:
           epoch: 0.481
@@ -18,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - "Superseded source: noaa"
+          - Superseded by noaa/9753216, its operator's own record

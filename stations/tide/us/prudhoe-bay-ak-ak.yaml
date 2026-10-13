@@ -9,10 +9,10 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
-        redundant: ticon/prudhoe_bay_ak-579-usa-uhslc_fd
+        reason: superseded
+        redundant: noaa/9497645
         seasonal_dominant: true
-        score: 68
+        score: 0
         factors:
           epoch: 1
           recency: 0.96
@@ -21,4 +21,5 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
+          - Superseded by noaa/9497645, its operator's own record
           - "Seasonal curve peak (0.186m) exceeds the principal tide M2+S2+K1+O1 (0.145m): the yearly swing exceeds the daily one"

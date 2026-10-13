@@ -10,6 +10,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/9414750
         score: 0
         factors:
           epoch: 1
@@ -19,4 +20,4 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - "Superseded source: noaa"
+          - Superseded by noaa/9414750, its operator's own record

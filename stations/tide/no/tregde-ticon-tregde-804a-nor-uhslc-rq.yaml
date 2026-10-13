@@ -8,9 +8,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
-        redundant: ticon/tregde-804-nor-uhslc_fd
-        score: 53
+        reason: superseded
+        redundant: kartverket/TRG
+        score: 0
         factors:
           epoch: 1
           recency: 0.92
@@ -18,3 +18,5 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by kartverket/TRG, its operator's own record

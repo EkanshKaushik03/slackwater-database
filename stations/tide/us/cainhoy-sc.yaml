@@ -10,6 +10,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8664545
         score: 0
         factors:
           epoch: 0.063
@@ -20,4 +21,4 @@ computed:
           coverage: 0
         issues:
           - MLWS (0.441) > MLW (0.372)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8664545, its operator's own record

@@ -8,9 +8,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
-        redundant: ticon/gisborne-078b-nzl-uhslc_rq
-        score: 52
+        reason: superseded
+        redundant: linz/078
+        score: 0
         factors:
           epoch: 0.348
           recency: 0.65
@@ -18,3 +18,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by linz/078, its operator's own record

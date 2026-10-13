@@ -7,8 +7,10 @@ computed:
       position: [58, 7.567]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 70
+        accepted: false
+        reason: superseded
+        redundant: kartverket/TRG
+        score: 0
         factors:
           epoch: 1
           recency: 0.99
@@ -16,3 +18,5 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by kartverket/TRG, its operator's own record

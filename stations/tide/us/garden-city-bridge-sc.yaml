@@ -10,6 +10,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8661419
         score: 0
         factors:
           epoch: 0.071
@@ -21,4 +22,4 @@ computed:
         issues:
           - MLWS (0.518) > MLW (0.509)
           - MHWS (1.802) < MHW (1.82)
-          - "Superseded source: noaa"
+          - Superseded by noaa/8661419, its operator's own record

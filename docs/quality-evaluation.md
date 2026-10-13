@@ -85,11 +85,17 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 
 ### Superseded relay
 
-**What it catches.** A second, indirect answer for a gauge whose operator already publishes one. TICON-4 includes its own reanalysis of many NOAA gauges. NOAA CO-OPS publishes harmonic constants for the same gauges, analyzed by the operating agency with its own quality control and over its own chosen period (Parker, 2007). When the direct NOAA record has harmonic constants, the TICON relay is rejected. When NOAA publishes the gauge only as a subordinate station, or not at all, the relay is kept. TICON's historical Rijkswaterstaat series is also rejected, because the current Rijkswaterstaat series covers the same gauges.
+**What it catches.** A second, indirect answer for a gauge whose operator already publishes one. TICON-4 reanalyzes many gauges that NOAA, Kartverket and LINZ operate, and those agencies publish harmonic constants for the same gauges, analyzed with their own quality control and over their own chosen period (Parker, 2007). A relay is matched to its operator's record only by what it declares:
+
+- TICON's NOAA relays carry the NOAA station number in their id, and its Norwegian Hydrographic Service relays the Kartverket station code.
+- UHSLC's station metadata names the originating agency and, for NOAA and LINZ, its station number. For the Norwegian Hydrographic Service it gives no number, and the gauge is matched to the Kartverket station of the same name.
+- Every TICON record of one gauge (see [Same identifier](#same-identifier)) shares what any of them declares, since UHSLC's metadata covers only its research-quality series.
+
+The relay is rejected when its operator's record has harmonic constants and passes every other check here. When the operator publishes the gauge only as a subordinate station, not at all, or with a record that fails a check, the relay stands in for it. TICON's historical Rijkswaterstaat series is also rejected, because the current Rijkswaterstaat series covers the same gauges.
 
 **Basis.** An editorial choice of this project: the operator's analysis is the primary source.
 
-**Limitations.** Only NOAA relays are matched to a direct record here. Relays of Norwegian and New Zealand gauges are caught only if deduplication pairs them with the direct record, which requires the two positions to agree within the distances given below.
+**Limitations.** A relay that declares nothing is caught only if deduplication pairs it with the operator's record, which requires the two positions to agree within the distances given below. TICON's relays of LINZ's sea-level network (source `ttw`) carry their own station codes rather than LINZ's, so a relay such as Auckland, 2.7 km from LINZ's Auckland port, stays separate.
 
 ### Essential constituents
 
@@ -256,7 +262,7 @@ npm run report:quality -w packages/stations
 | ------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `accepted`          | Whether the record is published.                                                                                 |
 | `reason`            | `coordinates`, `datum`, `range`, `superseded`, `constituents`, `seasonal`, or `duplicate`. Absent when accepted. |
-| `redundant`         | For a duplicate, the id of the record published for its gauge.                                                   |
+| `redundant`         | For a duplicate or a superseded relay, the id of the record published for its gauge.                             |
 | `seasonal_dominant` | `true` for the seasonal label.                                                                                   |
 | `score`             | The composite score. 0 for a record rejected by a check; a duplicate keeps the score it was compared on.         |
 | `factors`           | `epoch`, `recency`, `source`, `quality`, `amplitude`, `coverage`, each 0 to 1, rounded to three decimals.        |
@@ -265,7 +271,7 @@ npm run report:quality -w packages/stations
 ### Order of operations
 
 1. `loadAllStations` reads every JSON file under `data/`, sorting directories and file names, so records are processed in record-id order.
-2. For each record, all six checks run: `checkCoordinates`, `checkDatumOrdering`, `checkTidalRange`, `checkSuperseded`, `checkConstituents`, `checkSeasonalContamination`. The first failure sets `reason`. Then `checkSeasonalDominance` and five factors are computed.
+2. `checkGates` runs `checkCoordinates`, `checkDatumOrdering`, `checkTidalRange`, `checkConstituents` and `checkSeasonalContamination` on every record. `checkSuperseded` then runs on each relay, using those results for the operator's record, and takes its place after the range check. The first failure sets `reason`. Then `checkSeasonalDominance` and five factors are computed.
 3. `scoreCoverage` runs once all positions are loaded, against every record including rejected ones.
 4. `computeCompositeScore` sets the score of each record that passed the checks.
 5. `countSubordinates` counts each reference's accepted subordinates. The count is not updated as duplicates are rejected.
@@ -280,7 +286,7 @@ npm run report:quality -w packages/stations
 | `NULL_ISLAND_RADIUS`                  | 0.05°                                        | Position                           |
 | `EPSILON` (in `checkDatumOrdering`)   | 0.5 m                                        | Low chart datums below LAT         |
 | `MIN_TIDAL_RANGE`                     | 0.02 m                                       | Tidal range                        |
-| `SUPERSEDED_SOURCES`                  | `noaa`, `rws_hist`                           | Superseded relay                   |
+| `SUPERSEDED_SOURCES`                  | `rws_hist`                                   | Superseded relay                   |
 | `ESSENTIAL_CONSTITUENTS`              | M2, S2, K1, O1                               | Essential constituents             |
 | `SEASONAL_OUTLIER_MIN_SA`             | 0.5 m                                        | Seasonal contamination             |
 | `SEASONAL_OUTLIER_RADIUS`             | 25 km                                        | Seasonal contamination             |

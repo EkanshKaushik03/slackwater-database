@@ -10,6 +10,7 @@ computed:
       quality:
         accepted: false
         reason: superseded
+        redundant: noaa/8720291
         score: 0
         factors:
           epoch: 0.201
@@ -19,4 +20,4 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - "Superseded source: noaa"
+          - Superseded by noaa/8720291, its operator's own record

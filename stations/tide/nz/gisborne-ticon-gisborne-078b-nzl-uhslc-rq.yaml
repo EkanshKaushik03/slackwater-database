@@ -9,8 +9,10 @@ computed:
       position: [-38.683, 178.033]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 65
+        accepted: false
+        reason: superseded
+        redundant: linz/078
+        score: 0
         factors:
           epoch: 0.806
           recency: 0.98
@@ -18,3 +20,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by linz/078, its operator's own record

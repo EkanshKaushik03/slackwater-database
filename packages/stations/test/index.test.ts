@@ -338,6 +338,30 @@ describe("gauge deduplication", () => {
     });
   });
 
+  test("supersedes a relay only by an operator record that passes its checks", () => {
+    const byId = new Map(quality.map((r) => [r.id, r]));
+    for (const r of quality.filter((r) => r.reason === "superseded")) {
+      const direct = (r.issues ?? [])
+        .join(" ")
+        .match(/Superseded by (\S+),/)?.[1];
+      if (!direct) continue; // a source superseded outright
+      const verdict = byId.get(direct);
+      expect(verdict?.accepted || verdict?.reason === "duplicate", r.id).toBe(
+        true,
+      );
+    }
+    // NOAA's Snow Hill record fails its datum check, so the relay stands in.
+    expect(byId.get("ticon/snow_hill-8571359-usa-noaa")?.accepted).toBe(true);
+  });
+
+  test("supersedes UHSLC's copy of a Kartverket gauge", () => {
+    // UHSLC names the Norwegian Hydrographic Service as originator of 823A,
+    // and the fast-delivery series shares its gauge.
+    expect(
+      quality.find((r) => r.id === "ticon/nylesund-823-nor-uhslc_fd"),
+    ).toMatchObject({ accepted: false, reason: "superseded" });
+  });
+
   test("points every duplicate at a published record", () => {
     const accepted = new Set(
       quality.filter((r) => r.accepted).map((r) => r.id),
@@ -523,8 +547,8 @@ describe("seasonal dominance", () => {
   });
 
   test("labels independently of the rejection verdict", () => {
-    expect(labelled.filter((q) => q.accepted).length).toBe(506);
-    expect(labelled.filter((q) => !q.accepted).length).toBe(493);
+    expect(labelled.filter((q) => q.accepted).length).toBe(505);
+    expect(labelled.filter((q) => !q.accepted).length).toBe(494);
   });
 
   test("is a different question from the contamination gate", () => {

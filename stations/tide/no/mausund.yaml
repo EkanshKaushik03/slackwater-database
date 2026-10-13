@@ -8,9 +8,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
+        reason: superseded
         redundant: kartverket/MSU
-        score: 79
+        score: 0
         factors:
           epoch: 0.783
           recency: 0.99
@@ -18,3 +18,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by kartverket/MSU, its operator's own record

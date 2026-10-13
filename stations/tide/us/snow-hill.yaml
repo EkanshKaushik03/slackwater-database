@@ -8,9 +8,8 @@ computed:
       position: [38.17833, -75.39667]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: superseded
-        score: 0
+        accepted: true
+        score: 69
         factors:
           epoch: 0.304
           recency: 0.84
@@ -20,4 +19,3 @@ computed:
           coverage: 0
         issues:
           - MLWS (3.938) > MLW (3.914)
-          - "Superseded source: noaa"

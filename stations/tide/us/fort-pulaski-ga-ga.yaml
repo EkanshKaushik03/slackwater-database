@@ -9,9 +9,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
+        reason: superseded
         redundant: noaa/8670870
-        score: 85
+        score: 0
         factors:
           epoch: 1
           recency: 0.99
@@ -19,3 +19,5 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+        issues:
+          - Superseded by noaa/8670870, its operator's own record

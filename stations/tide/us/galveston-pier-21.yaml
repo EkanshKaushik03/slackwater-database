@@ -9,9 +9,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
+        reason: superseded
         redundant: noaa/8771450
-        score: 85
+        score: 0
         factors:
           epoch: 1
           recency: 0.99
@@ -21,3 +21,4 @@ computed:
           coverage: 0
         issues:
           - MHWS (1.83) < MHW (1.854)
+          - Superseded by noaa/8771450, its operator's own record
