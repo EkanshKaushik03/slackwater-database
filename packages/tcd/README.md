@@ -26,6 +26,12 @@ To use the TCD file with XTide, set the `HFILE_PATH` environment variable to poi
 export HFILE_PATH=/path/to/slackwater-*.tcd
 ```
 
+Station names and notes are UTF-8, which OpenCPN reads directly. XTide assumes TCD strings are Latin-1 and converts them to your locale, so under a UTF-8 locale a name like Bodø shows as "BodÃ¸". Run XTide in the C locale to see them correctly. XTide's own degree signs then show as `�`, because XTide writes them in Latin-1:
+
+```sh
+LC_ALL=C tide -l "Bodø, Nordland, Norway"
+```
+
 Launch the XTide graphical interface:
 
 ```sh

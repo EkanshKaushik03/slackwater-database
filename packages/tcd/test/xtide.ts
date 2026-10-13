@@ -149,7 +149,7 @@ export function getXTideAbout(stationName: string): Map<string, string> {
   const output = execFileSync(
     "docker",
     [...xtideCommand(), "-l", stationName, "-m", "a"],
-    { encoding: "latin1", cwd: process.cwd() },
+    { encoding: "utf-8", cwd: process.cwd() },
   );
 
   const fields = new Map<string, string>();
@@ -163,7 +163,8 @@ export function getXTideAbout(stationName: string): Map<string, string> {
 }
 
 function xtideCommand(): string[] {
-  return ["compose", "run", "--rm", "xtide"];
+  // XTide converts TCD strings from Latin-1 to the locale, so pin the C locale, which passes UTF-8 bytes through
+  return ["compose", "run", "--rm", "-e", "LC_ALL=C", "xtide"];
 }
 
 /**
@@ -203,7 +204,7 @@ export function restoreTcd(): { harmonics: string; offsets: string } {
   );
   const read = (ext: string) => {
     const path = join(process.cwd(), "dist", `restored.${ext}`);
-    const text = readFileSync(path, "latin1");
+    const text = readFileSync(path, "utf-8");
     rmSync(path);
     return text;
   };
