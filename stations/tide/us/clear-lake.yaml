@@ -9,13 +9,11 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 83
+        score: 84
         factors:
           epoch: 1
           recency: 0.75
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0.008
-        issues:
-          - M2 here (0.037 m, 94.7°) runs 44 min earlier than (0.037 m, 116.0°) in ticon/armand_bayou_pasadena_lake_nasa_road_1-arm-usa-hct, a duplicate
+          coverage: 0.082

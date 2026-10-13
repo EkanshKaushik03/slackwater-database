@@ -86,6 +86,18 @@ export const SOURCE_PRIORITY: Record<string, number> = {
 /** Default priority for unknown sources */
 export const DEFAULT_PRIORITY = 50;
 
+/** TICON sources whose record times are off by a measured amount, with the
+ *  measurement. A record from one is rejected: its predictions would publish
+ *  high and low water at the wrong time. */
+export const CLOCK_ERROR_SOURCES: Record<string, string> = {
+  // Harris County Flood Control District. Against the nearest NOAA or USGS
+  // gauge within 5 km, its 9 comparable records run a median 44 minutes late
+  // on M2 and about 30 on K1 and O1; USGS (591 pairs) and California DWR (97)
+  // run within a minute by the same comparison. Every one of its records has
+  // a NOAA harmonic station within 15 km.
+  hct: "runs 25 to 45 minutes behind every NOAA and USGS gauge near it",
+};
+
 /** GESLA sources that restrict commercial/consultancy use */
 export const NON_COMMERCIAL_SOURCES = ["cmems", "cv", "uz"];
 

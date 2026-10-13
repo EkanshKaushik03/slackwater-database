@@ -9,9 +9,8 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: duplicate
-        redundant: noaa/8770933
-        score: 51
+        reason: timing
+        score: 0
         factors:
           epoch: 0.508
           recency: 0.98
@@ -22,4 +21,4 @@ computed:
         issues:
           - MLWS (0.279) > MLW (0.183)
           - MHWS (0.371) < MHW (0.479)
-          - M2 here (0.037 m, 116.0°) runs 44 min later than (0.037 m, 94.7°) in noaa/8770933, the record kept
+          - "Clock error in source hct: runs 25 to 45 minutes behind every NOAA and USGS gauge near it"

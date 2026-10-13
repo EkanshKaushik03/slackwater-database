@@ -373,6 +373,12 @@ describe("gauge deduplication", () => {
     });
   });
 
+  test("rejects Harris County's records for their clock error", () => {
+    const hct = quality.filter((r) => r.id.endsWith("-hct"));
+    expect(hct.length).toBeGreaterThan(0);
+    expect(hct.every((r) => !r.accepted && r.reason === "timing")).toBe(true);
+  });
+
   test("points every duplicate at a published record", () => {
     const accepted = new Set(
       quality.filter((r) => r.accepted).map((r) => r.id),
@@ -558,8 +564,8 @@ describe("seasonal dominance", () => {
   });
 
   test("labels independently of the rejection verdict", () => {
-    expect(labelled.filter((q) => q.accepted).length).toBe(503);
-    expect(labelled.filter((q) => !q.accepted).length).toBe(496);
+    expect(labelled.filter((q) => q.accepted).length).toBe(502);
+    expect(labelled.filter((q) => !q.accepted).length).toBe(497);
   });
 
   test("is a different question from the contamination gate", () => {

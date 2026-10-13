@@ -41,6 +41,7 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 | Check                  | Rejects a record when                                        | Basis                    |
 | ---------------------- | ------------------------------------------------------------ | ------------------------ |
 | Position               | it sits at the (0°, 0°) placeholder                          | Engineering choice       |
+| Clock error            | its source's times are off by a measured amount              | Measured on this data    |
 | Datum consistency      | its datums contradict their definitions                      | NOAA and IHO definitions |
 | Tidal range            | its mean range is under 2 cm                                 | Engineering choice       |
 | Superseded relay       | it relays a gauge whose operator publishes its own constants | Editorial choice         |
@@ -54,6 +55,18 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 **Threshold.** Both coordinates within 0.05° of zero (about 5.6 km). This is an engineering choice. No coastline lies inside it, so it cannot reject a real gauge.
 
 **Limitations.** It catches only that one placeholder. Swapped latitude and longitude, a dropped sign, or a coarse rounding all pass. Whether a position is in water is checked separately, against the coastline, and is not part of this evaluation.
+
+### Clock error
+
+**What it catches.** A source whose record times are wrong. A harmonic analysis of records stamped in the wrong time zone, or in local time that shifts with daylight saving, fits the right tide at the wrong time, and its predictions put high and low water early or late by that amount.
+
+**Rejected** when a TICON record comes from a source listed in `CLOCK_ERROR_SOURCES`, with the measurement that put it there:
+
+- Harris County Flood Control District (`hct`). Against the nearest NOAA or USGS gauge within 5 km, its 9 comparable records run a median 44 minutes late on M2 and about 30 minutes late on K1 and O1. USGS (591 pairs) and California's Department of Water Resources (97 pairs) run within a minute by the same comparison. Every Harris County record has a NOAA harmonic station within 15 km with about the same range.
+
+**Basis.** A comparison against independent gauges on this data. A source is listed by hand, from evidence such as the flags described under [Disagreeing duplicates](#disagreeing-duplicates).
+
+**Limitations.** A clock error in a single record, rather than a whole source, is caught only when it is merged with a record that has the right time, and the flag does not say which of the two is wrong.
 
 ### Datum consistency
 
@@ -240,7 +253,7 @@ The distance between two records is the shortest between any of the positions re
 
 Two merged reference stations can still disagree. When their M2 constants differ, as a vector, by more than 15% of the larger amplitude and by more than the amplitude tolerance, both records name the other in `issues` and give the difference as time. The 15% is the 95th percentile of the difference between NOAA's own M2 and TICON's reanalysis of the same gauge across 447 NOAA gauges, so a larger difference is more than one gauge analyzed twice shows. It is this project's definition, derived from those pairs.
 
-The pair stays merged. Where the difference is the same time offset in M2, S2, K1 and O1, one record's clock is off, and publishing both would show a wrong answer beside the right one. The City of Venice record runs 46 minutes from ISPRA's and Copernicus's, which agree with each other. The Harris County Flood Control District records (`hct`) run 25 to 45 minutes behind every NOAA and USGS gauge near them, where USGS and California's records run within a minute. The flag does not say which record is wrong; that takes a third, independent record.
+The pair stays merged. Where the difference is the same time offset in M2, S2, K1 and O1, one record's clock is off, and publishing both would show a wrong answer beside the right one. The City of Venice record runs 46 minutes from ISPRA's and Copernicus's, which agree with each other. The Harris County Flood Control District records (`hct`) ran 25 to 45 minutes behind every NOAA and USGS gauge near them, where USGS and California's records run within a minute, and are now rejected as a [clock error](#clock-error). The flag does not say which record is wrong; that takes a third, independent record.
 
 **Limitations.** A real difference across a short distance is flagged the same way: on the Loxahatchee River, two docks 356 m apart differ by about 22 minutes, and the record not kept is lost.
 
@@ -269,20 +282,20 @@ npm run report:quality -w packages/stations
 
 ### Stored result
 
-| Field               | Meaning                                                                                                          |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `accepted`          | Whether the record is published.                                                                                 |
-| `reason`            | `coordinates`, `datum`, `range`, `superseded`, `constituents`, `seasonal`, or `duplicate`. Absent when accepted. |
-| `redundant`         | For a duplicate or a superseded relay, the id of the record published for its gauge.                             |
-| `seasonal_dominant` | `true` for the seasonal label.                                                                                   |
-| `score`             | The composite score. 0 for a record rejected by a check; a duplicate keeps the score it was compared on.         |
-| `factors`           | `epoch`, `recency`, `source`, `quality`, `amplitude`, `coverage`, each 0 to 1, rounded to three decimals.        |
-| `issues`            | Every failed check's message, datum warnings, the seasonal-label note, and amplitude findings, as text.          |
+| Field               | Meaning                                                                                                                    |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `accepted`          | Whether the record is published.                                                                                           |
+| `reason`            | `coordinates`, `timing`, `datum`, `range`, `superseded`, `constituents`, `seasonal`, or `duplicate`. Absent when accepted. |
+| `redundant`         | For a duplicate or a superseded relay, the id of the record published for its gauge.                                       |
+| `seasonal_dominant` | `true` for the seasonal label.                                                                                             |
+| `score`             | The composite score. 0 for a record rejected by a check; a duplicate keeps the score it was compared on.                   |
+| `factors`           | `epoch`, `recency`, `source`, `quality`, `amplitude`, `coverage`, each 0 to 1, rounded to three decimals.                  |
+| `issues`            | Every failed check's message, datum warnings, the seasonal-label note, and amplitude findings, as text.                    |
 
 ### Order of operations
 
 1. `loadAllStations` reads every JSON file under `data/`, sorting directories and file names, so records are processed in record-id order.
-2. `checkGates` runs `checkCoordinates`, `checkDatumOrdering`, `checkTidalRange`, `checkConstituents` and `checkSeasonalContamination` on every record. `checkSuperseded` then runs on each relay, using those results for the operator's record, and takes its place after the range check. The first failure sets `reason`, and every failure's message goes into `issues`. Then `checkSeasonalDominance` and five factors are computed.
+2. `checkGates` runs `checkCoordinates`, `checkTiming`, `checkDatumOrdering`, `checkTidalRange`, `checkConstituents` and `checkSeasonalContamination` on every record. `checkSuperseded` then runs on each relay, using those results for the operator's record, and takes its place after the range check. The first failure sets `reason`, and every failure's message goes into `issues`. Then `checkSeasonalDominance` and five factors are computed.
 3. `scoreCoverage` runs once every record has been checked, against the records that passed.
 4. `computeCompositeScore` sets the score of each record that passed the checks.
 5. `countSubordinates` counts each reference's accepted subordinates. The count is not updated as duplicates are rejected.

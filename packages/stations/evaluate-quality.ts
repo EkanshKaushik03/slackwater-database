@@ -39,6 +39,7 @@ import {
   MIN_AMPLITUDE_RATIO,
   AMPLITUDE_TOLERANCE,
   SAME_GAUGE_M2_DIFFERENCE,
+  CLOCK_ERROR_SOURCES,
   RESOLVED_P1,
   seasonalPeak,
   seasonalTerms,
@@ -233,6 +234,14 @@ function checkCoordinates(station: Station): string | null {
   return null;
 }
 
+/** Reject a record from a source whose times are off by a measured amount. */
+function checkTiming(station: Station): string | null {
+  if (!station.id.startsWith("ticon/")) return null;
+  const suffix = getSourceSuffix(station.source.id);
+  const error = CLOCK_ERROR_SOURCES[suffix];
+  return error ? `Clock error in source ${suffix}: ${error}` : null;
+}
+
 /** Each TICON gauge's declared originator, so every record of the gauge
  *  shares what one of its records declares: UHSLC metadata covers only the
  *  research-quality series, and TICON's own id only its NOAA and Norwegian
@@ -295,6 +304,7 @@ function checkGates(
     if (issue) failures.push({ reason, issues: [issue] });
   };
   fail("coordinates", checkCoordinates(station));
+  fail("timing", checkTiming(station));
   const datum = checkDatumOrdering(station, stationMap);
   if (datum.fatal.length > 0)
     failures.push({ reason: "datum", issues: datum.fatal });

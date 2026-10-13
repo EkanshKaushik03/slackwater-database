@@ -8,14 +8,16 @@ computed:
       position: [29.65, -95.0272]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 53
+        accepted: false
+        reason: timing
+        score: 0
         factors:
           epoch: 0.591
           recency: 0.98
           source: 0.535
           quality: 0
           amplitude: 1
-          coverage: 0.068
+          coverage: 0.108
         issues:
           - MHWS (0.411) < MHW (0.479)
+          - "Clock error in source hct: runs 25 to 45 minutes behind every NOAA and USGS gauge near it"
