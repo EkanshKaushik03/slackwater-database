@@ -1,6 +1,9 @@
 region: US-MD
 sources:
   - noaa/8572955
+  - ticon/love_point_pier-8572955-usa-noaa
+redirect_from:
+  - /tides/us/md/love-point-pier/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.176
+    ticon/love_point_pier-8572955-usa-noaa:
+      position: [39.0317, -76.3017]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8572955
+        score: 0
+        factors:
+          epoch: 0.907
+          recency: 0.74
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8572955, its operator's own record

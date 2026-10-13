@@ -1,6 +1,9 @@
 region: US-NC
 sources:
   - noaa/8654400
+  - ticon/cape_hatteras_fishing_pier-8654400-usa-noaa
+redirect_from:
+  - /tides/us/nc/cape-hatteras-fishing-pier-nc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.13
+    ticon/cape_hatteras_fishing_pier-8654400-usa-noaa:
+      position: [35.2233, -75.635]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8654400
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.77
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8654400, its operator's own record

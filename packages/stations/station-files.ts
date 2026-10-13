@@ -501,6 +501,7 @@ export async function mergeStationFiles(
   primary: StationFile,
   geography: { country: string; region?: string },
   root = ROOT,
+  slug = survivor.slug,
 ): Promise<{ write: PlannedFile; remove: string[]; conflicts: string[] }> {
   const doc = parseDocument(readFileSync(join(root, survivor.file), "utf8"));
   const conflicts: string[] = [];
@@ -543,6 +544,7 @@ export async function mergeStationFiles(
   const { region: _, ...rest } = survivor;
   const next: StationFile = {
     ...rest,
+    slug,
     country: geography.country,
     ...(geography.region ? { region: geography.region } : {}),
   };
@@ -551,12 +553,30 @@ export async function mergeStationFiles(
     ...all.map(filePath),
   ]);
   redirects.delete(filePath(next));
+  // renderStationFile keeps each list item's node, and so its comment; hand it
+  // the absorbed stations' items too.
+  for (const file of absorbed) {
+    const other = parseDocument(readFileSync(join(root, file.file), "utf8"));
+    for (const key of ["sources", "retired_sources", "redirect_from"]) {
+      const list = other.get(key, true) as any;
+      const items = list?.items ?? [];
+      if (!items.length) continue;
+      // A comment above the first item parses onto the list.
+      if (list.commentBefore)
+        items[0].commentBefore = [list.commentBefore, items[0].commentBefore]
+          .filter(Boolean)
+          .join("\n");
+      if (!doc.has(key)) doc.set(key, doc.createNode([]));
+      // readStationFiles refuses a value held by two stations, so none repeats.
+      (doc.get(key, true) as any).items.push(...items);
+    }
+  }
   doc.commentBefore = comments.size ? [...comments].join("\n") : null;
   const rendered = await renderStationFile(doc.toString({ lineWidth: 0 }), {
     kind: survivor.kind,
     country: next.country,
     ...(next.region ? { region: next.region } : {}),
-    slug: survivor.slug,
+    slug,
     sources: [...new Set(all.flatMap(({ sources }) => sources))].sort(),
     retired_sources: [
       ...new Set(all.flatMap(({ retired_sources = [] }) => retired_sources)),
@@ -567,7 +587,7 @@ export async function mergeStationFiles(
       ...all.map(({ computed }) => computed?.sources ?? {}),
     ),
   });
-  const file = stationFileName(survivor.kind, next.country, survivor.slug);
+  const file = stationFileName(survivor.kind, next.country, slug);
   return {
     write: {
       file,

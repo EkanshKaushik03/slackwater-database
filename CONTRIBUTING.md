@@ -45,7 +45,7 @@ From the repo root:
 | `npm run build`                      | Generate the database and build `@slackwater/database`                                                                          |
 | `npm test`                           | Build, typecheck, then run every workspace's `test` script                                                                      |
 | `npm run stations`                   | Evaluate quality and rewrite the [station files](stations/README.md) after a code or data change                                |
-| `npm run merge -w packages/stations` | Fold the stations that publish one gauge into one, as `report:merges` lists them                                                |
+| `npm run merge -w packages/stations` | Make the confident merges `report:merges` lists; `-- <slug>...` also merges the review groups those slugs survive as            |
 | `npm run validate`                   | Fail on any station file `npm run stations` would change; `PUBLISHED_REF=<ref>` also checks published URLs against that ref     |
 | `npm run lint` / `npm run format`    | Prettier check / write                                                                                                          |
 

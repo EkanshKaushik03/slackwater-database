@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8723970
+  - ticon/vaca_key-8723970-usa-noaa
+redirect_from:
+  - /tides/us/fl/vaca-key-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.017
+    ticon/vaca_key-8723970-usa-noaa:
+      position: [24.711, -81.1065]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8723970
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8723970, its operator's own record

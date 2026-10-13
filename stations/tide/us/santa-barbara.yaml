@@ -3,9 +3,11 @@
 region: US-CA
 sources:
   - noaa/9411340
+  - ticon/santa_barbara-9411340-usa-noaa
   - ticon/santa_barbara_ca-577a-usa-uhslc_rq
 redirect_from:
   - /tides/us/ca/santa-barbara-ca/
+  - /tides/us/ca/santa-barbara-ticon-santa-barbara-9411340-usa-noaa/
   - /tides/us/ca/santa-barbara-ticon-santa-barbara-ca-577a-usa-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -23,6 +25,23 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.257
+    ticon/santa_barbara-9411340-usa-noaa:
+      position: [34.403111, -119.692806]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9411340
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - Superseded by noaa/9411340, its operator's own record
     ticon/santa_barbara_ca-577a-usa-uhslc_rq:
       position: [34.408, -119.685]
       coastline: unverifiable

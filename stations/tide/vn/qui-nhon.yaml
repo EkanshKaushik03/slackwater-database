@@ -1,5 +1,10 @@
 sources:
   - ticon/qui_nhon-381-vnm-uhslc_fd
+  - ticon/qui_nhon-381a-vnm-uhslc_rq
+  - ticon/qui_nhon-381b-vnm-uhslc_rq
+redirect_from:
+  - /tides/vn/qui-nhon-gia-lai/
+  - /tides/vn/qui-nhon-ticon-qui-nhon-381b-vnm-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,3 +24,39 @@ computed:
         issues:
           - MLWS (1.197) > MLW (1.069)
           - MHWS (1.681) < MHW (1.831)
+    ticon/qui_nhon-381a-vnm-uhslc_rq:
+      position: [13.767, 109.25]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/qui_nhon-381-vnm-uhslc_fd
+        score: 91
+        factors:
+          epoch: 0.645
+          recency: 0.79
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (1.272) > MLW (1.162)
+          - MHWS (1.762) < MHW (1.881)
+    ticon/qui_nhon-381b-vnm-uhslc_rq:
+      position: [13.775, 109.255]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/qui_nhon-381-vnm-uhslc_fd
+        score: 98
+        factors:
+          epoch: 0.924
+          recency: 0.98
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (1.199) > MLW (1.072)
+          - MHWS (1.685) < MHW (1.834)

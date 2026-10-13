@@ -1,6 +1,9 @@
 region: US-MA
 sources:
   - noaa/8448725
+  - ticon/menemsha_harbor-8448725-usa-noaa
+redirect_from:
+  - /tides/us/ma/menemsha-harbor-ma/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.095
+    ticon/menemsha_harbor-8448725-usa-noaa:
+      position: [41.354, -70.76783]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8448725
+        score: 0
+        factors:
+          epoch: 0.979
+          recency: 0.86
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/8448725, its operator's own record

@@ -1,6 +1,9 @@
 region: US-NJ
 sources:
   - noaa/8533541
+  - ticon/waretown_barnegat_bay-8533541-usa-noaa
+redirect_from:
+  - /tides/us/nj/waretown-barnegat-bay/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+    ticon/waretown_barnegat_bay-8533541-usa-noaa:
+      position: [39.7917, -74.1817]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8533541
+        seasonal_dominant: true
+        score: 64
+        factors:
+          epoch: 0.195
+          recency: 0.54
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (3.242) > MLW (3.24)
+          - "Seasonal curve peak (0.091m) exceeds the principal tide M2+S2+K1+O1 (0.082m): the yearly swing exceeds the daily one"

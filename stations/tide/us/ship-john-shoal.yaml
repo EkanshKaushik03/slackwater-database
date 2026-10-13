@@ -1,6 +1,9 @@
 region: US-NJ
 sources:
   - noaa/8537121
+  - ticon/ship_john_shoal-8537121-usa-noaa
+redirect_from:
+  - /tides/us/nj/ship-john-shoal-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.167
+    ticon/ship_john_shoal-8537121-usa-noaa:
+      position: [39.305, -75.375]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8537121
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - Superseded by noaa/8537121, its operator's own record

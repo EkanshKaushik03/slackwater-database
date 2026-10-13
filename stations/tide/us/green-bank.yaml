@@ -1,9 +1,25 @@
 region: US-NJ
 sources:
+  - noaa/8534117
   - ticon/green_bank-8534117-usa-noaa
+redirect_from:
+  - /tides/us/nj/green-bank-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8534117:
+      position: [39.6117, -74.59]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/green_bank-8534117-usa-noaa:
       position: [39.6117, -74.59]
       coastline: unverifiable

@@ -1,6 +1,9 @@
 region: US-VA
 sources:
   - noaa/8639348
+  - ticon/money_point-8639348-usa-noaa
+redirect_from:
+  - /tides/us/va/money-point-va/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.054
+    ticon/money_point-8639348-usa-noaa:
+      position: [36.778306, -76.301694]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8639348
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8639348, its operator's own record

@@ -1,6 +1,9 @@
 region: US-LA
 sources:
   - noaa/8768094
+  - ticon/calcasieu_pass-8768094-usa-noaa
+redirect_from:
+  - /tides/us/la/calcasieu-pass-la/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.107
+    ticon/calcasieu_pass-8768094-usa-noaa:
+      position: [29.768167, -93.342889]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8768094
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8768094, its operator's own record

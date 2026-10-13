@@ -1,6 +1,9 @@
 region: US-AL
 sources:
   - noaa/8736897
+  - ticon/coast_guard_sector_mobile-8736897-usa-noaa
+redirect_from:
+  - /tides/us/al/coast-guard-sector-mobile-al/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.128
+    ticon/coast_guard_sector_mobile-8736897-usa-noaa:
+      position: [30.648306, -88.058306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8736897
+        score: 0
+        factors:
+          epoch: 0.961
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - MLWS (9.067) > MLW (9)
+          - MHWS (9.151) < MHW (9.234)
+          - Superseded by noaa/8736897, its operator's own record

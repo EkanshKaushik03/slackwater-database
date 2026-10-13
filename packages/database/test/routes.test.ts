@@ -9,18 +9,22 @@ describe("station routes", () => {
     ["kahului", "1615680", "kahului-059-usa-uhslc_fd"],
     ["santa-barbara", "9411340", "santa_barbara_ca-577a-usa-uhslc_rq"],
     ["port-allen", "1611347", "port_allen-553a-usa-uhslc_rq"],
-    ["duck-pier", "8651370", "duck_pier_nc-260-usa-uhslc_fd"],
+    // Duck took the shortest slug naming it; the relay's came from Duck Pier.
+    ["duck", "8651370", "duck_pier_nc-260-usa-uhslc_fd", "duck-pier"],
     ["massacre-bay", "9460150", "massacre_bay_ak-550a-usa-uhslc_rq"],
-  ])("%s keeps the gauge's relays on the NOAA route", (slug, noaa, relay) => {
-    const route = stationRouteBySlug("tide", slug)!;
-    expect(route.stationIds[0]).toBe(`noaa/${noaa}`);
-    expect(route.stationIds).toContain(`ticon/${relay}`);
-    const retiredSlug = `${slug}-ticon-${relay.replaceAll("_", "-")}`;
-    expect(stationRouteBySlug("tide", retiredSlug)).toBeUndefined();
-    expect(route.formerPaths).toContain(
-      route.path.replace(`${slug}/`, `${retiredSlug}/`),
-    );
-  });
+  ])(
+    "%s keeps the gauge's relays on the NOAA route",
+    (slug, noaa, relay, base = slug) => {
+      const route = stationRouteBySlug("tide", slug)!;
+      expect(route.stationIds[0]).toBe(`noaa/${noaa}`);
+      expect(route.stationIds).toContain(`ticon/${relay}`);
+      const retiredSlug = `${base}-ticon-${relay.replaceAll("_", "-")}`;
+      expect(stationRouteBySlug("tide", retiredSlug)).toBeUndefined();
+      expect(route.formerPaths).toContain(
+        route.path.replace(`${slug}/`, `${retiredSlug}/`),
+      );
+    },
+  );
 
   test("reads the shipped route index on demand", () => {
     expect(stationRoutes("tide").length).toBeGreaterThan(0);

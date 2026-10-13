@@ -1,9 +1,25 @@
 region: US-NJ
 sources:
+  - noaa/8533141
   - ticon/barnegat_pier-8533141-usa-noaa
+redirect_from:
+  - /tides/us/nj/barnegat-pier-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8533141:
+      position: [39.9183, -74.11]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/barnegat_pier-8533141-usa-noaa:
       position: [39.9183, -74.11]
       coastline: unverifiable

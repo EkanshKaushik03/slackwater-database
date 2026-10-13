@@ -1,6 +1,9 @@
 region: US-SC
 sources:
   - noaa/8664545
+  - ticon/cainhoy-8664545-usa-noaa
+redirect_from:
+  - /tides/us/sc/cainhoy-sc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.016
+    ticon/cainhoy-8664545-usa-noaa:
+      position: [32.9267, -79.83]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8664545
+        score: 0
+        factors:
+          epoch: 0.063
+          recency: 0.72
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.441) > MLW (0.372)
+          - Superseded by noaa/8664545, its operator's own record

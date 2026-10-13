@@ -1,6 +1,9 @@
 region: US-MS
 sources:
   - noaa/8741196
+  - ticon/pascagoula_point-8741196-usa-noaa
+redirect_from:
+  - /tides/us/ms/pascagoula-point/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.055
+    ticon/pascagoula_point-8741196-usa-noaa:
+      position: [30.34, -88.5333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8741196
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.79
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (-0.049) > MLW (-0.075)
+          - MHWS (0.049) < MHW (0.1)
+          - Superseded by noaa/8741196, its operator's own record

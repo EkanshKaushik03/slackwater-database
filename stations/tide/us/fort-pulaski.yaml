@@ -1,6 +1,13 @@
 region: US-GA
 sources:
   - noaa/8670870
+  - ticon/fort_pulaski-8670870-usa-noaa
+  - ticon/fort_pulaski_ga-752-usa-uhslc_fd
+  - ticon/fort_pulaski_ga-752a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/ga/fort-pulaski-ga-ga/
+  - /tides/us/ga/fort-pulaski-ga-ticon-fort-pulaski-ga-752a-usa-uhslc-rq/
+  - /tides/us/ga/fort-pulaski-ga/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +24,54 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.006
+    ticon/fort_pulaski-8670870-usa-noaa:
+      position: [32.0367, -80.9017]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8670870
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - Superseded by noaa/8670870, its operator's own record
+    ticon/fort_pulaski_ga-752-usa-uhslc_fd:
+      position: [32.033, -80.902]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8670870
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - Superseded by noaa/8670870, its operator's own record
+    ticon/fort_pulaski_ga-752a-usa-uhslc_rq:
+      position: [32.033, -80.902]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8670870
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - Superseded by noaa/8670870, its operator's own record

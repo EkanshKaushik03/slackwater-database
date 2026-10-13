@@ -1,5 +1,8 @@
 sources:
   - ticon/gan-109-mdv-uhslc_fd
+  - ticon/gan-109a-mdv-uhslc_rq
+redirect_from:
+  - /tides/mv/gan-seenu/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -12,6 +15,21 @@ computed:
         factors:
           epoch: 1
           recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 1
+    ticon/gan-109a-mdv-uhslc_rq:
+      position: [-0.687, 73.152]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/gan-109-mdv-uhslc_fd
+        score: 100
+        factors:
+          epoch: 1
+          recency: 0.98
           source: 0.99
           quality: 1
           amplitude: 1

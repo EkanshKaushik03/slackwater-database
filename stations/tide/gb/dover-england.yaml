@@ -1,5 +1,8 @@
 sources:
   - ticon/dover-dov-gbr-bodc
+  - ticon/dover-dov-gbr-cmems
+redirect_from:
+  - /tides/gb/dover-ticon-dover-dov-gbr-cmems/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +19,18 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.272
+    ticon/dover-dov-gbr-cmems:
+      position: [51.116699, 1.31667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/dover-dov-gbr-bodc
+        score: 54
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.271

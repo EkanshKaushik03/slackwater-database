@@ -1,9 +1,27 @@
 region: US-NJ
 sources:
+  - noaa/8533051
   - ticon/toms_river-8533051-usa-noaa
+redirect_from:
+  - /tides/us/nj/toms-river-town/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8533051:
+      position: [39.95000076293945, -74.19830322265625]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - M2 here (0.102 m, 122.6°) differs from (0.060 m, 129.4°) by +42 mm and 14 min earlier in ticon/toms_river-8533051-usa-noaa, a duplicate
     ticon/toms_river-8533051-usa-noaa:
       position: [39.95, -74.1983]
       coastline: unverifiable

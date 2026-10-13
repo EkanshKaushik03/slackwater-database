@@ -1,6 +1,9 @@
 region: US-NY
 sources:
   - noaa/8518668
+  - ticon/horns_hook-8518668-usa-noaa
+redirect_from:
+  - /tides/us/ny/horns-hook-ny/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.04
+    ticon/horns_hook-8518668-usa-noaa:
+      position: [40.7767, -73.9417]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8518668
+        score: 0
+        factors:
+          epoch: 0.182
+          recency: 0.79
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8518668, its operator's own record

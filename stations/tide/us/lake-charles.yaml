@@ -1,6 +1,9 @@
 region: US-LA
 sources:
   - noaa/8767816
+  - ticon/lake_charles-8767816-usa-noaa
+redirect_from:
+  - /tides/us/la/lake-charles-la/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.058
+    ticon/lake_charles-8767816-usa-noaa:
+      position: [30.223611, -93.221667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8767816
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (8.516) < MHW (8.538)
+          - Superseded by noaa/8767816, its operator's own record

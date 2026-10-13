@@ -1,6 +1,9 @@
 region: US-RI
 sources:
   - noaa/8450768
+  - ticon/sakonnet-8450768-usa-noaa
+redirect_from:
+  - /tides/us/ri/sakonnet-ri/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.089
+    ticon/sakonnet-8450768-usa-noaa:
+      position: [41.465, -71.1933]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8450768
+        score: 0
+        factors:
+          epoch: 0.194
+          recency: 0.69
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8450768, its operator's own record

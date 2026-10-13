@@ -1,6 +1,13 @@
 region: US-OR
 sources:
   - noaa/9435380
+  - ticon/south_beach-9435380-usa-noaa
+  - ticon/south_beach_or-592-usa-uhslc_fd
+  - ticon/south_beach_or-592a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/or/south-beach-or-or/
+  - /tides/us/or/south-beach-or/
+  - /tides/us/or/south-beach/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +24,54 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.016
+    ticon/south_beach-9435380-usa-noaa:
+      position: [44.6254, -124.04494]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9435380
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9435380, its operator's own record
+    ticon/south_beach_or-592-usa-uhslc_fd:
+      position: [44.625, -124.043]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9435380
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - Superseded by noaa/9435380, its operator's own record
+    ticon/south_beach_or-592a-usa-uhslc_rq:
+      position: [44.625, -124.043]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9435380
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - Superseded by noaa/9435380, its operator's own record

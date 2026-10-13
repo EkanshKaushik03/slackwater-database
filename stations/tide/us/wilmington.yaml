@@ -1,6 +1,11 @@
 region: US-NC
 sources:
   - noaa/8658120
+  - ticon/wilmington-8658120-usa-noaa
+  - ticon/wilmington_nc-750a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/nc/wilmington-nc-nc/
+  - /tides/us/nc/wilmington-nc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +25,39 @@ computed:
         issues:
           - M2 here (0.651 m, 59.5°) differs from (0.577 m, 67.4°) by +74 mm and 16 min earlier in ticon/wilmington-8658120-usa-noaa, a duplicate
           - M2 here (0.651 m, 59.5°) differs from (0.574 m, 67.7°) by +77 mm and 17 min earlier in ticon/wilmington_nc-750a-usa-uhslc_rq, a duplicate
+    ticon/wilmington-8658120-usa-noaa:
+      position: [34.2275, -77.953611]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8658120
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MLWS (0.938) > MLW (0.855)
+          - M2 here (0.577 m, 67.4°) differs from (0.651 m, 59.5°) by -74 mm and 16 min later in noaa/8658120, which this duplicates
+    ticon/wilmington_nc-750a-usa-uhslc_rq:
+      position: [34.227, -77.953]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8658120
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MLWS (0.913) > MLW (0.83)
+          - M2 here (0.574 m, 67.7°) differs from (0.651 m, 59.5°) by -77 mm and 17 min later in noaa/8658120, which this duplicates

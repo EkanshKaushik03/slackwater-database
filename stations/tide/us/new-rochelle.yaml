@@ -1,9 +1,25 @@
 region: US-NY
 sources:
+  - noaa/8518490
   - ticon/new_rochelle-8518490-usa-noaa
+redirect_from:
+  - /tides/us/ny/new-rochelle-ny/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8518490:
+      position: [40.8933, -73.7817]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/new_rochelle-8518490-usa-noaa:
       position: [40.8933, -73.7817]
       coastline: unverifiable

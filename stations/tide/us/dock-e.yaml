@@ -1,6 +1,9 @@
 region: US-MS
 sources:
   - noaa/8741041
+  - ticon/dock_e-8741041-usa-noaa
+redirect_from:
+  - /tides/us/ms/dock-e-ms/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.055
+    ticon/dock_e-8741041-usa-noaa:
+      position: [30.347778, -88.505833]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8741041
+        score: 0
+        factors:
+          epoch: 0.541
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (6.87) > MLW (6.825)
+          - MHWS (6.964) < MHW (7.021)
+          - Superseded by noaa/8741041, its operator's own record

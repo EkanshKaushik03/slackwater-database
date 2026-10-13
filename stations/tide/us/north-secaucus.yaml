@@ -1,9 +1,25 @@
 region: US-NJ
 sources:
+  - noaa/8530531
   - ticon/north_secaucus-8530531-usa-noaa
+redirect_from:
+  - /tides/us/nj/north-secaucus-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8530531:
+      position: [40.805, -74.0533]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/north_secaucus-8530531-usa-noaa:
       position: [40.805, -74.0533]
       coastline: unverifiable

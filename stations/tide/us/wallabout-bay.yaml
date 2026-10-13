@@ -1,6 +1,9 @@
 region: US-NY
 sources:
   - noaa/8517732
+  - ticon/wallabout_bay-8517732-usa-noaa
+redirect_from:
+  - /tides/us/ny/wallabout-bay-ny/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -14,6 +17,21 @@ computed:
           epoch: 1
           recency: 0.75
           source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/wallabout_bay-8517732-usa-noaa:
+      position: [40.7067, -73.975]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8517732
+        score: 62
+        factors:
+          epoch: 0.099
+          recency: 0.55
+          source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0

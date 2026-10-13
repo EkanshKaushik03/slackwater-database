@@ -1,6 +1,9 @@
 region: US-AK
 sources:
   - noaa/9491253
+  - ticon/kivalina-9491253-usa-noaa
+redirect_from:
+  - /tides/us/ak/kivalina-alaska/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,3 +22,22 @@ computed:
           coverage: 0
         issues:
           - M2 here (0.103 m, 268.7°) differs from (0.070 m, 300.9°) by +33 mm and 67 min earlier in ticon/kivalina-9491253-usa-noaa, a duplicate
+    ticon/kivalina-9491253-usa-noaa:
+      position: [67.7267, -164.592]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9491253
+        seasonal_dominant: true
+        score: 81
+        factors:
+          epoch: 0.968
+          recency: 0.77
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - "Seasonal curve peak (0.270m) exceeds the principal tide M2+S2+K1+O1 (0.110m): the yearly swing exceeds the daily one"
+          - M2 here (0.070 m, 300.9°) differs from (0.103 m, 268.7°) by -33 mm and 67 min later in noaa/9491253, which this duplicates

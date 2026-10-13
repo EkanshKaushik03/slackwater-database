@@ -1,6 +1,9 @@
 region: US-VA
 sources:
   - noaa/8638495
+  - ticon/richmond_river_locks-8638495-usa-noaa
+redirect_from:
+  - /tides/us/va/richmond-river-locks-va/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.001
+    ticon/richmond_river_locks-8638495-usa-noaa:
+      position: [37.525, -77.42]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8638495
+        score: 0
+        factors:
+          epoch: 0.154
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.008) > MLW (-0.023)
+          - Superseded by noaa/8638495, its operator's own record

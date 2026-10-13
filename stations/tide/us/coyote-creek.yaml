@@ -1,0 +1,40 @@
+region: US-CA
+sources:
+  - noaa/9414575
+  - ticon/coyote_creek-9414575-usa-noaa
+redirect_from:
+  - /tides/us/ca/coyote-creek-alviso-slough/
+  - /tides/us/ca/coyote-creek-ticon-coyote-creek-9414575-usa-noaa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9414575:
+      position: [37.465, -122.023]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+    ticon/coyote_creek-9414575-usa-noaa:
+      position: [37.465, -122.023]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9414575
+        score: 0
+        factors:
+          epoch: 0.407
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9414575, its operator's own record

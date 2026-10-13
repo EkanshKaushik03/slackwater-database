@@ -1,6 +1,11 @@
 region: US-FL
 sources:
   - noaa/8721649
+  - ticon/cocoa_beach-8721649-usa-noaa
+  - ticon/cocoa_beach_fl-754a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/fl/cocoa-beach-fl-fl/
+  - /tides/us/fl/cocoa-beach-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +22,37 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.106
+    ticon/cocoa_beach-8721649-usa-noaa:
+      position: [28.3683, -80.6]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8721649
+        score: 0
+        factors:
+          epoch: 0.119
+          recency: 0.7
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8721649, its operator's own record
+    ticon/cocoa_beach_fl-754a-usa-uhslc_rq:
+      position: [28.368, -80.6]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8721649
+        score: 0
+        factors:
+          epoch: 0.119
+          recency: 0.7
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/8721649, its operator's own record

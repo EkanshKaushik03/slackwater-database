@@ -1,5 +1,10 @@
 sources:
   - noaa/9751401
+  - ticon/lime_tree_bay-9751401-usa-noaa
+  - ticon/limetree_bay-254a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/lime-tree-bay-saint-croix-island/
+  - /tides/us/limetree-bay/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +21,41 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.154
+    ticon/lime_tree_bay-9751401-usa-noaa:
+      position: [17.6947, -64.753799]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9751401
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (10.554) > MLW (10.535)
+          - MHWS (10.594) < MHW (10.634)
+          - Superseded by noaa/9751401, its operator's own record
+    ticon/limetree_bay-254a-usa-uhslc_rq:
+      position: [17.697, -64.753]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9751401
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - MLWS (1.407) > MLW (1.39)
+          - MHWS (1.447) < MHW (1.486)
+          - Superseded by noaa/9751401, its operator's own record

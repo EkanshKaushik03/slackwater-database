@@ -1,6 +1,9 @@
 region: US-LA
 sources:
   - noaa/8761927
+  - ticon/new_canal_station-8761927-usa-noaa
+redirect_from:
+  - /tides/us/la/new-canal-station/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -21,3 +24,24 @@ computed:
         issues:
           - MLW (1.308) < MLLW (1.31)
           - "Seasonal curve peak (0.163m) exceeds the principal tide M2+S2+K1+O1 (0.078m): the yearly swing exceeds the daily one"
+    ticon/new_canal_station-8761927-usa-noaa:
+      position: [30.027222, -90.113333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8761927
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.515) > MLW (1.499)
+          - MHWS (1.523) < MHW (1.548)
+          - Superseded by noaa/8761927, its operator's own record
+          - "Seasonal curve peak (0.147m) exceeds the principal tide M2+S2+K1+O1 (0.076m): the yearly swing exceeds the daily one"

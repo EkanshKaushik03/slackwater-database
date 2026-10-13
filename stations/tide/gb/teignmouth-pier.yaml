@@ -1,17 +1,17 @@
 sources:
-  - ticon/brighton-btn-gbr-cco
+  - ticon/teignmouth_pier-tnp-gbr-cco
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/brighton-btn-gbr-cco:
-      position: [50.8118, -0.1013]
+    ticon/teignmouth_pier-tnp-gbr-cco:
+      position: [50.54388, -3.49213]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 53
+        score: 51
         factors:
-          epoch: 0.364
-          recency: 0.99
+          epoch: 0.3
+          recency: 0.88
           source: 0.061
           quality: 1
           amplitude: 1

@@ -1,8 +1,28 @@
 sources:
+  - kartverket/RVK
   - ticon/rorvik-803-nor-uhslc_fd
+  - ticon/rorvik-803a-nor-uhslc_rq
+  - ticon/rorvik-rvk-nor-nhs
+redirect_from:
+  - /tides/no/r-rvik/
+  - /tides/no/rorvik-ticon-rorvik-803a-nor-uhslc-rq/
+  - /tides/no/rorvik-trondelag/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    kartverket/RVK:
+      position: [64.859456, 11.230107]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.806
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/rorvik-803-nor-uhslc_fd:
       position: [64.867, 11.25]
       coastline: unverifiable
@@ -18,5 +38,39 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.025
+        issues:
+          - Superseded by kartverket/RVK, its operator's own record
+    ticon/rorvik-803a-nor-uhslc_rq:
+      position: [64.867, 11.25]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: kartverket/RVK
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.025
+        issues:
+          - Superseded by kartverket/RVK, its operator's own record
+    ticon/rorvik-rvk-nor-nhs:
+      position: [64.859456, 11.230107]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: kartverket/RVK
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.909
+          quality: 1
+          amplitude: 1
+          coverage: 0
         issues:
           - Superseded by kartverket/RVK, its operator's own record

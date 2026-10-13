@@ -1,0 +1,38 @@
+region: US-CA
+sources:
+  - noaa/9414806
+  - ticon/sausalito-9414806-usa-noaa
+redirect_from:
+  - /tides/us/ca/sausalito-noaa-9414806/
+  - /tides/us/ca/sausalito-ticon-sausalito-9414806-usa-noaa/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/9414806:
+      position: [37.8467, -122.477]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
+    ticon/sausalito-9414806-usa-noaa:
+      position: [37.8467, -122.477]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/9414806
+        score: 62
+        factors:
+          epoch: 0.144
+          recency: 0.53
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0

@@ -1,8 +1,24 @@
 sources:
+  - kartverket/NVK
   - ticon/narvik-nvk-nor-nhs
+redirect_from:
+  - /tides/no/narvik-kartverket-nvk/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    kartverket/NVK:
+      position: [68.428286, 17.425759]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.806
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/narvik-nvk-nor-nhs:
       position: [68.428286, 17.425759]
       coastline: unverifiable

@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8720145
+  - ticon/edwards_creek-8720145-usa-noaa
+redirect_from:
+  - /tides/us/fl/edwards-creek-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.089
+    ticon/edwards_creek-8720145-usa-noaa:
+      position: [30.5017, -81.5417]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8720145
+        score: 0
+        factors:
+          epoch: 0.19
+          recency: 0.85
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.256) > MLW (0.226)
+          - Superseded by noaa/8720145, its operator's own record

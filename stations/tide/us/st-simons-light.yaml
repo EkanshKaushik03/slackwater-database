@@ -1,6 +1,9 @@
 region: US-GA
 sources:
   - noaa/8677344
+  - ticon/st_simons_island-8677344-usa-noaa
+redirect_from:
+  - /tides/us/ga/st-simons-island/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.015
+    ticon/st_simons_island-8677344-usa-noaa:
+      position: [31.1317, -81.3967]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8677344
+        score: 0
+        factors:
+          epoch: 0.503
+          recency: 0.82
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8677344, its operator's own record

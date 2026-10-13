@@ -1,6 +1,9 @@
 region: US-SC
 sources:
   - noaa/8664022
+  - ticon/gen_dynamics_pier-8664022-usa-noaa
+redirect_from:
+  - /tides/us/sc/gen-dynamics-pier/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.035
+    ticon/gen_dynamics_pier-8664022-usa-noaa:
+      position: [33.0083, -79.9233]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8664022
+        score: 0
+        factors:
+          epoch: 0.092
+          recency: 0.72
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.005) > MLW (0.974)
+          - Superseded by noaa/8664022, its operator's own record

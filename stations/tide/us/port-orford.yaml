@@ -1,6 +1,11 @@
 region: US-OR
 sources:
   - noaa/9431647
+  - ticon/port_orford-9431647-usa-noaa
+  - ticon/port_orford_or-557a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/or/port-orford-or-or/
+  - /tides/us/or/port-orford-or/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +22,37 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.693
+    ticon/port_orford-9431647-usa-noaa:
+      position: [42.738972, -124.49828]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9431647
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9431647, its operator's own record
+    ticon/port_orford_or-557a-usa-uhslc_rq:
+      position: [42.74, -124.497]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9431647
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.96
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.003
+        issues:
+          - Superseded by noaa/9431647, its operator's own record

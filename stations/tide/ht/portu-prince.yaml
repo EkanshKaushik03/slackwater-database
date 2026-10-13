@@ -1,5 +1,8 @@
 sources:
   - ticon/portu_prince-799-hti-uhslc_fd
+  - ticon/portu_prince-799a-hti-uhslc_rq
+redirect_from:
+  - /tides/ht/portu-prince-ouest/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -12,6 +15,21 @@ computed:
         factors:
           epoch: 0.649
           recency: 0.97
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.038
+    ticon/portu_prince-799a-hti-uhslc_rq:
+      position: [18.567, -72.35]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/portu_prince-799-hti-uhslc_fd
+        score: 72
+        factors:
+          epoch: 0.381
+          recency: 0.92
           source: 0.99
           quality: 1
           amplitude: 1

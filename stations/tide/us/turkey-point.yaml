@@ -1,6 +1,9 @@
 region: US-NY
 sources:
   - noaa/8518962
+  - ticon/turkey_point_hudson_river_nerrs-8518962-usa-noaa
+redirect_from:
+  - /tides/us/ny/turkey-point-hudson-river-nerrs/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.106
+    ticon/turkey_point_hudson_river_nerrs-8518962-usa-noaa:
+      position: [42.014167, -73.939167]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8518962
+        score: 0
+        factors:
+          epoch: 0.426
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/8518962, its operator's own record

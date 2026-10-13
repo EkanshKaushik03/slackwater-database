@@ -2,7 +2,7 @@
  * Which record a TICON relay was copied from, when the relay says so.
  *
  * Only declared provenance counts: a relay's own id naming a NOAA station or a
- * Kartverket code, or UHSLC metadata naming an originator this repo also
+ * Kartverket gauge, or UHSLC metadata naming an originator this repo also
  * imports. An originator number has no namespace (UHSLC 071 is Wellington and
  * La Libertad), so each rule pairs a Data_Source pattern with the id shape
  * that provider uses.
@@ -16,10 +16,37 @@ export interface UhslcMetadata {
   station: string;
   latitude: number;
   longitude: number;
-  /** First line of the first Data_Source entry. */
+  /** The provider of Data_Source's current period (see currentProvider). */
   data_source: string;
   originator_number: string;
   last_updated: string;
+}
+
+/**
+ * The provider of a UHSLC Data_Source's current period: the first line under
+ * its last open-ended period heading ("For 1997-:", "and beginning 2006:");
+ * else, where every period has a heading, the first line under the last; else
+ * its first line, which then names the provider since UHSLC lists earlier
+ * periods after it ("For the pre-1999 data:"). Those and the addresses and
+ * people between them are not the gauge's operator.
+ */
+export function currentProvider(dataSource: string): string {
+  const lines = dataSource
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const heading = (line = "") => /\d{4}.*:$/.test(line);
+  const open = (line: string) =>
+    heading(line) && /\d{4}\s*-\s*:$|beginning/i.test(line);
+  const last = lines.findLastIndex(
+    (line, i) => i < lines.length - 1 && open(line),
+  );
+  if (last >= 0) return lines[last + 1]!;
+  if (!heading(lines[0])) return lines[0] ?? "";
+  const latest = lines.findLastIndex(
+    (line, i) => i < lines.length - 1 && heading(line),
+  );
+  return lines[latest + 1] ?? "";
 }
 
 /** The UHSLC research-quality code in a TICON id, such as "073A". */
@@ -68,21 +95,26 @@ const UHSLC_RULES: {
   source: RegExp;
   number: RegExp;
   id: (n: string, meta: UhslcMetadata) => string | undefined;
+  /** A number in this provider's own scheme names one gauge; LINZ's 071 is also La Libertad. */
+  unambiguous: boolean;
 }[] = [
   {
     source: /^National Ocean Service|^NOAA|National Oceanic and Atmospheric/i,
     number: /^\d{7}$/,
     id: (n) => `noaa/${n}`,
+    unambiguous: true,
   },
   {
     source: /^Land Information New Zealand/i,
     number: /^\d{3}$/,
     id: (n) => `linz/${n}`,
+    unambiguous: false,
   },
   {
     source: /^Norwegian Hydrographic Service/i,
     number: /^$/,
     id: (_, meta) => kartverketRecord(meta.station),
+    unambiguous: false,
   },
 ];
 
@@ -96,17 +128,29 @@ export function hasUhslcMetadata(
   return !!code && code in metadata;
 }
 
-/** The record id a TICON relay declares as its originator, if any. */
-export function declaredOriginator(
+/** The originator a TICON relay names in its own id, if any. */
+export function originatorInId(ticonId: string): string | undefined {
+  const parts = ticonId.replace(/^ticon\//, "").split("-");
+  // TICON's NOAA relays carry the NOAA station number in their own id.
+  if (parts.at(-1) === "noaa") return `noaa/${parts.at(-3)}`;
+  // Its Norwegian Hydrographic Service relays carry Kartverket's gauge code.
+  // CMEMS codes come from the place name, so they match one only by chance.
+  if (parts.at(-1) === "nhs" && parts.at(-2) === "nor")
+    return `kartverket/${parts.at(-3)!.toUpperCase()}`;
+  return undefined;
+}
+
+/**
+ * The record id a TICON relay declares as its originator, if any, and whether
+ * the declaration names one gauge without needing harmonics to confirm it: an
+ * id in the relay's own name, or a NOAA station number from NOAA.
+ */
+export function declaration(
   ticonId: string,
   metadata: Record<string, UhslcMetadata> = pinned,
-): string | undefined {
-  const parts = ticonId.replace(/^ticon\//, "").split("-");
-  // TICON's NOAA relays carry the NOAA station number in their own id, and
-  // its Norwegian Hydrographic Service relays the Kartverket code.
-  if (parts.at(-1) === "noaa") return `noaa/${parts.at(-3)}`;
-  if (parts.at(-1) === "nhs")
-    return `kartverket/${parts.at(-3)!.toUpperCase()}`;
+): { id: string; unambiguous: boolean } | undefined {
+  const inId = originatorInId(ticonId);
+  if (inId) return { id: inId, unambiguous: true };
   const code = uhslcCode(ticonId);
   const meta = code ? metadata[code] : undefined;
   if (!meta) return undefined;
@@ -114,5 +158,15 @@ export function declaredOriginator(
     ({ source, number }) =>
       source.test(meta.data_source) && number.test(meta.originator_number),
   );
-  return rule?.id(meta.originator_number, meta);
+  const id = rule?.id(meta.originator_number, meta);
+  if (!rule || !id) return undefined;
+  return { id, unambiguous: rule.unambiguous };
+}
+
+/** The record id a TICON relay declares as its originator, if any. */
+export function declaredOriginator(
+  ticonId: string,
+  metadata: Record<string, UhslcMetadata> = pinned,
+): string | undefined {
+  return declaration(ticonId, metadata)?.id;
 }

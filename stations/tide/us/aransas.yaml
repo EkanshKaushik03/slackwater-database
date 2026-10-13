@@ -1,6 +1,9 @@
 region: US-TX
 sources:
   - noaa/8775241
+  - ticon/aransas-8775241-usa-noaa
+redirect_from:
+  - /tides/us/tx/aransas-tx/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.031
+    ticon/aransas-8775241-usa-noaa:
+      position: [27.836599, -97.039101]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8775241
+        score: 0
+        factors:
+          epoch: 0.458
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (7.871) < MHW (7.886)
+          - Superseded by noaa/8775241, its operator's own record

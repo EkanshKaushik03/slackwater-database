@@ -1,6 +1,11 @@
 region: US-AL
 sources:
   - noaa/8735180
+  - ticon/dauphin_island-8735180-usa-noaa
+  - ticon/dauphin_island_al-763a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/al/dauphin-island-al-al/
+  - /tides/us/al/dauphin-island-al/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,3 +24,41 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.009
+    ticon/dauphin_island-8735180-usa-noaa:
+      position: [30.25, -88.075]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8735181
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.148) > MLW (1.1)
+          - MHWS (1.194) < MHW (1.26)
+          - Superseded by noaa/8735180, its operator's own record
+    ticon/dauphin_island_al-763a-usa-uhslc_rq:
+      position: [30.25, -88.075]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8735181
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.126) > MLW (1.085)
+          - MHWS (1.172) < MHW (1.24)
+          - Superseded by noaa/8735180, its operator's own record

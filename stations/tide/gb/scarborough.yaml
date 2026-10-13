@@ -1,20 +1,18 @@
 sources:
-  - ticon/west_bay_harbour-wbh-gbr-cco
+  - ticon/scarborough-sca-gbr-cco
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/west_bay_harbour-wbh-gbr-cco:
-      position: [50.70888, -2.76411]
+    ticon/scarborough-sca-gbr-cco:
+      position: [54.28248, -0.39027]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 65
+        score: 61
         factors:
-          epoch: 0.931
+          epoch: 0.721
           recency: 0.99
           source: 0.061
           quality: 1
           amplitude: 1
           coverage: 0
-        issues:
-          - MHHW (3.799) < MHW (3.804)

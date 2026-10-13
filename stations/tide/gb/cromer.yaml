@@ -1,5 +1,8 @@
 sources:
   - ticon/cromer-cro-gbr-bodc
+  - ticon/cromer-cro-gbr-cmems
+redirect_from:
+  - /tides/gb/cromer-england/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -13,6 +16,21 @@ computed:
           epoch: 1
           recency: 0.98
           source: 0.98
+          quality: 1
+          amplitude: 1
+          coverage: 1
+    ticon/cromer-cro-gbr-cmems:
+      position: [52.9333, 1.3]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cromer-cro-gbr-bodc
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.02
           quality: 1
           amplitude: 1
           coverage: 1

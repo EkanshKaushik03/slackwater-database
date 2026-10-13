@@ -1,8 +1,24 @@
 sources:
+  - ticon/cape_town-704a-zaf-uhslc_rq
   - ticon/cape_town-704-zaf-uhslc_fd
+redirect_from:
+  - /tides/za/cape-town-western-cape/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    ticon/cape_town-704a-zaf-uhslc_rq:
+      position: [-33.9, 18.433]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 93
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.629
     ticon/cape_town-704-zaf-uhslc_fd:
       position: [-33.9, 18.417]
       coastline: unverifiable

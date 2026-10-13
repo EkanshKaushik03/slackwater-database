@@ -1,7 +1,9 @@
 region: US-AK
 sources:
   - noaa/9462450
+  - ticon/nikolski-9462450-usa-noaa
 redirect_from:
+  - /tides/us/nikolski-ticon-nikolski-9462450-usa-noaa/
   - /tides/us/nikolski/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -19,3 +21,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.176
+    ticon/nikolski-9462450-usa-noaa:
+      position: [52.94061, -168.871306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9462450
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.649) > MLW (1.637)
+          - MHWS (2.205) < MHW (2.314)
+          - Superseded by noaa/9462450, its operator's own record

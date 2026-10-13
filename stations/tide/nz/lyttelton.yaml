@@ -1,8 +1,24 @@
 sources:
+  - linz/107
   - ticon/lyttelton-667a-nzl-uhslc_rq
+redirect_from:
+  - /tides/nz/lyttelton-linz-107/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    linz/107:
+      position: [-43.6, 172.716667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.089
     ticon/lyttelton-667a-nzl-uhslc_rq:
       position: [-43.6, 172.717]
       coastline: unverifiable

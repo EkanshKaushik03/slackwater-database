@@ -1,6 +1,9 @@
 region: US-TX
 sources:
   - noaa/8773037
+  - ticon/seadrift-8773037-usa-noaa
+redirect_from:
+  - /tides/us/tx/seadrift-tx/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +23,24 @@ computed:
           coverage: 0.429
         issues:
           - "Seasonal curve peak (0.206m) exceeds the principal tide M2+S2+K1+O1 (0.043m): the yearly swing exceeds the daily one"
+    ticon/seadrift-8773037-usa-noaa:
+      position: [28.4069, -96.712402]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8773037
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 0.465
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.586) > MLW (0.575)
+          - MHWS (0.598) < MHW (0.608)
+          - Superseded by noaa/8773037, its operator's own record
+          - "Seasonal curve peak (0.193m) exceeds the principal tide M2+S2+K1+O1 (0.043m): the yearly swing exceeds the daily one"

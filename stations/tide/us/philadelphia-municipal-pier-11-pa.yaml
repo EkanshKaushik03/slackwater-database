@@ -1,6 +1,9 @@
 region: US-PA
 sources:
   - noaa/8545530
+  - ticon/philadelphia_pier_11_north-8545530-usa-noaa
+redirect_from:
+  - /tides/us/pa/philadelphia-pier-11-north/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.015
+    ticon/philadelphia_pier_11_north-8545530-usa-noaa:
+      position: [39.9533, -75.1383]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8545530
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.63
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.335) > MLW (1.192)
+          - MHWS (3.011) < MHW (3.049)
+          - Superseded by noaa/8545530, its operator's own record

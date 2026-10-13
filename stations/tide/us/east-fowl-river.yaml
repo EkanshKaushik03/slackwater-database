@@ -1,6 +1,9 @@
 region: US-AL
 sources:
   - noaa/8735523
+  - ticon/east_fowl_river_bridge-8735523-usa-noaa
+redirect_from:
+  - /tides/us/al/east-fowl-river-bridge/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,3 +22,22 @@ computed:
           coverage: 0.172
         issues:
           - K2 amplitude (0.0120) exceeds S2 (0.0080)
+    ticon/east_fowl_river_bridge-8735523-usa-noaa:
+      position: [30.443611, -88.113889]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8735523
+        score: 0
+        factors:
+          epoch: 0.752
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (4.448) > MLW (4.359)
+          - MHWS (4.512) < MHW (4.602)
+          - Superseded by noaa/8735523, its operator's own record

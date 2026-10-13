@@ -1,9 +1,25 @@
 region: US-NJ
 sources:
+  - noaa/8533055
   - ticon/coates_point-8533055-usa-noaa
+redirect_from:
+  - /tides/us/nj/coates-point-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    noaa/8533055:
+      position: [39.9483, -74.115]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/coates_point-8533055-usa-noaa:
       position: [39.9483, -74.115]
       coastline: unverifiable

@@ -1,6 +1,9 @@
 region: US-TX
 sources:
   - noaa/8771972
+  - ticon/san_luis_pass-8771972-usa-noaa
+redirect_from:
+  - /tides/us/tx/san-luis-pass-tx/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.161
+    ticon/san_luis_pass-8771972-usa-noaa:
+      position: [29.095, -95.113306]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8771972
+        score: 0
+        factors:
+          epoch: 0.725
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.712) < MHW (1.723)
+          - Superseded by noaa/8771972, its operator's own record

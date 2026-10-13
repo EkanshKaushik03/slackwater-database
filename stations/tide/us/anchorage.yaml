@@ -1,6 +1,9 @@
 region: US-AK
 sources:
   - noaa/9455920
+  - ticon/anchorage-9455920-usa-noaa
+redirect_from:
+  - /tides/us/ak/anchorage-ak/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.074
+    ticon/anchorage-9455920-usa-noaa:
+      position: [61.2375, -149.8904]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9455920
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9455920, its operator's own record

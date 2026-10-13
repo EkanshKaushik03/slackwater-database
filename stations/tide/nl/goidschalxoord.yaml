@@ -1,5 +1,8 @@
 sources:
   - ticon/goidschalxoord-goidsod-nld-rws
+  - ticon/goidschalxoord-goidsod-nld-rws_hist
+redirect_from:
+  - /tides/nl/goidschalxoord-south-holland/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +19,19 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.17
+    ticon/goidschalxoord-goidsod-nld-rws_hist:
+      position: [51.830295, 4.451622]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.17
+        issues:
+          - "Superseded source: rws_hist"

@@ -1,6 +1,9 @@
 region: US-VA
 sources:
   - noaa/8638450
+  - ticon/tettington-8638450-usa-noaa
+redirect_from:
+  - /tides/us/va/tettington-va/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.02
+    ticon/tettington-8638450-usa-noaa:
+      position: [37.24, -76.9433]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8638450
+        score: 0
+        factors:
+          epoch: 0.151
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8638450, its operator's own record

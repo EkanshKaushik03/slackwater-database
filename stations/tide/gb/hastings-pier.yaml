@@ -1,17 +1,17 @@
 sources:
-  - ticon/teignmouth_pier-tnp-gbr-cco
+  - ticon/hastings_pier-hgp-gbr-cco
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/teignmouth_pier-tnp-gbr-cco:
-      position: [50.54388, -3.49213]
+    ticon/hastings_pier-hgp-gbr-cco:
+      position: [50.85088, 0.57283]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 51
+        score: 55
         factors:
-          epoch: 0.3
-          recency: 0.88
+          epoch: 0.448
+          recency: 0.99
           source: 0.061
           quality: 1
           amplitude: 1

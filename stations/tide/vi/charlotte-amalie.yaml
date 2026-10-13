@@ -1,5 +1,10 @@
 sources:
   - noaa/9751639
+  - ticon/charlotte_amalie-255a-usa-uhslc_rq
+  - ticon/charlotte_amalie-9751639-usa-noaa
+redirect_from:
+  - /tides/us/charlotte-amalie-saint-thomas-island/
+  - /tides/us/charlotte-amalie-ticon-charlotte-amalie-9751639-usa-noaa/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +21,37 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.055
+    ticon/charlotte_amalie-255a-usa-uhslc_rq:
+      position: [18.335, -64.92]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9751639
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.016
+        issues:
+          - Superseded by noaa/9751639, its operator's own record
+    ticon/charlotte_amalie-9751639-usa-noaa:
+      position: [18.347222, -64.925833]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9751639
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.037
+        issues:
+          - Superseded by noaa/9751639, its operator's own record

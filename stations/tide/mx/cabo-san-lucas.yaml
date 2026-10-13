@@ -1,5 +1,10 @@
 sources:
   - ticon/cabo_san_lucas-034-mex-uhslc_fd
+  - ticon/cabo_san_lucas-034-mex-unam_hist
+  - ticon/cabo_san_lucas-034a-mex-uhslc_rq
+redirect_from:
+  - /tides/mx/cabo-san-lucas-baja-california-sur/
+  - /tides/mx/cabo-san-lucas-ticon-cabo-san-lucas-034a-mex-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -12,6 +17,36 @@ computed:
         factors:
           epoch: 1
           recency: 0.88
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 1
+    ticon/cabo_san_lucas-034-mex-unam_hist:
+      position: [22.88, -109.908333]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cabo_san_lucas-034-mex-uhslc_fd
+        score: 80
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 0.131
+          quality: 1
+          amplitude: 1
+          coverage: 1
+    ticon/cabo_san_lucas-034a-mex-uhslc_rq:
+      position: [22.88, -109.908]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/cabo_san_lucas-034-mex-uhslc_fd
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.77
           source: 0.99
           quality: 1
           amplitude: 1

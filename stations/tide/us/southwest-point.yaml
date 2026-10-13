@@ -1,6 +1,9 @@
 region: US-RI
 sources:
   - noaa/8459681
+  - ticon/block_island-8459681-usa-noaa
+redirect_from:
+  - /tides/us/ri/block-island-ticon-block-island-8459681-usa-noaa/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.092
+    ticon/block_island-8459681-usa-noaa:
+      position: [41.1633, -71.61]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8459681
+        score: 0
+        factors:
+          epoch: 0.138
+          recency: 0.74
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8459681, its operator's own record

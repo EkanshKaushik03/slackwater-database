@@ -1,5 +1,8 @@
 sources:
   - ticon/booby_island-336-aus-uhslc_fd
+  - ticon/booby_island-336a-aus-uhslc_rq
+redirect_from:
+  - /tides/au/booby-island-ticon-booby-island-336a-aus-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -18,3 +21,20 @@ computed:
           coverage: 0.016
         issues:
           - MHWS (3.359) < MHW (3.416)
+    ticon/booby_island-336a-aus-uhslc_rq:
+      position: [-10.603, 141.91]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/booby_island-336-aus-uhslc_fd
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.95
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - MHWS (3.325) < MHW (3.364)

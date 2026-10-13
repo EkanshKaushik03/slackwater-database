@@ -1,5 +1,10 @@
 sources:
   - ticon/mar_del_plata-729-arg-uhslc_fd
+  - ticon/mar_del_plata-729a-arg-uhslc_rq
+  - ticon/mar_del_plata-729b-arg-uhslc_rq
+redirect_from:
+  - /tides/ar/mar-del-plata-buenos-aires/
+  - /tides/ar/mar-del-plata-ticon-mar-del-plata-729b-arg-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -12,6 +17,36 @@ computed:
         factors:
           epoch: 0.82
           recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 1
+    ticon/mar_del_plata-729a-arg-uhslc_rq:
+      position: [-38.05, -57.55]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/mar_del_plata-729-arg-uhslc_fd
+        score: 83
+        factors:
+          epoch: 0.226
+          recency: 0.83
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 1
+    ticon/mar_del_plata-729b-arg-uhslc_rq:
+      position: [-38.035, -57.53]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/mar_del_plata-729-arg-uhslc_fd
+        score: 95
+        factors:
+          epoch: 0.794
+          recency: 0.98
           source: 0.99
           quality: 1
           amplitude: 1

@@ -1,6 +1,9 @@
 region: US-RI
 sources:
   - noaa/8454000
+  - ticon/providence-8454000-usa-noaa
+redirect_from:
+  - /tides/us/ri/providence-ri/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.086
+    ticon/providence-8454000-usa-noaa:
+      position: [41.807098, -71.401199]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8454000
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.001
+        issues:
+          - Superseded by noaa/8454000, its operator's own record

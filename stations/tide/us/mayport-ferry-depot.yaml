@@ -1,6 +1,11 @@
 region: US-FL
 sources:
   - noaa/8720220
+  - ticon/mayport_ferry_depot-8720220-usa-noaa
+  - ticon/mayport_fl-753a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/fl/mayport-ferry-depot-fl/
+  - /tides/us/fl/mayport-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,3 +24,37 @@ computed:
           coverage: 0
         issues:
           - M2 here (0.662 m, 28.1°) differs from (0.634 m, 354.6°) by +28 mm and 69 min later in ticon/mayport-8720220-usa-da_sat, a duplicate
+    ticon/mayport_ferry_depot-8720220-usa-noaa:
+      position: [30.3933, -81.4317]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8720220
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.74
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8720220, its operator's own record
+    ticon/mayport_fl-753a-usa-uhslc_rq:
+      position: [30.395, -81.432]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8720220
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.74
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.004
+        issues:
+          - Superseded by noaa/8720220, its operator's own record

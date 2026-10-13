@@ -1,8 +1,24 @@
 sources:
+  - ticon/norfolk_island-062b-aus-uhslc_rq
   - ticon/norfolk_island-062a-aus-uhslc_rq
+redirect_from:
+  - /tides/au/norfolk-island-ticon-norfolk-island-062b-aus-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    ticon/norfolk_island-062b-aus-uhslc_rq:
+      position: [-29.067, 167.933]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.318
+          recency: 0.73
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.044
     ticon/norfolk_island-062a-aus-uhslc_rq:
       position: [-29.067, 167.95]
       coastline: unverifiable

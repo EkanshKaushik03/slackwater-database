@@ -1,6 +1,9 @@
 region: US-AK
 sources:
   - noaa/9491094
+  - ticon/red_dog_dock-9491094-usa-noaa
+redirect_from:
+  - /tides/us/ak/red-dog-dock-ak/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -20,3 +23,22 @@ computed:
           coverage: 0.558
         issues:
           - "Seasonal curve peak (0.240m) exceeds the principal tide M2+S2+K1+O1 (0.118m): the yearly swing exceeds the daily one"
+    ticon/red_dog_dock-9491094-usa-noaa:
+      position: [67.575806, -164.064389]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9491094
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9491094, its operator's own record
+          - "Seasonal curve peak (0.218m) exceeds the principal tide M2+S2+K1+O1 (0.125m): the yearly swing exceeds the daily one"

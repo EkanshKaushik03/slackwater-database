@@ -9,6 +9,9 @@ aliases: [madison st, seattle madison street]
 cities: [Seattle]
 sources:
   - noaa/9447130
+  - ticon/seattle-9447130-usa-noaa
+redirect_from:
+  - /tides/us/wa/seattle-wa/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -25,3 +28,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.052
+    ticon/seattle-9447130-usa-noaa:
+      position: [47.601944, -122.339167]
+      coastline: clear
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9447130
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - Superseded by noaa/9447130, its operator's own record

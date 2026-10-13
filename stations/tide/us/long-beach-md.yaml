@@ -1,6 +1,9 @@
 region: US-MD
 sources:
   - noaa/8577004
+  - ticon/long_beach-8577004-usa-noaa
+redirect_from:
+  - /tides/us/md/long-beach-ticon-long-beach-8577004-usa-noaa/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.167
+    ticon/long_beach-8577004-usa-noaa:
+      position: [38.465, -76.4733]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8577004
+        score: 0
+        factors:
+          epoch: 0.161
+          recency: 0.74
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8577004, its operator's own record

@@ -1,5 +1,8 @@
 sources:
   - ticon/port_stanley-290-gbr-uhslc_fd
+  - ticon/port_stanley-290b-gbr-uhslc_rq
+redirect_from:
+  - /tides/gb/port-stanley-ticon-port-stanley-290b-gbr-uhslc-rq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -12,6 +15,21 @@ computed:
         factors:
           epoch: 1
           recency: 0.99
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.201
+    ticon/port_stanley-290b-gbr-uhslc_rq:
+      position: [-51.75, -57.933]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/port_stanley-290-gbr-uhslc_fd
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.88
           source: 0.99
           quality: 1
           amplitude: 1

@@ -1,5 +1,11 @@
 import { expect, test } from "vitest";
-import { declaredOriginator, fold, type UhslcMetadata } from "../provenance.ts";
+import {
+  declaration,
+  declaredOriginator,
+  fold,
+  currentProvider,
+  type UhslcMetadata,
+} from "../provenance.ts";
 
 const meta = (
   data_source: string,
@@ -49,14 +55,22 @@ test("folds Norwegian letters that have no decomposition", () => {
   expect(fold("Ny-Ålesund")).toBe("nyalesund");
 });
 
+test("a CMEMS code matches no Kartverket gauge", () => {
+  // A CMEMS code is cut from the place name, not Kartverket's.
+  expect(declaredOriginator("ticon/oslotg-osl-nor-cmems")).toBeUndefined();
+});
+
 test("UHSLC metadata names an originator only through a known provider", () => {
   const pinned = {
     "073A": meta("Land Information New Zealand", "073"),
     // UHSLC 071 is also La Libertad, Ecuador: the number alone is not enough.
     "071B": meta("Instituto Oceanografico de la Armada", "071"),
     "259B": meta("National Ocean Service (NOS)", "2695535"),
-    // UHSLC sometimes records its own code as the originator.
-    "104D": meta("UH Sea Level Center", "2431000"),
+    // A NOAA number under UHSLC as provider declares nothing: UHSLC may not
+    // be relaying NOAA's gauge.
+    "104C": meta("UH Sea Level Center", "2431000"),
+    // Bluff passed from the navy to LINZ, its current operator.
+    "072A": meta("Land Information New Zealand", "072"),
   };
   expect(declaredOriginator("ticon/tauranga-073a-nzl-uhslc_rq", pinned)).toBe(
     "linz/073",
@@ -68,9 +82,53 @@ test("UHSLC metadata names an originator only through a known provider", () => {
     "noaa/2695535",
   );
   expect(
-    declaredOriginator("ticon/diego_garcia-104d-gbr-uhslc_rq", pinned),
+    declaredOriginator("ticon/diego_garcia-104c-gbr-uhslc_rq", pinned),
   ).toBeUndefined();
+  expect(declaredOriginator("ticon/bluff-072a-nzl-uhslc_rq", pinned)).toBe(
+    "linz/072",
+  );
   expect(
     declaredOriginator("ticon/wellington-071-nzl-uhslc_fd", pinned),
   ).toBeUndefined();
+});
+
+test("the current period's provider is the operator", () => {
+  expect(
+    currentProvider(
+      "UH Sea Level Center\nHonolulu\nFor the pre-1999 data:\nNational Ocean Service (NOS)\nSilver Spring",
+    ),
+  ).toBe("UH Sea Level Center");
+  expect(
+    currentProvider(
+      "For 1984-1988:\nRoyal New Zealand Navy\nTakapuna\nFor 1997-:\nLand Information New Zealand",
+    ),
+  ).toBe("Land Information New Zealand");
+  // Where every period has a heading, the last is current.
+  expect(
+    currentProvider(
+      "for the 1985-1987 data:\nA\nStreet\nfor the 1988-1992 data:\nB",
+    ),
+  ).toBe("B");
+  // A collaborator is not a provider.
+  expect(
+    currentProvider(
+      "Servicio Hidrografico\nIn collaboration with the\nNational Ocean Service (NOS)",
+    ),
+  ).toBe("Servicio Hidrografico");
+});
+
+test("a NOAA number from NOAA, or in the relay's id, is unambiguous", () => {
+  const pinned = {
+    "750A": meta("National Ocean Service (NOS)", "8658120"),
+    "073A": meta("Land Information New Zealand", "073"),
+  };
+  expect(declaration("ticon/wilmington_nc-750a-usa-uhslc_rq", pinned)).toEqual({
+    id: "noaa/8658120",
+    unambiguous: true,
+  });
+  expect(declaration("ticon/tauranga-073a-nzl-uhslc_rq", pinned)).toEqual({
+    id: "linz/073",
+    unambiguous: false,
+  });
+  expect(declaration("ticon/bergen-bgo-nor-nhs")?.unambiguous).toBe(true);
 });

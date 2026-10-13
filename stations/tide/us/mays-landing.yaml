@@ -1,6 +1,9 @@
 region: US-NJ
 sources:
   - noaa/8534468
+  - ticon/mays_landing-8534468-usa-noaa
+redirect_from:
+  - /tides/us/nj/mays-landing-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.179
+    ticon/mays_landing-8534468-usa-noaa:
+      position: [39.4483, -74.7283]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8534468
+        score: 0
+        factors:
+          epoch: 0.125
+          recency: 0.56
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (0.712) > MLW (0.636)
+          - Superseded by noaa/8534468, its operator's own record

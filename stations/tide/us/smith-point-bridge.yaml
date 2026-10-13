@@ -1,6 +1,9 @@
 region: US-NY
 sources:
   - noaa/8513825
+  - ticon/smith_point_bridge-8513825-usa-noaa
+redirect_from:
+  - /tides/us/ny/smith-point-bridge-ny/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.059
+    ticon/smith_point_bridge-8513825-usa-noaa:
+      position: [40.7383, -72.8683]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8513825
+        score: 0
+        factors:
+          epoch: 0.083
+          recency: 0.65
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8513825, its operator's own record

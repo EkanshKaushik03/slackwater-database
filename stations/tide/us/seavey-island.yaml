@@ -1,6 +1,9 @@
 region: US-ME
 sources:
   - noaa/8419870
+  - ticon/seavey_island-8419870-usa-noaa
+redirect_from:
+  - /tides/us/me/seavey-island-me/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.017
+    ticon/seavey_island-8419870-usa-noaa:
+      position: [43.079722, -70.741111]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8419870
+        score: 0
+        factors:
+          epoch: 0.271
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8419870, its operator's own record

@@ -1,6 +1,9 @@
 region: US-NJ
 sources:
   - noaa/8535055
+  - ticon/bivalve-8535055-usa-noaa
+redirect_from:
+  - /tides/us/nj/bivalve-nj/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
+    ticon/bivalve-8535055-usa-noaa:
+      position: [39.232498, -75.032799]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8535055
+        score: 0
+        factors:
+          epoch: 0.349
+          recency: 0.97
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/8535055, its operator's own record

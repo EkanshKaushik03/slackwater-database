@@ -1,5 +1,11 @@
 sources:
   - noaa/9752235
+  - ticon/culebra-9752235-usa-noaa
+  - ticon/culebra_pr-219a-usa-uhslc_rq
+redirect_from:
+  - /tides/us/culebra-culebra/
+  - /tides/us/culebra-pr/
+  - /tides/us/pr/culebra-pr/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -16,3 +22,37 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.04
+    ticon/culebra-9752235-usa-noaa:
+      position: [18.300861, -65.302472]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9752235
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by noaa/9752235, its operator's own record
+    ticon/culebra_pr-219a-usa-uhslc_rq:
+      position: [18.3, -65.302]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/9752235
+        score: 0
+        factors:
+          epoch: 0.933
+          recency: 0.96
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - Superseded by noaa/9752235, its operator's own record

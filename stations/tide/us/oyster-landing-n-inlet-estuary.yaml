@@ -1,6 +1,9 @@
 region: US-SC
 sources:
   - noaa/8662245
+  - ticon/oyster_landing_n_inlet_estuary-8662245-usa-noaa
+redirect_from:
+  - /tides/us/sc/oyster-landing-n-inlet-estuary-sc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.043
+    ticon/oyster_landing_n_inlet_estuary-8662245-usa-noaa:
+      position: [33.3517, -79.1867]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8662245
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.94
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (1.374) > MLW (1.342)
+          - Superseded by noaa/8662245, its operator's own record

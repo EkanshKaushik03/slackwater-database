@@ -1,6 +1,9 @@
 region: US-MD
 sources:
   - noaa/8571773
+  - ticon/vienna-8571773-usa-noaa
+redirect_from:
+  - /tides/us/md/vienna-md/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.215
+    ticon/vienna-8571773-usa-noaa:
+      position: [38.48333, -75.81833]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8571773
+        score: 0
+        factors:
+          epoch: 0.302
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (6.681) > MLW (6.673)
+          - Superseded by noaa/8571773, its operator's own record

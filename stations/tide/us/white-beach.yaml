@@ -1,6 +1,9 @@
 region: US-FL
 sources:
   - noaa/8728694
+  - ticon/white_beach-8728694-usa-noaa
+redirect_from:
+  - /tides/us/fl/white-beach-fl/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,21 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.048
+    ticon/white_beach-8728694-usa-noaa:
+      position: [29.785, -84.8983]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8728694
+        score: 0
+        factors:
+          epoch: 0.302
+          recency: 0.58
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MHWS (1.167) < MHW (1.19)
+          - Superseded by noaa/8728694, its operator's own record

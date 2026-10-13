@@ -1,6 +1,9 @@
 region: US-MD
 sources:
   - noaa/8574680
+  - ticon/baltimore-8574680-usa-noaa
+redirect_from:
+  - /tides/us/md/baltimore-md/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -17,3 +20,20 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.016
+    ticon/baltimore-8574680-usa-noaa:
+      position: [39.266944, -76.579444]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: noaa/8574680
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - Superseded by noaa/8574680, its operator's own record
