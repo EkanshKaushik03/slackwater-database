@@ -71,7 +71,7 @@ const out = [
   "",
   "## Confident",
   "",
-  "Declared provenance, or a gauge code shared within 2 km. `--apply` makes these.",
+  "Declared provenance, a CMEMS copy of the one station of its name within 50 m whose M2 agrees, or a gauge code shared within 2 km whose M2 agrees. `npm run merge` makes these.",
   "",
   ...confident.groups.map(line),
   "",

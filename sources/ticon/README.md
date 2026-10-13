@@ -53,7 +53,7 @@ The UHSLC metadata is pinned in [uhslc-metadata.json](uhslc-metadata.json), beca
 npm run refresh:uhslc -w sources/ticon
 ```
 
-`npm run report:merges -w packages/stations` lists the station merges this provenance, shared gauge codes and quality's duplicate and superseded links propose, and `npm run merge -w packages/stations` makes the confident ones in the station files (see [stations/README.md](../../stations/README.md)).
+`npm run report:merges -w packages/stations` lists the station merges this provenance, CMEMS copies, shared gauge codes and quality's duplicate and superseded links propose, and `npm run merge -w packages/stations` makes the confident ones in the station files (see [stations/README.md](../../stations/README.md)).
 
 ## Constituent names
 

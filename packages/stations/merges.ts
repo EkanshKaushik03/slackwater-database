@@ -2,12 +2,14 @@
  * Which tide routes publish the same physical gauge, and so should become one
  * station with one URL.
  *
- * Three kinds of evidence join routes. A TICON relay that declares its
+ * Four kinds of evidence join routes. A TICON relay that declares its
  * originator (see sources/ticon/provenance.ts) joins the originator's route
  * when the two sit within MAX_PROVENANCE_KM and their M2 does not contradict
  * it; an unambiguous declaration skips the M2 check within MAX_GAUGE_CODE_KM.
  * A relay quality marks as superseded by its operator's record passed the same
- * tests, so its link counts as provenance. Otherwise quality's `redundant` link
+ * tests, so its link counts as provenance. A CMEMS record joins the one
+ * station of its name within MAX_COPY_KM whose M2, amplitude and phase,
+ * agrees. Otherwise quality's `redundant` link
  * joins a duplicate to the record it duplicates: on a shared TICON gauge code,
  * or on proximity alone. Proximity pairs records to hide the weaker one, not
  * to say they are one gauge, so a confident plan leaves it, a gauge code
@@ -20,6 +22,7 @@
  */
 import type { DatabaseRoutes, StationQuality } from "@slackwater/database";
 import { declaration } from "../../sources/ticon/provenance.ts";
+import { tideConflict } from "./evaluate-quality.ts";
 import {
   distance,
   gaugeKey,
@@ -39,8 +42,15 @@ export { MAX_PROVENANCE_KM };
  * 105.7 km apart).
  */
 export const MAX_GAUGE_CODE_KM = 2;
+/**
+ * The farthest a CMEMS record may sit from the record it copies. CMEMS
+ * relays European agencies' gauges under a code cut from the place name, so
+ * it declares no originator; the same name at the same position is the
+ * evidence instead.
+ */
+export const MAX_COPY_KM = 0.05;
 
-export type Evidence = "provenance" | "gauge" | "proximity";
+export type Evidence = "provenance" | "copy" | "gauge" | "proximity";
 
 export interface MergeMember {
   id: string;
@@ -89,13 +99,41 @@ const gaugeCode = (station: ResolvedStation) =>
     ? gaugeKey(station.source?.id ?? station.id)
     : undefined;
 
+type Tide = Parameters<typeof tideConflict>[0];
+
+/**
+ * A place name's spellings for matching: CMEMS writes Bodø as Bodoe and
+ * Göteborg as Goteborg, so ø, ö, æ, ä, ü and å match either their bare letter
+ * or their two-letter form. Digits stay, so "Galway Port 2" is not "Galway Port".
+ */
+function nameKeys(name: string): string[] {
+  const key = (n: string) =>
+    n
+      .normalize("NFD")
+      .replace(/\p{M}/gu, "")
+      .replace(/[^a-z0-9]/g, "");
+  const lower = name.toLowerCase();
+  const keys = new Set([
+    key(lower.replace(/ø/g, "o").replace(/æ/g, "ae")),
+    key(
+      lower
+        .replace(/[øö]/g, "oe")
+        .replace(/[æä]/g, "ae")
+        .replace(/ü/g, "ue")
+        .replace(/å/g, "aa"),
+    ),
+  ]);
+  keys.delete("");
+  return [...keys];
+}
+
 const byCodepoint = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 const shortestSlug = (a: string, b: string) =>
   a.length - b.length || byCodepoint(a, b);
 
 /**
- * With `confident`, only provenance and gauge codes shared within
- * MAX_GAUGE_CODE_KM join routes: the merges `merge-report --apply` makes.
+ * With `confident`, only provenance, CMEMS copies and gauge codes shared
+ * within MAX_GAUGE_CODE_KM join routes: the merges `npm run merge` makes.
  */
 export function planMerges(
   stations: ResolvedStation[],
@@ -180,8 +218,9 @@ export function planMerges(
   // A declared originator outranks an inferred duplicate: UHSLC 259B names
   // Ferry Reach even though quality pairs it with St George's 0.75 km away.
   // Quality supersedes a relay only under the tests above, so its link is
-  // provenance too. Provenance links go first, then gauge links, then
-  // proximity ones, so a weaker link never takes the place of a stronger one.
+  // provenance too. Provenance links go first, then CMEMS copies, then gauge
+  // links, then proximity ones, so a weaker link never takes the place of a
+  // stronger one.
   const links = [...quality].flatMap(([id, result]) => {
     if (!result.redundant) return [];
     if (result.reason !== "duplicate" && result.reason !== "superseded")
@@ -218,6 +257,39 @@ export function planMerges(
       if (link.kind === kind) join(link.id, link.target, link.kind);
   };
   joinAll("provenance");
+
+  // A CMEMS record joins the one station of its name it sits on, unless their
+  // M2 says otherwise. Two such stations leave the choice to a person.
+  // ponytail: every CMEMS record against every record; a spatial index if
+  // this grows past seconds.
+  const isCopy = (station: ResolvedStation) => station.id.endsWith("-cmems");
+  for (const copy of stations.filter(isCopy)) {
+    const names = nameKeys(copy.name ?? "");
+    if (!names.length) continue;
+    const named = stations.filter(
+      (other) =>
+        !isCopy(other) &&
+        slugOf.has(other.id) &&
+        km(copy, other) <= MAX_COPY_KM &&
+        nameKeys(other.name ?? "").some((key) => names.includes(key)),
+    );
+    // Records already one station are one choice.
+    const roots = new Set(named.map(({ id }) => find(slugOf.get(id) ?? id)));
+    if (roots.size !== 1) continue;
+    const other = named[0]!;
+    // Every record it would join must have an M2 that agrees with the copy's.
+    const m2 = (station: ResolvedStation) =>
+      station.harmonic_constituents?.some(({ name }) => name === "M2");
+    if (!m2(copy) || !named.every(m2))
+      refused.push({
+        id: copy.id,
+        target: other.id,
+        reason: "no M2 to compare",
+      });
+    else if (named.some((n) => tideConflict(copy as Tide, n as Tide)))
+      refused.push({ id: copy.id, target: other.id, reason: "M2 differs" });
+    else join(copy.id, other.id, "copy");
+  }
   // Records sharing a gauge code are segments of one gauge, whichever record
   // quality links each to, unless their M2 says otherwise (Fanning's 012a and
   // 012b sit together with M2 a factor of two apart).

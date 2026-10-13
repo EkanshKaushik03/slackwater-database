@@ -489,6 +489,173 @@ describe("planMerges", () => {
   });
 });
 
+describe("CMEMS copies", () => {
+  const plan = (copy: ResolvedStation) => {
+    const records = [
+      station("ticon/bodo-boo-nor-nhs", 67.288, 0.85, "Bodø"),
+      copy,
+    ];
+    return planMerges(
+      records,
+      {
+        tide: records.map(({ id }) => ({
+          slug: id.split("/")[1]!,
+          station_ids: [id],
+        })),
+        current: [],
+      },
+      new Map([[records[0]!.id, accepted(records[0]!.id)]]),
+      { confident: true },
+    ).groups;
+  };
+
+  test("a CMEMS record joins the record of the same name it sits on", () => {
+    const groups = plan(
+      station("ticon/bodoetg-bod-nor-cmems", 67.2882, 0.85, "Bodo"),
+    );
+    expect(
+      groups[0]?.members.find(({ id }) => id.endsWith("cmems")),
+    ).toMatchObject({
+      evidence: "copy",
+    });
+  });
+
+  test("a different name, a distance or a contradicting M2 keeps it apart", () => {
+    expect(
+      plan(station("ticon/bodoetg-bod-nor-cmems", 67.288, 0.85, "Bodo Havn")),
+    ).toEqual([]);
+    expect(
+      plan(station("ticon/bodoetg-bod-nor-cmems", 67.289, 0.85, "Bodo")),
+    ).toEqual([]);
+    expect(
+      plan(station("ticon/bodoetg-bod-nor-cmems", 67.288, 0.4, "Bodo")),
+    ).toEqual([]);
+  });
+});
+
+describe("CMEMS copy edge cases", () => {
+  const run = (records: ResolvedStation[]) =>
+    planMerges(
+      records,
+      {
+        tide: records.map(({ id }) => ({
+          slug: id.split("/")[1]!,
+          station_ids: [id],
+        })),
+        current: [],
+      },
+      new Map(records.map(({ id }) => [id, accepted(id)])),
+      { confident: true },
+    );
+
+  test("two CMEMS records never join each other", () => {
+    expect(
+      run([
+        station("ticon/bodoetg-bod-nor-cmems", 67.288, 0.85, "Bodo"),
+        station("ticon/bodoetg2-bod-nor-cmems", 67.288, 0.85, "Bodo"),
+      ]).groups,
+    ).toEqual([]);
+  });
+
+  test("two records of its name nearby leave the choice to a person", () => {
+    expect(
+      run([
+        station("ticon/goteborg-got-swe-cmems", 57.7, 0.15, "Goteborg"),
+        station("ticon/goteborg-2111-swe-smhi", 57.7, 0.15, "Göteborg"),
+        station("ticon/goteborg-2130-swe-smhi", 57.7001, 0.15, "Göteborg"),
+      ]).groups,
+    ).toEqual([]);
+  });
+
+  test("a copy whose M2 disagrees is listed as refused", () => {
+    expect(
+      run([
+        station("ticon/uddevalla-udd-swe-cmems", 58.35, 0.141, "Uddevalla"),
+        station("ticon/uddevalla-2541-swe-smhi", 58.35, 0.008, "Uddevalla"),
+      ]).refused,
+    ).toEqual([
+      {
+        id: "ticon/uddevalla-udd-swe-cmems",
+        target: "ticon/uddevalla-2541-swe-smhi",
+        reason: "M2 differs",
+      },
+    ]);
+  });
+
+  test("matches the spellings CMEMS uses and keeps numbers apart", () => {
+    const pair = (copyName: string, name: string) =>
+      run([
+        station("ticon/x-x-nor-cmems", 60, 0.5, copyName),
+        station("ticon/x-1-nor-nhs", 60, 0.5, name),
+      ]).groups.length;
+    expect(pair("Bodoe", "Bodø")).toBe(1);
+    expect(pair("Goteborg", "Göteborg")).toBe(1);
+    expect(pair("Buesum", "Büsum")).toBe(1);
+    expect(pair("Galway Port 2", "Galway Port")).toBe(0);
+  });
+
+  test("a copy needs an M2 on both sides to compare", () => {
+    const bare = {
+      ...station("ticon/x-1-nor-nhs", 60, 0.5, "Bodø"),
+      harmonic_constituents: [],
+    };
+    expect(
+      run([station("ticon/x-x-nor-cmems", 60, 0.5, "Bodoe"), bare]).refused.map(
+        ({ reason }) => reason,
+      ),
+    ).toEqual(["no M2 to compare"]);
+  });
+
+  test("a copy whose M2 phase disagrees is refused", () => {
+    // Tenerife's CMEMS record leads da_mm's by 36°, about 75 minutes.
+    const phased = (id: string, phase: number) => ({
+      ...station(id, 28.48, 0.7, "Tenerife"),
+      harmonic_constituents: [{ name: "M2", amplitude: 0.7, phase }],
+    });
+    expect(
+      run([
+        phased("ticon/tenerifetg-ten-esp-cmems", 29.2),
+        phased("ticon/tenerife-ten-esp-da_mm", 352.8),
+      ]).refused.map(({ reason }) => reason),
+    ).toEqual(["M2 differs"]);
+  });
+
+  test("two records of its name that are one station are one choice", () => {
+    const records = [
+      station("ticon/bergentg-ber-nor-cmems", 60.4, 0.5, "Bergen"),
+      station("ticon/bergen-bgo-nor-nhs", 60.4, 0.5, "Bergen"),
+      station("ticon/bergen2-bgo-nor-nhs", 60.4, 0.5, "Bergen"),
+    ];
+    const plan = planMerges(
+      records,
+      {
+        tide: [
+          { slug: "bergen", station_ids: [records[1]!.id, records[2]!.id] },
+          { slug: "bergen-cmems", station_ids: [records[0]!.id] },
+        ],
+        current: [],
+      },
+      new Map(records.map(({ id }) => [id, accepted(id)])),
+      { confident: true },
+    );
+    expect(plan.groups[0]?.slugs).toEqual(["bergen", "bergen-cmems"]);
+  });
+
+  test("joins up to 50 m and no farther", () => {
+    // 0.0004° of latitude is about 44 m; 0.0005° about 56 m.
+    const near = run([
+      station("ticon/bodo-boo-nor-nhs", 67.288, 0.85, "Bodø"),
+      station("ticon/bodoetg-bod-nor-cmems", 67.2884, 0.85, "Bodo"),
+    ]);
+    const far = run([
+      station("ticon/bodo-boo-nor-nhs", 67.288, 0.85, "Bodø"),
+      station("ticon/bodoetg-bod-nor-cmems", 67.2885, 0.85, "Bodo"),
+    ]);
+    expect(near.groups).toHaveLength(1);
+    expect(far.groups).toEqual([]);
+  });
+});
+
 describe("selectMerges", () => {
   const group = (survivor: string, ...rest: string[]): MergeGroup => ({
     survivor,
