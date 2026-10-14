@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version-file: .mise.toml
 
       - name: Pre-flight — has NOAA's station list changed?
         id: preflight
