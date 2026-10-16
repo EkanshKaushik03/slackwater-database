@@ -1,9 +1,28 @@
 region: CA-BC
 sources:
   - chs-sand-heads
+  # MEDS gauge 7594, the DFO station number IWLS publishes Sand Heads under.
+  # MEDS puts it 8.1 km from IWLS's position, ashore.
+  - ticon/sand_heads_bc-7594-can-meds
+redirect_from:
+  - /tides/ca/bc/sand-heads-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-sand-heads:
       position: [49.1052, -123.3042]
       coastline: clear
+    ticon/sand_heads_bc-7594-can-meds:
+      position: [49.13, -123.2]
+      coastline: ashore
+      metres_inland: 333
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 0.961
+          recency: 0.98
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.029
