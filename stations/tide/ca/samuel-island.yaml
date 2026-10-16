@@ -1,10 +1,9 @@
-# CHS publishes two Samuel Island stations 0.83 km apart under one name, both
-# temporary and established in 1961. This one sits in Irish Bay, and CHS's
-# tide tables reference it to Fulford Harbour in their Boundary Pass sub-area.
-# The other is samuel-island-ganges-bc.
+# CHS publishes two Samuel Island stations 0.83 km apart under one official
+# name. IWLS gives this one, 07370, a precise position on the island's north
+# side, on Georgeson Passage; the other, 07515, is samuel-island-ganges-bc,
+# whose minute-rounded position sits south of it, toward Boat Passage.
 
-name: Samuel Island (Irish Bay)
-context: Boundary Pass
+name: Samuel Island (Georgeson Passage)
 region: CA-BC
 sources:
   - chs-samuel-island
