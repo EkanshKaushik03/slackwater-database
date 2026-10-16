@@ -9,16 +9,21 @@
  * A relay quality marks as superseded by its operator's record passed the same
  * tests, so its link counts as provenance. A CMEMS record joins the one
  * station of its name within MAX_COPY_KM whose M2, amplitude and phase,
- * agrees. Otherwise quality's `redundant` link
+ * agrees. A CHS record, which carries a name and a position and no harmonics,
+ * joins the one provider station of its name within MAX_TWIN_KM. Otherwise
+ * quality's `redundant` link
  * joins a duplicate to the record it duplicates: on a shared TICON gauge code,
  * or on proximity alone. Proximity pairs records to hide the weaker one, not
  * to say they are one gauge, so a confident plan leaves it, a gauge code
  * shared across more than MAX_GAUGE_CODE_KM, and a gauge code whose records'
- * M2 disagree, to a person. No link joins two authoritative records: two
- * station numbers a provider publishes stay two stations. Joined routes
+ * M2 disagree, to a person, as it does a CHS record with two provider
+ * stations of its name, or one up to MAX_TWIN_REVIEW_KM away. No link joins
+ * two authoritative records: two station numbers a provider publishes stay two
+ * stations. No link joins two CHS records either. Joined routes
  * collapse onto the published slug that names the primary record, so a clean
  * URL such as `bergen` survives even when an authoritative record took a
- * suffixed one.
+ * suffixed one, except that a station holding a CHS record keeps that
+ * record's slug.
  */
 import type { DatabaseRoutes, StationQuality } from "@slackwater/database";
 import { declaration } from "../../sources/ticon/provenance.ts";
@@ -50,7 +55,29 @@ export const MAX_GAUGE_CODE_KM = 2;
  */
 export const MAX_COPY_KM = 0.05;
 
-export type Evidence = "provenance" | "copy" | "gauge" | "proximity";
+/**
+ * The farthest a CHS record's provider twin may sit from it and merge without
+ * review. A CHS record's position is IWLS's; MEDS rounds its gauges to the
+ * minute, about 1.85 km of latitude, so a twin can sit farther off. Of the
+ * 159 MEDS records named as their CHS station within 1 km, every one carries
+ * that station's IWLS number. This project's definition.
+ */
+export const MAX_TWIN_KM = 1;
+/** The farthest a provider record of a CHS record's name is put to a person. */
+export const MAX_TWIN_REVIEW_KM = 5;
+
+const CHS = "Canadian Hydrographic Service";
+
+/**
+ * A CHS record: identity only, a name and a position this repo publishes,
+ * with its predictions fetched from CHS at runtime. A station holding one is
+ * a curated station.
+ */
+export const isCurated = (station: { source?: { name: string } }) =>
+  station.source?.name === CHS;
+
+export type Evidence =
+  "provenance" | "copy" | "gauge" | "curated" | "proximity";
 
 export interface MergeMember {
   id: string;
@@ -73,6 +100,9 @@ export interface MergeGroup {
   primary: string;
   /** Whether the primary comes from an authoritative source, whose geography the station takes. */
   authoritative: boolean;
+  /** The CHS record the station is named for, whose slug, curated fields and
+   *  geography it keeps. */
+  curated?: string;
   /** Every published slug in the group; the first's station file survives. */
   slugs: string[];
   members: MergeMember[];
@@ -133,6 +163,19 @@ function nameKeys(name: string): string[] {
   return [...keys];
 }
 
+/**
+ * A name's keys for matching a CHS record to its provider twin. MEDS appends
+ * the province to some names ("La Grande Riviere Pq", "Wadhams BC"), which
+ * says nothing about which gauge it is.
+ */
+export const twinKeys = (name: string) =>
+  nameKeys(
+    name.replace(
+      /[\s,]+(bc|b\.c\.|pq|qc|nb|ns|nl|nf|pe|pei|nu|nt|yt|on|mb)\.?$/i,
+      "",
+    ),
+  );
+
 const byCodepoint = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 const shortestSlug = (a: string, b: string) =>
   a.length - b.length || byCodepoint(a, b);
@@ -170,6 +213,16 @@ export function planMerges(
         return station && isAuthoritative(station);
       }),
     );
+  // And the CHS records, so no link joins two curated stations.
+  const curatedIds = new Map<string, string[]>();
+  for (const { slug, station_ids } of routes.tide)
+    curatedIds.set(
+      slug,
+      station_ids.filter((id) => {
+        const station = byId.get(id);
+        return station && isCurated(station);
+      }),
+    );
   const evidence = new Map<string, { evidence: Evidence; target: string }>();
   const refused: RefusedLink[] = [];
   const join = (id: string, target: string, kind: Evidence) => {
@@ -178,18 +231,26 @@ export function planMerges(
     const [ra, rb] = [find(a), find(b)];
     if (ra !== rb) {
       const [ia, ib] = [authorities.get(ra)!, authorities.get(rb)!];
-      if (ia.length && ib.length) {
+      const [ca, cb] = [curatedIds.get(ra)!, curatedIds.get(rb)!];
+      const both =
+        ia.length && ib.length
+          ? [...ia, ...ib]
+          : ca.length && cb.length
+            ? [...ca, ...cb]
+            : undefined;
+      if (both) {
         // The gauge pass and quality's link can both try one pair.
         if (!refused.some((r) => r.id === id && r.target === target))
           refused.push({
             id,
             target,
-            reason: `would join ${[...ia, ...ib].sort().join(" and ")}`,
+            reason: `would join ${both.sort().join(" and ")}`,
           });
         return;
       }
       parent.set(ra, rb);
       authorities.set(rb, [...ia, ...ib]);
+      curatedIds.set(rb, [...ca, ...cb]);
     }
     if (!evidence.has(id)) evidence.set(id, { evidence: kind, target });
   };
@@ -314,6 +375,42 @@ export function planMerges(
   }
 
   joinAll("gauge");
+
+  // A CHS record joins the provider station of its name it sits beside. Its
+  // position is the one IWLS publishes for the gauge, and MEDS, which relays
+  // CHS's gauges into TICON, names the gauge as CHS does. Two provider
+  // stations of its name, or one farther than MAX_TWIN_KM, wait for a person,
+  // as does a provider station two CHS records claim.
+  // ponytail: every CHS record against every record; a spatial index if this
+  // grows past seconds.
+  const rootOf = (id: string) => find(slugOf.get(id)!);
+  const twins = stations.filter(isCurated).flatMap((record) => {
+    if (!slugOf.has(record.id)) return [];
+    const names = twinKeys(record.name ?? "");
+    const near = stations.filter(
+      (other) =>
+        !isCurated(other) &&
+        slugOf.has(other.id) &&
+        rootOf(other.id) !== rootOf(record.id) &&
+        km(record, other) <= MAX_TWIN_REVIEW_KM &&
+        twinKeys(other.name ?? "").some((key) => names.includes(key)),
+    );
+    return near.length ? [{ record, near }] : [];
+  });
+  const claims = new Map<string, number>();
+  for (const { near } of twins)
+    for (const root of new Set(near.map(({ id }) => rootOf(id))))
+      claims.set(root, (claims.get(root) ?? 0) + 1);
+  for (const { record, near } of twins) {
+    const roots = new Set(near.map(({ id }) => rootOf(id)));
+    const sure =
+      roots.size === 1 &&
+      claims.get([...roots][0]!) === 1 &&
+      near.every((other) => km(record, other) <= MAX_TWIN_KM);
+    if (confident && !sure) continue;
+    for (const other of near) join(other.id, record.id, "curated");
+  }
+
   joinAll("proximity");
 
   const slugsByRoot = new Map<string, string[]>();
@@ -373,7 +470,12 @@ export function planMerges(
         const i = ra.findIndex((value, index) => value !== rb[index]);
         return i >= 0 ? ra[i]! - rb[i]! : byCodepoint(a, b);
       })[0]!;
-    const survivor = best([...slugs, ...held]);
+    // A curated station keeps its CHS record's slug: the name a person
+    // chose for it, which a provider's suffixed slug only approximates.
+    const curated = records.find(isCurated);
+    const survivor = curated
+      ? slugOf.get(curated.id)!
+      : best([...slugs, ...held]);
     // The station file of the published slug the survivor is, or ranks best,
     // carries the merged station.
     const carrier = slugs.includes(survivor) ? survivor : best(slugs);
@@ -393,6 +495,7 @@ export function planMerges(
       survivor,
       primary: primary.id,
       authoritative: isAuthoritative(primary),
+      ...(curated ? { curated: curated.id } : {}),
       slugs,
       members,
     });
@@ -434,4 +537,50 @@ export function selectMerges(
       claimed.set(slug, group.survivor);
     }
   return groups;
+}
+
+export interface SeparatedTwin {
+  curated: string;
+  twin: string;
+  km: number;
+  kind: "tide" | "current";
+}
+
+/**
+ * Every CHS record with a provider record of the same kind and name within
+ * MAX_TWIN_KM on another route: one place published as two stations, which
+ * `npm run validate` refuses.
+ */
+export function separatedTwins(
+  stations: ResolvedStation[],
+  routes: DatabaseRoutes,
+): SeparatedTwin[] {
+  const found: SeparatedTwin[] = [];
+  for (const kind of ["tide", "current"] as const) {
+    const slugOf = new Map<string, string>();
+    for (const { slug, station_ids } of routes[kind])
+      for (const id of station_ids) slugOf.set(id, slug);
+    const routed = stations.filter(
+      (station) => (station.kind ?? "tide") === kind && slugOf.has(station.id),
+    );
+    for (const record of routed.filter(isCurated)) {
+      const names = twinKeys(record.name ?? "");
+      for (const other of routed) {
+        if (isCurated(other) || slugOf.get(other.id) === slugOf.get(record.id))
+          continue;
+        const apart = km(record, other);
+        if (
+          apart <= MAX_TWIN_KM &&
+          twinKeys(other.name ?? "").some((key) => names.includes(key))
+        )
+          found.push({
+            curated: record.id,
+            twin: other.id,
+            km: Number(apart.toFixed(3)),
+            kind,
+          });
+      }
+    }
+  }
+  return found;
 }

@@ -71,7 +71,7 @@ const out = [
   "",
   "## Confident",
   "",
-  "Declared provenance, a CMEMS copy of the one station of its name within 50 m whose M2 agrees, or a gauge code shared within 2 km whose M2 agrees. `npm run merge` makes these.",
+  "Declared provenance, a CMEMS copy of the one station of its name within 50 m whose M2 agrees, a gauge code shared within 2 km whose M2 agrees, or a CHS record and the one provider station of its name within 1 km. `npm run merge` makes these.",
   "",
   ...confident.groups.map(line),
   "",
@@ -108,19 +108,23 @@ if (apply >= 0) {
     const primary = byId.get(group.primary)!;
     // An authoritative primary's geography is right; a relay's can be the
     // relaying agency's country, so the station keeps the one it published.
-    const geography = group.authoritative
-      ? {
-          country: primary.country_code,
-          ...(primary.region_code ? { region: primary.region_code } : {}),
-        }
-      : {
-          country: survivor.country,
-          ...(survivor.region ? { region: survivor.region } : {}),
-        };
+    // A curated station keeps its own, which its file already holds.
+    const geography =
+      group.authoritative && !group.curated
+        ? {
+            country: primary.country_code,
+            ...(primary.region_code ? { region: primary.region_code } : {}),
+          }
+        : {
+            country: survivor.country,
+            ...(survivor.region ? { region: survivor.region } : {}),
+          };
     const merged = await mergeStationFiles(
       survivor,
       absorbed,
-      files.find(({ sources }) => sources.includes(group.primary))!,
+      files.find(({ sources }) =>
+        sources.includes(group.curated ?? group.primary),
+      )!,
       geography,
       root,
       group.survivor,

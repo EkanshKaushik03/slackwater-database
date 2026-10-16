@@ -1,6 +1,11 @@
 import { describe, expect, test } from "vitest";
 import type { StationQuality } from "@slackwater/database";
-import { planMerges, selectMerges, type MergeGroup } from "../merges.ts";
+import {
+  planMerges,
+  selectMerges,
+  separatedTwins,
+  type MergeGroup,
+} from "../merges.ts";
 import type { ResolvedStation } from "../metadata.ts";
 
 const NOAA = "US National Oceanic and Atmospheric Administration";
@@ -697,5 +702,273 @@ describe("selectMerges", () => {
     expect(() => selectMerges([], [], ["--dry-run"])).toThrow(
       /no review group/,
     );
+  });
+});
+
+describe("curated records and their provider twins", () => {
+  const CHS = "Canadian Hydrographic Service";
+  // A CHS record carries identity only: a name and a position, no harmonics.
+  const curated = (
+    id: string,
+    latitude: number,
+    name: string,
+    longitude = -124.93,
+  ): ResolvedStation =>
+    ({
+      id,
+      name,
+      latitude,
+      longitude,
+      type: "reference",
+      source: { name: CHS, id },
+      harmonic_constituents: [],
+    }) as unknown as ResolvedStation;
+  const relay = (id: string, latitude: number, name: string, m2 = 0.9) => ({
+    ...station(id, latitude, m2, name),
+    longitude: -124.93,
+  });
+  const run = (
+    records: ResolvedStation[],
+    confident: boolean,
+    slugs: Record<string, string[]> = Object.fromEntries(
+      records.map(({ id }) => [id.replace(/^\w+\//, ""), [id]]),
+    ),
+  ) =>
+    planMerges(
+      records,
+      {
+        tide: Object.entries(slugs).map(([slug, station_ids]) => ({
+          slug,
+          station_ids,
+        })),
+        current: [],
+      },
+      new Map(
+        records
+          .filter(({ id }) => !id.startsWith("chs-"))
+          .map(({ id }) => [id, accepted(id)]),
+      ),
+      { confident },
+    );
+  // 0.0013° of latitude is about 145 m, 0.009° about 1 km.
+  const comox = curated("chs-comox", 49.67, "Comox");
+  const twin = relay("ticon/comox_bc-7965-can-meds", 49.6713, "Comox");
+
+  test("a curated record joins the one provider station of its name within 1 km", () => {
+    const plan = run([comox, twin], true, {
+      comox: ["chs-comox"],
+      "comox-bc": [twin.id],
+    });
+    expect(plan.groups).toHaveLength(1);
+    const [group] = plan.groups;
+    // The curated record's slug survives and its station file carries both.
+    expect(group?.survivor).toBe("comox");
+    expect(group?.slugs).toEqual(["comox", "comox-bc"]);
+    expect(group?.curated).toBe("chs-comox");
+    // The provider record stays, because it carries the harmonics.
+    expect(group?.primary).toBe(twin.id);
+    expect(group?.members.find(({ id }) => id === twin.id)).toMatchObject({
+      evidence: "curated",
+      target: "chs-comox",
+    });
+  });
+
+  test("the curated slug wins over a shorter provider slug", () => {
+    const seal = curated("chs-seal-cove-3", 54.3, "Seal Cove");
+    const plan = run(
+      [seal, relay("ticon/seal_cove_bc-9360-can-meds", 54.301, "Seal Cove")],
+      true,
+      {
+        "seal-cove-prince-rupert-bc": ["chs-seal-cove-3"],
+        "seal-cove-bc": ["ticon/seal_cove_bc-9360-can-meds"],
+      },
+    );
+    expect(plan.groups[0]?.survivor).toBe("seal-cove-prince-rupert-bc");
+    expect(plan.groups[0]?.slugs[0]).toBe("seal-cove-prince-rupert-bc");
+  });
+
+  test("a provider's province suffix and punctuation do not hide the name", () => {
+    const plan = run(
+      [
+        curated("chs-woodward-s-landing", 49.12, "Woodward's Landing"),
+        relay(
+          "ticon/woodwards_landing_bc-7610-can-meds",
+          49.121,
+          "Woodwards Landing BC",
+        ),
+        curated("chs-la-grande-riviere", 48.4, "La Grande Rivière"),
+        relay(
+          "ticon/la_grande_rivierepq-64680-can-meds",
+          48.4,
+          "La Grande Riviere Pq",
+        ),
+      ],
+      true,
+    );
+    expect(plan.groups).toHaveLength(2);
+  });
+
+  test("another name or more than 1 km leaves a pair to a person", () => {
+    const named = run(
+      [
+        curated("chs-lax-kw-alaams", 54.56, "Lax Kw'alaams"),
+        relay("ticon/port_simpson_bc-9390-can-meds", 54.5606, "Port Simpson"),
+      ],
+      false,
+    );
+    expect(named.groups).toEqual([]);
+    const far = [
+      curated("chs-steveston", 49.12, "Steveston"),
+      relay("ticon/steveston_bc-7607-can-meds", 49.1298, "Steveston"),
+    ];
+    expect(run(far, true).groups).toEqual([]);
+    expect(run(far, false).groups).toHaveLength(1);
+    // Past 5 km a shared name is a namesake, not a review.
+    const namesake = [
+      curated("chs-mill-cove", 49.12, "Mill Cove"),
+      relay("ticon/mill_cove-475-can-meds", 49.2, "Mill Cove"),
+    ];
+    expect(run(namesake, false).groups).toEqual([]);
+  });
+
+  test("two provider stations of its name leave the choice to a person", () => {
+    const records = [
+      curated("chs-bamfield", 48.836, "Bamfield"),
+      relay("ticon/bamfield-541-can-uhslc_fd", 48.8395, "Bamfield"),
+      relay("ticon/bamfield_bc-8545-can-meds", 48.8312, "Bamfield"),
+    ];
+    expect(run(records, true).groups).toEqual([]);
+    expect(run(records, false).groups[0]?.members).toHaveLength(3);
+  });
+
+  test("provider stations already one route are one twin", () => {
+    const records = [
+      curated("chs-halifax", 44.667, "Halifax"),
+      relay("ticon/halifax-275-can-uhslc_fd", 44.6745, "Halifax"),
+      relay("ticon/halifax-275a-can-uhslc_rq", 44.6745, "Halifax"),
+    ];
+    const plan = run(records, true, {
+      halifax: ["chs-halifax"],
+      "halifax-07": [records[1]!.id, records[2]!.id],
+    });
+    expect(plan.groups[0]?.slugs).toEqual(["halifax", "halifax-07"]);
+  });
+
+  test("never joins two curated records", () => {
+    const records = [
+      curated("chs-esquimalt-harbour", 48.43, "Esquimalt Harbour"),
+      curated("chs-esquimalt-harbour-2", 48.4305, "Esquimalt Harbour"),
+      relay(
+        "ticon/esquimalt_harbour_bc-7109-can-meds",
+        48.4302,
+        "Esquimalt Harbour",
+      ),
+    ];
+    expect(run(records, true).groups).toEqual([]);
+    const review = run(records, false);
+    expect(review.groups).toHaveLength(1);
+    expect(
+      review.groups[0]!.members.filter(({ id }) => id.startsWith("chs-")),
+    ).toHaveLength(1);
+    expect(review.refused.map(({ reason }) => reason)).toEqual([
+      "would join chs-esquimalt-harbour and chs-esquimalt-harbour-2",
+    ]);
+  });
+
+  test("a proximity link never joins two curated records either", () => {
+    const records = [
+      curated("chs-a", 48.43, "Alpha"),
+      curated("chs-b", 48.44, "Bravo"),
+      relay("ticon/alpha-1-can-meds", 48.43, "Alpha"),
+      relay("ticon/bravo-2-can-meds", 48.44, "Bravo"),
+    ];
+    const plan = planMerges(
+      records,
+      {
+        tide: [
+          { slug: "alpha", station_ids: ["chs-a", records[2]!.id] },
+          { slug: "bravo", station_ids: ["chs-b", records[3]!.id] },
+        ],
+        current: [],
+      },
+      new Map([
+        [records[2]!.id, accepted(records[2]!.id)],
+        [records[3]!.id, duplicate(records[3]!.id, records[2]!.id)],
+      ]),
+    );
+    expect(plan.groups).toEqual([]);
+  });
+});
+
+describe("separatedTwins", () => {
+  const CHS = "Canadian Hydrographic Service";
+  const record = (
+    id: string,
+    latitude: number,
+    name: string,
+    kind: "tide" | "current" = "tide",
+  ) =>
+    ({
+      id,
+      name,
+      kind,
+      latitude,
+      longitude: -124.93,
+      source: { name: id.startsWith("chs-") ? CHS : "TICON-4", id },
+    }) as unknown as ResolvedStation;
+  const comox = record("chs-comox", 49.67, "Comox");
+  const twin = record("ticon/comox_bc-7965-can-meds", 49.6713, "Comox");
+
+  test("names a curated record and a provider twin on separate routes", () => {
+    expect(
+      separatedTwins([comox, twin], {
+        tide: [
+          { slug: "comox", station_ids: [comox.id] },
+          { slug: "comox-bc", station_ids: [twin.id] },
+        ],
+        current: [],
+      }),
+    ).toEqual([
+      { curated: "chs-comox", twin: twin.id, km: 0.145, kind: "tide" },
+    ]);
+  });
+
+  test("passes a pair on one route, another kind, another name, or farther than 1 km", () => {
+    const routes = (...ids: string[][]) => ({
+      tide: ids.map((station_ids, i) => ({ slug: `s${i}`, station_ids })),
+      current: [],
+    });
+    expect(separatedTwins([comox, twin], routes([comox.id, twin.id]))).toEqual(
+      [],
+    );
+    const current = record("ticon/comox-1-can-meds", 49.67, "Comox", "current");
+    expect(
+      separatedTwins([comox, current], {
+        tide: [{ slug: "comox", station_ids: [comox.id] }],
+        current: [{ slug: "comox", station_ids: [current.id] }],
+      }),
+    ).toEqual([]);
+    const other = record("ticon/lazo-1-can-meds", 49.67, "Lazo");
+    const far = record("ticon/comox-2-can-meds", 49.68, "Comox");
+    expect(
+      separatedTwins(
+        [comox, other, far],
+        routes([comox.id], [other.id], [far.id]),
+      ),
+    ).toEqual([]);
+  });
+
+  test("two provider records of one name are not its concern", () => {
+    const a = record("ticon/comox-1-can-meds", 49.67, "Comox");
+    const b = record("ticon/comox-2-can-uhslc_fd", 49.67, "Comox");
+    expect(
+      separatedTwins([a, b], {
+        tide: [
+          { slug: "a", station_ids: [a.id] },
+          { slug: "b", station_ids: [b.id] },
+        ],
+        current: [],
+      }),
+    ).toEqual([]);
   });
 });
