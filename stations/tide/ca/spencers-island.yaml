@@ -1,9 +1,25 @@
 region: CA-NS
 sources:
   - chs-spencers-island
+  - ticon/spencers_island-242-can-meds
+redirect_from:
+  - /tides/ca/ns/spencers-island-07/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-spencers-island:
       position: [45.35476, -64.710035]
       coastline: unverifiable
+    ticon/spencers_island-242-can-meds:
+      position: [45.33, -64.7]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 97
+        factors:
+          epoch: 1
+          recency: 0.82
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

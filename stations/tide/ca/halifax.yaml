@@ -1,9 +1,59 @@
 region: CA-NS
 sources:
   - chs-halifax
+  - ticon/halifax-275-can-uhslc_fd
+  - ticon/halifax-275a-can-uhslc_rq
+  - ticon/halifax-490-can-meds
+redirect_from:
+  - /tides/ca/ns/halifax-07/
+  - /tides/ca/ns/halifax-ticon-halifax-275a-can-uhslc-rq/
+  - /tides/ca/ns/halifax-ticon-halifax-490-can-meds/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-halifax:
       position: [44.65914, -63.583386]
       coastline: unverifiable
+    ticon/halifax-275-can-uhslc_fd:
+      position: [44.667, -63.583]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.97
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+    ticon/halifax-275a-can-uhslc_rq:
+      position: [44.667, -63.583]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/halifax-275-can-uhslc_fd
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.008
+    ticon/halifax-490-can-meds:
+      position: [44.67, -63.58]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/halifax-275-can-uhslc_fd
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.008

@@ -1,9 +1,25 @@
 region: CA-NS
 sources:
   - chs-havre-boucher
+  - ticon/havre_boucher-1576-can-meds
+redirect_from:
+  - /tides/ca/ns/havre-boucher-07/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-havre-boucher:
       position: [45.68962, -61.527238]
       coastline: unverifiable
+    ticon/havre_boucher-1576-can-meds:
+      position: [45.68, -61.53]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.168
+          recency: 0.29
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.169
