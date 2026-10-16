@@ -1,9 +1,27 @@
 region: CA-BC
 sources:
   - chs-daajing-giids
+  # Queen Charlotte City is Daajing Giids's former name. The MEDS gauge number
+  # is the code IWLS publishes for this station, 259 m away.
+  - ticon/queen_charlotte_city-9850-can-meds
+redirect_from:
+  - /tides/ca/bc/queen-charlotte-city/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-daajing-giids:
       position: [53.252, -132.072]
       coastline: unverifiable
+    ticon/queen_charlotte_city-9850-can-meds:
+      position: [53.25, -132.07]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

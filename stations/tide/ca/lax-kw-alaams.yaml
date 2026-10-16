@@ -1,9 +1,27 @@
 region: CA-BC
 sources:
   - chs-lax-kw-alaams
+  # Port Simpson is Lax Kw'alaams's former name. The MEDS gauge number is the
+  # code IWLS publishes for this station, 64 m away.
+  - ticon/port_simpson_bc-9390-can-meds
+redirect_from:
+  - /tides/ca/bc/port-simpson-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-lax-kw-alaams:
       position: [54.56, -130.431]
       coastline: unverifiable
+    ticon/port_simpson_bc-9390-can-meds:
+      position: [54.56, -130.43]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.423

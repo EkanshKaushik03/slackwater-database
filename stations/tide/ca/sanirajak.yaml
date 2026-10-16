@@ -1,9 +1,27 @@
 region: CA-NU
 sources:
   - chs-sanirajak
+  # Hall Beach is Sanirajak's former name. The MEDS gauge number is the code
+  # IWLS publishes for this station, 134 m away.
+  - ticon/hall_beach-5275-can-meds
+redirect_from:
+  - /tides/ca/nu/hall-beach/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-sanirajak:
       position: [68.75, -81.216667]
       coastline: unverifiable
+    ticon/hall_beach-5275-can-meds:
+      position: [68.75, -81.22]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 0.647
+          recency: 0.56
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

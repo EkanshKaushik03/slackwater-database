@@ -1,9 +1,30 @@
 region: CA-BC
 sources:
   - chs-bamfield
+  # The MEDS gauge number is the code IWLS publishes for this station, 532 m
+  # away. UHSLC's Bamfield relay, 900 m from it in Grappler Inlet, agrees on M2
+  # but declares no originator, so it stays its own station until a person
+  # confirms it is this gauge.
+  - ticon/bamfield_bc-8545-can-meds
+redirect_from:
+  - /tides/ca/bc/bamfield-bc/
+  - /tides/ca/bc/bamfield-trevor-channel/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-bamfield:
       position: [48.836, -125.136]
       coastline: clear
+    ticon/bamfield_bc-8545-can-meds:
+      position: [48.84, -125.14]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.019
