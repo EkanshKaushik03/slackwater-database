@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { evaluateQuality } from "./evaluate-quality.ts";
 import { loadProductionCatalogue } from "./load-catalogue.ts";
+import { separatedTwins } from "./merges.ts";
 import { cleanName } from "./name-cleanup.ts";
 import { classifyPosition } from "./position-audit.ts";
 import {
@@ -109,6 +110,29 @@ assert.deepEqual(
   ),
   [],
   "CHS stations filed outside Canada; move each file to stations/<kind>/ca/",
+);
+
+// A CHS record and a provider record of its kind and name within 1 km are one
+// place, and publish as one station (see planMerges). Each pair left apart on
+// purpose is listed with the reason, and leaves the list when it merges.
+const SEPARATE_TWINS = new Map([
+  [
+    "chs-bamfield ticon/bamfield-541-can-uhslc_fd",
+    "UHSLC's Bamfield sits in Grappler Inlet, 900 m from the MEDS gauge the CHS station holds, and declares no originator; M2 agrees, which two gauges in one inlet would too",
+  ],
+]);
+const twins = separatedTwins(catalogue.stations, catalogue.routes).map(
+  ({ curated, twin }) => `${curated} ${twin}`,
+);
+assert.deepEqual(
+  twins.filter((pair) => !SEPARATE_TWINS.has(pair)),
+  [],
+  "CHS stations publish apart from a provider record of their name within 1 km; merge each pair (npm run report:merges -w packages/stations) or list it in SEPARATE_TWINS with the reason",
+);
+assert.deepEqual(
+  [...SEPARATE_TWINS.keys()].filter((pair) => !twins.includes(pair)),
+  [],
+  "SEPARATE_TWINS lists pairs that no longer publish apart; remove them",
 );
 
 // A published name is a fixed point of the cleanup, or a regeneration rewrites
