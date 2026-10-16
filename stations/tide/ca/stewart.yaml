@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-stewart
+  - ticon/stewart_bc-9475-can-meds
+redirect_from:
+  - /tides/ca/bc/stewart-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-stewart:
       position: [55.9166, -130.01]
       coastline: unverifiable
+    ticon/stewart_bc-9475-can-meds:
+      position: [55.92, -130.01]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.461
+          recency: 0.98
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.034

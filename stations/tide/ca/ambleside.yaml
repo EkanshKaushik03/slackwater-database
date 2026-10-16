@@ -1,9 +1,26 @@
 region: CA-BC
 sources:
   - chs-ambleside
+  - ticon/ambleside_bc-7780-can-meds
+redirect_from:
+  - /tides/ca/bc/ambleside-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-ambleside:
       position: [49.32577, -123.15458]
       coastline: clear
+    ticon/ambleside_bc-7780-can-meds:
+      position: [49.33, -123.16]
+      coastline: ashore
+      metres_inland: 433
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.314
+          recency: 0.98
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.104

@@ -1,9 +1,25 @@
 region: CA-NT
 sources:
   - chs-tuktoyaktuk
+  - ticon/tuktoyaktuk-6485-can-meds
+redirect_from:
+  - /tides/ca/nt/tuktoyaktuk-13/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-tuktoyaktuk:
       position: [69.438226, -132.994402]
       coastline: unverifiable
+    ticon/tuktoyaktuk-6485-can-meds:
+      position: [69.44, -132.99]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

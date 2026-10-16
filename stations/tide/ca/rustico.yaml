@@ -1,9 +1,25 @@
 region: CA-PE
 sources:
   - chs-rustico
+  - ticon/rustico-1915-can-meds
+redirect_from:
+  - /tides/ca/pe/rustico-09/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-rustico:
       position: [46.4560018, -63.2940585]
       coastline: unverifiable
+    ticon/rustico-1915-can-meds:
+      position: [46.47, -63.28]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.7
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.588

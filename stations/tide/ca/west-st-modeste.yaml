@@ -1,9 +1,27 @@
 region: CA-NL
 sources:
   - chs-west-st-modeste
+  # MEDS writes Ste for St. Its gauge number is the code IWLS publishes for this
+  # station, 634 m away.
+  - ticon/west_ste_modeste-2595-can-meds
+redirect_from:
+  - /tides/ca/nl/west-ste-modeste/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-west-st-modeste:
       position: [51.594882, -56.704036]
       coastline: unverifiable
+    ticon/west_ste_modeste-2595-can-meds:
+      position: [51.6, -56.7]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.74
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.416

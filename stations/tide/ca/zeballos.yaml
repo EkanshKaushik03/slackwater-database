@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-zeballos
+  - ticon/zeballos_bc-8670-can-meds
+redirect_from:
+  - /tides/ca/bc/zeballos-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-zeballos:
       position: [49.979, -126.846]
       coastline: clear
+    ticon/zeballos_bc-8670-can-meds:
+      position: [49.98, -126.85]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 80
+        factors:
+          epoch: 0.708
+          recency: 0.67
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.313

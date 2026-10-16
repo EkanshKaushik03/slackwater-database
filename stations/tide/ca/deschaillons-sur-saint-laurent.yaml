@@ -1,9 +1,29 @@
 region: CA-QC
 sources:
   - chs-deschaillons-sur-saint-laurent
+  # MEDS uses the short name. Its gauge number is the code IWLS publishes for
+  # this station, 311 m away.
+  - ticon/deschaillons-3335-can-meds
+redirect_from:
+  - /tides/ca/qc/deschaillons/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-deschaillons-sur-saint-laurent:
       position: [46.561033, -72.106222]
       coastline: unverifiable
+    ticon/deschaillons-3335-can-meds:
+      position: [46.56, -72.11]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.126
+        issues:
+          - MHWS (2.746) < MHW (2.787)

@@ -1,9 +1,25 @@
 region: CA-PE
 sources:
   - chs-cape-tormentine
+  - ticon/cape_tormentine-1790-can-meds
+redirect_from:
+  - /tides/ca/pe/cape-tormentine-09/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-cape-tormentine:
       position: [46.134676, -63.776757]
       coastline: unverifiable
+    ticon/cape_tormentine-1790-can-meds:
+      position: [46.13, -63.77]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 91
+        factors:
+          epoch: 1
+          recency: 0.9
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.496

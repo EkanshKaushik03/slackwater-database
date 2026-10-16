@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-bella-coola
+  - ticon/bella_coola_bc-8937-can-meds
+redirect_from:
+  - /tides/ca/bc/bella-coola-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-bella-coola:
       position: [52.374, -126.796]
       coastline: unverifiable
+    ticon/bella_coola_bc-8937-can-meds:
+      position: [52.37, -126.8]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 0.601
+          recency: 0.41
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

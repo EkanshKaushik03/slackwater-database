@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-wiah-point
+  - ticon/wiah_point_bc-9940-can-meds
+redirect_from:
+  - /tides/ca/bc/wiah-point-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-wiah-point:
       position: [54.112, -132.31]
       coastline: clear
+    ticon/wiah_point_bc-9940-can-meds:
+      position: [54.11, -132.31]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.93
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.305

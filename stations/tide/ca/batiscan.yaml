@@ -1,9 +1,29 @@
 region: CA-QC
 sources:
   - chs-batiscan
+  - ticon/batiscan-3345-can-meds
+redirect_from:
+  - /tides/ca/qc/batiscan-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-batiscan:
       position: [46.500333, -72.245833]
       coastline: unverifiable
+    ticon/batiscan-3345-can-meds:
+      position: [46.5, -72.25]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.192
+        issues:
+          - MHWS (1.787) < MHW (1.801)
+          - "Seasonal curve peak (0.662m) exceeds the principal tide M2+S2+K1+O1 (0.519m): the yearly swing exceeds the daily one"

@@ -1,9 +1,28 @@
 region: CA-BC
 sources:
   - chs-finnerty-cove
+  - ticon/finnerty_cove_bc-7140-can-meds
+redirect_from:
+  - /tides/ca/bc/finnerty-cove-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-finnerty-cove:
       position: [48.473583, -123.296083]
       coastline: clear
+    ticon/finnerty_cove_bc-7140-can-meds:
+      position: [48.47, -123.3]
+      coastline: ashore
+      metres_inland: 433
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.416
+          recency: 0.49
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.111
+        issues:
+          - MHWS (2.57) < MHW (2.685)

@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-port-alfred
+  - ticon/port_alfred-3460-can-meds
+redirect_from:
+  - /tides/ca/qc/port-alfred-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-port-alfred:
       position: [48.3339, -70.869267]
       coastline: unverifiable
+    ticon/port_alfred-3460-can-meds:
+      position: [48.33, -70.87]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.347

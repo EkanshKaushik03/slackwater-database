@@ -1,9 +1,25 @@
 region: CA-NS
 sources:
   - chs-port-hawkesbury
+  - ticon/port_hawkesbury-575-can-meds
+redirect_from:
+  - /tides/ca/ns/port-hawkesbury-07/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-port-hawkesbury:
       position: [45.614417, -61.365637]
       coastline: unverifiable
+    ticon/port_hawkesbury-575-can-meds:
+      position: [45.62, -61.37]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.517
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.044

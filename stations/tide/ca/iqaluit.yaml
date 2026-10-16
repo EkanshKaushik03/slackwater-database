@@ -1,9 +1,25 @@
 region: CA-NU
 sources:
   - chs-iqaluit
+  - ticon/iqaluit-4140-can-meds
+redirect_from:
+  - /tides/ca/nu/iqaluit-14/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-iqaluit:
       position: [63.712667, -68.5025]
       coastline: unverifiable
+    ticon/iqaluit-4140-can-meds:
+      position: [63.71, -68.5]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 0.754
+          recency: 0.51
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

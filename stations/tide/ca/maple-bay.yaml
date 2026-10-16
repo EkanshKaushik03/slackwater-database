@@ -1,9 +1,28 @@
 region: CA-BC
 sources:
   - chs-maple-bay
+  - ticon/maple_bay_bc-7315-can-meds
+redirect_from:
+  - /tides/ca/bc/maple-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-maple-bay:
       position: [48.8157, -123.60961]
       coastline: clear
+    ticon/maple_bay_bc-7315-can-meds:
+      position: [48.82, -123.61]
+      coastline: ashore
+      metres_inland: 333
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.054
+          recency: 0.44
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.12
+        issues:
+          - MHWS (3.401) < MHW (3.429)

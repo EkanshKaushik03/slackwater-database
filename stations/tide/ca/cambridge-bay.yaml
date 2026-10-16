@@ -1,9 +1,25 @@
 region: CA-NU
 sources:
   - chs-cambridge-bay
+  - ticon/cambridge_bay-6240-can-meds
+redirect_from:
+  - /tides/ca/nu/cambridge-bay-14/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-cambridge-bay:
       position: [69.116667, -105.066667]
       coastline: unverifiable
+    ticon/cambridge_bay-6240-can-meds:
+      position: [69.12, -105.07]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 95
+        factors:
+          epoch: 1
+          recency: 0.59
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

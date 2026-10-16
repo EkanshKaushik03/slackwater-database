@@ -1,9 +1,25 @@
 region: CA-NS
 sources:
   - chs-digby
+  - ticon/digby-325-can-meds
+redirect_from:
+  - /tides/ca/ns/digby-07/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-digby:
       position: [44.626561, -65.753687]
       coastline: unverifiable
+    ticon/digby-325-can-meds:
+      position: [44.63, -65.75]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 1
+          recency: 0.8
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.514

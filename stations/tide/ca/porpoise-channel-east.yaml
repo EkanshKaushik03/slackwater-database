@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-porpoise-channel-east
+  - ticon/porpoise_channel_east-9341-can-meds
+redirect_from:
+  - /tides/ca/bc/porpoise-channel-east-02/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-porpoise-channel-east:
       position: [54.21515, -130.28906]
       coastline: unverifiable
+    ticon/porpoise_channel_east-9341-can-meds:
+      position: [54.22, -130.29]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.554
+          recency: 0.98
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.022

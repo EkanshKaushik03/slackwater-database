@@ -1,9 +1,27 @@
 region: CA-NL
 sources:
   - chs-holyrood-bay
+  - ticon/holyrood_bay-925-can-meds
+redirect_from:
+  - /tides/ca/nl/holyrood-bay-05/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-holyrood-bay:
       position: [47.389127, -53.135356]
       coastline: unverifiable
+    ticon/holyrood_bay-925-can-meds:
+      position: [47.4, -53.14]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 94
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.736
+        issues:
+          - MHHW (0.335) < MHW (0.339)

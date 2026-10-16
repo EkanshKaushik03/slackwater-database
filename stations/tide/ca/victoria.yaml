@@ -8,8 +8,13 @@ provider: chs
 sources:
   - chs-victoria
   - ticon/victoria_bc-543a-can-uhslc_rq
+  # MEDS names the gauge Victoria Harbour. Its gauge number is the code IWLS
+  # publishes for this station, 451 m away, and the originator number UHSLC
+  # records for its Victoria relay.
+  - ticon/victoria_harbour_bc-7120-can-meds
 redirect_from:
   - /tides/ca/bc/victoria-bc/
+  - /tides/ca/bc/victoria-harbour-bc/
   - /tides/ca/bc/victoria-harbour/
 # Written by `npm run stations`. Do not edit.
 computed:
@@ -33,3 +38,19 @@ computed:
         issues:
           - MLWS (1.437) > MLW (1.385)
           - MHWS (2.387) < MHW (2.487)
+    ticon/victoria_harbour_bc-7120-can-meds:
+      position: [48.42, -123.37]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 84
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.011
+        issues:
+          - MLWS (1.447) > MLW (1.446)
+          - MHWS (2.401) < MHW (2.492)

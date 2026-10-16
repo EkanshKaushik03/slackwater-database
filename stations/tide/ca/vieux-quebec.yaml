@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-vieux-quebec
+  - ticon/vieux_quebec-3248-can-meds
+redirect_from:
+  - /tides/ca/qc/vieux-quebec-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-vieux-quebec:
       position: [46.811111, -71.20175]
       coastline: unverifiable
+    ticon/vieux_quebec-3248-can-meds:
+      position: [46.81, -71.2]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 0.857
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.022

@@ -1,9 +1,27 @@
 region: CA-NB
 sources:
   - chs-escuminac
+  # MEDS names the gauge Lower Escuminac. Its gauge number is the code IWLS
+  # publishes for this station, 490 m away.
+  - ticon/lower_escuminac-2000-can-meds
+redirect_from:
+  - /tides/ca/nb/lower-escuminac/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-escuminac:
       position: [47.082241, -64.885565]
       coastline: unverifiable
+    ticon/lower_escuminac-2000-can-meds:
+      position: [47.08, -64.88]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.256

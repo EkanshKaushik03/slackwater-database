@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-portneuf
+  - ticon/portneuf-3300-can-meds
+redirect_from:
+  - /tides/ca/qc/portneuf-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-portneuf:
       position: [46.681167, -71.877167]
       coastline: unverifiable
+    ticon/portneuf-3300-can-meds:
+      position: [46.68, -71.88]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.316

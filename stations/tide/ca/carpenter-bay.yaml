@@ -1,8 +1,25 @@
 sources:
   - chs-carpenter-bay
+  - ticon/carpenter_bay_bc-9717-can-meds
+redirect_from:
+  - /tides/ca/bc/carpenter-bay-bc/
+  - /tides/ca/carpenter-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-carpenter-bay:
       position: [52.24, -131.156]
       coastline: unverifiable
+    ticon/carpenter_bay_bc-9717-can-meds:
+      position: [52.24, -131.16]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0.168
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.222

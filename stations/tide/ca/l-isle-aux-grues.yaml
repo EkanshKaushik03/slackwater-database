@@ -1,9 +1,27 @@
 region: CA-QC
 sources:
   - chs-l-isle-aux-grues
+  # MEDS spells it Lile aux Grues. Its gauge number is the code IWLS publishes
+  # for this station, 531 m away.
+  - ticon/lile_aux_grues-3180-can-meds
+redirect_from:
+  - /tides/ca/qc/lile-aux-grues/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-l-isle-aux-grues:
       position: [47.055333, -70.5315]
       coastline: unverifiable
+    ticon/lile_aux_grues-3180-can-meds:
+      position: [47.06, -70.53]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.49
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.253

@@ -1,9 +1,25 @@
 region: CA-NS
 sources:
   - chs-yarmouth
+  - ticon/yarmouth-365-can-meds
+redirect_from:
+  - /tides/ca/ns/yarmouth-07/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-yarmouth:
       position: [43.832311, -66.124968]
       coastline: unverifiable
+    ticon/yarmouth-365-can-meds:
+      position: [43.83, -66.12]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

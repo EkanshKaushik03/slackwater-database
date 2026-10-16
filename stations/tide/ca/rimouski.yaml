@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-rimouski
+  - ticon/rimouski-2985-can-meds
+redirect_from:
+  - /tides/ca/qc/rimouski-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-rimouski:
       position: [48.478333, -68.513667]
       coastline: unverifiable
+    ticon/rimouski-2985-can-meds:
+      position: [48.48, -68.51]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.107

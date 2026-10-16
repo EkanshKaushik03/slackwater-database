@@ -1,9 +1,25 @@
 region: CA-NS
 sources:
   - chs-murphys-cove
+  - ticon/murphys_cove-500-can-meds
+redirect_from:
+  - /tides/ca/ns/murphys-cove-07/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-murphys-cove:
       position: [44.785651, -62.761954]
       coastline: unverifiable
+    ticon/murphys_cove-500-can-meds:
+      position: [44.78, -62.78]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 82
+        factors:
+          epoch: 0.436
+          recency: 0.44
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

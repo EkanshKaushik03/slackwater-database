@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-whaletown
+  - ticon/whaletown_bc-8038-can-meds
+redirect_from:
+  - /tides/ca/bc/whaletown-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-whaletown:
       position: [50.108, -125.052]
       coastline: clear
+    ticon/whaletown_bc-8038-can-meds:
+      position: [50.11, -125.05]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 69
+        factors:
+          epoch: 0.107
+          recency: 0.93
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.247

@@ -34,7 +34,13 @@ describe("station routes", () => {
     expect(stationRouteBySlug("tide", "victoria")?.stationIds).toEqual([
       "chs-victoria",
       "ticon/victoria_bc-543a-can-uhslc_rq",
+      "ticon/victoria_harbour_bc-7120-can-meds",
     ]);
+    // A CHS station keeps its slug and takes its MEDS twin's as a redirect.
+    expect(stationRouteBySlug("tide", "comox")).toMatchObject({
+      stationIds: ["chs-comox", "ticon/comox_bc-7965-can-meds"],
+      formerPaths: ["/tides/ca/bc/comox-bc/"],
+    });
     expect(stationRouteBySlug("tide", "victoria")?.path).toBe(
       "/tides/ca/bc/victoria/",
     );

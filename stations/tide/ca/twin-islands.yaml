@@ -1,6 +1,9 @@
 region: CA-BC
 sources:
   - chs-twin-islands
+  - ticon/twin_islands_bc-7892-can-meds
+redirect_from:
+  - /tides/ca/bc/twin-islands-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -8,3 +11,17 @@ computed:
       position: [50.03, -124.93]
       coastline: ashore
       metres_inland: 256
+    ticon/twin_islands_bc-7892-can-meds:
+      position: [50.03, -124.93]
+      coastline: ashore
+      metres_inland: 256
+      quality:
+        accepted: true
+        score: 63
+        factors:
+          epoch: 0.06
+          recency: 0.42
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.247

@@ -1,9 +1,25 @@
 region: CA-NS
 sources:
   - chs-hubbards
+  - ticon/hubbards-480-can-meds
+redirect_from:
+  - /tides/ca/ns/hubbards-07/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-hubbards:
       position: [44.637327, -64.059586]
       coastline: unverifiable
+    ticon/hubbards-480-can-meds:
+      position: [44.63, -64.07]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 62
+        factors:
+          epoch: 0.079
+          recency: 0.42
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.116

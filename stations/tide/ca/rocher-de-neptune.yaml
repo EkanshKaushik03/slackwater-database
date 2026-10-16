@@ -1,9 +1,27 @@
 region: CA-QC
 sources:
   - chs-rocher-de-neptune
+  # MEDS drops the "de". Its gauge number is the code IWLS publishes for this
+  # station, 265 m away.
+  - ticon/rocher_neptune-3071-can-meds
+redirect_from:
+  - /tides/ca/qc/rocher-neptune/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-rocher-de-neptune:
       position: [47.161667, -70.6075]
       coastline: unverifiable
+    ticon/rocher_neptune-3071-can-meds:
+      position: [47.16, -70.61]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 80
+        factors:
+          epoch: 0.668
+          recency: 0.91
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.217

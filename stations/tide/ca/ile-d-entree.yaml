@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-ile-d-entree
+  - ticon/ile_dentree-1966-can-meds
+redirect_from:
+  - /tides/ca/qc/ile-dentree/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-ile-d-entree:
       position: [47.277444, -61.718639]
       coastline: unverifiable
+    ticon/ile_dentree-1966-can-meds:
+      position: [47.28, -61.72]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.261
+          recency: 0.81
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.307

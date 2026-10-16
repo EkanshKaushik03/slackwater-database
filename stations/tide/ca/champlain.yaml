@@ -1,9 +1,29 @@
 region: CA-QC
 sources:
   - chs-champlain
+  - ticon/champlain-3350-can-meds
+redirect_from:
+  - /tides/ca/qc/champlain-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-champlain:
       position: [46.440167, -72.339667]
       coastline: unverifiable
+    ticon/champlain-3350-can-meds:
+      position: [46.44, -72.34]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 83
+        factors:
+          epoch: 1
+          recency: 0.7
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.108
+        issues:
+          - MHWS (1.606) < MHW (1.625)
+          - "Seasonal curve peak (0.623m) exceeds the principal tide M2+S2+K1+O1 (0.392m): the yearly swing exceeds the daily one"

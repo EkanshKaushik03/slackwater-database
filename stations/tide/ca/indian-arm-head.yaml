@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-indian-arm-head
+  - ticon/indian_arm_head_bc-7774-can-meds
+redirect_from:
+  - /tides/ca/bc/indian-arm-head-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-indian-arm-head:
       position: [49.4618, -122.8861]
       coastline: clear
+    ticon/indian_arm_head_bc-7774-can-meds:
+      position: [49.46, -122.89]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.321
+          recency: 0.98
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.379

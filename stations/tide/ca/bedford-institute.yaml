@@ -1,9 +1,25 @@
 region: CA-NS
 sources:
   - chs-bedford-institute
+  - ticon/bedford_institute-491-can-meds
+redirect_from:
+  - /tides/ca/ns/bedford-institute-07/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-bedford-institute:
       position: [44.682262, -63.613239]
       coastline: unverifiable
+    ticon/bedford_institute-491-can-meds:
+      position: [44.68, -63.62]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.065
