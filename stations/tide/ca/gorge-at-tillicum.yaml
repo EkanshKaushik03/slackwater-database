@@ -1,9 +1,30 @@
 region: CA-BC
 sources:
   - chs-gorge-at-tillicum
+  - ticon/gorge_at_tillicum_bc-7123-can-meds
+redirect_from:
+  - /tides/ca/bc/gorge-at-tillicum-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-gorge-at-tillicum:
       position: [48.44775, -123.403583]
       coastline: clear
+    ticon/gorge_at_tillicum_bc-7123-can-meds:
+      position: [48.45, -123.4]
+      coastline: ashore
+      metres_inland: 333
+      quality:
+        accepted: true
+        score: 60
+        factors:
+          epoch: 0.059
+          recency: 0.86
+          source: 0.96
+          quality: 1
+          amplitude: 0.75
+          coverage: 0.071
+        issues:
+          - MLWS (0.607) > MLW (0.423)
+          - MHWS (0.985) < MHW (1.221)
+          - K2 amplitude (0.0518) exceeds S2 (0.0331)

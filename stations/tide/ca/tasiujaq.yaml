@@ -1,8 +1,24 @@
 sources:
   - chs-tasiujaq
+  - ticon/tasiujaq-4315-can-meds
+redirect_from:
+  - /tides/ca/tasiujaq-ticon-tasiujaq-4315-can-meds/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-tasiujaq:
       position: [58.733333, -69.833333]
       coastline: unverifiable
+    ticon/tasiujaq-4315-can-meds:
+      position: [58.73, -69.83]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.205
+          recency: 0.76
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

@@ -1,9 +1,25 @@
 region: CA-NL
 sources:
   - chs-hopedale
+  - ticon/hopedale-1405-can-meds
+redirect_from:
+  - /tides/ca/nl/hopedale-05/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-hopedale:
       position: [55.4541256, -60.2228018]
       coastline: unverifiable
+    ticon/hopedale-1405-can-meds:
+      position: [55.45, -60.22]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 88
+        factors:
+          epoch: 0.639
+          recency: 0.58
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

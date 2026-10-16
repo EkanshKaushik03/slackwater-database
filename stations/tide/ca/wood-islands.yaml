@@ -1,9 +1,25 @@
 region: CA-PE
 sources:
   - chs-wood-islands
+  - ticon/wood_islands-1680-can-meds
+redirect_from:
+  - /tides/ca/pe/wood-islands-09/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-wood-islands:
       position: [45.952878, -62.749395]
       coastline: unverifiable
+    ticon/wood_islands-1680-can-meds:
+      position: [45.95, -62.75]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.179
+          recency: 0.81
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.605

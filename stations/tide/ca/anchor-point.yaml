@@ -1,9 +1,25 @@
 region: CA-NL
 sources:
   - chs-anchor-point
+  - ticon/anchor_point-2637-can-meds
+redirect_from:
+  - /tides/ca/nl/anchor-point-05/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-anchor-point:
       position: [51.233626, -56.797733]
       coastline: unverifiable
+    ticon/anchor_point-2637-can-meds:
+      position: [51.23, -56.8]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0.247
+          recency: 0.74
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.262

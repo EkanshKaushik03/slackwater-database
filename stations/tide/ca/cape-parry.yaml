@@ -1,8 +1,24 @@
 sources:
   - chs-cape-parry
+  - ticon/cape_parry-6360-can-meds
+redirect_from:
+  - /tides/ca/cape-parry-ticon-cape-parry-6360-can-meds/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-cape-parry:
       position: [70.15, -124.666667]
       coastline: unverifiable
+    ticon/cape_parry-6360-can-meds:
+      position: [70.15, -124.67]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 92
+        factors:
+          epoch: 0.85
+          recency: 0.56
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

@@ -1,9 +1,27 @@
 region: CA-BC
 sources:
   - chs-esquimalt-government-hbr
+  - ticon/esquimalt_government_hbr_bc-7110-can-meds
+redirect_from:
+  - /tides/ca/bc/esquimalt-government-hbr-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-esquimalt-government-hbr:
       position: [48.432166, -123.438533]
       coastline: clear
+    ticon/esquimalt_government_hbr_bc-7110-can-meds:
+      position: [48.43, -123.44]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.361
+          recency: 0.53
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.027
+        issues:
+          - MHWS (2.324) < MHW (2.37)

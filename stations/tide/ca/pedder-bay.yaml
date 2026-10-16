@@ -1,9 +1,28 @@
 region: CA-BC
 sources:
   - chs-pedder-bay
+  - ticon/pedder_bay_bc-7080-can-meds
+redirect_from:
+  - /tides/ca/bc/pedder-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-pedder-bay:
       position: [48.3317, -123.5501]
       coastline: clear
+    ticon/pedder_bay_bc-7080-can-meds:
+      position: [48.33, -123.55]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.289
+          recency: 0.43
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.212
+        issues:
+          - MLWS (1.393) > MLW (1.223)
+          - MHWS (2.277) < MHW (2.44)

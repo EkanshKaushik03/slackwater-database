@@ -1,9 +1,26 @@
 region: CA-BC
 sources:
   - chs-hornby-island
+  - ticon/hornby_island-7953-can-meds
+redirect_from:
+  - /tides/ca/bc/hornby-island-02/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-hornby-island:
       position: [49.49623, -124.676]
       coastline: clear
+    ticon/hornby_island-7953-can-meds:
+      position: [49.5, -124.67]
+      coastline: ashore
+      metres_inland: 433
+      quality:
+        accepted: true
+        score: 70
+        factors:
+          epoch: 0.217
+          recency: 0.45
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.464

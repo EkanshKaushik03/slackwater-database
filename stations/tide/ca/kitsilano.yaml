@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-kitsilano
+  - ticon/kitsilano-7707-can-meds
+redirect_from:
+  - /tides/ca/bc/kitsilano-02/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-kitsilano:
       position: [49.276583, -123.13936]
       coastline: clear
+    ticon/kitsilano-7707-can-meds:
+      position: [49.28, -123.14]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 72
+        factors:
+          epoch: 0.372
+          recency: 0.98
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.049

@@ -1,9 +1,30 @@
 region: CA-NB
 sources:
   - chs-hatfield-point
+  - ticon/hatfield_point-97-can-meds
+redirect_from:
+  - /tides/ca/nb/hatfield-point-04/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-hatfield-point:
       position: [45.613801, -65.912438]
       coastline: unverifiable
+    ticon/hatfield_point-97-can-meds:
+      position: [45.62, -65.92]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 65
+        factors:
+          epoch: 0.199
+          recency: 0.43
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.177
+        issues:
+          - MHHW (1.639) < MHW (1.688)
+          - MHWS (1.608) < MHW (1.688)
+          - "Seasonal curve peak (1.077m) exceeds the principal tide M2+S2+K1+O1 (0.176m): the yearly swing exceeds the daily one"

@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-wadhams
+  - ticon/wadhamsbc-8840-can-meds
+redirect_from:
+  - /tides/ca/bc/wadhams-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-wadhams:
       position: [51.51, -127.524]
       coastline: unverifiable
+    ticon/wadhamsbc-8840-can-meds:
+      position: [51.51, -127.52]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.88
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

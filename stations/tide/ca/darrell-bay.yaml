@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-darrell-bay
+  - ticon/darrell_bay_bc-7808-can-meds
+redirect_from:
+  - /tides/ca/bc/darrell-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-darrell-bay:
       position: [49.669, -123.169]
       coastline: clear
+    ticon/darrell_bay_bc-7808-can-meds:
+      position: [49.67, -123.17]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 73
+        factors:
+          epoch: 0.45
+          recency: 0.98
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.022

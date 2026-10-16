@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-riviere-au-renard
+  - ticon/riviere_au_renard-2330-can-meds
+redirect_from:
+  - /tides/ca/qc/riviere-au-renard-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-riviere-au-renard:
       position: [48.997, -64.3805]
       coastline: unverifiable
+    ticon/riviere_au_renard-2330-can-meds:
+      position: [49, -64.38]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

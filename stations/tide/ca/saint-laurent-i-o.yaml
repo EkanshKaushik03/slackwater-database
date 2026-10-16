@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-saint-laurent-i-o
+  - ticon/saint_laurent_io-3110-can-meds
+redirect_from:
+  - /tides/ca/qc/saint-laurent-io/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-saint-laurent-i-o:
       position: [46.85816667, -71.00333333]
       coastline: unverifiable
+    ticon/saint_laurent_io-3110-can-meds:
+      position: [46.86, -71]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.676
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.202

@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-northwest-bay
+  - ticon/northwest_bay_bc-7938-can-meds
+redirect_from:
+  - /tides/ca/bc/northwest-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-northwest-bay:
       position: [49.303, -124.202]
       coastline: clear
+    ticon/northwest_bay_bc-7938-can-meds:
+      position: [49.3, -124.2]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 61
+        factors:
+          epoch: 0.06
+          recency: 0.42
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.119

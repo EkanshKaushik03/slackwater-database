@@ -1,9 +1,30 @@
 region: CA-NU
 sources:
   - chs-kugluktuk
+  - ticon/kugluktuk-6290-can-meds
+redirect_from:
+  - /tides/ca/nu/kugluktuk-14/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-kugluktuk:
       position: [67.879417, -115.217944]
       coastline: unverifiable
+    ticon/kugluktuk-6290-can-meds:
+      position: [67.88, -115.22]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 85
+        factors:
+          epoch: 0.508
+          recency: 0.56
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1
+        issues:
+          - MLWS (0.278) > MLW (0.236)
+          - MHWS (0.316) < MHW (0.335)
+          - "Seasonal curve peak (0.137m) exceeds the principal tide M2+S2+K1+O1 (0.113m): the yearly swing exceeds the daily one"

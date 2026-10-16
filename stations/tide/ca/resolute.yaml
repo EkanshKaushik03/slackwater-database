@@ -1,8 +1,24 @@
 sources:
   - chs-resolute
+  - ticon/resolute-5560-can-meds
+redirect_from:
+  - /tides/ca/resolute-ticon-resolute-5560-can-meds/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-resolute:
       position: [74.655667, -94.875833]
       coastline: unverifiable
+    ticon/resolute-5560-can-meds:
+      position: [74.66, -94.88]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 94
+        factors:
+          epoch: 1
+          recency: 0.51
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

@@ -1,9 +1,26 @@
 region: CA-BC
 sources:
   - chs-gibsons
+  - ticon/gibsons_bc-7820-can-meds
+redirect_from:
+  - /tides/ca/bc/gibsons-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-gibsons:
       position: [49.402, -123.505]
       coastline: clear
+    ticon/gibsons_bc-7820-can-meds:
+      position: [49.4, -123.51]
+      coastline: ashore
+      metres_inland: 256
+      quality:
+        accepted: true
+        score: 71
+        factors:
+          epoch: 0.329
+          recency: 0.47
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.399

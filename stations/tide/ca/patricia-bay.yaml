@@ -1,9 +1,27 @@
 region: CA-BC
 sources:
   - chs-patricia-bay
+  - ticon/patricia_bay_bc-7277-can-meds
+redirect_from:
+  - /tides/ca/bc/patricia-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-patricia-bay:
       position: [48.6536, -123.4515]
       coastline: clear
+    ticon/patricia_bay_bc-7277-can-meds:
+      position: [48.65, -123.45]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.088
+        issues:
+          - MHWS (3.076) < MHW (3.119)

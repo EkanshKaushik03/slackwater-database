@@ -1,6 +1,9 @@
 region: CA-BC
 sources:
   - chs-new-westminster
+  - ticon/new_westminster_bc-7654-can-meds
+redirect_from:
+  - /tides/ca/bc/new-westminster-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -8,3 +11,19 @@ computed:
       position: [49.2, -122.91]
       coastline: ashore
       metres_inland: 10077
+    ticon/new_westminster_bc-7654-can-meds:
+      position: [49.2, -122.91]
+      coastline: ashore
+      metres_inland: 10077
+      quality:
+        accepted: true
+        score: 87
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.208
+        issues:
+          - MHWS (2.673) < MHW (2.704)

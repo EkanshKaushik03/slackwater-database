@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-masset
+  - ticon/masset_bc-9910-can-meds
+redirect_from:
+  - /tides/ca/bc/masset-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-masset:
       position: [54.01, -132.149]
       coastline: clear
+    ticon/masset_bc-9910-can-meds:
+      position: [54.01, -132.15]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 0.834
+          recency: 0.97
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.305

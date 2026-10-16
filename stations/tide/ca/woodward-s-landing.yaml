@@ -1,6 +1,9 @@
 region: CA-BC
 sources:
   - chs-woodward-s-landing
+  - ticon/woodwards_landing_bc-7610-can-meds
+redirect_from:
+  - /tides/ca/bc/woodwards-landing-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -8,3 +11,17 @@ computed:
       position: [49.1251, -123.0754]
       coastline: ashore
       metres_inland: 10080
+    ticon/woodwards_landing_bc-7610-can-meds:
+      position: [49.13, -123.08]
+      coastline: ashore
+      metres_inland: 10080
+      quality:
+        accepted: true
+        score: 75
+        factors:
+          epoch: 0.434
+          recency: 0.98
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.133

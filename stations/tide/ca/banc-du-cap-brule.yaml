@@ -1,9 +1,29 @@
+# French and Dutch names GESLA writes without their hyphens and apostrophes.
+# This is CHS's spelling, which the station's CHS record carries too.
+
+name: Banc du Cap Brûlé
 region: CA-QC
 sources:
   - chs-banc-du-cap-brule
+  - ticon/banc_du_cap_brule-3075-can-meds
+redirect_from:
+  - /tides/ca/qc/banc-du-cap-brule-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-banc-du-cap-brule:
       position: [47.0895, -70.710833]
       coastline: unverifiable
+    ticon/banc_du_cap_brule-3075-can-meds:
+      position: [47.09, -70.71]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 0.922
+          recency: 0.97
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.217

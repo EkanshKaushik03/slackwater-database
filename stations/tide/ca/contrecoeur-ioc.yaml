@@ -1,9 +1,31 @@
 region: CA-QC
 sources:
   - chs-contrecoeur-ioc
+  - ticon/contrecoeur_ioc-15780-can-meds
+redirect_from:
+  - /tides/ca/qc/contrecoeur-ioc-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-contrecoeur-ioc:
       position: [45.832667, -73.283167]
       coastline: unverifiable
+    ticon/contrecoeur_ioc-15780-can-meds:
+      position: [45.83, -73.28]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: datum
+        seasonal_dominant: true
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.78
+        issues:
+          - MLWS (0.934) > MLW (0.918)
+          - MHW (0.939) <= MSL (0.944)
+          - "Seasonal curve peak (0.651m) exceeds the principal tide M2+S2+K1+O1 (0.022m): the yearly swing exceeds the daily one"

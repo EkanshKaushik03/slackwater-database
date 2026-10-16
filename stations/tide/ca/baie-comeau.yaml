@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-baie-comeau
+  - ticon/baie_comeau-2840-can-meds
+redirect_from:
+  - /tides/ca/qc/baie-comeau-10/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-baie-comeau:
       position: [49.231333, -68.131001]
       coastline: unverifiable
+    ticon/baie_comeau-2840-can-meds:
+      position: [49.23, -68.13]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 97
+        factors:
+          epoch: 1
+          recency: 0.8
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

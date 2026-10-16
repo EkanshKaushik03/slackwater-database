@@ -1,9 +1,27 @@
 region: CA-BC
 sources:
   - chs-sidney
+  - ticon/sidney_bc-7260-can-meds
+redirect_from:
+  - /tides/ca/bc/sidney-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-sidney:
       position: [48.649216, -123.3929]
       coastline: clear
+    ticon/sidney_bc-7260-can-meds:
+      position: [48.65, -123.39]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 74
+        factors:
+          epoch: 0.448
+          recency: 0.94
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.088
+        issues:
+          - MHWS (2.87) < MHW (2.916)

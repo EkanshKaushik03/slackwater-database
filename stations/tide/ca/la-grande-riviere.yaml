@@ -1,9 +1,25 @@
 region: CA-QC
 sources:
   - chs-la-grande-riviere
+  - ticon/la_grande_rivierepq-64680-can-meds
+redirect_from:
+  - /tides/ca/qc/la-grande-riviere-pq/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-la-grande-riviere:
       position: [53.85, -79.15]
       coastline: unverifiable
+    ticon/la_grande_rivierepq-64680-can-meds:
+      position: [53.85, -79.15]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.056
+          recency: 0.52
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

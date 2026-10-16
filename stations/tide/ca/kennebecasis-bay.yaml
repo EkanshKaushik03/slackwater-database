@@ -1,9 +1,30 @@
 region: CA-NB
 sources:
   - chs-kennebecasis-bay
+  - ticon/kennebecasis_bay-85-can-meds
+redirect_from:
+  - /tides/ca/nb/kennebecasis-bay-04/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-kennebecasis-bay:
       position: [45.393261, -66.000923]
       coastline: unverifiable
+    ticon/kennebecasis_bay-85-can-meds:
+      position: [45.4, -66]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        seasonal_dominant: true
+        score: 67
+        factors:
+          epoch: 0.198
+          recency: 0.43
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.295
+        issues:
+          - MHHW (1.488) < MHW (1.514)
+          - MHWS (1.483) < MHW (1.514)
+          - "Seasonal curve peak (0.803m) exceeds the principal tide M2+S2+K1+O1 (0.242m): the yearly swing exceeds the daily one"

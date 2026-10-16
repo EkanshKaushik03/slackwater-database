@@ -1,9 +1,27 @@
 region: CA-BC
 sources:
   - chs-oak-bay
+  - ticon/oak_bay_bc-7130-can-meds
+redirect_from:
+  - /tides/ca/bc/oak-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-oak-bay:
       position: [48.4237, -123.3027]
       coastline: clear
+    ticon/oak_bay_bc-7130-can-meds:
+      position: [48.42, -123.3]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 67
+        factors:
+          epoch: 0.152
+          recency: 0.78
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.103
+        issues:
+          - MHWS (2.547) < MHW (2.684)

@@ -1,8 +1,24 @@
 sources:
   - chs-ulukhaktok
+  - ticon/ulukhaktok-6380-can-meds
+redirect_from:
+  - /tides/ca/ulukhaktok-ticon-ulukhaktok-6380-can-meds/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-ulukhaktok:
       position: [70.736528, -117.756278]
       coastline: unverifiable
+    ticon/ulukhaktok-6380-can-meds:
+      position: [70.74, -117.76]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 99
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 1

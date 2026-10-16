@@ -1,8 +1,26 @@
 sources:
   - chs-little-cornwallis-island
+  - ticon/little_cornwallis_island-6758-can-meds
+redirect_from:
+  - /tides/ca/little-cornwallis-island-ticon-little-cornwallis-island-6758-can-meds/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-little-cornwallis-island:
       position: [75.383333, -96.95]
       coastline: unverifiable
+    ticon/little_cornwallis_island-6758-can-meds:
+      position: [75.38, -96.95]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/l_cornwallis_i-705a-can-uhslc_rq
+        score: 70
+        factors:
+          epoch: 0.424
+          recency: 0.68
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.007

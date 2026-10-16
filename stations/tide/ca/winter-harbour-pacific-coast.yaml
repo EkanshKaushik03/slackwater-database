@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-winter-harbour-2
+  - ticon/winter_harbour_bc-8735-can-meds
+redirect_from:
+  - /tides/ca/bc/winter-harbour-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-winter-harbour-2:
       position: [50.513, -128.029]
       coastline: unverifiable
+    ticon/winter_harbour_bc-8735-can-meds:
+      position: [50.51, -128.03]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 98
+        factors:
+          epoch: 1
+          recency: 0.99
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.894

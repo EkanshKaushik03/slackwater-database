@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-welcome-bay
+  - ticon/welcome_bay_bc-7990-can-meds
+redirect_from:
+  - /tides/ca/bc/welcome-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-welcome-bay:
       position: [49.7, -124.55]
       coastline: clear
+    ticon/welcome_bay_bc-7990-can-meds:
+      position: [49.7, -124.55]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.054
+          recency: 0.33
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.378

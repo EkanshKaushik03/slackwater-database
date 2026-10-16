@@ -1,9 +1,26 @@
 region: CA-BC
 sources:
   - chs-whaler-bay
+  - ticon/whaler_bay_bc-7532-can-meds
+redirect_from:
+  - /tides/ca/bc/whaler-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-whaler-bay:
       position: [48.883333, -123.316667]
       coastline: clear
+    ticon/whaler_bay_bc-7532-can-meds:
+      position: [48.88, -123.32]
+      coastline: ashore
+      metres_inland: 256
+      quality:
+        accepted: true
+        score: 85
+        factors:
+          epoch: 1
+          recency: 0.76
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.187

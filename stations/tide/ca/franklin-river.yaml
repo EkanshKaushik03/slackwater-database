@@ -1,9 +1,25 @@
 region: CA-BC
 sources:
   - chs-franklin-river
+  - ticon/franklin_river_bc-8565-can-meds
+redirect_from:
+  - /tides/ca/bc/franklin-river-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-franklin-river:
       position: [49.108, -124.812]
       coastline: clear
+    ticon/franklin_river_bc-8565-can-meds:
+      position: [49.11, -124.81]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 64
+        factors:
+          epoch: 0.086
+          recency: 0.45
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.267

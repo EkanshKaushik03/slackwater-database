@@ -1,9 +1,27 @@
 region: CA-BC
 sources:
   - chs-sooke-basin
+  - ticon/sooke_basin_bc-7024-can-meds
+redirect_from:
+  - /tides/ca/bc/sooke-basin-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-sooke-basin:
       position: [48.3742, -123.6818]
       coastline: clear
+    ticon/sooke_basin_bc-7024-can-meds:
+      position: [48.37, -123.68]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 68
+        factors:
+          epoch: 0.344
+          recency: 0.57
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.074
+        issues:
+          - MHWS (2.421) < MHW (2.491)

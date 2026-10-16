@@ -1,6 +1,9 @@
 region: CA-BC
 sources:
   - chs-saltery-bay
+  - ticon/saltery_bay_bc-7868-can-meds
+redirect_from:
+  - /tides/ca/bc/saltery-bay-bc/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -8,3 +11,16 @@ computed:
       position: [49.783333, -124.183333]
       coastline: ashore
       metres_inland: 333
+    ticon/saltery_bay_bc-7868-can-meds:
+      position: [49.78, -124.18]
+      coastline: clear
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0.376
