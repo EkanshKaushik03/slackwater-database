@@ -47,6 +47,7 @@ From the repo root:
 | `npm run stations`                   | Evaluate quality and rewrite the [station files](stations/README.md) after a code or data change                                |
 | `npm run merge -w packages/stations` | Make the confident merges `report:merges` lists; `-- <slug>...` also merges the review groups those slugs survive as            |
 | `npm run validate`                   | Fail on any station file `npm run stations` would change; `PUBLISHED_REF=<ref>` also checks published URLs against that ref     |
+| `npm run pack:local`                 | Build and pack `@slackwater/database` into `tmp/pack` (or `-- <dir>`) and print the tarball's path, for consumers to test       |
 | `npm run lint` / `npm run format`    | Prettier check / write                                                                                                          |
 
 Each workspace uses the same verbs, run with `-w <workspace>`:
@@ -76,6 +77,19 @@ A release is cut entirely by dispatching the workflow. Nothing is tagged or vers
 ```sh
 gh workflow run publish.yml --ref main
 ```
+
+Before dispatching it, test the release in each consumer. This step is required. The version is the UTC date, so only one release a day can publish, and twice a published release had problems a consumer found afterwards. From an up-to-date `main`:
+
+```sh
+npm run pack:local   # builds and packs packages/database, printing the tarball's path
+```
+
+Install that tarball in each consumer and run its full build and tests against it:
+
+- [slackwater.xyz](https://github.com/openwatersio/slackwater.xyz): `npm install <tarball>`, then `npm run typecheck`, `npm test` and `npm run build`.
+- [slackwater-ios](https://github.com/openwatersio/slackwater-ios): in `tools/`, `npm install <tarball>` and `npm test`, which regenerates the bundle with `build:data` and tests it.
+
+Dispatch `publish.yml` only when both pass. Don't commit either consumer's install of the tarball; they pin the published version once it is out.
 
 `packages/database/package.json` holds a **floor** version such as `1.0.0-beta.0`. The workflow replaces its last segment with today's date to derive `1.0.0-beta.20260926`, publishes to npm, then tags and creates the GitHub release with the `.tcd` and `.tcdb` assets. The `exact` input exists only for the first stable `X.Y.0`.
 
