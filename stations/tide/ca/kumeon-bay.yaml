@@ -1,28 +1,9 @@
 region: CA-BC
 sources:
   - chs-kumeon-bay
-  # NOAA's subordinate prediction point for the same bay, referenced to
-  # Ketchikan. Its position sits 1.55 km east of CHS's, about 1.4' of longitude,
-  # more than its whole-minute rounding explains; reported to NOAA.
-  - noaa/8218361
-redirect_from:
-  - /tides/ca/bc/kumeon-bay-b-c/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
     chs-kumeon-bay:
       position: [54.713, -130.24]
       coastline: unverifiable
-    noaa/8218361:
-      position: [54.71666666666667, -130.2166666666667]
-      coastline: unverifiable
-      quality:
-        accepted: true
-        score: 89
-        factors:
-          epoch: 1
-          recency: 0.75
-          source: 1
-          quality: 1
-          amplitude: 1
-          coverage: 0.442

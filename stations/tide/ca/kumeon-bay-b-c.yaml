@@ -1,0 +1,24 @@
+# NOAA's historical Kumeon Bay station: one month of observations in 1954,
+# predicted from Ketchikan with fixed offsets, its position read off a paper
+# chart. It publishes apart from CHS's Kumeon Bay (SEPARATE_TWINS in
+# packages/stations/merges.ts says why), so the context says which is which.
+context: 1954 NOAA station
+region: CA-BC
+sources:
+  - noaa/8218361
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/8218361:
+      position: [54.71666666666667, -130.2166666666667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 1
+          recency: 0.75
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.442
