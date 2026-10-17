@@ -1,8 +1,8 @@
 import { around, distance } from "geokdbush";
 import { allStations, qualityFilter, stationsById } from "../stations.js";
-import { createGeoIndex } from "./geo.js" with { type: "macro" };
+import { createGeoIndex } from "./geo.ts" with { type: "macro" };
 import { loadGeoIndex } from "./geo.js";
-import { createTextIndex } from "./text.js" with { type: "macro" };
+import { createTextIndex } from "./text.ts" with { type: "macro" };
 import { loadTextIndex } from "./text.js";
 import type { Station } from "../types.js";
 
