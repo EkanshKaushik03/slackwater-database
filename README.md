@@ -4,6 +4,8 @@
 
 This database includes station identity, structured location, stable web routes, and harmonic data from sources around the world. Tide constants can be used with a harmonic calculator like [Slackwater](https://github.com/openwatersio/slackwater) to create astronomical predictions.
 
+[Browse the tide database](https://openwaters.io/tides/database/) for station coverage, data sources, and download options.
+
 ## Sources
 
 Tide stations:
