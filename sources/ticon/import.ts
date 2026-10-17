@@ -15,6 +15,7 @@ import {
   CANADIAN_SUBDIVISIONS,
   isoSubdivisionCode,
   loadGeocoder,
+  roundConstituents,
   type PartialStationData,
 } from "@slackwater/stations";
 import {
@@ -290,8 +291,13 @@ async function getDatums(
           end: toISODate(obsEpoch.end),
         },
       };
+      // Stored constituents are at the published precision, so compare the
+      // parsed ones at that precision too, or float noise reads as a change.
       if (
-        sameConstituents(existing.harmonic_constituents, harmonic_constituents)
+        sameConstituents(
+          existing.harmonic_constituents,
+          roundConstituents("ticon", harmonic_constituents),
+        )
       )
         return { datums: existing.datums, ...cached };
       // The constituents changed since these datums were computed. The
