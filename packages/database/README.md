@@ -6,6 +6,8 @@ Harmonic constituents, tidal datums, and station metadata for thousands of tide 
 
 Station data is curated in the [slackwater-database repository](https://github.com/openwatersio/slackwater-database), which documents [where each station comes from](https://github.com/openwatersio/slackwater-database#sources) and how it is quality-checked.
 
+[Browse the tide database](https://openwaters.io/tides/database/) for station coverage, data sources, and download options.
+
 ## Install
 
 ```sh
