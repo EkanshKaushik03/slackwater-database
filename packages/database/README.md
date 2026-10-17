@@ -190,3 +190,14 @@ Those are the three things [CC BY 4.0 section 3(a)(1)](https://creativecommons.o
 > Slackwater database (https://github.com/openwatersio/slackwater-database)
 
 `attribution` is a display string. It is not a substitute for `license` when you need to make a decision in code — filter on `license.commercial_use` or `license.type` for that.
+
+To rebuild a filtered database, pass the exported `credits` map to `buildDatabase`. It maps each published `source.name` to its credit line, or `null` when it requires none, using the same source metadata as the bundled database.
+
+```js
+import { buildDatabase, credits, stations } from "@slackwater/database";
+
+const bytes = buildDatabase(
+  stations.filter((station) => station.country_code === "CA"),
+  { credits },
+);
+```

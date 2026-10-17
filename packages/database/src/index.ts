@@ -1,4 +1,5 @@
 export * from "./attribution.js";
+export { credits } from "./generated/credits.js";
 export * from "./stations.js";
 export * from "./routes.js";
 export * from "./route-path.js";

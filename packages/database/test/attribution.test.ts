@@ -1,6 +1,9 @@
 import { describe, test, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { openDatabase } from "../src/database/reader.ts";
+import { buildDatabase } from "../src/database/builder.ts";
+import { credits } from "../src/generated/credits.ts";
+import { allStations } from "../src/stations.ts";
 import {
   MODIFICATIONS_URL,
   PROJECT_CREDIT,
@@ -31,6 +34,29 @@ const publicDomain = {
 };
 
 describe("attribution", () => {
+  test("published credits preserve notices in a filtered rebuild", () => {
+    const representatives = [
+      ...new Map(
+        allStations.map((station) => [
+          `${station.source!.name}/${station.license!.type}`,
+          station,
+        ]),
+      ).values(),
+    ];
+    const rebuilt = openDatabase(buildDatabase(representatives, { credits }));
+    const notices = new Map(
+      representatives.map((station) => [station.id, station.attribution]),
+    );
+    expect(rebuilt.stationsLength()).toBe(representatives.length);
+    for (let i = 0; i < rebuilt.stationsLength(); i++) {
+      const station = rebuilt.stations(i)!;
+      expect(station.attribution()).toBe(notices.get(station.id()!));
+      const name = station.source()!.name()!;
+      expect(credits.has(name)).toBe(true);
+      expect(credits.get(name)).toBe(creditOf(name));
+    }
+  });
+
   // The guard that keeps credit honest: a source added to the database without
   // a metadata.yaml fails here rather than shipping stations that quietly
   // credit no one. The catalogue load also refuses one.
