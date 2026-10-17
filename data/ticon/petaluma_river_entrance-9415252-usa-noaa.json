@@ -19,14 +19,14 @@
   },
   "disclaimers": "No obvious issues Datums derived from harmonic prediction; the observation record is too short for an empirical reduction, so datum values carry higher uncertainty.",
   "datums": {
-    "HAT": 1.23,
-    "MHHW": 0.661,
-    "MHW": 0.659,
+    "HAT": 1.273,
+    "MHHW": 0.646,
+    "MHW": 0.644,
     "MSL": 0,
-    "MTL": 0.017,
-    "MLW": -0.625,
-    "MLLW": -0.625,
-    "LAT": -1.447,
+    "MTL": 0.012,
+    "MLW": -0.62,
+    "MLLW": -0.62,
+    "LAT": -1.415,
     "MHWS": 0.731,
     "MLWS": -0.731
   },
@@ -157,7 +157,7 @@
     {
       "name": "M3",
       "amplitude": 0.00400392,
-      "phase": 289.831527
+      "phase": 109.831527
     },
     {
       "name": "MU2",
@@ -222,7 +222,7 @@
     {
       "name": "S3",
       "amplitude": 0.00476348,
-      "phase": 46.510384
+      "phase": 226.510384
     },
     {
       "name": "MA2",
@@ -237,12 +237,12 @@
     {
       "name": "T3",
       "amplitude": 0.00755594,
-      "phase": 211.117975
+      "phase": 31.117975
     },
     {
       "name": "R3",
       "amplitude": 0.01600415,
-      "phase": 13.183763
+      "phase": 103.183763
     },
     {
       "name": "RHO1",
@@ -252,12 +252,12 @@
     {
       "name": "SGM",
       "amplitude": 0.009013,
-      "phase": 161.271394
+      "phase": 341.271394
     },
     {
       "name": "3L2",
       "amplitude": 0.0140055,
-      "phase": 52.662487
+      "phase": 142.662487
     },
     {
       "name": "3N2",
@@ -277,12 +277,12 @@
     {
       "name": "2MK5",
       "amplitude": 0.02034446,
-      "phase": 66.282933
+      "phase": 156.282933
     },
     {
       "name": "2MO5",
       "amplitude": 0.0123767,
-      "phase": 242.440435
+      "phase": 152.440435
     }
   ],
   "epoch": {
