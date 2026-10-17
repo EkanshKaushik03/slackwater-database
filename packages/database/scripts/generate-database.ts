@@ -54,6 +54,10 @@ const database = buildDatabase(catalogue.stations, {
 });
 
 writeFileSync(join(outDir, "slackwater.tcdb"), database);
+writeFileSync(
+  join(outDir, "credits.ts"),
+  `// Generated from sources/*/metadata.yaml by generate-database.ts.\nexport const credits: ReadonlyMap<string, string | null> = new Map(${JSON.stringify([...catalogue.credits])});\n`,
+);
 const stationCounts = (field: "country_code" | "region_code" | "locality") =>
   catalogue.stations.filter((station) => station[field]).length;
 const identityOnly = catalogue.stations.filter(

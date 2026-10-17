@@ -66,7 +66,7 @@ Releases attach the file as `slackwater-<date>.tcdb` alongside the TCD files.
 
 ## Downstream builders
 
-`buildDatabase(stations, { routes, credits })` is exported so downstream generators can write filtered catalogues through the same builder and read them with the same generated readers. `credits` maps each `source.name` to its credit line, or null when it needs none; this repo's lines are in `sources/<name>/metadata.yaml`, and a station whose source has no entry is refused.
+`buildDatabase(stations, { routes, credits })` is exported so downstream generators can write filtered catalogues through the same builder and read them with the same generated readers. The package exports `credits: ReadonlyMap<string, string | null>`, generated from the same `sources/<name>/metadata.yaml` entries as the bundled database. It maps each published `source.name` to its credit line, or null when it needs none. Pass it directly when rebuilding published stations; a custom source needs its own entry, and a station whose source has no entry is refused.
 
 ## ESM only (no CJS build)
 

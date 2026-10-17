@@ -25,6 +25,24 @@ globalThis.fetch = async (url, init) => {
 };
 
 function check(db, label) {
+  for (const station of db.allStations) {
+    assert.ok(
+      db.credits?.has(station.source.name),
+      `${label}: credit decision for ${station.source.name}`,
+    );
+    assert.equal(
+      db.attributionWithCredit(
+        db.credits.get(station.source.name),
+        station.license,
+      ),
+      station.attribution,
+      `${label}: attribution for ${station.id}`,
+    );
+  }
+  assert.ok(
+    db.buildDatabase([db.stations[0]], { credits: db.credits }).length > 0,
+  );
+
   const ref = db.stations.find(
     (s) => s.type === "reference" && s.harmonic_constituents.length > 0,
   );
