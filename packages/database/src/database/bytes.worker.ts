@@ -5,7 +5,7 @@
 // the same bundle-the-data approach the JSON-string browser build used —
 // decoded here at module evaluation (compute in global scope is allowed; only
 // I/O is not).
-import { createDatabaseBase64 } from "./inline.js" with { type: "macro" };
+import { createDatabaseBase64 } from "./inline.ts" with { type: "macro" };
 
 let encoded: string | undefined = createDatabaseBase64();
 const binary = atob(encoded!);

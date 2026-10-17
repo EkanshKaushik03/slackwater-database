@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import currentBundle from "../../sources/noaa-current/currents.json" with { type: "json" };
 import chsStations from "../../sources/chs/stations.json" with { type: "json" };
-import countryLookup from "country-code-lookup";
+import { countryByName } from "./country.ts";
 import type { StationInput, StationQuality } from "@slackwater/database";
 import { buildCatalogue } from "./catalogue.ts";
 import { chsInputs } from "./chs-input.ts";
@@ -31,7 +31,7 @@ export async function loadProductionCatalogue(
     const stationQuality = quality.get(id);
     if (!stationQuality)
       throw new Error(`${id}: no quality evaluation; run npm run stations`);
-    const countryCode = countryLookup.byCountry(source.country)?.iso2;
+    const countryCode = countryByName(source.country)?.iso2;
     if (!countryCode)
       throw new Error(`${id}: no ISO country code for ${source.country}`);
     return {
