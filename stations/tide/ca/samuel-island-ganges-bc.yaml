@@ -1,3 +1,13 @@
+# CHS publishes two Samuel Island stations 0.83 km apart under one official
+# name. This one, 07515, has a position rounded to the minute, which lands
+# ashore; the other, 07370 at samuel-island, has a precise position on the
+# north side, on Georgeson Passage, so this one is the Boat Passage station,
+# on the small-boat cut to Winter Cove.
+
+# The context can't repeat the name, and the derived one, Irish Bay, is the
+# other station's water, so it names where Boat Passage leads.
+name: Samuel Island (Boat Passage)
+context: Winter Cove
 region: CA-BC
 sources:
   - chs-samuel-island-2

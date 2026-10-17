@@ -3,7 +3,9 @@ import type { StationQuality } from "@slackwater/database";
 import {
   planMerges,
   selectMerges,
+  SEPARATE_TWINS,
   separatedTwins,
+  staleSeparations,
   type MergeGroup,
 } from "../merges.ts";
 import type { ResolvedStation } from "../metadata.ts";
@@ -733,6 +735,7 @@ describe("curated records and their provider twins", () => {
     slugs: Record<string, string[]> = Object.fromEntries(
       records.map(({ id }) => [id.replace(/^\w+\//, ""), [id]]),
     ),
+    separate = new Map<string, string>(),
   ) =>
     planMerges(
       records,
@@ -748,7 +751,7 @@ describe("curated records and their provider twins", () => {
           .filter(({ id }) => !id.startsWith("chs-"))
           .map(({ id }) => [id, accepted(id)]),
       ),
-      { confident },
+      { confident, separate },
     );
   // 0.0013° of latitude is about 145 m, 0.009° about 1 km.
   const comox = curated("chs-comox", 49.67, "Comox");
@@ -818,17 +821,78 @@ describe("curated records and their provider twins", () => {
     );
     expect(named.groups).toEqual([]);
     const far = [
-      curated("chs-steveston", 49.12, "Steveston"),
-      relay("ticon/steveston_bc-7607-can-meds", 49.1298, "Steveston"),
+      curated("chs-nain", 56.54, "Nain"),
+      relay("ticon/nain-833-can-uhslc_fd", 56.55, "Nain"),
     ];
     expect(run(far, true).groups).toEqual([]);
     expect(run(far, false).groups).toHaveLength(1);
     // Past 5 km a shared name is a namesake, not a review.
     const namesake = [
       curated("chs-mill-cove", 49.12, "Mill Cove"),
-      relay("ticon/mill_cove-475-can-meds", 49.2, "Mill Cove"),
+      relay("ticon/mill_cove-475-can-uhslc_fd", 49.2, "Mill Cove"),
     ];
     expect(run(namesake, false).groups).toEqual([]);
+  });
+
+  test("a MEDS record of its name joins within 25 km, since MEDS numbers the gauge as CHS does", () => {
+    // MEDS puts Sand Heads 7594 8.1 km from the position IWLS publishes.
+    const sandHeads = curated("chs-sand-heads", 49.1052, "Sand Heads");
+    const meds = {
+      ...relay("ticon/sand_heads_bc-7594-can-meds", 49.13, "Sand Heads BC"),
+      longitude: -124.82,
+    };
+    const plan = run([sandHeads, meds], true, {
+      "sand-heads": [sandHeads.id],
+      "sand-heads-bc": [meds.id],
+    });
+    expect(plan.groups.map(({ survivor, slugs }) => [survivor, slugs])).toEqual(
+      [["sand-heads", ["sand-heads", "sand-heads-bc"]]],
+    );
+    // Past 25 km a shared name is a namesake, or a mis-keyed number.
+    const namesake = [
+      curated("chs-mill-cove", 49.12, "Mill Cove"),
+      relay("ticon/mill_cove-475-can-meds", 49.4, "Mill Cove"),
+    ];
+    expect(run(namesake, false).groups).toEqual([]);
+  });
+
+  test("a MEDS record far off waits for a person when another provider station shares the name", () => {
+    const records = [
+      curated("chs-forteau-bay", 51.47, "Forteau Bay"),
+      relay("ticon/forteau_bay-2590-can-meds", 51.52, "Forteau Bay"),
+      relay("ticon/forteau_bay-999-can-uhslc_fd", 51.471, "Forteau Bay"),
+    ];
+    expect(run(records, true).groups).toEqual([]);
+    expect(run(records, false).groups[0]?.members).toHaveLength(3);
+  });
+
+  test("never joins a pair listed as separate, in either plan", () => {
+    const bamfield = curated("chs-bamfield", 48.836, "Bamfield");
+    const uhslc = relay("ticon/bamfield-541-can-uhslc_fd", 48.8395, "Bamfield");
+    const separate = new Map([[`${bamfield.id} ${uhslc.id}`, "two gauges"]]);
+    for (const confident of [true, false])
+      expect(
+        run([bamfield, uhslc], confident, undefined, separate).groups,
+      ).toEqual([]);
+  });
+
+  test("honours SEPARATE_TWINS by default, so naming one review group merges no listed pair", () => {
+    const [pair] = [...SEPARATE_TWINS.keys()];
+    const [chs, other] = pair!.split(" ") as [string, string];
+    const records = [
+      curated(chs, 48.836, "Twin"),
+      relay(other, 48.8395, "Twin"),
+    ];
+    const plan = planMerges(
+      records,
+      {
+        tide: records.map(({ id }) => ({ slug: id, station_ids: [id] })),
+        current: [],
+      },
+      new Map([[other, accepted(other)]]),
+      { confident: true },
+    );
+    expect(plan.groups).toEqual([]);
   });
 
   test("two provider stations of its name leave the choice to a person", () => {
@@ -949,13 +1013,39 @@ describe("separatedTwins", () => {
       }),
     ).toEqual([]);
     const other = record("ticon/lazo-1-can-meds", 49.67, "Lazo");
-    const far = record("ticon/comox-2-can-meds", 49.68, "Comox");
+    const far = record("ticon/comox-2-can-uhslc_fd", 49.68, "Comox");
     expect(
       separatedTwins(
         [comox, other, far],
         routes([comox.id], [other.id], [far.id]),
       ),
     ).toEqual([]);
+  });
+
+  test("names a MEDS record of its name up to 25 km off, and no other provider's past 1 km", () => {
+    const sandHeads = record("chs-sand-heads", 49.1052, "Sand Heads");
+    const meds = record(
+      "ticon/sand_heads_bc-7594-can-meds",
+      49.13,
+      "Sand Heads BC",
+    );
+    const uhslc = record(
+      "ticon/sand_heads-1-can-uhslc_fd",
+      49.13,
+      "Sand Heads",
+    );
+    const farMeds = record("ticon/sand_heads-2-can-meds", 49.4, "Sand Heads");
+    expect(
+      separatedTwins([sandHeads, meds, uhslc, farMeds], {
+        tide: [sandHeads, meds, uhslc, farMeds].map(({ id }) => ({
+          slug: id,
+          station_ids: [id],
+        })),
+        current: [],
+      }),
+    ).toEqual([
+      { curated: sandHeads.id, twin: meds.id, km: 2.758, kind: "tide" },
+    ]);
   });
 
   test("two provider records of one name are not its concern", () => {
@@ -970,5 +1060,29 @@ describe("separatedTwins", () => {
         current: [],
       }),
     ).toEqual([]);
+  });
+});
+
+describe("staleSeparations", () => {
+  test("lists each separate pair that shares a route or is no longer routed", () => {
+    const separate = new Map([
+      ["chs-a ticon/a-1-can-meds", "apart"],
+      ["chs-b noaa/2", "apart"],
+      ["chs-c ticon/c-3-can-meds", "apart"],
+    ]);
+    expect(
+      staleSeparations(
+        {
+          tide: [
+            { slug: "a", station_ids: ["chs-a"] },
+            { slug: "a-1", station_ids: ["ticon/a-1-can-meds"] },
+            { slug: "b", station_ids: ["chs-b", "noaa/2"] },
+            { slug: "c", station_ids: ["chs-c"] },
+          ],
+          current: [],
+        },
+        separate,
+      ),
+    ).toEqual(["chs-b noaa/2", "chs-c ticon/c-3-can-meds"]);
   });
 });
