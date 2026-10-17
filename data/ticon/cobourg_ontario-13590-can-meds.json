@@ -19,20 +19,19 @@
   },
   "disclaimers": "No obvious issues",
   "datums": {
-    "HAT": 0.968,
     "MHHW": 0.673,
     "MHW": 0.652,
     "MSL": 0.637,
     "MTL": 0.639,
     "MLW": 0.626,
     "MLLW": 0.602,
-    "LLWLT": 0.152,
+    "HAT": 0.969,
     "LAT": 0.379,
     "MHWS": 0.639,
     "MLWS": 0.635
   },
   "datums_source": "observed",
-  "chart_datum": "LLWLT",
+  "chart_datum": "LAT",
   "type": "reference",
   "harmonic_constituents": [
     {
@@ -158,7 +157,7 @@
     {
       "name": "M3",
       "amplitude": 0.00003237,
-      "phase": 193.369541
+      "phase": 13.369541
     },
     {
       "name": "MU2",
@@ -223,7 +222,7 @@
     {
       "name": "S3",
       "amplitude": 0.00013486,
-      "phase": 249.852985
+      "phase": 69.852985
     },
     {
       "name": "MA2",
@@ -238,12 +237,12 @@
     {
       "name": "T3",
       "amplitude": 0.00008426,
-      "phase": 265.08496
+      "phase": 85.08496
     },
     {
       "name": "R3",
       "amplitude": 0.00006784,
-      "phase": 170.154065
+      "phase": 260.154065
     },
     {
       "name": "RHO1",
@@ -253,12 +252,12 @@
     {
       "name": "SGM",
       "amplitude": 0.00001017,
-      "phase": 42.05148
+      "phase": 222.05148
     },
     {
       "name": "3L2",
       "amplitude": 0.00008378,
-      "phase": 218.491425
+      "phase": 308.491425
     },
     {
       "name": "3N2",
@@ -278,12 +277,12 @@
     {
       "name": "2MK5",
       "amplitude": 0.00002164,
-      "phase": 208.986884
+      "phase": 298.986884
     },
     {
       "name": "2MO5",
       "amplitude": 0.00005489,
-      "phase": 9.20027
+      "phase": 279.20027
     }
   ],
   "epoch": {

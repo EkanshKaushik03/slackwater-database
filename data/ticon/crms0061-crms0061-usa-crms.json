@@ -19,13 +19,13 @@
   },
   "disclaimers": "No obvious issues",
   "datums": {
-    "HAT": 0.381,
     "MHHW": 0.205,
     "MHW": 0.146,
     "MSL": 0.161,
     "MTL": 0.13,
     "MLW": 0.114,
     "MLLW": 0.103,
+    "HAT": 0.38,
     "LAT": -0.069,
     "MHWS": 0.163,
     "MLWS": 0.159
@@ -157,7 +157,7 @@
     {
       "name": "M3",
       "amplitude": 0.00008965,
-      "phase": 150.04014
+      "phase": 330.04014
     },
     {
       "name": "MU2",
@@ -222,7 +222,7 @@
     {
       "name": "S3",
       "amplitude": 0.00004474,
-      "phase": 33.746615
+      "phase": 213.746615
     },
     {
       "name": "MA2",
@@ -237,12 +237,12 @@
     {
       "name": "T3",
       "amplitude": 0.00027816,
-      "phase": 19.267002
+      "phase": 199.267002
     },
     {
       "name": "R3",
       "amplitude": 0.00014444,
-      "phase": 206.08809
+      "phase": 296.08809
     },
     {
       "name": "RHO1",
@@ -252,12 +252,12 @@
     {
       "name": "SGM",
       "amplitude": 0.0005237,
-      "phase": 170.120439
+      "phase": 350.120439
     },
     {
       "name": "3L2",
       "amplitude": 0.00013483,
-      "phase": 117.006634
+      "phase": 207.006634
     },
     {
       "name": "3N2",
@@ -277,12 +277,12 @@
     {
       "name": "2MK5",
       "amplitude": 0.00002356,
-      "phase": 275.384947
+      "phase": 5.384947
     },
     {
       "name": "2MO5",
       "amplitude": 0.00005371,
-      "phase": 25.455237
+      "phase": 295.455237
     }
   ],
   "epoch": {
