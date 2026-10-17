@@ -1,5 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "tsdown";
+import { unrunRunner } from "unplugin-macros";
 import macros from "unplugin-macros/rolldown";
 
 // Three builds, differing only in how `#slackwater.tcdb` resolves. The Node and
@@ -25,7 +26,7 @@ const base = {
   minify: true,
   sourcemap: true,
   target: "es2020",
-  plugins: [macros()],
+  plugins: [macros({ runner: unrunRunner() })],
 };
 
 // ESM only. kdbush and geokdbush are ESM-only, so a CJS build can't require them
@@ -38,6 +39,6 @@ export default defineConfig([
     platform: "browser",
     format: ["esm"],
     outDir: "dist/worker",
-    plugins: [workerBytes, macros()],
+    plugins: [workerBytes, macros({ runner: unrunRunner() })],
   },
 ]);
