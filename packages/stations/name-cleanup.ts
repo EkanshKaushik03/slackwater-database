@@ -375,8 +375,13 @@ function capitalize(word: string, recaseAllCaps = false): string {
   if (!recaseAllCaps && /[a-z]/.test(word) && /[A-Z]/.test(word)) {
     return word;
   }
-  // Preserve code-like words (uppercase letters + digits: CRMS0572, WC-53)
-  if (/^[A-Z]+-?\d+[A-Z]?$/i.test(word) && word === word.toUpperCase()) {
+  // Preserve code-like words: uppercase letters then digits (CRMS0572, WC-53),
+  // or digits then one capital (1N, 8W, 47A). An ordinal has two letters after
+  // its digits, so 41ST still title-cases to 41st.
+  if (
+    /^(?:[A-Z]+-?\d+[A-Z]?|\d+[A-Z])$/i.test(word) &&
+    word === word.toUpperCase()
+  ) {
     return word;
   }
   // Handle hyphenated or apostrophe-separated words: capitalize each segment
@@ -387,6 +392,8 @@ function capitalize(word: string, recaseAllCaps = false): string {
         // Preserve separators
         if (seg === "-" || seg === "'") return seg;
         if (!seg) return seg;
+        // A quoted code keeps its capital, like a bare one: Buoy '2C'.
+        if (/^\d+[A-Z]$/.test(seg)) return seg;
         // A possessive is not a compound: "Martha's" kept coming back
         // "Martha'S" because the s after the apostrophe was capitalised like
         // the second half of a hyphenated name.

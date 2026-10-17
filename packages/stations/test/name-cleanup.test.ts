@@ -331,6 +331,31 @@ describe("cleanName", () => {
     });
   });
 
+  describe("codes after a number", () => {
+    const us = (raw: string) => cleanName(raw, "United States").name;
+
+    test("keeps the capital in a code that starts with digits", () => {
+      expect(us("Joe_Bay_8W_Nr_Key_Largo")).toBe("Joe Bay 8W nr Key Largo");
+      expect(us("CUT 1N FRONT RANGE, ST MARYS RIVER ENTR")).toBe(
+        "Cut 1N Front Range, St Marys River Entr",
+      );
+      expect(us("Daniel Island Reach, Buoy 47A")).toBe(
+        "Daniel Island Reach, Buoy 47A",
+      );
+    });
+
+    test("keeps the capital in a quoted code", () => {
+      expect(us("Craighill Channel entrance, Buoy '2C'")).toBe(
+        "Craighill Channel Entrance, Buoy '2C'",
+      );
+    });
+
+    test("still lowercases an ordinal, which has two letters after its digits", () => {
+      expect(us("41ST STREET PIER")).toBe("41st Street Pier");
+      expect(us("200TH STREET")).toBe("200th Street");
+    });
+  });
+
   describe("all-caps source names", () => {
     test.each([
       ["HONOLULU, Downtown, HI", "Honolulu, Downtown"],
