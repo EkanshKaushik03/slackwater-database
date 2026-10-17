@@ -1,6 +1,7 @@
 import type { StationData } from "@slackwater/database";
 import { find as findTz } from "geo-tz/all";
 import countryLookup from "country-code-lookup";
+import { countryByName } from "./country.ts";
 import { join, dirname } from "path";
 import { mkdir, writeFile, readFile } from "fs/promises";
 import sortObject from "sort-object-keys";
@@ -117,7 +118,7 @@ export type PartialStationData = Omit<StationData, OptionalProperties> &
 
 export function normalize(station: PartialStationData): StationData {
   const { iso2, continent, country } =
-    countryLookup.byCountry(station.country) ||
+    countryByName(station.country) ||
     countryLookup.byIso(station.country) ||
     {};
 
