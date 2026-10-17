@@ -1,4 +1,5 @@
 import countryLookup from "country-code-lookup";
+import { countryByName } from "./country.ts";
 import { find as findTimezone } from "geo-tz/all";
 import { parse } from "yaml";
 import type { StationInput } from "@slackwater/database";
@@ -278,7 +279,7 @@ function validateLocation(
       );
   }
   if (typeof location.country === "string" && nonEmpty(location.country)) {
-    const info = countryLookup.byCountry(location.country);
+    const info = countryByName(location.country);
     if (!info)
       problems.push(
         `${id}: location.country must be a recognized country name`,
@@ -350,7 +351,7 @@ export function resolveMetadata(
       : undefined) ??
     nearest?.country;
   if (!nonEmpty(countryName)) throw new Error(`${station.id}: no country`);
-  const country = countryLookup.byCountry(countryName);
+  const country = countryByName(countryName);
   if (!country?.iso2)
     throw new Error(`${station.id}: no ISO country code for ${countryName}`);
   if (

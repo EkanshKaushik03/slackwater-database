@@ -335,6 +335,8 @@ describe("metadata resolution", () => {
 
     expect(result).not.toHaveProperty("region");
     expect(result.context).toBe("Vaiala");
+    expect(result.country).toBe("Samoa");
+    expect(result.country_code).toBe("WS");
   });
 
   test("lifts a trailing territory code when geocoding has no US region", () => {
