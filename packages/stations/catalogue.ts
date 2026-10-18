@@ -128,15 +128,34 @@ export function buildCatalogue(inputs: CatalogueInputs): {
     };
   });
 
-  return {
-    stations,
-    members,
-    routes: buildRoutes(members, {
-      routeLock,
-      registryIds: new Set(inputs.registry.keys()),
-    }),
-    redundantNames,
-  };
+  const routes = buildRoutes(members, {
+    routeLock,
+    registryIds: new Set(inputs.registry.keys()),
+  });
+  followTideReferences(stations, routes);
+  return { stations, members, routes, redundantNames };
+}
+
+/**
+ * A tide pairing names a gauge, so it publishes as the record its station
+ * shows first. A pairing curated against a relay that quality later rejects
+ * for its operator's record of the same gauge keeps pointing at that gauge.
+ */
+function followTideReferences(
+  stations: ResolvedStation[],
+  routes: DatabaseRoutes,
+): void {
+  const shown = new Map(
+    routes.tide.flatMap(({ station_ids }) =>
+      station_ids.map((id) => [id, station_ids[0]!] as const),
+    ),
+  );
+  for (const station of stations) {
+    const reference = station.current?.tide_reference;
+    const first = reference && shown.get(reference);
+    if (first && first !== reference)
+      station.current = { ...station.current, tide_reference: first };
+  }
 }
 
 function validateStationReferences(stations: ResolvedStation[]): void {

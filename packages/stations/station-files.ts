@@ -156,11 +156,13 @@ export function readStationFiles(dir = STATIONS_DIR): StationFile[] {
             problems.push(
               `${file}: redirect ${JSON.stringify(path)} is not a route path`,
             );
-        for (const field of ["tide_reference", "magnitude_note", "derived"])
+        for (const field of ["magnitude_note", "derived"])
           if (value[field] !== undefined && value.provider === undefined)
             problems.push(
               `${file}: ${field} describes a record this repo owns; it needs provider`,
             );
+        if (value.tide_reference !== undefined && kind !== "current")
+          problems.push(`${file}: tide_reference pairs a current station`);
         if (
           value.region !== undefined &&
           !String(value.region).startsWith(`${country.toUpperCase()}-`)
@@ -234,6 +236,7 @@ export function curatedRecords(
       ...(file.cities ? { cities: file.cities } : {}),
       ...(file.position ? { position: file.position } : {}),
       ...(file.position_verified ? { positionVerified: true as const } : {}),
+      ...(file.tide_reference ? { tideReference: file.tide_reference } : {}),
       location,
     };
     // A retired record takes the curation too, so it rejoins its station
@@ -251,7 +254,6 @@ export function curatedRecords(
         ...curated,
         provider: file.provider,
         kind: file.kind,
-        ...(file.tide_reference ? { tideReference: file.tide_reference } : {}),
         ...(file.magnitude_note ? { magnitudeNote: file.magnitude_note } : {}),
         ...(file.derived
           ? {

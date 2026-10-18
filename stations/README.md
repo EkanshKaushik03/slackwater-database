@@ -37,7 +37,8 @@ Evidence and explanations are YAML comments. A field exists only when code reads
 - `region`: the ISO 3166-2 code of the URL's region segment, absent when the path has none. The country is the file's directory. Every record in the station takes both, so a change in derived geography cannot move a URL. A CHS station is filed under `ca/` (Saint-Pierre under `pm/`); `npm run validate` refuses one anywhere else.
 - `name`, `context`, `aliases`, `cities`, `position`: curated display fields. They apply to every record in the station, except in a station this repo owns (below), where they define the owned record.
 - `position_verified: true`: the published position is right although the coastline audit puts it ashore, as for a gauge sited up a river.
-- `provider`, `tide_reference`, `magnitude_note`, `derived`: a station this repo owns (below).
+- `tide_reference`: on a current station, the tide record a paired tide and current view shows beside it (see [Tide pairings](#tide-pairings)). The database publishes it as `current.tide_reference`.
+- `provider`, `magnitude_note`, `derived`: a station this repo owns (below).
 - `computed`: each record's position, coastline verdict and, for a provider tide record, its quality evaluation: whether it is accepted, why not, which record it duplicates, its score and the factors behind it. A change here in a pull request is a station that moved or a change in how it was judged.
 
 ## Changing a station
@@ -67,6 +68,12 @@ PUBLISHED_REF=origin/main npm run validate
 `cleanName` undoes a provider's formatting and nothing more. A spelling that takes knowing the place is a `name` here, so that one station's spelling can never change another's. `npm run validate` reports the curated names the cleanup already produces, which is the list to prune when a provider catches up.
 
 A redirect is for a path that named the _same place_: a rename qualifies, a mislabel does not, since redirecting a mislabel preserves a wrong link where a 404 is more honest (issue #6, the retired `anacortes`).
+
+### Tide pairings
+
+A provider current station's `tide_reference` names the nearest tide station in the same water, by any record that station publishes, and applies to every record in the current station. Say in a comment why it is the right gauge. A current with no honestly near tide station carries none: unpaired beats a wrong pairing. The rule for the gates this repo owns is under [Paired tide ports](#paired-tide-ports).
+
+A pairing names a gauge, not a record, so the database publishes it as the record the tide station shows first. When quality later rejects the named record for its operator's record of the same gauge, as it rejected TICON's relay of Richmond for `noaa/9414863`, the pairing follows to that record and the file needs no edit.
 
 ## Stations this repo owns
 

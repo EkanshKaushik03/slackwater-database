@@ -188,6 +188,38 @@ describe("buildCatalogue", () => {
     });
   });
 
+  test("a provider current's curated tide pairing publishes as its station's first record", () => {
+    const input = fixtures();
+    input.tides.push({
+      ...input.tides[0]!,
+      id: "ticon/seattle",
+      quality: { id: "ticon/seattle", accepted: false, score: 0 },
+    });
+    input.stationFiles[0] = station("tide", "US", "seattle", [
+      "noaa/9447130",
+      "ticon/seattle",
+    ]);
+    // Curated against the relay, which quality now rejects for its operator's
+    // record of the same gauge.
+    input.corrections.set("noaa/PUG1701", { tideReference: "ticon/seattle" });
+
+    const catalogue = buildCatalogue(input);
+    expect(
+      catalogue.stations.find(({ id }) => id === "noaa/PUG1701")?.current
+        ?.tide_reference,
+    ).toBe("noaa/9447130");
+  });
+
+  test("refuses a curated tide pairing that names a current", () => {
+    const input = fixtures();
+    input.currents.push({ ...input.currents[0]!, id: "noaa/PUG1702" });
+    input.corrections.set("noaa/PUG1701", { tideReference: "noaa/PUG1702" });
+
+    expect(() => buildCatalogue(input)).toThrow(
+      /noaa\/PUG1701 references noaa\/PUG1702, which is not tide/,
+    );
+  });
+
   test("rejects a missing station reference with both ids", () => {
     const input = fixtures();
     input.currents[0]!.current!.offsets = { reference: "noaa/missing" };
