@@ -62,7 +62,7 @@ describe("cleanName", () => {
 
     test("reads a leading zero as a dropped decimal point", () => {
       expect(us("Merrimack_R_03_Miles_USRt_125_At_HaverhillMa")).toBe(
-        "Merrimack R 0.3 nm US Rt 125 at Haverhill Ma",
+        "Merrimack R 0.3 nm US Rt 125 at Haverhill",
       );
       expect(us("Foo Point, 03 nm SE of")).toBe("Foo Point, 03 nm SE of");
     });
@@ -214,6 +214,45 @@ describe("cleanName", () => {
       );
       expect(result.name).toBe("Abercorn Creek at Mouth near Savannah");
       expect(result.region).toBe("GA");
+    });
+
+    test.each([
+      ["Abercorn_Creek_Near_SavannahGa", "Abercorn Creek near Savannah", "GA"],
+      ["Bayou_Liberty_Near_SlidellLa", "Bayou Liberty near Slidell", "LA"],
+    ])(
+      "extracts a state code joined to the word before it: %s",
+      (raw, name, region) => {
+        const result = cleanName(raw, "United States");
+        expect(result.name).toBe(name);
+        expect(result.region).toBe(region);
+      },
+    );
+
+    test("extracts a joined code even when the nearest place disagrees", () => {
+      const result = cleanName("Abercorn_Creek_Near_SavannahGa", "US", "SC");
+      expect(result.name).toBe("Abercorn Creek near Savannah");
+      expect(result.region).toBe("GA");
+    });
+
+    test("extracts a joined Canadian province code", () => {
+      const result = cleanName("WadhamsBC", "Canada");
+      expect(result.name).toBe("Wadhams");
+      expect(result.region).toBe("BC");
+    });
+
+    test("reads Quebec's retired PQ code as QC", () => {
+      const result = cleanName("La_Grande_RivierePq", "Canada");
+      expect(result.name).toBe("La Grande Riviere");
+      expect(result.region).toBe("QC");
+    });
+
+    test("leaves a joined pair alone when it is not a capitalised code", () => {
+      expect(cleanName("Havre_De_Grace", "United States").name).toBe(
+        "Havre de Grace",
+      );
+      expect(cleanName("PortAngeles", "United States").region).toBeUndefined();
+      expect(cleanName("Tampa", "United States").region).toBeUndefined();
+      expect(cleanName("SomewhereGa", "France").name).toBe("Somewhere Ga");
     });
 
     test("extracts DC", () => {
