@@ -12,7 +12,7 @@
     "check": "npm run lint && npm test && npm run validate",
     "stations": "npm run stations -w packages/stations",
     "validate": "npm run validate -w packages/stations",
-    "pack:local": "node packages/database/scripts/pack-local.mjs",
+    "pack:local": "node packages/database/scripts/pack-local.ts",
     "lint": "prettier --check .",
     "format": "prettier --write ."
   },
