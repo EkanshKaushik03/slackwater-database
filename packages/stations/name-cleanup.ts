@@ -81,6 +81,10 @@ const CA_PROVINCES = new Set([
   "NU",
 ]);
 
+// Retired codes a source still writes, and the code that replaced them.
+// "PQ" was Quebec's postal abbreviation until 1990 ("La_Grande_RivierePq").
+const LEGACY_REGIONS: Record<string, string> = { PQ: "QC" };
+
 const SMALL_WORDS = new Set([
   "a",
   "an",
@@ -227,25 +231,33 @@ export function cleanName(
   // These are measurement type suffixes, not part of the place name
   name = name.replace(/_[TH]$/, "");
 
-  // Step 2: Extract trailing region codes for US/Canada
+  // Step 2: Extract trailing region codes for US/Canada. The code follows an
+  // underscore, a space, or is joined to the word before it with a capital
+  // ("SavannahGa", "WadhamsBC"). Splitting joined words waits for step 4, so
+  // the joined form is matched here or the code would be left in the name.
   const validRegions =
     country === "United States"
       ? US_STATES
       : country === "Canada"
         ? CA_PROVINCES
         : undefined;
-  const regionMatch = name.match(/([_ ])([A-Za-z]{2})$/);
+  const regionMatch = name.match(/(?:([_ ])|(?<=[a-z]))([A-Za-z]{2})$/);
+  const code = regionMatch?.[2]?.toUpperCase();
+  const matchedRegion = code ? (LEGACY_REGIONS[code] ?? code) : undefined;
   const expectedRegion = existingRegionCode?.toUpperCase().split("-").at(-1);
   if (
-    regionMatch?.[2] &&
-    validRegions?.has(regionMatch[2].toUpperCase()) &&
-    (regionMatch[1] === "_" ||
-      !expectedRegion ||
-      !validRegions.has(expectedRegion) ||
-      regionMatch[2].toUpperCase() === expectedRegion)
+    regionMatch &&
+    matchedRegion &&
+    validRegions?.has(matchedRegion) &&
+    (regionMatch[1] === undefined
+      ? /^[A-Z]/.test(regionMatch[2]!)
+      : regionMatch[1] === "_" ||
+        !expectedRegion ||
+        !validRegions.has(expectedRegion) ||
+        matchedRegion === expectedRegion)
   ) {
-    region = regionMatch[2].toUpperCase();
-    name = name.slice(0, -3).replace(/[,\s]+$/, "");
+    region = matchedRegion;
+    name = name.slice(0, regionMatch.index).replace(/[,\s]+$/, "");
   }
 
   // Step 3: Replace underscores with spaces
