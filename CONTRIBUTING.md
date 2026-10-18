@@ -89,7 +89,7 @@ The tarball carries the version a release dispatched that UTC day would publish,
 Install that tarball in each consumer and run its full build and tests against it:
 
 - [slackwater.xyz](https://github.com/openwatersio/slackwater.xyz): `npm install --ignore-scripts <tarball>`, then `npm run build`, `npm run typecheck`, `npm test` and `npm run test:agents`, in that order. The site sets `strict-allow-scripts`, which refuses a local tarball's `prepare` script; a registry install never runs it, so `--ignore-scripts` installs the tarball the way the release will arrive. The build comes first because it writes `src/routeTree.gen.ts`, which is gitignored and which typecheck and the tests import; the site's own CI runs them in this order.
-- [slackwater-ios](https://github.com/openwatersio/slackwater-ios): in `tools/`, `npm install <tarball>` and `npm test`, which regenerates the bundle with `build:data` and tests it.
+- [slackwater-ios](https://github.com/openwatersio/slackwater-ios): in `tools/`, `npm install <tarball>` and `npm test`, which regenerates the bundle with `build:data` and tests it. Then build and test the app on that bundle. A release ships the Swift reader with the `stations.tcdb` it reads, so in `project.yml` replace the `SlackwaterDatabase` package's `url` and `exactVersion` with `path:` to a checkout of this repository at the commit you packed, and run `./scripts/test.sh --full`, which regenerates the project. The `tools/` tests never compile the app, so they cannot catch a reader change the app does not build against.
 
 Dispatch `publish.yml` only when both pass. Don't commit either consumer's install of the tarball; they pin the published version once it is out.
 
