@@ -86,7 +86,7 @@ npm run pack:local   # builds and packs packages/database, printing the tarball'
 
 Install that tarball in each consumer and run its full build and tests against it:
 
-- [slackwater.xyz](https://github.com/openwatersio/slackwater.xyz): `npm install <tarball>`, then `npm run typecheck`, `npm test` and `npm run build`.
+- [slackwater.xyz](https://github.com/openwatersio/slackwater.xyz): `npm install --ignore-scripts <tarball>`, then `npm run build`, `npm run typecheck`, `npm test` and `npm run test:agents`, in that order. The site sets `strict-allow-scripts`, which refuses a local tarball's `prepare` script; a registry install never runs it, so `--ignore-scripts` installs the tarball the way the release will arrive. The build comes first because it writes `src/routeTree.gen.ts`, which is gitignored and which typecheck and the tests import; the site's own CI runs them in this order.
 - [slackwater-ios](https://github.com/openwatersio/slackwater-ios): in `tools/`, `npm install <tarball>` and `npm test`, which regenerates the bundle with `build:data` and tests it.
 
 Dispatch `publish.yml` only when both pass. Don't commit either consumer's install of the tarball; they pin the published version once it is out.
