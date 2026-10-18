@@ -509,10 +509,33 @@ computed:
   test("refuses an owned record's fields on a station without a provider", () => {
     const root = repo({
       "stations/current/us/boundary-pass.yaml":
-        "tide_reference: chs-campbell-river\nsources:\n  - noaa/PUG1717\n",
+        "magnitude_note: 6 kn\nsources:\n  - noaa/PUG1717\n",
     });
     expect(() => readStationFiles(join(root, "stations"))).toThrow(
       /needs provider/,
+    );
+  });
+
+  test("a provider current's tide pairing applies to every record", () => {
+    const root = repo({
+      "stations/current/us/richmond.yaml":
+        "tide_reference: noaa/9414863\nsources:\n  - noaa/PCT0666\n  - noaa/PCT0667\n",
+    });
+    const { corrections } = curatedRecords(
+      readStationFiles(join(root, "stations")),
+      new Set(["noaa/PCT0666", "noaa/PCT0667"]),
+    );
+    expect(corrections.get("noaa/PCT0666")?.tideReference).toBe("noaa/9414863");
+    expect(corrections.get("noaa/PCT0667")?.tideReference).toBe("noaa/9414863");
+  });
+
+  test("refuses a tide pairing on a tide station", () => {
+    const root = repo({
+      "stations/tide/us/richmond.yaml":
+        "tide_reference: noaa/9414863\nsources:\n  - noaa/9414863\n",
+    });
+    expect(() => readStationFiles(join(root, "stations"))).toThrow(
+      /tide_reference pairs a current/,
     );
   });
 

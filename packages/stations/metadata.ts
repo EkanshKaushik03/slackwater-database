@@ -39,12 +39,13 @@ export interface Correction {
   /** The published position is right although the coastline audit flags it. */
   positionVerified?: true;
   location?: MetadataLocation;
+  /** A current's paired tide station, by record id. */
+  tideReference?: string;
 }
 
 export interface RegistryRecord extends Correction {
   provider?: string;
   kind?: "tide" | "current";
-  tideReference?: string;
   magnitudeNote?: string;
   derived?: {
     reference: string;
@@ -99,6 +100,11 @@ export function validateMetadata(
 
   for (const [id, correction] of corrections) {
     validateCommon(id, correction, problems);
+    if (
+      correction.tideReference !== undefined &&
+      !nonEmpty(correction.tideReference)
+    )
+      problems.push(`${id}: tideReference must be a non-empty string`);
     const records = (siblings.get(id) ?? [id]).flatMap(
       (sibling) => published.get(sibling) ?? [],
     );
@@ -575,6 +581,11 @@ export function resolveMetadata(
           low_water_lag_minutes: registry.derived.lwLagMinutes,
         };
     }
+  } else if (correction?.tideReference && station.kind === "current") {
+    result.current = {
+      ...station.current,
+      tide_reference: correction.tideReference,
+    };
   }
 
   return result;

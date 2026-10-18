@@ -1,4 +1,6 @@
 region: US-CA
+# The Richmond gauge, the nearest tide station in the same water.
+tide_reference: noaa/9414863
 sources:
   - noaa/PCT0671
 redirect_from:
