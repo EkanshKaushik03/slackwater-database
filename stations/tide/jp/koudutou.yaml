@@ -1,0 +1,40 @@
+sources:
+  - jhod/0056
+  - ticon/kozushima-hd09-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/kozushima/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    jhod/0056:
+      position: [34.209166666667, 139.13166666667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 86
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.716
+        issues:
+          - MHHW (1.406) < MHW (1.407)
+    ticon/kozushima-hd09-jpn-jodc_jcg:
+      position: [34.209167, 139.131667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: jhod/0056
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.111
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by jhod/0056, its operator's own record

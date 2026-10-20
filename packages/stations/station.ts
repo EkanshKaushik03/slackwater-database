@@ -182,6 +182,8 @@ export const PUBLISHED_PRECISION: Record<
   // as the LINZ importer writes it: the shift's further digits fall below
   // 0.00005° and are dropped.
   linz: { amplitude: 6, phase: 4 },
+  // Centimetres to 0.01 cm; local-meridian phases retain the inventory longitude's digits.
+  jhod: { amplitude: 4, phase: 11 },
 };
 
 /** Round constituents to the source's published precision. Phases stay as

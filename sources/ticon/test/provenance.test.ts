@@ -60,6 +60,34 @@ test("a CMEMS code matches no Kartverket gauge", () => {
   expect(declaredOriginator("ticon/oslotg-osl-nor-cmems")).toBeUndefined();
 });
 
+test("JODC's Coast Guard codes resolve through the reviewed JHOD crosswalk", () => {
+  expect(declaration("ticon/sasebo-hd19-jpn-jodc_jcg")).toEqual({
+    id: "jhod/0154",
+    unambiguous: true,
+  });
+  expect(declaredOriginator("ticon/izuhara-hd23-jpn-jodc_jcg")).toBe(
+    "jhod/0158",
+  );
+  expect(declaredOriginator("ticon/unknown-hd99-jpn-jodc_jcg")).toBeUndefined();
+  expect(
+    declaredOriginator("ticon/yokohama-ma16-jpn-jodc_jma"),
+  ).toBeUndefined();
+  const pinned = {
+    "345A": meta("Japan Oceanographic Data Center", "HD28"),
+    "357A": meta("Japan Oceanographic Data Center", "HD10"),
+    "999A": meta("Unrelated provider", "HD28"),
+  };
+  expect(
+    declaredOriginator("ticon/nakano_shima-345a-jpn-uhslc_rq", pinned),
+  ).toBe("jhod/0179");
+  expect(declaredOriginator("ticon/miyakejima-357a-jpn-uhslc_rq", pinned)).toBe(
+    "jhod/0057",
+  );
+  expect(
+    declaredOriginator("ticon/other-999a-jpn-uhslc_rq", pinned),
+  ).toBeUndefined();
+});
+
 test("UHSLC metadata names an originator only through a known provider", () => {
   const pinned = {
     "073A": meta("Land Information New Zealand", "073"),

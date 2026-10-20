@@ -441,6 +441,30 @@ describe("gauge deduplication", () => {
     });
   });
 
+  test("prefers JHOD's constants to Coast Guard relays while keeping the separate JMA gauge", () => {
+    const jhod = quality.filter((r) => r.id.startsWith("jhod/"));
+    expect(jhod).toHaveLength(20);
+    expect(jhod.every((r) => r.accepted && r.factors?.source === 1)).toBe(true);
+    expect(
+      quality.find((r) => r.id === "ticon/izuhara-hd23-jpn-jodc_jcg"),
+    ).toMatchObject({
+      accepted: false,
+      reason: "superseded",
+      redundant: "jhod/0158",
+    });
+    expect(
+      quality.find((r) => r.id === "ticon/nakano_shima-345a-jpn-uhslc_rq"),
+    ).toMatchObject({
+      accepted: false,
+      reason: "superseded",
+      redundant: "jhod/0179",
+    });
+    expect(
+      quality.find((r) => r.id === "ticon/yokohama-ma16-jpn-jodc_jma")
+        ?.accepted,
+    ).toBe(true);
+  });
+
   // A single physical gauge is often split across TICON records that share a
   // station code but differ by segment letter or provider (fast-delivery vs
   // research-quality, or two data centres). Coordinate drift pushes them past

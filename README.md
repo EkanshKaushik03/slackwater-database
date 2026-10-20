@@ -14,6 +14,7 @@ Tide stations:
 - [**TICON-4**](sources/ticon/README.md): tidal constants from the GESLA-4 sea-level records, worldwide.
 - [**LINZ**](sources/linz/README.md): Toitū Te Whenua Land Information New Zealand. New Zealand ports from LINZ's yearly tide-constituent release.
 - [**Kartverket**](sources/kartverket/README.md): the Norwegian Mapping Authority. Its public harmonic stations in Norway and Svalbard.
+- [**JHOD**](sources/jhod/README.md): Japan Coast Guard, Hydrographic and Oceanographic Department. Published harmonic constants for 20 Japanese gauges.
 - [**CHS**](sources/chs/README.md): the Canadian Hydrographic Service. Identity and position for Canadian tide stations, with no constituents; consumers fetch predictions from CHS at runtime.
 
 Tidal currents:
@@ -146,6 +147,7 @@ The sources and what each one asks for:
 - **Kartverket / Norwegian Mapping Authority, Hydrographic Service** — © Kartverket / Norwegian Mapping Authority, Hydrographic Service, https://www.kartverket.no. Credit required under CC BY 4.0, and [Kartverket's terms](https://www.kartverket.no/en/api-and-data/terms-of-use) ask for it as "©Kartverket" with a link to kartverket.no.
 - **Toitū Te Whenua Land Information New Zealand** — "This work is based on Toitū Te Whenua Land Information New Zealand data which are licensed by Toitū Te Whenua Land Information New Zealand for re-use under the Creative Commons Attribution 4.0 International licence." Credit required under CC BY 4.0, and [LINZ's copyright terms](https://www.linz.govt.nz/copyright) ask for that statement on adapted data, in writing, never by its logo or crest.
 - **TICON-4** — Hart-Davis, Michael; Dettmering, Denise; Seitz, Florian (2025). _TICON-4: TIdal CONstants based on GESLA-4 sea-level records._ SEANOE. https://doi.org/10.17882/109129. Credit required.
+- **Japan Coast Guard, Hydrographic and Oceanographic Department** — source credit and an editing notice are required by [JHOD's Government Standard Terms of Use 2.0](https://www1.kaiho.mlit.go.jp/copyright.html). The station notice identifies JHOD and states that Open Waters converted constituent names, units and phases and derived tidal datums.
 - **NOAA CO-OPS** — a United States government work in the public domain. Attribution is not required, but is appreciated, so the project credit stands alone.
 - **Canadian Hydrographic Service** — names the agency operating a current station whose record was authored in this repository under MIT (see [stations/README.md](./stations/README.md#provenance)). No data is redistributed from CHS, so no credit is owed to it.
 
@@ -163,3 +165,5 @@ For TICON-4 stations:
 For Kartverket stations, published harmonic phases are converted from UTC+1 to UTC and centimetres are converted to metres. The original responses and comparison results are pinned under [sources/kartverket](./sources/kartverket/README.md).
 
 For LINZ stations, published harmonic phases are converted from NZST (UTC+12) to UTC, centimetres are converted to metres, five constituent names are mapped to the catalogue's spelling (such as `LDA2` to `lambda2`), and Nelson's misprinted latitude is corrected. Datums other than MSL are derived from the constituents, since LINZ publishes only the mean level. See [sources/linz](./sources/linz/README.md) for the method.
+
+For JHOD stations, local-meridian phases are converted to Greenwich, centimetres are converted to metres, Greek constituent names are spelled out and JHOD's `M1` is mapped by frequency to `M1C`. Published MSL and depth datum are retained; other tidal datums are derived from the constituents. See [sources/jhod](./sources/jhod/README.md) for the pinned responses, gauge matches and prediction comparison.

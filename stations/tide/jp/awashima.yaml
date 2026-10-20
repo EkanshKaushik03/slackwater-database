@@ -1,18 +1,38 @@
 sources:
+  - jhod/0089
   - ticon/awashima-hd25-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/awashima-jhod-0089/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    jhod/0089:
+      position: [38.467777777778, 139.255]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.549
     ticon/awashima-hd25-jpn-jodc_jcg:
       position: [38.467783, 139.255]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 75
+        accepted: false
+        reason: superseded
+        redundant: jhod/0089
+        score: 0
         factors:
           epoch: 1
           recency: 0.98
           source: 0.111
           quality: 1
           amplitude: 1
-          coverage: 0.549
+          coverage: 0
+        issues:
+          - Superseded by jhod/0089, its operator's own record

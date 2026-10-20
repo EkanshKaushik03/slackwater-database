@@ -1,0 +1,38 @@
+sources:
+  - jhod/0059
+  - ticon/hachijyojima-hd11-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/hachijyojima/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    jhod/0059:
+      position: [33.130277777778, 139.80472222222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 90
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 1
+    ticon/hachijyojima-hd11-jpn-jodc_jcg:
+      position: [33.130283, 139.804717]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: jhod/0059
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.111
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by jhod/0059, its operator's own record

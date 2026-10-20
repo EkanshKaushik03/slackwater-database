@@ -1,18 +1,40 @@
 sources:
+  - jhod/0062
   - ticon/yokohamashinko-hd29-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/yokohama-jhod-0062/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    jhod/0062:
+      position: [35.454166666667, 139.64416666667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 76
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.031
+        issues:
+          - MHHW (1.653) < MHW (1.657)
     ticon/yokohamashinko-hd29-jpn-jodc_jcg:
       position: [35.454167, 139.644167]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 52
+        accepted: false
+        reason: superseded
+        redundant: jhod/0062
+        score: 0
         factors:
           epoch: 1
           recency: 0.98
           source: 0.111
           quality: 0
           amplitude: 1
-          coverage: 0.031
+          coverage: 0
+        issues:
+          - Superseded by jhod/0062, its operator's own record

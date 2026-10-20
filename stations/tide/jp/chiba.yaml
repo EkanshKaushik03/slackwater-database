@@ -1,18 +1,40 @@
 sources:
+  - jhod/0053
   - ticon/chiba-hd06-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/chiba-jhod-0053/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    jhod/0053:
+      position: [35.568055555556, 140.04555555556]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 83
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.527
+        issues:
+          - MLW (0.832) < MLLW (0.836)
     ticon/chiba-hd06-jpn-jodc_jcg:
       position: [35.56805, 140.04555]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 75
+        accepted: false
+        reason: superseded
+        redundant: jhod/0053
+        score: 0
         factors:
           epoch: 1
           recency: 0.98
           source: 0.111
           quality: 1
           amplitude: 1
-          coverage: 0.527
+          coverage: 0
+        issues:
+          - Superseded by jhod/0053, its operator's own record
