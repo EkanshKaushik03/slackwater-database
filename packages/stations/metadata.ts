@@ -800,7 +800,11 @@ function sharesMeaningfulWord(left: string, right: string): boolean {
   // Some providers squash a name into one word (LINZ's `PORTCHALMERS`), so a
   // curated word may sit inside the published letters instead.
   const letters = words(right).join("");
-  return words(left).some((word) => word.length >= 3 && letters.includes(word));
+  if (words(left).some((word) => word.length >= 3 && letters.includes(word)))
+    return true;
+  // TICON deletes non-ASCII letters entirely; require the remaining full name to match.
+  const stripped = words(left.replace(/[^\x00-\x7F]/g, "")).join("");
+  return stripped.length >= 3 && stripped === letters;
 }
 
 function distanceKm(

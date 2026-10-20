@@ -810,6 +810,44 @@ test/1:
     ).toMatch(/test\/1.*Anacortes.*Swinomish Channel Entrance/);
   });
 
+  test.each([
+    ["Büsum", "Bsum"],
+    ["Buttelerhörne", "Buttelerhrne"],
+    ["Emshörn", "Emshrn"],
+    ["Hörnum", "Hrnum"],
+    ["Lübeck-Bauhof", "Lbeckbauhof"],
+    ["Reithörne", "Reithrne"],
+    ["Scharhörn", "Scharhrn"],
+    ["Schleimünde SP", "Schleimndesp"],
+    ["Travemünde", "Travemnde"],
+    ["Ueckermünde", "Ueckermnde"],
+    ["Warnemünde", "Warnemnde"],
+    ["Wittower Fähre", "Wittowerfhre"],
+  ])(
+    "accepts %s when the source deleted non-ASCII letters",
+    (name, published) => {
+      const corrections = loadCorrections(`test/1:\n  name: ${name}\n`);
+      expect(
+        validateMetadata(corrections, new Map(), [
+          { ...baseStation, id: "test/1", name: published },
+        ]),
+      ).toEqual([]);
+    },
+  );
+
+  test.each([
+    ["Büsum", "Bsumhaven"],
+    ["Büsum", "Busam"],
+    ["Äöx", "X"],
+  ])("rejects %s as a correction for %s", (name, published) => {
+    const corrections = loadCorrections(`test/1:\n  name: ${name}\n`);
+    expect(
+      validateMetadata(corrections, new Map(), [
+        { ...baseStation, id: "test/1", name: published },
+      ]),
+    ).not.toEqual([]);
+  });
+
   test("accepts a curated name that restores the accents a source dropped", () => {
     const corrections = loadCorrections(
       "test/1:\n  name: E4-bron Södertälje\n",
