@@ -110,16 +110,34 @@ describe("search", () => {
     ).toContain(id);
   });
 
-  test.each(["BÜSU", "BU\u0308SU"])(
+  test.each([
+    ["Busu", "BÜSU"],
+    ["Busu", "BU\u0308SU"],
+    ["Horn", "HÖRN"],
+    ["Lub", "LU\u0308B"],
+  ])(
     "uses the same index terms for ASCII and accented prefix %s",
-    (query) => {
+    (plain, query) => {
       const ids = (text: string) =>
         search(text, { maxResults: Infinity }).map((station) => station.id);
-      const ascii = ids("Busu");
-      expect(ascii).toContain("ticon/bsum-9510095-deu-wsv");
+      const ascii = ids(plain);
+      expect(ascii.length).toBeGreaterThan(0);
       expect(ids(query)).toEqual(ascii);
     },
   );
+
+  test.each([
+    ["Traena", "Træna", "kartverket/TAZ"],
+    ["Bodo", "Bodø", "kartverket/BOO"],
+  ])("finds %s with the same ranking as %s", (plain, original, id) => {
+    const ids = (text: string) =>
+      search(text, { maxResults: Infinity }).map((station) => station.id);
+    const expected = ids(original);
+    expect(expected).toContain(id);
+    for (const query of [plain, plain.toUpperCase(), original.toUpperCase()]) {
+      expect(ids(query)).toEqual(expected);
+    }
+  });
 
   test("searches by name", () => {
     const results = search("Boston");
