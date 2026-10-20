@@ -1,5 +1,8 @@
+region: CA-BC
 sources:
   - noaa/PCT2586
+redirect_from:
+  - /currents/us/grenville-channel-narrow-portion/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
