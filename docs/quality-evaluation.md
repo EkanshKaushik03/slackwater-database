@@ -302,7 +302,7 @@ npm run report:quality -w packages/stations
 3. `scoreCoverage` runs once every record has been checked, against the records that passed.
 4. `computeCompositeScore` sets the score of each record that passed the checks.
 5. `countSubordinates` counts each reference's accepted subordinates. The count is not updated as duplicates are rejected.
-6. `deduplicateByGauge` merges TICON records by `gaugeKey`, keeping the first record of each group in `precedence` order.
+6. `deduplicateByGauge` merges TICON records by `gaugeKey`, keeping the first record of each group in `precedence` order. The key strips the provider suffix and segment letter, and corrects Roseau's mislabeled country code.
 7. `deduplicate` ranks the survivors by `precedence`, and each record still accepted absorbs the later records that `areDuplicates` matches to it.
 8. `resolveRedundant` points each duplicate at the record published for its gauge.
 
