@@ -1,6 +1,9 @@
 context: Klemtu, British Columbia
+region: CA-BC
 sources:
   - noaa/PCT2576
+redirect_from:
+  - /currents/us/meyers-narrows/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:

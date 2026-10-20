@@ -1,5 +1,8 @@
+region: CA-BC
 sources:
   - noaa/PCT2591
+redirect_from:
+  - /currents/us/skeena-river/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
