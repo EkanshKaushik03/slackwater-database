@@ -9,7 +9,7 @@ import {
   rm,
   writeFile,
 } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DATA_DIR, withPublishedPrecision } from "@slackwater/stations";
 import {
@@ -101,33 +101,55 @@ export async function verifySnapshot(dir = FIXTURES_DIR) {
   return { harmonics, contents };
 }
 
+async function withOutputLock<T>(
+  dir: string,
+  action: () => Promise<T>,
+): Promise<T> {
+  await mkdir(dirname(dir), { recursive: true });
+  const lock = `${resolve(dir)}.lock`;
+  try {
+    await mkdir(lock);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "EEXIST")
+      throw new Error(
+        `JHOD output is locked: ${lock}. Remove the lock directory only after confirming no importer or refresh is running.`,
+      );
+    throw error;
+  }
+  try {
+    return await action();
+  } finally {
+    await rm(lock, { recursive: true });
+  }
+}
+
 export async function importSnapshot(
   dir = FIXTURES_DIR,
   dataDir = DATA_DIR,
   withdrawn: string[] = [],
 ) {
-  const { harmonics } = await verifySnapshot(dir);
   const out = join(dataDir, "jhod");
-  checkWithdrawals(
-    await stationIds(out),
-    new Set(harmonics.map((h) => h.id)),
-    withdrawn,
-  );
-  // Build every record before replacing anything, so a bad page preserves the current data.
-  const records = harmonics.map((h) => ({
-    id: h.id,
-    data: withPublishedPrecision("jhod", buildStation(h)),
-  }));
-  await mkdir(out, { recursive: true });
-  for (const record of records)
-    await writeFile(
-      join(out, `${record.id}.json`),
-      JSON.stringify(record.data, null, 2) + "\n",
-    );
-  const keep = new Set(records.map((r) => `${r.id}.json`));
-  for (const name of await readdir(out))
-    if (name.endsWith(".json") && !keep.has(name)) await rm(join(out, name));
-  return records.length;
+  return withOutputLock(out, async () => {
+    const { harmonics } = await verifySnapshot(dir);
+    const previous = await stationIds(out);
+    const keep = new Set(harmonics.map((h) => h.id));
+    checkWithdrawals(previous, keep, withdrawn);
+    // Build every record before replacing anything, so a bad page preserves the current data.
+    const records = harmonics.map((h) => ({
+      id: h.id,
+      data: withPublishedPrecision("jhod", buildStation(h)),
+    }));
+    await mkdir(out, { recursive: true });
+    for (const record of records)
+      await writeFile(
+        join(out, `${record.id}.json`),
+        JSON.stringify(record.data, null, 2) + "\n",
+      );
+    // Only the initial inventory passed the explicit withdrawal check.
+    for (const id of previous)
+      if (!keep.has(id)) await rm(join(out, `${id}.json`));
+    return records.length;
+  });
 }
 
 export async function refreshSnapshot(
@@ -135,59 +157,62 @@ export async function refreshSnapshot(
   request = globalThis.fetch,
   withdrawn: string[] = [],
 ) {
-  await mkdir(dirname(dir), { recursive: true });
-  const stage = await mkdtemp(join(dirname(dir), ".jhod-refresh-"));
-  const files: File[] = [];
-  const get = async (path: string, url: string) => {
-    const response = await request(url, {
-      signal: AbortSignal.timeout(30_000),
-    });
-    if (!response.ok)
-      throw new Error(`Request failed (${response.status}): ${url}`);
-    const bytes = Buffer.from(await response.arrayBuffer());
-    await writeFile(join(stage, path), bytes);
-    files.push({ path, url, sha256: digest(bytes) });
-    return bytes.toString("utf8");
-  };
-  try {
-    const gauges = parseInventory(await get("index.html", INDEX_URL));
-    await get(
-      "explanation.html",
-      "https://www1.kaiho.mlit.go.jp/TIDE/harmonic/kaisetsu.html",
-    );
-    await get("terms.html", "https://www1.kaiho.mlit.go.jp/copyright.html");
-    for (const gauge of gauges) {
-      const html = await get(`${gauge.id}-gauge.html`, gaugeUrl(gauge.id));
-      if (hasHarmonics(gauge, html))
-        await get(`${gauge.id}-constants.html`, constantsUrl(gauge.id));
-    }
-    await writeFile(
-      join(stage, "manifest.json"),
-      JSON.stringify(
-        { retrievedAt: new Date().toISOString(), files },
-        null,
-        2,
-      ) + "\n",
-    );
-    const next = await verifySnapshot(stage);
-    if (existsSync(join(dir, "manifest.json"))) {
-      const previous = await verifySnapshot(dir);
-      checkWithdrawals(
-        previous.harmonics.map((h) => h.id),
-        new Set(next.harmonics.map((h) => h.id)),
-        withdrawn,
+  return withOutputLock(dir, async () => {
+    const stage = await mkdtemp(join(dirname(dir), ".jhod-refresh-"));
+    const files: File[] = [];
+    const get = async (path: string, url: string) => {
+      const response = await request(url, {
+        signal: AbortSignal.timeout(30_000),
+      });
+      if (!response.ok)
+        throw new Error(`Request failed (${response.status}): ${url}`);
+      const bytes = Buffer.from(await response.arrayBuffer());
+      await writeFile(join(stage, path), bytes);
+      files.push({ path, url, sha256: digest(bytes) });
+      return bytes.toString("utf8");
+    };
+    try {
+      const gauges = parseInventory(await get("index.html", INDEX_URL));
+      await get(
+        "explanation.html",
+        "https://www1.kaiho.mlit.go.jp/TIDE/harmonic/kaisetsu.html",
       );
+      await get("terms.html", "https://www1.kaiho.mlit.go.jp/copyright.html");
+      for (const gauge of gauges) {
+        const html = await get(`${gauge.id}-gauge.html`, gaugeUrl(gauge.id));
+        if (hasHarmonics(gauge, html))
+          await get(`${gauge.id}-constants.html`, constantsUrl(gauge.id));
+      }
+      await writeFile(
+        join(stage, "manifest.json"),
+        JSON.stringify(
+          { retrievedAt: new Date().toISOString(), files },
+          null,
+          2,
+        ) + "\n",
+      );
+      const next = await verifySnapshot(stage);
+      const previousPaths: string[] = [];
+      if (existsSync(join(dir, "manifest.json"))) {
+        const previous = await verifySnapshot(dir);
+        previousPaths.push(...previous.contents.keys());
+        checkWithdrawals(
+          previous.harmonics.map((h) => h.id),
+          new Set(next.harmonics.map((h) => h.id)),
+          withdrawn,
+        );
+      }
+      await mkdir(dir, { recursive: true });
+      for (const file of files)
+        await rename(join(stage, file.path), join(dir, file.path));
+      await rename(join(stage, "manifest.json"), join(dir, "manifest.json"));
+      const keep = new Set(files.map((file) => file.path));
+      for (const name of previousPaths)
+        if (!keep.has(name)) await rm(join(dir, name));
+    } finally {
+      await rm(stage, { recursive: true, force: true });
     }
-    await mkdir(dir, { recursive: true });
-    for (const file of files)
-      await rename(join(stage, file.path), join(dir, file.path));
-    await rename(join(stage, "manifest.json"), join(dir, "manifest.json"));
-    const keep = new Set(files.map((file) => file.path));
-    for (const name of await readdir(dir))
-      if (name.endsWith(".html") && !keep.has(name)) await rm(join(dir, name));
-  } finally {
-    await rm(stage, { recursive: true, force: true });
-  }
+  });
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

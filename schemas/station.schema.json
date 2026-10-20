@@ -206,7 +206,31 @@
     "datums_source": {
       "type": "string",
       "enum": ["observed", "harmonic"],
-      "description": "How datums were derived: 'observed' from water-level measurements, or 'harmonic' synthesized from constituents."
+      "description": "Mean-datum method: 'observed' from prepared water-level measurements, or 'harmonic' synthesized from constituents. Other datum keys can use different methods."
+    },
+    "datum_frame": {
+      "type": "string",
+      "enum": ["gauge", "constituent"],
+      "description": "Zero of the stored datum values: the observation gauge zero, or the harmonic constituent frame without a supported gauge offset. Absence means unspecified; neither value identifies a geodetic datum."
+    },
+    "datum_coverage": {
+      "type": "object",
+      "description": "Measured and model-assisted hourly bins in the observed mean-datum reduction period. Absence means unspecified, not zero inference.",
+      "required": ["months", "observed_hours", "inferred_hours"],
+      "additionalProperties": false,
+      "properties": {
+        "months": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "observed_hours": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4294967295
+        },
+        "inferred_hours": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
     },
     "chart_datum": {
       "type": "string",

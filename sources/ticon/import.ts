@@ -246,6 +246,10 @@ async function getDatums(
           end: toISODate(obsEpoch.end),
         },
         ...(existing.datum_epoch ? { datum_epoch: existing.datum_epoch } : {}),
+        ...(existing.datum_frame ? { datum_frame: existing.datum_frame } : {}),
+        ...(existing.datum_coverage
+          ? { datum_coverage: existing.datum_coverage }
+          : {}),
       };
       // Stored constituents are at the published precision, so compare the
       // parsed ones at that precision too, or float noise reads as a change.
@@ -285,16 +289,25 @@ async function getDatums(
       samples = await loadRqdSamples(id, rqEnd);
     }
   }
-  const { datums, datums_source, epoch, datum_epoch, datum_notice } =
-    reduceTiconDatums(
-      samples,
-      harmonic_constituents,
-      harmonic.datums,
-      obsEpoch,
-    );
+  const {
+    datums,
+    datums_source,
+    datum_frame,
+    datum_coverage,
+    epoch,
+    datum_epoch,
+    datum_notice,
+  } = reduceTiconDatums(
+    samples,
+    harmonic_constituents,
+    harmonic.datums,
+    obsEpoch,
+  );
   return {
     datums,
     datums_source,
+    datum_frame,
+    ...(datum_coverage ? { datum_coverage } : {}),
     epoch,
     ...(datum_epoch ? { datum_epoch } : {}),
     datum_notice,

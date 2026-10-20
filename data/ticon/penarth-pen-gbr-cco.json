@@ -21,15 +21,21 @@
     "MSL": 6.673,
     "MHHW": 11.116,
     "MHW": 10.976,
-    "MTL": 6.78,
-    "MLW": 2.585,
-    "MLLW": 2.46,
+    "MTL": 6.782,
+    "MLW": 2.587,
+    "MLLW": 2.464,
     "HAT": 13.762,
     "LAT": 0.139,
     "MHWS": 12.143,
     "MLWS": 1.203
   },
   "datums_source": "observed",
+  "datum_frame": "gauge",
+  "datum_coverage": {
+    "months": 12,
+    "observed_hours": 8215,
+    "inferred_hours": 545
+  },
   "chart_datum": "LAT",
   "type": "reference",
   "harmonic_constituents": [

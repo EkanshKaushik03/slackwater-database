@@ -9,8 +9,10 @@ import {
 } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { createHash } from "node:crypto";
+import fs from "node:fs/promises";
+import { syncBuiltinESMExports } from "node:module";
 import { join } from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   FIXTURES_DIR,
   importSnapshot,
@@ -20,6 +22,65 @@ import {
 import { validate } from "../validate.ts";
 
 describe("JHOD pinned import", () => {
+  it("refuses a refresh when its snapshot output is locked", async () => {
+    const root = await mkdtemp(join(tmpdir(), "jhod-test-"));
+    const fixtures = join(root, "fixtures");
+    try {
+      await mkdir(`${fixtures}.lock`);
+      await expect(
+        refreshSnapshot(`${fixtures}/`, async () => {
+          throw new Error("unexpected request while locked");
+        }),
+      ).rejects.toThrow(/locked/i);
+      expect(await readdir(`${fixtures}.lock`)).toEqual([]);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+  it("preserves an unreviewed record added after the withdrawal check", async () => {
+    const root = await mkdtemp(join(tmpdir(), "jhod-test-"));
+    const out = join(root, "jhod");
+    const original = fs.writeFile;
+    let inserted = false;
+    const spy = vi
+      .spyOn(fs, "writeFile")
+      .mockImplementation(async (...args) => {
+        await original(...args);
+        if (!inserted && String(args[0]).startsWith(out + "/")) {
+          inserted = true;
+          await original(join(out, "0001.json"), "concurrent record\n");
+        }
+      });
+    syncBuiltinESMExports();
+    try {
+      await importSnapshot(FIXTURES_DIR, root);
+      expect(await readFile(join(out, "0001.json"), "utf8")).toBe(
+        "concurrent record\n",
+      );
+    } finally {
+      spy.mockRestore();
+      syncBuiltinESMExports();
+      await rm(root, { recursive: true, force: true });
+    }
+  }, 120_000);
+  it("serializes imports of the same output and releases the lock afterward", async () => {
+    const root = await mkdtemp(join(tmpdir(), "jhod-test-"));
+    try {
+      const results = await Promise.allSettled([
+        importSnapshot(FIXTURES_DIR, root),
+        importSnapshot(FIXTURES_DIR, root),
+      ]);
+      expect(results.filter((r) => r.status === "fulfilled")).toHaveLength(1);
+      const rejected = results.find((r) => r.status === "rejected");
+      expect(
+        rejected?.status === "rejected" && String(rejected.reason),
+      ).toMatch(/locked/i);
+      expect(await importSnapshot(FIXTURES_DIR, root)).toBe(20);
+      expect(await readdir(join(root, "jhod"))).toHaveLength(20);
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  }, 120_000);
   it("finds only the 20 gauges linking complete JHOD constants", async () => {
     expect((await verifySnapshot()).harmonics).toHaveLength(20);
   });
@@ -38,6 +99,7 @@ describe("JHOD pinned import", () => {
         await readFile(join(root, "data", "jhod", "0154.json"), "utf8"),
       ).toBe("previous\n");
       expect(await readdir(join(root, "data", "jhod"))).toEqual(["0154.json"]);
+      expect(await readdir(join(root, "data"))).toEqual(["jhod"]);
     } finally {
       await rm(root, { recursive: true, force: true });
     }

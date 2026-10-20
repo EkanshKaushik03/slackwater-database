@@ -65,6 +65,8 @@ const stations: StationInput[] = [
     type: "reference",
     chart_datum: "MLLW",
     datums_source: "observed",
+    datum_frame: "gauge",
+    datum_coverage: { months: 24, observed_hours: 17520, inferred_hours: 24 },
     epoch: { start: "2007-01-01", end: "2026-01-01" },
     datum_epoch: { start: "2020-01-01", end: "2021-12-31" },
     aliases: ["elliott bay", "seattle"],

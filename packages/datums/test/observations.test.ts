@@ -23,6 +23,41 @@ const truth: Sample[] = Array.from(
 );
 
 describe("datum observation preparation", () => {
+  test.each([1, 2, 3])(
+    "fits a degree-%i residual when sample phases and profiles change across a gap",
+    (degree) => {
+      const cs = [{ name: "S2", amplitude: 2, phase: 15 }];
+      const model = createTidePredictor(cs);
+      const raw: Sample[] = [];
+      const gap = 24 * 100;
+      const before = [0, 6, 12, 18, 24, 30, 36, 42, 48, 54];
+      const after = [54];
+      const height = (h: number, minute: number) => {
+        const time = new Date(start + h * 3600000 + minute * 60000);
+        const x = h - gap + minute / 60;
+        const residual = Math.abs(x) < 8 ? 0.1 * x ** degree : 0;
+        return {
+          time,
+          level: 5 + model.getWaterLevelAtTime({ time }).level + residual,
+        };
+      };
+      for (let h = 0; h < 8784; h++) {
+        if (h >= gap && h < gap + 3) continue;
+        for (const minute of h < gap ? before : after)
+          raw.push(height(h, minute));
+      }
+      const result = prepareDatumObservations(raw, cs)!;
+      for (let h = gap; h < gap + 3; h++) {
+        const profile = h < gap + 2 ? before : after;
+        const expected =
+          profile.reduce((sum, minute) => sum + height(h, minute).level, 0) /
+          profile.length;
+        expect(
+          result.samples.find((p) => +p.time === start + h * 3600000)!.level,
+        ).toBeCloseTo(expected, 9);
+      }
+    },
+  );
   test("trims seasonal tails to the latest whole-year window", () => {
     const partial = truth.filter((p) => +p.time < Date.UTC(2021, 5, 1));
     const result = prepareDatumObservations(partial, constituents)!;

@@ -367,3 +367,5 @@ The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`
 - Talke, S. A., & Jay, D. A. (2020). Changing tides: The role of natural and anthropogenic factors. _Annual Review of Marine Science_, 12, 121–151. https://doi.org/10.1146/annurev-marine-010419-010727
 - Tsimplis, M. N., & Woodworth, P. L. (1994). The global distribution of the seasonal sea level cycle calculated from coastal tide gauge data. _Journal of Geophysical Research: Oceans_, 99(C8), 16031–16039. https://doi.org/10.1029/94JC01115
 - University of Hawaii Sea Level Center (n.d.). _Data information_. https://uhslc.soest.hawaii.edu/datainfo/
+
+NOAA’s published mean datums receive the observed-mean bound allowance even when `datums_source` is absent on its mixed datum tables. An explicit `harmonic` flag stays strict. Other unclassified providers stay strict until their mean-datum provenance is established.

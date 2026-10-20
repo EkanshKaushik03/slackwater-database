@@ -31,6 +31,12 @@
     "TLT": 0.141
   },
   "datums_source": "observed",
+  "datum_frame": "gauge",
+  "datum_coverage": {
+    "months": 168,
+    "observed_hours": 122736,
+    "inferred_hours": 0
+  },
   "chart_datum": "TLT",
   "type": "reference",
   "harmonic_constituents": [

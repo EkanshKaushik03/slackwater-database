@@ -23,6 +23,8 @@ const sortOrder: (keyof StationData)[] = [
   "disclaimers",
   "datums",
   "datums_source",
+  "datum_frame",
+  "datum_coverage",
   "chart_datum",
   "type",
   "harmonic_constituents",

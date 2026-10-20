@@ -30,6 +30,12 @@
     "MLWS": 175.338
   },
   "datums_source": "observed",
+  "datum_frame": "gauge",
+  "datum_coverage": {
+    "months": 132,
+    "observed_hours": 96348,
+    "inferred_hours": 60
+  },
   "chart_datum": "MLLW",
   "type": "reference",
   "harmonic_constituents": [

@@ -21,8 +21,8 @@
   "datums": {
     "MSL": 0.131,
     "MHHW": 0.263,
-    "MHW": 0.211,
-    "MTL": 0.145,
+    "MHW": 0.212,
+    "MTL": 0.146,
     "MLW": 0.079,
     "MLLW": -0.006,
     "HAT": 0.28,
@@ -31,6 +31,12 @@
     "MLWS": 0.054
   },
   "datums_source": "observed",
+  "datum_frame": "gauge",
+  "datum_coverage": {
+    "months": 12,
+    "observed_hours": 8668,
+    "inferred_hours": 92
+  },
   "chart_datum": "MSL",
   "type": "reference",
   "harmonic_constituents": [

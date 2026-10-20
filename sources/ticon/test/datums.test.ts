@@ -38,7 +38,13 @@ describe("TICON datum composition", () => {
     expect(
       cachedDatumNotice({
         datums_source: "observed",
+        datum_frame: "gauge",
         datum_epoch: { start: "2020-01-01", end: "2020-12-31" },
+        datum_coverage: {
+          months: 12,
+          observed_hours: 8760,
+          inferred_hours: 24,
+        },
         disclaimers: `No obvious issues ${OBSERVED_DATUM_NOTICE}`,
       }),
     ).toBe(OBSERVED_DATUM_NOTICE);
@@ -46,9 +52,38 @@ describe("TICON datum composition", () => {
       expect(
         cachedDatumNotice({
           datums_source: "harmonic",
+          datum_frame:
+            frame === OBSERVED_OFFSET_NOTICE ? "gauge" : "constituent",
           disclaimers: `No obvious issues ${HARMONIC_DATUM_NOTICE} ${frame}`,
         }),
       ).toBe(`${HARMONIC_DATUM_NOTICE} ${frame}`);
+  });
+  test("invalidates cached datums whose frame is missing or contradicts their method notice", () => {
+    for (const datum_frame of [undefined, "gauge"] as const) {
+      expect(
+        cachedDatumNotice({
+          datums_source: "harmonic",
+          ...(datum_frame ? { datum_frame } : {}),
+          disclaimers: `${HARMONIC_DATUM_NOTICE} ${CONSTITUENT_FRAME_NOTICE}`,
+        }),
+      ).toBeUndefined();
+    }
+  });
+  test("invalidates an observed cache that omits or contradicts its inferred-hour coverage", () => {
+    for (const datum_coverage of [
+      undefined,
+      { months: 12, observed_hours: 1, inferred_hours: 0 },
+    ]) {
+      expect(
+        cachedDatumNotice({
+          datums_source: "observed",
+          datum_frame: "gauge",
+          datum_epoch: { start: "2020-01-01", end: "2020-12-31" },
+          ...(datum_coverage ? { datum_coverage } : {}),
+          disclaimers: OBSERVED_DATUM_NOTICE,
+        }),
+      ).toBeUndefined();
+    }
   });
   test("keeps the observation gauge frame when gaps require the harmonic fallback", () => {
     const samples = Array.from(
@@ -64,6 +99,7 @@ describe("TICON datum composition", () => {
     );
     const result = reduceTiconDatums(samples, constituents, harmonic, fitEpoch);
     expect(result.datums_source).toBe("harmonic");
+    expect(result).toHaveProperty("datum_frame", "gauge");
     expect(result.datums).toMatchObject({
       MSL: 7,
       MHHW: 8.2,
@@ -86,6 +122,7 @@ describe("TICON datum composition", () => {
     });
     const result = reduceTiconDatums(samples, constituents, harmonic, fitEpoch);
     expect(result.datums_source).toBe("observed");
+    expect(result).toHaveProperty("datum_frame", "gauge");
     expect(result.datums["MSL"]).toBeCloseTo(7, 2);
     expect(result.datums["MHW"]).toBeCloseTo(8, 2);
     expect(result.datums["MLW"]).toBeCloseTo(6, 2);
@@ -97,12 +134,29 @@ describe("TICON datum composition", () => {
       start: "2020-02-01",
       end: "2021-01-31",
     });
+    expect(result.datum_coverage).toEqual({
+      months: 12,
+      observed_hours: 8784,
+      inferred_hours: 0,
+    });
+    const coarse = reduceTiconDatums(
+      samples.filter((_, h) => h % 3 === 0),
+      constituents,
+      harmonic,
+      fitEpoch,
+    );
+    expect(coarse.datum_coverage).toEqual({
+      months: 12,
+      observed_hours: 2928,
+      inferred_hours: 5856,
+    });
   });
 
   test("does not invent an observation-frame offset when no record supports one", () => {
     const result = reduceTiconDatums([], constituents, harmonic, fitEpoch);
     expect(result.datums_source).toBe("harmonic");
     expect(result.datums).toEqual(harmonic);
+    expect(result).toHaveProperty("datum_frame", "constituent");
     expect(result.datum_notice).toContain(CONSTITUENT_FRAME_NOTICE);
   });
   test("distinguishes a supported zero gauge mean from an unavailable offset", () => {
@@ -119,6 +173,7 @@ describe("TICON datum composition", () => {
     );
     const result = reduceTiconDatums(samples, constituents, harmonic, fitEpoch);
     expect(result.datums["MSL"]).toBe(0);
+    expect(result).toHaveProperty("datum_frame", "gauge");
     expect(result.datum_notice).toContain(OBSERVED_OFFSET_NOTICE);
     expect(result.datum_notice).not.toContain(CONSTITUENT_FRAME_NOTICE);
   });

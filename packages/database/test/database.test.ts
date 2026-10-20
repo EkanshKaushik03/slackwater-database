@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import * as flatbuffers from "flatbuffers";
 import { buildDatabase } from "../src/database/builder.ts";
 import { openDatabase } from "../src/database/reader.ts";
-import { Root, Kind } from "../src/generated/fbs/slackwater.ts";
+import { Root, Kind, DatumFrame } from "../src/generated/fbs/slackwater.ts";
 import type { Station, StationInput } from "../src/types.ts";
 
 // The fixtures' sources carry no credit of their own.
@@ -111,6 +111,8 @@ describe("buildDatabase", () => {
       type: "reference",
       chart_datum: "MLLW",
       datums_source: "observed",
+      datum_frame: "gauge",
+      datum_coverage: { months: 24, observed_hours: 17520, inferred_hours: 24 },
       epoch: { start: "2007-01-01", end: "2026-01-01" },
       datum_epoch: { start: "2020-01-01", end: "2021-12-31" },
       aliases: ["Elliott Bay", "seattle"],
@@ -302,9 +304,23 @@ describe("buildDatabase", () => {
     expect(epoch.end()).toBe("2026-01-01");
     expect(station.datumEpoch()!.start()).toBe("2020-01-01");
     expect(station.datumEpoch()!.end()).toBe("2021-12-31");
+    expect(station.datumFrame()).toBe(DatumFrame.Gauge);
+    expect(station.datumCoverage()!.observedHours()).toBe(17520);
+    expect(station.datumCoverage()!.inferredHours()).toBe(24);
     // Aliases are lower-cased per the schema contract.
     expect(station.aliases(0)).toBe("elliott bay");
     expect(station.aliases(1)).toBe("seattle");
+  });
+
+  test("distinguishes constituent-frame datums from an unspecified frame", () => {
+    for (const datum_frame of ["constituent", undefined] as const) {
+      const { datum_frame: _, ...base } = inputs[0]!;
+      const record = { ...base, ...(datum_frame ? { datum_frame } : {}) };
+      const table = openDatabase(build([record])).stations(0)!;
+      expect(table.datumFrame()).toBe(
+        datum_frame ? DatumFrame.Constituent : DatumFrame.Unknown,
+      );
+    }
   });
 
   test("round-trips structured station identity", () => {
@@ -454,6 +470,32 @@ describe("buildDatabase", () => {
       expect(currentAccessor).toHaveBeenCalledTimes(1);
     } finally {
       currentAccessor.mockRestore();
+      vi.doUnmock("#slackwater.tcdb");
+      vi.resetModules();
+    }
+  });
+
+  test("inherits datum frame and reduction method with the reference's values", async () => {
+    const bytes = build(inputs);
+    vi.doMock("#slackwater.tcdb", () => ({ default: bytes }));
+    vi.resetModules();
+    try {
+      const { stationsById } = await import("../src/stations.ts");
+      const reference = stationsById.get("test/2")!;
+      const subordinate = stationsById.get("test/1")!;
+      expect(reference.datum_frame).toBe("gauge");
+      expect(subordinate.datum_frame).toBe(reference.datum_frame);
+      expect(reference.datum_coverage).toEqual({
+        months: 24,
+        observed_hours: 17520,
+        inferred_hours: 24,
+      });
+      expect(subordinate.datum_coverage).toEqual(reference.datum_coverage);
+      expect(subordinate.datums_source).toBe("observed");
+      expect(subordinate.datums).toEqual(reference.datums);
+      expect(stationsById.get("test/3")!.datum_frame).toBeUndefined();
+      expect(stationsById.get("test/3")!.datum_coverage).toBeUndefined();
+    } finally {
       vi.doUnmock("#slackwater.tcdb");
       vi.resetModules();
     }

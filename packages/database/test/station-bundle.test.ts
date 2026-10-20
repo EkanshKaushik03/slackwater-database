@@ -20,6 +20,17 @@ describe("station metadata", () => {
 });
 
 describe("datums export", () => {
+  test("TICON records expose their stored vertical frame independently of MSL", () => {
+    const records = allStations.filter((s) => s.id.startsWith("ticon/"));
+    expect(records.length).toBeGreaterThan(1000);
+    expect(records.some((s) => s.datum_frame === "gauge")).toBe(true);
+    expect(records.some((s) => s.datum_frame === "constituent")).toBe(true);
+    expect(records.filter((s) => !s.datum_frame).map((s) => s.id)).toEqual([]);
+    for (const s of records.filter((s) => s.datum_frame === "constituent")) {
+      expect(s.datums_source, s.id).toBe("harmonic");
+      expect(s.datums["MSL"], s.id).toBe(0);
+    }
+  });
   test("is the set of datum keys present in the database", () => {
     expect(datums).toContain("MLLW");
     expect(datums).toContain("MSL");
@@ -148,5 +159,7 @@ describe("lazily loaded station data", () => {
     expect(sub.datums).toEqual(ref.datums);
     expect(sub.epoch).toBeDefined();
     expect(sub.epoch).toEqual(ref.epoch);
+    expect(sub.datums_source).toEqual(ref.datums_source);
+    expect(sub.datum_frame).toEqual(ref.datum_frame);
   });
 });

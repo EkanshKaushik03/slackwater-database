@@ -268,6 +268,29 @@ describe("XTide TCD", () => {
   });
 
   describe("Notes", () => {
+    test("keep datum frame and measured versus inferred coverage", () => {
+      const restored = restoreTcd();
+      const station = stations.find(
+        (s) => s.type === "reference" && s.datum_coverage,
+      )!;
+      const record = restored.harmonics
+        .split("# BEGIN HOT COMMENTS")
+        .find(
+          (r) =>
+            r.includes(`# station_id_context: ${station.id.split("/")[0]}`) &&
+            r.includes(`# station_id: ${station.source.id}\n`),
+        )!;
+      const notes = [...record.matchAll(/^# note: (.*)$/gm)]
+        .map((m) => m[1])
+        .join(" ");
+      expect(notes).toContain(`Datum frame: ${station.datum_frame}.`);
+      expect(notes).toContain(
+        `${station.datum_coverage!.observed_hours} measured hourly bins`,
+      );
+      expect(notes).toContain(
+        `${station.datum_coverage!.inferred_hours} model-assisted inferred hourly bins`,
+      );
+    });
     test("keep wrapped disclaimers together", () => {
       const about = getXTideAbout(
         "Mayport Naval Station, FL, United States (8720211)",

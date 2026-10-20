@@ -4,6 +4,17 @@
 
 import { sourceMetadata } from "./sources.ts";
 
+/** NOAA publishes observed means even when its mixed datum table has no method flag. */
+export function hasObservedMeanDatums(station: {
+  id: string;
+  datums_source?: "observed" | "harmonic";
+}): boolean {
+  return (
+    station.datums_source === "observed" ||
+    (station.datums_source === undefined && station.id.startsWith("noaa/"))
+  );
+}
+
 /**
  * Source quality priority for TICON stations (lower = better quality)
  *

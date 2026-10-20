@@ -31,6 +31,12 @@
     "NLLW": 0.36
   },
   "datums_source": "observed",
+  "datum_frame": "gauge",
+  "datum_coverage": {
+    "months": 60,
+    "observed_hours": 43812,
+    "inferred_hours": 12
+  },
   "chart_datum": "NLLW",
   "type": "reference",
   "harmonic_constituents": [

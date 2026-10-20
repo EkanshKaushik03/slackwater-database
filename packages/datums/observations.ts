@@ -144,25 +144,25 @@ function prepareHourlyObservations(
   for (const anchors of gaps) {
     const left = anchors[1]!,
       right = anchors[2]!;
-    const residuals = anchors.map((p) => ({
-      x: p.hour - left.hour,
-      y: p.level - binPrediction(p.hour, profiles.get(p.hour)!),
-    }));
+    // A bin residual is an average at its sampling instants, not a point at
+    // the integer hour. Fit those averages so changing cadence cannot shift it.
+    const coefficients = solveCubic(
+      anchors.map((p) => [
+        ...samplingMoments(p.hour - left.hour, profiles.get(p.hour)!),
+        p.level - binPrediction(p.hour, profiles.get(p.hour)!),
+      ]),
+    );
+    if (!coefficients) continue;
     for (let hour = left.hour + 1; hour < right.hour; hour++) {
-      const x = hour - left.hour;
-      let residual = 0;
-      for (let j = 0; j < residuals.length; j++) {
-        let weight = 1;
-        for (let k = 0; k < residuals.length; k++)
-          if (j !== k)
-            weight *=
-              (x - residuals[k]!.x) / (residuals[j]!.x - residuals[k]!.x);
-        residual += weight * residuals[j]!.y;
-      }
       // A missing bin follows its nearer real neighbour's sampling cadence.
       const profile = profiles.get(
         hour - left.hour <= right.hour - hour ? left.hour : right.hour,
       )!;
+      const moments = samplingMoments(hour - left.hour, profile);
+      const residual = coefficients.reduce(
+        (sum, c, degree) => sum + c * moments[degree]!,
+        0,
+      );
       const level = binPrediction(hour, profile) + residual;
       if (Number.isFinite(level)) {
         levels.set(hour, level);
@@ -171,6 +171,41 @@ function prepareHourlyObservations(
     }
   }
   return { hourly, levels, inferred };
+}
+
+function samplingMoments(hour: number, profile: number[]): number[] {
+  const moments = [1, 0, 0, 0];
+  for (const offset of profile) {
+    const x = hour + offset / HOUR_MS;
+    for (let degree = 1; degree <= 3; degree++)
+      moments[degree]! += x ** degree / profile.length;
+  }
+  return moments;
+}
+
+/** Solve the four bin-average constraints for a cubic residual. */
+function solveCubic(rows: number[][]): number[] | undefined {
+  for (let column = 0; column < 4; column++) {
+    let pivot = column;
+    for (let row = column + 1; row < 4; row++)
+      if (Math.abs(rows[row]![column]!) > Math.abs(rows[pivot]![column]!))
+        pivot = row;
+    if (rows[pivot]![column] === 0) return undefined;
+    [rows[column], rows[pivot]] = [rows[pivot]!, rows[column]!];
+    for (let row = column + 1; row < 4; row++) {
+      const factor = rows[row]![column]! / rows[column]![column]!;
+      for (let k = column; k <= 4; k++)
+        rows[row]![k]! -= factor * rows[column]![k]!;
+    }
+  }
+  const coefficients = [0, 0, 0, 0];
+  for (let row = 3; row >= 0; row--) {
+    let value = rows[row]![4]!;
+    for (let k = row + 1; k < 4; k++)
+      value -= rows[row]![k]! * coefficients[k]!;
+    coefficients[row] = value / rows[row]![row]!;
+  }
+  return coefficients;
 }
 
 function calendarMonths({ hourly, levels }: HourlyPreparation): {

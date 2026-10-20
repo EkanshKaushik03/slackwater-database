@@ -6,12 +6,14 @@ import addFormats from "ajv-formats";
 import {
   stations,
   allStations,
+  stationsById,
   near,
   stationRoutes,
 } from "@slackwater/database";
 import {
   MIN_TIDAL_RANGE,
   OBSERVED_BOUND_ALLOWANCE,
+  hasObservedMeanDatums,
   MIN_DEDUP_DISTANCE,
   MIN_AMPLITUDE_RATIO,
   SEASONAL_OUTLIER_RADIUS,
@@ -63,7 +65,7 @@ test("observed TICON datum periods contain whole years of complete UTC months", 
   const invalid = allTideStations
     .filter((s) => s.id.startsWith("ticon/") && s.datums_source === "observed")
     .filter((s) => {
-      if (!s.datum_epoch) return true;
+      if (!s.datum_epoch || !s.datum_coverage) return true;
       const start = new Date(s.datum_epoch.start),
         end = new Date(s.datum_epoch.end);
       end.setUTCDate(end.getUTCDate() + 1);
@@ -75,7 +77,10 @@ test("observed TICON datum periods contain whole years of complete UTC months", 
         start.getUTCDate() !== 1 ||
         end.getUTCDate() !== 1 ||
         months < 12 ||
-        months % 12 !== 0
+        months % 12 !== 0 ||
+        s.datum_coverage.months !== months ||
+        s.datum_coverage.observed_hours + s.datum_coverage.inferred_hours !==
+          (+end - +start) / 3600000
       );
     });
   expect(invalid.map((s) => s.id)).toEqual([]);
@@ -141,7 +146,11 @@ tideStations.forEach((station) => {
             l = datums[lower];
           if (h === undefined || l === undefined) continue;
           const allowance =
-            station.datums_source === "observed" && lower === "LAT"
+            hasObservedMeanDatums(
+              station.offsets?.reference
+                ? stationsById.get(station.offsets.reference)!
+                : station,
+            ) && lower === "LAT"
               ? OBSERVED_BOUND_ALLOWANCE + float32DifferenceMargin(h, l)
               : 0;
           expect(
@@ -412,8 +421,11 @@ describe("gauge deduplication", () => {
         true,
       );
     }
-    // NOAA's Snow Hill record fails its datum check, so the relay stands in.
-    expect(byId.get("ticon/snow_hill-8571359-usa-noaa")?.accepted).toBe(true);
+    // Snow Hill's small cross-method bound mismatch does not disqualify its operator.
+    expect(byId.get("noaa/8571359")?.accepted).toBe(true);
+    expect(byId.get("ticon/snow_hill-8571359-usa-noaa")?.redundant).toBe(
+      "noaa/8571359",
+    );
   });
 
   test("supersedes UHSLC's copy of a Kartverket gauge", () => {
@@ -759,7 +771,7 @@ describe("seasonal dominance", () => {
 
   test("reaches the reader through the database, not just the station files", () => {
     // Cobourg on Lake Ontario: SA 0.289 m against a principal tide of
-    // 0.004 m, and it passes the 2 cm range floor by 6 mm, so nothing else
+    // 0.004 m, and it passes the 2 cm range floor by 5 mm, so nothing else
     // in the pass catches it.
     const cobourg = allTideStations.find(
       (s) => s.id === "ticon/cobourg_ontario-13590-can-meds",

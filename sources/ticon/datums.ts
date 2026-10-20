@@ -5,7 +5,6 @@ import {
   toFixed,
   type Datums,
   type Sample,
-  type ObservedTidalDatumsResult,
 } from "@slackwater/datums";
 
 const HARMONIC_KEYS = [
@@ -32,10 +31,11 @@ export const CONSTITUENT_FRAME_NOTICE =
 export interface TiconDatumResult {
   datums: Datums;
   datums_source: "observed" | "harmonic";
+  datum_frame: "gauge" | "constituent";
   epoch: { start: string; end: string };
   datum_epoch?: { start: string; end: string };
   datum_notice: string;
-  coverage?: ObservedTidalDatumsResult["coverage"];
+  datum_coverage?: NonNullable<PartialStationData["datum_coverage"]>;
 }
 
 export function reduceTiconDatums(
@@ -56,6 +56,7 @@ export function reduceTiconDatums(
         ...shiftHarmonicDatums(harmonic, observed.datums["MSL"] ?? 0),
       },
       datums_source: "observed",
+      datum_frame: "gauge",
       epoch: {
         start: fitEpoch.start.toISOString().slice(0, 10),
         end: fitEpoch.end.toISOString().slice(0, 10),
@@ -64,7 +65,11 @@ export function reduceTiconDatums(
         start: observed.start.toISOString().slice(0, 10),
         end: observed.end.toISOString().slice(0, 10),
       },
-      coverage: observed.coverage,
+      datum_coverage: {
+        months: observed.coverage.months,
+        observed_hours: observed.coverage.observedHours,
+        inferred_hours: observed.coverage.inferredHours,
+      },
       datum_notice: OBSERVED_DATUM_NOTICE,
     };
   }
@@ -78,6 +83,7 @@ export function reduceTiconDatums(
       ]),
     ),
     datums_source: "harmonic",
+    datum_frame: observedOffset === undefined ? "constituent" : "gauge",
     epoch: {
       start: fitEpoch.start.toISOString().slice(0, 10),
       end: fitEpoch.end.toISOString().slice(0, 10),
@@ -90,21 +96,61 @@ export function reduceTiconDatums(
 export function cachedDatumNotice(
   station: Pick<
     PartialStationData,
-    "datums_source" | "datum_epoch" | "disclaimers"
+    | "datums_source"
+    | "datum_frame"
+    | "datum_epoch"
+    | "datum_coverage"
+    | "disclaimers"
   >,
 ): string | undefined {
   if (
     station.datums_source === "observed" &&
+    station.datum_frame === "gauge" &&
     station.datum_epoch &&
+    validCoverage(station.datum_coverage, station.datum_epoch) &&
     station.disclaimers?.includes(OBSERVED_DATUM_NOTICE)
   )
     return OBSERVED_DATUM_NOTICE;
   if (station.datums_source === "harmonic")
     for (const frame of [OBSERVED_OFFSET_NOTICE, CONSTITUENT_FRAME_NOTICE]) {
       const notice = `${HARMONIC_DATUM_NOTICE} ${frame}`;
-      if (station.disclaimers?.includes(notice)) return notice;
+      const expectedFrame =
+        frame === OBSERVED_OFFSET_NOTICE ? "gauge" : "constituent";
+      if (
+        station.datum_frame === expectedFrame &&
+        station.disclaimers?.includes(notice)
+      )
+        return notice;
     }
   return undefined;
+}
+
+function validCoverage(
+  coverage: PartialStationData["datum_coverage"],
+  epoch: { start: string; end: string },
+): boolean {
+  if (!coverage) return false;
+  const start = new Date(epoch.start),
+    end = new Date(epoch.end);
+  end.setUTCDate(end.getUTCDate() + 1);
+  const months =
+    (end.getUTCFullYear() - start.getUTCFullYear()) * 12 +
+    end.getUTCMonth() -
+    start.getUTCMonth();
+  return (
+    Number.isSafeInteger(coverage.observed_hours) &&
+    coverage.observed_hours > 0 &&
+    Number.isSafeInteger(coverage.inferred_hours) &&
+    coverage.inferred_hours >= 0 &&
+    coverage.months === months &&
+    months >= 12 &&
+    months <= 228 &&
+    months % 12 === 0 &&
+    start.getUTCDate() === 1 &&
+    end.getUTCDate() === 1 &&
+    coverage.observed_hours + coverage.inferred_hours ===
+      (+end - +start) / 3600000
+  );
 }
 
 function shiftHarmonicDatums(harmonic: Datums, msl: number): Datums {

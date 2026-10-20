@@ -34,6 +34,25 @@ function station(
 const BASE = { M2: 0.5, S2: 0.2, K1: 0.1, O1: 0.07 };
 
 describe("observed means and astronomical bounds", () => {
+  test.each([undefined, "harmonic"] as const)(
+    "uses NOAA's published observed means unless the method is explicitly %s",
+    (method) => {
+      const s = station(BASE, "noaa/test");
+      if (method) s.datums_source = method;
+      s.datums = {
+        HAT: 1,
+        MHHW: 1.018,
+        MHW: 0.9,
+        MSL: 0,
+        MLW: -0.9,
+        MLLW: -0.99,
+        LAT: -0.885,
+      };
+      const result = checkDatumOrdering(s, new Map());
+      expect(result.fatal).toHaveLength(method ? 2 : 0);
+      expect(result.warnings).toHaveLength(method ? 0 : 2);
+    },
+  );
   test.each([
     [0.05, 0],
     [0.0501, 2],

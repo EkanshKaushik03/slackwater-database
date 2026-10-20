@@ -22,7 +22,7 @@
     "MHHW": 0.498,
     "MHW": 0.395,
     "MTL": 0.201,
-    "MLW": 0.008,
+    "MLW": 0.007,
     "MLLW": -0.17,
     "HAT": 0.7,
     "LAT": -0.39,
@@ -30,6 +30,12 @@
     "MLWS": -0.076
   },
   "datums_source": "observed",
+  "datum_frame": "gauge",
+  "datum_coverage": {
+    "months": 12,
+    "observed_hours": 8778,
+    "inferred_hours": 6
+  },
   "chart_datum": "MLWS",
   "type": "reference",
   "harmonic_constituents": [

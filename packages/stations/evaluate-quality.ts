@@ -39,6 +39,7 @@ import {
   MIN_AMPLITUDE_RATIO,
   AMPLITUDE_TOLERANCE,
   OBSERVED_BOUND_ALLOWANCE,
+  hasObservedMeanDatums,
   SAME_GAUGE_M2_DIFFERENCE,
   CLOCK_ERROR_SOURCES,
   MAX_PROVENANCE_KM,
@@ -154,7 +155,8 @@ export function checkDatumOrdering(
     ? stationMap.get(station.offsets.reference)
     : station;
   const astronomicalIssues = (difference: number) =>
-    datumRecord?.datums_source === "observed" &&
+    datumRecord &&
+    hasObservedMeanDatums(datumRecord) &&
     Number(difference.toFixed(9)) <= OBSERVED_BOUND_ALLOWANCE
       ? warnings
       : fatal;

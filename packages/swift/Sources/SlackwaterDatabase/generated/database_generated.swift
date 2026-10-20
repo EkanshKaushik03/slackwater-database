@@ -57,6 +57,19 @@ public enum Slackwater_DatumsSource: UInt8, Enum, Verifiable {
 }
 
 
+public enum Slackwater_DatumFrame: UInt8, Enum, Verifiable {
+  public typealias T = UInt8
+  public static var byteSize: Int { return MemoryLayout<UInt8>.size }
+  public var value: UInt8 { return self.rawValue }
+  case unknown = 0
+  case gauge = 1
+  case constituent = 2
+
+  public static var max: Slackwater_DatumFrame { return .constituent }
+  public static var min: Slackwater_DatumFrame { return .unknown }
+}
+
+
 ///  12 bytes, contiguous per station. Amplitude in metres (tides) or knots
 ///  (currents); phase in degrees. float32 keeps 7 significant digits, which
 ///  drops published digits only far below any analysis's uncertainty.
@@ -392,6 +405,55 @@ public struct Slackwater_Root: FlatBufferObject, Verifiable {
     try _v.visit(field: VTOFFSET.datumNames.p, fieldName: "datumNames", required: false, type: ForwardOffset<Vector<ForwardOffset<String>, String>>.self)
     try _v.visit(field: VTOFFSET.tideRoutes.p, fieldName: "tideRoutes", required: false, type: ForwardOffset<Vector<ForwardOffset<Slackwater_StationRoute>, Slackwater_StationRoute>>.self)
     try _v.visit(field: VTOFFSET.currentRoutes.p, fieldName: "currentRoutes", required: false, type: ForwardOffset<Vector<ForwardOffset<Slackwater_StationRoute>, Slackwater_StationRoute>>.self)
+    _v.finish()
+  }
+}
+
+public struct Slackwater_DatumCoverage: FlatBufferObject, Verifiable {
+
+  static func validateVersion() { FlatBuffersVersion_25_9_23() }
+  public var __buffer: ByteBuffer! { return _accessor.bb }
+  private var _accessor: Table
+
+  public static var id: String { "TCDB" } 
+  public static func finish(_ fbb: inout FlatBufferBuilder, end: Offset, prefix: Bool = false) { fbb.finish(offset: end, fileId: Slackwater_DatumCoverage.id, addPrefix: prefix) }
+  private init(_ t: Table) { _accessor = t }
+  public init(_ bb: ByteBuffer, o: Int32) { _accessor = Table(bb: bb, position: o) }
+
+  private enum VTOFFSET: VOffset {
+    case months = 4
+    case observedHours = 6
+    case inferredHours = 8
+    var v: Int32 { Int32(self.rawValue) }
+    var p: VOffset { self.rawValue }
+  }
+
+  public var months: UInt32 { let o = _accessor.offset(VTOFFSET.months.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt32.self, at: o) }
+  public var observedHours: UInt32 { let o = _accessor.offset(VTOFFSET.observedHours.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt32.self, at: o) }
+  public var inferredHours: UInt32 { let o = _accessor.offset(VTOFFSET.inferredHours.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt32.self, at: o) }
+  public static func startDatumCoverage(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 3) }
+  public static func add(months: UInt32, _ fbb: inout FlatBufferBuilder) { fbb.add(element: months, def: 0, at: VTOFFSET.months.p) }
+  public static func add(observedHours: UInt32, _ fbb: inout FlatBufferBuilder) { fbb.add(element: observedHours, def: 0, at: VTOFFSET.observedHours.p) }
+  public static func add(inferredHours: UInt32, _ fbb: inout FlatBufferBuilder) { fbb.add(element: inferredHours, def: 0, at: VTOFFSET.inferredHours.p) }
+  public static func endDatumCoverage(_ fbb: inout FlatBufferBuilder, start: UOffset) -> Offset { let end = Offset(offset: fbb.endTable(at: start)); return end }
+  public static func createDatumCoverage(
+    _ fbb: inout FlatBufferBuilder,
+    months: UInt32 = 0,
+    observedHours: UInt32 = 0,
+    inferredHours: UInt32 = 0
+  ) -> Offset {
+    let __start = Slackwater_DatumCoverage.startDatumCoverage(&fbb)
+    Slackwater_DatumCoverage.add(months: months, &fbb)
+    Slackwater_DatumCoverage.add(observedHours: observedHours, &fbb)
+    Slackwater_DatumCoverage.add(inferredHours: inferredHours, &fbb)
+    return Slackwater_DatumCoverage.endDatumCoverage(&fbb, start: __start)
+  }
+
+  public static func verify<T>(_ verifier: inout Verifier, at position: Int, of type: T.Type) throws where T: Verifiable {
+    var _v = try verifier.visitTable(at: position)
+    try _v.visit(field: VTOFFSET.months.p, fieldName: "months", required: false, type: UInt32.self)
+    try _v.visit(field: VTOFFSET.observedHours.p, fieldName: "observedHours", required: false, type: UInt32.self)
+    try _v.visit(field: VTOFFSET.inferredHours.p, fieldName: "inferredHours", required: false, type: UInt32.self)
     _v.finish()
   }
 }
@@ -1018,6 +1080,8 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
     case contextDerived = 62
     case cities = 64
     case datumEpoch = 66
+    case datumFrame = 68
+    case datumCoverage = 70
     var v: Int32 { Int32(self.rawValue) }
     var p: VOffset { self.rawValue }
   }
@@ -1096,7 +1160,9 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
   public func cities(at index: Int32) -> String? { let o = _accessor.offset(VTOFFSET.cities.v); return o == 0 ? nil : _accessor.directString(at: _accessor.vector(at: o) + index * 4) }
   ///  Datum reduction period, separate from the constituent-fit epoch.
   public var datumEpoch: Slackwater_Epoch? { let o = _accessor.offset(VTOFFSET.datumEpoch.v); return o == 0 ? nil : Slackwater_Epoch(_accessor.bb, o: _accessor.indirect(o + _accessor.position)) }
-  public static func startStation(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 32) }
+  public var datumFrame: Slackwater_DatumFrame { let o = _accessor.offset(VTOFFSET.datumFrame.v); return o == 0 ? .unknown : Slackwater_DatumFrame(rawValue: _accessor.readBuffer(of: UInt8.self, at: o)) ?? .unknown }
+  public var datumCoverage: Slackwater_DatumCoverage? { let o = _accessor.offset(VTOFFSET.datumCoverage.v); return o == 0 ? nil : Slackwater_DatumCoverage(_accessor.bb, o: _accessor.indirect(o + _accessor.position)) }
+  public static func startStation(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 34) }
   public static func add(id: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: id, at: VTOFFSET.id.p) }
   public static func add(name: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: name, at: VTOFFSET.name.p) }
   public static func add(kind: Slackwater_Kind, _ fbb: inout FlatBufferBuilder) { fbb.add(element: kind.rawValue, def: 0, at: VTOFFSET.kind.p) }
@@ -1137,6 +1203,8 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
    at: VTOFFSET.contextDerived.p) }
   public static func addVectorOf(cities: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: cities, at: VTOFFSET.cities.p) }
   public static func add(datumEpoch: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: datumEpoch, at: VTOFFSET.datumEpoch.p) }
+  public static func add(datumFrame: Slackwater_DatumFrame, _ fbb: inout FlatBufferBuilder) { fbb.add(element: datumFrame.rawValue, def: 0, at: VTOFFSET.datumFrame.p) }
+  public static func add(datumCoverage: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: datumCoverage, at: VTOFFSET.datumCoverage.p) }
   public static func endStation(_ fbb: inout FlatBufferBuilder, start: UOffset) -> Offset { let end = Offset(offset: fbb.endTable(at: start)); fbb.require(table: end, fields: [4, 6, 20, 58]); return end }
   public static func createStation(
     _ fbb: inout FlatBufferBuilder,
@@ -1171,7 +1239,9 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
     contextOffset context: Offset = Offset(),
     contextDerived: Bool = false,
     citiesVectorOffset cities: Offset = Offset(),
-    datumEpochOffset datumEpoch: Offset = Offset()
+    datumEpochOffset datumEpoch: Offset = Offset(),
+    datumFrame: Slackwater_DatumFrame = .unknown,
+    datumCoverageOffset datumCoverage: Offset = Offset()
   ) -> Offset {
     let __start = Slackwater_Station.startStation(&fbb)
     Slackwater_Station.add(id: id, &fbb)
@@ -1206,6 +1276,8 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
     Slackwater_Station.add(contextDerived: contextDerived, &fbb)
     Slackwater_Station.addVectorOf(cities: cities, &fbb)
     Slackwater_Station.add(datumEpoch: datumEpoch, &fbb)
+    Slackwater_Station.add(datumFrame: datumFrame, &fbb)
+    Slackwater_Station.add(datumCoverage: datumCoverage, &fbb)
     return Slackwater_Station.endStation(&fbb, start: __start)
   }
   public static func sortVectorOfStation(offsets:[Offset], _ fbb: inout FlatBufferBuilder) -> Offset {
@@ -1268,6 +1340,8 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
     try _v.visit(field: VTOFFSET.contextDerived.p, fieldName: "contextDerived", required: false, type: Bool.self)
     try _v.visit(field: VTOFFSET.cities.p, fieldName: "cities", required: false, type: ForwardOffset<Vector<ForwardOffset<String>, String>>.self)
     try _v.visit(field: VTOFFSET.datumEpoch.p, fieldName: "datumEpoch", required: false, type: ForwardOffset<Slackwater_Epoch>.self)
+    try _v.visit(field: VTOFFSET.datumFrame.p, fieldName: "datumFrame", required: false, type: Slackwater_DatumFrame.self)
+    try _v.visit(field: VTOFFSET.datumCoverage.p, fieldName: "datumCoverage", required: false, type: ForwardOffset<Slackwater_DatumCoverage>.self)
     _v.finish()
   }
 }

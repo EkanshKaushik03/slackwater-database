@@ -421,6 +421,10 @@ ${NUM_YEARS}`);
     // Licensed stations carry their attribution, since the TCD has no field for it
     const notes = [
       station.disclaimers,
+      station.datum_frame ? `Datum frame: ${station.datum_frame}.` : "",
+      station.datum_coverage
+        ? `Observed mean-datum coverage: ${station.datum_coverage.months} months; ${station.datum_coverage.observed_hours} measured hourly bins; ${station.datum_coverage.inferred_hours} model-assisted inferred hourly bins.`
+        : "",
       station.license.type === "public domain" ? "" : station.attribution,
     ];
     for (const note of notes) {
