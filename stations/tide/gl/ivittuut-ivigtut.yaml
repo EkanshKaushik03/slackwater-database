@@ -1,0 +1,20 @@
+sources:
+  - dmi/2991175
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    dmi/2991175:
+      position: [61.2, -48.1667]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 46
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.105
+        issues:
+          - MHHW (0.975) < MHW (0.978)

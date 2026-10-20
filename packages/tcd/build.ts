@@ -48,13 +48,15 @@ function modulus(a: number, b: number): number {
  * Build the master constituent list from station data.
  * Returns constituents in the order defined by tide-predictor.
  */
-function buildConstituentList(stations: StationData[]): string[] {
+export function buildConstituentList(stations: StationData[]): string[] {
   const usedConstituents = new Set<string>();
 
   // Scan all reference stations to find which constituents are used
   for (const station of stations) {
     if (station.type === "reference") {
       for (const hc of station.harmonic_constituents) {
+        // Zero-only terms change no prediction and waste libtcd's 255 constituent slots.
+        if (hc.amplitude === 0) continue;
         const constituent = constituents[hc.name];
         if (constituent) {
           usedConstituents.add(constituent.name);
@@ -795,6 +797,7 @@ async function main() {
 
   for (const station of referenceStations) {
     for (const hc of station.harmonic_constituents) {
+      if (hc.amplitude === 0) continue;
       totalConstituents++;
       const resolved = resolveConstituentName(hc.name, masterSet);
       if (resolved) {
@@ -806,7 +809,7 @@ async function main() {
   }
 
   console.error(
-    `Constituent coverage: ${coveredConstituents}/${totalConstituents} (${((coveredConstituents / totalConstituents) * 100).toFixed(1)}%)`,
+    `Nonzero constituent coverage: ${coveredConstituents}/${totalConstituents} (${((coveredConstituents / totalConstituents) * 100).toFixed(1)}%)`,
   );
   if (uncoveredNames.size > 0) {
     console.error(

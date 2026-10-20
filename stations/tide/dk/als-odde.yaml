@@ -1,0 +1,18 @@
+sources:
+  - dmi/20676
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    dmi/20676:
+      position: [56.7052, 10.3292]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 48
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.221

@@ -1,0 +1,20 @@
+{
+  "name": "@slackwater/dmi",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import": "node import.ts",
+    "validate": "node import.ts --validate",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@slackwater/database": "*",
+    "@slackwater/datums": "*",
+    "@slackwater/engine": "1.0.0-beta.5",
+    "@slackwater/harmonic-analysis": "*",
+    "@slackwater/stations": "*"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.4"
+  }
+}

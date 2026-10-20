@@ -8,13 +8,13 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 64
+        score: 58
         factors:
           epoch: 0.618
           recency: 0.99
           source: 0.02
           quality: 1
           amplitude: 1
-          coverage: 0.41
+          coverage: 0.011
         issues:
           - MHWS (0.194) < MHW (0.199)

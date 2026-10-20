@@ -1,18 +1,34 @@
 sources:
+  - dmi/26136
   - ticon/havnebytg-hav-dnk-cmems
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    dmi/26136:
+      position: [55.0871, 8.5654]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 45
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0
     ticon/havnebytg-hav-dnk-cmems:
       position: [55.087002, 8.5654]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 44
+        accepted: false
+        reason: duplicate
+        redundant: dmi/26136
+        score: 42
         factors:
           epoch: 0.562
           recency: 0.99
           source: 0.02
           quality: 0
           amplitude: 1
-          coverage: 0.182
+          coverage: 0
