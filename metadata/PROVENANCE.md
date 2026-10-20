@@ -4,9 +4,7 @@ The reference data the database builder derives station fields from, and where e
 
 ## Place names
 
-The database builder uses
-**GeoNames cities500, CC BY 4.0** to derive locality, subdivision, country, and
-fallback context fields when curated and provider data do not supply them.
+The database builder uses **GeoNames cities500, CC BY 4.0** to derive locality, subdivision, country, and fallback context fields when curated and provider data do not supply them. For an opaque TICON source name, the nearest place within 50 km of the resolved station position supplies the display name. This fallback can name a city section or a place across a border; a curated name takes priority.
 
 `places.json` is a reviewed, filtered snapshot: the ten nearest GeoNames
 places, and the ten nearest that are not a section of a city, within 100 km of
@@ -15,10 +13,7 @@ every station in the catalogue. `packages/stations/fetch-places.ts` builds it
 from `cities500.zip` and `admin1CodesASCII.txt` downloaded on 2026-09-27
 (SHA-256 `7a95c3f8f415ad2b31840625032f826a14bbf39ffbc22827a5004cb95c7ed093`
 and `1da92a6323a5fec3176f3f743bf4cf4040fd56a876da55e46fbca23c863aa60a`).
-Names are the ones GeoNames publishes, accents included. A section of a city
-(feature code PPLX) is flagged `section` and never labels a station. The
-committed snapshot makes generation reproducible and reviewable; updating it is
-an explicit source-data change rather than a side effect of building.
+Names are the ones GeoNames publishes, accents included. A section of a city (feature code PPLX) is flagged `section` and is excluded when deriving a context label. The committed snapshot makes generation reproducible and reviewable; updating it is an explicit source-data change rather than a side effect of building.
 
 The snapshot is not included in the published database or npm package. Only
 the derived station fields are written to TCDB. GeoNames contains no tide or

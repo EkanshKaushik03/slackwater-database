@@ -1,10 +1,14 @@
+# PEGELONLINE: https://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=9620090
+name: Lübeck-Bauhof
 sources:
-  - ticon/buttelerhrne-4960060-deu-wsv
+  - ticon/lbeckbauhof-9620090-deu-wsv
+redirect_from:
+  - /tides/de/lbeckbauhof/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/buttelerhrne-4960060-deu-wsv:
-      position: [53.181412, 8.413586]
+    ticon/lbeckbauhof-9620090-deu-wsv:
+      position: [53.893001, 10.703062]
       coastline: unverifiable
       quality:
         accepted: true
@@ -15,4 +19,4 @@ computed:
           source: 0.798
           quality: 1
           amplitude: 1
-          coverage: 0.052
+          coverage: 0.096

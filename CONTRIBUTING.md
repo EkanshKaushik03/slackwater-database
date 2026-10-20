@@ -95,7 +95,11 @@ Dispatch `publish.yml` only when both pass. Don't commit either consumer's insta
 
 `packages/database/package.json` holds a **floor** version such as `1.0.0-beta.0`. The workflow replaces its last segment with today's date to derive `1.0.0-beta.20260926`, publishes to npm, then tags and creates the GitHub release with the `.tcd` and `.tcdb` assets. The `exact` input exists only for the first stable `X.Y.0`.
 
-GitHub's generated release notes are this repository's established style; releases since v0.8 use them. Don't replace them with curated notes without asking — other Open Waters repos differ here.
+The workflow publishes the release with GitHub-generated notes and the tag as its title, so finish it right after the run, following the org's [release notes guidance](https://github.com/openwatersio/.github/blob/main/docs/agents/releases.md#release-notes). Retitling and editing a published release is safe; the publish workflow does not run on edits.
+
+- Set the title to a short headline of what changed for apps and developers using the station data, in sentence case with no period and no version: `gh release edit <tag> --repo openwatersio/slackwater-database --title "<headline>"`.
+- Edit the generated notes (`gh release edit <tag> --repo openwatersio/slackwater-database --notes-file <file>`, or the release page). Open with a sentence or two on what is new and who it is for, list breaking changes first, then one bullet per change people will notice, each linking its pull request. Drop entries nobody using the data would notice: chores, CI, test changes, and dependabot bumps, except a runtime dependency change that matters to consumers.
+- The daily betas stay marked as prereleases.
 
 Three things that look like failures and are not:
 

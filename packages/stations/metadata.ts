@@ -335,6 +335,7 @@ export function resolveMetadata(
   station: StationInput,
   { correction, registry, geocoder, waterBodies, maritimeZones }: ResolveInputs,
 ): ResolvedStation {
+  const isTicon = station.id.startsWith("ticon/");
   const authority = registry ?? correction;
   const position = registry?.position ??
     correction?.position ?? [station.latitude, station.longitude];
@@ -390,6 +391,13 @@ export function resolveMetadata(
       ? geocoder.near(position[0], position[1], 100, 100).find(sameCountry)
       : undefined);
   const noRegion = explicitLocation?.regionCode === null;
+  const placeRegionCode = place
+    ? isoSubdivisionCode(
+        country.iso2,
+        place.place.admin1,
+        place.place.admin1Code,
+      )
+    : undefined;
   const authoritativeRegionCode = noRegion
     ? undefined
     : (explicitLocation?.regionCode ??
@@ -399,33 +407,32 @@ export function resolveMetadata(
       (country.iso2 === "US" && /^[A-Z]{2}$/.test(station.region ?? "")
         ? `US-${station.region}`
         : undefined) ??
-      (place
-        ? isoSubdivisionCode(
-            country.iso2,
-            place.place.admin1,
-            place.place.admin1Code,
-          )
-        : undefined) ??
-      // A Canadian province the provider named, where no place is within reach.
+      // A provider's province takes priority over a nearby place across the border.
       (country.iso2 === "CA" && CANADIAN_SUBDIVISIONS[station.region ?? ""]
         ? `CA-${CANADIAN_SUBDIVISIONS[station.region ?? ""]}`
         : undefined));
   const cleaned = cleanName(
     station.name ?? registry?.name ?? "",
     country.country,
-    authoritativeRegionCode ?? station.region,
+    authoritativeRegionCode ??
+      (isTicon ? station.region : (placeRegionCode ?? station.region)),
     station.source?.name === "Canadian Hydrographic Service",
   );
   const regionCode =
     authoritativeRegionCode ??
     (cleaned.region && !noRegion
       ? `${country.iso2}-${cleaned.region}`
-      : undefined);
+      : undefined) ??
+    (noRegion ? undefined : placeRegionCode);
+  const displayName =
+    isTicon && cleaned.isOpaque && nearest && nearest.distance <= 50
+      ? nearest.place.name
+      : cleaned.name;
   // NOAA current qualifiers locate the gauge; they do not consistently name its water.
   const split =
     station.kind === "current" && station.id.startsWith("noaa/")
-      ? { name: cleaned.name }
-      : splitQualifier(cleaned.name);
+      ? { name: displayName }
+      : splitQualifier(displayName);
   const name = registry?.name ?? correction?.name ?? split.name;
   if (!nonEmpty(name)) throw new Error(`${station.id}: no name`);
 
@@ -472,7 +479,10 @@ export function resolveMetadata(
     explicitLocation?.region ??
       normalizedRegion(station.region, country.iso2, place?.place.admin1) ??
       normalizedRegion(cleaned.region, country.iso2) ??
-      normalizedRegion(place?.place.admin1, country.iso2),
+      normalizedRegion(
+        (isTicon ? place?.region : undefined) ?? place?.place.admin1,
+        country.iso2,
+      ),
   );
 
   if (regionCode && !regionCode.startsWith(`${country.iso2}-`))
@@ -800,7 +810,13 @@ function sharesMeaningfulWord(left: string, right: string): boolean {
   // Some providers squash a name into one word (LINZ's `PORTCHALMERS`), so a
   // curated word may sit inside the published letters instead.
   const letters = words(right).join("");
-  return words(left).some((word) => word.length >= 3 && letters.includes(word));
+  if (words(left).some((word) => word.length >= 3 && letters.includes(word)))
+    return true;
+  // Some TICON records delete non-ASCII letters; require the remaining full name to match.
+  const stripped = words(
+    left.normalize("NFC").replace(/[^\x00-\x7F]/g, ""),
+  ).join("");
+  return stripped.length >= 3 && stripped === letters;
 }
 
 function distanceKm(

@@ -106,6 +106,69 @@ function fixtures(): CatalogueInputs {
 }
 
 describe("buildCatalogue", () => {
+  describe("curating opaque TICON names", () => {
+    function inputWithName(name: string): CatalogueInputs {
+      const input = fixtures();
+      input.tides[0] = { ...input.tides[0]!, id: "ticon/s197", name: "S197_T" };
+      input.stationFiles[0]!.sources = ["ticon/s197"];
+      input.corrections.set("ticon/s197", { name });
+      const place = {
+        place: {
+          name: "Seattle",
+          countryCode: "US",
+          admin1: "Washington",
+          admin1Code: "WA",
+          population: 750000,
+          latitude: 47.6,
+          longitude: -122.3,
+        },
+        distance: 2,
+        country: "United States",
+        continent: "North America",
+        region: "WA",
+      };
+      input.geocoder = { nearest: () => place, near: () => [place] };
+      return input;
+    }
+
+    test("accepts a curation of the geocoded place name", () => {
+      const catalogue = buildCatalogue(inputWithName("Seattle Gauge"));
+      expect(
+        catalogue.stations.find(({ id }) => id === "ticon/s197")?.name,
+      ).toBe("Seattle Gauge");
+    });
+
+    test("rejects a curation of a different place", () => {
+      expect(() => buildCatalogue(inputWithName("Everett Gauge"))).toThrow(
+        /shares no meaningful word/,
+      );
+    });
+
+    test("validates the name at a corrected position without bypassing the distance limit", () => {
+      const input = inputWithName("Everett Gauge");
+      const station = input.tides[0]!;
+      const original = input.geocoder.nearest(
+        station.latitude!,
+        station.longitude!,
+      )!;
+      input.geocoder = {
+        nearest: (lat) =>
+          lat > 47.61
+            ? { ...original, place: { ...original.place, name: "Everett" } }
+            : original,
+        near: (lat, lon) => [input.geocoder.nearest(lat, lon)!],
+      };
+      input.corrections.get("ticon/s197")!.position = [47.62, -122.3393];
+      expect(
+        buildCatalogue(input).stations.find(({ id }) => id === "ticon/s197")
+          ?.name,
+      ).toBe("Everett Gauge");
+
+      input.corrections.get("ticon/s197")!.position = [48.62, -122.3393];
+      expect(() => buildCatalogue(input)).toThrow(/corrected position/);
+    });
+  });
+
   test("records in one station share its route and keep its redirects", () => {
     const input = fixtures();
     input.tides[0]!.harmonic_constituents = [

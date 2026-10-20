@@ -41,6 +41,145 @@ const baseStation: StationInput = {
 };
 
 describe("metadata resolution", () => {
+  test("keeps the geocoder's region spelling for a raw TICON name", () => {
+    const result = resolveMetadata(
+      { ...baseStation, id: "ticon/everett", name: "Everett" },
+      { geocoder },
+    );
+    expect(result.region).toBe("WA");
+  });
+
+  test("keeps a NOAA site's Roman numeral when it conflicts with the nearby state", () => {
+    const result = resolveMetadata(
+      {
+        ...baseStation,
+        id: "noaa/kb0501",
+        kind: "current",
+        name: "Kings Bay, Site VI",
+      },
+      { geocoder },
+    );
+    expect(result).toMatchObject({
+      name: "Kings Bay, Site VI",
+      region_code: "US-WA",
+    });
+  });
+
+  test.each(["Bayou_Liberty_Near_SlidellLa", "Bayou Liberty near Slidell LA"])(
+    "takes the region from the raw name before a nearby state's: %s",
+    (name) => {
+      const result = resolveMetadata(
+        { ...baseStation, id: "ticon/bayou", name },
+        { geocoder },
+      );
+      expect(result).toMatchObject({
+        name: "Bayou Liberty near Slidell",
+        region: "LA",
+        region_code: "US-LA",
+      });
+    },
+  );
+
+  test("a raw Canadian province beats a nearby province", () => {
+    const canada: GeocodeResult = {
+      ...everett,
+      country: "Canada",
+      region: "Alberta",
+      place: {
+        ...everett.place,
+        countryCode: "CA",
+        admin1: "Alberta",
+        admin1Code: "01",
+      },
+    };
+    const result = resolveMetadata(
+      {
+        ...baseStation,
+        name: "WadhamsBC",
+        id: "ticon/wadhams",
+        country: "Canada",
+        country_code: "CA",
+      },
+      { geocoder: { nearest: () => canada, near: () => [canada] } },
+    );
+    expect(result).toMatchObject({
+      name: "Wadhams",
+      region: "British Columbia",
+      region_code: "CA-BC",
+    });
+  });
+
+  test("a province published by another provider beats a nearby province", () => {
+    const canada = {
+      ...everett,
+      country: "Canada",
+      place: {
+        ...everett.place,
+        countryCode: "CA",
+        admin1: "Alberta",
+        admin1Code: "01",
+      },
+    };
+    const result = resolveMetadata(
+      {
+        ...baseStation,
+        name: "Gauge",
+        country: "Canada",
+        country_code: "CA",
+        region: "British Columbia",
+      },
+      { geocoder: { nearest: () => canada, near: () => [canada] } },
+    );
+    expect(result).toMatchObject({
+      region: "British Columbia",
+      region_code: "CA-BC",
+    });
+  });
+
+  test("an unambiguous code from another provider beats a nearby state", () => {
+    const result = resolveMetadata(
+      { ...baseStation, name: "Gauge_LA" },
+      { geocoder },
+    );
+    expect(result.region_code).toBe("US-LA");
+  });
+
+  test("resolves an opaque raw name to the nearest place", () => {
+    const result = resolveMetadata(
+      { ...baseStation, id: "ticon/s197", name: "S197_T" },
+      { geocoder },
+    );
+    expect(result.name).toBe("Everett");
+  });
+
+  test("keeps a NOAA pier name that resembles an opaque TICON code", () => {
+    const result = resolveMetadata(
+      { ...baseStation, id: "noaa/SFB1206", kind: "current", name: "Pier 23" },
+      { geocoder },
+    );
+    expect(result.name).toBe("Pier 23");
+  });
+
+  test.each([
+    [50, "Everett"],
+    [51, "S197"],
+  ])("resolves an opaque name at %s km to %s", (distance, name) => {
+    const distant = { ...everett, distance };
+    const result = resolveMetadata(
+      { ...baseStation, id: "ticon/s197", name: "S197_T" },
+      { geocoder: { nearest: () => distant, near: () => [distant] } },
+    );
+    expect(result.name).toBe(name);
+  });
+
+  test("a curated name outranks the opaque-name fallback", () => {
+    const result = resolveMetadata(
+      { ...baseStation, id: "ticon/s197", name: "S197_T" },
+      { geocoder, correction: { name: "Gauge at the Pier" } },
+    );
+    expect(result.name).toBe("Gauge at the Pier");
+  });
+
   test("keeps location components independent", () => {
     const result = resolveMetadata(baseStation, {
       correction: {
@@ -808,6 +947,47 @@ test/1:
         { ...baseStation, id: "test/1", name: "Swinomish Channel Entrance" },
       ]).join("\n"),
     ).toMatch(/test\/1.*Anacortes.*Swinomish Channel Entrance/);
+  });
+
+  test.each([
+    ["Büsum", "Bsum"],
+    ["Bu\u0308sum", "Bsum"],
+    ["Buttelerhörne", "Buttelerhrne"],
+    ["Emshörn", "Emshrn"],
+    ["Hörnum", "Hrnum"],
+    ["Lübeck-Bauhof", "Lbeckbauhof"],
+    ["Reithörne", "Reithrne"],
+    ["Scharhörn", "Scharhrn"],
+    ["Schleimünde SP", "Schleimndesp"],
+    ["Travemünde", "Travemnde"],
+    ["Ueckermünde", "Ueckermnde"],
+    ["Warnemünde", "Warnemnde"],
+    ["Wittower Fähre", "Wittowerfhre"],
+  ])(
+    "accepts %s when the source deleted non-ASCII letters",
+    (name, published) => {
+      const corrections = loadCorrections(`test/1:\n  name: ${name}\n`);
+      expect(
+        validateMetadata(corrections, new Map(), [
+          { ...baseStation, id: "test/1", name: published },
+        ]),
+      ).toEqual([]);
+    },
+  );
+
+  test.each([
+    ["Büsum", "Bsumhaven"],
+    ["Büsum", "Busam"],
+    ["Äöx", "X"],
+  ])("rejects %s as a correction for %s", (name, published) => {
+    const corrections = loadCorrections(`test/1:\n  name: ${name}\n`);
+    expect(
+      validateMetadata(corrections, new Map(), [
+        { ...baseStation, id: "test/1", name: published },
+      ]),
+    ).toEqual([
+      `test/1: curated name ${JSON.stringify(name)} shares no meaningful word with published name ${JSON.stringify(published)}`,
+    ]);
   });
 
   test("accepts a curated name that restores the accents a source dropped", () => {

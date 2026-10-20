@@ -100,6 +100,27 @@ describe("bbox", () => {
 });
 
 describe("search", () => {
+  test.each([
+    ["Busu", "ticon/bsum-9510095-deu-wsv"],
+    ["Horn", "ticon/hrnum-9570050-deu-wsv"],
+    ["Lub", "ticon/lbeckbauhof-9620090-deu-wsv"],
+  ])("finds accented names with prefix %s", (query, id) => {
+    expect(
+      search(query, { maxResults: Infinity }).map((station) => station.id),
+    ).toContain(id);
+  });
+
+  test.each(["BÜSU", "BU\u0308SU"])(
+    "uses the same index terms for ASCII and accented prefix %s",
+    (query) => {
+      const ids = (text: string) =>
+        search(text, { maxResults: Infinity }).map((station) => station.id);
+      const ascii = ids("Busu");
+      expect(ascii).toContain("ticon/bsum-9510095-deu-wsv");
+      expect(ids(query)).toEqual(ascii);
+    },
+  );
+
   test("searches by name", () => {
     const results = search("Boston");
     expect(results.length).toBeGreaterThan(0);

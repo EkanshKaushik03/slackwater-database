@@ -1,10 +1,14 @@
+# PEGELONLINE: https://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=9620085
+name: Travemünde
 sources:
-  - ticon/warnemnde-9640015-deu-wsv
+  - ticon/travemnde-9620085-deu-wsv
+redirect_from:
+  - /tides/de/travemnde/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/warnemnde-9640015-deu-wsv:
-      position: [54.169726, 12.103374]
+    ticon/travemnde-9620085-deu-wsv:
+      position: [53.958021, 10.872176]
       coastline: unverifiable
       quality:
         accepted: true

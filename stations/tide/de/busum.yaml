@@ -1,18 +1,22 @@
+# PEGELONLINE: https://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=9510095
+name: Büsum
 sources:
-  - ticon/scharhrn-9510060-deu-wsv
+  - ticon/bsum-9510095-deu-wsv
+redirect_from:
+  - /tides/de/bsum/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/scharhrn-9510060-deu-wsv:
-      position: [53.968643, 8.463551]
+    ticon/bsum-9510095-deu-wsv:
+      position: [54.123381, 8.860158]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 84
+        score: 81
         factors:
           epoch: 1
           recency: 0.99
           source: 0.798
           quality: 1
           amplitude: 1
-          coverage: 0.197
+          coverage: 0.003

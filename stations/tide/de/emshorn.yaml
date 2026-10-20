@@ -1,10 +1,14 @@
+# PEGELONLINE: https://www.pegelonline.wsv.de/gast/stammdaten?pegelnr=9340010
+name: Emshörn
 sources:
-  - ticon/reithrne-4960040-deu-wsv
+  - ticon/emshrn-9340010-deu-wsv
+redirect_from:
+  - /tides/de/emshrn/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/reithrne-4960040-deu-wsv:
-      position: [53.162718, 8.323478]
+    ticon/emshrn-9340010-deu-wsv:
+      position: [53.495069, 6.841934]
       coastline: unverifiable
       quality:
         accepted: true
@@ -15,4 +19,4 @@ computed:
           source: 0.798
           quality: 1
           amplitude: 1
-          coverage: 0.076
+          coverage: 0.051
