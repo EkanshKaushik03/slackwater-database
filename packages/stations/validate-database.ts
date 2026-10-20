@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { evaluateQuality } from "./evaluate-quality.ts";
 import { loadProductionCatalogue } from "./load-catalogue.ts";
 import { SEPARATE_TWINS, separatedTwins, staleSeparations } from "./merges.ts";
-import { cleanName } from "./name-cleanup.ts";
+import { cleanName, isRegionContext } from "./name-cleanup.ts";
 import { classifyPosition } from "./position-audit.ts";
 import {
   filePath,
@@ -163,6 +163,13 @@ const routeIds = new Set(
   ),
 );
 const routed = catalogue.stations.filter(({ id }) => routeIds.has(id));
+assert.deepEqual(
+  routed.flatMap(({ id, context }) =>
+    context && isRegionContext(context) ? [`${id}: ${context}`] : [],
+  ),
+  [],
+  "routed station contexts name a state or province; use a water qualifier or leave context absent",
+);
 const verdicts = routed.map((station) => classifyPosition(station).verdict);
 console.log(
   `validated ${catalogue.stations.length} stations and ${routeIds.size} routed records in ${files.length} station files; warnings: ${routed.filter(({ locality }) => !locality).length} without locality, ${routed.filter(({ region_code }) => !region_code).length} without region code, ${verdicts.filter((v) => v === "ashore").length} pinned ashore, ${verdicts.filter((v) => v === "unverifiable").length} outside coastline coverage`,
