@@ -1,10 +1,47 @@
 import { describe, expect, test } from "vitest";
-import { stationRouteBySlug, stationRoutes } from "../src/index.js";
+import {
+  stationRouteBySlug,
+  stationRoutes,
+  stations,
+  stationsById,
+} from "../src/index.js";
 // From source: station files are the stations package's, and this test checks
 // the shipped database against them.
 import { filePath, readStationFiles } from "../../stations/station-files.ts";
 
 describe("station routes", () => {
+  test("Roseau's UHSLC records share a Dominica route and keep their former paths", () => {
+    const ids = [
+      "ticon/roseau-786-dom-uhslc_fd",
+      "ticon/roseau-786a-dma-uhslc_rq",
+    ];
+    const route = stationRouteBySlug("tide", "roseau");
+    expect(route).toMatchObject({
+      path: "/tides/dm/roseau/",
+      stationIds: ids,
+      formerPaths: expect.arrayContaining([
+        "/tides/do/roseau/",
+        "/tides/dm/roseau-ticon-roseau-786a-dma-uhslc-rq/",
+      ]),
+    });
+    for (const id of ids)
+      expect(stationsById.get(id)).toMatchObject({
+        country: "Dominica",
+        country_code: "DM",
+        timezone: "America/Dominica",
+      });
+    expect(
+      stationRouteBySlug("tide", "roseau-ticon-roseau-786a-dma-uhslc-rq"),
+    ).toBeUndefined();
+    expect(
+      stations.filter(({ id }) => ids.includes(id)).map(({ id }) => id),
+    ).toEqual(["ticon/roseau-786-dom-uhslc_fd"]);
+    expect(stationsById.get(ids[1]!)?.quality).toMatchObject({
+      accepted: false,
+      redundant: "ticon/roseau-786-dom-uhslc_fd",
+    });
+  });
+
   test.each([
     ["kahului", "1615680", "kahului-059-usa-uhslc_fd"],
     ["santa-barbara", "9411340", "santa_barbara_ca-577a-usa-uhslc_rq"],

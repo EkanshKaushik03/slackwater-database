@@ -483,6 +483,11 @@ describe("gauge deduplication", () => {
       "cape_ferguson-h033007a-aus",
     );
   });
+
+  test("Roseau's mislabelled fast-delivery record has its UHSLC gauge key", () => {
+    expect(gaugeKey("roseau-786-dom-uhslc_fd")).toBe("roseau-786-dma");
+    expect(gaugeKey("roseau-786a-dma-uhslc_rq")).toBe("roseau-786-dma");
+  });
 });
 
 describe("coordinate-precision tiebreak", () => {

@@ -157,6 +157,7 @@ export function getSourcePriority(sourceId: string): number {
 /**
  * Derive a physical-gauge key from a TICON source ID by dropping the source
  * suffix and stripping any trailing record-segment letter from the station code.
+ * Roseau's country-code error is corrected so its UHSLC records share a key.
  *
  * TICON IDs are structured `<name>-<code>-<country>-<source>`, where a single
  * physical gauge is often split across several records that share the same
@@ -178,7 +179,9 @@ export function gaugeKey(sourceId: string): string {
   // Strip a single trailing letter from a numeric code: 217a -> 217, 082c -> 082.
   // Non-numeric codes (e.g. "abe", "h033007a") are left untouched.
   parts[codeIdx] = parts[codeIdx]!.replace(/^(\d+)[a-z]$/i, "$1");
-  return parts.join("-");
+  const key = parts.join("-");
+  // TICON mislabels UHSLC's Roseau station 786 as Dominican Republic (#328).
+  return key === "roseau-786-dom" ? "roseau-786-dma" : key;
 }
 
 /** Radius around Null Island (0°, 0°) within which a station's coordinates are
