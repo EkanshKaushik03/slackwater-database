@@ -53,12 +53,14 @@ describe("chsInputs", () => {
     expect(input?.aliases).toEqual(["ex"]);
   });
 
-  it("publishes curated names, qualifiers, and coast fallbacks", () => {
+  it("keeps CHS names without inventing a context when no water or town is known", () => {
     const ids = new Set([
       "chs-cap-aux-meules",
       "chs-charlottetown-nl",
       "chs-come-by-chance",
       "chs-prince-rupert-roro",
+      "chs-jeanette-bay-lab",
+      "chs-victoria-pei",
     ]);
     const records = JSON.parse(
       readFileSync(
@@ -77,27 +79,40 @@ describe("chsInputs", () => {
       {
         id: "chs-cap-aux-meules",
         name: "Cap-aux-Meules",
-        context: "St. Lawrence",
+        context: undefined,
       },
       {
         id: "chs-charlottetown-nl",
         name: "Charlottetown",
-        context: "NL",
+        context: undefined,
       },
       {
         id: "chs-come-by-chance",
         name: "Come by Chance",
-        context: "Atlantic Coast",
+        context: undefined,
+      },
+      {
+        id: "chs-jeanette-bay-lab",
+        name: "Jeanette Bay",
+        context: undefined,
       },
       {
         id: "chs-prince-rupert-roro",
         name: "Prince Rupert RoRo",
-        context: "Pacific Coast",
+        context: undefined,
+      },
+      {
+        id: "chs-victoria-pei",
+        name: "Victoria",
+        context: undefined,
       },
     ]);
   });
 
-  it("derives a context for every live CHS tide station", async () => {
+  it.each([
+    ["chs-charlottetown-nl", "Charlottetown", "Bryans Hole"],
+    ["chs-victoria-pei", "Victoria", "Victoria Harbour"],
+  ])("names %s's water instead of its province", async (id, name, context) => {
     const records = JSON.parse(
       readFileSync(
         new URL("../../../sources/chs/stations.json", import.meta.url),
@@ -115,8 +130,11 @@ describe("chsInputs", () => {
             waterBodies,
           }),
         )
-        .filter((station) => !station.context)
-        .map((station) => station.id),
-    ).toEqual([]);
+        .find((station) => station.id === id),
+    ).toMatchObject({
+      name,
+      context,
+      context_derived: true,
+    });
   });
 });

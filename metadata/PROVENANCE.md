@@ -10,9 +10,9 @@ The database builder uses **GeoNames cities500, CC BY 4.0** to derive locality, 
 places, and the ten nearest that are not a section of a city, within 100 km of
 every station in the catalogue. `packages/stations/fetch-places.ts` builds it
 (`npm run refresh:places -w packages/stations`). The committed snapshot was built
-from `cities500.zip` and `admin1CodesASCII.txt` downloaded on 2026-09-27
-(SHA-256 `7a95c3f8f415ad2b31840625032f826a14bbf39ffbc22827a5004cb95c7ed093`
-and `1da92a6323a5fec3176f3f743bf4cf4040fd56a876da55e46fbca23c863aa60a`).
+from `cities500.zip` and `admin1CodesASCII.txt` downloaded on 2026-10-20
+(SHA-256 `2b80cc4a7d9a7c784ba4892f7fdc1900ffff73ab9780bc064ffe5c539a6fabac`
+and `b577baa3476bbe94f0454545e517e1835401d79c5b1105c8e02cf1d4a505e8ec`).
 Names are the ones GeoNames publishes, accents included. A section of a city (feature code PPLX) is flagged `section` and is excluded when deriving a context label. The committed snapshot makes generation reproducible and reviewable; updating it is an explicit source-data change rather than a side effect of building.
 
 The snapshot is not included in the published database or npm package. Only
@@ -33,9 +33,15 @@ the build, and optional location fields remain absent.
 
 ## Water bodies
 
-A station with no curated or provider context takes the name of the bay or strait it sits in from **OpenStreetMap, ODbL 1.0, © OpenStreetMap contributors**. GeoNames names the nearest place only when no water body contains the station or lies within 1 km of it.
+A station with no curated or provider context takes the name of the bay or strait it sits in from **OpenStreetMap, ODbL 1.0, © OpenStreetMap contributors**. A water that repeats the station name is skipped. When no suitable water body contains the station or lies within 1 km of it, GeoNames supplies a distinct nearby place only if the provider name has no region qualifier. Without a suitable water or place, context remains absent.
 
 `water-bodies.geojson` is a reviewed snapshot of the named `natural=bay` and `natural=strait` ways and relations that contain a station in the catalogue or lie within 1 km of one. `packages/stations/fetch-water-bodies.ts` builds it from the Overpass API. The snapshot keeps each relation's outer rings only, simplifies them, and records the English name where OpenStreetMap has one, otherwise a Latin-script local name. Marine Regions' gazetteer was the other candidate, but it has no polygons for water bodies the size of Elliott Bay or Hood Canal.
+
+`npm run refresh:water-bodies -w packages/stations -- --extend-source=dmi`
+extends the snapshot around that source's positions. It queries the same upstream
+features and preserves previously reviewed coverage elsewhere. Use the command
+without that argument for a complete refresh. The DMI coverage was extended from
+Overpass data downloaded on 2026-10-20.
 
 ## Maritime zones
 

@@ -245,12 +245,12 @@
         "start": {
           "type": "string",
           "format": "date",
-          "description": "Start date of the observation period (YYYY-MM-DD format)"
+          "description": "Start date of the source analysis or datum period (YYYY-MM-DD format)"
         },
         "end": {
           "type": "string",
           "format": "date",
-          "description": "End date of the observation period (YYYY-MM-DD format)"
+          "description": "End date of the source analysis or datum period (YYYY-MM-DD format)"
         }
       }
     },
@@ -263,12 +263,12 @@
         "start": {
           "type": "string",
           "format": "date",
-          "description": "Start date of the observation period (YYYY-MM-DD format)"
+          "description": "Start date of the mean-datum reduction period (YYYY-MM-DD format)"
         },
         "end": {
           "type": "string",
           "format": "date",
-          "description": "End date of the observation period (YYYY-MM-DD format)"
+          "description": "End date of the mean-datum reduction period (YYYY-MM-DD format)"
         }
       }
     }

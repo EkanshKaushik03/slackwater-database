@@ -3,7 +3,7 @@ import { countryByName } from "./country.ts";
 import { find as findTimezone } from "geo-tz/all";
 import { parse } from "yaml";
 import type { StationInput } from "@slackwater/database";
-import { cleanName } from "./name-cleanup.ts";
+import { cleanName, isRegionContext } from "./name-cleanup.ts";
 import type { GeocodeResult, Geocoder } from "./geocode.ts";
 import type { MaritimeZones } from "./maritime-zones.ts";
 import type { WaterBodies } from "./water-bodies.ts";
@@ -529,33 +529,33 @@ export function resolveMetadata(
       contextDerived = true;
     }
   }
-  // The label, unlike locality, is the place a reader knows: a scored pick, not the nearest.
-  const town = context
-    ? undefined
-    : geocoder
-        .near(position[0], position[1], 100, DERIVED_MAX_KM)
-        .filter(
-          (r) =>
-            sameCountry(r) && r.distance <= DERIVED_MAX_KM && !r.place.section,
-        )
-        .reduce<GeocodeResult | undefined>(
-          (best, r) =>
-            !best || recognitionScore(r) < recognitionScore(best) ? r : best,
-          undefined,
-        );
+  const hasRegionQualifier =
+    cleaned.region !== undefined ||
+    cleaned.original.split(",").slice(1).some(isRegionContext);
+  // A discarded region qualifier needs water; another town can misplace a gauge across a state line.
+  const town =
+    context || hasRegionQualifier
+      ? undefined
+      : geocoder
+          .near(position[0], position[1], 100, DERIVED_MAX_KM)
+          .filter(
+            (r) =>
+              sameCountry(r) &&
+              r.distance <= DERIVED_MAX_KM &&
+              !r.place.section,
+          )
+          .reduce<GeocodeResult | undefined>(
+            (best, r) =>
+              !best || recognitionScore(r) < recognitionScore(best) ? r : best,
+            undefined,
+          );
   if (!context && town) {
     const shortRegion = US_TERRITORIES.has(country.iso2)
       ? country.iso2
       : normalizedRegion(town.region ?? town.place.admin1Code, country.iso2);
     if (!namesOverlap(name, town.place.name))
       context = [town.place.name, shortRegion].filter(Boolean).join(", ");
-    else if (shortRegion && !namesOverlap(name, shortRegion))
-      context = shortRegion;
     if (context) contextDerived = true;
-  }
-  if (!context && station.source?.name === "Canadian Hydrographic Service") {
-    context = regionCode?.split("-").at(-1) ?? canadianCoast(...position);
-    contextDerived = true;
   }
   setOptional(result, "context", context);
   if (context) result.context_derived = contextDerived ?? false;
@@ -642,7 +642,10 @@ export function registryStations({
 function splitQualifier(name: string): { name: string; context?: string } {
   const [primary = "", ...rest] = name.split(",").map((part) => part.trim());
   const context = rest
-    .filter((part) => part && part.toLowerCase() !== "puget sound")
+    .filter(
+      (part) =>
+        part && !isRegionContext(part) && part.toLowerCase() !== "puget sound",
+    )
     .join(" · ");
   return { name: primary, ...(context ? { context } : {}) };
 }
@@ -702,25 +705,6 @@ function namesOverlap(left: string, right: string): boolean {
       part.every((word, offset) => whole[index + offset] === word),
     );
   return contains(words(a), words(b)) || contains(words(b), words(a));
-}
-
-function canadianCoast(latitude: number, longitude: number): string {
-  // ponytail: coarse fallback; delete when place/water snapshots cover every CHS station.
-  if (latitude <= 45.5 && longitude >= -84 && longitude <= -74)
-    return "Great Lakes & St. Lawrence";
-  if (longitude <= -110 && latitude >= 66) return "Arctic Coast";
-  if (longitude <= -110) return "Pacific Coast";
-  if (latitude >= 51 && latitude <= 65 && longitude >= -96 && longitude <= -76)
-    return "Hudson Bay";
-  if (latitude >= 60) return "Arctic Coast";
-  if (
-    latitude >= 45.5 &&
-    latitude <= 51 &&
-    longitude >= -73 &&
-    longitude <= -58
-  )
-    return "St. Lawrence";
-  return "Atlantic Coast";
 }
 
 const NAME_STOP_WORDS = new Set([

@@ -1,20 +1,39 @@
+# DMI observation gauges 9006901/9006902 identify Brøns Sluse at this prediction fix: https://opendataapi.dmi.dk/v2/oceanObs/collections/station/items?stationId=9006901
 sources:
+  - dmi/26143
   - ticon/bronstg-bro-dnk-cmems
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    dmi/26143:
+      position: [55.1863, 8.6875]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 45
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.009
+        issues:
+          - MHWS (0.311) < MHW (0.332)
     ticon/bronstg-bro-dnk-cmems:
       position: [55.1833, 8.6833]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 43
+        accepted: false
+        reason: duplicate
+        redundant: dmi/26143
+        score: 42
         factors:
           epoch: 0.558
           recency: 0.99
           source: 0.02
           quality: 0
           amplitude: 1
-          coverage: 0.117
+          coverage: 0.009
         issues:
           - MHWS (0.336) < MHW (0.346)

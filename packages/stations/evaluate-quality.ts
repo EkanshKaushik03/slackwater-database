@@ -589,11 +589,14 @@ export function scoreRecency(
   return toFixed(Math.max(0, Math.min(1, 1 - age / 100)));
 }
 
-/** Source confidence: mapped from SOURCE_PRIORITY. */
-function scoreSource(station: Station): number {
+/** Source confidence: agency authority, DMI prediction-fit rank, or TICON provider priority. */
+export function scoreSource(station: Station): number {
+  // Prediction fits have no gauge-authority claim; their midrank is independent of TICON suffixes.
   const priority = isAuthoritative(station)
     ? 0
-    : getSourcePriority(station.source.id);
+    : station.id.startsWith("dmi/")
+      ? 50
+      : getSourcePriority(station.source.id);
   return toFixed(Math.max(0, 1 - priority / 99));
 }
 

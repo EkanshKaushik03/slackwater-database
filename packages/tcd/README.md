@@ -2,7 +2,7 @@
 
 This package generates a TCD (Tide Constituent Database) binary file of the Slackwater database. The TCD file can be used with [XTide](https://flaterco.com/xtide/), [OpenCPN](https://opencpn.org), and any software that reads the [libtcd](https://flaterco.com/xtide/libtcd.html) format.
 
-The TCD file includes all tide and current stations in the tide database, and all tidal constituents present in the station data, resolved through the constituent list from [@slackwater/engine](https://www.npmjs.com/package/@slackwater/engine).
+The TCD file includes the predictable tide and current stations in the tide database, with constituents resolved through the list from [@slackwater/engine](https://www.npmjs.com/package/@slackwater/engine). Names whose amplitude is zero in every exported reference station are omitted from its shared constituent table, saving libtcd's limited 255 slots without changing predictions. Those zero values remain in the database.
 
 Current stations are named `<Name>, <Region> Current`, with the NOAA station id appended where several stations share a name (for example, different depths at one location). Speeds are in knots. A few stations can't be represented in the format and are left out: reference currents without harmonic constants, and subordinate currents with a speed ratio of zero, which libtcd would read as "no ratio".
 

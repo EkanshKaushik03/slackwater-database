@@ -1,0 +1,22 @@
+sources:
+  - dmi/32048
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    dmi/32048:
+      position: [55.249, 14.8368]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/tejn-tej-dnk-cmems
+        score: 45
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.005
+        issues:
+          - MHWS (0.006) < MHW (0.015)

@@ -1,5 +1,42 @@
 import { describe, test, expect } from "vitest";
-import { cleanName } from "../name-cleanup.js";
+import { cleanName, isRegionContext } from "../name-cleanup.js";
+
+describe("isRegionContext", () => {
+  test.each([
+    "N.J.",
+    "Md.",
+    "Va.",
+    "Pa.",
+    "N.Y.",
+    "B.C.",
+    "Del.",
+    "Wash.",
+    "Oreg.",
+    "Alaska",
+    "D.C.",
+    "S.C.",
+    "NL",
+    "LA",
+    "BC",
+    "PQ",
+    "PR",
+    "PEI",
+    "P.E.I.",
+    "Lab",
+  ])("recognizes a standalone region label: %s", (context) => {
+    expect(isRegionContext(context)).toBe(true);
+  });
+
+  test.each([
+    "Hudson River",
+    "San Juan Island",
+    "Everett, WA",
+    "Port Gardner",
+    "",
+  ])("keeps useful qualifiers: %s", (context) =>
+    expect(isRegionContext(context)).toBe(false),
+  );
+});
 
 describe("cleanName", () => {
   describe("abbreviations", () => {
@@ -20,6 +57,15 @@ describe("cleanName", () => {
       );
       expect(us("Savage I., Somewhere")).toBe("Savage Island, Somewhere");
     });
+
+    test.each(["R.I.", "V.I."])(
+      "keeps a dotted region's final initial: %s",
+      (region) => {
+        expect(cleanName(`Gauge, ${region}`, "United States").name).toBe(
+          `Gauge, ${region}`,
+        );
+      },
+    );
 
     test("cases the expansion like any other word in a shouting name", () => {
       expect(cleanName("MINIM CREEK ENT.", "United States").name).toBe(

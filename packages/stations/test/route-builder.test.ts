@@ -53,6 +53,8 @@ describe("slug allocation", () => {
     expect(toSlug("Ærøskøbing")).toBe("aeroskobing");
     expect(toSlug("Łeba")).toBe("leba");
     expect(toSlug("Honningsvåg")).toBe("honningsvag");
+    expect(toSlug("Eiði")).toBe("eidi");
+    expect(toSlug("Fuglafjørður")).toBe("fuglafjordur");
   });
 
   test("keeps a station's slug and resolves new collisions deterministically", () => {
@@ -89,12 +91,12 @@ describe("slug allocation", () => {
         },
         {
           ...station("ticon/crms0119", "Port Sulphur", "tide", "LA"),
-          context: "LA",
+          context: "Gulf Coast",
           region_code: "US-LA",
         },
         {
           ...station("ticon/crms0129", "Port Sulphur", "tide", "LA"),
-          context: "LA",
+          context: "Gulf Coast",
           region_code: "US-LA",
         },
       ],

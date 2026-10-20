@@ -27,7 +27,7 @@ console.log(stationsById.get("noaa/9447130"));
 
 `stations` leaves out records the quality evaluation rejected, such as duplicate gauges and implausible datums. `allStations` is the unfiltered catalog, `stationsById` maps an id to its station, and every search function below takes `includeAll: true` to search the full catalog instead of the accepted subset.
 
-Each station carries its identity and location eagerly. The heavy prediction fields — `harmonic_constituents`, `datums`, `epoch`, and `datum_epoch` — are decoded from the database file on first access, so importing the module does not pull every station's prediction data onto the heap. [See the format documentation](https://github.com/openwatersio/slackwater-database/blob/main/docs/database-format.md) for how that works.
+Each station carries its identity and location eagerly. The heavy prediction fields — `harmonic_constituents`, `datums`, `datums_source`, `datum_frame`, `datum_coverage`, `epoch`, and `datum_epoch` — are decoded from the database file on access, so importing the module does not pull every station's prediction data onto the heap. [See the format documentation](https://github.com/openwatersio/slackwater-database/blob/main/docs/database-format.md) for how that works.
 
 Each station has separate `locality`, `region`, and `country` display fields. `country_code` is an ISO 3166-1 alpha-2 code; `region_code`, when available, is an ISO 3166-2 subdivision code. Consumers can therefore omit country or region text when the surrounding page already supplies it.
 
@@ -136,7 +136,7 @@ const referenceStations = search("island", {
 console.log("Reference stations:", referenceStations);
 ```
 
-Umlauts and combining accents are folded in both names and queries, so `Busu` finds `Büsum`.
+Search is case-insensitive and folds Latin accents in both indexed fields and queries, including composed and decomposed Unicode spellings, so `Busu` finds `Büsum`. It also transliterates `æ` → `ae`, `ø` → `o`, `ß` → `ss`, `ł` → `l`, `đ` → `d`, `þ` → `th`, and `œ` → `oe`, so `Traena` finds `Træna`. Equivalent spellings produce the same matches and ranking; returned station names keep their original spelling. Marks in non-Latin scripts are preserved, and tokenization, prefix search, and fuzzy matching still apply.
 
 The `search` function takes the following parameters:
 
@@ -185,9 +185,9 @@ console.log(stationsById.get("ticon/newlyn-new-gbr-bodc")?.attribution);
 
 What the string contains, and why that is sufficient:
 
-- **The creator credit.** For TICON-4 stations, the citation its authors ask for; for Kartverket, LINZ and JHOD, the publishing agency. JHOD also carries the source editing notice. A source that requires no credit, such as public-domain NOAA data, contributes nothing here.
+- **The creator credit.** For TICON-4 stations, the citation its authors ask for; for Kartverket, LINZ, JHOD and DMI, the publishing agency. JHOD also carries the source editing notice. A source that requires no credit, such as public-domain NOAA data, contributes nothing here.
 - **The licence and its URI**, taken from the station rather than its source. Licence varies within a single source — the TICON stations relayed from CMEMS are CC BY-NC while the rest are CC BY — so the notice names the one that actually applies to the station in hand.
-- **An indication that the material was modified**, pointing at [what this project changes](https://github.com/openwatersio/slackwater-database#modifications-to-source-data): derived datums, normalized names, geocoded location fields, and re-fit phases for two GESLA sources.
+- **An indication that the material was modified**, pointing at [what this project changes](https://github.com/openwatersio/slackwater-database#modifications-to-source-data): derived datums, normalized names, geocoded location fields, re-fit phases for two GESLA sources, and harmonics fitted from DMI predictions.
 
 JHOD stations name the Government Standard Terms of Use 2.0 and link the publisher's terms.
 

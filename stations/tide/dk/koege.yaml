@@ -8,14 +8,14 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 67
+        score: 60
         factors:
           epoch: 0.727
           recency: 0.99
           source: 0.02
           quality: 1
           amplitude: 1
-          coverage: 0.468
+          coverage: 0.013
         issues:
           - MLWS (0.096) > MLW (0.091)
           - MHWS (0.174) < MHW (0.181)

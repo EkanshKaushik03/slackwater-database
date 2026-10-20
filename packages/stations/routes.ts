@@ -102,6 +102,7 @@ export function assignSlugs(
 const TRANSLITERATE: Record<string, string> = {
   æ: "ae",
   đ: "d",
+  ð: "d",
   ł: "l",
   œ: "oe",
   ø: "o",
@@ -112,7 +113,7 @@ const TRANSLITERATE: Record<string, string> = {
 export function toSlug(value: string): string {
   return value
     .toLowerCase()
-    .replace(/[æđłœøßþ]/g, (letter) => TRANSLITERATE[letter]!)
+    .replace(/[æđðłœøßþ]/g, (letter) => TRANSLITERATE[letter]!)
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()

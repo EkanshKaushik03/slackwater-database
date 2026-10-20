@@ -63,7 +63,7 @@ PUBLISHED_REF=origin/main npm run validate
 
 ## Curation rules
 
-`context` is whatever most usefully distinguishes this place: a water body, an island group, a region, a county, or a characteristic. It must never restate the name. Without one, a station takes the qualifier in its provider name, then the OpenStreetMap bay or strait it sits in, then the nearest place. Curate `context` only where that answer is wrong or less useful.
+`context` is whatever most usefully distinguishes this place: a water body, an island group, a region, a county, or a characteristic. It must never restate the name or consist only of a state or province abbreviation. Without one, a station takes the qualifier in its provider name, then the OpenStreetMap bay or strait it sits in, then the nearest place. A provider's state or province qualifier is skipped; without another qualifier, that station takes a mapped water or no context. When no water or distinct nearby place is known, context is absent. Curate `context` only where that answer is wrong or less useful.
 
 `cleanName` undoes a provider's formatting and nothing more. A spelling that takes knowing the place is a `name` here, so that one station's spelling can never change another's. `npm run validate` reports the curated names the cleanup already produces, which is the list to prune when a provider catches up.
 

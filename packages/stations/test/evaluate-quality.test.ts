@@ -9,6 +9,7 @@ import {
   RECENCY_YEAR,
   scoreAmplitude,
   scoreRecency,
+  scoreSource,
   tideConflict,
 } from "../evaluate-quality.ts";
 import { exceeds, seasonalTerms } from "../filtering.ts";
@@ -124,6 +125,16 @@ describe("checkTidalRange", () => {
     s.datums = { MHW: 0.141, MLW: 0.122 };
     expect(checkTidalRange(s, new Map())).toContain("Tidal range");
   });
+});
+
+test("DMI prediction fits use a fixed source rank regardless of station ID spelling", () => {
+  for (const id of ["25149", "future-dmi"])
+    expect(
+      scoreSource({
+        id: `dmi/${id}`,
+        source: { id, name: "Danish Meteorological Institute" },
+      } as Station),
+    ).toBe(0.495);
 });
 
 describe("exceeds", () => {

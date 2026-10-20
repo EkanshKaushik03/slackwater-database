@@ -1,0 +1,20 @@
+sources:
+  - dmi/30202
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    dmi/30202:
+      position: [55.8491, 12.5715]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/vedbaek-ved-dnk-cmems
+        score: 45
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.006

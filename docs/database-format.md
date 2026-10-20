@@ -68,9 +68,7 @@ Releases attach the file as `slackwater-<date>.tcdb` alongside the TCD files.
 
 `buildDatabase(stations, { routes, credits })` is exported so downstream generators can write filtered catalogues through the same builder and read them with the same generated readers. The package exports `credits: ReadonlyMap<string, string | null>`, generated from the same `sources/<name>/metadata.yaml` entries as the bundled database. It maps each published `source.name` to its credit line, or null when it needs none. Pass it directly when rebuilding published stations; a custom source needs its own entry, and a station whose source has no entry is refused.
 
-## ESM only (no CJS build)
-
-`kdbush` and `geokdbush` are ESM-only packages (no `require` export), so a CJS build can't `require()` them without a double-wrapped-default interop bug (`KDBush.from is not a function`). All first-party consumers use ESM, so the package ships **ESM only**. Modern Node still lets `require()` load the ESM entry (require-of-ESM); older CJS-only tooling would need to `import()` it.
+## Datum provenance
 
 `Station.datum_epoch` is an optional appended FlatBuffers field. Older files read it as absent, and older readers ignore it. JS exposes `datum_epoch` and Swift exposes `datumEpoch`; subordinates inherit their reference's reduction period with its datums. `epoch` retains its source-specific analysis or datum meaning and drives quality ranking; TICON uses its constituent fit period.
 
@@ -79,3 +77,7 @@ Releases attach the file as `slackwater-<date>.tcdb` alongside the TCD files.
 `Station.datum_coverage` is an optional appended table containing the observed reduction’s month count and observed/inferred hourly-bin counts. JS exposes `datum_coverage` with `months`, `observed_hours`, and `inferred_hours`; Swift exposes `datumCoverage` (`StationDatumCoverage`, with `observedHours`/`inferredHours`). Subordinates inherit the reference’s counts with its datums. Older files and harmonic fallbacks read as absent; absence is not evidence of zero inferred hours.
 
 Optional JS datum getters can exist on an object while returning `undefined`. Check their values rather than using key presence to infer provenance.
+
+## ESM only (no CJS build)
+
+`kdbush` and `geokdbush` are ESM-only packages (no `require` export), so a CJS build can't `require()` them without a double-wrapped-default interop bug (`KDBush.from is not a function`). All first-party consumers use ESM, so the package ships **ESM only**. Modern Node still lets `require()` load the ESM entry (require-of-ESM); older CJS-only tooling would need to `import()` it.

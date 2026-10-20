@@ -37,6 +37,8 @@ The GESLA `jodc_jcg` copies can omit real measurements after midnight on the fin
 
 All 31 `jodc_jcg` records (30 in Japan plus Syowa in Antarctica) contain at least one year with a usable local December 31 midnight followed by 23 hours with no GESLA timestamps. The original-file comparison above covers Monbetsu and Urakawa; the remaining archives have not been compared.
 
+Under the complete-month rule, all 31 relays use the constituent frame (MSL = 0), including 11 accepted relay records. This is a model zero, not a measured gauge zero. Recovering the original final-day hours can change which observation windows and gauge offsets qualify.
+
 This pattern points to truncation when daily source rows are expanded or annual files are assembled, rather than a physical station outage. The responsible upstream conversion code has not been identified. Other month-end day-31 observations are present. JODC's [hourly format](https://www.jodc.go.jp/data_format/sea-level-format.html) supplies all 24 heights per date in JST (UTC+9); Syowa is the documented UTC+3 exception. The 23-hour omissions exceed the reconstruction limit. The importer currently leaves them missing. Restoring them requires original-source ingestion with time, gauge-zero, overlapping-height and QC checks, rather than increasing the interpolation bound or overriding excluded observations.
 
 ## Regenerating

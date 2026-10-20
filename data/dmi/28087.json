@@ -1,0 +1,512 @@
+{
+  "name": "Odense Fjord, Stige Ø",
+  "country": "Denmark",
+  "continent": "Europe",
+  "latitude": 55.4386,
+  "longitude": 10.4245,
+  "timezone": "Europe/Copenhagen",
+  "source": {
+    "name": "Danish Meteorological Institute",
+    "id": "28087",
+    "published_harmonics": false,
+    "url": "https://opendataapi.dmi.dk/v2/oceanObs/collections/tidewaterstation/items?stationId=28087"
+  },
+  "license": {
+    "type": "cc-by-4.0",
+    "commercial_use": true,
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "notes": "DMI API and bulk data terms: https://www.dmi.dk/friedata/dokumentation/terms-of-use. Harmonics fitted from predictions; centimetres converted to metres."
+  },
+  "disclaimers": "Harmonics fitted by Slackwater from DMI astronomical predictions, not published DMI constants. Held-out height validation: 2027-01-05 through 2027-12-30 UTC. Accuracy outside that span has not been checked.",
+  "datums": {
+    "MHHW": 0.192,
+    "MHW": 0.174,
+    "MSL": 0,
+    "MTL": 0.009,
+    "MLW": -0.156,
+    "MLLW": -0.171,
+    "LAT": -0.273,
+    "MHWS": 0.183,
+    "MLWS": -0.174
+  },
+  "datums_source": "harmonic",
+  "chart_datum": "MSL",
+  "type": "reference",
+  "harmonic_constituents": [
+    {
+      "name": "M2",
+      "amplitude": 0.153,
+      "phase": 2.12
+    },
+    {
+      "name": "S2",
+      "amplitude": 0.03,
+      "phase": 326.38
+    },
+    {
+      "name": "N2",
+      "amplitude": 0.033,
+      "phase": 303.37
+    },
+    {
+      "name": "K1",
+      "amplitude": 0,
+      "phase": 124.38
+    },
+    {
+      "name": "O1",
+      "amplitude": 0.025,
+      "phase": 17.25
+    },
+    {
+      "name": "K2",
+      "amplitude": 0,
+      "phase": 275.54
+    },
+    {
+      "name": "P1",
+      "amplitude": 0,
+      "phase": 79.3
+    },
+    {
+      "name": "Q1",
+      "amplitude": 0,
+      "phase": 185.57
+    },
+    {
+      "name": "Sa",
+      "amplitude": 0,
+      "phase": 121.27
+    },
+    {
+      "name": "Ssa",
+      "amplitude": 0,
+      "phase": 283.79
+    },
+    {
+      "name": "Mm",
+      "amplitude": 0,
+      "phase": 60.71
+    },
+    {
+      "name": "Mf",
+      "amplitude": 0,
+      "phase": 94.09
+    },
+    {
+      "name": "MSf",
+      "amplitude": 0,
+      "phase": 32.57
+    },
+    {
+      "name": "2Q1",
+      "amplitude": 0,
+      "phase": 3.69
+    },
+    {
+      "name": "sigma1",
+      "amplitude": 0,
+      "phase": 198.87
+    },
+    {
+      "name": "rho1",
+      "amplitude": 0,
+      "phase": 111.81
+    },
+    {
+      "name": "M1",
+      "amplitude": 0,
+      "phase": 295.53
+    },
+    {
+      "name": "chi1",
+      "amplitude": 0,
+      "phase": 285.67
+    },
+    {
+      "name": "pi1",
+      "amplitude": 0,
+      "phase": 358.7
+    },
+    {
+      "name": "S1",
+      "amplitude": 0.014,
+      "phase": 75.76
+    },
+    {
+      "name": "psi1",
+      "amplitude": 0,
+      "phase": 179.65
+    },
+    {
+      "name": "phi1",
+      "amplitude": 0,
+      "phase": 253.45
+    },
+    {
+      "name": "theta1",
+      "amplitude": 0,
+      "phase": 201.19
+    },
+    {
+      "name": "J1",
+      "amplitude": 0,
+      "phase": 262.69
+    },
+    {
+      "name": "OO1",
+      "amplitude": 0,
+      "phase": 71.05
+    },
+    {
+      "name": "2N2",
+      "amplitude": 0,
+      "phase": 218.5
+    },
+    {
+      "name": "mu2",
+      "amplitude": 0.035,
+      "phase": 164.67
+    },
+    {
+      "name": "nu2",
+      "amplitude": 0.013,
+      "phase": 347.32
+    },
+    {
+      "name": "lambda2",
+      "amplitude": 0,
+      "phase": 186.91
+    },
+    {
+      "name": "L2",
+      "amplitude": 0.013,
+      "phase": 94.09
+    },
+    {
+      "name": "T2",
+      "amplitude": 0,
+      "phase": 318.47
+    },
+    {
+      "name": "R2",
+      "amplitude": 0,
+      "phase": 58.05
+    },
+    {
+      "name": "eta2",
+      "amplitude": 0,
+      "phase": 30.56
+    },
+    {
+      "name": "M3",
+      "amplitude": 0.003,
+      "phase": 211.53
+    },
+    {
+      "name": "MK3",
+      "amplitude": 0.004,
+      "phase": 179.67
+    },
+    {
+      "name": "MO3",
+      "amplitude": 0.005,
+      "phase": 334.16
+    },
+    {
+      "name": "SO3",
+      "amplitude": 0,
+      "phase": 150.31
+    },
+    {
+      "name": "SK3",
+      "amplitude": 0,
+      "phase": 301.99
+    },
+    {
+      "name": "MN4",
+      "amplitude": 0.005,
+      "phase": 282.74
+    },
+    {
+      "name": "M4",
+      "amplitude": 0.01,
+      "phase": 349.54
+    },
+    {
+      "name": "MS4",
+      "amplitude": 0.004,
+      "phase": 259.67
+    },
+    {
+      "name": "MK4",
+      "amplitude": 0,
+      "phase": 259.25
+    },
+    {
+      "name": "S4",
+      "amplitude": 0,
+      "phase": 23.81
+    },
+    {
+      "name": "SK4",
+      "amplitude": 0,
+      "phase": 323.66
+    },
+    {
+      "name": "2MK5",
+      "amplitude": 0,
+      "phase": 14.95
+    },
+    {
+      "name": "2SK5",
+      "amplitude": 0,
+      "phase": 319.84
+    },
+    {
+      "name": "M6",
+      "amplitude": 0.002,
+      "phase": 4.75
+    },
+    {
+      "name": "2MS6",
+      "amplitude": 0.002,
+      "phase": 306.5
+    },
+    {
+      "name": "2SM6",
+      "amplitude": 0,
+      "phase": 349.53
+    },
+    {
+      "name": "2MK6",
+      "amplitude": 0,
+      "phase": 352.33
+    },
+    {
+      "name": "MSK6",
+      "amplitude": 0,
+      "phase": 286.87
+    },
+    {
+      "name": "2MN6",
+      "amplitude": 0.002,
+      "phase": 298.4
+    },
+    {
+      "name": "M8",
+      "amplitude": 0,
+      "phase": 9.82
+    },
+    {
+      "name": "M10",
+      "amplitude": 0,
+      "phase": 56.87
+    },
+    {
+      "name": "M12",
+      "amplitude": 0,
+      "phase": 131.51
+    },
+    {
+      "name": "MA2*",
+      "amplitude": 0.023,
+      "phase": 251.07
+    },
+    {
+      "name": "MA2",
+      "amplitude": 0.022,
+      "phase": 107.66
+    },
+    {
+      "name": "3MSN10",
+      "amplitude": 0,
+      "phase": 152.38
+    },
+    {
+      "name": "2SN(MK)2",
+      "amplitude": 0,
+      "phase": 234.87
+    },
+    {
+      "name": "delta2",
+      "amplitude": 0,
+      "phase": 159.59
+    },
+    {
+      "name": "6MN10",
+      "amplitude": 0,
+      "phase": 174.09
+    },
+    {
+      "name": "MSN6",
+      "amplitude": 0,
+      "phase": 98.67
+    },
+    {
+      "name": "2KM2S2",
+      "amplitude": 0,
+      "phase": 350.7
+    },
+    {
+      "name": "MKL2S2",
+      "amplitude": 0,
+      "phase": 345.32
+    },
+    {
+      "name": "NA2",
+      "amplitude": 0,
+      "phase": 119.39
+    },
+    {
+      "name": "4MN6",
+      "amplitude": 0,
+      "phase": 339.77
+    },
+    {
+      "name": "3MNO9",
+      "amplitude": 0,
+      "phase": 113.88
+    },
+    {
+      "name": "6MS14",
+      "amplitude": 0,
+      "phase": 47.47
+    },
+    {
+      "name": "SNK2",
+      "amplitude": 0,
+      "phase": 183.99
+    },
+    {
+      "name": "MNO5",
+      "amplitude": 0,
+      "phase": 24.61
+    },
+    {
+      "name": "MSK2",
+      "amplitude": 0,
+      "phase": 111.61
+    },
+    {
+      "name": "2(NS)8",
+      "amplitude": 0,
+      "phase": 33.83
+    },
+    {
+      "name": "4M2S4",
+      "amplitude": 0,
+      "phase": 310.87
+    },
+    {
+      "name": "2MRS4",
+      "amplitude": 0,
+      "phase": 346.52
+    },
+    {
+      "name": "5MN12",
+      "amplitude": 0,
+      "phase": 93.26
+    },
+    {
+      "name": "3S2M10",
+      "amplitude": 0,
+      "phase": 96.63
+    },
+    {
+      "name": "MSnu2",
+      "amplitude": 0,
+      "phase": 138.94
+    },
+    {
+      "name": "3MN8",
+      "amplitude": 0,
+      "phase": 95.94
+    },
+    {
+      "name": "3MQ5",
+      "amplitude": 0,
+      "phase": 247.79
+    },
+    {
+      "name": "2MNK7",
+      "amplitude": 0,
+      "phase": 289.16
+    },
+    {
+      "name": "5MSN14",
+      "amplitude": 0,
+      "phase": 119.85
+    },
+    {
+      "name": "4M2S12",
+      "amplitude": 0,
+      "phase": 221.36
+    },
+    {
+      "name": "3KM5",
+      "amplitude": 0,
+      "phase": 48.87
+    },
+    {
+      "name": "MST6",
+      "amplitude": 0,
+      "phase": 304.61
+    },
+    {
+      "name": "MNS2",
+      "amplitude": 0,
+      "phase": 49.7
+    },
+    {
+      "name": "6MNS12",
+      "amplitude": 0,
+      "phase": 135.12
+    },
+    {
+      "name": "2(MS)8",
+      "amplitude": 0,
+      "phase": 173.19
+    },
+    {
+      "name": "MnuS2",
+      "amplitude": 0,
+      "phase": 173.55
+    },
+    {
+      "name": "2NKMS5",
+      "amplitude": 0,
+      "phase": 182.61
+    },
+    {
+      "name": "4MS10",
+      "amplitude": 0,
+      "phase": 213.46
+    },
+    {
+      "name": "MT4",
+      "amplitude": 0,
+      "phase": 167.13
+    },
+    {
+      "name": "5MKS6",
+      "amplitude": 0,
+      "phase": 330.83
+    },
+    {
+      "name": "MA6",
+      "amplitude": 0,
+      "phase": 257.81
+    },
+    {
+      "name": "5MSNK12",
+      "amplitude": 0,
+      "phase": 309.56
+    },
+    {
+      "name": "4MS6",
+      "amplitude": 0,
+      "phase": 111.6
+    }
+  ]
+}

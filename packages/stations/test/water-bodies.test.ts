@@ -75,6 +75,9 @@ describe("water body snapshot", () => {
     ["Cherry Point", "Strait of Georgia", 48.8633, -122.7583],
     ["Tacoma", "Commencement Bay", 47.2667, -122.4133],
     ["Turn Point", "Boundary Pass", 48.6912, -123.245],
+    ["Haderslev", "Haderslev Fjord", 55.2519, 9.5092],
+    ["Kapisillit", "Kapisillit Kangerluat", 64.4371, -50.2776],
+    ["Zackenberg", "Young Sound", 74.45, -20.75],
   ])("places %s in %s", (_station, expected, lat, lon) => {
     expect(snapshot.at(lat, lon)[0]?.name).toBe(expected);
   });

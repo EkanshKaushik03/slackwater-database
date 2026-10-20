@@ -253,3 +253,5 @@ export function fitHarmonics(
     phase: Math.round(c.phase * 100) / 100,
   }));
 }
+
+export { spreadSample, selectExtraConstituents } from "./selection.ts";
