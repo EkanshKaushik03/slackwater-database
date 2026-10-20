@@ -89,12 +89,12 @@ describe("slug allocation", () => {
         },
         {
           ...station("ticon/crms0119", "Port Sulphur", "tide", "LA"),
-          context: "LA",
+          context: "Gulf Coast",
           region_code: "US-LA",
         },
         {
           ...station("ticon/crms0129", "Port Sulphur", "tide", "LA"),
-          context: "LA",
+          context: "Gulf Coast",
           region_code: "US-LA",
         },
       ],

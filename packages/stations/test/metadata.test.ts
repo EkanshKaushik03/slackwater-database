@@ -270,6 +270,10 @@ describe("metadata resolution", () => {
     "D.C.",
     "S.C.",
     "NL",
+    "PEI",
+    "Lab",
+    "R.I.",
+    "V.I.",
   ])("a provider's region qualifier is not its water: %s", (qualifier) => {
     const result = resolveMetadata(
       { ...baseStation, name: `Alpine, ${qualifier}` },
@@ -313,6 +317,26 @@ describe("metadata resolution", () => {
       expect(result).not.toHaveProperty("context_derived");
     },
   );
+
+  test.each([
+    "Columbia_Slough_At_Portland_Or",
+    "Abercorn_Creek_Near_SavannahGa",
+    "USCG Station NY",
+  ])("an extracted region suffix falls back only to water: %s", (name) => {
+    const station = { ...baseStation, id: "ticon/region-suffix", name };
+    const absent = resolveMetadata(station, {
+      geocoder,
+      waterBodies: { at: () => [] },
+    });
+    expect(absent).not.toHaveProperty("context");
+    expect(absent).not.toHaveProperty("context_derived");
+    const withWater = resolveMetadata(station, {
+      geocoder,
+      waterBodies: { at: () => [{ name: "Test River", distance: 0 }] },
+    });
+    expect(withWater.context).toBe("Test River");
+    expect(withWater.context_derived).toBe(true);
+  });
 
   test("does not use the state alone when the nearest town repeats the name", () => {
     const result = resolveMetadata(baseStation, {
@@ -507,7 +531,8 @@ describe("metadata resolution", () => {
     expect(result.name).toBe("Alert Bay");
     expect(result.region).toBe("British Columbia");
     expect(result.region_code).toBe("CA-BC");
-    expect(result.context).toBe("Sooke, British Columbia");
+    expect(result).not.toHaveProperty("context");
+    expect(result).not.toHaveProperty("context_derived");
   });
 
   test("prefers the GeoNames display region over a name-derived code", () => {

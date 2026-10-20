@@ -20,6 +20,9 @@ describe("isRegionContext", () => {
     "BC",
     "PQ",
     "PR",
+    "PEI",
+    "P.E.I.",
+    "Lab",
   ])("recognizes a standalone region label: %s", (context) => {
     expect(isRegionContext(context)).toBe(true);
   });
@@ -54,6 +57,15 @@ describe("cleanName", () => {
       );
       expect(us("Savage I., Somewhere")).toBe("Savage Island, Somewhere");
     });
+
+    test.each(["R.I.", "V.I."])(
+      "keeps a dotted region's final initial: %s",
+      (region) => {
+        expect(cleanName(`Gauge, ${region}`, "United States").name).toBe(
+          `Gauge, ${region}`,
+        );
+      },
+    );
 
     test("cases the expansion like any other word in a shouting name", () => {
       expect(cleanName("MINIM CREEK ENT.", "United States").name).toBe(

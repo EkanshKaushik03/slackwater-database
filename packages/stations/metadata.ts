@@ -529,10 +529,9 @@ export function resolveMetadata(
       contextDerived = true;
     }
   }
-  const hasRegionQualifier = cleaned.original
-    .split(",")
-    .slice(1)
-    .some(isRegionContext);
+  const hasRegionQualifier =
+    cleaned.region !== undefined ||
+    cleaned.original.split(",").slice(1).some(isRegionContext);
   // A discarded region qualifier needs water; another town can misplace a gauge across a state line.
   const town =
     context || hasRegionQualifier

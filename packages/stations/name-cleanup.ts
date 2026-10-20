@@ -85,7 +85,14 @@ const CA_PROVINCES = new Set([
 // "PQ" was Quebec's postal abbreviation until 1990 ("La_Grande_RivierePq").
 const LEGACY_REGIONS: Record<string, string> = { PQ: "QC" };
 
-const NOAA_REGION_NAMES = new Set(["ALASKA", "DEL", "OREG", "WASH"]);
+const SOURCE_REGION_LABELS = new Set([
+  "ALASKA",
+  "DEL",
+  "LAB",
+  "OREG",
+  "PEI",
+  "WASH",
+]);
 
 /** A standalone region label is not a station's water, even across a border. */
 export function isRegionContext(context: string): boolean {
@@ -94,7 +101,7 @@ export function isRegionContext(context: string): boolean {
     US_STATES.has(code) ||
     CA_PROVINCES.has(code) ||
     Object.hasOwn(LEGACY_REGIONS, code) ||
-    NOAA_REGION_NAMES.has(code)
+    SOURCE_REGION_LABELS.has(code)
   );
 }
 
@@ -155,7 +162,8 @@ const EXPAND: [RegExp, string][] = [
   [/\bNAS\b/g, "Naval Air Station"],
   [/\bSt\. Park\b/gi, "State Park"],
   [/\bent\./gi, "Entrance"],
-  [/\bI\.(?=$|,)/g, "Island"],
+  // Dotted region codes keep their trailing initial.
+  [/(?<!\.)\bI\.(?=$|,)/g, "Island"],
   [/\bIs\./gi, "Islands"],
   [/\bPt\./gi, "Point"],
   [/\bCk\./gi, "Creek"],

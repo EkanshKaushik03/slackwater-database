@@ -59,6 +59,8 @@ describe("chsInputs", () => {
       "chs-charlottetown-nl",
       "chs-come-by-chance",
       "chs-prince-rupert-roro",
+      "chs-jeanette-bay-lab",
+      "chs-victoria-pei",
     ]);
     const records = JSON.parse(
       readFileSync(
@@ -90,14 +92,27 @@ describe("chsInputs", () => {
         context: undefined,
       },
       {
+        id: "chs-jeanette-bay-lab",
+        name: "Jeanette Bay",
+        context: undefined,
+      },
+      {
         id: "chs-prince-rupert-roro",
         name: "Prince Rupert RoRo",
+        context: undefined,
+      },
+      {
+        id: "chs-victoria-pei",
+        name: "Victoria",
         context: undefined,
       },
     ]);
   });
 
-  it("names Charlottetown's water instead of its province", async () => {
+  it.each([
+    ["chs-charlottetown-nl", "Charlottetown", "Bryans Hole"],
+    ["chs-victoria-pei", "Victoria", "Victoria Harbour"],
+  ])("names %s's water instead of its province", async (id, name, context) => {
     const records = JSON.parse(
       readFileSync(
         new URL("../../../sources/chs/stations.json", import.meta.url),
@@ -115,10 +130,10 @@ describe("chsInputs", () => {
             waterBodies,
           }),
         )
-        .find((station) => station.id === "chs-charlottetown-nl"),
+        .find((station) => station.id === id),
     ).toMatchObject({
-      name: "Charlottetown",
-      context: "Bryans Hole",
+      name,
+      context,
       context_derived: true,
     });
   });
