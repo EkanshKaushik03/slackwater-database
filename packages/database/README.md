@@ -136,6 +136,8 @@ const referenceStations = search("island", {
 console.log("Reference stations:", referenceStations);
 ```
 
+Umlauts and combining accents are folded in both names and queries, so `Busu` finds `Büsum`.
+
 The `search` function takes the following parameters:
 
 - `query` (required): Search string. Supports fuzzy matching and prefix search.

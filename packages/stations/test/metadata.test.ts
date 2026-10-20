@@ -812,6 +812,7 @@ test/1:
 
   test.each([
     ["Büsum", "Bsum"],
+    ["Bu\u0308sum", "Bsum"],
     ["Buttelerhörne", "Buttelerhrne"],
     ["Emshörn", "Emshrn"],
     ["Hörnum", "Hrnum"],
@@ -845,7 +846,9 @@ test/1:
       validateMetadata(corrections, new Map(), [
         { ...baseStation, id: "test/1", name: published },
       ]),
-    ).not.toEqual([]);
+    ).toEqual([
+      `test/1: curated name ${JSON.stringify(name)} shares no meaningful word with published name ${JSON.stringify(published)}`,
+    ]);
   });
 
   test("accepts a curated name that restores the accents a source dropped", () => {

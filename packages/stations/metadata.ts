@@ -802,8 +802,10 @@ function sharesMeaningfulWord(left: string, right: string): boolean {
   const letters = words(right).join("");
   if (words(left).some((word) => word.length >= 3 && letters.includes(word)))
     return true;
-  // TICON deletes non-ASCII letters entirely; require the remaining full name to match.
-  const stripped = words(left.replace(/[^\x00-\x7F]/g, "")).join("");
+  // Some TICON records delete non-ASCII letters; require the remaining full name to match.
+  const stripped = words(
+    left.normalize("NFC").replace(/[^\x00-\x7F]/g, ""),
+  ).join("");
   return stripped.length >= 3 && stripped === letters;
 }
 

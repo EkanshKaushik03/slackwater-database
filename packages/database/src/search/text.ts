@@ -4,6 +4,8 @@ import type { StationMeta } from "../types.js";
 // Only metadata fields are indexed, so this operates on StationMeta and never
 // touches the lazily-loaded harmonics/datums.
 const textSearchIndexOptions: Options<StationMeta> = {
+  processTerm: (term) =>
+    term.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase(),
   fields: [
     "name",
     "locality",
