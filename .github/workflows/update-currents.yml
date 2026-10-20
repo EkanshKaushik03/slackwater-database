@@ -135,10 +135,26 @@ jobs:
             echo "branch is merged.</sub>"
           } > body.md
 
-          # ponytail: one issue per refresh, no dedup against an already-open one.
-          # Refreshes are rare (monthly forced + drift-only weekly); add dedup if
-          # they ever start stacking up unactioned.
-          gh issue create --title "Refresh NOAA current-station bundle ($BRANCH)" --body-file body.md
+          ISSUE_URL=$(gh issue create --title "Refresh NOAA current-station bundle ($BRANCH)" --label data-refresh --body-file body.md)
+          ISSUE_NUMBER=${ISSUE_URL##*/}
+
+          # Each full extraction supersedes the older refreshes.
+          OLD_ISSUES=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" | jq -r --argjson newest "$ISSUE_NUMBER" '
+            .[] | select(.pull_request == null and .number < $newest) |
+            .number as $number |
+            .title | capture("^Refresh NOAA current-station bundle \\((?<branch>noaa-station-update-[0-9]{8})\\)$") |
+            [$number, .branch] | @tsv
+          ')
+          while IFS=$'\t' read -r OLD_NUMBER OLD_BRANCH; do
+            [ -n "$OLD_NUMBER" ] || continue
+            gh issue close "$OLD_NUMBER" --comment "Superseded by #$ISSUE_NUMBER"
+            if [ "$OLD_BRANCH" != "$BRANCH" ]; then
+              REMOTE_REF=$(git ls-remote --heads origin "refs/heads/$OLD_BRANCH")
+              if [ -n "$REMOTE_REF" ]; then
+                git push origin --delete "$OLD_BRANCH"
+              fi
+            fi
+          done <<< "$OLD_ISSUES"
 
           # Also surface it on the run itself, so a failed notification isn't the
           # only trail back to the branch.
