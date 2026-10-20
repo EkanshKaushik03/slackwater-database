@@ -17,6 +17,7 @@ import {
   type RouteMember,
 } from "./routes.ts";
 import { filePath, type StationFile } from "./station-files.ts";
+import { cleanName } from "./name-cleanup.ts";
 
 export interface CatalogueInputs {
   tides: StationInput[];
@@ -42,19 +43,31 @@ export function buildCatalogue(inputs: CatalogueInputs): {
       sources.map((id) => [id, sources] as const),
     ),
   );
-  const errors = validateMetadata(
-    inputs.corrections,
-    inputs.registry,
-    sourceStations,
-    siblings,
-  );
-  if (errors.length) throw new Error(errors.join("\n"));
-
   const places = {
     geocoder: inputs.geocoder,
     ...(inputs.waterBodies ? { waterBodies: inputs.waterBodies } : {}),
     ...(inputs.maritimeZones ? { maritimeZones: inputs.maritimeZones } : {}),
   };
+  const namedStations = sourceStations.map((station) => {
+    if (
+      !station.id.startsWith("ticon/") ||
+      !cleanName(station.name ?? "", station.country ?? "").isOpaque
+    )
+      return station;
+    const { name, ...correction } = inputs.corrections.get(station.id) ?? {};
+    return {
+      ...station,
+      name: resolveMetadata(station, { ...places, correction }).name!,
+    };
+  });
+  const errors = validateMetadata(
+    inputs.corrections,
+    inputs.registry,
+    namedStations,
+    siblings,
+  );
+  if (errors.length) throw new Error(errors.join("\n"));
+
   const providerIds = new Set(sourceStations.map(({ id }) => id));
   const stations = [
     ...sourceStations.map((station) =>
