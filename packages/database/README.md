@@ -136,7 +136,7 @@ const referenceStations = search("island", {
 console.log("Reference stations:", referenceStations);
 ```
 
-Umlauts and combining accents are folded in both names and queries, so `Busu` finds `Büsum`.
+Search is case-insensitive and folds Latin accents in both indexed fields and queries, including composed and decomposed Unicode spellings, so `Busu` finds `Büsum`. It also transliterates `æ` → `ae`, `ø` → `o`, `ß` → `ss`, `ł` → `l`, `đ` → `d`, `þ` → `th`, and `œ` → `oe`, so `Traena` finds `Træna`. Equivalent spellings produce the same matches and ranking; returned station names keep their original spelling. Marks in non-Latin scripts are preserved, and tokenization, prefix search, and fuzzy matching still apply.
 
 The `search` function takes the following parameters:
 

@@ -1,11 +1,28 @@
 import MiniSearch, { type Options } from "minisearch";
 import type { StationMeta } from "../types.js";
 
+// Match the route slugger's spellings for Latin letters NFD leaves whole.
+// Search keeps MiniSearch's term boundaries rather than creating URL slugs.
+const TRANSLITERATE: Record<string, string> = {
+  æ: "ae",
+  đ: "d",
+  ł: "l",
+  œ: "oe",
+  ø: "o",
+  ß: "ss",
+  þ: "th",
+};
+
 // Only metadata fields are indexed, so this operates on StationMeta and never
 // touches the lazily-loaded harmonics/datums.
 const textSearchIndexOptions: Options<StationMeta> = {
   processTerm: (term) =>
-    term.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase(),
+    term
+      .toLowerCase()
+      .normalize("NFD")
+      // Strip accents only from Latin bases: other scripts use vowel marks.
+      .replace(/(\p{Script=Latin})\p{M}+/gu, "$1")
+      .replace(/[æđłœøßþ]/g, (letter) => TRANSLITERATE[letter]!),
   fields: [
     "name",
     "locality",
