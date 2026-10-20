@@ -10,7 +10,9 @@ npm run validate -w sources/jhod
 npm run stations
 ```
 
-The import is offline. `fixtures/manifest.json` pins each response's URL, retrieval time and SHA-256; the map, all 89 gauge pages, 20 harmonic pages, explanation and terms are committed verbatim. Missing or changed responses fail before any station data is written. To retrieve a new snapshot, run `npm run import -w sources/jhod -- --refresh`, review the source diff, then regenerate the station files. A new or withdrawn gauge needs review of the inventory and its matches in `ticon-originators.json`.
+The import is offline. `fixtures/manifest.json` pins each response's URL, retrieval time and SHA-256; the map, all 89 gauge pages, 20 harmonic pages, explanation and terms are committed verbatim. Missing or changed responses fail before any station data is written. Each refresh request has a 30-second timeout. A successful refresh removes HTML pages absent from the new manifest. File replacement is sequential; if disk I/O interrupts it, restore the pinned fixtures from Git before retrying. To retrieve a new snapshot, run `npm run import -w sources/jhod -- --refresh`, review the source diff, then regenerate the station files. A new or withdrawn gauge needs review of the inventory and its matches in `ticon-originators.json`.
+
+Refresh and import refuse to lose an existing gauge. After confirming a withdrawal, pass `--withdraw=NNNN` for each reviewed station ID, alongside `--refresh` when fetching new pages. Prediction validation requires the snapshot and imported station sets to match and compares the imported constituents and datums against the publisher's hourly heights.
 
 ## Conventions
 
@@ -31,10 +33,12 @@ The same crosswalk applies when pinned UHSLC metadata explicitly names Japan Oce
 
 `npm run validate -w sources/jhod` compares all 480 published hourly heights for 20 October 2026 JST against the imported constituents, with the published Z0 added. These are harmonic predictions, not observations. RMSE ranges from 0.0041 to 0.0245 m; the largest absolute difference is 0.0414 m, at Hiroshima. The validation uses project regression limits of 0.03 m RMSE and 0.05 m maximum error; these are not publisher-specified uncertainty bounds.
 
-For comparison, Sasebo's RMSE is 0.5301 m with unconverted phases, 0.0471 m with a nine-hour JST shift, and 0.0177 m with the local-meridian conversion. Residual centimetre differences remain; the comparison does not establish year-round accuracy or agreement of high/low-water times.
+For comparison, Sasebo's RMSE is 0.5301 m with unconverted phases, 0.0471 m with a nine-hour JST shift, and 0.0177 m with the local-meridian conversion. Residual centimetre differences remain; the comparison does not establish year-round accuracy or agreement of high/low-water times. In particular, one day cannot independently validate long-period phases. Derived datums have not been compared with publisher datum values.
 
 ## Attribution and source decision
 
 [JHOD's terms](https://www1.kaiho.mlit.go.jp/copyright.html), pinned as `fixtures/terms.html`, follow Japan's Government Standard Terms of Use 2.0. They permit copying, adaptation and commercial use with source attribution and an editing notice, and prohibit presenting edited material as the government's own work. The credit and editing notice in `metadata.yaml` travel with each station. Logos and mascots have separate terms and are not included.
 
 The terms also reproduce Article 25 of the Hydrographic Services Act, requiring permission to publish material similar to Coast Guard charts, aeronautical charts, sailing directions or light lists. The source decision for this importer is that redistributing harmonic-constant records is outside those listed publication categories; tide tables are not on that list. This records the project's reading of the published terms.
+
+The TCD export labels these terms `Japan GSTU 2.0` and retains JHOD's source credit and editing notice in the station notes.

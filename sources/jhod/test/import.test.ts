@@ -84,6 +84,103 @@ describe("JHOD pinned import", () => {
     }
   });
 
+  it("refuses to prune a gauge whose refreshed page lost its constants link", async () => {
+    const root = await mkdtemp(join(tmpdir(), "jhod-test-"));
+    try {
+      const fixtures = join(root, "fixtures");
+      await cp(FIXTURES_DIR, fixtures, { recursive: true });
+      await mkdir(join(root, "data", "jhod"), { recursive: true });
+      await writeFile(join(root, "data", "jhod", "0154.json"), "previous\n");
+      const page = (
+        await readFile(join(fixtures, "0154-gauge.html"), "utf8")
+      ).replace("hc_e.php?s=0154", "unavailable.php?s=0154");
+      await writeFile(join(fixtures, "0154-gauge.html"), page);
+      const path = join(fixtures, "manifest.json");
+      const manifest = JSON.parse(await readFile(path, "utf8"));
+      manifest.files.find(
+        (entry: { path: string }) => entry.path === "0154-gauge.html",
+      ).sha256 = createHash("sha256").update(page).digest("hex");
+      await writeFile(path, JSON.stringify(manifest));
+      await expect(
+        importSnapshot(fixtures, join(root, "data")),
+      ).rejects.toThrow(/withdrawal.*0154/i);
+      await expect(
+        importSnapshot(fixtures, join(root, "data"), ["0158"]),
+      ).rejects.toThrow(/withdrawal.*0154/i);
+      expect(
+        await readFile(join(root, "data", "jhod", "0154.json"), "utf8"),
+      ).toBe("previous\n");
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  }, 120_000);
+
+  it("preserves the current snapshot when a refresh loses a published gauge", async () => {
+    const root = await mkdtemp(join(tmpdir(), "jhod-test-"));
+    try {
+      await cp(FIXTURES_DIR, root, { recursive: true });
+      const current = await readFile(join(root, "manifest.json"), "utf8");
+      const manifest = JSON.parse(current);
+      const byUrl = new Map<string, string>(
+        manifest.files.map((entry: { url: string; path: string }) => [
+          entry.url,
+          entry.path,
+        ]),
+      );
+      const request: typeof fetch = async (input) => {
+        const url = input instanceof Request ? input.url : input.toString();
+        const path = byUrl.get(url);
+        if (!path) throw new Error(`Unexpected URL: ${url}`);
+        let page = await readFile(join(FIXTURES_DIR, path), "utf8");
+        if (path === "0154-gauge.html")
+          page = page.replace("hc_e.php?s=0154", "unavailable.php?s=0154");
+        return new Response(page);
+      };
+      await expect(refreshSnapshot(root, request)).rejects.toThrow(
+        /withdrawal.*0154/i,
+      );
+      expect(await readFile(join(root, "manifest.json"), "utf8")).toBe(current);
+      await refreshSnapshot(root, request, ["0154"]);
+      expect((await verifySnapshot(root)).harmonics).toHaveLength(19);
+      expect(await readdir(root)).not.toContain("0154-constants.html");
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it("refuses a prediction comparison with a mismatched imported station set", async () => {
+    const root = await mkdtemp(join(tmpdir(), "jhod-test-"));
+    try {
+      await mkdir(join(root, "jhod"));
+      await writeFile(join(root, "jhod", "9999.json"), "{}");
+      await expect(validate(FIXTURES_DIR, root)).rejects.toThrow(
+        /station set/i,
+      );
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
+  it("compares the imported datum rather than recomputing it from the snapshot", async () => {
+    const root = await mkdtemp(join(tmpdir(), "jhod-test-"));
+    try {
+      await cp(
+        new URL("../../../data/jhod", import.meta.url),
+        join(root, "jhod"),
+        { recursive: true },
+      );
+      const path = join(root, "jhod", "0154.json");
+      const station = JSON.parse(await readFile(path, "utf8"));
+      station.datums.MSL += 1;
+      await writeFile(path, JSON.stringify(station));
+      await expect(validate(FIXTURES_DIR, root)).rejects.toThrow(
+        /0154.*prediction comparison failed/i,
+      );
+    } finally {
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+
   it("preserves the pinned snapshot when the publisher is unavailable", async () => {
     const root = await mkdtemp(join(tmpdir(), "jhod-test-"));
     try {
@@ -107,7 +204,7 @@ describe("JHOD pinned import", () => {
     try {
       await mkdir(join(root, "jhod"));
       await writeFile(join(root, "jhod", "9999.json"), "withdrawn\n");
-      expect(await importSnapshot(FIXTURES_DIR, root)).toBe(20);
+      expect(await importSnapshot(FIXTURES_DIR, root, ["9999"])).toBe(20);
       expect(await readdir(join(root, "jhod"))).toHaveLength(20);
       const sasebo = JSON.parse(
         await readFile(join(root, "jhod", "0154.json"), "utf8"),

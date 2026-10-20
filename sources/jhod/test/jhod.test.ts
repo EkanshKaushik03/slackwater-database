@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import crosswalk from "../ticon-originators.json" with { type: "json" };
 import {
   buildStation,
   parseHarmonics,
@@ -15,6 +16,22 @@ const sasebo = () => inventory().find((s) => s.id === "0154")!;
 const html = () => fixture("0154-constants.html");
 
 describe("JHOD source", () => {
+  it("rejects a marker without its own gauge link", () => {
+    const page = fixture("index.html").replace(
+      "gauge_eng.php?s=0001",
+      "unavailable.php?s=0001",
+    );
+    expect(() => parseInventory(page)).toThrow(/inventory/i);
+  });
+
+  it("maps every Coast Guard originator to a pinned harmonic station", () => {
+    const manifest = JSON.parse(fixture("manifest.json"));
+    const ids = manifest.files
+      .filter((f: { path: string }) => f.path.endsWith("-constants.html"))
+      .map((f: { path: string }) => f.path.slice(0, 4));
+    expect(Object.values(crosswalk).sort()).toEqual(ids.sort());
+  });
+
   it("reads precise gauge positions from the map inventory", () => {
     expect(inventory()).toHaveLength(89);
     expect(sasebo()).toMatchObject({

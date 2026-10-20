@@ -210,7 +210,7 @@ function checkDatumOrdering(
 }
 
 /** Check tidal range gate. Returns issue string or null. */
-function checkTidalRange(
+export function checkTidalRange(
   station: Station,
   stationMap: Map<string, Station>,
 ): string | null {
@@ -218,7 +218,7 @@ function checkTidalRange(
   const high = datums["MHW"];
   const low = datums["MLW"];
   if (high === undefined || low === undefined) return null; // can't evaluate
-  const range = high - low;
+  const range = Number((high - low).toFixed(9));
   if (range < MIN_TIDAL_RANGE) {
     return `Tidal range ${(range * 100).toFixed(2)}cm < ${MIN_TIDAL_RANGE * 100}cm threshold`;
   }

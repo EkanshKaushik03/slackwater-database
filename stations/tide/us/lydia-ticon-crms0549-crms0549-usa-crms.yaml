@@ -20,6 +20,7 @@ computed:
           amplitude: 1
           coverage: 0.035
         issues:
+          - MLW (0.167) < MLLW (0.168)
           - MLWS (0.174) > MLW (0.167)
           - MHW (0.171) <= MSL (0.174)
           - Tidal range 0.40cm < 2cm threshold

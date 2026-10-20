@@ -1,8 +1,6 @@
 sources:
   - jhod/0063
   - ticon/yokosuka-hd08-jpn-jodc_jcg
-redirect_from:
-  - /tides/jp/yokosuka-jhod-0063/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,8 +17,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.172
-        issues:
-          - MLW (0.814) < MLLW (0.815)
     ticon/yokosuka-hd08-jpn-jodc_jcg:
       position: [35.28805, 139.651383]
       coastline: unverifiable

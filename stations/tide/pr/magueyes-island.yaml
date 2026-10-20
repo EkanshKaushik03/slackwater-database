@@ -38,7 +38,7 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (1.246) > MLW (1.228)
+          - MLWS (1.246) > MLW (1.229)
           - MHWS (1.28) < MHW (1.31)
           - Superseded by noaa/9759110, its operator's own record
     ticon/magueyes_island_pr-246a-usa-uhslc_rq:
@@ -57,6 +57,6 @@ computed:
           amplitude: 1
           coverage: 0.004
         issues:
-          - MLWS (1.232) > MLW (1.214)
-          - MHWS (1.266) < MHW (1.295)
+          - MLWS (1.232) > MLW (1.215)
+          - MHWS (1.266) < MHW (1.296)
           - Superseded by noaa/9759110, its operator's own record

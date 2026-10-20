@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import {
   mkdir,
   mkdtemp,
@@ -34,6 +35,33 @@ function hasHarmonics(gauge: Gauge, html: string) {
   )
     throw new Error(`${gauge.id}: missing or mismatched gauge page`);
   return html.includes(`hc_e.php?s=${gauge.id}`);
+}
+
+export async function stationIds(dir: string) {
+  try {
+    return (await readdir(dir))
+      .filter((name) => name.endsWith(".json"))
+      .map((name) => name.slice(0, -5));
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw error;
+  }
+}
+
+function checkWithdrawals(
+  previous: string[],
+  next: Set<string>,
+  withdrawn: string[],
+) {
+  if (withdrawn.some((id) => !/^\d{4}$/.test(id)))
+    throw new Error("Withdrawal IDs must be four digits");
+  const missing = previous.filter(
+    (id) => !next.has(id) && !withdrawn.includes(id),
+  );
+  if (missing.length)
+    throw new Error(
+      `Unexpected JHOD withdrawal: ${missing.join(", ")}. Review the source change, then pass ${missing.map((id) => `--withdraw=${id}`).join(" ")}.`,
+    );
 }
 
 export async function verifySnapshot(dir = FIXTURES_DIR) {
@@ -73,14 +101,23 @@ export async function verifySnapshot(dir = FIXTURES_DIR) {
   return { harmonics, contents };
 }
 
-export async function importSnapshot(dir = FIXTURES_DIR, dataDir = DATA_DIR) {
+export async function importSnapshot(
+  dir = FIXTURES_DIR,
+  dataDir = DATA_DIR,
+  withdrawn: string[] = [],
+) {
   const { harmonics } = await verifySnapshot(dir);
+  const out = join(dataDir, "jhod");
+  checkWithdrawals(
+    await stationIds(out),
+    new Set(harmonics.map((h) => h.id)),
+    withdrawn,
+  );
   // Build every record before replacing anything, so a bad page preserves the current data.
   const records = harmonics.map((h) => ({
     id: h.id,
     data: withPublishedPrecision("jhod", buildStation(h)),
   }));
-  const out = join(dataDir, "jhod");
   await mkdir(out, { recursive: true });
   for (const record of records)
     await writeFile(
@@ -96,12 +133,15 @@ export async function importSnapshot(dir = FIXTURES_DIR, dataDir = DATA_DIR) {
 export async function refreshSnapshot(
   dir = FIXTURES_DIR,
   request = globalThis.fetch,
+  withdrawn: string[] = [],
 ) {
   await mkdir(dirname(dir), { recursive: true });
   const stage = await mkdtemp(join(dirname(dir), ".jhod-refresh-"));
   const files: File[] = [];
   const get = async (path: string, url: string) => {
-    const response = await request(url);
+    const response = await request(url, {
+      signal: AbortSignal.timeout(30_000),
+    });
     if (!response.ok)
       throw new Error(`Request failed (${response.status}): ${url}`);
     const bytes = Buffer.from(await response.arrayBuffer());
@@ -129,11 +169,22 @@ export async function refreshSnapshot(
         2,
       ) + "\n",
     );
-    await verifySnapshot(stage);
+    const next = await verifySnapshot(stage);
+    if (existsSync(join(dir, "manifest.json"))) {
+      const previous = await verifySnapshot(dir);
+      checkWithdrawals(
+        previous.harmonics.map((h) => h.id),
+        new Set(next.harmonics.map((h) => h.id)),
+        withdrawn,
+      );
+    }
     await mkdir(dir, { recursive: true });
     for (const file of files)
       await rename(join(stage, file.path), join(dir, file.path));
     await rename(join(stage, "manifest.json"), join(dir, "manifest.json"));
+    const keep = new Set(files.map((file) => file.path));
+    for (const name of await readdir(dir))
+      if (name.endsWith(".html") && !keep.has(name)) await rm(join(dir, name));
   } finally {
     await rm(stage, { recursive: true, force: true });
   }
@@ -141,8 +192,19 @@ export async function refreshSnapshot(
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const run = async () => {
-    if (process.argv.includes("--refresh")) await refreshSnapshot();
-    console.log(`Imported ${await importSnapshot()} JHOD stations.`);
+    const args = process.argv.slice(2);
+    if (
+      args.some((arg) => arg !== "--refresh" && !/^--withdraw=\d{4}$/.test(arg))
+    )
+      throw new Error("Usage: import.ts [--refresh] [--withdraw=NNNN ...]");
+    const withdrawn = args
+      .filter((arg) => arg.startsWith("--withdraw="))
+      .map((arg) => arg.slice("--withdraw=".length));
+    if (args.includes("--refresh"))
+      await refreshSnapshot(FIXTURES_DIR, globalThis.fetch, withdrawn);
+    console.log(
+      `Imported ${await importSnapshot(FIXTURES_DIR, DATA_DIR, withdrawn)} JHOD stations.`,
+    );
   };
   run().catch((error) => {
     console.error(error);

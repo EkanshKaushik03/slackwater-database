@@ -22,7 +22,7 @@ computed:
           amplitude: 1
           coverage: 0.02
         issues:
-          - MLWS (0.436) > MLW (0.431)
+          - MLWS (0.436) > MLW (0.435)
     ticon/limon-268a-cri-uhslc_rq:
       position: [10, -83.033]
       coastline: unverifiable
@@ -54,5 +54,5 @@ computed:
           amplitude: 1
           coverage: 0.019
         issues:
-          - MLWS (0.435) > MLW (0.426)
-          - MHWS (0.629) < MHW (0.632)
+          - MLWS (0.435) > MLW (0.429)
+          - MHWS (0.629) < MHW (0.63)

@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import {
   checkConstituents,
+  checkTidalRange,
   checkSeasonalDominance,
   hasSimilarM2,
   loadAllStations,
@@ -30,6 +31,24 @@ function station(
 }
 
 const BASE = { M2: 0.5, S2: 0.2, K1: 0.1, O1: 0.07 };
+
+describe("checkTidalRange", () => {
+  test.each([
+    [0.142, 0.122],
+    [0.036, 0.016],
+    [0.021, 0.001],
+  ])("accepts the exact 2 cm boundary at %s minus %s", (high, low) => {
+    const s = station(BASE);
+    s.datums = { MHW: high, MLW: low };
+    expect(checkTidalRange(s, new Map())).toBeNull();
+  });
+
+  test("rejects a range below the 2 cm boundary", () => {
+    const s = station(BASE);
+    s.datums = { MHW: 0.141, MLW: 0.122 };
+    expect(checkTidalRange(s, new Map())).toContain("Tidal range");
+  });
+});
 
 describe("exceeds", () => {
   test("needs more than the 3 mm fit tolerance", () => {

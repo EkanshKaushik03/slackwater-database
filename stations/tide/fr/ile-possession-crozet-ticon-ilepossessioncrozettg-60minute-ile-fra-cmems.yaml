@@ -19,4 +19,5 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
+          - MHHW (0.693) < MHW (0.7)
           - M2 here (0.099 m, 157.1°) differs from (0.131 m, 157.2°) by -32 mm and 0 min later in ticon/ile_possession_crozet-173-fra-refmar, which this duplicates

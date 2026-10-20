@@ -378,7 +378,7 @@ export const SEASONAL_OUTLIER_RATIO = 5;
 // cycle is really the dominant signal — so the record is not faulty and a
 // consumer that knows what the water is can say so. Cobourg on Lake Ontario
 // carries SA 0.289 m against a principal tide of 0.004 m and
-// passes every other gate, including the 2 cm range floor, by 6 mm.
+// passes every other gate, including the 2 cm range floor.
 
 /** The principal tidal constituents. Their amplitudes sum to the tide's
  *  height above mean level when spring and tropic tides coincide, an upper

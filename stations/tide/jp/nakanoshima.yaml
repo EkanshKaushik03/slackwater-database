@@ -6,7 +6,6 @@ sources:
 redirect_from:
   - /tides/jp/nakano-shima-kagoshima/
   - /tides/jp/nakano-shima/
-  - /tides/jp/nakanoshima-jhod-0179/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -23,8 +22,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 1
-        issues:
-          - MHHW (1.893) < MHW (1.894)
     ticon/nakano_shima-345-jpn-uhslc_fd:
       position: [29.833, 129.85]
       coastline: unverifiable

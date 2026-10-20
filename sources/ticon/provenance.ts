@@ -154,11 +154,7 @@ export function originatorInId(ticonId: string): string | undefined {
   return undefined;
 }
 
-/**
- * The record id a TICON relay declares as its originator, if any, and whether
- * the declaration names one gauge without needing harmonics to confirm it: an
- * id in the relay's own name, or a NOAA station number from NOAA.
- */
+/** Explicit gauge identifiers establish identity without harmonic agreement; UHSLC's JODC HD codes count alongside relay ids and NOAA numbers. */
 export function declaration(
   ticonId: string,
   metadata: Record<string, UhslcMetadata> = pinned,

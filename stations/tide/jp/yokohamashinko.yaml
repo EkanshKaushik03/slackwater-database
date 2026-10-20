@@ -1,8 +1,8 @@
+name: Yokohamashinko
+aliases: [Yokohama]
 sources:
   - jhod/0062
   - ticon/yokohamashinko-hd29-jpn-jodc_jcg
-redirect_from:
-  - /tides/jp/yokohama-jhod-0062/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,8 +19,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.031
-        issues:
-          - MHHW (1.653) < MHW (1.657)
     ticon/yokohamashinko-hd29-jpn-jodc_jcg:
       position: [35.454167, 139.644167]
       coastline: unverifiable

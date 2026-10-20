@@ -23,7 +23,7 @@ computed:
           amplitude: 1
           coverage: 0.008
         issues:
-          - MHWS (0.771) < MHW (0.772)
+          - MHWS (0.771) < MHW (0.776)
     ticon/fort_de_france-271a-fra-uhslc_rq:
       position: [14.602, -61.063]
       coastline: unverifiable
@@ -40,5 +40,4 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - MLWS (0.616) > MLW (0.612)
-          - MHWS (0.76) < MHW (0.767)
+          - MHWS (0.76) < MHW (0.764)

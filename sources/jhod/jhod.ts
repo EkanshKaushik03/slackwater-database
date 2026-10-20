@@ -88,11 +88,14 @@ function number(value: string | undefined) {
 }
 
 export function parseInventory(html: string): Gauge[] {
-  const gauges = [
-    ...html.matchAll(
-      /L\.marker\(\s*\[([\d.-]+),\s*([\d.-]+)\].*?gauge_eng\.php\?s=(\d{4})'>([^<]+)<\/a>/gs,
-    ),
-  ].map(([, lat, lon, id, name]) => {
+  const markers = html.split(/L\.marker\(/).slice(1);
+  const gauges = markers.map((marker) => {
+    const match =
+      /^\s*\[([\d.-]+),\s*([\d.-]+)\].*?gauge_eng\.php\?s=(\d{4})'>([^<]+)<\/a>/s.exec(
+        marker,
+      );
+    if (!match) throw new Error("Incomplete gauge inventory marker");
+    const [, lat, lon, id, name] = match;
     const latitude = number(lat),
       longitude = number(lon);
     if (latitude < 20 || latitude > 46 || longitude < 122 || longitude > 154)

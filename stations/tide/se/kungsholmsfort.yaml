@@ -21,7 +21,7 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (0.17) > MLW (0.16)
+          - MLWS (0.17) > MLW (0.159)
           - MHWS (0.184) < MHW (0.194)
           - "Seasonal curve peak (0.114m) exceeds the principal tide M2+S2+K1+O1 (0.027m): the yearly swing exceeds the daily one"
     ticon/kungsholmsfort-kun-swe-cmems:

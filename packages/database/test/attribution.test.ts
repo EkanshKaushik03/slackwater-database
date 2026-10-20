@@ -34,6 +34,20 @@ const publicDomain = {
 };
 
 describe("attribution", () => {
+  test("a JHOD station names its licence and preserves the editing notice", () => {
+    const notice = attributionWithCredit(
+      creditOf("Japan Coast Guard, Hydrographic and Oceanographic Department"),
+      {
+        type: "Government Standard Terms of Use 2.0",
+        url: "https://www1.kaiho.mlit.go.jp/copyright.html",
+      },
+    );
+    expect(notice).toContain(
+      "Licensed Government Standard Terms of Use 2.0 (https://www1.kaiho.mlit.go.jp/copyright.html)",
+    );
+    expect(notice).toContain("Edited by Open Waters");
+  });
+
   test("published credits preserve notices in a filtered rebuild", () => {
     const representatives = [
       ...new Map(

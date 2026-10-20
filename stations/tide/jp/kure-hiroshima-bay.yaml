@@ -1,31 +1,32 @@
+context: Hiroshima Bay
 sources:
-  - jhod/0173
-  - ticon/odomari-hd20-jpn-jodc_jcg
+  - jhod/0117
+  - ticon/kure-hd13-jpn-jodc_jcg
 redirect_from:
-  - /tides/jp/odomari/
+  - /tides/jp/kure-hiroshima/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    jhod/0173:
-      position: [31.023611111111, 130.68916666667]
+    jhod/0117:
+      position: [34.240555555556, 132.55027777778]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 88
+        score: 80
         factors:
           epoch: 0.537
           recency: 0.94
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0.864
-    ticon/odomari-hd20-jpn-jodc_jcg:
-      position: [31.023617, 130.689167]
+          coverage: 0.295
+    ticon/kure-hd13-jpn-jodc_jcg:
+      position: [34.24055, 132.550283]
       coastline: unverifiable
       quality:
         accepted: false
         reason: superseded
-        redundant: jhod/0173
+        redundant: jhod/0117
         score: 0
         factors:
           epoch: 1
@@ -35,4 +36,4 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - Superseded by jhod/0173, its operator's own record
+          - Superseded by jhod/0117, its operator's own record

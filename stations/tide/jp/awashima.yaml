@@ -1,8 +1,6 @@
 sources:
   - jhod/0089
   - ticon/awashima-hd25-jpn-jodc_jcg
-redirect_from:
-  - /tides/jp/awashima-jhod-0089/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
@@ -19,6 +17,8 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.549
+        issues:
+          - MLWS (0.126) > MLW (0.121)
     ticon/awashima-hd25-jpn-jodc_jcg:
       position: [38.467783, 139.255]
       coastline: unverifiable

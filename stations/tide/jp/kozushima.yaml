@@ -1,31 +1,31 @@
+name: Kozushima
+aliases: [Koudutou]
 sources:
-  - jhod/0163
-  - ticon/oita-hd16-jpn-jodc_jcg
-redirect_from:
-  - /tides/jp/oita/
+  - jhod/0056
+  - ticon/kozushima-hd09-jpn-jodc_jcg
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    jhod/0163:
-      position: [33.266111111111, 131.68666666667]
+    jhod/0056:
+      position: [34.209166666667, 139.13166666667]
       coastline: unverifiable
       quality:
         accepted: true
-        score: 72
+        score: 86
         factors:
-          epoch: 0.161
-          recency: 0.87
+          epoch: 0.537
+          recency: 0.94
           source: 1
           quality: 1
           amplitude: 1
-          coverage: 0.348
-    ticon/oita-hd16-jpn-jodc_jcg:
-      position: [33.266117, 131.686667]
+          coverage: 0.716
+    ticon/kozushima-hd09-jpn-jodc_jcg:
+      position: [34.209167, 139.131667]
       coastline: unverifiable
       quality:
         accepted: false
         reason: superseded
-        redundant: jhod/0163
+        redundant: jhod/0056
         score: 0
         factors:
           epoch: 1
@@ -35,4 +35,4 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - Superseded by jhod/0163, its operator's own record
+          - Superseded by jhod/0056, its operator's own record

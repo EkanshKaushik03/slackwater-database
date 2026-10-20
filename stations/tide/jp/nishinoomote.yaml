@@ -4,7 +4,6 @@ sources:
   - ticon/nishinoomote-363a-jpn-uhslc_rq
   - ticon/nishinoomote-hd21-jpn-jodc_jcg
 redirect_from:
-  - /tides/jp/nishinoomote-jhod-0177/
   - /tides/jp/nishinoomote-kagoshima/
   - /tides/jp/nishinoomote-ticon-nishinoomote-hd21-jpn-jodc-jcg/
 # Written by `npm run stations`. Do not edit.
@@ -23,8 +22,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.605
-        issues:
-          - MHHW (1.848) < MHW (1.849)
     ticon/nishinoomote-363-jpn-uhslc_fd:
       position: [30.732, 130.995]
       coastline: unverifiable

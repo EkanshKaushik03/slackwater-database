@@ -36,6 +36,8 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.15
+        issues:
+          - MLW (1.78) < MLLW (1.784)
     ticon/gibraltar-289b-gbr-uhslc_rq:
       position: [36.133, -5.35]
       coastline: unverifiable

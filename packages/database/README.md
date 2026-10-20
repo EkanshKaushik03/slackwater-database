@@ -185,9 +185,11 @@ console.log(stationsById.get("ticon/newlyn-new-gbr-bodc")?.attribution);
 
 What the string contains, and why that is sufficient:
 
-- **The creator credit.** For TICON-4 stations, the citation its authors ask for; for Kartverket and LINZ, the publishing agency. A source that requires no credit, such as public-domain NOAA data, contributes nothing here.
+- **The creator credit.** For TICON-4 stations, the citation its authors ask for; for Kartverket, LINZ and JHOD, the publishing agency. JHOD also carries the source editing notice. A source that requires no credit, such as public-domain NOAA data, contributes nothing here.
 - **The licence and its URI**, taken from the station rather than its source. Licence varies within a single source — the TICON stations relayed from CMEMS are CC BY-NC while the rest are CC BY — so the notice names the one that actually applies to the station in hand.
 - **An indication that the material was modified**, pointing at [what this project changes](https://github.com/openwatersio/slackwater-database#modifications-to-source-data): derived datums, normalized names, geocoded location fields, and re-fit phases for two GESLA sources.
+
+JHOD stations name the Government Standard Terms of Use 2.0 and link the publisher's terms.
 
 Those are the three things [CC BY 4.0 section 3(a)(1)](https://creativecommons.org/licenses/by/4.0/) requires a redistributor to pass on. A station whose licence imposes no notice gets the project credit alone:
 

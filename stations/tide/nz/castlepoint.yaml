@@ -7,9 +7,8 @@ computed:
       position: [-40.916667, 176.216667]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: datum
-        score: 0
+        accepted: true
+        score: 63
         factors:
           epoch: 0.818
           recency: 0.98
@@ -18,5 +17,4 @@ computed:
           amplitude: 1
           coverage: 1
         issues:
-          - MLWS (3.458) > MLW (3.161)
-          - MLW (3.161) < LAT (3.173)
+          - MLWS (3.458) > MLW (3.33)

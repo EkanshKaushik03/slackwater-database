@@ -21,7 +21,7 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (0.084) > MLW (0.073)
+          - MLWS (0.084) > MLW (0.072)
           - "Seasonal curve peak (0.156m) exceeds the principal tide M2+S2+K1+O1 (0.019m): the yearly swing exceeds the daily one"
     ticon/spikarna-spi-swe-cmems:
       position: [62.3633, 17.531099]

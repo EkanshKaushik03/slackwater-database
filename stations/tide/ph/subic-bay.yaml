@@ -20,8 +20,8 @@ computed:
           amplitude: 1
           coverage: 1
         issues:
-          - MLWS (0.985) > MLW (0.889)
-          - MHWS (1.435) < MHW (1.53)
+          - MLWS (0.985) > MLW (0.89)
+          - MHWS (1.435) < MHW (1.544)
     ticon/subic_bay-382a-phl-uhslc_rq:
       position: [14.765, 120.252]
       coastline: unverifiable
@@ -38,5 +38,5 @@ computed:
           amplitude: 1
           coverage: 1
         issues:
-          - MLWS (0.972) > MLW (0.885)
-          - MHWS (1.424) < MHW (1.51)
+          - MLWS (0.972) > MLW (0.886)
+          - MHWS (1.424) < MHW (1.523)

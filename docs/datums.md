@@ -43,6 +43,7 @@ lowest low.
 
 How the values are produced differs by source:
 
+- [JHOD](../sources/jhod/README.md) — uses the published depth datum as `NLLW = 0` and published `Z0` as MSL above it. Other datums are derived from the constants and shifted by Z0. The rounded publisher value takes precedence over the four-amplitude approximation.
 - [NOAA](../sources/noaa/README.md) - uses datums published by NOAA (`MLLW`, or `STND` for non-tidal stations)
 - [TICON](../sources/ticon/README.md) — datums derived from
   GESLA-4 water levels.
@@ -66,7 +67,7 @@ Computed by `packages/datums/datum.ts`:
 
 Mean datums follow the NOAA CO-OPS "first reduction" ([Computational Techniques
 for Tidal Datums Handbook](https://tidesandcurrents.noaa.gov/publications/Computational_Techniques_for_Tidal_Datums_handbook.pdf))
-when observations are available; the astronomical/amplitude datums always come
+when observations are available; apart from JHOD's published NLLW, the astronomical/amplitude datums come
 from the harmonic side, since observed extremes include storm surge. Datums
 specific to one country (LLWLT, TLT, NLLW, ALLW) are pruned from stations that
 don't use them (`pruneDatums` in `packages/stations/station.ts`), so a UK station never
@@ -98,6 +99,8 @@ Datum Epoch and the Canadian Hydrographic Service. Why this shape:
 The observed (mean) datums use each station's own record window (the most
 recent ≤19 years of data); the per-station `epoch` field records the period the
 data actually came from.
+
+Higher-high and lower-low means exclude incomplete boundary days in both predicted and observed series. Observed extrema require equally spaced neighbouring observations after hourly binning. Cadence changes retain the regular observations on each side; gap edges and cadence boundaries are excluded. A tidal day containing any excluded sample does not contribute to MHHW or MLLW. When no complete day supplies a higher-high or lower-low mean, that datum is omitted. Hourly binning does not interpolate missing hours or improve the source's time resolution.
 
 ## Chart datum by country
 

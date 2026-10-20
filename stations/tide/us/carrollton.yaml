@@ -20,8 +20,8 @@ computed:
           amplitude: 1
           coverage: 0.214
         issues:
-          - MHHW (2.025) < MHW (2.392)
-          - MHWS (1.949) < MHW (2.392)
-          - MSL (1.942) <= MLW (2.338)
+          - MHHW (2.015) < MHW (2.404)
+          - MHWS (1.949) < MHW (2.404)
+          - MSL (1.942) <= MLW (2.356)
           - "SA amplitude (1.233m) is 12.6x the median SA of 9 same-regime neighbour(s) within 25km (0.098m): seasonal contamination"
           - "Seasonal curve peak (1.363m) exceeds the principal tide M2+S2+K1+O1 (0.108m): the yearly swing exceeds the daily one"

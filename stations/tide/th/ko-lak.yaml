@@ -20,8 +20,8 @@ computed:
           amplitude: 1
           coverage: 1
         issues:
-          - MLWS (2.577) > MLW (2.293)
-          - MHWS (2.731) < MHW (3.052)
+          - MLWS (2.577) > MLW (2.247)
+          - MHWS (2.731) < MHW (3.069)
     ticon/ko_lak-328a-tha-uhslc_rq:
       position: [11.795, 99.817]
       coastline: unverifiable
@@ -38,5 +38,5 @@ computed:
           amplitude: 1
           coverage: 1
         issues:
-          - MLWS (2.521) > MLW (2.18)
-          - MHWS (2.675) < MHW (3.037)
+          - MLWS (2.521) > MLW (2.187)
+          - MHWS (2.675) < MHW (3.028)

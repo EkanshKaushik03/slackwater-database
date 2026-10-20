@@ -77,7 +77,11 @@ export function resolveEpoch({ end }: EpochSpec): {
  * stays in the input series' native frame. Synthetic (constituent) callers leave
  * it 0; observed callers pass the mean of the hourly series.
  */
-function computeDatumsFromExtremes(extremes: Sample[], msl = 0): Datums {
+function computeDatumsFromExtremes(
+  extremes: Sample[],
+  msl = 0,
+  regularSamples = false,
+): Datums {
   const allHighs: number[] = [];
   const allLows: number[] = [];
   const higherHighs: number[] = [];
@@ -114,11 +118,23 @@ function computeDatumsFromExtremes(extremes: Sample[], msl = 0): Datums {
     }
     const idxEnd = idx;
 
-    if (idxEnd - idxStart >= 3) {
+    if (idxEnd > idxStart) {
       const highs: number[] = [];
       const lows: number[] = [];
+      // Incomplete days can hide the higher high or lower low.
+      let completeDay = idxStart > 0 && idxEnd < times.length;
 
-      for (let i = idxStart + 1; i < idxEnd - 1; i++) {
+      for (let i = idxStart; i < idxEnd; i++) {
+        if (
+          regularSamples &&
+          (i === 0 ||
+            i + 1 === times.length ||
+            times[i]!.getTime() - times[i - 1]!.getTime() !==
+              times[i + 1]!.getTime() - times[i]!.getTime())
+        ) {
+          completeDay = false;
+          continue;
+        }
         const hPrev = heights[i - 1];
         const hCurr = heights[i];
         const hNext = heights[i + 1];
@@ -155,7 +171,7 @@ function computeDatumsFromExtremes(extremes: Sample[], msl = 0): Datums {
         highs.sort((a, b) => a - b);
         // higher high
         const hhVal = highs[highs.length - 1];
-        if (hhVal !== undefined) {
+        if (completeDay && hhVal !== undefined) {
           higherHighs.push(hhVal);
         }
       }
@@ -166,7 +182,7 @@ function computeDatumsFromExtremes(extremes: Sample[], msl = 0): Datums {
         lows.sort((a, b) => a - b);
         // lower low
         const llVal = lows[0];
-        if (llVal !== undefined) {
+        if (completeDay && llVal !== undefined) {
           lowerLows.push(llVal);
         }
       }
@@ -402,9 +418,12 @@ export function computeDatumsFromObservations(
     return null;
 
   const observedMSL = mean(hourly.map((s) => s.level));
-  const datums = computeDatumsFromExtremes(hourly, observedMSL);
+  const datums = computeDatumsFromExtremes(hourly, observedMSL, true);
   if (!Number.isFinite(datums["MHW"]) || !Number.isFinite(datums["MLW"]))
     return null;
+  for (const [key, value] of Object.entries(datums)) {
+    if (!Number.isFinite(value)) delete datums[key];
+  }
 
   return { start: hourly[0]!.time, end, datums };
 }

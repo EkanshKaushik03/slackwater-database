@@ -21,7 +21,7 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (0.154) > MLW (0.127)
+          - MLWS (0.154) > MLW (0.128)
           - MHWS (0.158) < MHW (0.165)
           - "Seasonal curve peak (0.173m) exceeds the principal tide M2+S2+K1+O1 (0.020m): the yearly swing exceeds the daily one"
     ticon/kalixstoron-kal-swe-cmems:

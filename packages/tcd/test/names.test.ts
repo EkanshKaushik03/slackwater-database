@@ -1,6 +1,40 @@
 import { describe, test, expect } from "vitest";
-import type { Station } from "@slackwater/database";
-import { buildStationNames, noteLines } from "../build.ts";
+import { stations, type Station } from "@slackwater/database";
+import {
+  buildStationNames,
+  generateHarmonicsTxt,
+  noteLines,
+} from "../build.ts";
+
+test("exports every harmonic reference license with its required notice", () => {
+  const references = stations.filter(
+    (s) => s.type === "reference" && s.harmonic_constituents.length > 0,
+  );
+  const representatives = [
+    ...new Map(references.map((s) => [s.license.type, s])).values(),
+  ];
+  const harmonics = generateHarmonicsTxt(
+    representatives,
+    buildStationNames(representatives),
+    ["M2"],
+  );
+  expect(
+    [...harmonics.matchAll(/^# restriction: (.+)$/gm)].map((m) => m[1]).sort(),
+  ).toEqual(["CC BY 4.0", "CC BY-NC 4.0", "Japan GSTU 2.0", "Public Domain"]);
+  const jhod = references.find((s) => s.id === "jhod/0154")!;
+  const notes = [...harmonics.matchAll(/^# note: (.*)$/gm)]
+    .map((m) => m[1])
+    .join(" ");
+  expect(notes).toContain(jhod.attribution);
+});
+
+test("keeps distinct XTide names for the Coast Guard and JMA Yokohama gauges", () => {
+  const names = buildStationNames(stations);
+  expect(names.get("jhod/0062")).toBe("Yokohamashinko, Kanagawa, Japan");
+  expect(names.get("ticon/yokohama-ma16-jpn-jodc_jma")).toBe(
+    "Yokohama, Kanagawa, Japan",
+  );
+});
 
 function station(fields: Partial<Station>): Station {
   return {

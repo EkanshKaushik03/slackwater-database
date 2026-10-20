@@ -19,8 +19,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.265
-        issues:
-          - MLWS (0.347) > MLW (0.339)
     ticon/moerdijk-moerdk-nld-rws_hist:
       position: [51.704701, 4.622478]
       coastline: unverifiable
@@ -36,4 +34,5 @@ computed:
           amplitude: 1
           coverage: 0.265
         issues:
+          - MLWS (0.352) > MLW (0.351)
           - "Superseded source: rws_hist"

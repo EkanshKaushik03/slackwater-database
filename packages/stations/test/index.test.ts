@@ -3,7 +3,12 @@ import { readFile } from "fs/promises";
 import { join } from "path";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
-import { stations, allStations, near } from "@slackwater/database";
+import {
+  stations,
+  allStations,
+  near,
+  stationRoutes,
+} from "@slackwater/database";
 import {
   MIN_TIDAL_RANGE,
   MIN_DEDUP_DISTANCE,
@@ -441,6 +446,24 @@ describe("gauge deduplication", () => {
     });
   });
 
+  test("keeps established Japanese gauge names and primary paths", () => {
+    for (const [id, name, path] of [
+      ["0056", "Kozushima", "/tides/jp/kozushima/"],
+      ["0163", "Oita", "/tides/jp/oita/"],
+      ["0173", "Odomari", "/tides/jp/odomari/"],
+      ["0059", "Hachijyojima", "/tides/jp/hachijyojima/"],
+      ["0117", "Kure", "/tides/jp/kure-hiroshima-bay/"],
+      ["0062", "Yokohamashinko", "/tides/jp/yokohamashinko/"],
+    ]) {
+      const station = tideStations.find((s) => s.id === `jhod/${id}`);
+      expect(station?.name).toBe(name);
+      expect(
+        stationRoutes("tide").find((r) => r.stationIds.includes(`jhod/${id}`))
+          ?.path,
+      ).toBe(path);
+    }
+  });
+
   test("prefers JHOD's constants to Coast Guard relays while keeping the separate JMA gauge", () => {
     const jhod = quality.filter((r) => r.id.startsWith("jhod/"));
     expect(jhod).toHaveLength(20);
@@ -622,8 +645,8 @@ describe("seasonal dominance", () => {
   });
 
   test("labels independently of the rejection verdict", () => {
-    expect(labelled.filter((q) => q.accepted).length).toBe(502);
-    expect(labelled.filter((q) => !q.accepted).length).toBe(497);
+    expect(labelled.filter((q) => q.accepted)).toHaveLength(499);
+    expect(labelled.filter((q) => !q.accepted)).toHaveLength(500);
   });
 
   test("is a different question from the contamination gate", () => {

@@ -4,7 +4,6 @@ sources:
   - ticon/naze-359a-jpn-uhslc_rq
   - ticon/naze-hd22-jpn-jodc_jcg
 redirect_from:
-  - /tides/jp/naze-jhod-0180/
   - /tides/jp/naze-kagoshima/
   - /tides/jp/naze-ticon-naze-359a-jpn-uhslc-rq/
   - /tides/jp/naze-ticon-naze-hd22-jpn-jodc-jcg/
@@ -24,8 +23,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.184
-        issues:
-          - MHHW (1.764) < MHW (1.766)
     ticon/naze-359-jpn-uhslc_fd:
       position: [28.378, 129.498]
       coastline: unverifiable

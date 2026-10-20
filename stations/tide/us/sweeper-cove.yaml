@@ -41,7 +41,7 @@ computed:
           amplitude: 1
           coverage: 0.007
         issues:
-          - MLWS (1.284) > MLW (1.158)
+          - MLWS (1.284) > MLW (1.185)
           - MHWS (1.708) < MHW (1.858)
           - Superseded by noaa/9461380, its operator's own record
     ticon/adak_alaska-040a-usa-uhslc_rq:
@@ -60,8 +60,8 @@ computed:
           amplitude: 1
           coverage: 0.009
         issues:
-          - MLWS (1.284) > MLW (1.194)
-          - MHWS (1.708) < MHW (1.847)
+          - MLWS (1.284) > MLW (1.198)
+          - MHWS (1.708) < MHW (1.857)
           - Superseded by noaa/9461380, its operator's own record
     ticon/adak_island-9461380-usa-noaa:
       position: [51.863306, -176.632]
@@ -79,6 +79,6 @@ computed:
           amplitude: 1
           coverage: 0.01
         issues:
-          - MLWS (1.284) > MLW (1.172)
+          - MLWS (1.284) > MLW (1.199)
           - MHWS (1.708) < MHW (1.857)
           - Superseded by noaa/9461380, its operator's own record
