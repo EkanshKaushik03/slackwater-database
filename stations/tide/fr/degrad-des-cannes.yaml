@@ -14,9 +14,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 79
+        score: 84
         factors:
-          epoch: 0.752
+          epoch: 1
           recency: 0.96
           source: 0.949
           quality: 1
@@ -29,9 +29,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/degrad_des_cannes-241-fra-refmar
-        score: 60
+        score: 65
         factors:
-          epoch: 0.752
+          epoch: 1
           recency: 0.96
           source: 0.02
           quality: 1

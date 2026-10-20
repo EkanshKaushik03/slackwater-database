@@ -17,20 +17,20 @@
     "url": "https://creativecommons.org/licenses/by-nc/4.0/",
     "notes": "Upstream GESLA data provider restricts commercial use. See https://gesla787883612.wordpress.com/license/"
   },
-  "disclaimers": "Possible datum and quality control issues",
+  "disclaimers": "Possible datum and quality control issues Datums derived from harmonic prediction; observations do not support a mean-datum reduction over twelve continuous whole months after bounded short-gap reconstruction. Datum values carry higher uncertainty. Complete prepared observations do not cover every calendar month of the year for a balanced gauge mean; datums remain in the constituent frame (MSL = 0).",
   "datums": {
-    "MHHW": 1.057,
-    "MHW": 0.987,
-    "MSL": -0.235,
-    "MTL": -0.236,
-    "MLW": -1.459,
-    "MLLW": -1.553,
-    "HAT": 2.087,
-    "LAT": -2.705,
-    "MHWS": 1.372,
-    "MLWS": -1.842
+    "HAT": 2.322,
+    "MHHW": 1.313,
+    "MHW": 1.265,
+    "MSL": 0,
+    "MTL": 0.007,
+    "MLW": -1.252,
+    "MLLW": -1.331,
+    "LAT": -2.47,
+    "MHWS": 1.607,
+    "MLWS": -1.607
   },
-  "datums_source": "observed",
+  "datums_source": "harmonic",
   "chart_datum": "LAT",
   "type": "reference",
   "harmonic_constituents": [

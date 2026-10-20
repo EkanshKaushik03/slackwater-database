@@ -15,7 +15,7 @@ Per-record JSON decode was never the cost (4 ms for 200 records); the cost is de
 ## Schema shape
 
 - One root table with `version`, a `stations` vector sorted by `id` (the FlatBuffers `key`, so lookup is a binary search inside the buffer), name tables for constituent and datum names, and separate tide/current route vectors sorted by slug.
-- `Station` carries identity (id, name, kind, type, coordinates, timezone, locality, region, ISO region code, country, ISO country code, continent, context, cities, aliases), prediction data (constituents, datums, chart datum, tide/current offsets, epoch), and provenance (source, license, disclaimers).
+- `Station` carries identity (id, name, kind, type, coordinates, timezone, locality, region, ISO region code, country, ISO country code, continent, context, cities, aliases), prediction data (constituents, datums, chart datum, tide/current offsets, source-reported epoch, optional mean-datum epoch), and provenance (source, license, disclaimers).
 - Constituents are a struct vector: a `ushort` index into the root name table plus two `float` values — 12 bytes per constituent, contiguous, versus ~28 for a table per constituent. Float32 holds seven significant digits. Source files keep each publisher's precision, and digits beyond seven significant figures are dropped here, far below any analysis's uncertainty. Datums use the same struct-plus-name-table pattern.
 - Identical `source` and `license` tables are written once and shared; repeated strings (timezones, countries, epochs) are deduplicated with shared strings.
 - `Station.attribution` is the station's complete display notice — creator credit, licence and its URI, and an indication of modification — assembled by the builder from `source` and `license` so a reader in any language displays it without keeping its own table of sources or its own reading of what a licence requires. It is per station because licence varies within a single source, and a shared string, so the file holds one copy per distinct notice.
@@ -32,7 +32,7 @@ The schema can't express this; the builder has to produce it deliberately. FlatB
 
 ## The reader
 
-`src/stations.ts` opens the buffer once, materializes identity fields into plain objects (`allStations`), and attaches lazy getters for `harmonic_constituents`, `datums`, `epoch`, and current details that decode one station's data from the buffer on access. Subordinate stations resolve their reference station's harmonics and datums; their own offsets still apply. No caching — a persistent cache on module-level objects would pull the data back onto the heap.
+`src/stations.ts` opens the buffer once, materializes identity fields into plain objects (`allStations`), and attaches lazy getters for `harmonic_constituents`, `datums`, `epoch`, `datum_epoch`, and current details that decode one station's data from the buffer on access. Subordinate stations resolve their reference station's harmonics and datums; their own offsets still apply. No caching — a persistent cache on module-level objects would pull the data back onto the heap.
 
 The quality gate comes from the same file: `station.quality` carries `accepted` and `score` eagerly (read inline during the identity scan) with lazy getters for the detail, `qualityMap` indexes those objects by id, and the `stations` export filters `allStations` on `accepted`. The module does not bundle the station files; `npm run stations` writes each record's evaluation into its station file, and the build embeds it.
 
@@ -71,3 +71,5 @@ Releases attach the file as `slackwater-<date>.tcdb` alongside the TCD files.
 ## ESM only (no CJS build)
 
 `kdbush` and `geokdbush` are ESM-only packages (no `require` export), so a CJS build can't `require()` them without a double-wrapped-default interop bug (`KDBush.from is not a function`). All first-party consumers use ESM, so the package ships **ESM only**. Modern Node still lets `require()` load the ESM entry (require-of-ESM); older CJS-only tooling would need to `import()` it.
+
+`Station.datum_epoch` is an optional appended FlatBuffers field. Older files read it as absent, and older readers ignore it. JS exposes `datum_epoch` and Swift exposes `datumEpoch`; subordinates inherit their reference's reduction period with its datums. `epoch` retains its source-specific analysis or datum meaning and drives quality ranking; TICON uses its constituent fit period.

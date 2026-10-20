@@ -173,6 +173,11 @@ function readEpoch(index: number): StationData["epoch"] {
   return { start: epoch.start()!, end: epoch.end()! };
 }
 
+function readDatumEpoch(index: number): StationData["datum_epoch"] {
+  const epoch = db.stations(index)!.datumEpoch();
+  return epoch ? { start: epoch.start()!, end: epoch.end()! } : undefined;
+}
+
 function readCurrent(index: number): CurrentData | undefined {
   const table = db.stations(index)!.current();
   if (!table) return undefined;
@@ -336,9 +341,14 @@ function readStation(index: number): Station {
       enumerable: true,
       configurable: true,
       // A station's own epoch wins; a subordinate without one reports the
-      // period its inherited constituents were computed over. Same precedence
+      // source-reported period of its reference. Same precedence
       // the quality evaluation uses, so a read/write round-trip is lossless.
       get: () => readEpoch(index) ?? readEpoch(dataIndex(station)),
+    },
+    datum_epoch: {
+      enumerable: true,
+      configurable: true,
+      get: () => readDatumEpoch(dataIndex(station)),
     },
   });
 

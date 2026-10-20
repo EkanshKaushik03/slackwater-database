@@ -6,8 +6,8 @@
  *
  * For every GESLA `-usa-noaa` station that pairs to a `data/noaa/<id>.json`
  * record, it derives datums two ways — observed (from GESLA water levels) and
- * harmonic (synthesized from the station's constituents, the old approach) —
- * and compares both to NOAA's authoritative datums. Since the vertical
+ * harmonic (synthesized from the station's constituents) — and compares both
+ * on the same supported station pairs to NOAA's authoritative datums. Since the vertical
  * reference frames differ (NOAA: station datum; ours: gauge/MSL), only
  * reference-invariant relationships are compared:
  *   MN  = MHW  − MLW    (mean range)
@@ -15,13 +15,15 @@
  *   dHi = MHW  − MSL
  *   dLo = MSL  − MLLW
  *
- * A drop in the |median| residual from harmonic → observed is the fix #40 asks
- * for. Run after the GESLA download (@slackwater/datums). Reads GESLA directly, so it
- * does not depend on the TICON import having been run.
+ * Run after the GESLA download (@slackwater/datums), or set GESLA_ARCHIVE to
+ * read entries directly from a ZIP. Reads GESLA independently of the import.
+ * Different observation and agency datum periods, hourly sampling, and weather
+ * can all contribute to these residuals; they are not interpolation error alone.
  */
 
-import { readFile, readdir } from "fs/promises";
-import { join } from "path";
+import { readFile, readdir, writeFile } from "fs/promises";
+import { execFileSync } from "node:child_process";
+import { join, basename } from "path";
 import {
   computeDatums,
   computeDatumsFromObservations,
@@ -70,6 +72,21 @@ async function loadJSON<T>(path: string): Promise<T | null> {
 }
 
 async function fileText(path: string): Promise<string | null> {
+  const archive = process.env["GESLA_ARCHIVE"];
+  if (archive) {
+    try {
+      // unzip treats member names as patterns, even without a shell.
+      const member = basename(path).replace(/[\\*?\[\]]/g, "\\$&");
+      return execFileSync("unzip", ["-p", archive, member], {
+        encoding: "utf8",
+        maxBuffer: 1024 ** 3,
+        stdio: ["ignore", "pipe", "pipe"],
+      });
+    } catch (error) {
+      if ((error as { status?: number }).status === 11) return null;
+      throw error;
+    }
+  }
   try {
     return await readFile(path, "utf-8");
   } catch {
@@ -78,7 +95,7 @@ async function fileText(path: string): Promise<string | null> {
 }
 
 async function main() {
-  await ensureGeslaData();
+  if (!process.env["GESLA_ARCHIVE"]) await ensureGeslaData();
 
   const files = (await readdir(TICON_DIR)).filter((f) => f.endsWith(".json"));
 
@@ -86,7 +103,14 @@ async function main() {
   const resid = {
     observed: { MN: [], GT: [], dHi: [], dLo: [] } as Record<string, number[]>,
     harmonic: { MN: [], GT: [], dHi: [], dLo: [] } as Record<string, number[]>,
+    harmonicAll: { MN: [], GT: [], dHi: [], dLo: [] } as Record<
+      string,
+      number[]
+    >,
+    published: { MN: [], GT: [], dHi: [], dLo: [] } as Record<string, number[]>,
+    fallback: { MN: [], GT: [], dHi: [], dLo: [] } as Record<string, number[]>,
   };
+  const report: object[] = [];
   let pairs = 0;
   let observedCount = 0;
 
@@ -105,28 +129,49 @@ async function main() {
     pairs++;
 
     // Harmonic (old method) — synthesize from the station's constituents.
-    const end = station.epoch?.end ? new Date(station.epoch.end) : new Date();
-    const harmonic = computeDatums(station.harmonic_constituents, { end });
+    const harmonic = computeDatums(station.harmonic_constituents, {});
     const hRels = relationships(harmonic.datums);
-    if (hRels) {
-      for (const k of REL_KEYS) resid.harmonic[k]!.push(hRels[k] - noaaRels[k]);
+    const published = relationships(station.datums);
+    if (hRels)
+      for (const k of REL_KEYS)
+        resid.harmonicAll[k]!.push(hRels[k] - noaaRels[k]);
+    if (published) {
+      for (const k of REL_KEYS) {
+        resid.published[k]!.push(published[k] - noaaRels[k]);
+        if (station.datums_source === "harmonic")
+          resid.fallback[k]!.push(published[k] - noaaRels[k]);
+      }
+      report.push({
+        id,
+        source: station.datums_source,
+        epoch: station.epoch,
+        datum_epoch: station.datum_epoch,
+        residual: Object.fromEntries(
+          REL_KEYS.map((k) => [k, published[k] - noaaRels[k]]),
+        ),
+      });
     }
 
     // Observed (new method) — derive from GESLA water levels.
     const text = await fileText(join(GESLA_DIR, id));
     if (text) {
-      const obs = computeDatumsFromObservations(parseGeslaSamples(text));
+      const obs = computeDatumsFromObservations(
+        parseGeslaSamples(text),
+        station.harmonic_constituents,
+      );
       const oRels = obs && relationships(obs.datums);
-      if (oRels) {
+      if (oRels && hRels) {
         observedCount++;
-        for (const k of REL_KEYS)
+        for (const k of REL_KEYS) {
+          resid.harmonic[k]!.push(hRels[k] - noaaRels[k]);
           resid.observed[k]!.push(oRels[k] - noaaRels[k]);
+        }
       }
     }
   }
 
   console.log(
-    `\nNOAA cross-check: ${pairs} TICON↔NOAA pairs, ${observedCount} with usable observations.\n`,
+    `\nNOAA cross-check: ${pairs} TICON↔NOAA pairs, ${observedCount} shared usable pairs (${pairs - observedCount} excluded).\n`,
   );
   console.log("Residual vs NOAA (meters): median (|bias|) and MAE\n");
   console.log(
@@ -143,6 +188,22 @@ async function main() {
         .padStart(14)}`,
     );
   }
+
+  console.log(
+    `\nPublished datums: ${resid.published["MN"]!.length} pairs, including ${resid.fallback["MN"]!.length} harmonic fallbacks.\n`,
+  );
+  console.log(
+    "rel      all-harmonic MAE   published median   published MAE   fallback median   fallback MAE",
+  );
+  for (const k of REL_KEYS)
+    console.log(
+      `${k.padEnd(6)} ${mae(resid.harmonicAll[k]!).toFixed(3).padStart(17)} ${median(resid.published[k]!).toFixed(3).padStart(18)} ${mae(resid.published[k]!).toFixed(3).padStart(15)} ${median(resid.fallback[k]!).toFixed(3).padStart(17)} ${mae(resid.fallback[k]!).toFixed(3).padStart(14)}`,
+    );
+  if (process.env["DATUM_REPORT_PATH"])
+    await writeFile(
+      process.env["DATUM_REPORT_PATH"],
+      JSON.stringify(report, null, 2) + "\n",
+    );
 
   // Spot-check the stations named in issue #40 (no NOAA pair — eyeball vs
   // Admiralty EasyTide / CHS). Print observed vs harmonic datums.
@@ -161,9 +222,11 @@ async function main() {
       console.log(`${id}: missing`);
       continue;
     }
-    const end = station.epoch?.end ? new Date(station.epoch.end) : new Date();
-    const harmonic = computeDatums(station.harmonic_constituents, { end });
-    const obs = computeDatumsFromObservations(parseGeslaSamples(text));
+    const harmonic = computeDatums(station.harmonic_constituents, {});
+    const obs = computeDatumsFromObservations(
+      parseGeslaSamples(text),
+      station.harmonic_constituents,
+    );
     const fmt = (d?: Datums | null) =>
       d
         ? ["MHHW", "MHW", "MSL", "MLW", "MLLW"]

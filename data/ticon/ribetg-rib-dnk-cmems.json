@@ -17,20 +17,20 @@
     "url": "https://creativecommons.org/licenses/by-nc/4.0/",
     "notes": "Upstream GESLA data provider restricts commercial use. See https://gesla787883612.wordpress.com/license/"
   },
-  "disclaimers": "No obvious issues",
+  "disclaimers": "No obvious issues Datums derived from harmonic prediction; observations do not support a mean-datum reduction over twelve continuous whole months after bounded short-gap reconstruction. Datum values carry higher uncertainty. A calendar-balanced mean of complete prepared observation months supplies the vertical offset; the months may span a different period from the pinned prediction.",
   "datums": {
-    "MHHW": 1.06,
-    "MHW": 0.936,
-    "MSL": 0.266,
-    "MTL": 0.222,
-    "MLW": -0.492,
-    "MLLW": -0.554,
-    "HAT": 1.294,
-    "LAT": -0.846,
-    "MHWS": 1.092,
-    "MLWS": -0.56
+    "HAT": 1.321,
+    "MHHW": 1.044,
+    "MHW": 0.959,
+    "MSL": 0.293,
+    "MTL": 0.253,
+    "MLW": -0.453,
+    "MLLW": -0.484,
+    "LAT": -0.819,
+    "MHWS": 1.119,
+    "MLWS": -0.533
   },
-  "datums_source": "observed",
+  "datums_source": "harmonic",
   "chart_datum": "LAT",
   "type": "reference",
   "harmonic_constituents": [

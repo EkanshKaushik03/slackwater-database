@@ -86,11 +86,13 @@ export interface StationData {
   // The chart datum key used as the vertical reference (e.g., "MLLW", "LAT")
   chart_datum?: string;
 
-  // Epoch - the time period over which the harmonic constituents were computed
+  // Source-reported analysis or datum period; TICON uses its constituent fit period.
   epoch?: {
     start: string; // Date in YYYY-MM-DD format
     end: string; // Date in YYYY-MM-DD format
   };
+  // Datum reduction period, which can differ from the constituent fit period.
+  datum_epoch?: { start: string; end: string };
 
   // Alternate names and slugs, for search.
   aliases?: string[];

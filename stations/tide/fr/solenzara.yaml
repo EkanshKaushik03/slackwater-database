@@ -12,16 +12,15 @@ computed:
       quality:
         accepted: true
         seasonal_dominant: true
-        score: 64
+        score: 69
         factors:
-          epoch: 0.764
+          epoch: 1
           recency: 0.99
           source: 0.949
           quality: 0
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (0.559) > MLW (0.486)
           - "Seasonal curve peak (0.473m) exceeds the principal tide M2+S2+K1+O1 (0.203m): the yearly swing exceeds the daily one"
     ticon/solenzaratg_60minute-sol-fra-cmems:
       position: [41.856861, 9.40383]
@@ -30,9 +29,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/solenzara-710-fra-refmar
-        score: 46
+        score: 50
         factors:
-          epoch: 0.764
+          epoch: 1
           recency: 0.99
           source: 0.02
           quality: 0

@@ -41,8 +41,8 @@ computed:
           amplitude: 1
           coverage: 0.106
         issues:
-          - MLWS (3.809) > MLW (3.792)
-          - MHWS (4.149) < MHW (4.152)
+          - MLWS (3.786) > MLW (3.751)
+          - MHWS (4.126) < MHW (4.155)
           - Superseded by noaa/1840000, its operator's own record
     ticon/chuuk-054a-fsm-uhslc_rq:
       position: [7.45, 151.85]

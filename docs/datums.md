@@ -2,7 +2,7 @@
 
 Every reference station stores:
 
-- **`datums`** — map of named vertical levels (MSL, MLLW, LAT, …) in the station's native gauge frame
+- **`datums`** — map of named vertical levels (MSL, MLLW, LAT, …), in the native gauge frame where observations or the publisher supply a vertical offset, otherwise in the constituent frame (MSL = 0)
 
 - **`chart_datum`** — which datum is the vertical zero for this station's
   predictions. Predicted heights only line up with a national tide service when
@@ -11,7 +11,8 @@ Every reference station stores:
 - **`datums_source`** — how the datums were derived: `observed` (reduced from
   water-level measurements) or `harmonic` (synthesized from the station's
   constituents).
-- **`epoch`** — the period the underlying data actually came from.
+- **`epoch`** — the source-reported analysis or datum period. TICON stores its constituent fit period; NOAA supplies its published national datum epoch. See each source's documentation.
+- **`datum_epoch`** — the mean-datum reduction period, where supplied, separate from the constituent fit. TICON supplies its selected observation period for observed means. A missing value does not imply equivalence to `epoch`.
 
 Subordinate stations carry no datums of their own in the source data, and none
 are stored for them in the database file. Both readers resolve them at load
@@ -96,11 +97,30 @@ Datum Epoch and the Canadian Hydrographic Service. Why this shape:
   high. 19 years is also ≈ the Metonic cycle (235 lunar months), so spring/neap
   phases distribute evenly across the seasons.
 
-The observed (mean) datums use each station's own record window (the most
-recent ≤19 years of data); the per-station `epoch` field records the period the
-data actually came from.
+Observed mean datums use the longest continuous whole-year window of complete UTC calendar months within the most recent ≤19 years of observations. Eligible windows contain 12, 24, 36, … months; the latest wins a tie in usable length. The station's `datum_epoch` records the
+actual reduction period, including inferred hours. This is a first reduction
+over that period, without a control-station correction to the 19-year datum
+epoch. Twelve months is this project's minimum coverage rule, not a claim of
+equivalence to a national datum.
 
-Higher-high and lower-low means exclude incomplete boundary days in both predicted and observed series. Observed extrema require equally spaced neighbouring observations after hourly binning. Cadence changes retain the regular observations on each side; gap edges and cadence boundaries are excluded. A tidal day containing any excluded sample does not contribute to MHHW or MLLW. When no complete day supplies a higher-high or lower-low mean, that datum is omitted. Hourly binning does not interpolate missing hours or improve the source's time resolution.
+Before reducing observations, finite measurements are averaged into hourly
+bins. Up to three consecutive missing bins can be reconstructed: four real
+observations must bracket the gap, with no more than four hours between any
+adjacent anchors. The station's harmonic model supplies the tidal shape, with a cubic interpolation of the observed-minus-predicted residual. Anchor predictions are averaged at the actual sampling instants within each hourly bin, matching the observed bin mean. An inferred bin uses its nearer real anchor's sampling profile. This also
+resamples regular three-hour observations. Inferred heights never serve as
+anchors, and there is no extrapolation or bridging of longer gaps. Without a
+harmonic model, only already continuous hourly observations qualify. The
+[NOAA handbook, §2.6](https://tidesandcurrents.noaa.gov/publications/Computational_Techniques_for_Tidal_Datums_handbook.pdf)
+describes repairing supported gaps before tide tabulation; these bounds and
+this interpolation are project choices, rather than a reproduction of NOAA's
+six-minute processing.
+
+MHW/MHHW share eligible high-water days, and MLW/MLLW share eligible low-water days, excluding incomplete boundary days in both predicted and observed series. A complete tidal day need not contain both a high and a low, so the high and low families can use different days within the same continuous period. MSL uses every hourly height in
+the selected continuous period; MTL is derived from MHW and MLW. A station
+without a supported observation window uses the whole harmonic datum family.
+TICON estimates that family's gauge offset only from complete prepared months covering every calendar month of the year. It averages the available January means, February means, and so on, giving the twelve calendar-month categories equal weight. These months can be non-contiguous and come from different years, so they support a calendar-balanced offset rather than an observed high/low reduction or a single datum epoch. If any month category is missing, the fallback retains the constituent frame (MSL = 0). `datums_source` and `disclaimers` identify this higher-uncertainty fallback.
+Reconstruction cannot correct an undetected gauge datum shift or a bad
+harmonic model, and stored millimetres are rounding precision, not accuracy.
 
 ## Chart datum by country
 
@@ -166,7 +186,7 @@ classify by basin), simplifies to ~1 km, and writes the committed
 ## Quality gates
 
 Datum-ordering QA (`packages/stations/evaluate-quality.ts`) enforces a strict chain on the
-standard datums — `MHW > MSL > MLW ≥ LAT`, `HAT ≥ MHHW`, `MHW ≥ MLLW`, MTL
+standard datums — `MHW > MSL > MLW`, `MHW ≥ MLLW`, MTL
 between MHW and MLW — as fatal errors, with the diurnal pairs (MHHW/MHW,
 MLW/MLLW) as warnings since they converge at weakly diurnal stations.
 
@@ -175,3 +195,5 @@ cluster (LAT / ISLW / LLWLT / TLT / MLWS) has no station-independent total
 order — the ISLW-family datums fall below LAT at ~3% of stations by design, and
 the Admiralty MLWS can sit above MLW in diurnal regimes where the formula's
 semidiurnal-only view underestimates the range.
+
+LAT/MLW and HAT/MHHW comparisons allow 5 cm for observed means: finite observed reductions include weather and can cover a different period from the harmonic bounds. Differences within that allowance warn; larger disagreements reject the model. The allowance is a project screening definition, informed by centimetre-scale masked-record mean changes and paired NOAA residuals, not a station accuracy guarantee. Harmonic means from the same prediction retain strict ordering checks.

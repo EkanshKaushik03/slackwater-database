@@ -211,6 +211,8 @@ table Station {
   context: string;
   context_derived: bool;
   cities: [string];
+  /// Datum reduction period, separate from the constituent-fit epoch.
+  datum_epoch: Epoch;
 }
 
 root_type Root;

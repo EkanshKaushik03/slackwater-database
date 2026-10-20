@@ -7,7 +7,9 @@ computed:
       position: [20.658333, -105.243333]
       coastline: unverifiable
       quality:
-        accepted: true
+        accepted: false
+        reason: duplicate
+        redundant: ticon/puerto_vallarta-393-mex-unam_hist
         score: 51
         factors:
           epoch: 0.17

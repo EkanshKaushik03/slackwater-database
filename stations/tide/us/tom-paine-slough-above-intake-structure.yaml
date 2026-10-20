@@ -8,9 +8,8 @@ computed:
       position: [37.790111, -121.418528]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: datum
-        score: 0
+        accepted: true
+        score: 61
         factors:
           epoch: 1
           recency: 0.99
@@ -19,5 +18,4 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - MHWS (1.368) < MHW (1.415)
-          - MSL (1.32) <= MLW (1.321)
+          - MHWS (1.394) < MHW (1.465)

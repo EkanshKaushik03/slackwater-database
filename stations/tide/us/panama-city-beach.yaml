@@ -38,8 +38,8 @@ computed:
           amplitude: 1
           coverage: 0.003
         issues:
-          - MLWS (3.473) > MLW (3.458)
-          - MHWS (3.579) < MHW (3.607)
+          - MLWS (3.51) > MLW (3.497)
+          - MHWS (3.616) < MHW (3.634)
           - Superseded by noaa/8729210, its operator's own record
     ticon/panama_city_beach-8729210-usa-noaa:
       position: [30.213301, -85.878304]
@@ -57,6 +57,6 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - MLWS (8.497) > MLW (8.482)
-          - MHWS (8.605) < MHW (8.63)
+          - MLWS (8.526) > MLW (8.498)
+          - MHWS (8.634) < MHW (8.672)
           - Superseded by noaa/8729210, its operator's own record

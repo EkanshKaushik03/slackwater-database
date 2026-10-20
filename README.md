@@ -160,7 +160,7 @@ Station records are not verbatim copies of their sources, and CC BY requires tha
 For TICON-4 stations:
 
 - Harmonic constituents are carried through as published, except for the German `wsv` and Dutch `rws` gauges, whose GESLA-4 records are timestamped in local legal time but labeled UTC. Those are re-fit from the water levels so their phases are UTC-referenced like every other station, and a station that cannot be re-fit is dropped rather than published with wrong phases. See [#96](https://github.com/openwatersio/slackwater-database/issues/96) and [#98](https://github.com/openwatersio/slackwater-database/issues/98).
-- Datums are computed here from GESLA-4 water levels, since TICON does not publish them. See [sources/ticon/README.md](./sources/ticon/README.md) for the method and its uncertainties.
+- Datums use supported GESLA-4 observation windows or a labeled harmonic fallback, since TICON does not publish them. See [sources/ticon/README.md](./sources/ticon/README.md) for the method and its uncertainties.
 
 For Kartverket stations, published harmonic phases are converted from UTC+1 to UTC and centimetres are converted to metres. The original responses and comparison results are pinned under [sources/kartverket](./sources/kartverket/README.md).
 

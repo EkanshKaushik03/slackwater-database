@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import {
   checkConstituents,
+  checkDatumOrdering,
   checkTidalRange,
   checkSeasonalDominance,
   hasSimilarM2,
@@ -31,6 +32,62 @@ function station(
 }
 
 const BASE = { M2: 0.5, S2: 0.2, K1: 0.1, O1: 0.07 };
+
+describe("observed means and astronomical bounds", () => {
+  test.each([
+    [0.05, 0],
+    [0.0501, 2],
+  ])(
+    "applies the cross-period allowance at a %s m disagreement",
+    (difference, fatal) => {
+      const s = station(BASE);
+      s.datums_source = "observed";
+      s.datums = {
+        HAT: 1,
+        MHHW: 1 + difference!,
+        MHW: 0.9,
+        MSL: 0,
+        MLW: -0.9,
+        MLLW: -0.99,
+        LAT: -0.9 + difference!,
+      };
+      expect(checkDatumOrdering(s, new Map()).fatal).toHaveLength(fatal!);
+    },
+  );
+  test("rejects a large disagreement between the observation period and its harmonic model", () => {
+    const s = station(BASE);
+    s.datums_source = "observed";
+    s.datums = {
+      HAT: 1,
+      MHHW: 1.2,
+      MHW: 0.9,
+      MSL: 0,
+      MLW: -0.9,
+      MLLW: -0.99,
+      LAT: -0.7,
+    };
+    expect(checkDatumOrdering(s, new Map()).fatal).toHaveLength(2);
+  });
+  test.each(["observed", "harmonic"] as const)(
+    "keeps cross-method bound violations as warnings only for %s means",
+    (source) => {
+      const s = station(BASE);
+      s.datums_source = source;
+      s.datums = {
+        HAT: 1,
+        MHHW: 1.001,
+        MHW: 0.9,
+        MSL: 0,
+        MLW: -0.9,
+        MLLW: -0.99,
+        LAT: -0.899,
+      };
+      const result = checkDatumOrdering(s, new Map());
+      expect(result.fatal).toHaveLength(source === "observed" ? 0 : 2);
+      expect(result.warnings).toHaveLength(source === "observed" ? 2 : 0);
+    },
+  );
+});
 
 describe("checkTidalRange", () => {
   test.each([

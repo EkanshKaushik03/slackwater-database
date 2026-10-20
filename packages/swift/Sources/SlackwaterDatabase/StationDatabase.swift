@@ -58,6 +58,11 @@ public struct StationLicense: Equatable, Sendable {
   public let commercialUse: Bool
 }
 
+public struct StationEpoch: Equatable, Sendable {
+  public let start: String
+  public let end: String
+}
+
 public struct TideOffsets: Equatable, Sendable {
   public let reference: String
   public let timeHigh: Int
@@ -243,6 +248,20 @@ public struct Station: Identifiable, @unchecked Sendable {
       StationLicense(
         type: $0.type, url: $0.url, notes: $0.notes,
         commercialUse: $0.commercialUse)
+    }
+  }
+
+  /// Source-reported analysis or datum period; TICON uses its constituent fit period.
+  public var epoch: StationEpoch? {
+    (raw.epoch ?? predictionSource.raw.epoch).map {
+      StationEpoch(start: $0.start ?? "", end: $0.end ?? "")
+    }
+  }
+
+  /// Mean-datum reduction period, which can differ from the constituent fit.
+  public var datumEpoch: StationEpoch? {
+    predictionSource.raw.datumEpoch.map {
+      StationEpoch(start: $0.start ?? "", end: $0.end ?? "")
     }
   }
 

@@ -8,20 +8,17 @@ computed:
       position: [34.5983, -77.8753]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/northeast_cape_fear_r_nr_burgaw_nc-2108566-usa-usgs
+        accepted: true
         seasonal_dominant: true
-        score: 66
+        score: 75
         factors:
           epoch: 0.531
           recency: 0.99
           source: 0.545
           quality: 1
           amplitude: 1
-          coverage: 0
+          coverage: 0.562
         issues:
-          - MHHW (0.844) < MHW (0.98)
-          - MHWS (0.941) < MHW (0.98)
+          - MHHW (1.064) < MHW (1.258)
+          - MHWS (1.248) < MHW (1.258)
           - "Seasonal curve peak (0.290m) exceeds the principal tide M2+S2+K1+O1 (0.087m): the yearly swing exceeds the daily one"
-          - M2 here (0.056 m, 259.8°) differs from (0.067 m, 255.6°) by -11 mm and 9 min later in ticon/northeast_cape_fear_r_nr_burgaw_nc-2108566-usa-usgs, which this duplicates

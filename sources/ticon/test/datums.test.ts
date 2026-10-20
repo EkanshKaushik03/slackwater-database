@@ -1,0 +1,125 @@
+import { describe, expect, test } from "vitest";
+import { createTidePredictor } from "@slackwater/engine";
+import {
+  reduceTiconDatums,
+  OBSERVED_OFFSET_NOTICE,
+  CONSTITUENT_FRAME_NOTICE,
+  cachedDatumNotice,
+  OBSERVED_DATUM_NOTICE,
+  HARMONIC_DATUM_NOTICE,
+} from "../datums.ts";
+
+const constituents = [{ name: "S2", amplitude: 1, phase: 0 }];
+const harmonic = {
+  MSL: 0,
+  MHHW: 1.2,
+  MHW: 1,
+  MLW: -1,
+  MLLW: -1.2,
+  HAT: 1.5,
+  LAT: -1.5,
+};
+const fitEpoch = {
+  start: new Date("2000-01-01Z"),
+  end: new Date("2010-12-31Z"),
+};
+const start = Date.UTC(2020, 0, 1);
+
+describe("TICON datum composition", () => {
+  test("invalidates legacy reductions without complete period and method provenance", () => {
+    expect(cachedDatumNotice({ datums_source: "observed" })).toBeUndefined();
+    expect(
+      cachedDatumNotice({
+        datums_source: "harmonic",
+        disclaimers:
+          "Datums derived from harmonic prediction; the observation record is too short for an empirical reduction.",
+      }),
+    ).toBeUndefined();
+    expect(
+      cachedDatumNotice({
+        datums_source: "observed",
+        datum_epoch: { start: "2020-01-01", end: "2020-12-31" },
+        disclaimers: `No obvious issues ${OBSERVED_DATUM_NOTICE}`,
+      }),
+    ).toBe(OBSERVED_DATUM_NOTICE);
+    for (const frame of [OBSERVED_OFFSET_NOTICE, CONSTITUENT_FRAME_NOTICE])
+      expect(
+        cachedDatumNotice({
+          datums_source: "harmonic",
+          disclaimers: `No obvious issues ${HARMONIC_DATUM_NOTICE} ${frame}`,
+        }),
+      ).toBe(`${HARMONIC_DATUM_NOTICE} ${frame}`);
+  });
+  test("keeps the observation gauge frame when gaps require the harmonic fallback", () => {
+    const samples = Array.from(
+      { length: (Date.UTC(2022, 0, 1) - start) / 3600000 },
+      (_, h) => ({
+        time: new Date(start + h * 3600000),
+        level: h % 2 ? 6 : 8,
+      }),
+    ).filter(
+      (p) =>
+        !(p.time.getUTCFullYear() === 2020 && p.time.getUTCMonth() === 6) &&
+        !(p.time.getUTCFullYear() === 2021 && p.time.getUTCMonth() === 1),
+    );
+    const result = reduceTiconDatums(samples, constituents, harmonic, fitEpoch);
+    expect(result.datums_source).toBe("harmonic");
+    expect(result.datums).toMatchObject({
+      MSL: 7,
+      MHHW: 8.2,
+      MHW: 8,
+      MLW: 6,
+      MLLW: 5.8,
+      HAT: 8.5,
+      LAT: 5.5,
+    });
+    expect(result.epoch).toEqual({ start: "2000-01-01", end: "2010-12-31" });
+    expect(result).not.toHaveProperty("datum_epoch");
+    expect(result.datum_notice).toContain(OBSERVED_OFFSET_NOTICE);
+  });
+
+  test("combines one supported empirical mean family with astronomical bounds in the same frame", () => {
+    const predictor = createTidePredictor(constituents);
+    const samples = Array.from({ length: 24 * 400 }, (_, h) => {
+      const time = new Date(start + h * 3600000);
+      return { time, level: 7 + predictor.getWaterLevelAtTime({ time }).level };
+    });
+    const result = reduceTiconDatums(samples, constituents, harmonic, fitEpoch);
+    expect(result.datums_source).toBe("observed");
+    expect(result.datums["MSL"]).toBeCloseTo(7, 2);
+    expect(result.datums["MHW"]).toBeCloseTo(8, 2);
+    expect(result.datums["MLW"]).toBeCloseTo(6, 2);
+    expect(result.datums["HAT"]).toBeCloseTo(8.5, 2);
+    expect(result.datums["LAT"]).toBeCloseTo(5.5, 2);
+    expect(result.datums).not.toHaveProperty("LLWLT");
+    expect(result.epoch).toEqual({ start: "2000-01-01", end: "2010-12-31" });
+    expect(result.datum_epoch).toEqual({
+      start: "2020-02-01",
+      end: "2021-01-31",
+    });
+  });
+
+  test("does not invent an observation-frame offset when no record supports one", () => {
+    const result = reduceTiconDatums([], constituents, harmonic, fitEpoch);
+    expect(result.datums_source).toBe("harmonic");
+    expect(result.datums).toEqual(harmonic);
+    expect(result.datum_notice).toContain(CONSTITUENT_FRAME_NOTICE);
+  });
+  test("distinguishes a supported zero gauge mean from an unavailable offset", () => {
+    const samples = Array.from(
+      { length: (Date.UTC(2022, 0, 1) - start) / 3600000 },
+      (_, h) => ({
+        time: new Date(start + h * 3600000),
+        level: h % 2 ? -1 : 1,
+      }),
+    ).filter(
+      (p) =>
+        !(p.time.getUTCFullYear() === 2020 && p.time.getUTCMonth() === 6) &&
+        !(p.time.getUTCFullYear() === 2021 && p.time.getUTCMonth() === 1),
+    );
+    const result = reduceTiconDatums(samples, constituents, harmonic, fitEpoch);
+    expect(result.datums["MSL"]).toBe(0);
+    expect(result.datum_notice).toContain(OBSERVED_OFFSET_NOTICE);
+    expect(result.datum_notice).not.toContain(CONSTITUENT_FRAME_NOTICE);
+  });
+});

@@ -22,7 +22,7 @@ computed:
           amplitude: 1
           coverage: 0.016
         issues:
-          - MLWS (6.977) > MLW (6.964)
+          - MLWS (6.922) > MLW (6.909)
           - "Seasonal curve peak (0.138m) exceeds the principal tide M2+S2+K1+O1 (0.025m): the yearly swing exceeds the daily one"
     ticon/stockholm-826a-swe-uhslc_rq:
       position: [59.325, 18.082]
@@ -41,5 +41,5 @@ computed:
           amplitude: 1
           coverage: 0.002
         issues:
-          - MLWS (6.919) > MLW (6.912)
+          - MLWS (6.947) > MLW (6.939)
           - "Seasonal curve peak (0.138m) exceeds the principal tide M2+S2+K1+O1 (0.024m): the yearly swing exceeds the daily one"

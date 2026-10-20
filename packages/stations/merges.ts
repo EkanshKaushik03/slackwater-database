@@ -317,12 +317,9 @@ export function planMerges(
         target,
         reason: `${apart.toFixed(1)} km apart`,
       });
-    // A number in the relay's own id, or a NOAA station number from NOAA,
-    // names one gauge; M2 differs only where the two analyses span different
-    // years (Wilmington's tide has grown with dredging) or the tide is a
-    // centimetre (Grand Isle). Another provider's number may have no
-    // namespace, and a relay farther off may name a renumbered gauge, so M2
-    // confirms those.
+    // A provider-qualified gauge code (including NOAA numbers and JODC HD
+    // codes) names one gauge. Unqualified originator numbers and more distant
+    // relays still need M2 confirmation.
     else if (
       !(declared.unambiguous && apart <= MAX_GAUGE_CODE_KM) &&
       m2Contradicts(station, origin)

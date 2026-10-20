@@ -209,6 +209,14 @@ export function buildDatabase(
       );
     }
 
+    let datumEpoch = 0;
+    if (s.datum_epoch) {
+      const { start, end } = s.datum_epoch;
+      datumEpoch = memo(epochOffsets, s.datum_epoch, () =>
+        Epoch.createEpoch(builder, str(start), str(end)),
+      );
+    }
+
     let source = 0;
     if (s.source) {
       const { name, id, url, published_harmonics } = s.source;
@@ -350,6 +358,7 @@ export function buildDatabase(
     Station.addOffsets(builder, offsets);
     Station.addCurrent(builder, current);
     Station.addEpoch(builder, epoch);
+    Station.addDatumEpoch(builder, datumEpoch);
     Station.addQuality(builder, prediction[i]!.quality);
     Station.addSource(builder, source);
     Station.addLicense(builder, license);

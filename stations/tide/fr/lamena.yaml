@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 73
+        score: 83
         factors:
-          epoch: 0.521
+          epoch: 1
           recency: 0.89
           source: 0.949
           quality: 1
@@ -26,9 +26,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/lamena-191-fra-refmar
-        score: 55
+        score: 64
         factors:
-          epoch: 0.521
+          epoch: 1
           recency: 0.89
           source: 0.02
           quality: 1

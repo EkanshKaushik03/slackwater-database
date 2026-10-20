@@ -13,7 +13,7 @@ computed:
         accepted: true
         score: 84
         factors:
-          epoch: 0.988
+          epoch: 1
           recency: 0.99
           source: 0.949
           quality: 1
@@ -28,7 +28,7 @@ computed:
         redundant: ticon/ouvea-380-fra-refmar
         score: 65
         factors:
-          epoch: 0.988
+          epoch: 1
           recency: 0.99
           source: 0.02
           quality: 1

@@ -17,18 +17,18 @@
     "url": "https://creativecommons.org/licenses/by-nc/4.0/",
     "notes": "Upstream GESLA data provider restricts commercial use. See https://gesla787883612.wordpress.com/license/"
   },
-  "disclaimers": "Possible datum and quality control issues",
+  "disclaimers": "Possible datum and quality control issues Mean datums use one continuous observation window of whole years. Short gaps may contain model-assisted inferred hourly heights.",
   "datums": {
-    "MHHW": 1.81,
-    "MHW": 1.712,
-    "MSL": 1.288,
-    "MTL": 1.294,
-    "MLW": 0.876,
-    "MLLW": 0.827,
-    "HAT": 2.119,
-    "LAT": 0.452,
-    "MHWS": 1.9,
-    "MLWS": 0.676
+    "MSL": 1.147,
+    "MHHW": 1.637,
+    "MHW": 1.564,
+    "MTL": 1.148,
+    "MLW": 0.732,
+    "MLLW": 0.654,
+    "HAT": 1.978,
+    "LAT": 0.311,
+    "MHWS": 1.759,
+    "MLWS": 0.535
   },
   "datums_source": "observed",
   "chart_datum": "LAT",
@@ -285,8 +285,12 @@
       "phase": 3.234882
     }
   ],
+  "datum_epoch": {
+    "start": "2019-11-01",
+    "end": "2021-10-31"
+  },
   "epoch": {
-    "start": "2004-04-24",
+    "start": "1994-10-25",
     "end": "2023-04-24"
   }
 }

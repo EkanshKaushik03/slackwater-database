@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 84
+        score: 85
         factors:
-          epoch: 0.99
+          epoch: 1
           recency: 0.98
           source: 0.99
           quality: 1
@@ -26,9 +26,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/dzaoudzi-155-fra-uhslc_fd
-        score: 77
+        score: 84
         factors:
-          epoch: 0.67
+          epoch: 1
           recency: 0.92
           source: 0.99
           quality: 1

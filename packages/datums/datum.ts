@@ -3,6 +3,10 @@ import {
   type TidePredictionOptions,
   type HarmonicConstituent,
 } from "@slackwater/engine";
+import {
+  prepareDatumObservations,
+  type PreparedDatumObservations,
+} from "./observations.ts";
 
 export interface EpochSpec {
   end?: Date;
@@ -22,7 +26,6 @@ export interface TidalDatumsResult {
   datums: Datums;
 }
 
-const DAY_MS = 24 * 60 * 60 * 1000;
 /** One full lunar nodal cycle (6798.383 days = 18.6130 years) */
 export const NODAL_CYCLE_DAYS = 6798.383;
 /** M2 angular speed (°/hr) — principal lunar semi-diurnal constituent */
@@ -77,11 +80,7 @@ export function resolveEpoch({ end }: EpochSpec): {
  * stays in the input series' native frame. Synthetic (constituent) callers leave
  * it 0; observed callers pass the mean of the hourly series.
  */
-function computeDatumsFromExtremes(
-  extremes: Sample[],
-  msl = 0,
-  regularSamples = false,
-): Datums {
+function computeDatumsFromExtremes(extremes: Sample[], msl = 0): Datums {
   const allHighs: number[] = [];
   const allLows: number[] = [];
   const higherHighs: number[] = [];
@@ -106,8 +105,6 @@ function computeDatumsFromExtremes(
 
   let dayStartTime = firstTime.getTime();
   let idx = 0;
-  let daysWithHighs = 0;
-  let daysWithLows = 0;
 
   while (dayStartTime < lastTime.getTime()) {
     const dayEndTime = dayStartTime + tidalDayMs;
@@ -122,19 +119,9 @@ function computeDatumsFromExtremes(
       const highs: number[] = [];
       const lows: number[] = [];
       // Incomplete days can hide the higher high or lower low.
-      let completeDay = idxStart > 0 && idxEnd < times.length;
+      const completeDay = idxStart > 0 && idxEnd < times.length;
 
       for (let i = idxStart; i < idxEnd; i++) {
-        if (
-          regularSamples &&
-          (i === 0 ||
-            i + 1 === times.length ||
-            times[i]!.getTime() - times[i - 1]!.getTime() !==
-              times[i + 1]!.getTime() - times[i]!.getTime())
-        ) {
-          completeDay = false;
-          continue;
-        }
         const hPrev = heights[i - 1];
         const hCurr = heights[i];
         const hNext = heights[i + 1];
@@ -165,24 +152,22 @@ function computeDatumsFromExtremes(
         }
       }
 
-      if (highs.length > 0) {
-        daysWithHighs++;
+      if (completeDay && highs.length > 0) {
         allHighs.push(...highs);
         highs.sort((a, b) => a - b);
         // higher high
         const hhVal = highs[highs.length - 1];
-        if (completeDay && hhVal !== undefined) {
+        if (hhVal !== undefined) {
           higherHighs.push(hhVal);
         }
       }
 
-      if (lows.length > 0) {
-        daysWithLows++;
+      if (completeDay && lows.length > 0) {
         allLows.push(...lows);
         lows.sort((a, b) => a - b);
         // lower low
         const llVal = lows[0];
-        if (completeDay && llVal !== undefined) {
+        if (llVal !== undefined) {
           lowerLows.push(llVal);
         }
       }
@@ -329,9 +314,6 @@ export function computeDatums(
   return { start, end, datums };
 }
 
-/** Minimum record span (days) and hourly-point count to derive datums from observations. */
-const MIN_DATUM_DAYS = 365;
-const MIN_HOURLY_POINTS = 4000;
 const HOUR_MS = 60 * 60 * 1000;
 
 /**
@@ -370,62 +352,41 @@ export function parseGeslaSamples(text: string): Sample[] {
   return samples;
 }
 
-/** Bin samples to mean level per UTC hour, sorted ascending. */
-function binHourly(samples: Sample[]): Sample[] {
-  const buckets = new Map<number, { sum: number; n: number }>();
-  for (const s of samples) {
-    const key = Math.floor(s.time.getTime() / HOUR_MS);
-    const e = buckets.get(key);
-    if (e) {
-      e.sum += s.level;
-      e.n += 1;
-    } else {
-      buckets.set(key, { sum: s.level, n: 1 });
-    }
-  }
-  return [...buckets.entries()]
-    .sort((a, b) => a[0] - b[0])
-    .map(([key, { sum, n }]) => ({
-      time: new Date(key * HOUR_MS),
-      level: sum / n,
-    }));
+export interface ObservedTidalDatumsResult extends TidalDatumsResult {
+  coverage: PreparedDatumObservations["coverage"];
 }
 
 /**
  * Derive tidal datums directly from observed water-level samples (NOAA CO-OPS
  * "first reduction", Computational Techniques for Tidal Datums Handbook §3.1).
  *
- * Bins to hourly heights, takes the most recent ≤18.6-year window, and computes
- * mean datums in the gauge's native frame with real MSL = mean of hourly heights.
- * No control-station correction (acceptable: short-record bias is cm-level per
- * Swanson 1974, vs the 0.3–0.5 m datum errors this replaces). HAT/LAT returned
- * here are observed extremes and should be discarded in favor of harmonic values.
+ * Reduces one continuous window of whole years after bounded
+ * model-assisted gap reconstruction. This is a first reduction over the returned
+ * period, without a control-station correction to the 19-year epoch. HAT/LAT
+ * here are observed extremes; source importers use harmonic astronomical bounds.
  *
  * Returns null when the windowed record is too short/sparse to be meaningful.
  */
 export function computeDatumsFromObservations(
   samples: Sample[],
-): TidalDatumsResult | null {
-  if (samples.length === 0) return null;
-
-  const hourlyAll = binHourly(samples);
-  const end = hourlyAll[hourlyAll.length - 1]!.time;
-  const { start } = resolveEpoch({ end });
-  const hourly = hourlyAll.filter((s) => s.time >= start);
-
-  const spanDays = (end.getTime() - hourly[0]!.time.getTime()) / DAY_MS;
-  if (spanDays < MIN_DATUM_DAYS || hourly.length < MIN_HOURLY_POINTS)
-    return null;
-
-  const observedMSL = mean(hourly.map((s) => s.level));
-  const datums = computeDatumsFromExtremes(hourly, observedMSL, true);
+  constituents: HarmonicConstituent[] = [],
+): ObservedTidalDatumsResult | null {
+  const prepared = prepareDatumObservations(samples, constituents);
+  if (!prepared) return null;
+  const observedMSL = mean(prepared.samples.map((p) => p.level));
+  const datums = computeDatumsFromExtremes(prepared.samples, observedMSL);
   if (!Number.isFinite(datums["MHW"]) || !Number.isFinite(datums["MLW"]))
     return null;
   for (const [key, value] of Object.entries(datums)) {
     if (!Number.isFinite(value)) delete datums[key];
   }
 
-  return { start: hourly[0]!.time, end, datums };
+  return {
+    start: prepared.start,
+    end: prepared.end,
+    datums,
+    coverage: prepared.coverage,
+  };
 }
 
 export function toFixed(num: number, digits: number) {

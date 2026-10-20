@@ -144,6 +144,11 @@ final class StationDatabaseTests: XCTestCase {
     XCTAssertEqual(reference.source?.name, "Test Source")
     XCTAssertEqual(reference.source?.publishedHarmonics, true)
     XCTAssertEqual(reference.license?.commercialUse, true)
+    XCTAssertEqual(reference.epoch?.start, "2007-01-01")
+    XCTAssertEqual(reference.datumEpoch?.start, "2020-01-01")
+    XCTAssertEqual(reference.datumEpoch?.end, "2021-12-31")
+    XCTAssertEqual(try open().station(id: "test/subordinate")?.datumEpoch, reference.datumEpoch)
+    XCTAssertNil(try open().station(id: "test/current")?.datumEpoch)
 
     let tideOffsets = try XCTUnwrap(open().station(id: "test/subordinate")?.tideOffsets)
     XCTAssertEqual(tideOffsets.reference, "test/reference")

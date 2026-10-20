@@ -21,7 +21,7 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MHWS (0.171) < MHW (0.176)
+          - MHWS (0.17) < MHW (0.174)
           - "Seasonal curve peak (0.144m) exceeds the principal tide M2+S2+K1+O1 (0.020m): the yearly swing exceeds the daily one"
     ticon/landsort1-lan-swe-cmems:
       position: [58.75, 17.866699]
@@ -40,5 +40,5 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MHWS (0.017) < MHW (0.021)
+          - MHWS (0.017) < MHW (0.022)
           - "Seasonal curve peak (0.143m) exceeds the principal tide M2+S2+K1+O1 (0.020m): the yearly swing exceeds the daily one"

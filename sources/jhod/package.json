@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "import": "node import.ts",
+    "refresh:jhod": "node import.ts --refresh",
     "validate": "node validate.ts",
     "test": "vitest run"
   },

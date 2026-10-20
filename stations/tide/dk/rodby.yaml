@@ -7,9 +7,8 @@ computed:
       position: [54.650002, 11.35]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: datum
-        score: 0
+        accepted: true
+        score: 71
         factors:
           epoch: 1
           recency: 0.99
@@ -18,4 +17,4 @@ computed:
           amplitude: 1
           coverage: 0.37
         issues:
-          - HAT (0.207) < MHHW (0.216)
+          - HAT (0.238) < MHHW (0.253)

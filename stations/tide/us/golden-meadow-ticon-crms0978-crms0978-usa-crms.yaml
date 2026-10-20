@@ -20,9 +20,9 @@ computed:
           amplitude: 1
           coverage: 0.123
         issues:
-          - MLW (0.141) < MLLW (0.151)
-          - MLWS (0.16) > MLW (0.141)
-          - MHW (0.148) <= MSL (0.161)
-          - MHW (0.148) < MLLW (0.151)
-          - Tidal range 0.70cm < 2cm threshold
+          - MLW (0.27) < MLLW (0.278)
+          - MLWS (0.288) > MLW (0.27)
+          - MHW (0.276) <= MSL (0.289)
+          - MHW (0.276) < MLLW (0.278)
+          - Tidal range 0.60cm < 2cm threshold
           - "Seasonal curve peak (0.039m) exceeds the principal tide M2+S2+K1+O1 (0.002m): the yearly swing exceeds the daily one"

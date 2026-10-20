@@ -11,6 +11,7 @@ import {
 } from "@slackwater/database";
 import {
   MIN_TIDAL_RANGE,
+  OBSERVED_BOUND_ALLOWANCE,
   MIN_DEDUP_DISTANCE,
   MIN_AMPLITUDE_RATIO,
   SEASONAL_OUTLIER_RADIUS,
@@ -32,6 +33,19 @@ import { sourceMetadata } from "../sources.ts";
 const quality = [...storedQuality(readStationFiles()).values()];
 
 const ROOT = new URL("../../..", import.meta.url).pathname;
+const float32DifferenceMargin = (a: number, b: number) =>
+  Math.max(
+    1e-6,
+    2 ** (Math.floor(Math.log2(Math.max(Math.abs(a), Math.abs(b)))) - 23),
+  );
+
+test("retains a 5 cm gate boundary after float32 storage", () => {
+  const low = Math.fround(0.1),
+    bound = Math.fround(0.15);
+  expect(low).toBeGreaterThanOrEqual(
+    bound - OBSERVED_BOUND_ALLOWANCE - float32DifferenceMargin(low, bound),
+  );
+});
 const SCHEMA_PATH = join(ROOT, "schemas", "station.schema.json");
 
 const schema = JSON.parse(await readFile(SCHEMA_PATH, "utf-8"));
@@ -44,6 +58,28 @@ const tideStations = stations.filter(
 const allTideStations = allStations.filter(
   (station) => station.kind === "tide" && station.quality,
 );
+
+test("observed TICON datum periods contain whole years of complete UTC months", () => {
+  const invalid = allTideStations
+    .filter((s) => s.id.startsWith("ticon/") && s.datums_source === "observed")
+    .filter((s) => {
+      if (!s.datum_epoch) return true;
+      const start = new Date(s.datum_epoch.start),
+        end = new Date(s.datum_epoch.end);
+      end.setUTCDate(end.getUTCDate() + 1);
+      const months =
+        (end.getUTCFullYear() - start.getUTCFullYear()) * 12 +
+        end.getUTCMonth() -
+        start.getUTCMonth();
+      return (
+        start.getUTCDate() !== 1 ||
+        end.getUTCDate() !== 1 ||
+        months < 12 ||
+        months % 12 !== 0
+      );
+    });
+  expect(invalid.map((s) => s.id)).toEqual([]);
+});
 
 tideStations.forEach((station) => {
   describe(station.id, () => {
@@ -104,10 +140,14 @@ tideStations.forEach((station) => {
           const h = datums[higher],
             l = datums[lower];
           if (h === undefined || l === undefined) continue;
+          const allowance =
+            station.datums_source === "observed" && lower === "LAT"
+              ? OBSERVED_BOUND_ALLOWANCE + float32DifferenceMargin(h, l)
+              : 0;
           expect(
             h,
             `Station ${station.id}: ${higher} (${h.toFixed(3)}m) should be >= ${lower} (${l.toFixed(3)}m)`,
-          ).toBeGreaterThanOrEqual(l);
+          ).toBeGreaterThanOrEqual(l - allowance);
         }
       }
     });
@@ -188,13 +228,14 @@ tideStations.forEach((station) => {
         const mlw = station.datums["MLW"];
         if (mhw === undefined || mlw === undefined) return;
         const range = mhw - mlw;
+        // Two rounded float32 levels can lose up to one ULP of their larger
+        // magnitude when subtracted, especially in a high-elevation gauge frame.
+        const rounding = float32DifferenceMargin(mhw, mlw);
         expect(
           range,
           `Station ${station.id} has negligible tidal range: ${(range * 100).toFixed(1)}cm (MHW-MLW). ` +
             `Run npm run stations to re-filter.`,
-          // The database stores datums as float32, so a station accepted right
-          // at the threshold can read back a hair under it.
-        ).toBeGreaterThanOrEqual(MIN_TIDAL_RANGE - 1e-6);
+        ).toBeGreaterThanOrEqual(MIN_TIDAL_RANGE - rounding);
       });
     }
   });
@@ -645,8 +686,8 @@ describe("seasonal dominance", () => {
   });
 
   test("labels independently of the rejection verdict", () => {
-    expect(labelled.filter((q) => q.accepted)).toHaveLength(499);
-    expect(labelled.filter((q) => !q.accepted)).toHaveLength(500);
+    expect(labelled.filter((q) => q.accepted)).toHaveLength(526);
+    expect(labelled.filter((q) => !q.accepted)).toHaveLength(473);
   });
 
   test("is a different question from the contamination gate", () => {
@@ -657,17 +698,17 @@ describe("seasonal dominance", () => {
     // catches water that has no real tide and keeps it.
     //
     // The two overlap without either implying the other, and this pins that:
-    // the gate rejects 2 stations, exactly 1 of which is also labelled. A
+    // the gate rejects 6 stations, exactly 5 of which are also labelled. A
     // change that collapsed the two concepts would move both numbers.
     const contaminated = quality.filter(
       (q) => (q as { reason?: string }).reason === "seasonal",
     );
-    expect(contaminated.length).toBe(2);
+    expect(contaminated.length).toBe(6);
     expect(
       contaminated.filter(
         (q) => (q as { seasonal_dominant?: boolean }).seasonal_dominant,
       ).length,
-    ).toBe(1);
+    ).toBe(5);
   });
 
   test("leaves no subordinate behind its labelled reference", () => {

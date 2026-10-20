@@ -12,9 +12,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 81
+        score: 82
         factors:
-          epoch: 0.944
+          epoch: 1
           recency: 0.81
           source: 0.949
           quality: 1
@@ -27,9 +27,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/nuku_hiva-795-fra-refmar
-        score: 62
+        score: 64
         factors:
-          epoch: 0.944
+          epoch: 1
           recency: 0.81
           source: 0.02
           quality: 1

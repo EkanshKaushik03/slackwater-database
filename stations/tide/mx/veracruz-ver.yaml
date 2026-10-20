@@ -20,8 +20,8 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - MLWS (1.421) > MLW (1.414)
-          - MHWS (1.641) < MHW (1.664)
+          - MLWS (1.487) > MLW (1.462)
+          - MHWS (1.707) < MHW (1.752)
     ticon/veracruz_ver-250b-mex-uhslc_rq:
       position: [19.2, -96.133]
       coastline: unverifiable
@@ -38,4 +38,5 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - MHWS (0.183) < MHW (0.196)
+          - MLWS (-0.112) > MLW (-0.198)
+          - MHWS (0.112) < MHW (0.177)

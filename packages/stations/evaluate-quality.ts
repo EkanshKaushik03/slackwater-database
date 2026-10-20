@@ -38,6 +38,7 @@ import {
   MAX_OFFSET_TIME_DELTA,
   MIN_AMPLITUDE_RATIO,
   AMPLITUDE_TOLERANCE,
+  OBSERVED_BOUND_ALLOWANCE,
   SAME_GAUGE_M2_DIFFERENCE,
   CLOCK_ERROR_SOURCES,
   MAX_PROVENANCE_KM,
@@ -135,7 +136,7 @@ function hasValidEpoch(epoch?: { start: string; end: string }): boolean {
 // ── Gates (pass/fail) ────────────────────────────────────────────────────
 
 /** Check datum ordering. Returns fatal issues (gate failures) and warnings. */
-function checkDatumOrdering(
+export function checkDatumOrdering(
   station: Station,
   stationMap: Map<string, Station>,
 ): { fatal: string[]; warnings: string[] } {
@@ -145,6 +146,18 @@ function checkDatumOrdering(
 
   const fatal: string[] = [];
   const warnings: string[] = [];
+  // A finite observed mean includes weather and may cover a different period
+  // from the pinned astronomical prediction. Their bounds are diagnostic,
+  // not an exact physical ordering invariant. Keep small mismatches as
+  // warnings, while large disagreements still reject an unsuitable model.
+  const datumRecord = station.offsets?.reference
+    ? stationMap.get(station.offsets.reference)
+    : station;
+  const astronomicalIssues = (difference: number) =>
+    datumRecord?.datums_source === "observed" &&
+    Number(difference.toFixed(9)) <= OBSERVED_BOUND_ALLOWANCE
+      ? warnings
+      : fatal;
   const { MHHW, MHW, MSL, MTL, MLW, MLLW, LAT, HAT } = datums;
 
   // Core ordering: MHW > MSL > MLW — fatal gate
@@ -155,7 +168,7 @@ function checkDatumOrdering(
     fatal.push(`MSL (${MSL}) <= MLW (${MLW})`);
   }
   if (MLW !== undefined && LAT !== undefined && MLW < LAT) {
-    fatal.push(`MLW (${MLW}) < LAT (${LAT})`);
+    astronomicalIssues(LAT - MLW).push(`MLW (${MLW}) < LAT (${LAT})`);
   }
   // MHW must exceed MLLW (mean higher high > mean lower low)
   if (MHW !== undefined && MLLW !== undefined && MHW < MLLW) {
@@ -163,7 +176,7 @@ function checkDatumOrdering(
   }
   // HAT is the highest possible tide — must be >= mean higher high water
   if (HAT !== undefined && MHHW !== undefined && HAT < MHHW) {
-    fatal.push(`HAT (${HAT}) < MHHW (${MHHW})`);
+    astronomicalIssues(MHHW - HAT).push(`HAT (${HAT}) < MHHW (${MHHW})`);
   }
 
   // MTL between MHW and MLW — fatal gate

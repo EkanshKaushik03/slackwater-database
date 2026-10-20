@@ -268,6 +268,12 @@ export const MIN_DEDUP_DISTANCE = 0.05; // 50 meters
  *  (see PUBLISHED_PRECISION) and say nothing about this. */
 export const AMPLITUDE_TOLERANCE = 0.003;
 
+/** Project screening allowance for observed means versus harmonic bounds from
+ * different periods, including weather. Masked-record changes and NOAA paired
+ * mean-level residuals are centimetre-scale. This 5 cm allowance is a
+ * conservative diagnostic threshold, not a station accuracy guarantee. */
+export const OBSERVED_BOUND_ALLOWANCE = 0.05;
+
 /** Whether amplitude `a` exceeds `b` by more than AMPLITUDE_TOLERANCE. The
  *  difference is rounded to the nanometre first, so float noise in a value
  *  stored to whole millimetres cannot tip a difference of exactly 3 mm. */

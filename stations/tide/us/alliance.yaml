@@ -9,7 +9,7 @@ computed:
       coastline: unverifiable
       quality:
         accepted: false
-        reason: datum
+        reason: seasonal
         seasonal_dominant: true
         score: 0
         factors:
@@ -20,8 +20,8 @@ computed:
           amplitude: 1
           coverage: 0.072
         issues:
-          - MHHW (8.862) < MHW (9.008)
-          - MHWS (8.789) < MHW (9.008)
-          - MSL (8.78) <= MLW (8.955)
+          - MLW (-0.103) < MLLW (-0.093)
+          - MLWS (-0.009) > MLW (-0.103)
+          - MHWS (0.009) < MHW (0.057)
           - "SA amplitude (0.896m) is 10.3x the median SA of 19 same-regime neighbour(s) within 25km (0.087m): seasonal contamination"
           - "Seasonal curve peak (0.944m) exceeds the principal tide M2+S2+K1+O1 (0.129m): the yearly swing exceeds the daily one"

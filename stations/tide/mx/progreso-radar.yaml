@@ -10,14 +10,14 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/progreso-402-mex-unam_hist
-        score: 38
+        score: 34
         factors:
-          epoch: 0.244
+          epoch: 0.068
           recency: 0.98
           source: 0.141
           quality: 0
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (5.571) > MLW (5.536)
-          - MHWS (5.717) < MHW (5.808)
+          - MLWS (-0.073) > MLW (-0.231)
+          - MHWS (0.073) < MHW (0.192)

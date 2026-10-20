@@ -27,7 +27,7 @@ console.log(stationsById.get("noaa/9447130"));
 
 `stations` leaves out records the quality evaluation rejected, such as duplicate gauges and implausible datums. `allStations` is the unfiltered catalog, `stationsById` maps an id to its station, and every search function below takes `includeAll: true` to search the full catalog instead of the accepted subset.
 
-Each station carries its identity and location eagerly. The heavy prediction fields — `harmonic_constituents`, `datums`, and `epoch` — are decoded from the database file on first access, so importing the module does not pull every station's prediction data onto the heap. [See the format documentation](https://github.com/openwatersio/slackwater-database/blob/main/docs/database-format.md) for how that works.
+Each station carries its identity and location eagerly. The heavy prediction fields — `harmonic_constituents`, `datums`, `epoch`, and `datum_epoch` — are decoded from the database file on first access, so importing the module does not pull every station's prediction data onto the heap. [See the format documentation](https://github.com/openwatersio/slackwater-database/blob/main/docs/database-format.md) for how that works.
 
 Each station has separate `locality`, `region`, and `country` display fields. `country_code` is an ISO 3166-1 alpha-2 code; `region_code`, when available, is an ISO 3166-2 subdivision code. Consumers can therefore omit country or region text when the surrounding page already supplies it.
 

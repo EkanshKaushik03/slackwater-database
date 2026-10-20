@@ -112,6 +112,7 @@ describe("buildDatabase", () => {
       chart_datum: "MLLW",
       datums_source: "observed",
       epoch: { start: "2007-01-01", end: "2026-01-01" },
+      datum_epoch: { start: "2020-01-01", end: "2021-12-31" },
       aliases: ["Elliott Bay", "seattle"],
       harmonic_constituents: [
         { name: "M2", amplitude: 1.063, phase: 10.8 },
@@ -299,6 +300,8 @@ describe("buildDatabase", () => {
     const epoch = station.epoch()!;
     expect(epoch.start()).toBe("2007-01-01");
     expect(epoch.end()).toBe("2026-01-01");
+    expect(station.datumEpoch()!.start()).toBe("2020-01-01");
+    expect(station.datumEpoch()!.end()).toBe("2021-12-31");
     // Aliases are lower-cased per the schema contract.
     expect(station.aliases(0)).toBe("elliott bay");
     expect(station.aliases(1)).toBe("seattle");

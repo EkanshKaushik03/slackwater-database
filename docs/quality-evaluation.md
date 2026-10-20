@@ -71,17 +71,19 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 
 ### Datum consistency
 
-**What it catches.** Tidal datums are averages of particular sets of heights, and their definitions fix their order (Gill & Schultz, 2001; NOAA, 2003). Mean high water (MHW) is the mean of all high waters and mean low water (MLW) the mean of all low waters, so any real tide has MHW above MLW, with mean sea level (MSL) and mean tide level (MTL) between them. Mean lower low water (MLLW) averages only the lower low of each tidal day and cannot exceed MHW. The IHO defines Lowest Astronomical Tide (LAT) as the lowest level that can be predicted under average meteorological conditions and any combination of astronomical conditions, and Highest Astronomical Tide (HAT) as the highest (IHO, S-32; IHO, M-3, Resolution 3/1919). LAT therefore cannot lie above MLW, and HAT cannot lie below mean higher high water (MHHW). Datums that break these relations were computed from the wrong data, mislabeled, or mix vertical frames, and predictions referred to them as chart datum would be wrong by the size of the error.
+**What it catches.** Tidal datums are averages of particular sets of heights, and their definitions fix their order (Gill & Schultz, 2001; NOAA, 2003). Mean high water (MHW) is the mean of all high waters and mean low water (MLW) the mean of all low waters, so any real tide has MHW above MLW, with mean sea level (MSL) and mean tide level (MTL) between them. Mean lower low water (MLLW) averages only the lower low of each tidal day and cannot exceed MHW. The IHO defines Lowest Astronomical Tide (LAT) as the lowest level that can be predicted under average meteorological conditions and any combination of astronomical conditions, and Highest Astronomical Tide (HAT) as the highest (IHO, S-32; IHO, M-3, Resolution 3/1919). For means from that same harmonic prediction, LAT cannot lie above MLW and HAT cannot lie below mean higher high water (MHHW). Observed means include weather and can cover a different period, so these two comparisons need an allowance. Datums that break these relations were computed from the wrong data, mislabeled, or mix vertical frames, and predictions referred to them as chart datum would be wrong by the size of the error.
 
 **Rejected** when any of these holds:
 
 - MHW is at or below MSL, or MSL is at or below MLW.
 - MTL lies above MHW or below MLW.
-- MLW lies below LAT.
+- MLW lies below LAT by more than 5 cm for observed means, or by any amount for harmonic means.
 - MHW lies below MLLW.
-- HAT lies below MHHW.
+- HAT lies below MHHW by more than 5 cm for observed means, or by any amount for harmonic means.
 
 **Noted but not rejected**, because they can fail legitimately by small amounts or by construction:
+
+- Observed MLW/LAT or HAT/MHHW disagreements within 5 cm. This project screening allowance is informed by centimetre-scale masked-record mean changes and paired NOAA residuals. It is not an accuracy guarantee; larger differences still flag an unsuitable model or observation period.
 
 - MHHW below MHW, or MLW below MLLW. The pairs are equal where each tidal day has one high and one low water and nearly equal where the diurnal inequality is small, so rounding can flip them by millimeters.
 - Mean high and low water springs (MHWS, MLWS) inside MHW and MLW. This database computes them with the Admiralty approximation, MSL ± (M2 + S2) ([docs/datums.md](datums.md)), which ignores the diurnal constituents and underestimates the range where the diurnal tide is large.

@@ -66,6 +66,7 @@ const stations: StationInput[] = [
     chart_datum: "MLLW",
     datums_source: "observed",
     epoch: { start: "2007-01-01", end: "2026-01-01" },
+    datum_epoch: { start: "2020-01-01", end: "2021-12-31" },
     aliases: ["elliott bay", "seattle"],
     harmonic_constituents: [
       { name: "M2", amplitude: 1.063, phase: 10.8 },

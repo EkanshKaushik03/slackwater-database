@@ -16,18 +16,18 @@
     "commercial_use": true,
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "disclaimers": "No obvious issues",
+  "disclaimers": "No obvious issues Mean datums use one continuous observation window of whole years. Short gaps may contain model-assisted inferred hourly heights.",
   "datums": {
-    "MHHW": 0.897,
-    "MHW": 0.727,
-    "MSL": 0.58,
-    "MTL": 0.562,
-    "MLW": 0.397,
-    "MLLW": 0.333,
-    "HAT": 1.149,
-    "LAT": 0.211,
-    "MHWS": 0.792,
-    "MLWS": 0.368
+    "MSL": 0.597,
+    "MHHW": 0.943,
+    "MHW": 0.738,
+    "MTL": 0.575,
+    "MLW": 0.413,
+    "MLLW": 0.348,
+    "HAT": 1.166,
+    "LAT": 0.228,
+    "MHWS": 0.809,
+    "MLWS": 0.385
   },
   "datums_source": "observed",
   "chart_datum": "MLLW",
@@ -284,6 +284,10 @@
       "phase": 74.579078
     }
   ],
+  "datum_epoch": {
+    "start": "1877-08-01",
+    "end": "1878-07-31"
+  },
   "epoch": {
     "start": "1877-06-21",
     "end": "1892-07-13"

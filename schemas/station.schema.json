@@ -214,7 +214,25 @@
     },
     "epoch": {
       "type": "object",
-      "description": "The time period over which the harmonic constituents were computed",
+      "description": "Source-reported analysis or datum period; TICON uses its constituent fit period.",
+      "required": ["start", "end"],
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date",
+          "description": "Start date of the observation period (YYYY-MM-DD format)"
+        },
+        "end": {
+          "type": "string",
+          "format": "date",
+          "description": "End date of the observation period (YYYY-MM-DD format)"
+        }
+      }
+    },
+    "datum_epoch": {
+      "type": "object",
+      "description": "Mean-datum reduction period, separate from the constituent fit period.",
       "required": ["start", "end"],
       "additionalProperties": false,
       "properties": {

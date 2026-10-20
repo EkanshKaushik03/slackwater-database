@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 64
+        score: 82
         factors:
-          epoch: 0.054
+          epoch: 1
           recency: 0.85
           source: 0.949
           quality: 1
@@ -26,9 +26,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/la_desirade-515-fra-refmar
-        score: 45
+        score: 64
         factors:
-          epoch: 0.054
+          epoch: 1
           recency: 0.85
           source: 0.02
           quality: 1

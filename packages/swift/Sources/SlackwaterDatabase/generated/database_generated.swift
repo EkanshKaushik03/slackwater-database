@@ -1017,6 +1017,7 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
     case context = 60
     case contextDerived = 62
     case cities = 64
+    case datumEpoch = 66
     var v: Int32 { Int32(self.rawValue) }
     var p: VOffset { self.rawValue }
   }
@@ -1093,7 +1094,9 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
   public var hasCities: Bool { let o = _accessor.offset(VTOFFSET.cities.v); return o == 0 ? false : true }
   public var citiesCount: Int32 { let o = _accessor.offset(VTOFFSET.cities.v); return o == 0 ? 0 : _accessor.vector(count: o) }
   public func cities(at index: Int32) -> String? { let o = _accessor.offset(VTOFFSET.cities.v); return o == 0 ? nil : _accessor.directString(at: _accessor.vector(at: o) + index * 4) }
-  public static func startStation(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 31) }
+  ///  Datum reduction period, separate from the constituent-fit epoch.
+  public var datumEpoch: Slackwater_Epoch? { let o = _accessor.offset(VTOFFSET.datumEpoch.v); return o == 0 ? nil : Slackwater_Epoch(_accessor.bb, o: _accessor.indirect(o + _accessor.position)) }
+  public static func startStation(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 32) }
   public static func add(id: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: id, at: VTOFFSET.id.p) }
   public static func add(name: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: name, at: VTOFFSET.name.p) }
   public static func add(kind: Slackwater_Kind, _ fbb: inout FlatBufferBuilder) { fbb.add(element: kind.rawValue, def: 0, at: VTOFFSET.kind.p) }
@@ -1133,6 +1136,7 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
   public static func add(contextDerived: Bool, _ fbb: inout FlatBufferBuilder) { fbb.add(element: contextDerived, def: false,
    at: VTOFFSET.contextDerived.p) }
   public static func addVectorOf(cities: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: cities, at: VTOFFSET.cities.p) }
+  public static func add(datumEpoch: Offset, _ fbb: inout FlatBufferBuilder) { fbb.add(offset: datumEpoch, at: VTOFFSET.datumEpoch.p) }
   public static func endStation(_ fbb: inout FlatBufferBuilder, start: UOffset) -> Offset { let end = Offset(offset: fbb.endTable(at: start)); fbb.require(table: end, fields: [4, 6, 20, 58]); return end }
   public static func createStation(
     _ fbb: inout FlatBufferBuilder,
@@ -1166,7 +1170,8 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
     countryCodeOffset countryCode: Offset,
     contextOffset context: Offset = Offset(),
     contextDerived: Bool = false,
-    citiesVectorOffset cities: Offset = Offset()
+    citiesVectorOffset cities: Offset = Offset(),
+    datumEpochOffset datumEpoch: Offset = Offset()
   ) -> Offset {
     let __start = Slackwater_Station.startStation(&fbb)
     Slackwater_Station.add(id: id, &fbb)
@@ -1200,6 +1205,7 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
     Slackwater_Station.add(context: context, &fbb)
     Slackwater_Station.add(contextDerived: contextDerived, &fbb)
     Slackwater_Station.addVectorOf(cities: cities, &fbb)
+    Slackwater_Station.add(datumEpoch: datumEpoch, &fbb)
     return Slackwater_Station.endStation(&fbb, start: __start)
   }
   public static func sortVectorOfStation(offsets:[Offset], _ fbb: inout FlatBufferBuilder) -> Offset {
@@ -1261,6 +1267,7 @@ public struct Slackwater_Station: FlatBufferObject, Verifiable {
     try _v.visit(field: VTOFFSET.context.p, fieldName: "context", required: false, type: ForwardOffset<String>.self)
     try _v.visit(field: VTOFFSET.contextDerived.p, fieldName: "contextDerived", required: false, type: Bool.self)
     try _v.visit(field: VTOFFSET.cities.p, fieldName: "cities", required: false, type: ForwardOffset<Vector<ForwardOffset<String>, String>>.self)
+    try _v.visit(field: VTOFFSET.datumEpoch.p, fieldName: "datumEpoch", required: false, type: ForwardOffset<Slackwater_Epoch>.self)
     _v.finish()
   }
 }
