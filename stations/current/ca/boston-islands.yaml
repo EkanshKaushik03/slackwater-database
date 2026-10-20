@@ -1,0 +1,13 @@
+# Canadian side of the Tongass Passage boundary (IBC mapping v1.3):
+# https://www.internationalboundarycommission.org/en/maps-coordinates/coordinates.php
+region: CA-BC
+sources:
+  - noaa/PCT2661
+redirect_from:
+  - /currents/us/ak/boston-islands/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    noaa/PCT2661:
+      position: [54.68333, -130.56667]
+      coastline: unverifiable
