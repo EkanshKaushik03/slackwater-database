@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 77
+        score: 82
         factors:
-          epoch: 0.713
+          epoch: 1
           recency: 0.85
           source: 0.949
           quality: 1
@@ -26,9 +26,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/royan-308-fra-refmar
-        score: 58
+        score: 64
         factors:
-          epoch: 0.713
+          epoch: 1
           recency: 0.85
           source: 0.02
           quality: 1

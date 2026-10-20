@@ -10,6 +10,12 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import pinned from "./uhslc-metadata.json" with { type: "json" };
+import jhodOriginators from "../jhod/ticon-originators.json" with { type: "json" };
+
+const jhodRecord = (code: string): string | undefined => {
+  const id = (jhodOriginators as Record<string, string>)[code.toUpperCase()];
+  return id ? `jhod/${id}` : undefined;
+};
 
 /** The fields fetch-uhslc-metadata.ts pins from a UHSLC metadata file. */
 export interface UhslcMetadata {
@@ -116,6 +122,12 @@ const UHSLC_RULES: {
     id: (_, meta) => kartverketRecord(meta.station),
     unambiguous: false,
   },
+  {
+    source: /^Japan Oceanographic Data Center$/i,
+    number: /^HD\d{2}$/i,
+    id: (n) => jhodRecord(n),
+    unambiguous: true,
+  },
 ];
 
 /** Whether UHSLC's metadata covers this TICON record. A record it covers
@@ -137,14 +149,12 @@ export function originatorInId(ticonId: string): string | undefined {
   // CMEMS codes come from the place name, so they match one only by chance.
   if (parts.at(-1) === "nhs" && parts.at(-2) === "nor")
     return `kartverket/${parts.at(-3)!.toUpperCase()}`;
+  if (parts.at(-1) === "jodc_jcg" && parts.at(-2) === "jpn")
+    return jhodRecord(parts.at(-3)!);
   return undefined;
 }
 
-/**
- * The record id a TICON relay declares as its originator, if any, and whether
- * the declaration names one gauge without needing harmonics to confirm it: an
- * id in the relay's own name, or a NOAA station number from NOAA.
- */
+/** Explicit gauge identifiers establish identity without harmonic agreement; UHSLC's JODC HD codes count alongside relay ids and NOAA numbers. */
 export function declaration(
   ticonId: string,
   metadata: Record<string, UhslcMetadata> = pinned,

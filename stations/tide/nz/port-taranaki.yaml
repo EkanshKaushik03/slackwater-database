@@ -23,8 +23,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 1
-        issues:
-          - MHHW (3.198) < MHW (3.199)
     ticon/taranaki-076a-nzl-uhslc_rq:
       position: [-39.05, 174.033]
       coastline: unverifiable
@@ -35,7 +33,7 @@ computed:
         score: 0
         factors:
           epoch: 1
-          recency: 0.98
+          recency: 0.93
           source: 0.99
           quality: 1
           amplitude: 1

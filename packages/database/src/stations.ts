@@ -1,6 +1,7 @@
 import {
   Constituent,
   Datum,
+  DatumFrame,
   DatumsSource,
   HeightOffsetType,
   Kind,
@@ -173,6 +174,44 @@ function readEpoch(index: number): StationData["epoch"] {
   return { start: epoch.start()!, end: epoch.end()! };
 }
 
+function readDatumEpoch(index: number): StationData["datum_epoch"] {
+  const epoch = db.stations(index)!.datumEpoch();
+  return epoch ? { start: epoch.start()!, end: epoch.end()! } : undefined;
+}
+
+function readDatumFrame(index: number): StationData["datum_frame"] {
+  switch (db.stations(index)!.datumFrame()) {
+    case DatumFrame.Gauge:
+      return "gauge";
+    case DatumFrame.Constituent:
+      return "constituent";
+    default:
+      return undefined;
+  }
+}
+
+function readDatumCoverage(index: number): StationData["datum_coverage"] {
+  const coverage = db.stations(index)!.datumCoverage();
+  return coverage
+    ? {
+        months: coverage.months(),
+        observed_hours: coverage.observedHours(),
+        inferred_hours: coverage.inferredHours(),
+      }
+    : undefined;
+}
+
+function readDatumsSource(index: number): StationData["datums_source"] {
+  switch (db.stations(index)!.datumsSource()) {
+    case DatumsSource.Observed:
+      return "observed";
+    case DatumsSource.Harmonic:
+      return "harmonic";
+    default:
+      return undefined;
+  }
+}
+
 function readCurrent(index: number): CurrentData | undefined {
   const table = db.stations(index)!.current();
   if (!table) return undefined;
@@ -246,10 +285,6 @@ function readStation(index: number): Station {
 
   const chartDatum = t.chartDatum();
   if (chartDatum !== null) station.chart_datum = chartDatum;
-  if (t.datumsSource() === DatumsSource.Observed)
-    station.datums_source = "observed";
-  else if (t.datumsSource() === DatumsSource.Harmonic)
-    station.datums_source = "harmonic";
 
   const source = t.source();
   if (source) {
@@ -336,9 +371,29 @@ function readStation(index: number): Station {
       enumerable: true,
       configurable: true,
       // A station's own epoch wins; a subordinate without one reports the
-      // period its inherited constituents were computed over. Same precedence
+      // source-reported period of its reference. Same precedence
       // the quality evaluation uses, so a read/write round-trip is lossless.
       get: () => readEpoch(index) ?? readEpoch(dataIndex(station)),
+    },
+    datum_epoch: {
+      enumerable: true,
+      configurable: true,
+      get: () => readDatumEpoch(dataIndex(station)),
+    },
+    datum_frame: {
+      enumerable: true,
+      configurable: true,
+      get: () => readDatumFrame(dataIndex(station)),
+    },
+    datum_coverage: {
+      enumerable: true,
+      configurable: true,
+      get: () => readDatumCoverage(dataIndex(station)),
+    },
+    datums_source: {
+      enumerable: true,
+      configurable: true,
+      get: () => readDatumsSource(dataIndex(station)),
     },
   });
 

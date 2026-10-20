@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 80
+        score: 83
         factors:
-          epoch: 0.838
+          epoch: 1
           recency: 0.91
           source: 0.949
           quality: 1
@@ -26,9 +26,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/saint_martin-159-fra-refmar
-        score: 61
+        score: 65
         factors:
-          epoch: 0.838
+          epoch: 1
           recency: 0.91
           source: 0.02
           quality: 1

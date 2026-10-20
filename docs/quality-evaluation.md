@@ -21,6 +21,7 @@ This database collects tidal harmonic constants and datums for several thousand 
 | NOAA CO-OPS (United States)               | Authoritative. Reference stations with harmonic constants, and subordinate stations.                                                                                                                            |
 | Toitū Te Whenua LINZ (New Zealand)        | Authoritative. Reference stations.                                                                                                                                                                              |
 | Kartverket, Hydrographic Service (Norway) | Authoritative. Reference stations.                                                                                                                                                                              |
+| Japan Coast Guard JHOD (Japan)            | Authoritative. Reference stations.                                                                                                                                                                              |
 | Danish Meteorological Institute           | Fits of astronomical predictions. No gauge-authority claim; source priority 50 (confidence 0.495), an engineering ranking independent of TICON's DMI relay priority. No original observation epoch is inferred. |
 | TICON-4                                   | Relay. Constants computed from GESLA-4 sea-level records supplied by many agencies.                                                                                                                             |
 | Canadian Hydrographic Service             | Station identity only. No harmonic constants, so not evaluated.                                                                                                                                                 |
@@ -71,17 +72,21 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 
 ### Datum consistency
 
-**What it catches.** Tidal datums are averages of particular sets of heights, and their definitions fix their order (Gill & Schultz, 2001; NOAA, 2003). Mean high water (MHW) is the mean of all high waters and mean low water (MLW) the mean of all low waters, so any real tide has MHW above MLW, with mean sea level (MSL) and mean tide level (MTL) between them. Mean lower low water (MLLW) averages only the lower low of each tidal day and cannot exceed MHW. The IHO defines Lowest Astronomical Tide (LAT) as the lowest level that can be predicted under average meteorological conditions and any combination of astronomical conditions, and Highest Astronomical Tide (HAT) as the highest (IHO, S-32; IHO, M-3, Resolution 3/1919). LAT therefore cannot lie above MLW, and HAT cannot lie below mean higher high water (MHHW). Datums that break these relations were computed from the wrong data, mislabeled, or mix vertical frames, and predictions referred to them as chart datum would be wrong by the size of the error.
+**What it catches.** Tidal datums are averages of particular sets of heights, and their definitions fix their order (Gill & Schultz, 2001; NOAA, 2003). Mean high water (MHW) is the mean of all high waters and mean low water (MLW) the mean of all low waters, so any real tide has MHW above MLW, with mean sea level (MSL) and mean tide level (MTL) between them. Mean lower low water (MLLW) averages only the lower low of each tidal day and cannot exceed MHW. The IHO defines Lowest Astronomical Tide (LAT) as the lowest level that can be predicted under average meteorological conditions and any combination of astronomical conditions, and Highest Astronomical Tide (HAT) as the highest (IHO, S-32; IHO, M-3, Resolution 3/1919). For means from that same harmonic prediction, LAT cannot lie above MLW and HAT cannot lie below mean higher high water (MHHW). Observed means include weather and can cover a different period, so these two comparisons need an allowance. Datums that break these relations were computed from the wrong data, mislabeled, or mix vertical frames, and predictions referred to them as chart datum would be wrong by the size of the error.
 
 **Rejected** when any of these holds:
 
 - MHW is at or below MSL, or MSL is at or below MLW.
 - MTL lies above MHW or below MLW.
-- MLW lies below LAT.
+- MLW lies below LAT by more than 5 cm for observed means, or by any amount for harmonic means.
 - MHW lies below MLLW.
-- HAT lies below MHHW.
+- HAT lies below MHHW by more than 5 cm for observed means, or by any amount for harmonic means.
+
+NOAA’s published mean datums receive the observed-mean bound allowance even when `datums_source` is absent on its mixed datum tables. An explicit `harmonic` flag stays strict. Other unclassified providers stay strict until their mean-datum provenance is established.
 
 **Noted but not rejected**, because they can fail legitimately by small amounts or by construction:
+
+- Observed MLW/LAT or HAT/MHHW disagreements within 5 cm. This project screening allowance is informed by centimetre-scale masked-record mean changes and paired NOAA residuals. It is not an accuracy guarantee; larger differences still flag an unsuitable model or observation period.
 
 - MHHW below MHW, or MLW below MLLW. The pairs are equal where each tidal day has one high and one low water and nearly equal where the diurnal inequality is small, so rounding can flip them by millimeters.
 - Mean high and low water springs (MHWS, MLWS) inside MHW and MLW. This database computes them with the Admiralty approximation, MSL ± (M2 + S2) ([docs/datums.md](datums.md)), which ignores the diurnal constituents and underestimates the range where the diurnal tide is large.
@@ -95,17 +100,17 @@ These checks are pass or fail. A record that fails any of them is rejected and g
 
 **Threshold.** A mean range under 2 cm. This is an engineering choice, twice the 10 mm accuracy that GLOSS asks of a tide gauge (IOC, 2002). The IHO treats a range under about 0.30 m as negligible for charting, which calls for mean sea level as the datum rather than for rejecting the record (IHO, M-3, Resolution 3/1919).
 
-**Limitations.** In strongly diurnal water the great diurnal range (MHHW − MLLW) is the more natural measure, though the two converge there. A subordinate is judged on its reference station's range, not on the range after its own height differences, so a subordinate with a small height ratio can pass on its reference's range. Water with a tiny tide and a large seasonal swing can clear the floor by millimeters; Cobourg, on Lake Ontario, clears it by 6 mm. The seasonal label below exists for such water.
+**Limitations.** In strongly diurnal water the great diurnal range (MHHW − MLLW) is the more natural measure, though the two converge there. A subordinate is judged on its reference station's range, not on the range after its own height differences, so a subordinate with a small height ratio can pass on its reference's range. Water with a tiny tide and a large seasonal swing can clear the floor by millimeters; Cobourg, on Lake Ontario, is one example. The seasonal label below exists for such water.
 
 ### Superseded relay
 
-**What it catches.** A second, indirect answer for a gauge whose operator already publishes one. TICON-4 reanalyzes many gauges that NOAA, Kartverket and LINZ operate, and those agencies publish harmonic constants for the same gauges, analyzed with their own quality control and over their own chosen period (Parker, 2007). A relay is matched to its operator's record only by what it declares:
+**What it catches.** A second, indirect answer for a gauge whose operator already publishes one. TICON-4 reanalyzes many gauges that NOAA, Kartverket, LINZ and JHOD operate, and those agencies publish harmonic constants for the same gauges, analyzed with their own quality control and over their own chosen period (Parker, 2007). A relay is matched to its operator's record only by what it declares:
 
-- TICON's NOAA relays carry the NOAA station number in their id, and its Norwegian Hydrographic Service relays the Kartverket station code.
-- UHSLC's station metadata names the originating agency and, for NOAA and LINZ, its station number. For the Norwegian Hydrographic Service it gives no number, and the gauge is matched to the Kartverket station of the same name, ignoring accents (Vardø matches Vardo).
+- TICON's NOAA relays carry the NOAA station number in their id, and its Norwegian Hydrographic Service relays the Kartverket station code, and its JODC Coast Guard relays an `HD` code matched through [JHOD's reviewed crosswalk](../sources/jhod/ticon-originators.json).
+- UHSLC's station metadata names the originating agency and, for NOAA and LINZ, its station number. JODC originator `HD` codes use the same JHOD crosswalk. For the Norwegian Hydrographic Service it gives no number, and the gauge is matched to the Kartverket station of the same name, ignoring accents (Vardø matches Vardo).
 - A TICON record that UHSLC's metadata does not cover, such as a fast-delivery series, shares what another record of its gauge (see [Same identifier](#same-identifier)) declares. A record the metadata covers speaks for itself, even when no rule accepts what it names: Bermuda's 1932–1949 series gives St. George's under UHSLC's own data source, so it declares nothing rather than taking its 2000s sibling's Ferry Reach, 0.75 km away. A gauge whose records declare two different originators stops the evaluation.
 
-The relay is rejected when its operator's record has harmonic constants, passes every other check here, lies within 10 km, and has an M2 amplitude that does not contradict the relay's (beyond both a 10% ratio and the amplitude tolerance). Beyond 10 km the declaration is more likely wrong than the coordinates. A relay that fails either test is left to deduplication. The merge report joins a superseded relay's route to its operator's, and also joins a relay whose own id, or a NOAA station number from NOAA, names a record within 2 km even when their M2 disagree, since the number says which gauge it is; such a relay stays accepted or rejected as quality decides. A relay whose M2 disagrees with its operator's record by more than one gauge analyzed twice does (see [Disagreeing duplicates](#disagreeing-duplicates)) says so in `issues`. When the operator publishes the gauge only as a subordinate station, not at all, or with a record that fails a check, the relay stands in for it. TICON's historical Rijkswaterstaat series is also rejected, because the current Rijkswaterstaat series covers the same gauges.
+The relay is rejected when its operator's record has harmonic constants, passes every other check here, lies within 10 km, and has an M2 amplitude that does not contradict the relay's (beyond both a 10% ratio and the amplitude tolerance). Beyond 10 km the declaration is more likely wrong than the coordinates. A relay that fails either test is left to deduplication. The merge report joins a superseded relay's route to its operator's, and also joins a relay whose own id, a NOAA station number from NOAA, or a UHSLC JODC HD declaration names a record within 2 km even when their M2 disagree, since the number says which gauge it is; such a relay stays accepted or rejected as quality decides. A relay whose M2 disagrees with its operator's record by more than one gauge analyzed twice does (see [Disagreeing duplicates](#disagreeing-duplicates)) says so in `issues`. When the operator publishes the gauge only as a subordinate station, not at all, or with a record that fails a check, the relay stands in for it. TICON's historical Rijkswaterstaat series is also rejected, because the current Rijkswaterstaat series covers the same gauges.
 
 **Basis.** An editorial choice of this project: the operator's analysis is the primary source.
 
@@ -309,32 +314,33 @@ npm run report:quality -w packages/stations
 
 ### Constants
 
-| Constant                              | Value                                                              | Used by                            |
-| ------------------------------------- | ------------------------------------------------------------------ | ---------------------------------- |
-| `NULL_ISLAND_RADIUS`                  | 0.05°                                                              | Position                           |
-| `EPSILON` (in `checkDatumOrdering`)   | 0.5 m                                                              | Low chart datums below LAT         |
-| `MIN_TIDAL_RANGE`                     | 0.02 m                                                             | Tidal range                        |
-| `SUPERSEDED_SOURCES`                  | `rws_hist`                                                         | Superseded relay                   |
-| `ESSENTIAL_CONSTITUENTS`              | M2, S2, K1, O1                                                     | Essential constituents             |
-| `SEASONAL_OUTLIER_MIN_SA`             | 0.5 m                                                              | Seasonal contamination             |
-| `SEASONAL_OUTLIER_RADIUS`             | 25 km                                                              | Seasonal contamination             |
-| `SEASONAL_OUTLIER_RATIO`              | 5                                                                  | Seasonal contamination             |
-| `AMPLITUDE_TOLERANCE`                 | 0.003 m                                                            | Every amplitude comparison         |
-| `RESOLVED_P1`                         | 0.01 m                                                             | Essential constituents             |
-| `MIN_AMPLITUDE_RATIO`                 | 0.9                                                                | Seasonal contamination, duplicates |
-| `PRINCIPAL_TIDAL_CONSTITUENTS`        | M2, S2, K1, O1                                                     | Seasonal label, amplitudes         |
-| `SEASONAL_DOMINANCE_RATIO`            | 1                                                                  | Seasonal label                     |
-| `WEIGHTS`                             | 20, 10, 20, 15, 20, 15                                             | Score                              |
-| `SOURCE_PRIORITY`, `DEFAULT_PRIORITY` | 0–99 per TICON source suffix; DMI fits and unlisted sources use 50 | Source factor, as 1 − priority/99  |
-| `MIN_DEDUP_DISTANCE`                  | 50 m                                                               | Duplicates                         |
-| `FALLBACK_DEDUP_DISTANCE`             | 100 m                                                              | Duplicates                         |
-| `MAX_DEDUP_DISTANCE`                  | 500 m                                                              | Duplicates                         |
-| `MAX_OFFSET_HEIGHT_DELTA`             | 0.1                                                                | Duplicate subordinates             |
-| `MAX_OFFSET_TIME_DELTA`               | 10 min                                                             | Duplicate subordinates             |
-| `MAX_PROVENANCE_KM`                   | 10 km                                                              | Superseded relay, merge report     |
-| `CLOCK_ERROR_SOURCES`                 | `hct`                                                              | Clock error                        |
-| `jurisdiction` (in `metadata.yaml`)   | NOAA: US and its territories                                       | Choosing the record to keep        |
-| `SAME_GAUGE_M2_DIFFERENCE`            | 0.15                                                               | Disagreeing duplicates             |
+| Constant                              | Value                                                              | Used by                                             |
+| ------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------- |
+| `NULL_ISLAND_RADIUS`                  | 0.05°                                                              | Position                                            |
+| `EPSILON` (in `checkDatumOrdering`)   | 0.5 m                                                              | Low chart datums below LAT                          |
+| `MIN_TIDAL_RANGE`                     | 0.02 m                                                             | Tidal range                                         |
+| `SUPERSEDED_SOURCES`                  | `rws_hist`                                                         | Superseded relay                                    |
+| `ESSENTIAL_CONSTITUENTS`              | M2, S2, K1, O1                                                     | Essential constituents                              |
+| `SEASONAL_OUTLIER_MIN_SA`             | 0.5 m                                                              | Seasonal contamination                              |
+| `SEASONAL_OUTLIER_RADIUS`             | 25 km                                                              | Seasonal contamination                              |
+| `SEASONAL_OUTLIER_RATIO`              | 5                                                                  | Seasonal contamination                              |
+| `OBSERVED_BOUND_ALLOWANCE`            | 0.05 m                                                             | Cross-period observed means against harmonic bounds |
+| `AMPLITUDE_TOLERANCE`                 | 0.003 m                                                            | Every amplitude comparison                          |
+| `RESOLVED_P1`                         | 0.01 m                                                             | Essential constituents                              |
+| `MIN_AMPLITUDE_RATIO`                 | 0.9                                                                | Seasonal contamination, duplicates                  |
+| `PRINCIPAL_TIDAL_CONSTITUENTS`        | M2, S2, K1, O1                                                     | Seasonal label, amplitudes                          |
+| `SEASONAL_DOMINANCE_RATIO`            | 1                                                                  | Seasonal label                                      |
+| `WEIGHTS`                             | 20, 10, 20, 15, 20, 15                                             | Score                                               |
+| `SOURCE_PRIORITY`, `DEFAULT_PRIORITY` | 0–99 per TICON source suffix; DMI fits and unlisted sources use 50 | Source factor, as 1 − priority/99                   |
+| `MIN_DEDUP_DISTANCE`                  | 50 m                                                               | Duplicates                                          |
+| `FALLBACK_DEDUP_DISTANCE`             | 100 m                                                              | Duplicates                                          |
+| `MAX_DEDUP_DISTANCE`                  | 500 m                                                              | Duplicates                                          |
+| `MAX_OFFSET_HEIGHT_DELTA`             | 0.1                                                                | Duplicate subordinates                              |
+| `MAX_OFFSET_TIME_DELTA`               | 10 min                                                             | Duplicate subordinates                              |
+| `MAX_PROVENANCE_KM`                   | 10 km                                                              | Superseded relay, merge report                      |
+| `CLOCK_ERROR_SOURCES`                 | `hct`                                                              | Clock error                                         |
+| `jurisdiction` (in `metadata.yaml`)   | NOAA: US and its territories                                       | Choosing the record to keep                         |
+| `SAME_GAUGE_M2_DIFFERENCE`            | 0.15                                                               | Disagreeing duplicates                              |
 
 The recency reference year, `RECENCY_YEAR`, is the UTC year of `DATUM_EPOCH.end`, 2026. Distances use the haversine formula on a sphere of radius 6371 km (Sinnott, 1984). Position precision is the smaller of the decimal-place counts of latitude and longitude. The quality factor matches the text "quality control issues" in a record's `disclaimers`, which the TICON import fills from TICON's `record_quality` field.
 

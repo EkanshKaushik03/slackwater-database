@@ -1,0 +1,266 @@
+
+  <!--htmlヘッダ-->
+  <?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="Content-Style-Type" content="text/css" />
+      <meta http-equiv="Content-Script-Type" content="text/javascript" />
+      <!-- 191225 modified  -->
+      <title>Realtime tidal data at Uno</title>
+      <!-- 191225 -->
+      <!-- <link href="https://www1.kaiho.mlit.go.jp/css/format.css" rel="stylesheet" type="text/css" /> -->
+      <link href="https://www1.kaiho.mlit.go.jp/css/format_en.css" rel="stylesheet" type="text/css">
+      <link href="https://www1.kaiho.mlit.go.jp/css/main.css" rel="stylesheet" type="text/css" />
+      <link rel="alternate stylesheet" type="text/css" href="https://www1.kaiho.mlit.go.jp/css/font_l.css" title="large" />
+      <link rel="alternate stylesheet" type="text/css" href="https://www1.kaiho.mlit.go.jp/css/font_s.css" title="short" />
+      <link rel="stylesheet" type="text/css" href="https://www1.kaiho.mlit.go.jp/css/font_m.css" title="medium" />
+      <script src="https://www1.kaiho.mlit.go.jp/js/styleswitcher.js" type="text/javascript"></script>
+      <script src="https://www1.kaiho.mlit.go.jp/js/google_j.js" type="text/javascript"></script>
+      <style type="text/css">
+        td.right1 { text-align: right; }
+        /*チェックは隠す*/
+        .checkbox_hidden { display: none; }
+        /*ボックス全体*/
+        .accbox { max-width: 100%; }
+        /*ラベル*/
+        .accbox label { display: block;
+                        transition: all 0.5s;
+                      }
+        /*アイコンを表示*/
+        .accbox label:before { content: '\f054';
+                               font-family: 'FontAwesome';
+                               padding-right: 8px;
+                             }
+        /*ラベルホバー時*/
+        .accbox label:hover { background: #add8e6; }
+        /*チェックは隠す*/
+        .accbox input { display: none; }
+        /*中身を非表示にしておく*/
+        .accbox .accshow { height: 0;
+                           padding: 0;
+                           overflow: hidden;
+                           opacity: 0;
+                           transition: 0.8s; }
+        /*クリックで中身表示*/
+        .cssacc:checked + label + .accshow { height: auto;
+                                             padding: 5px;
+                                             border: 1px dotted;
+                                             opacity: 1; }
+        .accbox .accshow p { margin: 15px 10px }
+        /*アイコンを入れ替える*/
+        .cssacc:checked + label:before { content: '\f078'; }
+      </style>
+    </head>
+
+
+    <body>
+      <div id="container">
+
+        <!--ヘッダ開始-->
+        <div id="header">
+
+          <!--最上部リンク開始-->
+          <div id="txthead" class="ClearFix">
+            <ul id="headright">
+            <li>｜<a href="https://www1.kaiho.mlit.go.jp/joint/form_mail/form_mail_e.cgi?section=jhod">Contact to JHOD</a> | </li>
+            <li class="eng"><a href="gauge.php?s=0115">Japanese</a></li>
+            </ul>
+          </div>
+          <!--最上部リンク終了-->
+
+          <!--ヘッダイメージ開始-->
+          <div id="subheader">
+            <img src="kaso-header.jpg" alt="">
+            <h1>Hydrographic and Oceanographic Department</h1>
+            <!--<div id="function">
+            <!--  <div id="txtsize">font size
+            <!--    <a onclick="setActiveStyleSheet(&#39;large&#39;);return false;" id="mojiL" href="javascript:void(0);">L</a>
+            <!--    <a onclick="setActiveStyleSheet(&#39;medium&#39;);return false;" id="mojiM" href="javascript:void(0);">M</a>
+            <!--    <a onclick="setActiveStyleSheet(&#39;short&#39;);return false;" id="mojiS" href="javascript:void(0);">S</a>
+            <!--    <div id="search"><div id="___gcse_0"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-ja" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box" id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="検索" id="gsc-i-id1" placeholder="カスタム検索" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; background: url(&quot;https://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px; outline: none;" dir="ltr" spellcheck="false"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;" title="検索ボックスをクリア" role="button"><span class="gscb_a" id="gs_cb50" aria-hidden="true">×</span></a></div></td></tr></tbody></table></div></td><td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg width="13" height="13" viewBox="0 0 13 13"><title>検索</title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path></svg></button></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="結果をクリア">&nbsp;</div></td></tr></tbody></table></form></div></div></div>
+            <!--    </div>
+            <!--  </div>
+            <!--文字サイズ変更および検索終了-->
+          </div>
+          <!--ヘッダイメージ終了-->
+
+          <!--メイン項目リンクボタン開始
+          	ボタンハイライト方法：class に "on" を追加すると、背景色がかわります。
+            例) 「海の情報」のボタンをハイライト状態にしておきたい場合：
+            	<a href="../inf/umi.html" class="mainbtn2 on"><span>海の情報</span></a>
+              -->
+          <table border="0" cellpadding="0" cellspacing="0" id="mainlink">
+            <tbody>
+            <tr>
+            <td><a href="https://www1.kaiho.mlit.go.jp/eng/activity.html">About us</a></td>
+            <td><a href="https://www1.kaiho.mlit.go.jp/KOKAI/ENC/enc_index_e.html">Electronic Charts</a></td>
+            <td><a href="https://www1.kaiho.mlit.go.jp/TUHO/tuho/nm_en.html">Notices to Mariners </a></td>
+            <td><a href="https://www1.kaiho.mlit.go.jp/TUHO/keiho/navarea11_en.html">Navigational Warnings</a></td>
+            <td><a href="https://www1.kaiho.mlit.go.jp/TIDE/gauge/index_eng.php">Realtime Tidal Data</a></td>
+            <td><a href="http://www.jodc.go.jp/">Oceanographic Data: JODC</a></td>
+            <td><a href="http://www.eahc.asia/">EAHC</a></td>
+            <td><a href="https://www1.kaiho.mlit.go.jp/eng/kokusai_e.html">International Activities</a></td>
+            </tr>
+            </tbody>
+          </table>
+        <!-- /mainlink -->
+        </div>
+        <!--ヘッダ終了-->
+
+        
+        <!--パンくずメニュー開始-->
+        <div id="topbread">
+          <a href="https://www1.kaiho.mlit.go.jp/jhd-E.html">JHOD TOP</a> &gt;
+          <a href="https://www1.kaiho.mlit.go.jp/TIDE/gauge/index_eng.php">Realtime tidal data</a> &gt;
+          Uno </div>
+        <!--パンくずメニュー終了-->
+        
+        <!--メイン記事開始-->
+        <div id="submain">
+
+          <!-- 英語ページへのリンクはここに追加  -->
+
+          <!--ページタイトル-->
+          <h1><span>Realtime tidal data at Uno</span></h1>
+
+          <div class="inner">
+            <!--本文開始-->
+            <h2>About gauge and tidal data</h2>
+
+            <blockquote>
+              Latitude: 34°29′N</br>
+              Longitude: 133°57′E</br>
+              Datum level: 140cm below mean sea level</br>
+              Obs. : tide observation by every 5 minutes</br>
+              Pred.: tide prediction by every 5 minutes</br>
+              Obs.-Pred. : difference between observation and prediction</br>
+            </blockquote>
+            
+            
+            <!--- 1日分の潮汐曲線 --->
+            <h2>Tidal curve【 2026/10/20 】</h2>
+            
+            
+            <!--- 日付の表示変更プルダウン --->
+            <form action="", method="post" style="margin: 0px; float: right; display:inline;">
+              <select name="dspymd">
+                
+                <option value="20261020">2026/10/20</option>
+<option value="20261019">2026/10/19</option>
+<option value="20261018">2026/10/18</option>
+<option value="20261017">2026/10/17</option>
+<option value="20261016">2026/10/16</option>
+<option value="20261015">2026/10/15</option>
+<option value="20261014">2026/10/14</option>
+<option value="20261013">2026/10/13</option>
+                
+              </select>
+              <input type="submit" value="show">
+            </form>
+
+            <p class="imgleft"><img  src="./temp/Uno.png" alt="tidal curve"></p><p class="imgleft"><img  src="./temp/Uno_diff.png" alt="obs-pred"></p>            
+            
+            <!--- 推算値テキスト --->
+            <h2>Hourly prediction</h2>
+            
+            <div id="contents1">
+              Unit：cm</br>
+              
+              
+              <table border="1" style="border-collapse: collapse">
+                <tr>
+                  <td class="mint5">month day</td>
+                  <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td>
+                  <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+                  <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+                  <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+                  <td>20</td><td>21</td><td>22</td><td>23</td>
+                </tr>
+                <tr>
+                  <td class="mint5">1020</td>
+                  <td class='right1'>131</td><td class='right1'>128</td><td class='right1'>132</td><td class='right1'>140</td><td class='right1'>149</td><td class='right1'>156</td><td class='right1'>156</td><td class='right1'>148</td><td class='right1'>133</td><td class='right1'>115</td><td class='right1'>99</td><td class='right1'>87</td><td class='right1'>85</td><td class='right1'>95</td><td class='right1'>115</td><td class='right1'>142</td><td class='right1'>172</td><td class='right1'>199</td><td class='right1'>219</td><td class='right1'>227</td><td class='right1'>222</td><td class='right1'>206</td><td class='right1'>182</td><td class='right1'>156</td>                </tr>
+              </table>
+                            
+              </br>
+              
+            </div><!-- contents1 end -->
+            
+            
+            <!--- 観測値テキスト --->
+            <h2>Observation data</h2>
+            
+            <div id="contents2">
+              
+<div class="accbox">
+<input type="checkbox" id="label1" class="cssacc">
+<label for="label1">Click to show</label>
+<div class="accshow">
+
+<pre>
+Record of TidalHeight(cm)
+Location          Uno 
+Longitude         133-57 
+Latitude          34-29 
+TimeZone          -09 00(JST)
+TidalHeightDatum  140cm below mean sea level.
+a note: 
+Broken or No transmit data ---> "9999"
+year  date  time   cm
+2026 10 20 00 00  163</br>2026 10 20 00 05  162</br>2026 10 20 00 10  161</br>2026 10 20 00 15  160</br>2026 10 20 00 20  160</br>2026 10 20 00 25  160</br>2026 10 20 00 30  159</br>2026 10 20 00 35  159</br>2026 10 20 00 40  159</br>2026 10 20 00 45  158</br>2026 10 20 00 50  158</br>2026 10 20 00 55  157</br>2026 10 20 01 00  157</br>2026 10 20 01 05  157</br>2026 10 20 01 10  157</br>2026 10 20 01 15  156</br>2026 10 20 01 20  156</br>2026 10 20 01 25  157</br>2026 10 20 01 30  157</br>2026 10 20 01 35  157</br>2026 10 20 01 40  157</br>2026 10 20 01 45  159</br>2026 10 20 01 50  159</br>2026 10 20 01 55  159</br>2026 10 20 02 00  160</br>2026 10 20 02 05  161</br>2026 10 20 02 10  162</br>2026 10 20 02 15  163</br>2026 10 20 02 20  164</br>2026 10 20 02 25  165</br>2026 10 20 02 30  165</br>2026 10 20 02 35  167</br>2026 10 20 02 40  168</br>2026 10 20 02 45  169</br>2026 10 20 02 50  170</br>2026 10 20 02 55  171</br>2026 10 20 03 00  172</br>2026 10 20 03 05  172</br>2026 10 20 03 10  173</br>2026 10 20 03 15  175</br>2026 10 20 03 20  176</br>2026 10 20 03 25  177</br>2026 10 20 03 30  178</br>2026 10 20 03 35  179</br>2026 10 20 03 40  181</br>2026 10 20 03 45  181</br>2026 10 20 03 50  183</br>2026 10 20 03 55  184</br>2026 10 20 04 00  185</br>2026 10 20 04 05  186</br>2026 10 20 04 10  187</br>2026 10 20 04 15  188</br>2026 10 20 04 20  189</br>2026 10 20 04 25  189</br>2026 10 20 04 30  190</br>2026 10 20 04 35  190</br>2026 10 20 04 40  191</br>2026 10 20 04 45  192</br>2026 10 20 04 50  192</br>2026 10 20 04 55  193</br>2026 10 20 05 00  194</br>2026 10 20 05 05  194</br>2026 10 20 05 10  195</br>2026 10 20 05 15  194</br>2026 10 20 05 20  194</br>2026 10 20 05 25  194</br>2026 10 20 05 30  194</br>2026 10 20 05 35  193</br>2026 10 20 05 40  193</br>2026 10 20 05 45  193</br>2026 10 20 05 50  193</br>2026 10 20 05 55  193</br>2026 10 20 06 00  193</br>2026 10 20 06 05  192</br>2026 10 20 06 10  192</br>2026 10 20 06 15  191</br>2026 10 20 06 20  191</br>2026 10 20 06 25  190</br>2026 10 20 06 30  189</br>2026 10 20 06 35  189</br>2026 10 20 06 40  187</br>2026 10 20 06 45  187</br>2026 10 20 06 50  186</br>2026 10 20 06 55  185</br>2026 10 20 07 00  184</br>2026 10 20 07 05  184</br>2026 10 20 07 10  183</br>2026 10 20 07 15  182</br>2026 10 20 07 20  181</br>2026 10 20 07 25  180</br>2026 10 20 07 30  180</br>2026 10 20 07 35  179</br>2026 10 20 07 40  177</br>2026 10 20 07 45  176</br>2026 10 20 07 50  176</br>2026 10 20 07 55  175</br>2026 10 20 08 00  174</br>2026 10 20 08 05  173</br>2026 10 20 08 10  172</br>2026 10 20 08 15  170</br>2026 10 20 08 20  169</br>2026 10 20 08 25  168</br>2026 10 20 08 30  167</br>2026 10 20 08 35  166</br>2026 10 20 08 40  164</br>2026 10 20 08 45  162</br>2026 10 20 08 50  160</br>2026 10 20 08 55  159</br>2026 10 20 09 00  157</br>2026 10 20 09 05  156</br>2026 10 20 09 10  154</br>2026 10 20 09 15  151</br>2026 10 20 09 20  150</br>2026 10 20 09 25  149</br>2026 10 20 09 30  147</br>2026 10 20 09 35  146</br>2026 10 20 09 40  144</br>2026 10 20 09 45  143</br>2026 10 20 09 50  141</br>2026 10 20 09 55  140</br>2026 10 20 10 00  138</br>2026 10 20 10 05  137</br>2026 10 20 10 10  136</br>2026 10 20 10 15  134</br>2026 10 20 10 20  133</br>2026 10 20 10 25  131</br>2026 10 20 10 30  130</br>2026 10 20 10 35  128</br>2026 10 20 10 40  127</br>2026 10 20 10 45  127</br>2026 10 20 10 50  126</br>2026 10 20 10 55  125</br>2026 10 20 11 00  124</br>2026 10 20 11 05  123</br>2026 10 20 11 10  123</br>2026 10 20 11 15 9999</br>2026 10 20 11 20 9999</br>2026 10 20 11 25 9999</br>2026 10 20 11 30 9999</br>2026 10 20 11 35 9999</br>2026 10 20 11 40 9999</br>2026 10 20 11 45 9999</br>2026 10 20 11 50 9999</br>2026 10 20 11 55 9999</br>2026 10 20 12 00 9999</br>2026 10 20 12 05 9999</br>2026 10 20 12 10 9999</br>2026 10 20 12 15 9999</br>2026 10 20 12 20 9999</br>2026 10 20 12 25 9999</br>2026 10 20 12 30 9999</br>2026 10 20 12 35 9999</br>2026 10 20 12 40 9999</br>2026 10 20 12 45 9999</br>2026 10 20 12 50 9999</br>2026 10 20 12 55 9999</br>2026 10 20 13 00 9999</br>2026 10 20 13 05 9999</br>2026 10 20 13 10 9999</br>2026 10 20 13 15 9999</br>2026 10 20 13 20 9999</br>2026 10 20 13 25 9999</br>2026 10 20 13 30 9999</br>2026 10 20 13 35 9999</br>2026 10 20 13 40 9999</br>2026 10 20 13 45 9999</br>2026 10 20 13 50 9999</br>2026 10 20 13 55 9999</br>2026 10 20 14 00 9999</br>2026 10 20 14 05 9999</br>2026 10 20 14 10 9999</br>2026 10 20 14 15 9999</br>2026 10 20 14 20 9999</br>2026 10 20 14 25 9999</br>2026 10 20 14 30 9999</br>2026 10 20 14 35 9999</br>2026 10 20 14 40 9999</br>2026 10 20 14 45 9999</br>2026 10 20 14 50 9999</br>2026 10 20 14 55 9999</br>2026 10 20 15 00 9999</br>2026 10 20 15 05 9999</br>2026 10 20 15 10 9999</br>2026 10 20 15 15 9999</br>2026 10 20 15 20 9999</br>2026 10 20 15 25 9999</br>2026 10 20 15 30 9999</br>2026 10 20 15 35 9999</br>2026 10 20 15 40 9999</br>2026 10 20 15 45 9999</br>2026 10 20 15 50 9999</br>2026 10 20 15 55 9999</br>2026 10 20 16 00 9999</br>2026 10 20 16 05 9999</br>2026 10 20 16 10 9999</br>2026 10 20 16 15 9999</br>2026 10 20 16 20 9999</br>2026 10 20 16 25 9999</br>2026 10 20 16 30 9999</br>2026 10 20 16 35 9999</br>2026 10 20 16 40 9999</br>2026 10 20 16 45 9999</br>2026 10 20 16 50 9999</br>2026 10 20 16 55 9999</br>2026 10 20 17 00 9999</br>2026 10 20 17 05 9999</br>2026 10 20 17 10 9999</br>2026 10 20 17 15 9999</br>2026 10 20 17 20 9999</br>2026 10 20 17 25 9999</br>2026 10 20 17 30 9999</br>2026 10 20 17 35 9999</br>2026 10 20 17 40 9999</br>2026 10 20 17 45 9999</br>2026 10 20 17 50 9999</br>2026 10 20 17 55 9999</br>2026 10 20 18 00 9999</br>2026 10 20 18 05 9999</br>2026 10 20 18 10 9999</br>2026 10 20 18 15 9999</br>2026 10 20 18 20 9999</br>2026 10 20 18 25 9999</br>2026 10 20 18 30 9999</br>2026 10 20 18 35 9999</br>2026 10 20 18 40 9999</br>2026 10 20 18 45 9999</br>2026 10 20 18 50 9999</br>2026 10 20 18 55 9999</br>2026 10 20 19 00 9999</br>2026 10 20 19 05 9999</br>2026 10 20 19 10 9999</br>2026 10 20 19 15 9999</br>2026 10 20 19 20 9999</br>2026 10 20 19 25 9999</br>2026 10 20 19 30 9999</br>2026 10 20 19 35 9999</br>2026 10 20 19 40 9999</br>2026 10 20 19 45 9999</br>2026 10 20 19 50 9999</br>2026 10 20 19 55 9999</br>2026 10 20 20 00 9999</br>2026 10 20 20 05 9999</br>2026 10 20 20 10 9999</br>2026 10 20 20 15 9999</br>2026 10 20 20 20 9999</br>2026 10 20 20 25 9999</br>2026 10 20 20 30 9999</br>2026 10 20 20 35 9999</br>2026 10 20 20 40 9999</br>2026 10 20 20 45 9999</br>2026 10 20 20 50 9999</br>2026 10 20 20 55 9999</br>2026 10 20 21 00 9999</br>2026 10 20 21 05 9999</br>2026 10 20 21 10 9999</br>2026 10 20 21 15 9999</br>2026 10 20 21 20 9999</br>2026 10 20 21 25 9999</br>2026 10 20 21 30 9999</br>2026 10 20 21 35 9999</br>2026 10 20 21 40 9999</br>2026 10 20 21 45 9999</br>2026 10 20 21 50 9999</br>2026 10 20 21 55 9999</br>2026 10 20 22 00 9999</br>2026 10 20 22 05 9999</br>2026 10 20 22 10 9999</br>2026 10 20 22 15 9999</br>2026 10 20 22 20 9999</br>2026 10 20 22 25 9999</br>2026 10 20 22 30 9999</br>2026 10 20 22 35 9999</br>2026 10 20 22 40 9999</br>2026 10 20 22 45 9999</br>2026 10 20 22 50 9999</br>2026 10 20 22 55 9999</br>2026 10 20 23 00 9999</br>2026 10 20 23 05 9999</br>2026 10 20 23 10 9999</br>2026 10 20 23 15 9999</br>2026 10 20 23 20 9999</br>2026 10 20 23 25 9999</br>2026 10 20 23 30 9999</br>2026 10 20 23 35 9999</br>2026 10 20 23 40 9999</br>2026 10 20 23 45 9999</br>2026 10 20 23 50 9999</br>2026 10 20 23 55 9999</br></pre>
+
+
+</div>
+</div>
+
+            
+            </div>
+            <!-- contents2 end -->
+          </div>
+          <!--本文終了-->
+        </div>
+        <!--メイン記事終了-->
+        
+        
+        <!--goTOP-->
+        <div id="gotopArea">
+          <div id="gotopBox">
+            <div id="gotop">
+              <a href="#container">▲top</a>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <!--フッタ開始-->
+        <div id="footer">
+          <div id="footinf" class="ClearFix">
+            <div class="inquiry">
+              Inquiry: <a href="https://www1.kaiho.mlit.go.jp/joint/form_mail/form_mail.cgi?section=jhod">Contact to JHOD</a><br />
+            </div>
+            <!--//inquiry-->
+            <div class="address">
+              <span class="address1">
+                Hydrographic and Oceanographic Department, 3-1-1, Kasumigaseki, Chiyoda-ku, Tokyo 100-8932, Japan
+              </span>
+            </div>
+            <!--//address-->
+            <div class="upDate">
+              <!-- Updated on March 2, 2020 -->
+            </div>
+          </div>
+          <!--//#footinf-->
+          <div id="copy">
+            Copyright (C) Japan Coast Guard, All Rights Reserved.
+          </div>
+        </div>
+        <!--フッタ終了-->
+      </div>
+
+    </body>
+  </html>
+
+
+
+
+

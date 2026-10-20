@@ -40,6 +40,13 @@ enum Kind : ubyte { Tide = 0, Current = 1 }
 enum StationType : ubyte { Reference = 0, Subordinate = 1 }
 enum HeightOffsetType : ubyte { Ratio = 0, Fixed = 1 }
 enum DatumsSource : ubyte { Unknown = 0, Observed = 1, Harmonic = 2 }
+enum DatumFrame : ubyte { Unknown = 0, Gauge = 1, Constituent = 2 }
+
+table DatumCoverage {
+  months: uint;
+  observed_hours: uint;
+  inferred_hours: uint;
+}
 
 /// 12 bytes, contiguous per station. Amplitude in metres (tides) or knots
 /// (currents); phase in degrees. float32 keeps 7 significant digits, which
@@ -211,6 +218,10 @@ table Station {
   context: string;
   context_derived: bool;
   cities: [string];
+  /// Datum reduction period, separate from the constituent-fit epoch.
+  datum_epoch: Epoch;
+  datum_frame: DatumFrame;
+  datum_coverage: DatumCoverage;
 }
 
 root_type Root;

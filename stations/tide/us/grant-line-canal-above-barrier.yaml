@@ -11,13 +11,14 @@ computed:
         accepted: false
         reason: duplicate
         redundant: noaa/9414785
-        score: 56
+        score: 61
         factors:
-          epoch: 0.739
+          epoch: 1
           recency: 0.99
           source: 0.576
           quality: 0
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (1.186) > MLW (1.152)
+          - MLWS (1.202) > MLW (1.162)
+          - MHWS (1.618) < MHW (1.632)

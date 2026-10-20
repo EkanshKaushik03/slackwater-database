@@ -10,13 +10,13 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/guaymas-397a-mex-uhslc_rq
-        score: 63
+        score: 65
         factors:
-          epoch: 0.895
+          epoch: 1
           recency: 0.69
           source: 0.131
           quality: 1
           amplitude: 1
           coverage: 0.049
         issues:
-          - MHWS (2.771) < MHW (2.797)
+          - MHWS (2.797) < MHW (2.808)

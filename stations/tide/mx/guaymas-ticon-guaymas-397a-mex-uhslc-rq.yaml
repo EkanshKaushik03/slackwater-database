@@ -12,11 +12,11 @@ computed:
         accepted: true
         score: 81
         factors:
-          epoch: 0.977
+          epoch: 1
           recency: 0.6
           source: 0.99
           quality: 1
           amplitude: 1
           coverage: 0.03
         issues:
-          - MHWS (2.745) < MHW (2.769)
+          - MHWS (2.699) < MHW (2.724)

@@ -17,6 +17,8 @@ export const MODIFICATIONS_URL =
 export const LICENSE_NAMES: Record<string, string> = {
   "cc-by-4.0": "CC BY 4.0",
   "cc-by-nc-4.0": "CC BY-NC 4.0",
+  "Government Standard Terms of Use 2.0":
+    "Government Standard Terms of Use 2.0",
 };
 
 /**

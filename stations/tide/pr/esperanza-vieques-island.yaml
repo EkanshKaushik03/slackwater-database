@@ -37,8 +37,8 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (8.091) > MLW (8.085)
-          - MHWS (8.165) < MHW (8.187)
+          - MLWS (8.072) > MLW (8.071)
+          - MHWS (8.146) < MHW (8.166)
           - Superseded by noaa/9752695, its operator's own record
     ticon/esperanza_pr-733a-pri-uhslc_rq:
       position: [18.093, -65.47]
@@ -56,6 +56,6 @@ computed:
           amplitude: 1
           coverage: 0.003
         issues:
-          - MLWS (2.085) > MLW (2.082)
-          - MHWS (2.159) < MHW (2.181)
+          - MLWS (2.072) > MLW (2.071)
+          - MHWS (2.146) < MHW (2.166)
           - Superseded by noaa/9752695, its operator's own record

@@ -8,8 +8,9 @@ computed:
       position: [29.57767, -91.82304]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 76
+        accepted: false
+        reason: range
+        score: 0
         factors:
           epoch: 0.93
           recency: 0.99
@@ -18,4 +19,4 @@ computed:
           amplitude: 1
           coverage: 0.063
         issues:
-          - MHWS (0.298) < MHW (0.342)
+          - Tidal range 1.50cm < 2cm threshold

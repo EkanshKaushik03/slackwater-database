@@ -3,6 +3,8 @@ import {
   Current,
   CurrentOffsets,
   Datum,
+  DatumFrame,
+  DatumCoverage,
   DatumsSource,
   Epoch,
   HeightOffsetType,
@@ -209,6 +211,14 @@ export function buildDatabase(
       );
     }
 
+    let datumEpoch = 0;
+    if (s.datum_epoch) {
+      const { start, end } = s.datum_epoch;
+      datumEpoch = memo(epochOffsets, s.datum_epoch, () =>
+        Epoch.createEpoch(builder, str(start), str(end)),
+      );
+    }
+
     let source = 0;
     if (s.source) {
       const { name, id, url, published_harmonics } = s.source;
@@ -325,6 +335,15 @@ export function buildDatabase(
       current = Current.endCurrent(builder);
     }
 
+    const coverage = s.datum_coverage;
+    const datumCoverage = coverage
+      ? DatumCoverage.createDatumCoverage(
+          builder,
+          coverage.months,
+          coverage.observed_hours,
+          coverage.inferred_hours,
+        )
+      : 0;
     Station.startStation(builder);
     Station.addId(builder, id);
     Station.addName(builder, name);
@@ -350,6 +369,12 @@ export function buildDatabase(
     Station.addOffsets(builder, offsets);
     Station.addCurrent(builder, current);
     Station.addEpoch(builder, epoch);
+    Station.addDatumEpoch(builder, datumEpoch);
+    Station.addDatumCoverage(builder, datumCoverage);
+    if (s.datum_frame === "gauge")
+      Station.addDatumFrame(builder, DatumFrame.Gauge);
+    else if (s.datum_frame === "constituent")
+      Station.addDatumFrame(builder, DatumFrame.Constituent);
     Station.addQuality(builder, prediction[i]!.quality);
     Station.addSource(builder, source);
     Station.addLicense(builder, license);

@@ -1,14 +1,33 @@
 sources:
+  - jhod/0057
   - ticon/miyakejima-357a-jpn-uhslc_rq
+  - ticon/miyakejima-hd10-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/miyakejima-tokyo/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    jhod/0057:
+      position: [34.067222222222, 139.48083333333]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 77
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.118
     ticon/miyakejima-357a-jpn-uhslc_rq:
       position: [34.067, 139.482]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 84
+        accepted: false
+        reason: superseded
+        redundant: jhod/0057
+        score: 0
         factors:
           epoch: 1
           recency: 0.92
@@ -16,3 +35,22 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.002
+        issues:
+          - Superseded by jhod/0057, its operator's own record
+    ticon/miyakejima-hd10-jpn-jodc_jcg:
+      position: [34.067217, 139.480833]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: jhod/0057
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.111
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by jhod/0057, its operator's own record

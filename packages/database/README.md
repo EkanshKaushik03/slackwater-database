@@ -27,7 +27,7 @@ console.log(stationsById.get("noaa/9447130"));
 
 `stations` leaves out records the quality evaluation rejected, such as duplicate gauges and implausible datums. `allStations` is the unfiltered catalog, `stationsById` maps an id to its station, and every search function below takes `includeAll: true` to search the full catalog instead of the accepted subset.
 
-Each station carries its identity and location eagerly. The heavy prediction fields — `harmonic_constituents`, `datums`, and `epoch` — are decoded from the database file on first access, so importing the module does not pull every station's prediction data onto the heap. [See the format documentation](https://github.com/openwatersio/slackwater-database/blob/main/docs/database-format.md) for how that works.
+Each station carries its identity and location eagerly. The heavy prediction fields — `harmonic_constituents`, `datums`, `datums_source`, `datum_frame`, `datum_coverage`, `epoch`, and `datum_epoch` — are decoded from the database file on access, so importing the module does not pull every station's prediction data onto the heap. [See the format documentation](https://github.com/openwatersio/slackwater-database/blob/main/docs/database-format.md) for how that works.
 
 Each station has separate `locality`, `region`, and `country` display fields. `country_code` is an ISO 3166-1 alpha-2 code; `region_code`, when available, is an ISO 3166-2 subdivision code. Consumers can therefore omit country or region text when the surrounding page already supplies it.
 
@@ -185,9 +185,11 @@ console.log(stationsById.get("ticon/newlyn-new-gbr-bodc")?.attribution);
 
 What the string contains, and why that is sufficient:
 
-- **The creator credit.** For TICON-4 stations, the citation its authors ask for; for Kartverket, LINZ and DMI, the publishing agency. A source that requires no credit, such as public-domain NOAA data, contributes nothing here.
+- **The creator credit.** For TICON-4 stations, the citation its authors ask for; for Kartverket, LINZ, JHOD and DMI, the publishing agency. JHOD also carries the source editing notice. A source that requires no credit, such as public-domain NOAA data, contributes nothing here.
 - **The licence and its URI**, taken from the station rather than its source. Licence varies within a single source — the TICON stations relayed from CMEMS are CC BY-NC while the rest are CC BY — so the notice names the one that actually applies to the station in hand.
 - **An indication that the material was modified**, pointing at [what this project changes](https://github.com/openwatersio/slackwater-database#modifications-to-source-data): derived datums, normalized names, geocoded location fields, re-fit phases for two GESLA sources, and harmonics fitted from DMI predictions.
+
+JHOD stations name the Government Standard Terms of Use 2.0 and link the publisher's terms.
 
 Those are the three things [CC BY 4.0 section 3(a)(1)](https://creativecommons.org/licenses/by/4.0/) requires a redistributor to pass on. A station whose licence imposes no notice gets the project credit alone:
 

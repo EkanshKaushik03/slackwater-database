@@ -15,6 +15,17 @@ public enum StationType: Hashable, Sendable {
   case subordinate
 }
 
+public enum StationDatumFrame: Hashable, Sendable {
+  case gauge
+  case constituent
+}
+
+public struct StationDatumCoverage: Hashable, Sendable {
+  public let months: Int
+  public let observedHours: Int
+  public let inferredHours: Int
+}
+
 public enum HeightOffsetType: Hashable, Sendable {
   case ratio
   case fixed
@@ -56,6 +67,11 @@ public struct StationLicense: Equatable, Sendable {
   public let url: String?
   public let notes: String?
   public let commercialUse: Bool
+}
+
+public struct StationEpoch: Equatable, Sendable {
+  public let start: String
+  public let end: String
 }
 
 public struct TideOffsets: Equatable, Sendable {
@@ -243,6 +259,36 @@ public struct Station: Identifiable, @unchecked Sendable {
       StationLicense(
         type: $0.type, url: $0.url, notes: $0.notes,
         commercialUse: $0.commercialUse)
+    }
+  }
+
+  /// Source-reported analysis or datum period; TICON uses its constituent fit period.
+  public var epoch: StationEpoch? {
+    (raw.epoch ?? predictionSource.raw.epoch).map {
+      StationEpoch(start: $0.start ?? "", end: $0.end ?? "")
+    }
+  }
+
+  /// Mean-datum reduction period, which can differ from the constituent fit.
+  public var datumEpoch: StationEpoch? {
+    predictionSource.raw.datumEpoch.map {
+      StationEpoch(start: $0.start ?? "", end: $0.end ?? "")
+    }
+  }
+
+  /// Zero of the stored datum values; nil means unspecified, including older files.
+  public var datumFrame: StationDatumFrame? {
+    switch predictionSource.raw.datumFrame {
+    case .gauge: return .gauge
+    case .constituent: return .constituent
+    default: return nil
+    }
+  }
+
+  /// Hourly bins in the reference's observed reduction; nil means unspecified.
+  public var datumCoverage: StationDatumCoverage? {
+    predictionSource.raw.datumCoverage.map {
+      StationDatumCoverage(months: Int($0.months), observedHours: Int($0.observedHours), inferredHours: Int($0.inferredHours))
     }
   }
 

@@ -33,7 +33,7 @@ computed:
         seasonal_dominant: true
         score: 0
         factors:
-          epoch: 0.108
+          epoch: 1
           recency: 0.99
           source: 0.96
           quality: 1

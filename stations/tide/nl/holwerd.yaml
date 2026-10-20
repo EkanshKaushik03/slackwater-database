@@ -11,12 +11,12 @@ computed:
         reason: superseded
         score: 0
         factors:
-          epoch: 0.351
+          epoch: 1
           recency: 0.92
           source: 0.495
           quality: 1
           amplitude: 1
           coverage: 0.173
         issues:
-          - MLWS (-1.165) > MLW (-1.257)
+          - MLWS (-1.149) > MLW (-1.25)
           - "Superseded source: rws_hist"

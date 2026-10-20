@@ -21,8 +21,8 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (0.147) > MLW (0.134)
-          - MHWS (0.163) < MHW (0.165)
+          - MLWS (0.142) > MLW (0.13)
+          - MHWS (0.158) < MHW (0.161)
           - "Seasonal curve peak (0.126m) exceeds the principal tide M2+S2+K1+O1 (0.023m): the yearly swing exceeds the daily one"
     ticon/oskarshamn-osk-swe-cmems:
       position: [57.275002, 16.4781]
@@ -41,6 +41,6 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (0.146) > MLW (0.134)
-          - MHWS (0.162) < MHW (0.165)
+          - MLWS (0.142) > MLW (0.13)
+          - MHWS (0.158) < MHW (0.161)
           - "Seasonal curve peak (0.126m) exceeds the principal tide M2+S2+K1+O1 (0.023m): the yearly swing exceeds the daily one"

@@ -14,9 +14,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 79
+        score: 83
         factors:
-          epoch: 0.768
+          epoch: 1
           recency: 0.92
           source: 0.949
           quality: 1
@@ -29,9 +29,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/ilet_la_mere-535-fra-refmar
-        score: 60
+        score: 65
         factors:
-          epoch: 0.768
+          epoch: 1
           recency: 0.92
           source: 0.02
           quality: 1

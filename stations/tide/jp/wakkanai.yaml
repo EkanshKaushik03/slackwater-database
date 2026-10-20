@@ -20,8 +20,8 @@ computed:
           amplitude: 1
           coverage: 0.018
         issues:
-          - MLWS (1.766) > MLW (1.76)
-          - MHWS (1.852) < MHW (1.859)
+          - MLWS (1.767) > MLW (1.764)
+          - MHWS (1.853) < MHW (1.857)
     ticon/wakkanai-360a-jpn-uhslc_rq:
       position: [45.4, 141.683]
       coastline: unverifiable
@@ -38,5 +38,5 @@ computed:
           amplitude: 1
           coverage: 0.018
         issues:
-          - MLWS (1.762) > MLW (1.755)
-          - MHWS (1.85) < MHW (1.857)
+          - MLWS (1.766) > MLW (1.764)
+          - MHWS (1.854) < MHW (1.857)

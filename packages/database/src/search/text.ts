@@ -6,6 +6,7 @@ import type { StationMeta } from "../types.js";
 const TRANSLITERATE: Record<string, string> = {
   æ: "ae",
   đ: "d",
+  ð: "d",
   ł: "l",
   œ: "oe",
   ø: "o",
@@ -22,7 +23,7 @@ const textSearchIndexOptions: Options<StationMeta> = {
       .normalize("NFD")
       // Strip accents only from Latin bases: other scripts use vowel marks.
       .replace(/(\p{Script=Latin})\p{M}+/gu, "$1")
-      .replace(/[æđłœøßþ]/g, (letter) => TRANSLITERATE[letter]!),
+      .replace(/[æđðłœøßþ]/g, (letter) => TRANSLITERATE[letter]!),
   fields: [
     "name",
     "locality",

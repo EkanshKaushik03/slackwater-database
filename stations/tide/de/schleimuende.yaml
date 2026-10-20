@@ -12,12 +12,12 @@ computed:
         redundant: ticon/schleimndesp-9610025-deu-wsv
         score: 43
         factors:
-          epoch: 0.615
+          epoch: 0.612
           recency: 0.99
           source: 0.02
           quality: 0
           amplitude: 1
           coverage: 0.003
         issues:
-          - MLWS (-0.013) > MLW (-0.056)
-          - MHWS (0.109) < MHW (0.13)
+          - MLWS (0.05) > MLW (0.03)
+          - MHWS (0.172) < MHW (0.191)

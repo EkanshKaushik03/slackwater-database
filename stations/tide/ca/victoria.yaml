@@ -36,8 +36,7 @@ computed:
           amplitude: 1
           coverage: 0.011
         issues:
-          - MLWS (1.437) > MLW (1.385)
-          - MHWS (2.387) < MHW (2.487)
+          - MHWS (2.411) < MHW (2.461)
     ticon/victoria_harbour_bc-7120-can-meds:
       position: [48.42, -123.37]
       coastline: clear
@@ -52,5 +51,5 @@ computed:
           amplitude: 1
           coverage: 0.011
         issues:
-          - MLWS (1.447) > MLW (1.446)
-          - MHWS (2.401) < MHW (2.492)
+          - MLWS (1.426) > MLW (1.386)
+          - MHWS (2.38) < MHW (2.5)

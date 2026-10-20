@@ -21,8 +21,8 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (0.17) > MLW (0.16)
-          - MHWS (0.184) < MHW (0.194)
+          - MLWS (0.158) > MLW (0.147)
+          - MHWS (0.172) < MHW (0.183)
           - "Seasonal curve peak (0.114m) exceeds the principal tide M2+S2+K1+O1 (0.027m): the yearly swing exceeds the daily one"
     ticon/kungsholmsfort-kun-swe-cmems:
       position: [56.105301, 15.5894]
@@ -41,6 +41,6 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (0.17) > MLW (0.158)
-          - MHWS (0.184) < MHW (0.194)
+          - MLWS (0.157) > MLW (0.146)
+          - MHWS (0.171) < MHW (0.182)
           - "Seasonal curve peak (0.114m) exceeds the principal tide M2+S2+K1+O1 (0.027m): the yearly swing exceeds the daily one"

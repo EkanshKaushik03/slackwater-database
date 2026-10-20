@@ -19,8 +19,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
-        issues:
-          - MLW (2.346) < MLLW (2.357)
     ticon/roscofftg_60minute-ros-fra-cmems:
       position: [48.718399, -3.9659]
       coastline: unverifiable
@@ -36,5 +34,3 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0
-        issues:
-          - MLW (2.347) < MLLW (2.357)

@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 75
+        score: 84
         factors:
-          epoch: 0.579
+          epoch: 1
           recency: 0.99
           source: 0.949
           quality: 1
@@ -26,9 +26,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/herbaudiere-198-fra-refmar
-        score: 57
+        score: 65
         factors:
-          epoch: 0.579
+          epoch: 1
           recency: 0.99
           source: 0.02
           quality: 1

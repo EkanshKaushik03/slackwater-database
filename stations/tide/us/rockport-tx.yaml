@@ -42,8 +42,8 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (2.11) > MLW (2.108)
-          - MHWS (2.126) < MHW (2.143)
+          - MLWS (2.163) > MLW (2.152)
+          - MHWS (2.179) < MHW (2.192)
           - Superseded by noaa/8774770, its operator's own record
           - "Seasonal curve peak (0.149m) exceeds the principal tide M2+S2+K1+O1 (0.058m): the yearly swing exceeds the daily one"
     ticon/rockport_tx-769a-usa-uhslc_rq:
@@ -63,7 +63,7 @@ computed:
           amplitude: 1
           coverage: 0.001
         issues:
-          - MLWS (2.082) > MLW (2.079)
-          - MHWS (2.098) < MHW (2.118)
+          - MLWS (2.06) > MLW (2.058)
+          - MHWS (2.076) < MHW (2.094)
           - Superseded by noaa/8774770, its operator's own record
           - "Seasonal curve peak (0.149m) exceeds the principal tide M2+S2+K1+O1 (0.059m): the yearly swing exceeds the daily one"

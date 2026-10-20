@@ -15,7 +15,7 @@ Per-record JSON decode was never the cost (4 ms for 200 records); the cost is de
 ## Schema shape
 
 - One root table with `version`, a `stations` vector sorted by `id` (the FlatBuffers `key`, so lookup is a binary search inside the buffer), name tables for constituent and datum names, and separate tide/current route vectors sorted by slug.
-- `Station` carries identity (id, name, kind, type, coordinates, timezone, locality, region, ISO region code, country, ISO country code, continent, context, cities, aliases), prediction data (constituents, datums, chart datum, tide/current offsets, epoch), and provenance (source, license, disclaimers).
+- `Station` carries identity (id, name, kind, type, coordinates, timezone, locality, region, ISO region code, country, ISO country code, continent, context, cities, aliases), prediction data (constituents, datums, chart datum, tide/current offsets, source-reported epoch, optional mean-datum epoch), and provenance (source, license, disclaimers).
 - Constituents are a struct vector: a `ushort` index into the root name table plus two `float` values — 12 bytes per constituent, contiguous, versus ~28 for a table per constituent. Float32 holds seven significant digits. Source files keep each publisher's precision, and digits beyond seven significant figures are dropped here, far below any analysis's uncertainty. Datums use the same struct-plus-name-table pattern.
 - Identical `source` and `license` tables are written once and shared; repeated strings (timezones, countries, epochs) are deduplicated with shared strings.
 - `Station.attribution` is the station's complete display notice — creator credit, licence and its URI, and an indication of modification — assembled by the builder from `source` and `license` so a reader in any language displays it without keeping its own table of sources or its own reading of what a licence requires. It is per station because licence varies within a single source, and a shared string, so the file holds one copy per distinct notice.
@@ -32,7 +32,7 @@ The schema can't express this; the builder has to produce it deliberately. FlatB
 
 ## The reader
 
-`src/stations.ts` opens the buffer once, materializes identity fields into plain objects (`allStations`), and attaches lazy getters for `harmonic_constituents`, `datums`, `epoch`, and current details that decode one station's data from the buffer on access. Subordinate stations resolve their reference station's harmonics and datums; their own offsets still apply. No caching — a persistent cache on module-level objects would pull the data back onto the heap.
+`src/stations.ts` opens the buffer once, materializes identity fields into plain objects (`allStations`), and attaches lazy getters for `harmonic_constituents`, `datums`, `datums_source`, `datum_frame`, `datum_coverage`, `epoch`, `datum_epoch`, and current details that decode one station's data from the buffer on access. Subordinate stations resolve their reference station's harmonics and datums; their own offsets still apply. No caching — a persistent cache on module-level objects would pull the data back onto the heap.
 
 The quality gate comes from the same file: `station.quality` carries `accepted` and `score` eagerly (read inline during the identity scan) with lazy getters for the detail, `qualityMap` indexes those objects by id, and the `stations` export filters `allStations` on `accepted`. The module does not bundle the station files; `npm run stations` writes each record's evaluation into its station file, and the build embeds it.
 
@@ -67,6 +67,16 @@ Releases attach the file as `slackwater-<date>.tcdb` alongside the TCD files.
 ## Downstream builders
 
 `buildDatabase(stations, { routes, credits })` is exported so downstream generators can write filtered catalogues through the same builder and read them with the same generated readers. The package exports `credits: ReadonlyMap<string, string | null>`, generated from the same `sources/<name>/metadata.yaml` entries as the bundled database. It maps each published `source.name` to its credit line, or null when it needs none. Pass it directly when rebuilding published stations; a custom source needs its own entry, and a station whose source has no entry is refused.
+
+## Datum provenance
+
+`Station.datum_epoch` is an optional appended FlatBuffers field. Older files read it as absent, and older readers ignore it. JS exposes `datum_epoch` and Swift exposes `datumEpoch`; subordinates inherit their reference's reduction period with its datums. `epoch` retains its source-specific analysis or datum meaning and drives quality ranking; TICON uses its constituent fit period.
+
+`Station.datum_frame` is an optional appended enum with an unknown default. JS exposes `datum_frame` (`gauge` or `constituent`), and Swift exposes `datumFrame` (`StationDatumFrame.gauge` or `.constituent`). Unknown values and older files return undefined/nil. The field describes the stored datum values, before subtracting `chart_datum` for predictions. Subordinates inherit their reference's frame with its unreduced datums; JS also inherits its `datums_source`. TICON supplies the frame explicitly. Other sources without reviewed frame metadata remain unspecified; consumers must not infer it from a zero MSL. The field does not establish a geodetic or cross-provider gauge-zero relationship.
+
+`Station.datum_coverage` is an optional appended table containing the observed reduction’s month count and observed/inferred hourly-bin counts. JS exposes `datum_coverage` with `months`, `observed_hours`, and `inferred_hours`; Swift exposes `datumCoverage` (`StationDatumCoverage`, with `observedHours`/`inferredHours`). Subordinates inherit the reference’s counts with its datums. Older files and harmonic fallbacks read as absent; absence is not evidence of zero inferred hours.
+
+Optional JS datum getters can exist on an object while returning `undefined`. Check their values rather than using key presence to infer provenance.
 
 ## ESM only (no CJS build)
 

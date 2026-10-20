@@ -18,4 +18,5 @@ computed:
           amplitude: 1
           coverage: 0.061
         issues:
-          - MHWS (0.176) < MHW (0.218)
+          - MLWS (0.016) > MLW (0.011)
+          - MHWS (0.21) < MHW (0.265)

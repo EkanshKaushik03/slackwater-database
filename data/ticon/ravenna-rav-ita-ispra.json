@@ -16,20 +16,26 @@
     "commercial_use": true,
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "disclaimers": "Possible datum and quality control issues",
+  "disclaimers": "Possible datum and quality control issues Mean datums use one continuous observation window of whole years. Short gaps may contain model-assisted inferred hourly heights.",
   "datums": {
-    "MHHW": 0.381,
-    "MHW": 0.294,
-    "MSL": 0.095,
-    "MTL": 0.106,
-    "MLW": -0.081,
-    "MLLW": -0.247,
-    "HAT": 0.606,
-    "LAT": -0.484,
-    "MHWS": 0.36,
-    "MLWS": -0.17
+    "MSL": 0.189,
+    "MHHW": 0.498,
+    "MHW": 0.395,
+    "MTL": 0.201,
+    "MLW": 0.007,
+    "MLLW": -0.17,
+    "HAT": 0.7,
+    "LAT": -0.39,
+    "MHWS": 0.454,
+    "MLWS": -0.076
   },
   "datums_source": "observed",
+  "datum_frame": "gauge",
+  "datum_coverage": {
+    "months": 12,
+    "observed_hours": 8778,
+    "inferred_hours": 6
+  },
   "chart_datum": "MLWS",
   "type": "reference",
   "harmonic_constituents": [
@@ -284,8 +290,12 @@
       "phase": 203.729734
     }
   ],
+  "datum_epoch": {
+    "start": "2023-11-01",
+    "end": "2024-10-31"
+  },
   "epoch": {
-    "start": "2006-07-06",
+    "start": "1975-01-01",
     "end": "2025-07-06"
   }
 }

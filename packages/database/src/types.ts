@@ -79,18 +79,29 @@ export interface StationData {
 
   datums: Record<string, number>;
 
-  // How datums were derived: "observed" (from GESLA water-level measurements)
-  // or "harmonic" (synthesized from harmonic constituents).
+  // Mean-datum method: prepared water-level observations or harmonic synthesis.
+  // Astronomical bounds can be synthesized even when the means are observed.
   datums_source?: "observed" | "harmonic";
+
+  // Zero of the stored datum values; absence means the frame is unspecified.
+  datum_frame?: "gauge" | "constituent";
+  // Hourly bins in the observed reduction period, including model-assisted fills.
+  datum_coverage?: {
+    months: number;
+    observed_hours: number;
+    inferred_hours: number;
+  };
 
   // The chart datum key used as the vertical reference (e.g., "MLLW", "LAT")
   chart_datum?: string;
 
-  // Epoch - the time period over which the harmonic constituents were computed
+  // Source-reported analysis or datum period; TICON uses its constituent fit period.
   epoch?: {
     start: string; // Date in YYYY-MM-DD format
     end: string; // Date in YYYY-MM-DD format
   };
+  // Datum reduction period, which can differ from the constituent fit period.
+  datum_epoch?: { start: string; end: string };
 
   // Alternate names and slugs, for search.
   aliases?: string[];

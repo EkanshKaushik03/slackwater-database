@@ -225,6 +225,7 @@ describe("XTide TCD", () => {
         "public domain": "Public Domain",
         "cc-by-4.0": "CC BY 4.0",
         "cc-by-nc-4.0": "CC BY-NC 4.0",
+        "Government Standard Terms of Use 2.0": "Japan GSTU 2.0",
       };
       // Each record as a field lookup. Reference records use `# key: value`
       // hot comments; subordinates use `key="value"` attributes.
@@ -284,9 +285,50 @@ describe("XTide TCD", () => {
         .join(" ");
       expect(notes).toContain(station.attribution);
     });
+
+    test("JHOD keeps its government terms and editing notice", () => {
+      const station = stations.find((s) => s.id === "jhod/0154")!;
+      const about = getXTideAbout("Sasebo, Nagasaki, Japan");
+      expect(about.get("Restriction")).toBe("Japan GSTU 2.0");
+      const record = restored.harmonics
+        .split("# BEGIN HOT COMMENTS")
+        .find(
+          (r) =>
+            r.includes("# station_id_context: jhod") &&
+            r.includes("# station_id: 0154"),
+        )!;
+      const notes = [...record.matchAll(/^# note: (.*)$/gm)]
+        .map((m) => m[1])
+        .join(" ");
+      expect(notes).toContain(station.attribution);
+      expect(notes).toContain("Edited by Open Waters");
+    });
   });
 
   describe("Notes", () => {
+    test("keep datum frame and measured versus inferred coverage", () => {
+      const restored = restoreTcd();
+      const station = stations.find(
+        (s) => s.type === "reference" && s.datum_coverage,
+      )!;
+      const record = restored.harmonics
+        .split("# BEGIN HOT COMMENTS")
+        .find(
+          (r) =>
+            r.includes(`# station_id_context: ${station.id.split("/")[0]}`) &&
+            r.includes(`# station_id: ${station.source.id}\n`),
+        )!;
+      const notes = [...record.matchAll(/^# note: (.*)$/gm)]
+        .map((m) => m[1])
+        .join(" ");
+      expect(notes).toContain(`Datum frame: ${station.datum_frame}.`);
+      expect(notes).toContain(
+        `${station.datum_coverage!.observed_hours} measured hourly bins`,
+      );
+      expect(notes).toContain(
+        `${station.datum_coverage!.inferred_hours} model-assisted inferred hourly bins`,
+      );
+    });
     test("keep wrapped disclaimers together", () => {
       const about = getXTideAbout(
         "Mayport Naval Station, FL, United States (8720211)",

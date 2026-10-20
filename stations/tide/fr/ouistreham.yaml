@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 80
+        score: 84
         factors:
-          epoch: 0.811
+          epoch: 1
           recency: 0.99
           source: 0.949
           quality: 1
@@ -26,9 +26,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/ouistreham-311-fra-refmar
-        score: 62
+        score: 65
         factors:
-          epoch: 0.811
+          epoch: 1
           recency: 0.99
           source: 0.02
           quality: 1

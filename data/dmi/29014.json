@@ -19,12 +19,12 @@
   },
   "disclaimers": "Harmonics fitted by Slackwater from DMI astronomical predictions, not published DMI constants. Held-out height validation: 2027-01-05 through 2027-12-30 UTC. Accuracy outside that span has not been checked.",
   "datums": {
-    "MHHW": 0.096,
-    "MHW": 0.096,
+    "MHHW": 0.12,
+    "MHW": 0.099,
     "MSL": 0,
-    "MTL": 0,
-    "MLW": -0.096,
-    "MLLW": -0.096,
+    "MTL": 0.001,
+    "MLW": -0.097,
+    "MLLW": -0.112,
     "LAT": -0.173,
     "MHWS": 0.112,
     "MLWS": -0.099

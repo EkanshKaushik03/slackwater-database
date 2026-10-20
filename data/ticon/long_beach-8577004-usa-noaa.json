@@ -16,20 +16,21 @@
     "commercial_use": true,
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "disclaimers": "No obvious issues",
+  "disclaimers": "No obvious issues Datums derived from harmonic prediction; observations do not support a mean-datum reduction over twelve continuous whole months after bounded short-gap reconstruction. Datum values carry higher uncertainty. Complete prepared observations do not cover every calendar month of the year for a balanced gauge mean; datums remain in the constituent frame (MSL = 0).",
   "datums": {
-    "MHHW": 3.584,
-    "MHW": 3.536,
-    "MSL": 3.384,
-    "MTL": 3.383,
-    "MLW": 3.23,
-    "MLLW": 3.176,
-    "HAT": 3.701,
-    "LAT": 3.013,
-    "MHWS": 3.548,
-    "MLWS": 3.22
+    "HAT": 0.317,
+    "MHHW": 0.172,
+    "MHW": 0.147,
+    "MSL": 0,
+    "MTL": -0.002,
+    "MLW": -0.152,
+    "MLLW": -0.185,
+    "LAT": -0.371,
+    "MHWS": 0.164,
+    "MLWS": -0.164
   },
-  "datums_source": "observed",
+  "datums_source": "harmonic",
+  "datum_frame": "constituent",
   "chart_datum": "MLLW",
   "type": "reference",
   "harmonic_constituents": [

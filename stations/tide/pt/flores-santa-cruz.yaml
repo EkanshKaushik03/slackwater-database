@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 85
+        score: 86
         factors:
-          epoch: 0.934
+          epoch: 1
           recency: 0.83
           source: 0.99
           quality: 1
@@ -26,9 +26,9 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/flores_santa_cruz-210-prt-uhslc_fd
-        score: 85
+        score: 86
         factors:
-          epoch: 0.934
+          epoch: 1
           recency: 0.83
           source: 0.99
           quality: 1

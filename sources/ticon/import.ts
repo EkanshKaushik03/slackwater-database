@@ -16,21 +16,16 @@ import {
 } from "@slackwater/stations";
 import {
   computeDatums,
-  computeDatumsFromObservations,
   ensureGeslaData,
   loadRqdSamples,
-  parseGeslaSamples,
   parseRqdId,
   rqdEnd,
-  toFixed,
   GESLA_DIR,
 } from "@slackwater/datums";
-import {
-  parseGeslaSamplesInZone,
-  fitHarmonics,
-  isAnalyzable,
-} from "@slackwater/harmonic-analysis";
+import { fitHarmonics, isAnalyzable } from "@slackwater/harmonic-analysis";
+import { parseTiconSamples, LOCAL_TIME_SOURCES } from "./samples.ts";
 import { matchMetadata, type TiconMetaRow } from "./meta.ts";
+import { reduceTiconDatums, cachedDatumNotice } from "./datums.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const metaPath = join(__dirname, "..", "..", "tmp", "TICON-4", "meta.csv");
@@ -158,16 +153,12 @@ async function main() {
     };
 
     try {
-      const datumResult = await getDatums(id, epoch, harmonic_constituents);
-      // Fully-synthetic datums mean the observed record was too short/sparse for
-      // an empirical reduction, so the datums (and the chart-datum reference)
-      // carry higher uncertainty.
-      const disclaimers = [
-        rows[0].record_quality,
-        datumResult.datums_source === "harmonic"
-          ? "Datums derived from harmonic prediction; the observation record is too short for an empirical reduction, so datum values carry higher uncertainty."
-          : "",
-      ]
+      const { datum_notice, ...datumResult } = await getDatums(
+        id,
+        epoch,
+        harmonic_constituents,
+      );
+      const disclaimers = [rows[0].record_quality, datum_notice]
         .filter(Boolean)
         .join(" ");
 
@@ -228,8 +219,9 @@ async function main() {
  * (NOAA CO-OPS first-reduction), or from UHSLC hourly RQD where it extends a
  * UHSLC research-quality record, keeping the astronomical HAT/LAT from harmonic
  * synthesis (observed extremes conflate storm surge) shifted into the observed
- * MSL frame. Falls back to fully synthetic datums when no usable observations
- * exist. Reuses cached datums unless FORCE_DATUMS selects the station.
+ * MSL frame. Falls back to harmonic datums, shifted by an available observation
+ * gauge mean, when no continuous reduction window is supported. Reuses cached
+ * datums unless FORCE_DATUMS selects the station or its constituents changed.
  */
 async function getDatums(
   id: string,
@@ -244,6 +236,7 @@ async function getDatums(
       // no cached record; compute below
     }
     if (existing) {
+      const datum_notice = cachedDatumNotice(existing);
       const cached = {
         ...(existing.datums_source
           ? { datums_source: existing.datums_source }
@@ -252,39 +245,22 @@ async function getDatums(
           start: toISODate(obsEpoch.start),
           end: toISODate(obsEpoch.end),
         },
+        ...(existing.datum_epoch ? { datum_epoch: existing.datum_epoch } : {}),
+        ...(existing.datum_frame ? { datum_frame: existing.datum_frame } : {}),
+        ...(existing.datum_coverage
+          ? { datum_coverage: existing.datum_coverage }
+          : {}),
       };
       // Stored constituents are at the published precision, so compare the
       // parsed ones at that precision too, or float noise reads as a change.
       if (
+        datum_notice &&
         sameConstituents(
           existing.harmonic_constituents,
           roundConstituents("ticon", harmonic_constituents),
         )
       )
-        return { datums: existing.datums, ...cached };
-      // The constituents changed since these datums were computed. The
-      // observed means come from the record and still hold; the rest are
-      // synthesized from the constituents, so re-synthesize them. A harmonic
-      // datum the new synthesis omits is dropped, not kept from the cache: a
-      // near-tideless lake gauge has no LLWLT, and a cached one is an artifact.
-      const harmonic = computeDatums(harmonic_constituents, {});
-      return {
-        datums:
-          existing.datums_source === "observed"
-            ? {
-                ...Object.fromEntries(
-                  Object.entries(existing.datums).filter(
-                    ([k]) => !HARMONIC_KEYS.includes(k),
-                  ),
-                ),
-                ...shiftHarmonicDatums(
-                  harmonic.datums,
-                  existing.datums["MSL"] ?? 0,
-                ),
-              }
-            : harmonic.datums,
-        ...cached,
-      };
+        return { datums: existing.datums, ...cached, datum_notice };
     }
   }
 
@@ -296,7 +272,10 @@ async function getDatums(
   // Every TICON station has a GESLA-4 file (100% join), so read it directly — a
   // missing file is a data-prep error and should throw, not silently degrade.
   await ensureGesla();
-  let samples = parseGeslaSamples(await readFile(join(GESLA_DIR, id), "utf-8"));
+  let samples = parseTiconSamples(
+    id,
+    await readFile(join(GESLA_DIR, id), "utf-8"),
+  );
   // UHSLC research-quality records continue past their GESLA-4 copy. Where the
   // live record is longer, reduce datums from it instead (same record and
   // station zero, so the frame is unchanged). See #138.
@@ -310,54 +289,30 @@ async function getDatums(
       samples = await loadRqdSamples(id, rqEnd);
     }
   }
-  const obs = computeDatumsFromObservations(samples);
-  if (obs) {
-    // Means (MHHW…MLLW) come from observations. The astronomical extremes and
-    // amplitude-derived chart datums live on the harmonic side (computed over a
-    // full nodal cycle, MSL=0 frame); shift them into the observed gauge frame.
-    return {
-      datums: {
-        ...obs.datums,
-        ...shiftHarmonicDatums(harmonic.datums, obs.datums["MSL"] ?? 0),
-      },
-      datums_source: "observed" as const,
-      epoch: { start: toISODate(obs.start), end: toISODate(obs.end) },
-    };
-  }
-
-  // GESLA record too short/sparse for empirical datums → synthetic fallback.
-  // `epoch` records the constituent-fit period (the TICON record), not the
-  // pinned prediction window.
+  const {
+    datums,
+    datums_source,
+    datum_frame,
+    datum_coverage,
+    epoch,
+    datum_epoch,
+    datum_notice,
+  } = reduceTiconDatums(
+    samples,
+    harmonic_constituents,
+    harmonic.datums,
+    obsEpoch,
+  );
   return {
-    datums: harmonic.datums,
-    datums_source: "harmonic" as const,
-    epoch: { start: toISODate(obsEpoch.start), end: toISODate(obsEpoch.end) },
+    datums,
+    datums_source,
+    datum_frame,
+    ...(datum_coverage ? { datum_coverage } : {}),
+    epoch,
+    ...(datum_epoch ? { datum_epoch } : {}),
+    datum_notice,
   };
 }
-
-// GESLA sources whose files are timestamped in local legal time but mislabeled
-// "TIME ZONE HOURS 0" (UTC). Their harmonics are re-fit in the correct zone
-// (then optionally shifted, see `shiftHours`) so phases are UTC-referenced like
-// the rest of the database.
-//
-// - `wsv` (pegelonline.wsv.de): files are full German legal time (MEZ/MESZ)
-//   mislabeled UTC. Reinterpret in Europe/Berlin. See issue #96.
-// - `rws` (Rijkswaterstaat/waterinfo.rws.nl): files were converted from Dutch
-//   legal time to "UTC" by subtracting a FIXED 1 h (the standard CET offset)
-//   instead of a DST-aware conversion. So winter (CET) records are already true
-//   UTC, but summer (CEST) records are left 1 h fast. Season-split re-analysis
-//   confirms it: vs a UTC-correct CMEMS neighbour, winter Δphase ≈ 0 while
-//   summer ≈ +1 h across M2/S2/N2, plus a ~3% semidiurnal amplitude loss from
-//   blending the two halves in a single fit. Invert with Amsterdam's own DST
-//   calendar: reinterpret in Europe/Amsterdam (subtracts {1,2} h) then add back
-//   the 1 h that was wrongly removed (`shiftHours: 1`), netting a DST-only
-//   correction ({0,1} h). The sibling `rws_hist` source is already UTC-correct
-//   and is deliberately not listed here. See issue #98.
-type LocalTimeSource = { zone: string; shiftHours?: number };
-const LOCAL_TIME_SOURCES: Record<string, LocalTimeSource> = {
-  wsv: { zone: "Europe/Berlin" },
-  rws: { zone: "Europe/Amsterdam", shiftHours: 1 },
-};
 
 /**
  * Resolve a station's harmonic constituents. For most sources these come
@@ -385,47 +340,15 @@ async function getHarmonics(
   }
 
   await ensureGesla();
-  let samples = parseGeslaSamplesInZone(
+  const samples = parseTiconSamples(
+    id,
     await readFile(join(GESLA_DIR, id), "utf-8"),
-    src.zone,
-  );
-  // Undo any fixed offset baked into the source before it was mislabeled UTC
-  // (e.g. rws had a flat 1 h removed, so re-add it after the DST-aware parse).
-  if (src.shiftHours) {
-    const ms = src.shiftHours * 3_600_000;
-    samples = samples.map((s) => ({ t: s.t + ms, level: s.level }));
-  }
+  ).map((p) => ({ t: +p.time, level: p.level }));
   const names = csvHarmonics.map((h) => h.name);
   if (!isAnalyzable(samples, names.length)) {
     throw new Error(`record too short to re-analyze ${src.zone} phases`);
   }
   return fitHarmonics(samples, names);
-}
-
-// Datums that come from harmonic synthesis even when observations supply the
-// means: the astronomical extremes and the amplitude-derived chart datums.
-const HARMONIC_KEYS = [
-  "HAT",
-  "LAT",
-  "LLWLT",
-  "MHWS",
-  "MLWS",
-  "NLLW",
-  "ALLW",
-  "TLT",
-];
-
-/** Harmonic datums (MSL = 0 frame) shifted into the observed gauge frame. */
-function shiftHarmonicDatums(
-  harmonic: Record<string, number>,
-  msl: number,
-): Record<string, number> {
-  const shifted: Record<string, number> = {};
-  for (const k of HARMONIC_KEYS) {
-    const v = harmonic[k];
-    if (v !== undefined) shifted[k] = toFixed(v + msl, 3);
-  }
-  return shifted;
 }
 
 function sameConstituents(

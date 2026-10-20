@@ -33,6 +33,8 @@ describe("text index normalization", () => {
     ["STRAẞE", "Strasse"],
     ["Łeba", "Leba"],
     ["Đồng", "Dong"],
+    ["Eiði", "Eidi"],
+    ["Fuglafjørður", "Fuglafjordur"],
     ["Þórshöfn", "Thorshofn"],
     ["Œuilly", "Oeuilly"],
     ["Ǽgir", "Aegir"],

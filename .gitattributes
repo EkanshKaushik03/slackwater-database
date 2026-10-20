@@ -1,0 +1,2 @@
+# Preserve flatc output verbatim; its generated identifier lines contain trailing spaces.
+packages/swift/Sources/SlackwaterDatabase/generated/*.swift -whitespace

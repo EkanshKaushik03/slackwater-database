@@ -22,7 +22,7 @@ computed:
           amplitude: 1
           coverage: 0.02
         issues:
-          - MLWS (0.436) > MLW (0.431)
+          - MLWS (0.431) > MLW (0.429)
     ticon/limon-268a-cri-uhslc_rq:
       position: [10, -83.033]
       coastline: unverifiable
@@ -38,6 +38,9 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.02
+        issues:
+          - MLWS (0.935) > MLW (0.923)
+          - MHWS (1.135) < MHW (1.146)
     ticon/limon-268b-cri-uhslc_rq:
       position: [9.988, -83.02]
       coastline: unverifiable
@@ -45,14 +48,13 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/limon-268-cri-uhslc_fd
-        score: 81
+        score: 74
         factors:
-          epoch: 0.817
-          recency: 0.98
+          epoch: 0.495
+          recency: 0.92
           source: 0.99
           quality: 1
           amplitude: 1
           coverage: 0.019
         issues:
-          - MLWS (0.435) > MLW (0.426)
-          - MHWS (0.629) < MHW (0.632)
+          - MLWS (0.434) > MLW (0.43)

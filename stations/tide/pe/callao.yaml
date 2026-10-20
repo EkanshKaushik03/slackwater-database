@@ -10,9 +10,7 @@ computed:
       position: [-12.05, -77.15]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/callao-093b-per-uhslc_rq
+        accepted: true
         score: 100
         factors:
           epoch: 1
@@ -27,7 +25,7 @@ computed:
       quality:
         accepted: false
         reason: duplicate
-        redundant: ticon/callao-093b-per-uhslc_rq
+        redundant: ticon/callao-093-per-uhslc_fd
         score: 91
         factors:
           epoch: 0.859

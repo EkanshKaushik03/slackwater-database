@@ -11,13 +11,13 @@ computed:
         accepted: false
         reason: duplicate
         redundant: ticon/miner_slough_a_hwy_84_bridge-11455165-usa-usgs
-        score: 60
+        score: 59
         factors:
-          epoch: 0.964
+          epoch: 0.91
           recency: 0.94
           source: 0.576
           quality: 0
           amplitude: 1
           coverage: 0
         issues:
-          - MLWS (1.209) > MLW (1.187)
+          - MHWS (1.815) < MHW (1.821)

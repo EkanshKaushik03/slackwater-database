@@ -17,6 +17,8 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.001
+        issues:
+          - MLWS (-0.185) > MLW (-0.188)
     ticon/thyboronkysttg-thy-dnk-cmems:
       position: [56.7075, 8.209]
       coastline: unverifiable

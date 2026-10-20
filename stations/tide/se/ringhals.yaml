@@ -21,7 +21,7 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MHWS (0.129) < MHW (0.131)
+          - MHWS (0.114) < MHW (0.116)
           - "Seasonal curve peak (0.117m) exceeds the principal tide M2+S2+K1+O1 (0.073m): the yearly swing exceeds the daily one"
     ticon/ringhals-rin-swe-cmems:
       position: [57.249699, 12.1125]
@@ -40,5 +40,5 @@ computed:
           amplitude: 1
           coverage: 0
         issues:
-          - MHWS (0.133) < MHW (0.134)
+          - MHWS (0.115) < MHW (0.118)
           - "Seasonal curve peak (0.118m) exceeds the principal tide M2+S2+K1+O1 (0.073m): the yearly swing exceeds the daily one"

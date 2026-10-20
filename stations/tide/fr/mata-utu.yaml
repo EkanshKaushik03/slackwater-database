@@ -11,9 +11,9 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 83
+        score: 84
         factors:
-          epoch: 0.982
+          epoch: 1
           recency: 0.98
           source: 0.949
           quality: 1
@@ -28,7 +28,7 @@ computed:
         redundant: ticon/mata_utu-276-fra-refmar
         score: 65
         factors:
-          epoch: 0.982
+          epoch: 1
           recency: 0.98
           source: 0.02
           quality: 1

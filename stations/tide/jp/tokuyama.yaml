@@ -1,18 +1,36 @@
 sources:
+  - jhod/0136
   - ticon/tokuyama-hd15-jpn-jodc_jcg
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    jhod/0136:
+      position: [34.040833333333, 131.80277777778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 81
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.396
     ticon/tokuyama-hd15-jpn-jodc_jcg:
       position: [34.040833, 131.802783]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 73
+        accepted: false
+        reason: superseded
+        redundant: jhod/0136
+        score: 0
         factors:
           epoch: 1
           recency: 0.98
           source: 0.111
           quality: 1
           amplitude: 1
-          coverage: 0.396
+          coverage: 0
+        issues:
+          - Superseded by jhod/0136, its operator's own record

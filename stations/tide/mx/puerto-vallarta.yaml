@@ -7,12 +7,10 @@ computed:
       position: [20.658333, -105.243333]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: duplicate
-        redundant: ticon/puertovallarta_flotador-19-mex-unam
-        score: 50
+        accepted: true
+        score: 66
         factors:
-          epoch: 0.199
+          epoch: 1
           recency: 0.88
           source: 0.131
           quality: 1

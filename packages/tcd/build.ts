@@ -173,10 +173,16 @@ function tcdTimezone(tz: string): string {
   return ":UTC";
 }
 
-/** The station's licence as a TCD restriction name; build_tide_db adds names it hasn't seen. */
+const RESTRICTION_NAMES: Record<string, string> = {
+  ...LICENSE_NAMES,
+  "public domain": "Public Domain",
+  "Government Standard Terms of Use 2.0": "Japan GSTU 2.0",
+};
+
+/** build_tide_db adds restriction names it hasn't seen. */
 function restriction(station: Station): string {
   const type = station.license.type;
-  const name = type === "public domain" ? "Public Domain" : LICENSE_NAMES[type];
+  const name = RESTRICTION_NAMES[type];
   if (!name) throw new Error(`No TCD restriction for license "${type}"`);
   return name;
 }
@@ -281,7 +287,7 @@ const HARMONICS_HEADER = `# Tide Harmonics Database
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #`;
 
-function generateHarmonicsTxt(
+export function generateHarmonicsTxt(
   stations: Station[],
   names: Map<string, string>,
   masterConstituents: string[],
@@ -417,6 +423,10 @@ ${NUM_YEARS}`);
     // Licensed stations carry their attribution, since the TCD has no field for it
     const notes = [
       station.disclaimers,
+      station.datum_frame ? `Datum frame: ${station.datum_frame}.` : "",
+      station.datum_coverage
+        ? `Observed mean-datum coverage: ${station.datum_coverage.months} months; ${station.datum_coverage.observed_hours} measured hourly bins; ${station.datum_coverage.inferred_hours} model-assisted inferred hourly bins.`
+        : "",
       station.license.type === "public domain" ? "" : station.attribution,
     ];
     for (const note of notes) {

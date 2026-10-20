@@ -1,18 +1,36 @@
 sources:
+  - jhod/0118
   - ticon/hiroshima-hd14-jpn-jodc_jcg
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    jhod/0118:
+      position: [34.353055555556, 132.46472222222]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 80
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.295
     ticon/hiroshima-hd14-jpn-jodc_jcg:
       position: [34.35305, 132.464717]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 71
+        accepted: false
+        reason: superseded
+        redundant: jhod/0118
+        score: 0
         factors:
           epoch: 1
           recency: 0.98
           source: 0.111
           quality: 1
           amplitude: 1
-          coverage: 0.295
+          coverage: 0
+        issues:
+          - Superseded by jhod/0118, its operator's own record

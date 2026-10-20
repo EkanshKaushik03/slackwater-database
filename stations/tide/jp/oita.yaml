@@ -1,18 +1,38 @@
+name: Oita
+aliases: [Ooita]
 sources:
+  - jhod/0163
   - ticon/oita-hd16-jpn-jodc_jcg
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/oita-hd16-jpn-jodc_jcg:
-      position: [33.266117, 131.686667]
+    jhod/0163:
+      position: [33.266111111111, 131.68666666667]
       coastline: unverifiable
       quality:
         accepted: true
         score: 72
+        factors:
+          epoch: 0.161
+          recency: 0.87
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.348
+    ticon/oita-hd16-jpn-jodc_jcg:
+      position: [33.266117, 131.686667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: jhod/0163
+        score: 0
         factors:
           epoch: 1
           recency: 0.98
           source: 0.111
           quality: 1
           amplitude: 1
-          coverage: 0.348
+          coverage: 0
+        issues:
+          - Superseded by jhod/0163, its operator's own record

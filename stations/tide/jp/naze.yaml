@@ -1,14 +1,36 @@
 sources:
+  - jhod/0180
   - ticon/naze-359-jpn-uhslc_fd
+  - ticon/naze-359a-jpn-uhslc_rq
+  - ticon/naze-hd22-jpn-jodc_jcg
+redirect_from:
+  - /tides/jp/naze-kagoshima/
+  - /tides/jp/naze-ticon-naze-359a-jpn-uhslc-rq/
+  - /tides/jp/naze-ticon-naze-hd22-jpn-jodc-jcg/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    jhod/0180:
+      position: [28.399166666667, 129.49777777778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 78
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.184
     ticon/naze-359-jpn-uhslc_fd:
       position: [28.378, 129.498]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 85
+        accepted: false
+        reason: superseded
+        redundant: jhod/0180
+        score: 0
         factors:
           epoch: 1
           recency: 0.99
@@ -16,3 +38,39 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.047
+        issues:
+          - Superseded by jhod/0180, its operator's own record
+    ticon/naze-359a-jpn-uhslc_rq:
+      position: [28.4, 129.498]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: jhod/0180
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.92
+          source: 0.99
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - Superseded by jhod/0180, its operator's own record
+    ticon/naze-hd22-jpn-jodc_jcg:
+      position: [28.399167, 129.497783]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: superseded
+        redundant: jhod/0180
+        score: 0
+        factors:
+          epoch: 1
+          recency: 0.98
+          source: 0.111
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - Superseded by jhod/0180, its operator's own record

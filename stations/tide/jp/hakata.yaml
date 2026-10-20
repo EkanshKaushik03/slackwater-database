@@ -1,18 +1,36 @@
 sources:
+  - jhod/0149
   - ticon/hakata-hd18-jpn-jodc_jcg
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
+    jhod/0149:
+      position: [33.618611111111, 130.40777777778]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 89
+        factors:
+          epoch: 0.537
+          recency: 0.94
+          source: 1
+          quality: 1
+          amplitude: 1
+          coverage: 0.893
     ticon/hakata-hd18-jpn-jodc_jcg:
       position: [33.618617, 130.407783]
       coastline: unverifiable
       quality:
-        accepted: true
-        score: 80
+        accepted: false
+        reason: superseded
+        redundant: jhod/0149
+        score: 0
         factors:
           epoch: 1
           recency: 0.98
           source: 0.111
           quality: 1
           amplitude: 1
-          coverage: 0.893
+          coverage: 0
+        issues:
+          - Superseded by jhod/0149, its operator's own record

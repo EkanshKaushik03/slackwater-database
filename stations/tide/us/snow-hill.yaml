@@ -1,34 +1,18 @@
 region: US-MD
 sources:
-  - ticon/snow_hill-8571359-usa-noaa
   - noaa/8571359
+  - ticon/snow_hill-8571359-usa-noaa
 redirect_from:
   - /tides/us/md/snowhill/
 # Written by `npm run stations`. Do not edit.
 computed:
   sources:
-    ticon/snow_hill-8571359-usa-noaa:
-      position: [38.17833, -75.39667]
-      coastline: unverifiable
-      quality:
-        accepted: true
-        score: 72
-        factors:
-          epoch: 0.304
-          recency: 0.84
-          source: 0.96
-          quality: 1
-          amplitude: 1
-          coverage: 0.206
-        issues:
-          - MLWS (3.938) > MLW (3.914)
     noaa/8571359:
       position: [38.17833, -75.39666666666666]
       coastline: unverifiable
       quality:
-        accepted: false
-        reason: datum
-        score: 0
+        accepted: true
+        score: 83
         factors:
           epoch: 1
           recency: 0.75
@@ -39,3 +23,22 @@ computed:
         issues:
           - MLW (3.827) < LAT (3.831)
           - HAT (4.3450003) < MHHW (4.359)
+          - M2 here (0.187 m, 263.1°) differs from (0.213 m, 256.6°) by -26 mm and 14 min later in ticon/snow_hill-8571359-usa-noaa, a duplicate
+    ticon/snow_hill-8571359-usa-noaa:
+      position: [38.17833, -75.39667]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: noaa/8571359
+        score: 69
+        factors:
+          epoch: 0.304
+          recency: 0.84
+          source: 0.96
+          quality: 1
+          amplitude: 1
+          coverage: 0
+        issues:
+          - MLWS (3.919) > MLW (3.91)
+          - M2 here (0.213 m, 256.6°) differs from (0.187 m, 263.1°) by +26 mm and 14 min earlier in noaa/8571359, which this duplicates

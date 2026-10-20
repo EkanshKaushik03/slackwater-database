@@ -4,6 +4,17 @@
 
 import { sourceMetadata } from "./sources.ts";
 
+/** NOAA publishes observed means even when its mixed datum table has no method flag. */
+export function hasObservedMeanDatums(station: {
+  id: string;
+  datums_source?: "observed" | "harmonic";
+}): boolean {
+  return (
+    station.datums_source === "observed" ||
+    (station.datums_source === undefined && station.id.startsWith("noaa/"))
+  );
+}
+
 /**
  * Source quality priority for TICON stations (lower = better quality)
  *
@@ -268,6 +279,12 @@ export const MIN_DEDUP_DISTANCE = 0.05; // 50 meters
  *  (see PUBLISHED_PRECISION) and say nothing about this. */
 export const AMPLITUDE_TOLERANCE = 0.003;
 
+/** Project screening allowance for observed means versus harmonic bounds from
+ * different periods, including weather. Masked-record changes and NOAA paired
+ * mean-level residuals are centimetre-scale. This 5 cm allowance is a
+ * conservative diagnostic threshold, not a station accuracy guarantee. */
+export const OBSERVED_BOUND_ALLOWANCE = 0.05;
+
 /** Whether amplitude `a` exceeds `b` by more than AMPLITUDE_TOLERANCE. The
  *  difference is rounded to the nanometre first, so float noise in a value
  *  stored to whole millimetres cannot tip a difference of exactly 3 mm. */
@@ -378,7 +395,7 @@ export const SEASONAL_OUTLIER_RATIO = 5;
 // cycle is really the dominant signal — so the record is not faulty and a
 // consumer that knows what the water is can say so. Cobourg on Lake Ontario
 // carries SA 0.289 m against a principal tide of 0.004 m and
-// passes every other gate, including the 2 cm range floor, by 6 mm.
+// passes every other gate, including the 2 cm range floor.
 
 /** The principal tidal constituents. Their amplitudes sum to the tide's
  *  height above mean level when spring and tropic tides coincide, an upper

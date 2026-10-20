@@ -29,12 +29,12 @@ computed:
         redundant: noaa/8770520
         score: 0
         factors:
-          epoch: 0.685
+          epoch: 1
           recency: 0.99
           source: 0.96
           quality: 1
           amplitude: 1
           coverage: 0
         issues:
-          - MHWS (1.582) < MHW (1.6)
+          - MHWS (1.578) < MHW (1.594)
           - Superseded by noaa/8770520, its operator's own record
