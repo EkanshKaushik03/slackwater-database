@@ -11,10 +11,6 @@ import {
   load,
   getSourceSuffix,
   NON_COMMERCIAL_SOURCES,
-  cleanName,
-  CANADIAN_SUBDIVISIONS,
-  isoSubdivisionCode,
-  loadGeocoder,
   roundConstituents,
   type PartialStationData,
 } from "@slackwater/stations";
@@ -110,9 +106,6 @@ function dayMonthYearToDate(date: string) {
   return new Date(Date.UTC(year, month - 1, day, 0, 0, 0));
 }
 
-// Load geocoder
-const geocoder = await loadGeocoder();
-
 // Ensure GESLA-4 data is available, but only the first time a station actually
 // needs it (cache-reuse runs without FORCE_DATUMS never touch GESLA).
 let geslaReady: Promise<string> | undefined;
@@ -144,36 +137,6 @@ async function main() {
 
     const lat = parseFloat(rows[0].lat);
     const lon = parseFloat(rows[0].lon);
-    const geo = geocoder.nearest(lat, lon, 50);
-    const cleaned = cleanName(
-      gesla["SITE NAME"],
-      rows[0].country,
-      geo
-        ? isoSubdivisionCode(
-            geo.place.countryCode,
-            geo.place.admin1,
-            geo.place.admin1Code,
-          )
-        : undefined,
-    );
-
-    // Geocode: resolve opaque names and fill region. A region code in the
-    // name beats the nearest place, which can sit across a border; a Canadian
-    // one is spelled out like the geocoder's ("BC" → "British Columbia").
-    let name = cleaned.name;
-    let region =
-      Object.keys(CANADIAN_SUBDIVISIONS).find(
-        (province) =>
-          rows[0]!.country === "CAN" &&
-          CANADIAN_SUBDIVISIONS[province] === cleaned.region,
-      ) ?? cleaned.region;
-    if (cleaned.isOpaque && geo) {
-      name = geo.place.name;
-    }
-    if (!region && geo?.region) {
-      region = geo.region;
-    }
-
     const id = rows[0].tide_gauge_name;
 
     const csvHarmonics = rows.map((row) => ({
@@ -209,8 +172,7 @@ async function main() {
         .join(" ");
 
       const candidate: PartialStationData = {
-        name,
-        ...(region ? { region } : {}),
+        name: gesla["SITE NAME"],
         country: rows[0].country,
         latitude: lat,
         longitude: lon,

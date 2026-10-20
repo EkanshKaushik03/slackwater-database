@@ -153,7 +153,7 @@ The credit is written into the database file itself, so every reader gets it wit
 
 ### Modifications to source data
 
-Station records are not verbatim copies of their sources, and CC BY requires that this is stated. Station names are normalized, and country, region, continent and timezone are geocoded from the station position.
+Station records are not verbatim copies of their sources, and CC BY requires that this is stated. Station names are normalized, and country, region, continent and timezone are geocoded from the station position. An opaque TICON station code takes its display name from the nearest GeoNames place within 50 km; a curated name takes priority.
 
 For TICON-4 stations:
 
