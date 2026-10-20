@@ -53,7 +53,7 @@ describe("chsInputs", () => {
     expect(input?.aliases).toEqual(["ex"]);
   });
 
-  it("publishes curated names, qualifiers, and coast fallbacks", () => {
+  it("keeps CHS names without inventing a context when no water or town is known", () => {
     const ids = new Set([
       "chs-cap-aux-meules",
       "chs-charlottetown-nl",
@@ -77,27 +77,27 @@ describe("chsInputs", () => {
       {
         id: "chs-cap-aux-meules",
         name: "Cap-aux-Meules",
-        context: "St. Lawrence",
+        context: undefined,
       },
       {
         id: "chs-charlottetown-nl",
         name: "Charlottetown",
-        context: "NL",
+        context: undefined,
       },
       {
         id: "chs-come-by-chance",
         name: "Come by Chance",
-        context: "Atlantic Coast",
+        context: undefined,
       },
       {
         id: "chs-prince-rupert-roro",
         name: "Prince Rupert RoRo",
-        context: "Pacific Coast",
+        context: undefined,
       },
     ]);
   });
 
-  it("derives a context for every live CHS tide station", async () => {
+  it("names Charlottetown's water instead of its province", async () => {
     const records = JSON.parse(
       readFileSync(
         new URL("../../../sources/chs/stations.json", import.meta.url),
@@ -115,8 +115,11 @@ describe("chsInputs", () => {
             waterBodies,
           }),
         )
-        .filter((station) => !station.context)
-        .map((station) => station.id),
-    ).toEqual([]);
+        .find((station) => station.id === "chs-charlottetown-nl"),
+    ).toMatchObject({
+      name: "Charlottetown",
+      context: "Bryans Hole",
+      context_derived: true,
+    });
   });
 });

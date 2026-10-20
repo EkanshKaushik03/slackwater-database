@@ -19,12 +19,6 @@ export function chsInputs(records: ChsStationRecord[]): StationInput[] {
   return records.map(({ id, name, aliases, latitude, longitude }) => {
     const timezone = findTimezone(latitude, longitude)[0];
     if (!timezone) throw new Error(`${id}: no timezone at position`);
-    const context = name
-      .split(",")
-      .slice(1)
-      .map((part) => part.trim())
-      .filter(Boolean)
-      .join(" · ");
     return {
       id,
       kind: "tide",
@@ -39,7 +33,6 @@ export function chsInputs(records: ChsStationRecord[]): StationInput[] {
       type: "reference",
       harmonic_constituents: [],
       ...(aliases.length ? { aliases } : {}),
-      ...(context ? { context } : {}),
       source: {
         name: "Canadian Hydrographic Service",
         id,

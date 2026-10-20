@@ -257,6 +257,94 @@ describe("metadata resolution", () => {
   });
 
   test.each([
+    "N.J.",
+    "Md.",
+    "Va.",
+    "Pa.",
+    "N.Y.",
+    "B.C.",
+    "Del.",
+    "Wash.",
+    "Oreg.",
+    "Alaska",
+    "D.C.",
+    "S.C.",
+    "NL",
+  ])("a provider's region qualifier is not its water: %s", (qualifier) => {
+    const result = resolveMetadata(
+      { ...baseStation, name: `Alpine, ${qualifier}` },
+      {
+        geocoder,
+        waterBodies: { at: () => [{ name: "Hudson River", distance: 0 }] },
+      },
+    );
+    expect(result.name).toBe("Alpine");
+    expect(result.context).toBe("Hudson River");
+    expect(result.context_derived).toBe(true);
+  });
+
+  test("keeps a water qualifier beside a state abbreviation", () => {
+    const result = resolveMetadata(
+      { ...baseStation, name: "Mills Point, Wicomico River, Md." },
+      { geocoder },
+    );
+    expect(result.name).toBe("Mills Point");
+    expect(result.context).toBe("Wicomico River");
+    expect(result.context_derived).toBe(false);
+  });
+
+  test("leaves context absent when a region qualifier has no water or town", () => {
+    const result = resolveMetadata(
+      { ...baseStation, name: "Alpine, N.J." },
+      { geocoder: { nearest: () => null, near: () => [] } },
+    );
+    expect(result).not.toHaveProperty("context");
+    expect(result).not.toHaveProperty("context_derived");
+  });
+
+  test.each(["N.J.", "NJ", "B.C.", "NL"])(
+    "a discarded region qualifier falls back only to water: %s",
+    (qualifier) => {
+      const result = resolveMetadata(
+        { ...baseStation, name: `Alpine, ${qualifier}` },
+        { geocoder, waterBodies: { at: () => [] } },
+      );
+      expect(result).not.toHaveProperty("context");
+      expect(result).not.toHaveProperty("context_derived");
+    },
+  );
+
+  test("does not use the state alone when the nearest town repeats the name", () => {
+    const result = resolveMetadata(baseStation, {
+      geocoder,
+      waterBodies: { at: () => [] },
+    });
+    expect(result).not.toHaveProperty("context");
+    expect(result).not.toHaveProperty("context_derived");
+  });
+
+  test("a remote CHS station without water has no invented coast or province context", () => {
+    const result = resolveMetadata(
+      {
+        ...baseStation,
+        country: "Canada",
+        country_code: "CA",
+        region: "British Columbia",
+        source: {
+          name: "Canadian Hydrographic Service",
+          id: "chs-everett",
+          published_harmonics: false,
+          url: "https://example.com/chs",
+        },
+      },
+      { geocoder: { nearest: () => null, near: () => [] } },
+    );
+    expect(result.region_code).toBe("CA-BC");
+    expect(result).not.toHaveProperty("context");
+    expect(result).not.toHaveProperty("context_derived");
+  });
+
+  test.each([
     "Deer Island, 0.7 nm ESE of",
     "Cape Cod Canal, east end",
     "Goose Cove, south of Chops Passage, Kennebec River",
@@ -651,7 +739,8 @@ describe("metadata resolution", () => {
           waterBodies: { at: () => [] },
         },
       );
-      expect(result.context).toBe("PR");
+      expect(result).not.toHaveProperty("context");
+      expect(result).not.toHaveProperty("context_derived");
     });
 
     test("a US territory is named like a state, not by its municipality", () => {

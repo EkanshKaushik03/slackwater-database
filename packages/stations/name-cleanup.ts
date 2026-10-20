@@ -85,6 +85,19 @@ const CA_PROVINCES = new Set([
 // "PQ" was Quebec's postal abbreviation until 1990 ("La_Grande_RivierePq").
 const LEGACY_REGIONS: Record<string, string> = { PQ: "QC" };
 
+const NOAA_REGION_NAMES = new Set(["ALASKA", "DEL", "OREG", "WASH"]);
+
+/** A standalone region label is not a station's water, even across a border. */
+export function isRegionContext(context: string): boolean {
+  const code = context.replace(/[.\s]/g, "").toUpperCase();
+  return (
+    US_STATES.has(code) ||
+    CA_PROVINCES.has(code) ||
+    Object.hasOwn(LEGACY_REGIONS, code) ||
+    NOAA_REGION_NAMES.has(code)
+  );
+}
+
 const SMALL_WORDS = new Set([
   "a",
   "an",
