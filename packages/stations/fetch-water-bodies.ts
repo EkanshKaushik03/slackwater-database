@@ -15,9 +15,18 @@
  * Run manually when the catalogue gains stations in new water, then review the
  * context diff before committing:
  *   npm run refresh:water-bodies -w packages/stations
+ * To extend the reviewed snapshot for one new source, preserving other coverage:
+ *   npm run refresh:water-bodies -w packages/stations -- --extend-source=dmi
  */
-import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import {
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  writeFileSync,
+  existsSync,
+} from "node:fs";
 import { dirname, join } from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { simplify } from "@slackwater/datums";
 import KDBush from "kdbush";
@@ -160,7 +169,24 @@ function simplified(ring: Ring): Ring {
 }
 
 async function main() {
-  const positions = stationPositions(root);
+  const args = process.argv.slice(2);
+  const extendSource =
+    args.length === 1
+      ? /^--extend-source=([a-z][a-z0-9-]*)$/.exec(args[0]!)?.[1]
+      : undefined;
+  if (args.length && !extendSource)
+    throw new Error("Usage: fetch-water-bodies.ts [--extend-source=SOURCE]");
+  const positions: [number, number][] = extendSource
+    ? readdirSync(join(root, "data", extendSource))
+        .filter((name) => name.endsWith(".json"))
+        .map((name) => {
+          const station = JSON.parse(
+            readFileSync(join(root, "data", extendSource, name), "utf8"),
+          );
+          return [station.latitude, station.longitude];
+        })
+    : stationPositions(root);
+  if (!positions.length) throw new Error("No station positions to refresh");
   const index = new KDBush(positions.length);
   for (const [lat, lon] of positions) index.add(lon, lat);
   index.finish();
@@ -199,9 +225,10 @@ async function main() {
     ids: number[],
   ): Promise<OverpassElement[]> {
     try {
+      const query = `[out:json][timeout:900];${type}(id:${ids.join(",")});out geom;`;
       const result = await overpass(
-        `[out:json][timeout:900];${type}(id:${ids.join(",")});out geom;`,
-        `geom-${type}-${ids[0]}-${ids.length}`,
+        query,
+        `geom-${createHash("sha256").update(query).digest("hex")}`,
         ids.length > 1 ? 2 : 5,
       );
       return result.elements;
@@ -268,6 +295,23 @@ async function main() {
           : 0,
     );
 
+  const previous: typeof features = extendSource
+    ? JSON.parse(readFileSync(OUT, "utf8")).features
+    : [];
+  const merged = [
+    ...new Map(
+      [...previous, ...features].map((feature) => [
+        feature.properties.osm,
+        feature,
+      ]),
+    ).values(),
+  ].sort((a, b) =>
+    a.properties.osm < b.properties.osm
+      ? -1
+      : a.properties.osm > b.properties.osm
+        ? 1
+        : 0,
+  );
   const collection = {
     type: "FeatureCollection",
     // Foreign members: provenance for the committed file.
@@ -276,10 +320,12 @@ async function main() {
       "ODbL 1.0 — https://opendatacommons.org/licenses/odbl/1-0/ — © OpenStreetMap contributors",
     generated_by:
       "packages/stations/fetch-water-bodies.ts (outer rings only, simplified)",
-    features,
+    features: merged,
   };
   writeFileSync(OUT, JSON.stringify(collection) + "\n");
-  console.log(`Wrote ${features.length} water bodies to ${OUT}`);
+  console.log(
+    `Wrote ${merged.length} water bodies to ${OUT} (${features.length} refreshed)`,
+  );
 }
 
 main();

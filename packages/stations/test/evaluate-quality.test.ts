@@ -7,6 +7,7 @@ import {
   RECENCY_YEAR,
   scoreAmplitude,
   scoreRecency,
+  scoreSource,
   tideConflict,
 } from "../evaluate-quality.ts";
 import { exceeds, seasonalTerms } from "../filtering.ts";
@@ -30,6 +31,16 @@ function station(
 }
 
 const BASE = { M2: 0.5, S2: 0.2, K1: 0.1, O1: 0.07 };
+
+test("DMI prediction fits use a fixed source rank regardless of station ID spelling", () => {
+  for (const id of ["25149", "future-dmi"])
+    expect(
+      scoreSource({
+        id: `dmi/${id}`,
+        source: { id, name: "Danish Meteorological Institute" },
+      } as Station),
+    ).toBe(0.495);
+});
 
 describe("exceeds", () => {
   test("needs more than the 3 mm fit tolerance", () => {

@@ -1,0 +1,18 @@
+sources:
+  - dmi/30042
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    dmi/30042:
+      position: [55.9534, 12.5353]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 48
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.233

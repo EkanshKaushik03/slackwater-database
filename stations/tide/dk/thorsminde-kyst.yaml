@@ -1,0 +1,37 @@
+# Both name the coast gauge, not Havn/Fjord; DMI 9005103 is at the prediction fix and their M2 phases agree within 1.4°: https://opendataapi.dmi.dk/v2/oceanObs/collections/station/items?stationId=9005103
+sources:
+  - dmi/24122
+  - ticon/torsmindekysttg-tor-dnk-cmems
+redirect_from:
+  - /tides/dk/torsminde-kyst/
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    dmi/24122:
+      position: [56.3726, 8.1136]
+      coastline: unverifiable
+      quality:
+        accepted: true
+        score: 45
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.01
+    ticon/torsmindekysttg-tor-dnk-cmems:
+      position: [56.369999, 8.12]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: dmi/24122
+        score: 42
+        factors:
+          epoch: 0.562
+          recency: 0.99
+          source: 0.02
+          quality: 0
+          amplitude: 1
+          coverage: 0.01

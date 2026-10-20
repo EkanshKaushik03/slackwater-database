@@ -182,6 +182,8 @@ export const PUBLISHED_PRECISION: Record<
   // as the LINZ importer writes it: the shift's further digits fall below
   // 0.00005° and are dropped.
   linz: { amplitude: 6, phase: 4 },
+  // Our fits of DMI's 0.1 cm predictions, published as mm and 0.01 degrees.
+  dmi: { amplitude: 3, phase: 2 },
 };
 
 /** Round constituents to the source's published precision. Phases stay as

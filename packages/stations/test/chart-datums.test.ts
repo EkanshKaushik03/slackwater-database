@@ -247,7 +247,10 @@ describe("astronomical extremes across the database", () => {
 
   test("covers every reference station the constituents can honestly bound", () => {
     const missing = tideStations.filter(
-      (s) => s.type === "reference" && s.datums["HAT"] === undefined,
+      (s) =>
+        s.type === "reference" &&
+        s.datums["HAT"] === undefined &&
+        !s.id.startsWith("dmi/"),
     );
     // Three publish no MSL, so there is no frame to put a constituent-space
     // result onto. The other eight carry Sa and Ssa at zero amplitude, so a
@@ -266,6 +269,20 @@ describe("astronomical extremes across the database", () => {
       "noaa/9466229", // Offshore St Matthew Island (GNSS Buoy) — seasonless
       "noaa/9991475", // Guayaquil — seasonless
     ]);
+  });
+
+  test("DMI fits keep source LAT and require an annual term for synthesized HAT", () => {
+    const dmi = tideStations.filter((s) => s.id.startsWith("dmi/"));
+    expect(dmi.length).toBeGreaterThan(0);
+    for (const station of dmi) {
+      expect(station.datums["HAT"] !== undefined, station.id).toBe(
+        station.harmonic_constituents.some(
+          (c) => /^(sa|ssa)$/i.test(c.name) && c.amplitude > 0,
+        ),
+      );
+      expect(station.datums["MSL"], station.id).toBe(0);
+      expect(station.datums["LAT"], station.id).toBeDefined();
+    }
   });
 
   test("HAT is always above LAT", () => {

@@ -1,0 +1,22 @@
+sources:
+  - dmi/2991320
+# Written by `npm run stations`. Do not edit.
+computed:
+  sources:
+    dmi/2991320:
+      position: [64.1713, -51.7199]
+      coastline: unverifiable
+      quality:
+        accepted: false
+        reason: duplicate
+        redundant: ticon/nuuk_godthaab-820-dnk-uhslc_fd
+        score: 45
+        factors:
+          epoch: 0
+          recency: 0
+          source: 0.495
+          quality: 1
+          amplitude: 1
+          coverage: 0.002
+        issues:
+          - MHHW (1.418) < MHW (1.423)

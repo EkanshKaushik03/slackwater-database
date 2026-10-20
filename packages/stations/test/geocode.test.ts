@@ -71,4 +71,18 @@ describe("geocoder", () => {
     expect(result?.place.countryCode).toBe("CA");
     expect(result?.region).toBe("British Columbia");
   });
+
+  test.each([
+    [62.008, -6.769, "Tórshavn", "FO", "Streymoy"],
+    [61.9965, -49.6733, "Paamiut", "GL", "Sermersooq"],
+    [72.7887, -56.1464, "Upernavik", "GL", "Avannaata"],
+  ] as const)(
+    "resolves the new DMI position %s,%s",
+    (lat, lon, name, country, region) => {
+      const result = geocoder.nearest(lat, lon, 1);
+      expect(result?.place.name).toBe(name);
+      expect(result?.place.countryCode).toBe(country);
+      expect(result?.region).toBe(region);
+    },
+  );
 });

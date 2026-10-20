@@ -8,11 +8,11 @@ computed:
       coastline: unverifiable
       quality:
         accepted: true
-        score: 55
+        score: 50
         factors:
           epoch: 1
           recency: 0.99
           source: 0.02
           quality: 0
           amplitude: 1
-          coverage: 0.344
+          coverage: 0.003

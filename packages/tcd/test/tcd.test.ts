@@ -11,6 +11,7 @@ import { describe, test, expect, beforeAll } from "vitest";
 import { existsSync, statSync, readFileSync } from "fs";
 import { join } from "path";
 import { stations } from "@slackwater/database";
+import { createTidePredictor } from "@slackwater/engine";
 import {
   getXTidePredictions,
   getXTideAbout,
@@ -159,6 +160,43 @@ describe("XTide TCD", () => {
       });
     });
   });
+
+  test.each([
+    ["dmi/25149", "Esbjerg Havn, South Denmark, Denmark", "LAT"],
+    ["dmi/2991540", "Aasiaat, Qeqertalik, Greenland (2991540)", "LAT"],
+    ["dmi/2988270", "Tórshavn, Streymoy, Faroe Islands", "LAT"],
+    ["dmi/29422", "Skælskør Fjord, Zealand, Denmark", "MSL"],
+  ])(
+    "%s keeps fitted phases and the chart datum through TCD",
+    (id, name, datum) => {
+      const station = stations.find((s) => s.id === id)!;
+      expect(station.chart_datum).toBe(datum);
+      const predictor = createTidePredictor(station.harmonic_constituents, {
+        offset: station.datums["MSL"]! - station.datums[station.chart_datum!]!,
+      });
+      const expected = predictor
+        .getExtremesPrediction({
+          start: START_DATE,
+          end: END_DATE,
+        })
+        .map((event) => ({
+          time: event.time,
+          type: event.high ? ("high" as const) : ("low" as const),
+          height: event.level,
+        }));
+      const actual = getXTidePredictions(name, START_DATE, END_DATE);
+      const comparison = comparePredictions(expected, actual);
+      expect(comparison.matched).toBeGreaterThan(0);
+      expect(
+        comparison.matched / (comparison.matched + comparison.unmatched),
+      ).toBeGreaterThan(0.95);
+      expect(comparison.timeDiffMinutes.mean).toBeLessThan(MAX_TIME_ERROR_MEAN);
+      expect(comparison.timeDiffMinutes.max).toBeLessThan(MAX_TIME_ERROR_MAX);
+      expect(comparison.heightDiffMeters.rmse).toBeLessThan(
+        MAX_HEIGHT_ERROR_RMSE,
+      );
+    },
+  );
 
   describe("Subordinate station records", () => {
     test("keeps position and reference", () => {

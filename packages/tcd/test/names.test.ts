@@ -1,6 +1,10 @@
 import { describe, test, expect } from "vitest";
 import type { Station } from "@slackwater/database";
-import { buildStationNames, noteLines } from "../build.ts";
+import {
+  buildConstituentList,
+  buildStationNames,
+  noteLines,
+} from "../build.ts";
 
 function station(fields: Partial<Station>): Station {
   return {
@@ -39,4 +43,20 @@ describe("build_tide_db byte limits", () => {
       disclaimers,
     );
   });
+});
+
+test("zero-only terms use no TCD constituent slot; small measured terms still do", () => {
+  const s = station({
+    type: "reference",
+    harmonic_constituents: [
+      { name: "M2", amplitude: 0, phase: 15 },
+      { name: "S2", amplitude: 0.001, phase: 0 },
+    ],
+  });
+  expect(buildConstituentList([s])).toEqual(["S2"]);
+  const other = station({
+    type: "reference",
+    harmonic_constituents: [{ name: "M2", amplitude: 0.002, phase: 0 }],
+  });
+  expect(buildConstituentList([s, other])).toEqual(["M2", "S2"]);
 });

@@ -28,7 +28,7 @@ function formatXTideDate(date: Date): string {
 
 /**
  * Parse XTide CSV output format.
- * Example line: "BOSTON, MA, United States",2026-01-01,8:35 AM EST,2.87 m,"High Tide"
+ * Example line: "BOSTON, MA, United States",2026-01-01,1:35 PM UTC,2.87 m,"High Tide"
  * Format: Location,Date,Time,Value,Event
  */
 function parseXTideCSV(output: string): TideEvent[] {
@@ -57,8 +57,7 @@ function parseXTideCSV(output: string): TideEvent[] {
     if (!isTide && !isCurrent) continue;
 
     // Parse date and time
-    // Format: "2026-01-01" and "8:35 AM EST"
-    // We need to convert to UTC
+    // getXTidePredictions requests UTC for both bounds and printed times.
     const dateTimeStr = `${dateStr} ${timeStr}`;
     const time = new Date(dateTimeStr);
     if (isNaN(time.getTime())) {
@@ -105,6 +104,9 @@ export function getXTidePredictions(
   // Run XTide via Docker using execFileSync for safety
   const args = [
     ...xtideCommand(),
+    // Bounds and CSV timestamps must use UTC; JS cannot parse every local zone abbreviation.
+    "-z",
+    "y",
     // -l: location
     "-l",
     stationName,
