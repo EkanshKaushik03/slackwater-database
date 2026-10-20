@@ -41,6 +41,82 @@ const baseStation: StationInput = {
 };
 
 describe("metadata resolution", () => {
+  test.each(["Bayou_Liberty_Near_SlidellLa", "Bayou Liberty near Slidell LA"])(
+    "takes the region from the raw name before a nearby state's: %s",
+    (name) => {
+      const result = resolveMetadata(
+        { ...baseStation, id: "ticon/bayou", name },
+        { geocoder },
+      );
+      expect(result).toMatchObject({
+        name: "Bayou Liberty near Slidell",
+        region: "LA",
+        region_code: "US-LA",
+      });
+    },
+  );
+
+  test("a raw Canadian province beats a nearby province", () => {
+    const canada: GeocodeResult = {
+      ...everett,
+      country: "Canada",
+      region: "Alberta",
+      place: {
+        ...everett.place,
+        countryCode: "CA",
+        admin1: "Alberta",
+        admin1Code: "01",
+      },
+    };
+    const result = resolveMetadata(
+      {
+        ...baseStation,
+        name: "WadhamsBC",
+        country: "Canada",
+        country_code: "CA",
+      },
+      { geocoder: { nearest: () => canada, near: () => [canada] } },
+    );
+    expect(result).toMatchObject({
+      name: "Wadhams",
+      region: "British Columbia",
+      region_code: "CA-BC",
+    });
+  });
+
+  test("resolves an opaque raw name to the nearest place", () => {
+    const result = resolveMetadata(
+      { ...baseStation, id: "ticon/s197", name: "S197_T" },
+      { geocoder },
+    );
+    expect(result.name).toBe("Everett");
+  });
+
+  test("keeps a NOAA pier name that resembles an opaque TICON code", () => {
+    const result = resolveMetadata(
+      { ...baseStation, id: "noaa/SFB1206", kind: "current", name: "Pier 23" },
+      { geocoder },
+    );
+    expect(result.name).toBe("Pier 23");
+  });
+
+  test("keeps an opaque name when no place is within 50 km", () => {
+    const distant = { ...everett, distance: 51 };
+    const result = resolveMetadata(
+      { ...baseStation, id: "ticon/s197", name: "S197_T" },
+      { geocoder: { nearest: () => distant, near: () => [distant] } },
+    );
+    expect(result.name).toBe("S197");
+  });
+
+  test("a curated name outranks the opaque-name fallback", () => {
+    const result = resolveMetadata(
+      { ...baseStation, id: "ticon/s197", name: "S197_T" },
+      { geocoder, correction: { name: "Gauge at the Pier" } },
+    );
+    expect(result.name).toBe("Gauge at the Pier");
+  });
+
   test("keeps location components independent", () => {
     const result = resolveMetadata(baseStation, {
       correction: {

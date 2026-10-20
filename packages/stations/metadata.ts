@@ -399,14 +399,7 @@ export function resolveMetadata(
       (country.iso2 === "US" && /^[A-Z]{2}$/.test(station.region ?? "")
         ? `US-${station.region}`
         : undefined) ??
-      (place
-        ? isoSubdivisionCode(
-            country.iso2,
-            place.place.admin1,
-            place.place.admin1Code,
-          )
-        : undefined) ??
-      // A Canadian province the provider named, where no place is within reach.
+      // A provider's province takes priority over a nearby place across the border.
       (country.iso2 === "CA" && CANADIAN_SUBDIVISIONS[station.region ?? ""]
         ? `CA-${CANADIAN_SUBDIVISIONS[station.region ?? ""]}`
         : undefined));
@@ -420,12 +413,26 @@ export function resolveMetadata(
     authoritativeRegionCode ??
     (cleaned.region && !noRegion
       ? `${country.iso2}-${cleaned.region}`
+      : undefined) ??
+    (!noRegion && place
+      ? isoSubdivisionCode(
+          country.iso2,
+          place.place.admin1,
+          place.place.admin1Code,
+        )
       : undefined);
+  const displayName =
+    station.id.startsWith("ticon/") &&
+    cleaned.isOpaque &&
+    nearest &&
+    nearest.distance <= 50
+      ? nearest.place.name
+      : cleaned.name;
   // NOAA current qualifiers locate the gauge; they do not consistently name its water.
   const split =
     station.kind === "current" && station.id.startsWith("noaa/")
-      ? { name: cleaned.name }
-      : splitQualifier(cleaned.name);
+      ? { name: displayName }
+      : splitQualifier(displayName);
   const name = registry?.name ?? correction?.name ?? split.name;
   if (!nonEmpty(name)) throw new Error(`${station.id}: no name`);
 
