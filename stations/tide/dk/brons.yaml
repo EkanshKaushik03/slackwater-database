@@ -18,8 +18,6 @@ computed:
           quality: 1
           amplitude: 1
           coverage: 0.009
-        issues:
-          - MHWS (0.311) < MHW (0.332)
     ticon/bronstg-bro-dnk-cmems:
       position: [55.1833, 8.6833]
       coastline: unverifiable
@@ -35,5 +33,3 @@ computed:
           quality: 0
           amplitude: 1
           coverage: 0.009
-        issues:
-          - MHWS (0.336) < MHW (0.346)

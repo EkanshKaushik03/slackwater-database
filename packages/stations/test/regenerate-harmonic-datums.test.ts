@@ -10,6 +10,8 @@ import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { describe, expect, test } from "vitest";
 import type { StationData } from "@slackwater/database";
+import { computeDatums } from "@slackwater/datums";
+import { buildStation } from "../../../sources/linz/linz.ts";
 import {
   CONSTITUENT_FRAME_NOTICE,
   HARMONIC_DATUM_NOTICE,
@@ -150,6 +152,32 @@ describe("stored harmonic datum ownership", () => {
       expect(result["MHW"]).toBe(2.435);
       expect(result["LLWLT"]).toBeUndefined();
       expect(result["ALLW"]).toBeUndefined();
+    },
+  );
+
+  test.each([0.848195, 1.342423])(
+    "matches the LINZ importer with raw Z0 %s and stored millimetre MSL",
+    (z0) => {
+      const constituents = [
+        { name: "M2", amplitude: 1, phase: 0 },
+        { name: "SA", amplitude: 0.05, phase: 0 },
+      ];
+      const imported = buildStation({
+        id: "043",
+        name: "Picton",
+        latitude: -41.28,
+        longitude: 174.01,
+        epoch: { start: "2005-05-01", end: "2025-12-31" },
+        z0,
+        constituents,
+      });
+      expect(
+        mergeHarmonicDatums(
+          "linz",
+          imported,
+          computeDatums(constituents, {}).datums,
+        ),
+      ).toEqual(imported.datums);
     },
   );
 

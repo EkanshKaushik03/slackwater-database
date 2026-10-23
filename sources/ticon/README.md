@@ -43,7 +43,16 @@ This pattern points to truncation when daily source rows are expanded or annual 
 
 ## Regenerating
 
-The station JSONs are generated. After changing datum logic, regenerate them (the full GESLA-4 dataset is downloaded on demand and is not committed):
+The station JSONs are generated. For harmonic-only datum changes, recompute from committed constituents and stored offsets without downloading observations:
+
+```sh
+npm run refresh:harmonic-datums -w packages/stations
+npm run stations
+```
+
+This preserves observed means, their reduction windows and coverage. It stamps the complete-turn harmonic method notice required by the cache. A rollback can remove that notice; rolling forward then recomputes the observation reduction unless the offline command restores it.
+
+For changes to observation reduction or refreshed raw observations, regenerate from GESLA-4 (downloaded on demand and not committed):
 
 ```sh
 FORCE_DATUMS=1 npm run import -w sources/ticon

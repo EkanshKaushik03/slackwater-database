@@ -698,8 +698,8 @@ describe("seasonal dominance", () => {
   });
 
   test("labels independently of the rejection verdict", () => {
-    expect(labelled.filter((q) => q.accepted)).toHaveLength(526);
-    expect(labelled.filter((q) => !q.accepted)).toHaveLength(473);
+    expect(labelled.filter((q) => q.accepted)).toHaveLength(505);
+    expect(labelled.filter((q) => !q.accepted)).toHaveLength(494);
   });
 
   test("is a different question from the contamination gate", () => {
