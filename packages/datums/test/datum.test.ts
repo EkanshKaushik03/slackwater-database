@@ -8,6 +8,66 @@ import {
 } from "../datum.js";
 
 describe("computeDatums", () => {
+  test.each([0.05, 0.06])(
+    "retains small daily tides beneath a %s m annual envelope",
+    (annualAmplitude) => {
+      const { datums } = computeDatums(
+        [
+          { name: "SA", amplitude: annualAmplitude, phase: 0 },
+          { name: "M2", amplitude: 0.001, phase: 0 },
+        ],
+        {},
+      );
+      expect(datums["MHW"]).toBe(0.001);
+      expect(datums["MLW"]).toBe(-0.001);
+      expect(datums["MHHW"]!).toBeLessThan(0.005);
+      expect(datums["MLLW"]!).toBeGreaterThan(-0.005);
+      expect(datums["LAT"]).toBeCloseTo(-annualAmplitude - 0.001, 3);
+      expect(datums["HAT"]).toBeCloseTo(annualAmplitude + 0.001, 3);
+      expect(datums["TLT"]).toBe(datums["LAT"]);
+    },
+  );
+
+  test("retains sub-centimeter daily tides beneath a monthly envelope", () => {
+    const { datums } = computeDatums(
+      [
+        { name: "Mm", amplitude: 0.02, phase: 0 },
+        { name: "M2", amplitude: 0.002, phase: 0 },
+      ],
+      {},
+    );
+    expect(datums["MHW"]!).toBeGreaterThan(0);
+    expect(datums["MHW"]!).toBeLessThan(0.005);
+    expect(datums["MLW"]!).toBeLessThan(0);
+    expect(datums["MLW"]!).toBeGreaterThan(-0.005);
+  });
+
+  test.each(["SA", "Sa"])(
+    "includes %s in the theoretical lowest tide subset",
+    (name) => {
+      const { datums } = computeDatums(
+        [
+          { name, amplitude: 0.05, phase: 0 },
+          { name: "M2", amplitude: 0.001, phase: 0 },
+        ],
+        {},
+      );
+      expect(datums["TLT"]).toBe(-0.051);
+    },
+  );
+
+  test("retains small restricted-subset turns when the complete tide has large turns", () => {
+    const { datums } = computeDatums(
+      [
+        { name: "L2", amplitude: 1, phase: 0 },
+        { name: "M2", amplitude: 0.001, phase: 0 },
+      ],
+      {},
+    );
+    expect(datums["TLT"]).toBe(-0.001);
+    expect(datums["LAT"]!).toBeLessThan(-0.5);
+  });
+
   test("retains both unequal highs and lows in each predicted tidal day", () => {
     const { datums } = computeDatums(
       [

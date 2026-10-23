@@ -76,6 +76,8 @@ specific to one country (LLWLT, TLT, NLLW, ALLW) are pruned from stations that
 don't use them (`pruneDatums` in `packages/stations/station.ts`), so a UK station never
 carries a stray TLT.
 
+Harmonic reductions use every mathematical turning point of the predicted tide, with the engine's prominence threshold set to zero, including for the restricted TLT prediction. An amplitude cutoff can remove small daily tides while retaining seasonal or monthly turns, biasing the means toward the longer-period envelope. The same complete-turn rule applies at every amplitude; a prediction with no turning points remains invalid. These model-derived reductions do not reproduce NOS's six-minute observation tabulation and analyst verification.
+
 ## Datum epoch
 
 The synthetic (harmonic-prediction) datums — HAT, LAT, LLWLT, TLT, and the
