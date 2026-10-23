@@ -7,7 +7,7 @@ import {
   type Sample,
 } from "@slackwater/datums";
 
-const HARMONIC_KEYS = [
+export const HARMONIC_KEYS = [
   "HAT",
   "LAT",
   "LLWLT",
@@ -17,7 +17,10 @@ const HARMONIC_KEYS = [
   "ALLW",
   "TLT",
 ];
-const OBSERVED_KEYS = ["MSL", "MHHW", "MHW", "MTL", "MLW", "MLLW"];
+export const OBSERVED_KEYS = ["MSL", "MHHW", "MHW", "MTL", "MLW", "MLLW"];
+
+export const HARMONIC_REDUCTION_NOTICE =
+  "Harmonic datums retain every predicted turning point without prominence filtering.";
 
 export const OBSERVED_DATUM_NOTICE =
   "Mean datums use one continuous observation window of whole years. Short gaps may contain model-assisted inferred hourly heights.";
@@ -70,7 +73,7 @@ export function reduceTiconDatums(
         observed_hours: observed.coverage.observedHours,
         inferred_hours: observed.coverage.inferredHours,
       },
-      datum_notice: OBSERVED_DATUM_NOTICE,
+      datum_notice: `${OBSERVED_DATUM_NOTICE} ${HARMONIC_REDUCTION_NOTICE}`,
     };
   }
   const observedOffset = observedMeanLevel(samples, constituents);
@@ -88,7 +91,7 @@ export function reduceTiconDatums(
       start: fitEpoch.start.toISOString().slice(0, 10),
       end: fitEpoch.end.toISOString().slice(0, 10),
     },
-    datum_notice: `${HARMONIC_DATUM_NOTICE} ${observedOffset === undefined ? CONSTITUENT_FRAME_NOTICE : OBSERVED_OFFSET_NOTICE}`,
+    datum_notice: `${HARMONIC_DATUM_NOTICE} ${observedOffset === undefined ? CONSTITUENT_FRAME_NOTICE : OBSERVED_OFFSET_NOTICE} ${HARMONIC_REDUCTION_NOTICE}`,
   };
 }
 
@@ -103,6 +106,24 @@ export function cachedDatumNotice(
     | "disclaimers"
   >,
 ): string | undefined {
+  const notice = storedDatumNotice(station);
+  return notice && station.disclaimers?.includes(HARMONIC_REDUCTION_NOTICE)
+    ? `${notice} ${HARMONIC_REDUCTION_NOTICE}`
+    : undefined;
+}
+
+export function storedDatumNotice(
+  station: Parameters<typeof cachedDatumNotice>[0],
+): string | undefined {
+  const observed = station.disclaimers?.includes(OBSERVED_DATUM_NOTICE);
+  const harmonic = station.disclaimers?.includes(HARMONIC_DATUM_NOTICE);
+  const gauge = station.disclaimers?.includes(OBSERVED_OFFSET_NOTICE);
+  const constituent = station.disclaimers?.includes(CONSTITUENT_FRAME_NOTICE);
+  if (
+    (observed && (harmonic || gauge || constituent)) ||
+    (gauge && constituent)
+  )
+    return undefined;
   if (
     station.datums_source === "observed" &&
     station.datum_frame === "gauge" &&
@@ -111,7 +132,11 @@ export function cachedDatumNotice(
     station.disclaimers?.includes(OBSERVED_DATUM_NOTICE)
   )
     return OBSERVED_DATUM_NOTICE;
-  if (station.datums_source === "harmonic")
+  if (
+    station.datums_source === "harmonic" &&
+    !station.datum_epoch &&
+    !station.datum_coverage
+  )
     for (const frame of [OBSERVED_OFFSET_NOTICE, CONSTITUENT_FRAME_NOTICE]) {
       const notice = `${HARMONIC_DATUM_NOTICE} ${frame}`;
       const expectedFrame =

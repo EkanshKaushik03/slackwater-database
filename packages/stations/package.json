@@ -17,6 +17,7 @@
     "report:merges": "node merge-report.ts",
     "report:quality": "node evaluate-quality.ts",
     "refresh:lat-hat": "node backfill-lat-hat.ts",
+    "refresh:harmonic-datums": "node regenerate-harmonic-datums.ts",
     "merge": "node merge-report.ts --apply"
   },
   "dependencies": {

@@ -78,6 +78,14 @@ carries a stray TLT.
 
 Harmonic reductions use every mathematical turning point of the predicted tide, with the engine's prominence threshold set to zero, including for the restricted TLT prediction. An amplitude cutoff can remove small daily tides while retaining seasonal or monthly turns, biasing the means toward the longer-period envelope. The same complete-turn rule applies at every amplitude; a prediction with no turning points remains invalid. These model-derived reductions do not reproduce NOS's six-minute observation tabulation and analyst verification.
 
+## Regenerating harmonic datums
+
+`npm run refresh:harmonic-datums -w packages/stations` recomputes derived values from committed constituents and existing vertical offsets, without downloading observations or refitting harmonics. `SHARD=i/n` selects a deterministic partition for parallel runs. Run `npm run stations` afterward to reevaluate quality and regenerate station files, then `PUBLISHED_REF=origin/main npm run check`.
+
+The command preserves TICON's observed means, observation window and coverage; its harmonic-only records retain their recorded gauge offset or constituent frame. TICON's method notice marks complete-turn reductions, and the importer declines cached datums without that notice. DMI retains published MSL, LAT and MLWS; LINZ retains published MSL and chart zero; JHOD retains published MSL and NLLW. Only the derived values change.
+
+NOAA records mix published means with published or synthesized LAT/HAT without per-field provenance. The offline command leaves them untouched. Recomputing an existing NOAA bound requires evidence that it was synthesized, such as the original backfill diff and confirmation that NOAA supplies no value. Matching a prediction or the presence of MHW does not establish ownership. The regular NOAA import and LAT/HAT backfill remain the maintained source-update path.
+
 ## Datum epoch
 
 The synthetic (harmonic-prediction) datums — HAT, LAT, LLWLT, TLT, and the
