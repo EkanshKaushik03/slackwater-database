@@ -16,7 +16,7 @@
     "commercial_use": true,
     "url": "https://creativecommons.org/licenses/by/4.0/"
   },
-  "disclaimers": "No obvious issues Mean datums use one continuous observation window of whole years. Short gaps may contain model-assisted inferred hourly heights.",
+  "disclaimers": "No obvious issues Mean datums use one continuous observation window of whole years. Short gaps may contain model-assisted inferred hourly heights. Harmonic datums retain every predicted turning point without prominence filtering.",
   "datums": {
     "MSL": 0.652,
     "MHHW": 0.691,
@@ -25,7 +25,7 @@
     "MLW": 0.648,
     "MLLW": 0.614,
     "HAT": 1.021,
-    "LAT": 0.339,
+    "LAT": 0.34,
     "LLWLT": 0.347,
     "MHWS": 0.663,
     "MLWS": 0.641

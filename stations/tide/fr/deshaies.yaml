@@ -20,8 +20,8 @@ computed:
           amplitude: 0.75
           coverage: 0
         issues:
-          - MLWS (-0.056) > MLW (-0.096)
-          - MHWS (0.056) < MHW (0.095)
+          - MLWS (-0.056) > MLW (-0.082)
+          - MHWS (0.056) < MHW (0.092)
           - K2 amplitude (0.0083) exceeds S2 (0.0044)
     ticon/deshaiestg_60minute-des-fra-cmems:
       position: [16.30529, -61.79591]
@@ -39,6 +39,6 @@ computed:
           amplitude: 0.75
           coverage: 0
         issues:
-          - MLWS (-0.056) > MLW (-0.096)
-          - MHWS (0.056) < MHW (0.095)
+          - MLWS (-0.056) > MLW (-0.082)
+          - MHWS (0.056) < MHW (0.092)
           - K2 amplitude (0.0083) exceeds S2 (0.0044)

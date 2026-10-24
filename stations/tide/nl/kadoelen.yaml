@@ -18,6 +18,5 @@ computed:
           amplitude: 1
           coverage: 0.138
         issues:
-          - MLWS (-0.217) > MLW (-0.222)
-          - MHWS (-0.191) < MHW (-0.189)
+          - MLWS (-0.217) > MLW (-0.221)
           - "Seasonal curve peak (0.119m) exceeds the principal tide M2+S2+K1+O1 (0.019m): the yearly swing exceeds the daily one"

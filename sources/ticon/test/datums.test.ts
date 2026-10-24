@@ -7,6 +7,8 @@ import {
   cachedDatumNotice,
   OBSERVED_DATUM_NOTICE,
   HARMONIC_DATUM_NOTICE,
+  HARMONIC_REDUCTION_NOTICE,
+  storedDatumNotice,
 } from "../datums.ts";
 
 const constituents = [{ name: "S2", amplitude: 1, phase: 0 }];
@@ -45,18 +47,35 @@ describe("TICON datum composition", () => {
           observed_hours: 8760,
           inferred_hours: 24,
         },
-        disclaimers: `No obvious issues ${OBSERVED_DATUM_NOTICE}`,
+        disclaimers: `No obvious issues ${OBSERVED_DATUM_NOTICE} ${HARMONIC_REDUCTION_NOTICE}`,
       }),
-    ).toBe(OBSERVED_DATUM_NOTICE);
+    ).toBe(`${OBSERVED_DATUM_NOTICE} ${HARMONIC_REDUCTION_NOTICE}`);
     for (const frame of [OBSERVED_OFFSET_NOTICE, CONSTITUENT_FRAME_NOTICE])
       expect(
         cachedDatumNotice({
           datums_source: "harmonic",
           datum_frame:
             frame === OBSERVED_OFFSET_NOTICE ? "gauge" : "constituent",
-          disclaimers: `No obvious issues ${HARMONIC_DATUM_NOTICE} ${frame}`,
+          disclaimers: `No obvious issues ${HARMONIC_DATUM_NOTICE} ${frame} ${HARMONIC_REDUCTION_NOTICE}`,
         }),
-      ).toBe(`${HARMONIC_DATUM_NOTICE} ${frame}`);
+      ).toBe(`${HARMONIC_DATUM_NOTICE} ${frame} ${HARMONIC_REDUCTION_NOTICE}`);
+  });
+  test("accepts existing frame evidence for migration but rejects its prior harmonic reduction as a current cache", () => {
+    const station = {
+      datums_source: "harmonic" as const,
+      datum_frame: "constituent" as const,
+      disclaimers: `${HARMONIC_DATUM_NOTICE} ${CONSTITUENT_FRAME_NOTICE}`,
+    };
+    expect(storedDatumNotice(station)).toBe(
+      `${HARMONIC_DATUM_NOTICE} ${CONSTITUENT_FRAME_NOTICE}`,
+    );
+    expect(cachedDatumNotice(station)).toBeUndefined();
+    expect(
+      cachedDatumNotice({
+        ...station,
+        disclaimers: `${station.disclaimers} ${HARMONIC_REDUCTION_NOTICE}`,
+      }),
+    ).toBe(`${station.disclaimers} ${HARMONIC_REDUCTION_NOTICE}`);
   });
   test("invalidates cached datums whose frame is missing or contradicts their method notice", () => {
     for (const datum_frame of [undefined, "gauge"] as const) {
@@ -112,6 +131,7 @@ describe("TICON datum composition", () => {
     expect(result.epoch).toEqual({ start: "2000-01-01", end: "2010-12-31" });
     expect(result).not.toHaveProperty("datum_epoch");
     expect(result.datum_notice).toContain(OBSERVED_OFFSET_NOTICE);
+    expect(result.datum_notice).toContain(HARMONIC_REDUCTION_NOTICE);
   });
 
   test("combines one supported empirical mean family with astronomical bounds in the same frame", () => {
@@ -122,6 +142,7 @@ describe("TICON datum composition", () => {
     });
     const result = reduceTiconDatums(samples, constituents, harmonic, fitEpoch);
     expect(result.datums_source).toBe("observed");
+    expect(result.datum_notice).toContain(HARMONIC_REDUCTION_NOTICE);
     expect(result).toHaveProperty("datum_frame", "gauge");
     expect(result.datums["MSL"]).toBeCloseTo(7, 2);
     expect(result.datums["MHW"]).toBeCloseTo(8, 2);

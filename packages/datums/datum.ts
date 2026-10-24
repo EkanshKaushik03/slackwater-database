@@ -19,6 +19,10 @@ export interface Sample {
 }
 
 export type Datums = Record<string, number>;
+export type DatumPredictionOptions = Omit<
+  TidePredictionOptions,
+  "prominenceThreshold"
+>;
 
 export interface TidalDatumsResult {
   start: Date;
@@ -258,6 +262,19 @@ function amplitudeDatums(constituents: HarmonicConstituent[]): Datums {
   };
 }
 
+function datumExtremes(
+  constituents: HarmonicConstituent[],
+  start: Date,
+  end: Date,
+  options: DatumPredictionOptions,
+): Sample[] {
+  // A display prominence threshold selects highs and lows by amplitude and biases their means.
+  return createTidePredictor(constituents, {
+    ...options,
+    prominenceThreshold: 0,
+  }).getExtremesPrediction({ start, end });
+}
+
 /**
  * China's Theoretical Lowest Tide, computed as the astronomical minimum of the
  * tide synthesized from the Vladimirsky 13-constituent subset over the epoch, in
@@ -268,12 +285,13 @@ function computeTLT(
   constituents: HarmonicConstituent[],
   start: Date,
   end: Date,
-  tidePredictorOptions: TidePredictionOptions,
+  tidePredictorOptions: DatumPredictionOptions,
 ): number | undefined {
-  const subset = constituents.filter((c) => TLT_CONSTITUENTS.has(c.name));
+  const subset = constituents.filter((c) =>
+    TLT_CONSTITUENTS.has(c.name.toUpperCase()),
+  );
   if (subset.length === 0) return undefined;
-  const predictor = createTidePredictor(subset, tidePredictorOptions);
-  const extremes = predictor.getExtremesPrediction({ start, end });
+  const extremes = datumExtremes(subset, start, end, tidePredictorOptions);
   if (extremes.length === 0) return undefined;
   return toFixed(min(extremes.map((e) => e.level)), 3);
 }
@@ -285,18 +303,16 @@ function computeTLT(
 export function computeDatums(
   constituents: HarmonicConstituent[],
   epochSpec: EpochSpec,
-  tidePredictorOptions: TidePredictionOptions = {},
+  tidePredictorOptions: DatumPredictionOptions = {},
 ): TidalDatumsResult {
   const { start, end } = resolveEpoch(epochSpec);
 
-  // Build predictor from @slackwater/engine
-  const predictor = createTidePredictor(constituents, tidePredictorOptions);
-
-  // Get extremes over the epoch
-  const extremes = predictor.getExtremesPrediction({
+  const extremes = datumExtremes(
+    constituents,
     start,
     end,
-  });
+    tidePredictorOptions,
+  );
 
   const datums: Datums = {
     ...computeDatumsFromExtremes(extremes),
