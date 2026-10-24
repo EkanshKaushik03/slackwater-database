@@ -64,6 +64,8 @@ Each workspace uses the same verbs, run with `-w <workspace>`:
 
 If `npm run validate` reports that station files are stale, run `npm run stations`, review the station-file diff, and commit it.
 
+The Swift job uses the runner-provided compiler; `.mise.toml` pins the Node/npm and schema-generator tools. Follow the shared [Swift toolchain guidance](https://github.com/openwatersio/.github/blob/main/docs/agents/swift.md) for local compiler selection, Xcode SDK compatibility and installation or runner changes.
+
 The Swift job additionally regenerates the committed Swift and fails on drift:
 
 ```sh
