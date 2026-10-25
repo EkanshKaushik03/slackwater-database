@@ -1,6 +1,12 @@
-import { getSourceSuffix } from "@slackwater/stations";
+import {
+  getSourceSuffix,
+  roundConstituents,
+  type PartialStationData,
+} from "@slackwater/stations";
 import { parseGeslaSamples, type Sample } from "@slackwater/datums";
 import { parseGeslaSamplesInZone } from "@slackwater/harmonic-analysis";
+
+type Constituents = PartialStationData["harmonic_constituents"];
 
 // WSV labels German legal time as UTC. RWS subtracts a fixed CET hour rather
 // than a DST-aware offset: winter is UTC already, summer remains one hour fast.
@@ -38,10 +44,59 @@ export function parseTiconSamples(id: string, text: string): Sample[] {
 
 /** Move an early gauge's samples to the UTC time they were measured. */
 export function shiftEarlyGauge(id: string, samples: Sample[]): Sample[] {
-  const hours = EARLY_GAUGES[id];
-  if (!hours) return samples;
+  if (!EARLY_GAUGES[id]) return samples;
   return samples.map((s) => ({
-    time: new Date(s.time.getTime() + hours * 3600000),
+    time: measuredAt(id, s.time),
     level: s.level,
   }));
+}
+
+/** The UTC time a gauge's height stamped `time` was measured. */
+function measuredAt(id: string, time: Date): Date {
+  return new Date(time.getTime() + (EARLY_GAUGES[id] ?? 0) * 3600000);
+}
+
+/**
+ * Whether the live UHSLC RQD record, ending at `rqEnd` as UHSLC stamps it,
+ * runs past the station's GESLA-4 samples, which parseTiconSamples has already
+ * moved to UTC. Both ends are compared in UTC.
+ */
+export function extendsGeslaRecord(
+  id: string,
+  rqEnd: Date,
+  samples: Sample[],
+): boolean {
+  const geslaEnd = samples.reduce(
+    (end, s) => Math.max(end, s.time.getTime()),
+    -Infinity,
+  );
+  return measuredAt(id, rqEnd).getTime() > geslaEnd;
+}
+
+/**
+ * A saved re-fit to reuse, or undefined when there is none: no constituents,
+ * or the constituents TICON published, which a file saved before its station
+ * was re-fit still holds. Stored constituents are at the published precision,
+ * so the published ones are compared at that precision too.
+ */
+export function cachedRefit(
+  stored: Constituents | undefined,
+  published: Constituents,
+): Constituents | undefined {
+  if (!stored?.length) return undefined;
+  if (sameConstituents(stored, roundConstituents("ticon", published)))
+    return undefined;
+  return stored;
+}
+
+export function sameConstituents(a: Constituents, b: Constituents) {
+  return (
+    a.length === b.length &&
+    a.every(
+      (h, i) =>
+        h.name === b[i]!.name &&
+        h.amplitude === b[i]!.amplitude &&
+        h.phase === b[i]!.phase,
+    )
+  );
 }

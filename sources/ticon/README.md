@@ -99,7 +99,7 @@ The importer re-fits the `wsv` and `rws` stations, whose GESLA-4 files label loc
 FORCE_HARMONICS=1 npm run import -w sources/ticon
 ```
 
-A re-fit reads each station's whole GESLA-4 record, so it takes a while: about 90 minutes for all of them.
+A re-fit reads each station's whole GESLA-4 record, so it takes a while: about 90 minutes for all of them. Without `FORCE_HARMONICS` the importer reuses each saved re-fit, but re-fits a station whose saved constituents still equal TICON's published ones, as a file saved before its station joined these lists does.
 
 UHSLC stamps its Hong Kong hourly heights one hour early: the height it labels T was measured at T + 1 h UTC. TICON-4 fitted its constants to those times, so `hong_kong-329-hkg-uhslc_fd`, `hong_kong-329a-hkg-uhslc_rq` and `hong_kong-329b-hkg-uhslc_rq` all published M2 phases near 7°, where the Hong Kong Observatory's (HKO) Quarry Bay predictions fit 36.5°. The importer adds the hour to their GESLA-4 samples and to the live UHSLC RQD samples 329b's datums are reduced from, then re-fits. See [#360](https://github.com/openwatersio/slackwater-database/issues/360).
 
@@ -109,7 +109,7 @@ UHSLC stamps its Hong Kong hourly heights one hour early: the height it labels T
 
 Against HKO's hourly Quarry Bay predictions for 2025–26, the published constants fit best 59–60 min late (RMS 3.9–4.4 cm); the re-fit constants fit best at 0 to −1 min (RMS 2.9–3.5 cm).
 
-To check which line a published constituent describes, score it against the raw record with [`score-line.ts`](../../packages/harmonic-analysis/score-line.ts). It reads the GESLA-4 archive the importer downloads:
+To check which line a published constituent describes, score it against the raw record with [`score-line.ts`](../../packages/harmonic-analysis/score-line.ts). It reads the GESLA-4 archive the importer downloads, and refuses the re-fit stations, whose constants are no longer TICON's:
 
 ```sh
 npm run report:score-line -w packages/harmonic-analysis -- cardwell-h035012a-aus-bom 3N2 245.555 --sweep --nodal=N2

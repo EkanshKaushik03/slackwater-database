@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
 import * as engine from "@slackwater/engine";
-import { doodsonLine, lineScorer } from "../score-line.ts";
+import { doodsonLine, lineScorer, ticonConstituents } from "../score-line.ts";
 
 describe("lineScorer", () => {
   const constituents = [
@@ -44,5 +44,23 @@ describe("lineScorer", () => {
 
   test("rejects a malformed Doodson number", () => {
     expect(() => doodsonLine("2455", 0, mks2)).toThrow("Not a Doodson number");
+  });
+});
+
+describe("ticonConstituents", () => {
+  // A re-fit's constants are fit to re-timed samples; scoring them against the
+  // raw GESLA-4 times mixes two clocks.
+  test.each([
+    "hong_kong-329-hkg-uhslc_fd",
+    "hong_kong-329a-hkg-uhslc_rq",
+    "hong_kong-329b-hkg-uhslc_rq",
+  ])("rejects the re-fit %s", async (id) => {
+    await expect(ticonConstituents(id)).rejects.toThrow("stores a re-fit");
+  });
+
+  test("loads a station that keeps TICON's constants", async () => {
+    expect(await ticonConstituents("abashiri-347-jpn-uhslc_fd")).toContainEqual(
+      expect.objectContaining({ name: "M2" }),
+    );
   });
 });

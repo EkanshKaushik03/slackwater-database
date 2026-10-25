@@ -27,6 +27,9 @@ import {
   parseTiconSamples,
   shiftEarlyGauge,
   hasMislabeledClock,
+  extendsGeslaRecord,
+  cachedRefit,
+  sameConstituents,
 } from "./samples.ts";
 import { matchMetadata, type TiconMetaRow } from "./meta.ts";
 import { reduceTiconDatums, cachedDatumNotice } from "./datums.ts";
@@ -286,11 +289,7 @@ async function getDatums(
   // station zero, so the frame is unchanged). See #138.
   if (parseRqdId(id)) {
     const rqEnd = await rqdEnd(id);
-    const geslaEnd = samples.reduce(
-      (end, s) => Math.max(end, s.time.getTime()),
-      -Infinity,
-    );
-    if (rqEnd && rqEnd.getTime() > geslaEnd) {
+    if (rqEnd && extendsGeslaRecord(id, rqEnd, samples)) {
       samples = shiftEarlyGauge(id, await loadRqdSamples(id, rqEnd));
     }
   }
@@ -326,7 +325,8 @@ async function getDatums(
  * phases are not UTC-referenced, so re-fit amplitude + UTC phase from the raw
  * GESLA water levels. Throws when such a station can't be re-analyzed, so it is
  * skipped rather than saved with wrong phases. Cached like datums (reused
- * unless FORCE_HARMONICS=1; the fit is ~6s/station).
+ * unless FORCE_HARMONICS=1; the fit is ~6s/station), but a saved file that
+ * still holds TICON's published constituents is re-fit.
  */
 async function getHarmonics(
   id: string,
@@ -337,7 +337,8 @@ async function getHarmonics(
   if (!forceHarmonics) {
     try {
       const { harmonic_constituents } = await load("ticon", id);
-      if (harmonic_constituents?.length) return harmonic_constituents;
+      const refit = cachedRefit(harmonic_constituents, csvHarmonics);
+      if (refit) return refit;
     } catch {
       // no cached record; compute below
     }
@@ -353,21 +354,6 @@ async function getHarmonics(
     throw new Error("record too short to re-analyze its non-UTC phases");
   }
   return fitHarmonics(samples, names);
-}
-
-function sameConstituents(
-  a: PartialStationData["harmonic_constituents"],
-  b: PartialStationData["harmonic_constituents"],
-) {
-  return (
-    a.length === b.length &&
-    a.every(
-      (h, i) =>
-        h.name === b[i]!.name &&
-        h.amplitude === b[i]!.amplitude &&
-        h.phase === b[i]!.phase,
-    )
-  );
 }
 
 function toISODate(date: Date) {
