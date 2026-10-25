@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import * as engine from "@slackwater/engine";
 import { ensureGeslaData, parseGeslaSamples } from "@slackwater/datums";
+import { hasMislabeledClock } from "../../sources/ticon/samples.ts";
 import type { HarmonicConstituent } from "./index.ts";
 
 /**
@@ -95,6 +96,25 @@ export function lineScorer(
   };
 }
 
+/**
+ * TICON's published constituents for a station. The importer re-fits stations
+ * whose GESLA-4 times are not UTC from re-timed records, so their constants
+ * are not TICON's and would be scored against the raw, mislabeled times.
+ */
+export async function ticonConstituents(
+  id: string,
+): Promise<HarmonicConstituent[]> {
+  if (hasMislabeledClock(id))
+    throw new Error(`${id} stores a re-fit, not TICON's constants`);
+  const station = JSON.parse(
+    await readFile(
+      new URL(`../../data/ticon/${id}.json`, import.meta.url),
+      "utf8",
+    ),
+  ) as { harmonic_constituents: HarmonicConstituent[] };
+  return station.harmonic_constituents;
+}
+
 // node packages/harmonic-analysis/score-line.ts <ticon-id> <constituent> [245.555+90 ...] [--sweep] [--nodal=NAME] [--without=NAME ...]
 if (import.meta.url === `file://${process.argv[1]}`) {
   const args = process.argv.slice(2);
@@ -107,16 +127,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     throw new Error(
       "usage: score-line.ts <ticon-id> <constituent> [245.555+90 ...] [--sweep] [--nodal=NAME] [--without=NAME ...]",
     );
-  // The importer re-fits these from re-zoned records, so their constants are not TICON's.
-  if (/-(wsv|rws)$/.test(id))
-    throw new Error(`${id} stores a re-fit, not TICON's constants`);
-
-  const station = JSON.parse(
-    await readFile(
-      new URL(`../../data/ticon/${id}.json`, import.meta.url),
-      "utf8",
-    ),
-  ) as { harmonic_constituents: HarmonicConstituent[] };
+  const constituents = await ticonConstituents(id);
   const model = engine.constituents[name];
   const nodal = engine.constituents[option("nodal")[0] ?? name];
   if (!model || !nodal)
@@ -129,7 +140,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   );
   const score = lineScorer(
     samples,
-    station.harmonic_constituents.filter((c) => !without.includes(c.name)),
+    constituents.filter((c) => !without.includes(c.name)),
     name,
   );
 
