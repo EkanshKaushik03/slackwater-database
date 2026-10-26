@@ -11,23 +11,13 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CHS_FIT_EVIDENCE, chsFitProblems } from "./station-files.ts";
+import { buildSnapshot, type Dispositions } from "./chs-fit-snapshot.ts";
+import { CHS_FIT_EVIDENCE } from "./station-files.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const OUT = join(root, "metadata", "chs-current-validation");
 const RELEASES =
   "https://github.com/openwatersio/chs-current-validation/releases/download";
-
-const sortKeys = (value: unknown): unknown =>
-  Array.isArray(value)
-    ? value.map(sortKeys)
-    : value && typeof value === "object"
-      ? Object.fromEntries(
-          Object.entries(value)
-            .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))
-            .map(([key, inner]) => [key, sortKeys(inner)]),
-        )
-      : value;
 
 async function main() {
   const tag = process.argv[2];
@@ -38,43 +28,19 @@ async function main() {
   const url = `${RELEASES}/${tag}/dispositions.json`;
   const response = await fetch(url);
   if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
-  const source = (await response.json()) as {
-    release: string;
-    stamp: string;
-    engine: string;
-    scorer: number;
-    database: string;
-    newest: { grid: number; fit_end: string };
-    gates: Record<string, { chs_fit: unknown }>;
-  };
-  if (source.release !== tag)
-    throw new Error(`${url} is release ${source.release}, not ${tag}`);
-  const { release, stamp, engine, scorer, database, newest } = source;
-  const gates = Object.fromEntries(
-    Object.entries(source.gates).map(([id, gate]) => [id, gate.chs_fit]),
-  );
-  const rejected = Object.entries(gates).flatMap(([id, fit]) =>
-    chsFitProblems({ ...(fit as object), evidence: tag }).map(
-      (problem) => `${id}: ${problem}`,
-    ),
-  );
-  if (rejected.length)
-    throw new Error(
-      `${url} holds chs_fit shapes this repo rejects:\n  ${rejected.join("\n  ")}`,
-    );
-  const snapshot = sortKeys({
-    release,
-    stamp,
-    engine,
-    scorer,
-    database,
-    newest,
-    gates,
-  });
+  const source = (await response.json()) as Dispositions;
+  let snapshot;
+  try {
+    snapshot = buildSnapshot(source, tag);
+  } catch (error) {
+    throw new Error(`${url} ${error instanceof Error ? error.message : error}`);
+  }
   mkdirSync(OUT, { recursive: true });
   const path = join(OUT, `${tag}.json`);
   writeFileSync(path, JSON.stringify(snapshot, null, 2) + "\n");
-  console.log(`wrote ${Object.keys(gates).length} gates to ${path}`);
+  console.log(
+    `wrote ${Object.keys(snapshot["gates"] as object).length} gates to ${path}`,
+  );
 }
 
 main().catch((error) => {

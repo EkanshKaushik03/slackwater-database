@@ -189,4 +189,35 @@ describe("evidenceProblems", () => {
       [],
     );
   });
+
+  it("ignores miss_context and evidence on the snapshot side", () => {
+    save(R3, R3, {
+      "chs-active-pass": {
+        tier: "online",
+        miss_context: "rapids",
+        evidence: R3,
+      },
+    });
+    expect(
+      evidenceProblems([station({ tier: "online", evidence: R3 })], dir),
+    ).toEqual([]);
+  });
+
+  it("reports a misnamed snapshot nobody cites", () => {
+    save(R3, "fit-2026-10-22-8f85912-r1");
+    const problems = evidenceProblems(
+      [station({ ...GATE, evidence: R2 })],
+      dir,
+    );
+    expect(problems).toHaveLength(1);
+    expect(problems[0]).toContain(`${R3}.json`);
+  });
+});
+
+describe("compareTags ties", () => {
+  it("breaks a date and run tie by the tag", () => {
+    const [a, b] = ["fit-2026-10-22-aaaaaaa-r2", "fit-2026-10-22-bbbbbbb-r2"];
+    expect([b, a].sort(compareTags)).toEqual([a, b]);
+    expect([a, b].sort(compareTags)).toEqual([a, b]);
+  });
 });

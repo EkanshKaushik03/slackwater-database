@@ -15,7 +15,7 @@ export interface ChsFitSnapshot {
   gates: Record<string, Record<string, unknown>>;
 }
 
-/** Orders results release tags oldest first: by date, then run number. */
+/** Orders results release tags oldest first: by date, then run number, then the tag itself. */
 export function compareTags(a: string, b: string): number {
   const key = (tag: string) => {
     const [, date, run] = /^fit-(\d{4}-\d{2}-\d{2})-[0-9a-f]{7}-r(\d+)$/.exec(
@@ -24,7 +24,17 @@ export function compareTags(a: string, b: string): number {
     return { date: date!, run: Number(run) };
   };
   const [x, y] = [key(a), key(b)];
-  return x.date < y.date ? -1 : x.date > y.date ? 1 : x.run - y.run;
+  return x.date < y.date
+    ? -1
+    : x.date > y.date
+      ? 1
+      : x.run !== y.run
+        ? x.run - y.run
+        : a < b
+          ? -1
+          : a > b
+            ? 1
+            : 0;
 }
 
 /**
@@ -55,45 +65,66 @@ export function evidenceProblems(
     for (const id of Object.keys(snapshot.gates ?? {})) newest.set(id, tag);
   }
 
-  return files.flatMap((file) => {
-    const id = file.sources[0]!;
-    const expected = newest.get(id);
-    const fit = file.chs_fit;
-    if (!fit)
-      return expected
-        ? [
-            file.derived
-              ? `${file.file}: has no chs_fit, but ${expected} measured gate ${id}, which the file derives; check the snapshot or the file's derived block`
-              : `${file.file}: has no chs_fit, but ${expected} measured gate ${id}`,
-          ]
-        : [];
-    const path = join(snapshotDir, `${fit.evidence}.json`);
-    const where = `${file.file}: chs_fit`;
-    if (!existsSync(path))
-      return [`${where} cites ${fit.evidence}, but ${path} does not exist`];
-    const snapshot = read(fit.evidence);
-    if (snapshot.release !== fit.evidence)
-      return [
-        `${where} cites ${fit.evidence}, but ${path} is release ${snapshot.release}`,
-      ];
-    const gate = snapshot.gates?.[id];
-    if (!gate)
-      return [`${where} cites ${fit.evidence}, which lacks gate ${id}`];
-    if (expected !== fit.evidence)
-      return [
-        `${where} cites ${fit.evidence}, but the newest snapshot listing gate ${id} is ${expected}; cite ${expected}`,
-      ];
-    const { evidence: _evidence, miss_context: _context, ...ours } = fit;
-    const differing = [...new Set([...Object.keys(ours), ...Object.keys(gate)])]
-      .sort()
-      .filter(
-        (key) =>
-          !isDeepStrictEqual((ours as Record<string, unknown>)[key], gate[key]),
-      );
-    return differing.length
+  const cited = new Set(
+    files.flatMap((f) => (f.chs_fit ? [f.chs_fit.evidence] : [])),
+  );
+  const misnamed = tags.flatMap((tag) => {
+    const { release } = read(tag);
+    return release !== tag && !cited.has(tag)
       ? [
-          `${where} differs from ${fit.evidence} for gate ${id} in ${differing.join(", ")}`,
+          `${join(snapshotDir, `${tag}.json`)}: is release ${release}, not ${tag}`,
         ]
       : [];
   });
+
+  return [
+    ...misnamed,
+    ...files.flatMap((file) => {
+      const id = file.sources[0]!;
+      const expected = newest.get(id);
+      const fit = file.chs_fit;
+      if (!fit)
+        return expected
+          ? [
+              file.derived
+                ? `${file.file}: has no chs_fit, but ${expected} measured gate ${id}, which the file derives; check the snapshot or the file's derived block`
+                : `${file.file}: has no chs_fit, but ${expected} measured gate ${id}`,
+            ]
+          : [];
+      const path = join(snapshotDir, `${fit.evidence}.json`);
+      const where = `${file.file}: chs_fit`;
+      if (!existsSync(path))
+        return [`${where} cites ${fit.evidence}, but ${path} does not exist`];
+      const snapshot = read(fit.evidence);
+      if (snapshot.release !== fit.evidence)
+        return [
+          `${where} cites ${fit.evidence}, but ${path} is release ${snapshot.release}`,
+        ];
+      const gate = snapshot.gates?.[id];
+      if (!gate)
+        return [`${where} cites ${fit.evidence}, which lacks gate ${id}`];
+      if (expected !== fit.evidence)
+        return [
+          `${where} cites ${fit.evidence}, but the newest snapshot listing gate ${id} is ${expected}; cite ${expected}`,
+        ];
+      const { evidence: _evidence, miss_context: _context, ...ours } = fit;
+      const { evidence: _e, miss_context: _c, ...theirs } = gate;
+      const differing = [
+        ...new Set([...Object.keys(ours), ...Object.keys(theirs)]),
+      ]
+        .sort()
+        .filter(
+          (key) =>
+            !isDeepStrictEqual(
+              (ours as Record<string, unknown>)[key],
+              theirs[key],
+            ),
+        );
+      return differing.length
+        ? [
+            `${where} differs from ${fit.evidence} for gate ${id} in ${differing.join(", ")}`,
+          ]
+        : [];
+    }),
+  ];
 }

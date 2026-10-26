@@ -102,4 +102,9 @@ async function main() {
     console.log(line);
 }
 
-if (import.meta.main) main();
+if (import.meta.main)
+  main().catch((error) =>
+    console.log(
+      `::warning::Could not check the CHS current results age: ${error instanceof Error ? error.message : String(error)}`,
+    ),
+  );
