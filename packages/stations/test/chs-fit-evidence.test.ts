@@ -104,4 +104,38 @@ describe("evidenceProblems", () => {
   it("ignores a station with no chs_fit", () => {
     expect(evidenceProblems([station()], dir)).toEqual([]);
   });
+
+  it("fails a station whose chs_fit was deleted while another cites the snapshot", () => {
+    const kept = station({ ...GATE, evidence: TAG });
+    const gone = {
+      ...station(),
+      file: "stations/current/ca/bc/first-narrows.yaml",
+      sources: ["chs-first-narrows"],
+    } as StationFile;
+    writeFileSync(
+      join(dir, "fit-2026-10-22-8f85912-r5.json"),
+      snapshot("fit-2026-10-22-8f85912-r5", {
+        "chs-active-pass": GATE,
+        "chs-first-narrows": GATE,
+      }),
+    );
+    const cites = station({ ...GATE, evidence: "fit-2026-10-22-8f85912-r5" });
+    const problems = evidenceProblems([cites, gone], dir);
+    expect(problems).toHaveLength(1);
+    expect(problems[0]).toContain("first-narrows.yaml");
+    expect(problems[0]).toContain("fit-2026-10-22-8f85912-r5");
+    expect(evidenceProblems([kept], dir)).toEqual([]);
+  });
+
+  it("passes a snapshot gate that has no station file", () => {
+    writeFileSync(
+      join(dir, "fit-2026-10-22-8f85912-r6.json"),
+      snapshot("fit-2026-10-22-8f85912-r6", {
+        "chs-active-pass": GATE,
+        "chs-nowhere": GATE,
+      }),
+    );
+    const file = station({ ...GATE, evidence: "fit-2026-10-22-8f85912-r6" });
+    expect(evidenceProblems([file], dir)).toEqual([]);
+  });
 });

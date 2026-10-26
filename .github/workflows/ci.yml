@@ -59,6 +59,7 @@ jobs:
           npm run validate
 
       - name: Warn when CHS current results are stale
+        if: ${{ !cancelled() }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run report:chs-fit-age -w packages/stations

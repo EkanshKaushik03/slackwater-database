@@ -110,7 +110,7 @@ A fitted current gate carries a `chs_fit` block: the tier its year of held-out C
 - `tier: bounded` ships a measured slack bound. `days` is the window and `slack_bound_minutes` is the bound, 35, 40 or 45.
 - `tier: online` ships the online predictions. `miss` holds the `clause` the gate fails and its `value`, or `null` when there was nothing to measure. `miss.near_bar: true` marks a gate that passes every bar in its newest and previous years, but not yet by the promotion margin, so the stability rule keeps it online.
 
-A gate with no `chs_fit` and no `derived` block is unmeasured and ships online. `evidence` is the tag of the results release the values come from. `npm run validate` compares each block with that release's snapshot in `metadata/chs-current-validation/` and fails on any difference. A value changes only by a PR that cites a newer results release, with its snapshot fetched by `npm run refresh:chs-fit -w packages/stations -- <tag>`.
+A gate with no `chs_fit` and no `derived` block is unmeasured and ships online. `evidence` is the tag of the results release the values come from. `npm run validate` compares each block with that release's snapshot in `metadata/chs-current-validation/` and fails on any difference. A value changes only by a PR that cites a newer results release, with its snapshot fetched by `npm run refresh:chs-fit -w packages/stations -- <tag>`. A gate a cited snapshot measured must keep its block: deleting one fails `validate`. CI warns when the newest cited release is more than 45 days old or when a newer one exists (`npm run report:chs-fit-age -w packages/stations`).
 
 `chs_fit.miss_context` is a curated field on an online gate whose water explains the miss. It comes from a fixed set so the app can translate it: `rapids`, `tidal_falls` or `slow_reversal`. It is not in the snapshot, so a comment above it says it is curated.
 
@@ -140,6 +140,8 @@ The stations this repo owns are its own factual registry of tide and current sta
 Where each field of an owned station comes from:
 
 - `name`: a hand-written label. Renaming and re-casing a shouting provider name (`CHERRY POINT` to `Cherry Point`) is original editorial work, reviewed by a person.
+- `magnitude_note`: the CHS figures or Sailing Directions the file's comment cites.
+- `chs_fit`: the results release its `evidence` names. Its `miss.value` is an error statistic measured against CHS's predictions, not CHS data.
 - `context`, `cities`, `aliases`: written here; not present in provider data.
 - Kind (`stations/tide/` or `stations/current/`): this project's editorial classification against the membership rules above, not a field copied from a provider.
 - `tide_reference` and `derived.reference`: an editorial pairing. The nearest tide reference port in the gate's tidal regime, chosen from the positions in these files and, where one exists, confirmed against published secondary-reference practice. Both sides are this repo's own ids, never a provider handle.

@@ -23,7 +23,7 @@ export function evidenceProblems(
   files: StationFile[],
   snapshotDir: string,
 ): string[] {
-  return files.flatMap((file) => {
+  const each = files.flatMap((file) => {
     const fit = file.chs_fit;
     if (!fit) return [];
     const path = join(snapshotDir, `${fit.evidence}.json`);
@@ -52,4 +52,23 @@ export function evidenceProblems(
         ]
       : [];
   });
+  // A snapshot some file cites lists the gates the release measured; an owned
+  // station file for one of them must keep its block, or the gate ships online.
+  const cited = new Set(
+    files.flatMap((f) => (f.chs_fit ? [f.chs_fit.evidence] : [])),
+  );
+  const owned = new Map(files.map((f) => [f.sources[0], f]));
+  const missing = [...cited].sort().flatMap((tag) => {
+    const path = join(snapshotDir, `${tag}.json`);
+    if (!existsSync(path)) return [];
+    const snapshot = JSON.parse(readFileSync(path, "utf8")) as ChsFitSnapshot;
+    if (snapshot.release !== tag) return [];
+    return Object.keys(snapshot.gates ?? {}).flatMap((id) => {
+      const file = owned.get(id);
+      return file && !file.chs_fit
+        ? [`${file.file}: has no chs_fit, but ${tag} measured gate ${id}`]
+        : [];
+    });
+  });
+  return [...each, ...missing];
 }
