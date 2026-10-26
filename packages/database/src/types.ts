@@ -116,6 +116,31 @@ export interface TideDerivedCurrentData {
   low_water_lag_minutes: number;
 }
 
+/** How far a fitted CHS current gate's slack times are measured to hold. */
+export type ChsFitTier = "final" | "bounded" | "online";
+/** The release-check clause a gate missed. */
+export type ChsFitClause =
+  | "reversed_axis"
+  | "invented_slack"
+  | "missed_slack"
+  | "slack_worst"
+  | "slack_median"
+  | "extremum_timing"
+  | "peak_speed";
+export type ChsFitContext = "slow_reversal" | "tidal_falls" | "rapids";
+export interface ChsFitData {
+  tier: ChsFitTier;
+  /** Days of CHS predictions the fit used. */
+  days?: 60 | 210;
+  /** Minutes; slack lands within this of CHS (bounded tier). */
+  slack_bound_minutes?: number;
+  provisional_slack_minutes?: number;
+  /** The clause an online gate missed, and by how much. */
+  miss?: { clause: ChsFitClause; value: number | null; near_bar?: true };
+  miss_context?: ChsFitContext;
+  evidence: string;
+}
+
 export interface CurrentData {
   /** Degrees true. */
   flood_direction?: number;
