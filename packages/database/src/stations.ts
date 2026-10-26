@@ -262,15 +262,19 @@ function readCurrent(index: number): CurrentData | undefined {
   }
   const fit = table.chsFit();
   if (fit) {
+    const known = CHS_FIT_TIER_NAMES[fit.tier()];
     const data: ChsFitData = {
-      tier: CHS_FIT_TIER_NAMES[fit.tier()] ?? "online",
+      tier: known ?? "online",
       evidence: fit.evidence()!,
     };
-    if (fit.days()) data.days = fit.days() as 60 | 210;
-    if (fit.slackBoundMinutes())
-      data.slack_bound_minutes = fit.slackBoundMinutes();
-    if (fit.provisionalSlackMinutes())
-      data.provisional_slack_minutes = fit.provisionalSlackMinutes();
+    // A tier this reader does not know reads as online, with no measured numbers.
+    if (known) {
+      if (fit.days()) data.days = fit.days() as 60 | 210;
+      if (fit.slackBoundMinutes())
+        data.slack_bound_minutes = fit.slackBoundMinutes();
+      if (fit.provisionalSlackMinutes())
+        data.provisional_slack_minutes = fit.provisionalSlackMinutes();
+    }
     const miss = fit.miss();
     if (miss) {
       data.miss = {

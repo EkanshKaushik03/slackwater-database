@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { isDeepStrictEqual } from "node:util";
-import { CHS_FIT_EVIDENCE, type StationFile } from "./station-files.ts";
+import { CHS_FIT_EVIDENCE, ROOT, type StationFile } from "./station-files.ts";
 
 /** The snapshot of one results release: its `dispositions.json`, trimmed. */
 export interface ChsFitSnapshot {
@@ -15,26 +15,24 @@ export interface ChsFitSnapshot {
   gates: Record<string, Record<string, unknown>>;
 }
 
-/** Orders results release tags oldest first: by date, then run number, then the tag itself. */
-export function compareTags(a: string, b: string): number {
-  const key = (tag: string) => {
-    const [, date, run] = /^fit-(\d{4}-\d{2}-\d{2})-[0-9a-f]{7}-r(\d+)$/.exec(
-      tag,
-    )!;
-    return { date: date!, run: Number(run) };
-  };
-  const [x, y] = [key(a), key(b)];
-  return x.date < y.date
-    ? -1
-    : x.date > y.date
-      ? 1
-      : x.run !== y.run
-        ? x.run - y.run
-        : a < b
-          ? -1
-          : a > b
-            ? 1
-            : 0;
+const TAG = /^fit-(\d{4}-\d{2}-\d{2})-([0-9a-f]{7})-r(\d+)$/;
+
+/**
+ * The recipe stamp of a results release tag. Two stamps are separate
+ * histories: a new stamp is a new target the apps may not ship yet.
+ */
+export function tagStamp(tag: string): string {
+  return TAG.exec(tag)![2]!;
+}
+
+/**
+ * Orders two tags of one stamp, oldest first: by fit end, then run number.
+ * Returns null for tags of different stamps, which have no order.
+ */
+export function compareTags(a: string, b: string): number | null {
+  const [x, y] = [TAG.exec(a)!, TAG.exec(b)!];
+  if (x[2] !== y[2]) return null;
+  return x[1]! < y[1]! ? -1 : x[1]! > y[1]! ? 1 : Number(x[3]) - Number(y[3]);
 }
 
 /**
@@ -55,24 +53,29 @@ export function evidenceProblems(
         .filter((name) => name.endsWith(".json"))
         .map((name) => name.slice(0, -".json".length))
         .filter((tag) => CHS_FIT_EVIDENCE.test(tag))
-        .sort(compareTags)
+        .sort((a, b) => compareTags(a, b) ?? (a < b ? -1 : 1))
     : [];
-  // The newest snapshot (by tag, not by file system order) listing each gate.
-  const newest = new Map<string, string>();
+  // The newest snapshot of each stamp listing each gate.
+  const newest = new Map<string, Map<string, string>>();
   for (const tag of tags) {
     const snapshot = read(tag);
     if (snapshot.release !== tag) continue;
-    for (const id of Object.keys(snapshot.gates ?? {})) newest.set(id, tag);
+    for (const id of Object.keys(snapshot.gates ?? {})) {
+      if (!newest.has(id)) newest.set(id, new Map());
+      newest.get(id)!.set(tagStamp(tag), tag);
+    }
   }
 
   const cited = new Set(
     files.flatMap((f) => (f.chs_fit ? [f.chs_fit.evidence] : [])),
   );
+  // With no block left anywhere, every stamp counts, so deleting them all fails.
+  const citedStamps = new Set([...cited].map(tagStamp));
   const misnamed = tags.flatMap((tag) => {
     const { release } = read(tag);
     return release !== tag && !cited.has(tag)
       ? [
-          `${join(snapshotDir, `${tag}.json`)}: is release ${release}, not ${tag}`,
+          `${relative(ROOT, join(snapshotDir, `${tag}.json`))}: is release ${release}, not ${tag}`,
         ]
       : [];
   });
@@ -81,16 +84,22 @@ export function evidenceProblems(
     ...misnamed,
     ...files.flatMap((file) => {
       const id = file.sources[0]!;
-      const expected = newest.get(id);
       const fit = file.chs_fit;
-      if (!fit)
-        return expected
-          ? [
-              file.derived
-                ? `${file.file}: has no chs_fit, but ${expected} measured gate ${id}, which the file derives; check the snapshot or the file's derived block`
-                : `${file.file}: has no chs_fit, but ${expected} measured gate ${id}`,
-            ]
-          : [];
+      const byStamp = newest.get(id) ?? new Map<string, string>();
+      if (!fit) {
+        const measured = [...byStamp]
+          .filter(([stamp]) => !citedStamps.size || citedStamps.has(stamp))
+          .map(([, tag]) => tag);
+        if (!measured.length) return [];
+        return [
+          `${file.file}: has no chs_fit, but ${measured.join(" and ")} measured gate ${id}${
+            file.derived
+              ? ", which the file derives; check the snapshot or the file's derived block"
+              : ""
+          }`,
+        ];
+      }
+      const expected = byStamp.get(tagStamp(fit.evidence));
       const path = join(snapshotDir, `${fit.evidence}.json`);
       const where = `${file.file}: chs_fit`;
       if (!existsSync(path))

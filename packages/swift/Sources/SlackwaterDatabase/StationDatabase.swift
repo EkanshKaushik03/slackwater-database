@@ -354,11 +354,14 @@ public struct Station: Identifiable, @unchecked Sendable {
             lowWaterLagMinutes: Int($0.lowWaterLagMinutes))
         },
         chsFit: current.chsFit.map { fit in
-          ChsFit(
+          // A tier this reader does not know reads as online, with no measured numbers.
+          let known = fit.tier == .final_ || fit.tier == .bounded || fit.tier == .online
+          return ChsFit(
             tier: fit.tier == .final_ ? .final : fit.tier == .bounded ? .bounded : .online,
-            days: fit.days == 0 ? nil : Int(fit.days),
-            slackBoundMinutes: fit.slackBoundMinutes == 0 ? nil : Int(fit.slackBoundMinutes),
-            provisionalSlackMinutes: fit.provisionalSlackMinutes == 0
+            days: !known || fit.days == 0 ? nil : Int(fit.days),
+            slackBoundMinutes: !known || fit.slackBoundMinutes == 0
+              ? nil : Int(fit.slackBoundMinutes),
+            provisionalSlackMinutes: !known || fit.provisionalSlackMinutes == 0
               ? nil : Int(fit.provisionalSlackMinutes),
             miss: fit.miss.map {
               ChsFitMiss(

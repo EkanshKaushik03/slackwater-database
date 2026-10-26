@@ -10,9 +10,12 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   buildSnapshot,
+  classifyStatus,
+  snapshotsToVerify,
   snapshotDifferences,
   type Dispositions,
 } from "./chs-fit-snapshot.ts";
+import { readStationFiles } from "./station-files.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const DIR = join(root, "metadata", "chs-current-validation");
@@ -20,15 +23,28 @@ const RELEASES =
   "https://github.com/openwatersio/chs-current-validation/releases/download";
 
 const failures: string[] = [];
-for (const name of readdirSync(DIR)
+const committed = readdirSync(DIR)
   .filter((n) => n.endsWith(".json"))
-  .sort()) {
-  const tag = name.slice(0, -".json".length);
-  const file = `metadata/chs-current-validation/${name}`;
+  .map((n) => n.slice(0, -".json".length))
+  .sort();
+const { verify, skipped } = snapshotsToVerify(committed, readStationFiles());
+for (const tag of skipped)
+  console.log(`skipped ${tag}: no station file cites it`);
+for (const tag of verify) {
+  const file = `metadata/chs-current-validation/${tag}.json`;
   const url = `${RELEASES}/${tag}/dispositions.json`;
-  let response: Response;
+  let source: Dispositions;
   try {
-    response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
+    const response = await fetch(url, { signal: AbortSignal.timeout(30_000) });
+    const status = classifyStatus(response.status);
+    if (status === "missing") {
+      failures.push(
+        `${file}: release ${tag} has no dispositions.json (HTTP 404)`,
+      );
+      continue;
+    }
+    if (status === "unreachable") throw new Error(`HTTP ${response.status}`);
+    source = (await response.json()) as Dispositions;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     console.log(
@@ -36,22 +52,10 @@ for (const name of readdirSync(DIR)
     );
     continue;
   }
-  if (response.status === 404) {
-    failures.push(
-      `${file}: release ${tag} has no dispositions.json (HTTP 404)`,
-    );
-    continue;
-  }
-  if (!response.ok) {
-    console.log(
-      `::warning::Could not check ${file} against ${tag}: HTTP ${response.status}`,
-    );
-    continue;
-  }
   try {
-    const built = buildSnapshot((await response.json()) as Dispositions, tag);
-    const committed = JSON.parse(readFileSync(join(DIR, name), "utf8"));
-    for (const difference of snapshotDifferences(committed, built))
+    const built = buildSnapshot(source, tag);
+    const old = JSON.parse(readFileSync(join(DIR, `${tag}.json`), "utf8"));
+    for (const difference of snapshotDifferences(old, built))
       failures.push(`${file}: differs from release ${tag}: ${difference}`);
   } catch (error) {
     failures.push(`${file}: ${error instanceof Error ? error.message : error}`);

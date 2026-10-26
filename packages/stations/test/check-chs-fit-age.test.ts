@@ -1,24 +1,33 @@
 import { describe, expect, it } from "vitest";
-import { ageWarnings, newestTag } from "../check-chs-fit-age.ts";
+import {
+  ageWarnings,
+  newestTags,
+  stampWarnings,
+} from "../check-chs-fit-age.ts";
 
 const fit = (evidence: string) => ({
   chs_fit: { tier: "online" as const, evidence },
 });
 const now = new Date("2026-10-26T00:00:00Z");
 
-describe("newestTag", () => {
-  it("takes the latest date, then the highest run", () => {
+describe("newestTags", () => {
+  it("takes the latest date, then the highest run, per stamp", () => {
     expect(
-      newestTag([
+      newestTags([
         fit("fit-2026-10-22-8f85912-r9"),
-        fit("fit-2026-10-23-1111111-r2"),
-        fit("fit-2026-10-23-2222222-r10"),
+        fit("fit-2026-10-22-8f85912-r10"),
+        fit("fit-2026-10-23-8f85912-r1"),
+        fit("fit-2026-10-20-2222222-r4"),
         {},
       ]),
-    ).toBe("fit-2026-10-23-2222222-r10");
+    ).toEqual(["fit-2026-10-20-2222222-r4", "fit-2026-10-23-8f85912-r1"]);
   });
-  it("is null with no chs_fit", () => {
-    expect(newestTag([{}])).toBeNull();
+  it("is empty with no chs_fit", () => {
+    expect(newestTags([{}])).toEqual([]);
+  });
+  it("warns, naming the stamps, when the files cite several", () => {
+    expect(stampWarnings(["a", "b"])[0]).toContain("a, b");
+    expect(stampWarnings(["a"])).toEqual([]);
   });
 });
 
@@ -35,11 +44,11 @@ describe("ageWarnings", () => {
     const [w] = ageWarnings(
       tag,
       "2026-10-25T00:00:00Z",
-      "fit-2026-10-24-abcdef0-r3",
+      "fit-2026-10-24-8f85912-r3",
       now,
     );
     expect(w).toContain(tag);
-    expect(w).toContain("fit-2026-10-24-abcdef0-r3");
+    expect(w).toContain("fit-2026-10-24-8f85912-r3");
   });
   it("warns on a missing or unparseable published_at", () => {
     expect(ageWarnings(tag, undefined, tag, now)).toHaveLength(1);
@@ -50,7 +59,7 @@ describe("ageWarnings", () => {
       ageWarnings(
         tag,
         "2026-10-25T00:00:00Z",
-        "fit-2026-10-01-abcdef0-r1",
+        "fit-2026-10-01-8f85912-r1",
         now,
       ),
     ).toEqual([]);
@@ -63,9 +72,19 @@ describe("ageWarnings", () => {
     const both = ageWarnings(
       tag,
       "2026-08-01T00:00:00Z",
-      "fit-2026-10-24-abcdef0-r3",
+      "fit-2026-10-24-8f85912-r3",
       now,
     );
     expect(both).toHaveLength(2);
+  });
+  it("ignores a newer latest tag of another stamp", () => {
+    expect(
+      ageWarnings(
+        tag,
+        "2026-10-25T00:00:00Z",
+        "fit-2026-10-25-abcdef0-r9",
+        now,
+      ),
+    ).toEqual([]);
   });
 });

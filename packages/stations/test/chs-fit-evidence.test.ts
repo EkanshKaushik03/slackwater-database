@@ -57,18 +57,23 @@ const station = (
   }) as StationFile;
 
 describe("compareTags", () => {
-  it("orders by date, then numerically by run", () => {
+  it("orders one stamp by date, then numerically by run", () => {
     expect(
       [
-        "fit-2026-10-23-1111111-r2",
+        "fit-2026-10-23-8f85912-r2",
         "fit-2026-10-22-8f85912-r10",
         "fit-2026-10-22-8f85912-r9",
-      ].sort(compareTags),
+      ].sort((a, b) => compareTags(a, b)!),
     ).toEqual([
       "fit-2026-10-22-8f85912-r9",
       "fit-2026-10-22-8f85912-r10",
-      "fit-2026-10-23-1111111-r2",
+      "fit-2026-10-23-8f85912-r2",
     ]);
+  });
+  it("has no order across stamps", () => {
+    expect(
+      compareTags("fit-2026-10-22-aaaaaaa-r2", "fit-2026-10-22-bbbbbbb-r1"),
+    ).toBeNull();
   });
 });
 
@@ -143,6 +148,51 @@ describe("evidenceProblems", () => {
     ).toEqual([]);
   });
 
+  it("expects the newer run of the same stamp, r1 to r2", () => {
+    const r1 = "fit-2026-10-22-8f85912-r1";
+    save(r1, r1);
+    const problems = evidenceProblems(
+      [station({ ...GATE, evidence: r1 })],
+      dir,
+    );
+    expect(problems).toHaveLength(1);
+    expect(problems[0]).toContain(R2);
+  });
+
+  it("does not expect a snapshot of another stamp", () => {
+    const other = "fit-2026-10-22-aaaaaaa-r9";
+    save(other, other, { "chs-active-pass": { tier: "online" } });
+    expect(evidenceProblems([station({ ...GATE, evidence: R2 })], dir)).toEqual(
+      [],
+    );
+  });
+
+  it("names several cited stamps for a gate whose block was deleted", () => {
+    const other = "fit-2026-10-22-aaaaaaa-r9";
+    save(other, other, { "chs-active-pass": GATE, "chs-b": GATE });
+    const problems = evidenceProblems(
+      [
+        station(undefined),
+        station(
+          { ...GATE, evidence: R2 },
+          {},
+          "chs-b",
+          "stations/current/ca/b.yaml",
+        ),
+        station(
+          { ...GATE, evidence: other },
+          {},
+          "chs-c",
+          "stations/current/ca/c.yaml",
+        ),
+      ],
+      dir,
+    );
+    const mine = problems.find((p) => p.startsWith(FILE))!;
+    expect(mine).toContain(R2);
+    expect(mine).toContain(other);
+  });
+
   it("orders runs numerically, not as strings", () => {
     const r10 = "fit-2026-10-22-8f85912-r10";
     save(r10, r10, { "chs-active-pass": { tier: "online" } });
@@ -211,13 +261,5 @@ describe("evidenceProblems", () => {
     );
     expect(problems).toHaveLength(1);
     expect(problems[0]).toContain(`${R3}.json`);
-  });
-});
-
-describe("compareTags ties", () => {
-  it("breaks a date and run tie by the tag", () => {
-    const [a, b] = ["fit-2026-10-22-aaaaaaa-r2", "fit-2026-10-22-bbbbbbb-r2"];
-    expect([b, a].sort(compareTags)).toEqual([a, b]);
-    expect([a, b].sort(compareTags)).toEqual([a, b]);
   });
 });

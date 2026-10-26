@@ -35,6 +35,13 @@ export function buildSnapshot(
 ): Record<string, unknown> {
   if (source.release !== tag)
     throw new Error(`is release ${source.release}, not ${tag}`);
+  const bare = Object.entries(source.gates)
+    .filter(
+      ([, gate]) => !gate || typeof gate.chs_fit !== "object" || !gate.chs_fit,
+    )
+    .map(([id]) => id);
+  if (bare.length)
+    throw new Error(`has no chs_fit for gate ${bare.join(", ")}`);
   const gates = Object.fromEntries(
     Object.entries(source.gates).map(([id, gate]) => [id, gate.chs_fit]),
   );
@@ -93,4 +100,32 @@ export function snapshotDifferences(
     }
   }
   return out;
+}
+
+/** The tags to verify, and the committed snapshots no station file cites. */
+export function snapshotsToVerify(
+  committed: string[],
+  files: { chs_fit?: { evidence: string } }[],
+): { verify: string[]; skipped: string[] } {
+  const cited = new Set(
+    files.flatMap((f) => (f.chs_fit ? [f.chs_fit.evidence] : [])),
+  );
+  return {
+    verify: committed.filter((tag) => cited.has(tag)),
+    skipped: committed.filter((tag) => !cited.has(tag)),
+  };
+}
+
+/**
+ * What a download status means: a missing release fails the check, any other
+ * non-success is the network's problem and only warns.
+ */
+export function classifyStatus(
+  status: number,
+): "ok" | "missing" | "unreachable" {
+  return status >= 200 && status < 300
+    ? "ok"
+    : status === 404
+      ? "missing"
+      : "unreachable";
 }

@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { buildSnapshot, snapshotDifferences } from "../chs-fit-snapshot.ts";
+import {
+  buildSnapshot,
+  classifyStatus,
+  snapshotDifferences,
+  snapshotsToVerify,
+} from "../chs-fit-snapshot.ts";
 
 const TAG = "fit-2026-10-22-8f85912-r2";
 const source = (gates: Record<string, unknown>) => ({
@@ -67,5 +72,30 @@ describe("snapshotDifferences", () => {
     expect(snapshotDifferences(c, built)).toEqual([
       "gate b is missing from the snapshot",
     ]);
+  });
+});
+
+describe("buildSnapshot with a bare gate", () => {
+  it("names a gate with no chs_fit", () => {
+    const bad = source({ a: FINAL });
+    (bad.gates as Record<string, unknown>)["b"] = { status: "x" };
+    expect(() => buildSnapshot(bad, TAG)).toThrow(/no chs_fit for gate b/);
+  });
+});
+
+describe("snapshotsToVerify", () => {
+  it("verifies cited snapshots and skips the rest", () => {
+    expect(
+      snapshotsToVerify(["r1", "r2"], [{ chs_fit: { evidence: "r2" } }, {}]),
+    ).toEqual({ verify: ["r2"], skipped: ["r1"] });
+  });
+});
+
+describe("classifyStatus", () => {
+  it("fails only a missing release", () => {
+    expect(classifyStatus(200)).toBe("ok");
+    expect(classifyStatus(404)).toBe("missing");
+    expect(classifyStatus(500)).toBe("unreachable");
+    expect(classifyStatus(403)).toBe("unreachable");
   });
 });

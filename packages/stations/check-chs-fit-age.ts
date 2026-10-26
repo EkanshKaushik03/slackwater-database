@@ -4,7 +4,7 @@
  * cannot be read. Always exits 0.
  *   npm run report:chs-fit-age -w packages/stations
  */
-import { compareTags } from "./chs-fit-evidence.ts";
+import { compareTags, tagStamp } from "./chs-fit-evidence.ts";
 import {
   CHS_FIT_EVIDENCE,
   readStationFiles,
@@ -14,14 +14,26 @@ import {
 const REPO = "https://api.github.com/repos/openwatersio/chs-current-validation";
 const STALE_DAYS = 45;
 
-/** The newest tag the station files cite, by date and then run number. */
-export function newestTag(
-  files: Pick<StationFile, "chs_fit">[],
-): string | null {
-  const tags = [
-    ...new Set(files.flatMap((f) => (f.chs_fit ? [f.chs_fit.evidence] : []))),
-  ];
-  return tags.sort((x, y) => compareTags(y, x))[0] ?? null;
+/** The newest tag the station files cite in each recipe stamp, oldest stamp first. */
+export function newestTags(files: Pick<StationFile, "chs_fit">[]): string[] {
+  const newest = new Map<string, string>();
+  for (const f of files) {
+    const tag = f.chs_fit?.evidence;
+    if (!tag) continue;
+    const stamp = tagStamp(tag);
+    const have = newest.get(stamp);
+    if (!have || compareTags(tag, have)! > 0) newest.set(stamp, tag);
+  }
+  return [...newest.values()].sort();
+}
+
+/** A warning naming the stamps when the files cite more than one. */
+export function stampWarnings(tags: string[]): string[] {
+  return tags.length > 1
+    ? [
+        `::warning::The station files cite CHS current results of ${tags.length} recipe stamps: ${tags.join(", ")}`,
+      ]
+    : [];
 }
 
 /**
@@ -58,7 +70,7 @@ export function ageWarnings(
       );
     else if (
       CHS_FIT_EVIDENCE.test(latestTag) &&
-      compareTags(latestTag, cited) > 0
+      (compareTags(latestTag, cited) ?? 0) > 0
     )
       warnings.push(
         `::warning::A newer CHS current results release exists: ${latestTag}; the station files cite ${cited}`,
@@ -81,25 +93,31 @@ async function get(url: string): Promise<Record<string, unknown>> {
 }
 
 async function main() {
-  const cited = newestTag(readStationFiles());
-  if (!cited) return;
-  const [release, latest] = await Promise.allSettled([
-    get(`${REPO}/releases/tags/${cited}`),
+  const cited = newestTags(readStationFiles());
+  for (const line of stampWarnings(cited)) console.log(line);
+  const latest = await Promise.allSettled([
     get(`${REPO}/releases/latest`),
-  ]);
+  ]).then(([r]) => r!);
   const failed = (result: PromiseRejectedResult) =>
     console.log(
       `::warning::Could not check the CHS current results age: ${result.reason instanceof Error ? result.reason.message : String(result.reason)}`,
     );
-  if (release.status === "rejected") failed(release);
   if (latest.status === "rejected") failed(latest);
-  for (const line of ageWarnings(
-    cited,
-    release.status === "fulfilled" ? release.value["published_at"] : null,
-    latest.status === "fulfilled" ? latest.value["tag_name"] : null,
-    new Date(),
-  ))
-    console.log(line);
+  const lines = new Set<string>();
+  for (const tag of cited) {
+    const [release] = await Promise.allSettled([
+      get(`${REPO}/releases/tags/${tag}`),
+    ]);
+    if (release!.status === "rejected") failed(release!);
+    for (const line of ageWarnings(
+      tag,
+      release!.status === "fulfilled" ? release!.value["published_at"] : null,
+      latest.status === "fulfilled" ? latest.value["tag_name"] : null,
+      new Date(),
+    ))
+      lines.add(line);
+  }
+  for (const line of lines) console.log(line);
 }
 
 if (import.meta.main)

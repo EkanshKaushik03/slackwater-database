@@ -511,9 +511,10 @@ describe("buildDatabase", () => {
     vi.resetModules();
     try {
       const { stationsById } = await import("../src/stations.ts");
-      expect(stationsById.get("test/fit-unknown")!.current!.chs_fit!.tier).toBe(
-        "online",
-      );
+      const read = stationsById.get("test/fit-unknown")!.current!.chs_fit!;
+      expect(read.tier).toBe("online");
+      expect(read.days).toBeUndefined();
+      expect(read.evidence).toBe("fit-2026-10-22-8f85912-r2");
     } finally {
       vi.doUnmock("#slackwater.tcdb");
       vi.resetModules();
