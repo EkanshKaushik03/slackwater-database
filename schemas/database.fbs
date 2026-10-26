@@ -110,7 +110,7 @@ table ChsFitMiss {
 /// A fitted CHS gate's measured tier, from the results release `evidence` names.
 /// Zero in a ushort field means absent: no window, bound or provisional bound is 0.
 table ChsFit {
-  tier: ChsFitTier;
+  tier: ubyte;                 // a ChsFitTier value; readers treat any other value as Online
   days: ushort;
   slack_bound_minutes: ushort;
   provisional_slack_minutes: ushort;

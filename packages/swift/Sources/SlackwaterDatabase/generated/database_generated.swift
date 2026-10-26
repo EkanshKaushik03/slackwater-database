@@ -792,7 +792,7 @@ public struct Slackwater_ChsFit: FlatBufferObject, Verifiable {
     var p: VOffset { self.rawValue }
   }
 
-  public var tier: Slackwater_ChsFitTier { let o = _accessor.offset(VTOFFSET.tier.v); return o == 0 ? .online : Slackwater_ChsFitTier(rawValue: _accessor.readBuffer(of: UInt8.self, at: o)) ?? .online }
+  public var tier: UInt8 { let o = _accessor.offset(VTOFFSET.tier.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt8.self, at: o) }
   public var days: UInt16 { let o = _accessor.offset(VTOFFSET.days.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt16.self, at: o) }
   public var slackBoundMinutes: UInt16 { let o = _accessor.offset(VTOFFSET.slackBoundMinutes.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt16.self, at: o) }
   public var provisionalSlackMinutes: UInt16 { let o = _accessor.offset(VTOFFSET.provisionalSlackMinutes.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt16.self, at: o) }
@@ -802,7 +802,7 @@ public struct Slackwater_ChsFit: FlatBufferObject, Verifiable {
   public var evidence: String! { let o = _accessor.offset(VTOFFSET.evidence.v); return _accessor.string(at: o) }
   public var evidenceSegmentArray: [UInt8]! { return _accessor.getVector(at: VTOFFSET.evidence.v) }
   public static func startChsFit(_ fbb: inout FlatBufferBuilder) -> UOffset { fbb.startTable(with: 7) }
-  public static func add(tier: Slackwater_ChsFitTier, _ fbb: inout FlatBufferBuilder) { fbb.add(element: tier.rawValue, def: 0, at: VTOFFSET.tier.p) }
+  public static func add(tier: UInt8, _ fbb: inout FlatBufferBuilder) { fbb.add(element: tier, def: 0, at: VTOFFSET.tier.p) }
   public static func add(days: UInt16, _ fbb: inout FlatBufferBuilder) { fbb.add(element: days, def: 0, at: VTOFFSET.days.p) }
   public static func add(slackBoundMinutes: UInt16, _ fbb: inout FlatBufferBuilder) { fbb.add(element: slackBoundMinutes, def: 0, at: VTOFFSET.slackBoundMinutes.p) }
   public static func add(provisionalSlackMinutes: UInt16, _ fbb: inout FlatBufferBuilder) { fbb.add(element: provisionalSlackMinutes, def: 0, at: VTOFFSET.provisionalSlackMinutes.p) }
@@ -812,7 +812,7 @@ public struct Slackwater_ChsFit: FlatBufferObject, Verifiable {
   public static func endChsFit(_ fbb: inout FlatBufferBuilder, start: UOffset) -> Offset { let end = Offset(offset: fbb.endTable(at: start)); fbb.require(table: end, fields: [16]); return end }
   public static func createChsFit(
     _ fbb: inout FlatBufferBuilder,
-    tier: Slackwater_ChsFitTier = .online,
+    tier: UInt8 = 0,
     days: UInt16 = 0,
     slackBoundMinutes: UInt16 = 0,
     provisionalSlackMinutes: UInt16 = 0,
@@ -833,7 +833,7 @@ public struct Slackwater_ChsFit: FlatBufferObject, Verifiable {
 
   public static func verify<T>(_ verifier: inout Verifier, at position: Int, of type: T.Type) throws where T: Verifiable {
     var _v = try verifier.visitTable(at: position)
-    try _v.visit(field: VTOFFSET.tier.p, fieldName: "tier", required: false, type: Slackwater_ChsFitTier.self)
+    try _v.visit(field: VTOFFSET.tier.p, fieldName: "tier", required: false, type: UInt8.self)
     try _v.visit(field: VTOFFSET.days.p, fieldName: "days", required: false, type: UInt16.self)
     try _v.visit(field: VTOFFSET.slackBoundMinutes.p, fieldName: "slackBoundMinutes", required: false, type: UInt16.self)
     try _v.visit(field: VTOFFSET.provisionalSlackMinutes.p, fieldName: "provisionalSlackMinutes", required: false, type: UInt16.self)
