@@ -38,7 +38,7 @@ Evidence and explanations are YAML comments. A field exists only when code reads
 - `name`, `context`, `aliases`, `cities`, `position`: curated display fields. They apply to every record in the station, except in a station this repo owns (below), where they define the owned record.
 - `position_verified: true`: the published position is right although the coastline audit puts it ashore, as for a gauge sited up a river.
 - `tide_reference`: on a current station, the tide record a paired tide and current view shows beside it (see [Tide pairings](#tide-pairings)). The database publishes it as `current.tide_reference`.
-- `provider`, `magnitude_note`, `derived`: a station this repo owns (below).
+- `provider`, `magnitude_note`, `derived`, `chs_fit`: a station this repo owns (below).
 - `computed`: each record's position, coastline verdict and, for a provider tide record, its quality evaluation: whether it is accepted, why not, which record it duplicates, its score and the factors behind it. A change here in a pull request is a station that moved or a change in how it was judged.
 
 ## Changing a station
@@ -101,6 +101,18 @@ A fitted current gate (one with its own CHS current predictions) may carry a `ti
 A current gate CHS publishes no current station for carries a `derived` block: its slack is derived from a reference tide port's high and low water plus a fixed lag. `derived.reference` is that tide port; `high_water_lag_minutes` and `low_water_lag_minutes` are the minutes after its HW and LW that slack occurs. The pass floods on the rising tide and ebbs on the falling one, so a consumer states slack times and a flood or ebb phase, but never a speed: CHS predicts none. A derived gate carries only the reference and the two lags, and is mutually exclusive with `tide_reference`, which is a display companion where `derived` is the source of slack.
 
 Whether an admitted gate's slack can be _predicted_ is a separate question, asked downstream and answered against published events: Nakwakto is a real gate that no harmonic model fits (see openwatersio/slackwater-ios#9).
+
+### Fitted gates
+
+A fitted current gate carries a `chs_fit` block: the tier its year of held-out CHS predictions earns for the recipe the app fits on the device. The scores come from the [chs-current-validation releases](https://github.com/openwatersio/chs-current-validation/releases), by the rules in the [spec](https://github.com/openwatersio/slackwater-ios/issues/752#issuecomment-6339459207). Each tier carries exactly its own fields:
+
+- `tier: final` ships plain numbers. `days` is the fitting window, 60 or 210. A 210-day gate may carry `provisional_slack_minutes`, the slack bound quoted while its 60-day fit stands in for the full model.
+- `tier: bounded` ships a measured slack bound. `days` is the window and `slack_bound_minutes` is the bound, 35, 40 or 45.
+- `tier: online` ships the online predictions. `miss` holds the `clause` the gate fails and its `value`, or `null` when there was nothing to measure. `near_bar: true` marks a gate that passes every bar in its newest and previous years but is held online by the promotion margin.
+
+A file with no `chs_fit` is unmeasured and ships online. `evidence` is the tag of the results release the values come from. `npm run validate` compares each block with that release's snapshot in `metadata/chs-current-validation/` and fails on any difference. A value changes only by a PR that cites a newer results release, with its snapshot fetched by `npm run refresh:chs-fit -w packages/stations -- <tag>`.
+
+`miss_context` is a curated field on an online gate whose water explains the miss: `rapids`, `tidal_falls` or `slow_reversal`. It is not in the snapshot, so a comment above it gives the reason.
 
 ### The rest of Canada
 
