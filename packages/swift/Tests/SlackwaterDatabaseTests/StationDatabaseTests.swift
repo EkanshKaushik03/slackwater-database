@@ -189,7 +189,7 @@ final class StationDatabaseTests: XCTestCase {
     XCTAssertEqual(
       bounded,
       ChsFit(
-        tier: .bounded, days: 210, slackBoundMinutes: 45, provisionalSlackMinutes: nil,
+        tier: .bounded, days: 210, slackBoundMinutes: 45, provisionalSlackMinutes: 35,
         miss: nil, missContext: nil, evidence: evidence))
 
     let online = try XCTUnwrap(db.station(id: "test/zfit-online")?.current?.chsFit)
@@ -197,7 +197,7 @@ final class StationDatabaseTests: XCTestCase {
     XCTAssertNil(online.days)
     XCTAssertEqual(online.miss?.clause, "slack_median")
     XCTAssertNil(online.miss?.value)
-    XCTAssertEqual(online.miss?.nearBar, false)
+    XCTAssertEqual(online.miss?.nearBar, true)
     XCTAssertEqual(online.missContext, "rapids")
   }
 

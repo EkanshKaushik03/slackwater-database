@@ -481,6 +481,45 @@ describe("buildDatabase", () => {
     }
   });
 
+  test("an unknown chs_fit tier reads as online", async () => {
+    const bytes = build([
+      ...inputs,
+      {
+        ...inputs[2]!,
+        id: "test/fit-unknown",
+        current: {
+          flood_direction: 90,
+          chs_fit: {
+            tier: "final",
+            days: 210,
+            evidence: "fit-2026-10-22-8f85912-r2",
+          },
+        },
+      },
+    ]);
+    const root = openDatabase(bytes);
+    const station = Array.from({ length: root.stationsLength() }, (_, i) =>
+      root.stations(i)!,
+    ).find((t) => t.id() === "test/fit-unknown")!;
+    const fit = station.current()!.chsFit()!;
+    // Raw value 3 is past the last tier this reader knows.
+    const tierOffset = fit.bb!.__offset(fit.bb_pos, 4);
+    expect(tierOffset).not.toBe(0);
+    bytes[fit.bb_pos + tierOffset] = 3;
+    expect(fit.tier() as number).toBe(3);
+    vi.doMock("#slackwater.tcdb", () => ({ default: bytes }));
+    vi.resetModules();
+    try {
+      const { stationsById } = await import("../src/stations.ts");
+      expect(stationsById.get("test/fit-unknown")!.current!.chs_fit!.tier).toBe(
+        "online",
+      );
+    } finally {
+      vi.doUnmock("#slackwater.tcdb");
+      vi.resetModules();
+    }
+  });
+
   test("a current without chs_fit reads none", async () => {
     const bytes = build(inputs);
     vi.doMock("#slackwater.tcdb", () => ({ default: bytes }));

@@ -74,12 +74,12 @@ public enum Slackwater_ChsFitTier: UInt8, Enum, Verifiable {
   public typealias T = UInt8
   public static var byteSize: Int { return MemoryLayout<UInt8>.size }
   public var value: UInt8 { return self.rawValue }
-  case final_ = 0
+  case online = 0
   case bounded = 1
-  case online = 2
+  case final_ = 2
 
-  public static var max: Slackwater_ChsFitTier { return .online }
-  public static var min: Slackwater_ChsFitTier { return .final_ }
+  public static var max: Slackwater_ChsFitTier { return .final_ }
+  public static var min: Slackwater_ChsFitTier { return .online }
 }
 
 
@@ -792,7 +792,7 @@ public struct Slackwater_ChsFit: FlatBufferObject, Verifiable {
     var p: VOffset { self.rawValue }
   }
 
-  public var tier: Slackwater_ChsFitTier { let o = _accessor.offset(VTOFFSET.tier.v); return o == 0 ? .final_ : Slackwater_ChsFitTier(rawValue: _accessor.readBuffer(of: UInt8.self, at: o)) ?? .final_ }
+  public var tier: Slackwater_ChsFitTier { let o = _accessor.offset(VTOFFSET.tier.v); return o == 0 ? .online : Slackwater_ChsFitTier(rawValue: _accessor.readBuffer(of: UInt8.self, at: o)) ?? .online }
   public var days: UInt16 { let o = _accessor.offset(VTOFFSET.days.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt16.self, at: o) }
   public var slackBoundMinutes: UInt16 { let o = _accessor.offset(VTOFFSET.slackBoundMinutes.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt16.self, at: o) }
   public var provisionalSlackMinutes: UInt16 { let o = _accessor.offset(VTOFFSET.provisionalSlackMinutes.v); return o == 0 ? 0 : _accessor.readBuffer(of: UInt16.self, at: o) }
@@ -812,7 +812,7 @@ public struct Slackwater_ChsFit: FlatBufferObject, Verifiable {
   public static func endChsFit(_ fbb: inout FlatBufferBuilder, start: UOffset) -> Offset { let end = Offset(offset: fbb.endTable(at: start)); fbb.require(table: end, fields: [16]); return end }
   public static func createChsFit(
     _ fbb: inout FlatBufferBuilder,
-    tier: Slackwater_ChsFitTier = .final_,
+    tier: Slackwater_ChsFitTier = .online,
     days: UInt16 = 0,
     slackBoundMinutes: UInt16 = 0,
     provisionalSlackMinutes: UInt16 = 0,

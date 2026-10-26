@@ -97,7 +97,8 @@ table TideDerivedCurrent {
   low_water_lag_minutes: int;
 }
 
-enum ChsFitTier : ubyte { Final = 0, Bounded = 1, Online = 2 }
+// Online is 0 so a missing or unknown tier reads as the least confident claim.
+enum ChsFitTier : ubyte { Online = 0, Bounded = 1, Final = 2 }
 
 table ChsFitMiss {
   clause: string (required);   // one of the seven clause names

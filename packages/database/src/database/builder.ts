@@ -297,7 +297,7 @@ export function buildDatabase(
         const f = c.chs_fit;
         let miss = 0;
         if (f.miss) {
-          const clause = builder.createString(f.miss.clause);
+          const clause = builder.createSharedString(f.miss.clause);
           ChsFitMiss.startChsFitMiss(builder);
           ChsFitMiss.addClause(builder, clause);
           if (f.miss.value === null) ChsFitMiss.addValueMissing(builder, true);
@@ -306,7 +306,7 @@ export function buildDatabase(
           miss = ChsFitMiss.endChsFitMiss(builder);
         }
         const missContext = str(f.miss_context);
-        const evidence = builder.createString(f.evidence);
+        const evidence = builder.createSharedString(f.evidence);
         ChsFit.startChsFit(builder);
         ChsFit.addTier(builder, CHS_FIT_TIERS[f.tier]);
         if (f.days !== undefined) ChsFit.addDays(builder, f.days);

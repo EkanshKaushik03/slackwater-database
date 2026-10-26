@@ -263,7 +263,7 @@ function readCurrent(index: number): CurrentData | undefined {
   const fit = table.chsFit();
   if (fit) {
     const data: ChsFitData = {
-      tier: CHS_FIT_TIER_NAMES[fit.tier()]!,
+      tier: CHS_FIT_TIER_NAMES[fit.tier()] ?? "online",
       evidence: fit.evidence()!,
     };
     if (fit.days()) data.days = fit.days() as 60 | 210;

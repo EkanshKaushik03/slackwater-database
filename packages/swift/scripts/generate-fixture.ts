@@ -63,6 +63,7 @@ const stations: StationInput[] = [
         tier: "bounded",
         days: 210,
         slack_bound_minutes: 45,
+        provisional_slack_minutes: 35,
         evidence: "fit-2026-10-22-8f85912-r2",
       },
     },
@@ -77,7 +78,7 @@ const stations: StationInput[] = [
       flood_direction: 90,
       chs_fit: {
         tier: "online",
-        miss: { clause: "slack_median", value: null },
+        miss: { clause: "slack_median", value: null, near_bar: true },
         miss_context: "rapids",
         evidence: "fit-2026-10-22-8f85912-r2",
       },
