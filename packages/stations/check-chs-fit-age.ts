@@ -1,7 +1,7 @@
 /**
  * Warn, as CI annotations, when the results release the station files cite is
- * more than 45 days old, when a newer results release exists, or when either
- * cannot be read. Always exits 0.
+ * more than 45 days old, when a newer release of its recipe stamp exists, when
+ * another stamp has newer results, or when the list cannot be read. Always exits 0.
  *   npm run report:chs-fit-age -w packages/stations
  */
 import { compareTags, tagStamp } from "./chs-fit-evidence.ts";
@@ -27,59 +27,74 @@ export function newestTags(files: Pick<StationFile, "chs_fit">[]): string[] {
   return [...newest.values()].sort();
 }
 
-/** A warning naming the stamps when the files cite more than one. */
-export function stampWarnings(tags: string[]): string[] {
-  return tags.length > 1
-    ? [
-        `::warning::The station files cite CHS current results of ${tags.length} recipe stamps: ${tags.join(", ")}`,
-      ]
-    : [];
+export interface ReleaseInfo {
+  tag_name?: unknown;
+  published_at?: unknown;
+  draft?: unknown;
+  prerelease?: unknown;
 }
 
 /**
- * The warnings for the cited release's publication date and the latest
- * release's tag, given today's date. A null `latestTag` is a lookup that
- * already warned.
+ * The warnings for the newest cited tag against the repository's releases,
+ * given today's date. Drafts are ignored; prereleases count and are named.
  */
-export function ageWarnings(
+export function releaseWarnings(
   cited: string,
-  citedPublishedAt: unknown,
-  latestTag: unknown,
+  releases: ReleaseInfo[],
   now: Date,
 ): string[] {
-  const warnings: string[] = [];
-  if (citedPublishedAt !== null) {
-    const published =
-      typeof citedPublishedAt === "string" ? Date.parse(citedPublishedAt) : NaN;
-    if (Number.isNaN(published))
-      warnings.push(
-        `::warning::The CHS current results release ${cited} has no readable published_at`,
-      );
-    else {
-      const days = Math.floor((now.getTime() - published) / 86_400_000);
-      if (days > STALE_DAYS)
-        warnings.push(
-          `::warning::The CHS current results release the station files cite, ${cited}, was published ${days} days ago`,
-        );
-    }
-  }
-  if (latestTag !== null) {
-    if (typeof latestTag !== "string" || !latestTag)
-      warnings.push(
-        "::warning::The latest CHS current results release has no readable tag_name",
-      );
-    else if (
-      CHS_FIT_EVIDENCE.test(latestTag) &&
-      (compareTags(latestTag, cited) ?? 0) > 0
+  const fits = releases
+    .filter(
+      (r) =>
+        r.draft !== true &&
+        typeof r.tag_name === "string" &&
+        CHS_FIT_EVIDENCE.test(r.tag_name),
     )
+    .map((r) => ({
+      tag: r.tag_name as string,
+      published: Date.parse(String(r.published_at)),
+      kind: r.prerelease === true ? "prerelease" : "release",
+    }));
+  const warnings: string[] = [];
+  const own = fits.find((r) => r.tag === cited);
+  if (!own)
+    warnings.push(
+      `::warning::The CHS current results release the station files cite, ${cited}, is not among the repository's published releases`,
+    );
+  else if (Number.isNaN(own.published))
+    warnings.push(
+      `::warning::The CHS current results release ${cited} has no readable published_at`,
+    );
+  else {
+    const days = Math.floor((now.getTime() - own.published) / 86_400_000);
+    if (days > STALE_DAYS)
       warnings.push(
-        `::warning::A newer CHS current results release exists: ${latestTag}; the station files cite ${cited}`,
+        `::warning::The CHS current results release the station files cite, ${cited}, was published ${days} days ago`,
       );
   }
+  const newer = fits
+    .filter((r) => tagStamp(r.tag) === tagStamp(cited))
+    .filter((r) => compareTags(r.tag, cited)! > 0)
+    .sort((a, b) => compareTags(b.tag, a.tag)!)[0];
+  if (newer)
+    warnings.push(
+      `::warning::A newer CHS current results ${newer.kind} exists: ${newer.tag}; the station files cite ${cited}`,
+    );
+  const other = fits
+    .filter((r) => tagStamp(r.tag) !== tagStamp(cited))
+    .filter((r) => !Number.isNaN(r.published))
+    .filter(
+      (r) => !own || Number.isNaN(own.published) || r.published > own.published,
+    )
+    .sort((a, b) => b.published - a.published)[0];
+  if (other && own && !Number.isNaN(own.published))
+    warnings.push(
+      `::warning::A new recipe stamp has results: ${other.tag}${other.kind === "prerelease" ? " (prerelease)" : ""}; moving to it means re-curating every gate`,
+    );
   return warnings;
 }
 
-async function get(url: string): Promise<Record<string, unknown>> {
+async function get(url: string): Promise<unknown> {
   const token = process.env["GITHUB_TOKEN"];
   const response = await fetch(url, {
     signal: AbortSignal.timeout(30_000),
@@ -89,35 +104,34 @@ async function get(url: string): Promise<Record<string, unknown>> {
     },
   });
   if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
-  return (await response.json()) as Record<string, unknown>;
+  return await response.json();
 }
 
 async function main() {
   const cited = newestTags(readStationFiles());
-  for (const line of stampWarnings(cited)) console.log(line);
-  const latest = await Promise.allSettled([
-    get(`${REPO}/releases/latest`),
-  ]).then(([r]) => r!);
-  const failed = (result: PromiseRejectedResult) =>
+  if (!cited.length) return;
+  const [listing] = await Promise.allSettled([
+    get(`${REPO}/releases?per_page=100`),
+  ]);
+  if (listing!.status === "rejected" || !Array.isArray(listing!.value)) {
+    const reason =
+      listing!.status === "rejected"
+        ? listing!.reason instanceof Error
+          ? listing!.reason.message
+          : String(listing!.reason)
+        : "the release list is not an array";
     console.log(
-      `::warning::Could not check the CHS current results age: ${result.reason instanceof Error ? result.reason.message : String(result.reason)}`,
+      `::warning::Could not check the CHS current results age: ${reason}`,
     );
-  if (latest.status === "rejected") failed(latest);
-  const lines = new Set<string>();
-  for (const tag of cited) {
-    const [release] = await Promise.allSettled([
-      get(`${REPO}/releases/tags/${tag}`),
-    ]);
-    if (release!.status === "rejected") failed(release!);
-    for (const line of ageWarnings(
+    return;
+  }
+  for (const tag of cited)
+    for (const line of releaseWarnings(
       tag,
-      release!.status === "fulfilled" ? release!.value["published_at"] : null,
-      latest.status === "fulfilled" ? latest.value["tag_name"] : null,
+      listing!.value as ReleaseInfo[],
       new Date(),
     ))
-      lines.add(line);
-  }
-  for (const line of lines) console.log(line);
+      console.log(line);
 }
 
 if (import.meta.main)

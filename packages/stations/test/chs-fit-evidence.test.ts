@@ -159,6 +159,27 @@ describe("evidenceProblems", () => {
     expect(problems[0]).toContain(R2);
   });
 
+  it("fails when the files cite two stamps, naming each", () => {
+    const other = "fit-2026-10-22-aaaaaaa-r9";
+    save(other, other, { "chs-b": GATE });
+    const problems = evidenceProblems(
+      [
+        station({ ...GATE, evidence: R2 }),
+        station(
+          { ...GATE, evidence: other },
+          {},
+          "chs-b",
+          "stations/current/ca/b.yaml",
+        ),
+      ],
+      dir,
+    );
+    expect(problems).toHaveLength(1);
+    expect(problems[0]).toContain("8f85912");
+    expect(problems[0]).toContain("aaaaaaa");
+    expect(problems[0]).toContain("b.yaml");
+  });
+
   it("does not expect a snapshot of another stamp", () => {
     const other = "fit-2026-10-22-aaaaaaa-r9";
     save(other, other, { "chs-active-pass": { tier: "online" } });

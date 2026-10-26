@@ -80,7 +80,30 @@ export function evidenceProblems(
       : [];
   });
 
+  // A new recipe stamp is a new target, and every gate is curated afresh on it,
+  // so one PR moves them all: the files cite one stamp at a time.
+  const byCitedStamp = new Map<string, string[]>();
+  for (const f of files)
+    if (f.chs_fit) {
+      const stamp = tagStamp(f.chs_fit.evidence);
+      byCitedStamp.set(stamp, [...(byCitedStamp.get(stamp) ?? []), f.file]);
+    }
+  const mixed =
+    byCitedStamp.size > 1
+      ? [
+          `chs_fit blocks cite ${byCitedStamp.size} recipe stamps; a stamp change moves every gate in one PR: ${[
+            ...byCitedStamp,
+          ]
+            .map(
+              ([stamp, paths]) =>
+                `${stamp} (${paths.length === 1 ? paths[0] : `${paths.length} files, such as ${paths.slice(0, 3).join(", ")}`})`,
+            )
+            .join("; ")}`,
+        ]
+      : [];
+
   return [
+    ...mixed,
     ...misnamed,
     ...files.flatMap((file) => {
       const id = file.sources[0]!;

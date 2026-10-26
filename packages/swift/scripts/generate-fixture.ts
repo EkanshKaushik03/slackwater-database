@@ -52,7 +52,7 @@ const stations: StationInput[] = [
     },
   },
   {
-    // The two chs_fit gates sort last so the index-based assertions above hold.
+    // The three chs_fit gates sort last so the index-based assertions above hold.
     ...identity,
     id: "test/zfit-bounded",
     name: "A bounded gate",

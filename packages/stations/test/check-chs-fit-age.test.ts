@@ -1,9 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  ageWarnings,
-  newestTags,
-  stampWarnings,
-} from "../check-chs-fit-age.ts";
+import { releaseWarnings, newestTags } from "../check-chs-fit-age.ts";
 
 const fit = (evidence: string) => ({
   chs_fit: { tier: "online" as const, evidence },
@@ -25,66 +21,82 @@ describe("newestTags", () => {
   it("is empty with no chs_fit", () => {
     expect(newestTags([{}])).toEqual([]);
   });
-  it("warns, naming the stamps, when the files cite several", () => {
-    expect(stampWarnings(["a", "b"])[0]).toContain("a, b");
-    expect(stampWarnings(["a"])).toEqual([]);
-  });
 });
 
-describe("ageWarnings", () => {
+describe("releaseWarnings", () => {
   const tag = "fit-2026-10-22-8f85912-r2";
-  it("is quiet when current and recent", () => {
-    expect(ageWarnings(tag, "2026-10-25T00:00:00Z", tag, now)).toEqual([]);
+  const rel = (tag_name: string, published_at: string, extra = {}) => ({
+    tag_name,
+    published_at,
+    ...extra,
+  });
+  const own = rel(tag, "2026-10-25T00:00:00Z");
+  it("is quiet when current", () => {
+    expect(releaseWarnings(tag, [own], now)).toEqual([]);
   });
   it("warns past 45 days", () => {
-    const [w] = ageWarnings(tag, "2026-08-01T00:00:00Z", tag, now);
-    expect(w).toMatch(/^::warning::.*\b86 days ago/);
+    const [w] = releaseWarnings(tag, [rel(tag, "2026-08-01T00:00:00Z")], now);
+    expect(w).toMatch(/86 days ago/);
   });
-  it("names both tags when a newer release exists", () => {
-    const [w] = ageWarnings(
+  it("names both tags when a newer run of the stamp exists", () => {
+    const [w] = releaseWarnings(
       tag,
-      "2026-10-25T00:00:00Z",
-      "fit-2026-10-24-8f85912-r3",
+      [own, rel("fit-2026-10-24-8f85912-r3", "2026-10-25T01:00:00Z")],
       now,
     );
     expect(w).toContain(tag);
     expect(w).toContain("fit-2026-10-24-8f85912-r3");
   });
-  it("warns on a missing or unparseable published_at", () => {
-    expect(ageWarnings(tag, undefined, tag, now)).toHaveLength(1);
-    expect(ageWarnings(tag, "nonsense", tag, now)).toHaveLength(1);
-  });
-  it("is quiet when latest is older or not a fit tag", () => {
+  it("ignores drafts and says prerelease", () => {
+    const newer = "fit-2026-10-24-8f85912-r3";
     expect(
-      ageWarnings(
+      releaseWarnings(
         tag,
-        "2026-10-25T00:00:00Z",
-        "fit-2026-10-01-8f85912-r1",
+        [own, rel(newer, "2026-10-25T01:00:00Z", { draft: true })],
         now,
       ),
     ).toEqual([]);
-    expect(ageWarnings(tag, "2026-10-25T00:00:00Z", "v1.2.3", now)).toEqual([]);
-  });
-  it("still warns about a stale cited release when the latest lookup failed", () => {
-    const warnings = ageWarnings(tag, "2026-08-01T00:00:00Z", null, now);
-    expect(warnings).toHaveLength(1);
-    expect(warnings[0]).toContain("days ago");
-    const both = ageWarnings(
+    const [w] = releaseWarnings(
       tag,
-      "2026-08-01T00:00:00Z",
-      "fit-2026-10-24-8f85912-r3",
+      [own, rel(newer, "2026-10-25T01:00:00Z", { prerelease: true })],
       now,
     );
-    expect(both).toHaveLength(2);
+    expect(w).toContain("prerelease");
   });
-  it("ignores a newer latest tag of another stamp", () => {
+  it("is quiet about an older run or a non-fit tag", () => {
     expect(
-      ageWarnings(
+      releaseWarnings(
         tag,
-        "2026-10-25T00:00:00Z",
-        "fit-2026-10-25-abcdef0-r9",
+        [
+          own,
+          rel("fit-2026-10-01-8f85912-r1", "2026-10-01T00:00:00Z"),
+          rel("v1", "2026-10-26T00:00:00Z"),
+        ],
         now,
       ),
     ).toEqual([]);
+  });
+  it("warns separately about a newer recipe stamp", () => {
+    const other = "fit-2026-10-25-abcdef0-r1";
+    const warnings = releaseWarnings(
+      tag,
+      [own, rel(other, "2026-10-25T12:00:00Z")],
+      now,
+    );
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain(other);
+    expect(warnings[0]).toContain("re-curating");
+  });
+  it("does not warn about an older recipe stamp", () => {
+    expect(
+      releaseWarnings(
+        tag,
+        [own, rel("fit-2026-09-01-abcdef0-r1", "2026-09-01T00:00:00Z")],
+        now,
+      ),
+    ).toEqual([]);
+  });
+  it("warns when the cited release is not listed", () => {
+    expect(releaseWarnings(tag, [], now)).toHaveLength(1);
   });
 });
