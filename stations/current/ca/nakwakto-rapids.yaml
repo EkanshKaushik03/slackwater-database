@@ -12,7 +12,7 @@ chs_fit:
   miss:
     clause: slack_worst
     value: 49.8
-  # A rapids whose slack runs about six minutes while the ebb reaches 14.5 knots (Sailing Directions PAC 202, quoted in the header).
+  # Curated water kind, for the app's online note; not measured. Slack runs about six minutes (Sailing Directions PAC 202); CHS gives 14.5 knots ebbing against 11.5 flooding (see the header).
   miss_context: rapids
   evidence: fit-2026-10-22-8f85912-r2
 sources:

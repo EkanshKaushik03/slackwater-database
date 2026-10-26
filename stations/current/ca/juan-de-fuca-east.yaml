@@ -9,7 +9,7 @@ chs_fit:
   miss:
     clause: invented_slack
     value: 24
-  # Open water where the stream turns slowly, so slack is a wide window rather than a moment.
+  # Curated water kind, for the app's online note; not measured.
   miss_context: slow_reversal
   evidence: fit-2026-10-22-8f85912-r2
 sources:
