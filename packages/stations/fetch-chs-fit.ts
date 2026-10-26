@@ -11,7 +11,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CHS_FIT_EVIDENCE } from "./station-files.ts";
+import { CHS_FIT_EVIDENCE, chsFitProblems } from "./station-files.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const OUT = join(root, "metadata", "chs-current-validation");
@@ -53,6 +53,15 @@ async function main() {
   const gates = Object.fromEntries(
     Object.entries(source.gates).map(([id, gate]) => [id, gate.chs_fit]),
   );
+  const rejected = Object.entries(gates).flatMap(([id, fit]) =>
+    chsFitProblems({ ...(fit as object), evidence: tag }).map(
+      (problem) => `${id}: ${problem}`,
+    ),
+  );
+  if (rejected.length)
+    throw new Error(
+      `${url} holds chs_fit shapes this repo rejects:\n  ${rejected.join("\n  ")}`,
+    );
   const snapshot = sortKeys({
     release,
     stamp,

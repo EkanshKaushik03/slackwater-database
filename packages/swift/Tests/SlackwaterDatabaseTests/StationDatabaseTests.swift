@@ -189,7 +189,7 @@ final class StationDatabaseTests: XCTestCase {
     XCTAssertEqual(
       bounded,
       ChsFit(
-        tier: .bounded, days: 210, slackBoundMinutes: 45, provisionalSlackMinutes: 35,
+        tier: .bounded, days: 210, slackBoundMinutes: 40, provisionalSlackMinutes: 45,
         miss: nil, missContext: nil, evidence: evidence))
 
     let online = try XCTUnwrap(db.station(id: "test/zfit-online")?.current?.chsFit)

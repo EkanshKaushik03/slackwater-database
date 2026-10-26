@@ -45,4 +45,27 @@ describe("ageWarnings", () => {
     expect(ageWarnings(tag, undefined, tag, now)).toHaveLength(1);
     expect(ageWarnings(tag, "nonsense", tag, now)).toHaveLength(1);
   });
+  it("is quiet when latest is older or not a fit tag", () => {
+    expect(
+      ageWarnings(
+        tag,
+        "2026-10-25T00:00:00Z",
+        "fit-2026-10-01-abcdef0-r1",
+        now,
+      ),
+    ).toEqual([]);
+    expect(ageWarnings(tag, "2026-10-25T00:00:00Z", "v1.2.3", now)).toEqual([]);
+  });
+  it("still warns about a stale cited release when the latest lookup failed", () => {
+    const warnings = ageWarnings(tag, "2026-08-01T00:00:00Z", null, now);
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toContain("days ago");
+    const both = ageWarnings(
+      tag,
+      "2026-08-01T00:00:00Z",
+      "fit-2026-10-24-abcdef0-r3",
+      now,
+    );
+    expect(both).toHaveLength(2);
+  });
 });

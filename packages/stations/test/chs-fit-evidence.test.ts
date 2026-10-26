@@ -1,71 +1,88 @@
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { StationFile } from "../station-files.ts";
-import { evidenceProblems } from "../chs-fit-evidence.ts";
+import { compareTags, evidenceProblems } from "../chs-fit-evidence.ts";
 
-const TAG = "fit-2026-10-22-8f85912-r2";
-const FILE = "stations/current/ca/bc/active-pass.yml";
+const R2 = "fit-2026-10-22-8f85912-r2";
+const R3 = "fit-2026-10-22-8f85912-r3";
+const FILE = "stations/current/ca/bc/active-pass.yaml";
 const GATE = {
   tier: "bounded",
   days: 210,
   slack_bound_minutes: 45,
-  provisional_slack_minutes: 30,
+  provisional_slack_minutes: 45,
 };
 
 let dir: string;
-const snapshot = (
+const save = (
+  name: string,
   release: string,
   gates: object = { "chs-active-pass": GATE },
 ) =>
-  JSON.stringify({
-    release,
-    stamp: "2026-10-22",
-    engine: "x",
-    scorer: 1,
-    database: "d",
-    newest: { grid: 1, fit_end: "2026-10-22" },
-    gates,
-  });
+  writeFileSync(
+    join(dir, `${name}.json`),
+    JSON.stringify({
+      release,
+      stamp: "2026-10-22",
+      engine: "x",
+      scorer: 1,
+      database: "d",
+      newest: { grid: 1, fit_end: "2026-10-22" },
+      gates,
+    }),
+  );
 
-beforeAll(() => {
+beforeEach(() => {
   dir = mkdtempSync(join(tmpdir(), "chs-fit-"));
-  writeFileSync(join(dir, `${TAG}.json`), snapshot(TAG));
-  writeFileSync(
-    join(dir, "fit-2026-10-22-8f85912-r3.json"),
-    snapshot("fit-2026-10-22-8f85912-r1"),
-  );
-  writeFileSync(
-    join(dir, "fit-2026-10-22-8f85912-r4.json"),
-    snapshot("fit-2026-10-22-8f85912-r4", {}),
-  );
+  save(R2, R2);
 });
-afterAll(() => rmSync(dir, { recursive: true, force: true }));
+afterEach(() => rmSync(dir, { recursive: true, force: true }));
 
-const station = (chs_fit?: object): StationFile =>
+const station = (
+  chs_fit?: object,
+  extra: object = {},
+  id = "chs-active-pass",
+  file = FILE,
+): StationFile =>
   ({
     kind: "current",
     country: "CA",
     slug: "active-pass",
-    file: FILE,
-    sources: ["chs-active-pass"],
+    file,
+    sources: [id],
+    ...extra,
     ...(chs_fit && { chs_fit }),
   }) as StationFile;
 
+describe("compareTags", () => {
+  it("orders by date, then numerically by run", () => {
+    expect(
+      [
+        "fit-2026-10-23-1111111-r2",
+        "fit-2026-10-22-8f85912-r10",
+        "fit-2026-10-22-8f85912-r9",
+      ].sort(compareTags),
+    ).toEqual([
+      "fit-2026-10-22-8f85912-r9",
+      "fit-2026-10-22-8f85912-r10",
+      "fit-2026-10-23-1111111-r2",
+    ]);
+  });
+});
+
 describe("evidenceProblems", () => {
   it("accepts a chs_fit equal to the snapshot gate plus evidence and miss_context", () => {
-    const file = station({
-      ...GATE,
-      miss_context: "rapids",
-      evidence: TAG,
-    });
+    const file = station({ ...GATE, miss_context: "rapids", evidence: R2 });
     expect(evidenceProblems([file], dir)).toEqual([]);
   });
 
   it("names the field that differs", () => {
-    const file = station({ ...GATE, slack_bound_minutes: 40, evidence: TAG });
-    const problems = evidenceProblems([file], dir);
+    const problems = evidenceProblems(
+      [station({ ...GATE, slack_bound_minutes: 40, evidence: R2 })],
+      dir,
+    );
     expect(problems).toHaveLength(1);
     expect(problems[0]).toContain(FILE);
     expect(problems[0]).toContain("slack_bound_minutes");
@@ -83,59 +100,93 @@ describe("evidenceProblems", () => {
   });
 
   it("rejects a snapshot whose release differs from its file name", () => {
+    save(R3, "fit-2026-10-22-8f85912-r1");
     const problems = evidenceProblems(
-      [station({ ...GATE, evidence: "fit-2026-10-22-8f85912-r3" })],
+      [station({ ...GATE, evidence: R3 })],
       dir,
     );
     expect(problems).toHaveLength(1);
     expect(problems[0]).toContain(FILE);
   });
 
-  it("rejects a gate absent from the snapshot", () => {
+  it("rejects a gate absent from the cited snapshot", () => {
+    save(R3, R3, {});
     const problems = evidenceProblems(
-      [station({ ...GATE, evidence: "fit-2026-10-22-8f85912-r4" })],
+      [station({ ...GATE, evidence: R3 })],
       dir,
     );
     expect(problems).toHaveLength(1);
-    expect(problems[0]).toContain(FILE);
     expect(problems[0]).toContain("chs-active-pass");
   });
 
-  it("ignores a station with no chs_fit", () => {
-    expect(evidenceProblems([station()], dir)).toEqual([]);
+  it("ignores a station no snapshot lists", () => {
+    expect(
+      evidenceProblems([station(undefined, {}, "chs-other")], dir),
+    ).toEqual([]);
   });
 
-  it("fails a station whose chs_fit was deleted while another cites the snapshot", () => {
-    const kept = station({ ...GATE, evidence: TAG });
-    const gone = {
-      ...station(),
-      file: "stations/current/ca/bc/first-narrows.yaml",
-      sources: ["chs-first-narrows"],
-    } as StationFile;
-    writeFileSync(
-      join(dir, "fit-2026-10-22-8f85912-r5.json"),
-      snapshot("fit-2026-10-22-8f85912-r5", {
-        "chs-active-pass": GATE,
-        "chs-first-narrows": GATE,
-      }),
+  it("fails a gate citing r2 when an r3 snapshot lists it", () => {
+    save(R3, R3, { "chs-active-pass": { tier: "online" } });
+    const problems = evidenceProblems(
+      [station({ ...GATE, evidence: R2 })],
+      dir,
     );
-    const cites = station({ ...GATE, evidence: "fit-2026-10-22-8f85912-r5" });
-    const problems = evidenceProblems([cites, gone], dir);
     expect(problems).toHaveLength(1);
-    expect(problems[0]).toContain("first-narrows.yaml");
-    expect(problems[0]).toContain("fit-2026-10-22-8f85912-r5");
-    expect(evidenceProblems([kept], dir)).toEqual([]);
+    expect(problems[0]).toContain(FILE);
+    expect(problems[0]).toContain(R3);
+  });
+
+  it("passes once the gate cites r3 with r3's values", () => {
+    save(R3, R3, { "chs-active-pass": { tier: "online" } });
+    expect(
+      evidenceProblems([station({ tier: "online", evidence: R3 })], dir),
+    ).toEqual([]);
+  });
+
+  it("orders runs numerically, not as strings", () => {
+    const r10 = "fit-2026-10-22-8f85912-r10";
+    save(r10, r10, { "chs-active-pass": { tier: "online" } });
+    const problems = evidenceProblems(
+      [station({ ...GATE, evidence: R2 })],
+      dir,
+    );
+    expect(problems[0]).toContain(r10);
+  });
+
+  it("fails every file whose block was deleted", () => {
+    save(R3, R3, { "chs-active-pass": GATE, "chs-first-narrows": GATE });
+    const problems = evidenceProblems(
+      [
+        station(),
+        station(
+          undefined,
+          {},
+          "chs-first-narrows",
+          "stations/current/ca/bc/first-narrows.yaml",
+        ),
+      ],
+      dir,
+    );
+    expect(problems).toHaveLength(2);
+    expect(problems[0]).toContain(FILE);
+    expect(problems[1]).toContain("first-narrows.yaml");
+    expect(problems[1]).toContain(R3);
+  });
+
+  it("says when the gate without a block is derived", () => {
+    const problems = evidenceProblems(
+      [station(undefined, { derived: { reference: "x" } })],
+      dir,
+    );
+    expect(problems).toHaveLength(1);
+    expect(problems[0]).toContain(FILE);
+    expect(problems[0]).toContain("derive");
   });
 
   it("passes a snapshot gate that has no station file", () => {
-    writeFileSync(
-      join(dir, "fit-2026-10-22-8f85912-r6.json"),
-      snapshot("fit-2026-10-22-8f85912-r6", {
-        "chs-active-pass": GATE,
-        "chs-nowhere": GATE,
-      }),
+    save(R3, R3, { "chs-active-pass": GATE, "chs-nowhere": GATE });
+    expect(evidenceProblems([station({ ...GATE, evidence: R3 })], dir)).toEqual(
+      [],
     );
-    const file = station({ ...GATE, evidence: "fit-2026-10-22-8f85912-r6" });
-    expect(evidenceProblems([file], dir)).toEqual([]);
   });
 });

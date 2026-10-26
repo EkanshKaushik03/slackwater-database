@@ -62,8 +62,8 @@ const stations: StationInput[] = [
       chs_fit: {
         tier: "bounded",
         days: 210,
-        slack_bound_minutes: 45,
-        provisional_slack_minutes: 35,
+        slack_bound_minutes: 40,
+        provisional_slack_minutes: 45,
         evidence: "fit-2026-10-22-8f85912-r2",
       },
     },
