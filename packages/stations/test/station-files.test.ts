@@ -563,7 +563,7 @@ computed:
 });
 
 describe("chs_fit", () => {
-  const evidence = "Fitted against the 2025 results release.";
+  const evidence = "fit-2026-10-22-8f85912-r2";
   const ok = [
     { tier: "final", days: 60, evidence },
     { tier: "final", days: 210, provisional_slack_minutes: 35, evidence },
@@ -603,6 +603,8 @@ describe("chs_fit", () => {
         "provisional_slack_minutes",
       ],
       [{ tier: "bounded", days: 210, evidence }, "slack_bound_minutes"],
+      [{ tier: "final", evidence }, "days"],
+      [{ tier: "bounded", slack_bound_minutes: 45, evidence }, "days"],
       [
         { tier: "final", days: 60, miss_context: "rapids", evidence },
         "miss_context",
@@ -656,6 +658,8 @@ describe("chs_fit", () => {
       ],
       [{ ...online, miss_context: "river" }, "miss_context"],
       [{ ...final, evidence: "r2" }, "evidence"],
+      [{ ...final, evidence: "fit-2026-10-22-8f8591-r2" }, "evidence"],
+      [{ ...final, evidence: "fit-2026-10-22-8f85912" }, "evidence"],
       [{ ...final, extra: 1 }, "extra"],
       [{ ...online, miss: { ...online.miss, extra: 1 } }, "extra"],
     ];
@@ -667,7 +671,7 @@ describe("chs_fit", () => {
   });
 
   const fitYaml =
-    "provider: chs\ntide_reference: chs-1\nchs_fit:\n  tier: final\n  days: 60\n  evidence: Fitted against the 2025 results release.\nsources:\n  - chs-gate\n";
+    "provider: chs\ntide_reference: chs-1\nchs_fit:\n  tier: final\n  days: 60\n  evidence: fit-2026-10-22-8f85912-r2\nsources:\n  - chs-gate\n";
 
   test("chs_fit needs an owned CHS current gate", () => {
     const bad: Record<string, string> = {

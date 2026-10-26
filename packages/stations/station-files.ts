@@ -128,16 +128,18 @@ export function chsFitProblems(input: unknown): string[] {
   if (!known) problems.push(`tier must be one of ${CHS_FIT_TIERS.join(", ")}`);
   if (
     typeof fit.evidence !== "string" ||
-    fit.evidence.trim().split(/\s+/).length < 2
+    !/^fit-\d{4}-\d{2}-\d{2}-[0-9a-f]{7}-r\d+$/.test(fit.evidence)
   )
     problems.push(
-      "evidence must be a sentence saying where the tier comes from",
+      "evidence must be a results release tag, like fit-2026-10-22-8f85912-r2",
     );
   if (!known) return problems;
   const fitted = tier !== "online";
   const bad = (field: string, rule: string) =>
     problems.push(`${field} ${rule}`);
 
+  if (fit.days === undefined && fitted)
+    bad("days", "is required for a final or bounded gate");
   if (fit.days !== undefined) {
     if (!fitted) bad("days", "belongs to a final or bounded gate");
     else if (fit.days !== 60 && fit.days !== 210)
