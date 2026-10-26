@@ -1,6 +1,6 @@
 /**
- * Check every snapshot in metadata/chs-current-validation/ against the release
- * it names: download that tag's dispositions.json, build the snapshot from it
+ * Check every snapshot in metadata/chs-current-validation/ that a station file
+ * cites against the release it names: download that tag's dispositions.json, build the snapshot from it
  * as refresh:chs-fit does, and compare with the committed file. Exits 1 on a
  * mismatch or a missing release; a network error or timeout warns and exits 0.
  *   npm run validate:chs-fit -w packages/stations

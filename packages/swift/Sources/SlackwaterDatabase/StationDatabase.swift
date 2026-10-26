@@ -355,9 +355,12 @@ public struct Station: Identifiable, @unchecked Sendable {
         },
         chsFit: current.chsFit.map { fit in
           // A tier this reader does not know reads as online, with no measured numbers.
-          let known = fit.tier == .final_ || fit.tier == .bounded || fit.tier == .online
+          // The generated accessor already maps an unknown raw value to .online,
+          // so the raw byte is read from the table itself.
+          let known = Self.hasKnownTier(fit)
           return ChsFit(
-            tier: fit.tier == .final_ ? .final : fit.tier == .bounded ? .bounded : .online,
+            tier: known && fit.tier == .final_
+              ? .final : known && fit.tier == .bounded ? .bounded : .online,
             days: !known || fit.days == 0 ? nil : Int(fit.days),
             slackBoundMinutes: !known || fit.slackBoundMinutes == 0
               ? nil : Int(fit.slackBoundMinutes),
@@ -373,6 +376,19 @@ public struct Station: Identifiable, @unchecked Sendable {
             evidence: fit.evidence)
         })
     }
+  }
+
+  /// False when the table's tier field holds a raw value that is not a
+  /// `Slackwater_ChsFitTier` case. An absent field is the default, online.
+  private static func hasKnownTier(_ fit: Slackwater_ChsFit) -> Bool {
+    // The generated table keeps its position private; its `Table` is the only way to it.
+    guard
+      let table = Mirror(reflecting: fit).children.first(where: { $0.label == "_accessor" })?
+        .value as? Table
+    else { return false }
+    let o = table.offset(4)  // VTOFFSET.tier
+    if o == 0 { return true }
+    return Slackwater_ChsFitTier(rawValue: table.readBuffer(of: UInt8.self, at: o)) != nil
   }
 
   // MARK: Prediction data

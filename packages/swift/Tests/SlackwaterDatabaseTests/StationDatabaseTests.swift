@@ -18,7 +18,7 @@ final class StationDatabaseTests: XCTestCase {
   func testOpensAMappedFileAndReadsTheVersion() throws {
     let db = try open()
     XCTAssertEqual(db.version, "0.0.0-fixture")
-    XCTAssertEqual(db.count, 6)
+    XCTAssertEqual(db.count, 7)
   }
 
   func testRejectsBytesWithoutTheFileIdentifier() throws {
@@ -36,13 +36,13 @@ final class StationDatabaseTests: XCTestCase {
       db.map(\.id),
       [
         "test/current", "test/reference", "test/subordinate", "test/subordinate-fixed",
-        "test/zfit-bounded", "test/zfit-online",
+        "test/zfit-bounded", "test/zfit-online", "test/zfit-unknown",
       ])
     XCTAssertEqual(
       db.map(\.name),
       [
         "A current", "Reference", "Subordinate", "Subordinate with fixed offsets",
-        "A bounded gate", "An online gate",
+        "A bounded gate", "An online gate", "An unknown-tier gate",
       ])
 
     let reference = db[1]
@@ -199,6 +199,14 @@ final class StationDatabaseTests: XCTestCase {
     XCTAssertNil(online.miss?.value)
     XCTAssertEqual(online.miss?.nearBar, true)
     XCTAssertEqual(online.missContext, "rapids")
+  }
+
+  func testReadsAnUnknownChsFitTierAsOnlineWithoutMeasuredNumbers() throws {
+    let fit = try XCTUnwrap(open().station(id: "test/zfit-unknown")?.current?.chsFit)
+    XCTAssertEqual(fit.tier, .online)
+    XCTAssertNil(fit.days)
+    XCTAssertNil(fit.slackBoundMinutes)
+    XCTAssertEqual(fit.evidence, "fit-2026-10-22-8f85912-r2")
   }
 
   func testLooksUpStableRoutesWithoutGeneratedTypes() throws {
