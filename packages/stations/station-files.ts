@@ -94,6 +94,9 @@ export const CHS_FIT_CONTEXTS = [
   "rapids",
 ] as const satisfies readonly ChsFitContext[];
 
+/** A results release tag, like fit-2026-10-22-8f85912-r2. */
+export const CHS_FIT_EVIDENCE = /^fit-\d{4}-\d{2}-\d{2}-[0-9a-f]{7}-r\d+$/;
+
 const CHS_FIT_KEYS = new Set([
   "tier",
   "days",
@@ -126,10 +129,7 @@ export function chsFitProblems(input: unknown): string[] {
   const tier = fit.tier;
   const known = (CHS_FIT_TIERS as readonly unknown[]).includes(tier);
   if (!known) problems.push(`tier must be one of ${CHS_FIT_TIERS.join(", ")}`);
-  if (
-    typeof fit.evidence !== "string" ||
-    !/^fit-\d{4}-\d{2}-\d{2}-[0-9a-f]{7}-r\d+$/.test(fit.evidence)
-  )
+  if (typeof fit.evidence !== "string" || !CHS_FIT_EVIDENCE.test(fit.evidence))
     problems.push(
       "evidence must be a results release tag, like fit-2026-10-22-8f85912-r2",
     );
