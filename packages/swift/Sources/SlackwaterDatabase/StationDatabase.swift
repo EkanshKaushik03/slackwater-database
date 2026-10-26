@@ -99,6 +99,27 @@ public struct TideDerivedCurrent: Equatable, Sendable {
   public let lowWaterLagMinutes: Int
 }
 
+/// A fitted CHS gate's measured tier, from the results release `evidence` names.
+/// `days`, the bounds and `miss` are nil when the gate has none.
+public struct ChsFit: Equatable, Sendable {
+  public enum Tier: Sendable { case final, bounded, online }
+  public let tier: Tier
+  public let days: Int?
+  public let slackBoundMinutes: Int?
+  public let provisionalSlackMinutes: Int?
+  public let miss: ChsFitMiss?
+  public let missContext: String?
+  public let evidence: String
+}
+
+/// The release-check clause an online gate missed. `value` is nil when a quarter
+/// had nothing to measure, never 0.
+public struct ChsFitMiss: Equatable, Sendable {
+  public let clause: String
+  public let value: Double?
+  public let nearBar: Bool
+}
+
 public struct CurrentRecord: Equatable, Sendable {
   public let floodDirection: Double?
   public let ebbDirection: Double?
@@ -107,6 +128,7 @@ public struct CurrentRecord: Equatable, Sendable {
   public let offsets: CurrentOffsets?
   public let magnitudeNote: String?
   public let derived: TideDerivedCurrent?
+  public let chsFit: ChsFit?
 }
 
 /// A station database file (`.tcdb`, schemas/database.fbs in
@@ -330,6 +352,22 @@ public struct Station: Identifiable, @unchecked Sendable {
             reference: $0.reference,
             highWaterLagMinutes: Int($0.highWaterLagMinutes),
             lowWaterLagMinutes: Int($0.lowWaterLagMinutes))
+        },
+        chsFit: current.chsFit.map { fit in
+          ChsFit(
+            tier: fit.tier == .final_ ? .final : fit.tier == .bounded ? .bounded : .online,
+            days: fit.days == 0 ? nil : Int(fit.days),
+            slackBoundMinutes: fit.slackBoundMinutes == 0 ? nil : Int(fit.slackBoundMinutes),
+            provisionalSlackMinutes: fit.provisionalSlackMinutes == 0
+              ? nil : Int(fit.provisionalSlackMinutes),
+            miss: fit.miss.map {
+              ChsFitMiss(
+                clause: $0.clause,
+                value: $0.valueMissing ? nil : $0.value,
+                nearBar: $0.nearBar)
+            },
+            missContext: fit.missContext,
+            evidence: fit.evidence)
         })
     }
   }

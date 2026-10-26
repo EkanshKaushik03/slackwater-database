@@ -51,6 +51,39 @@ const stations: StationInput[] = [
     },
   },
   {
+    // The two chs_fit gates sort last so the index-based assertions above hold.
+    ...identity,
+    id: "test/zfit-bounded",
+    name: "A bounded gate",
+    latitude: 48.2,
+    longitude: -122.9,
+    current: {
+      flood_direction: 90,
+      chs_fit: {
+        tier: "bounded",
+        days: 210,
+        slack_bound_minutes: 45,
+        evidence: "fit-2026-10-22-8f85912-r2",
+      },
+    },
+  },
+  {
+    ...identity,
+    id: "test/zfit-online",
+    name: "An online gate",
+    latitude: 48.3,
+    longitude: -123.0,
+    current: {
+      flood_direction: 90,
+      chs_fit: {
+        tier: "online",
+        miss: { clause: "slack_median", value: null },
+        miss_context: "rapids",
+        evidence: "fit-2026-10-22-8f85912-r2",
+      },
+    },
+  },
+  {
     ...identity,
     id: "test/reference",
     name: "Reference",

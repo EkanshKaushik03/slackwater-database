@@ -4,7 +4,7 @@ import * as flatbuffers from "flatbuffers";
 import { buildDatabase } from "../src/database/builder.ts";
 import { openDatabase } from "../src/database/reader.ts";
 import { Root, Kind, DatumFrame } from "../src/generated/fbs/slackwater.ts";
-import type { Station, StationInput } from "../src/types.ts";
+import type { ChsFitData, Station, StationInput } from "../src/types.ts";
 
 // The fixtures' sources carry no credit of their own.
 const build = (
@@ -434,6 +434,64 @@ describe("buildDatabase", () => {
     expect(offsets.reference()).toBe("test/2");
     expect(offsets.slackBeforeFlood()).toBe(-30);
     expect(offsets.floodSpeedRatio()).toBeCloseTo(0.8, 6);
+  });
+
+  test("round-trips chs_fit", async () => {
+    const evidence = "fit-2026-10-22-8f85912-r2";
+    const fits: ChsFitData[] = [
+      { tier: "bounded", days: 210, slack_bound_minutes: 45, evidence },
+      { tier: "final", days: 210, provisional_slack_minutes: 35, evidence },
+      {
+        tier: "online",
+        miss: { clause: "slack_worst", value: 47.4 },
+        miss_context: "rapids",
+        evidence,
+      },
+      {
+        tier: "online",
+        miss: { clause: "peak_speed", value: 0.55, near_bar: true },
+        evidence,
+      },
+      {
+        tier: "online",
+        miss: { clause: "slack_median", value: null },
+        evidence,
+      },
+    ];
+    const fitted = fits.map((chs_fit, i) => ({
+      ...inputs[2]!,
+      id: `test/fit-${i}`,
+      current: { flood_direction: 90, chs_fit },
+    }));
+    const bytes = build([...inputs, ...fitted]);
+    vi.doMock("#slackwater.tcdb", () => ({ default: bytes }));
+    vi.resetModules();
+    try {
+      const { stationsById } = await import("../src/stations.ts");
+      fits.forEach((fit, i) => {
+        const read = stationsById.get(`test/fit-${i}`)!.current!.chs_fit;
+        expect(read).toEqual(fit);
+        expect(read).toStrictEqual(fit);
+      });
+      const nullMiss = stationsById.get("test/fit-4")!.current!.chs_fit!;
+      expect(nullMiss.miss!.value).toBeNull();
+    } finally {
+      vi.doUnmock("#slackwater.tcdb");
+      vi.resetModules();
+    }
+  });
+
+  test("a current without chs_fit reads none", async () => {
+    const bytes = build(inputs);
+    vi.doMock("#slackwater.tcdb", () => ({ default: bytes }));
+    vi.resetModules();
+    try {
+      const { stationsById } = await import("../src/stations.ts");
+      expect(stationsById.get("test/3")!.current!.chs_fit).toBeUndefined();
+    } finally {
+      vi.doUnmock("#slackwater.tcdb");
+      vi.resetModules();
+    }
   });
 
   test("exposes kind eagerly and current data lazily", async () => {

@@ -1,5 +1,8 @@
 import {
   Constituent,
+  ChsFit,
+  ChsFitMiss,
+  ChsFitTier as FbsChsFitTier,
   Current,
   CurrentOffsets,
   Datum,
@@ -28,6 +31,12 @@ import type {
   StationInput,
   StationRouteInput,
 } from "../types.js";
+
+const CHS_FIT_TIERS = {
+  final: FbsChsFitTier.Final,
+  bounded: FbsChsFitTier.Bounded,
+  online: FbsChsFitTier.Online,
+} as const;
 
 /**
  * Serialize stations into the FlatBuffers database format
@@ -283,6 +292,36 @@ export function buildDatabase(
         );
         derived = TideDerivedCurrent.endTideDerivedCurrent(builder);
       }
+      let chsFit = 0;
+      if (c.chs_fit) {
+        const f = c.chs_fit;
+        let miss = 0;
+        if (f.miss) {
+          const clause = builder.createString(f.miss.clause);
+          ChsFitMiss.startChsFitMiss(builder);
+          ChsFitMiss.addClause(builder, clause);
+          if (f.miss.value === null) ChsFitMiss.addValueMissing(builder, true);
+          else ChsFitMiss.addValue(builder, f.miss.value);
+          if (f.miss.near_bar) ChsFitMiss.addNearBar(builder, true);
+          miss = ChsFitMiss.endChsFitMiss(builder);
+        }
+        const missContext = str(f.miss_context);
+        const evidence = builder.createString(f.evidence);
+        ChsFit.startChsFit(builder);
+        ChsFit.addTier(builder, CHS_FIT_TIERS[f.tier]);
+        if (f.days !== undefined) ChsFit.addDays(builder, f.days);
+        if (f.slack_bound_minutes !== undefined)
+          ChsFit.addSlackBoundMinutes(builder, f.slack_bound_minutes);
+        if (f.provisional_slack_minutes !== undefined)
+          ChsFit.addProvisionalSlackMinutes(
+            builder,
+            f.provisional_slack_minutes,
+          );
+        ChsFit.addMiss(builder, miss);
+        ChsFit.addMissContext(builder, missContext);
+        ChsFit.addEvidence(builder, evidence);
+        chsFit = ChsFit.endChsFit(builder);
+      }
       let currentOffsets = 0;
       if (c.offsets) {
         const o = c.offsets;
@@ -332,6 +371,7 @@ export function buildDatabase(
       Current.addOffsets(builder, currentOffsets);
       Current.addMagnitudeNote(builder, magnitudeNote);
       Current.addDerived(builder, derived);
+      Current.addChsFit(builder, chsFit);
       current = Current.endCurrent(builder);
     }
 

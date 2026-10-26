@@ -585,6 +585,7 @@ export function resolveMetadata(
       if (tideReference) result.current.tide_reference = tideReference;
       if (registry.magnitudeNote)
         result.current.magnitude_note = registry.magnitudeNote;
+      if (registry.chsFit) result.current.chs_fit = registry.chsFit;
       if (registry.derived)
         result.current.derived = {
           reference: registry.derived.reference,

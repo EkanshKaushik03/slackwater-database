@@ -151,6 +151,7 @@ export interface CurrentData {
   tide_reference?: string;
   magnitude_note?: string;
   derived?: TideDerivedCurrentData;
+  chs_fit?: ChsFitData;
   /** Subordinate currents only. Times in minutes, ratios dimensionless. */
   offsets?: {
     reference: string;

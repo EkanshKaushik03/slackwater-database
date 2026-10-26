@@ -18,7 +18,7 @@ final class StationDatabaseTests: XCTestCase {
   func testOpensAMappedFileAndReadsTheVersion() throws {
     let db = try open()
     XCTAssertEqual(db.version, "0.0.0-fixture")
-    XCTAssertEqual(db.count, 4)
+    XCTAssertEqual(db.count, 6)
   }
 
   func testRejectsBytesWithoutTheFileIdentifier() throws {
@@ -34,10 +34,16 @@ final class StationDatabaseTests: XCTestCase {
     let db = try open()
     XCTAssertEqual(
       db.map(\.id),
-      ["test/current", "test/reference", "test/subordinate", "test/subordinate-fixed"])
+      [
+        "test/current", "test/reference", "test/subordinate", "test/subordinate-fixed",
+        "test/zfit-bounded", "test/zfit-online",
+      ])
     XCTAssertEqual(
       db.map(\.name),
-      ["A current", "Reference", "Subordinate", "Subordinate with fixed offsets"])
+      [
+        "A current", "Reference", "Subordinate", "Subordinate with fixed offsets",
+        "A bounded gate", "An online gate",
+      ])
 
     let reference = db[1]
     XCTAssertEqual(reference.latitude, 47.6, accuracy: 1e-9)
@@ -172,6 +178,27 @@ final class StationDatabaseTests: XCTestCase {
     XCTAssertEqual(current.offsets?.slackBeforeFlood, -30)
     XCTAssertNil(current.offsets?.slackBeforeEbb)
     XCTAssertEqual(current.offsets?.floodTime, 0)
+  }
+
+  func testReadsAFittedGatesChsFit() throws {
+    let db = try open()
+    let evidence = "fit-2026-10-22-8f85912-r2"
+    XCTAssertNil(db.station(id: "test/current")?.current?.chsFit)
+
+    let bounded = try XCTUnwrap(db.station(id: "test/zfit-bounded")?.current?.chsFit)
+    XCTAssertEqual(
+      bounded,
+      ChsFit(
+        tier: .bounded, days: 210, slackBoundMinutes: 45, provisionalSlackMinutes: nil,
+        miss: nil, missContext: nil, evidence: evidence))
+
+    let online = try XCTUnwrap(db.station(id: "test/zfit-online")?.current?.chsFit)
+    XCTAssertEqual(online.tier, .online)
+    XCTAssertNil(online.days)
+    XCTAssertEqual(online.miss?.clause, "slack_median")
+    XCTAssertNil(online.miss?.value)
+    XCTAssertEqual(online.miss?.nearBar, false)
+    XCTAssertEqual(online.missContext, "rapids")
   }
 
   func testLooksUpStableRoutesWithoutGeneratedTypes() throws {
