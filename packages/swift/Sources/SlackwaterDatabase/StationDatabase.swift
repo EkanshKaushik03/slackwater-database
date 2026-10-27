@@ -112,8 +112,10 @@ public struct ChsFit: Equatable, Sendable {
   public let evidence: String
 }
 
-/// The release-check clause an online gate missed. `value` is nil when a quarter
-/// had nothing to measure, never 0.
+/// The release-check clause an online gate missed. `value` is in the clause's
+/// unit: percent of extrema for `reversed_axis`, slacks for `invented_slack` and
+/// `missed_slack`, knots for `peak_speed`, minutes for the rest. It is nil when a
+/// quarter had nothing to measure, never 0.
 public struct ChsFitMiss: Equatable, Sendable {
   public let clause: String
   public let value: Double?

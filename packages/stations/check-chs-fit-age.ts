@@ -107,30 +107,35 @@ async function get(url: string): Promise<unknown> {
   return await response.json();
 }
 
+const PAGE = 100;
+
+/**
+ * The repository's releases, newest first, read a page at a time until every
+ * cited tag has appeared or the list ends. Every release newer than a cited one
+ * is then in hand.
+ */
+export async function listReleases(
+  cited: string[],
+  get: (url: string) => Promise<unknown>,
+): Promise<ReleaseInfo[]> {
+  const releases: ReleaseInfo[] = [];
+  for (let page = 1; ; page++) {
+    const batch = await get(`${REPO}/releases?per_page=${PAGE}&page=${page}`);
+    if (!Array.isArray(batch))
+      throw new Error("the release list is not an array");
+    releases.push(...(batch as ReleaseInfo[]));
+    const seen = new Set(releases.map((r) => r.tag_name));
+    if (batch.length < PAGE || cited.every((tag) => seen.has(tag)))
+      return releases;
+  }
+}
+
 async function main() {
   const cited = newestTags(readStationFiles());
   if (!cited.length) return;
-  const [listing] = await Promise.allSettled([
-    get(`${REPO}/releases?per_page=100`),
-  ]);
-  if (listing!.status === "rejected" || !Array.isArray(listing!.value)) {
-    const reason =
-      listing!.status === "rejected"
-        ? listing!.reason instanceof Error
-          ? listing!.reason.message
-          : String(listing!.reason)
-        : "the release list is not an array";
-    console.log(
-      `::warning::Could not check the CHS current results age: ${reason}`,
-    );
-    return;
-  }
+  const releases = await listReleases(cited, get);
   for (const tag of cited)
-    for (const line of releaseWarnings(
-      tag,
-      listing!.value as ReleaseInfo[],
-      new Date(),
-    ))
+    for (const line of releaseWarnings(tag, releases, new Date()))
       console.log(line);
 }
 

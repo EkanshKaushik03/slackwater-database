@@ -135,7 +135,11 @@ export interface ChsFitData {
   /** Minutes; slack lands within this of CHS (bounded tier). */
   slack_bound_minutes?: number;
   provisional_slack_minutes?: number;
-  /** The clause an online gate missed, and by how much. */
+  /**
+   * The clause an online gate missed, and by how much, in the clause's unit:
+   * percent of extrema for `reversed_axis`, slacks for `invented_slack` and
+   * `missed_slack`, knots for `peak_speed`, minutes for the rest.
+   */
   miss?: { clause: ChsFitClause; value: number | null; near_bar?: true };
   miss_context?: ChsFitContext;
   evidence: string;

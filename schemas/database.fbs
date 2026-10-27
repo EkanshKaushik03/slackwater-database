@@ -102,6 +102,8 @@ enum ChsFitTier : ubyte { Online = 0, Bounded = 1, Final = 2 }
 
 table ChsFitMiss {
   clause: string (required);   // one of the seven clause names
+  // In the clause's unit: percent of extrema for reversed_axis, slacks for
+  // invented_slack and missed_slack, knots for peak_speed, minutes for the rest.
   value: double;
   value_missing: bool;         // a quarter had nothing to measure
   near_bar: bool;

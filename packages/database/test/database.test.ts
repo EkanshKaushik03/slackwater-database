@@ -481,6 +481,31 @@ describe("buildDatabase", () => {
     }
   });
 
+  test("rejects chs_fit numbers its ushort fields cannot hold", () => {
+    const fit = (chs_fit: ChsFitData) => [
+      { ...inputs[2]!, id: "test/fit-range", current: { chs_fit } },
+    ];
+    const evidence = "fit-2026-10-22-8f85912-r2";
+    expect(() =>
+      build(fit({ tier: "final", days: 70000 as 60, evidence })),
+    ).toThrow(/test\/fit-range.*chs_fit\.days 70000/);
+    expect(() =>
+      build(
+        fit({ tier: "bounded", days: 60, slack_bound_minutes: 0, evidence }),
+      ),
+    ).toThrow(/chs_fit\.slack_bound_minutes 0/);
+    expect(() =>
+      build(
+        fit({
+          tier: "final",
+          days: 210,
+          provisional_slack_minutes: 37.5,
+          evidence,
+        }),
+      ),
+    ).toThrow(/chs_fit\.provisional_slack_minutes 37\.5/);
+  });
+
   test("an unknown chs_fit tier reads as online", async () => {
     const bytes = build([
       ...inputs,

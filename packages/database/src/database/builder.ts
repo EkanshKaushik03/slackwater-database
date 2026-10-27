@@ -295,6 +295,21 @@ export function buildDatabase(
       let chsFit = 0;
       if (c.chs_fit) {
         const f = c.chs_fit;
+        // These are ushort fields where 0 means absent.
+        for (const key of [
+          "days",
+          "slack_bound_minutes",
+          "provisional_slack_minutes",
+        ] as const) {
+          const v = f[key];
+          if (
+            v !== undefined &&
+            !(Number.isInteger(v) && v >= 1 && v <= 0xffff)
+          )
+            throw new Error(
+              `${s.id}: chs_fit.${key} ${v} is not a whole number from 1 to 65535`,
+            );
+        }
         let miss = 0;
         if (f.miss) {
           const clause = builder.createSharedString(f.miss.clause);
