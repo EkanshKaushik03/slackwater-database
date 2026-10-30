@@ -22,3 +22,22 @@ test("importing the public entry neither loads bytes nor reads station records",
     vi.resetModules();
   }
 });
+
+test("a failed bundled load is retried on the next call", async () => {
+  vi.resetModules();
+  const { buildDatabase } = await import("../src/database/builder.js");
+  const loadBytes = vi
+    .fn()
+    .mockRejectedValueOnce(new Error("offline"))
+    .mockResolvedValue(buildDatabase([], { credits: new Map() }));
+  vi.doMock("#slackwater.tcdb", () => ({ default: loadBytes }));
+  try {
+    const { loadStations } = await import("../src/load-stations.js");
+    await expect(loadStations()).rejects.toThrow("offline");
+    expect((await loadStations()).all).toEqual([]);
+    expect(loadBytes).toHaveBeenCalledTimes(2);
+  } finally {
+    vi.doUnmock("#slackwater.tcdb");
+    vi.resetModules();
+  }
+});

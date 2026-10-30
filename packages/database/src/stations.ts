@@ -28,6 +28,10 @@ const CHS_FIT_TIER_NAMES: Record<number, ChsFitData["tier"]> = {
   [ChsFitTier.Online]: "online",
 };
 
+export function qualityFilter(station: Station): boolean {
+  return station.quality?.accepted ?? true;
+}
+
 /** A reader and identity cache owned by one loaded database. */
 export function createStationReader(db: Root) {
   const constituentNames: string[] = Array.from(
@@ -81,10 +85,6 @@ export function createStationReader(db: Root) {
     return index === undefined ? undefined : at(index);
   }
 
-  function qualityFilter(station: Station): boolean {
-    return station.quality?.accepted ?? true;
-  }
-
   function isAccepted(index: number): boolean {
     const table = db.stations(index)!;
     return !table.quality() || table.accepted();
@@ -93,14 +93,16 @@ export function createStationReader(db: Root) {
   // Stations that predict from another station's harmonics (subordinates use
   // their reference station); resolve an id to the buffer index of its record.
   function dataIndex(station: Station): number {
-    const id =
-      station.type === "subordinate" && station.offsets
-        ? station.offsets.reference
-        : station.id;
-    const index = findIndex(id);
-    if (index === undefined)
-      throw new Error(`No data record for station ${id}`);
-    return index;
+    const own = findIndex(station.id)!;
+    if (station.type !== "subordinate" || !station.offsets) return own;
+    const { reference } = station.offsets;
+    const index = findIndex(reference);
+    if (index !== undefined) return index;
+    // A filtered rebuild can leave out the reference, but buildDatabase stores
+    // what the subordinate resolved to, so its own record holds the same data.
+    const table = db.stations(own)!;
+    if (table.constituentsLength() > 0 || table.datumsLength() > 0) return own;
+    throw new Error(`No data record for station ${reference}`);
   }
 
   function readConstituents(index: number): HarmonicConstituent[] {
@@ -483,7 +485,6 @@ export function createStationReader(db: Root) {
     indexOf: findIndex,
     isAccepted,
     byId,
-    qualityFilter,
     datums,
     get all(): Station[] {
       return (all ??= Array.from({ length: db.stationsLength() }, (_, i) =>

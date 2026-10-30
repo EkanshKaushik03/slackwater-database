@@ -9,10 +9,7 @@ export default async function loadBytes(
   if (source === undefined) {
     return readFile(new URL("../generated/slackwater.tcdb", import.meta.url));
   }
-  if (
-    typeof source === "string" &&
-    (!/^[a-z][a-z\d+.-]*:/i.test(source) || /^[a-z]:[\\/]/i.test(source))
-  ) {
+  if (typeof source === "string" && !/^(?:https?|file):/i.test(source)) {
     return readFile(source);
   }
   const url = typeof source === "string" ? new URL(source) : source;

@@ -1,6 +1,7 @@
 export * from "./attribution.js";
 export { credits } from "./generated/credits.js";
 export * from "./load-stations.js";
+export { qualityFilter } from "./stations.js";
 export * from "./route-path.js";
 export { positionToPoint } from "./search/index.js";
 export type {

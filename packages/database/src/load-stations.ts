@@ -14,14 +14,28 @@ export type DatabaseSource = string | URL | Uint8Array;
  * Load the bundled database, or a supplied source. Browsers and Workers accept
  * fetchable URLs and bytes; Node also accepts filesystem paths and file URLs.
  * Loading creates a reader, without materializing any station identities.
- * Each call owns its caches. Call once and reuse the returned instance.
+ * Every call for the bundled database shares one instance; each supplied source
+ * gets its own instance and caches.
  */
 export async function loadStations(
   source?: DatabaseSource,
 ): Promise<StationDatabase> {
-  const bytes = source instanceof Uint8Array ? source : await loadBytes(source);
-  const indexes = source === undefined ? await bundledSearchData() : undefined;
-  return createDatabase(bytes, indexes);
+  if (source === undefined) return (bundled ??= loadBundled());
+  // Not instanceof: bytes can come from another realm, such as an iframe or vm.
+  return createDatabase(
+    ArrayBuffer.isView(source) ? source : await loadBytes(source),
+  );
+}
+
+let bundled: Promise<StationDatabase> | undefined;
+
+async function loadBundled(): Promise<StationDatabase> {
+  try {
+    return createDatabase(await loadBytes(), await bundledSearchData());
+  } catch (error) {
+    bundled = undefined; // A failed fetch can succeed on the next call.
+    throw error;
+  }
 }
 
 function createDatabase(bytes: Uint8Array, indexes?: SearchIndexData) {
@@ -33,7 +47,6 @@ function createDatabase(bytes: Uint8Array, indexes?: SearchIndexData) {
   const reader = createStationReader(root);
   return {
     byId: reader.byId,
-    qualityFilter: reader.qualityFilter,
     get all() {
       return reader.all;
     },

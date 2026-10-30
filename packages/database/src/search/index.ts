@@ -51,11 +51,17 @@ export function createSearch(
 ) {
   let geoIndex: KDBush | undefined;
   let textIndex: ReturnType<typeof loadTextIndex> | undefined;
+  // Serialized indexes are released once parsed. Consumers on constrained
+  // hardware that only do geo lookups never pay for the parsed text index.
+  let geoData = indexes?.geo;
+  let textData = indexes?.text;
 
   function getGeoIndex(): KDBush {
     if (!geoIndex) {
-      if (indexes) geoIndex = loadGeoIndex(indexes.geo);
-      else {
+      if (geoData !== undefined) {
+        geoIndex = loadGeoIndex(geoData);
+        geoData = undefined;
+      } else {
         // Coordinates alone suffice; do not materialize station identities.
         geoIndex = new KDBush(db.stationsLength());
         for (let i = 0; i < db.stationsLength(); i++) {
@@ -70,9 +76,11 @@ export function createSearch(
 
   function getTextIndex() {
     if (!textIndex) {
-      textIndex = indexes
-        ? loadTextIndex(indexes.text)
-        : buildTextIndex(readStationMeta(bytes));
+      textIndex =
+        textData !== undefined
+          ? loadTextIndex(textData)
+          : buildTextIndex(readStationMeta(bytes));
+      textData = undefined;
     }
     return textIndex;
   }

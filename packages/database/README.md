@@ -27,7 +27,7 @@ console.log("Total accepted stations:", db.accepted.length);
 console.log(db.byId("noaa/9447130"));
 ```
 
-Importing the package performs no database I/O or station decoding. `loadStations()` obtains the bundled bytes and creates a reader. Call it once and reuse the returned instance; each call has independent caches.
+Importing the package performs no database I/O or station decoding. `loadStations()` obtains the bundled bytes and creates a reader. Every call for the bundled database returns the same instance, so callers can load it wherever they need it.
 
 `db.byId(id)` binary-searches the database and caches the matching station's identity. `db.all` materializes every identity, including rejected records; `db.accepted` leaves out records rejected by quality evaluation. These collections reuse identities already decoded and are cached on first access. Every search function below takes `includeAll: true` to search the full catalog instead of the accepted subset.
 
@@ -42,11 +42,11 @@ const remote = await loadStations("https://example.com/stations.tcdb");
 const supplied = await loadStations(bytes); // Uint8Array, including Node Buffer
 ```
 
-Browsers accept relative or absolute fetchable URLs; Workers accept fetchable URLs and bundled bytes. Node accepts filesystem paths, file URLs, and HTTP(S) URLs. URLs download the whole file before returning a reader; individual station reads then use the in-memory buffer. In Workers, call a remote loader in a request handler or another context where fetch is allowed.
+Browsers accept relative or absolute fetchable URLs; Workers accept fetchable URLs and bundled bytes. Node accepts filesystem paths, file URLs, and HTTP(S) URLs. URLs download the whole file before returning a reader; individual station reads then use the in-memory buffer. In Workers, call a remote loader in a request handler or another context where fetch is allowed. Each supplied source gets its own instance and caches, so reuse the one it returns.
 
 The geographic and text indexes initialize on first use. Bundled data uses prebuilt indexes; supplied sources build matching indexes from the loaded buffer's coordinates or searchable metadata. Neither path reads prediction data to build an index.
 
-`db.qualityMap` lazily builds the full map of stored quality evaluations, `db.qualityFilter(station)` checks acceptance, and `db.datums` lists the datum names available in the file.
+`db.qualityMap` lazily builds the full map of stored quality evaluations, and `db.datums` lists the datum names available in the file. `qualityFilter(station)` checks acceptance and is a direct export.
 
 ### Migrating from module-level exports
 
@@ -58,7 +58,7 @@ The geographic and text indexes initialize on first use. Bundled data uses prebu
 | `qualityMap`, `datums`     | `db.qualityMap`, `db.datums`        |
 | Route and search functions | Methods with the same names on `db` |
 
-Pure helpers such as `routePath`, `positionToPoint`, attribution helpers, `credits`, and `buildDatabase` remain direct exports.
+Pure helpers such as `qualityFilter`, `routePath`, `positionToPoint`, attribution helpers, `credits`, and `buildDatabase` remain direct exports.
 
 Each station has separate `locality`, `region`, and `country` display fields. `country_code` is an ISO 3166-1 alpha-2 code; `region_code`, when available, is an ISO 3166-2 subdivision code. Consumers can therefore omit country or region text when the surrounding page already supplies it.
 

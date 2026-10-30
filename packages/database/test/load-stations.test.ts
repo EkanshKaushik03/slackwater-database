@@ -3,7 +3,9 @@ import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { runInNewContext } from "node:vm";
 import { loadStations } from "../src/load-stations.js";
+import { qualityFilter } from "../src/stations.js";
 import { buildDatabase } from "../src/database/builder.js";
 import { Station as StationTable } from "../src/generated/fbs/slackwater.ts";
 import type { StationInput } from "../src/types.js";
@@ -101,7 +103,7 @@ describe("station loading", () => {
     expect(db.accepted).toBe(db.accepted);
     expect(db.qualityMap).toBe(db.qualityMap);
     expect(db.qualityMap.get("test/b")).toBe(all[1]!.quality);
-    expect(db.qualityFilter(all[1]!)).toBe(false);
+    expect(qualityFilter(all[1]!)).toBe(false);
     expect(db.datums).toContain("MLLW");
     expect(first.harmonic_constituents).toEqual(first.harmonic_constituents);
     expect(first.harmonic_constituents).not.toBe(first.harmonic_constituents);
@@ -132,6 +134,56 @@ describe("station loading", () => {
     expect(name).toHaveBeenCalledTimes(1);
   });
 
+  test("a subordinate whose reference was filtered out reads its stored data", async () => {
+    const reference = await loadStations(
+      build([
+        {
+          ...station("test/a"),
+          type: "subordinate",
+          chart_datum: "MLLW",
+          harmonic_constituents: [],
+          datums: {},
+          offsets: {
+            reference: "test/z",
+            time: { high: 0, low: 0 },
+            height: { type: "ratio", high: 2, low: 2 },
+          },
+        },
+        station("test/z"),
+      ]),
+    );
+    const sub = reference.byId("test/a")!;
+    const rebuilt = (await loadStations(build([sub]))).byId("test/a")!;
+    expect(rebuilt.harmonic_constituents).toEqual(sub.harmonic_constituents);
+    expect(rebuilt.datums).toEqual(sub.datums);
+    expect(rebuilt.astronomical_bounds).toEqual({ lat: -2, hat: 6 });
+  });
+
+  test("a subordinate with no reference and no stored data throws", async () => {
+    const db = await loadStations(
+      build([
+        {
+          ...station("test/a"),
+          type: "subordinate",
+          harmonic_constituents: [],
+          datums: {},
+          offsets: {
+            reference: "test/z",
+            time: { high: 0, low: 0 },
+            height: { type: "ratio", high: 1, low: 1 },
+          },
+        },
+      ]),
+    );
+    expect(() => db.byId("test/a")!.datums).toThrow(/test\/z/);
+  });
+
+  test("every bundled load shares one instance", async () => {
+    const [first, second] = await Promise.all([loadStations(), loadStations()]);
+    expect(first).toBe(second);
+    expect(await loadStations()).toBe(first);
+  });
+
   test("each database owns its identity cache", async () => {
     const first = await loadStations(build([station("test/a", "First")]));
     const second = await loadStations(build([station("test/a", "Second")]));
@@ -158,6 +210,21 @@ describe("station loading", () => {
     } finally {
       await rm(dir, { recursive: true, force: true });
     }
+  });
+
+  test("a relative path with a colon is a path, not a URL", async () => {
+    await expect(loadStations("backups:2026/stations.tcdb")).rejects.toThrow(
+      /ENOENT/,
+    );
+  });
+
+  test("accepts bytes from another realm", async () => {
+    const bytes = build([station("test/realm")]);
+    const foreign: Uint8Array = runInNewContext("new Uint8Array(length)", {
+      length: bytes.length,
+    });
+    foreign.set(bytes);
+    expect((await loadStations(foreign)).byId("test/realm")).toBeDefined();
   });
 
   test("loads remote bytes and propagates HTTP and network errors", async () => {

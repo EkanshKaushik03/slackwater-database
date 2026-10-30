@@ -3,17 +3,12 @@
 import { createDatabaseBase64 } from "./inline.ts" with { type: "macro" };
 import { fetchDatabase } from "./fetch.js";
 
-let bundledBytes: Uint8Array | undefined;
-
 export default async function loadBytes(
   source?: string | URL,
 ): Promise<Uint8Array> {
   if (source !== undefined) return fetchDatabase(source);
-  if (!bundledBytes) {
-    const binary = atob(createDatabaseBase64());
-    bundledBytes = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++)
-      bundledBytes[i] = binary.charCodeAt(i);
-  }
-  return bundledBytes;
+  const binary = atob(createDatabaseBase64());
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
 }

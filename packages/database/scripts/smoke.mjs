@@ -81,10 +81,11 @@ async function checkEntry(bundle, label) {
   try {
     api = await import(new URL(`${bundle}/index.js`, dist));
   } finally {
-    globalThis.fetch = fetchForLoading;
+    if (bundle !== "worker") globalThis.fetch = fetchForLoading;
     globalThis.atob = realAtob;
   }
   const db = await api.loadStations();
+  globalThis.fetch = fetchForLoading;
   const station = db.byId("noaa/9447130");
   assert.ok(station, `${label}: individual lookup`);
   assert.equal(db.byId(station.id), station, `${label}: cached identity`);
@@ -105,8 +106,8 @@ const nodeApi = require(fileURLToPath(new URL("node/index.js", dist)));
 check(await nodeApi.loadStations(), nodeApi, "node require");
 
 // The worker bundle must start with no fetch and no filesystem, like a
-// Cloudflare Worker's global scope: poison fetch for the duration of its
-// import to prove startup never calls it.
+// Cloudflare Worker's global scope: poison fetch through its import and its
+// bundled load to prove neither calls it, since the database ships inside.
 await checkEntry("worker", "worker ESM");
 globalThis.fetch = realFetch;
 
